@@ -33,6 +33,12 @@ public class MainFrame extends JFrame {
         populateUi();
     }
 
+    public void launch() {
+        log.info("Launching " + getClass().getSimpleName());
+        pack();
+        setVisible(true);
+    }
+
     private void populateUi() {
         JScrollPane textPane = setupTextArea();
 
@@ -56,21 +62,6 @@ public class MainFrame extends JFrame {
         cp.add(builder.getPanel(), BorderLayout.CENTER);
     }
 
-    private JScrollPane setupTextArea() {
-        area.setEditable(false);
-        Font f = Font.decode(MONOSPACED);
-        area.setFont(f);
-        DefaultCaret c = (DefaultCaret) area.getCaret();
-        c.setUpdatePolicy(DefaultCaret.NEVER_UPDATE);
-        return new JScrollPane(area, VERTICAL_SCROLLBAR_NEVER, HORIZONTAL_SCROLLBAR_AS_NEEDED);
-    }
-
-    public void launch() {
-        log.info("Launching " + getClass().getSimpleName());
-        pack();
-        setVisible(true);
-    }
-
     private void setupClose() {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
@@ -79,5 +70,14 @@ public class MainFrame extends JFrame {
                 ctx.close();
             }
         });
+    }
+
+    private JScrollPane setupTextArea() {
+        area.setEditable(false);
+        Font f = Font.decode(MONOSPACED);
+        area.setFont(f);
+        DefaultCaret c = (DefaultCaret) area.getCaret();
+        c.setUpdatePolicy(DefaultCaret.NEVER_UPDATE);
+        return new JScrollPane(area, VERTICAL_SCROLLBAR_NEVER, HORIZONTAL_SCROLLBAR_AS_NEEDED);
     }
 }
