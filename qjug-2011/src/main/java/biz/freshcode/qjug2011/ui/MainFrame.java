@@ -29,13 +29,13 @@ public class MainFrame extends JFrame {
     public MainFrame() {
         setTitle("QJUG 2011 - Peter Leong");
         setupClose();
-        setSize(800, 600);
         populateUi();
     }
 
     public void launch() {
         log.info("Launching " + getClass().getSimpleName());
         pack();
+        setSize(800, 600);
         setVisible(true);
     }
 
