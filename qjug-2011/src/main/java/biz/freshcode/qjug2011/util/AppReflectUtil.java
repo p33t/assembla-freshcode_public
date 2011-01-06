@@ -80,11 +80,7 @@ public class AppReflectUtil {
         if (signature == null && ctors.length == 1 && args.length == 0) {
             // try using defaults
             signature = ctors[0].getParameterTypes();
-            args = new Object[signature.length];
-            for (int i = 0; i < signature.length; i++) {
-                Class type = signature[i];
-                args[i] = defVal(type);
-            }
+            args = defArgs(signature);
         }
         if (signature == null) throw illegalArg("Unable to find a constructor to match the given arguments.");
         ProxyFactory f = new ProxyFactory();
@@ -97,6 +93,15 @@ public class AppReflectUtil {
         } catch (Exception e) {
             throw runtime(e);
         }
+    }
+
+    private static Object[] defArgs(Class[] signature) {
+        Object[] args = new Object[signature.length];
+        for (int i = 0; i < signature.length; i++) {
+            Class type = signature[i];
+            args[i] = defVal(type);
+        }
+        return args;
     }
 
     private static class Adapter implements MethodHandler, InvocationHandler {
