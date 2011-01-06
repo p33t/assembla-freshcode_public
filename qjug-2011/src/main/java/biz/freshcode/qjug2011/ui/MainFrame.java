@@ -23,8 +23,9 @@ import static javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER;
 public class MainFrame extends JFrame {
     @Inject private ConfigurableApplicationContext ctx;
     @Logging private Logger log;
-    private JButton btn = new JButton("Go");
+    private JButton btnGo = new JButton("Go");
     private JTextArea area = new JTextArea(1,1);
+    private JCheckBox chkBackground = new JCheckBox("Background Task");
 
     public MainFrame() {
         setTitle("QJUG 2011 - Peter Leong");
@@ -44,7 +45,7 @@ public class MainFrame extends JFrame {
 
         FormLayout layout = new FormLayout(
                 "right:pref, 3dlu, pref, pref:grow", // cols
-                "p, 3dlu, p, 3dlu, p, fill:pref:grow, 3dlu"); // rows
+                "p, 3dlu, p, 3dlu, p, 3dlu, p, fill:pref:grow, 3dlu"); // rows
         PanelBuilder builder = new PanelBuilder(layout);
         builder.setDefaultDialogBorder();
         CellConstraints c = new CellConstraints();
@@ -53,7 +54,8 @@ public class MainFrame extends JFrame {
         int col;
         builder.addSeparator("Complicated", c.xyw(col = 1, row += 1, fullWidth - col));
         builder.addLabel("Button:", c.xy(1, row += 2));
-        builder.add(btn, c.xy(3, row));
+        builder.add(btnGo, c.xy(3, row));
+        builder.add(chkBackground, c.xy(3, row += 2));
         builder.addLabel("Output:", c.xy(1, row += 2));
         builder.add(textPane, c.xyw(col = 1, row += 1, fullWidth - col));
 
