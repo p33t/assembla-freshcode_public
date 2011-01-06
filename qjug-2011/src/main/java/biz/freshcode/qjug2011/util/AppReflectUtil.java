@@ -2,6 +2,7 @@ package biz.freshcode.qjug2011.util;
 
 import javassist.util.proxy.MethodHandler;
 import javassist.util.proxy.ProxyFactory;
+import org.springframework.util.ReflectionUtils;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationHandler;
@@ -12,9 +13,14 @@ import static biz.freshcode.qjug2011.util.AppExceptionUtil.illegalArg;
 import static biz.freshcode.qjug2011.util.AppExceptionUtil.runtime;
 import static java.lang.ClassLoader.getSystemClassLoader;
 import static java.lang.reflect.Proxy.newProxyInstance;
-import static org.springframework.util.ReflectionUtils.invokeMethod;
 
 public class AppReflectUtil {
+
+    public static Object invokeMethod(Method m, Object inst, Object... args) {
+        m.setAccessible(true);
+        return ReflectionUtils.invokeMethod(m, inst, args);
+    }
+
     public static <T> T captureInvocation(Class<T> cls, InvocationHandler handler, Object... constructorArgs) {
         Adapter a = new Adapter(handler);
         if (cls.isInterface()) return proxy(a, cls);
@@ -37,13 +43,13 @@ public class AppReflectUtil {
         return null;
     }
 
-    private static boolean matches(Constructor c, Object[] args) {
-        Class[] types = c.getParameterTypes();
+    public static boolean matches(Method m, Object[] args) {
+        Class[] types = m.getParameterTypes();
         return matches(args, types);
     }
 
-    private static boolean matches(Method m, Object[] args) {
-        Class[] types = m.getParameterTypes();
+    private static boolean matches(Constructor c, Object[] args) {
+        Class[] types = c.getParameterTypes();
         return matches(args, types);
     }
 
