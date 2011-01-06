@@ -9,4 +9,8 @@ public class AppExceptionUtil {
     public static IllegalStateException illegalState(String msg) {
         return new IllegalStateException(msg);
     }
+
+    public static IllegalArgumentException illegalArg(String msg) {
+        return new IllegalArgumentException(msg);
+    }
 }
