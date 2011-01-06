@@ -25,8 +25,15 @@ public class AppReflectUtil {
         return defVal(m.getReturnType());
     }
 
-    public static <T> T defVal(Class<T> cls) {
-        // TODO
+    public static Object defVal(Class cls) {
+        if (Boolean.TYPE.equals(cls)) return Boolean.FALSE;
+        if (Byte.TYPE.equals(cls)) return (byte) 0;
+        if (Short.TYPE.equals(cls)) return (short) 0;
+        if (Integer.TYPE.equals(cls)) return 0;
+        if (Long.TYPE.equals(cls)) return 0L;
+        if (Float.TYPE.equals(cls)) return 0f;
+        if (Double.TYPE.equals(cls)) return 0.0;
+        if (Character.TYPE.equals(cls)) return '\u0000';
         return null;
     }
 
@@ -63,7 +70,7 @@ public class AppReflectUtil {
         return loader;
     }
 
-    private static <T> T subclass(MethodHandler handler, Class<T> cls, Object... contructorArgs) {
+    private static <T> T subclass(Adapter adapter, Class<T> cls, Object... contructorArgs) {
         Object[] args = contructorArgs;
         Class[] signature = null;
         Constructor<?>[] ctors = cls.getConstructors();
@@ -71,28 +78,38 @@ public class AppReflectUtil {
             if (matches(c, args)) signature = c.getParameterTypes();
         }
         if (signature == null && ctors.length == 1 && args.length == 0) {
-            // try using nulls
+            // try using defaults
             signature = ctors[0].getParameterTypes();
             args = new Object[signature.length];
+            for (int i = 0; i < signature.length; i++) {
+                Class type = signature[i];
+                args[i] = defVal(type);
+            }
         }
         if (signature == null) throw illegalArg("Unable to find a constructor to match the given arguments.");
         ProxyFactory f = new ProxyFactory();
         f.setSuperclass(cls);
         try {
-            return cls.cast(f.create(signature, args, handler));
+            adapter.disableDivert();
+            Object sub = f.create(signature, args, adapter);
+            adapter.enableDivert();
+            return cls.cast(sub);
         } catch (Exception e) {
             throw runtime(e);
         }
     }
 
-    private static <T> T generic(Object o) {
-        //noinspection unchecked
-        return (T) o;
-    }
-
     private static class Adapter implements MethodHandler, InvocationHandler {
         private final InvocationHandler delegate;
         private boolean doDivert = true;
+
+        public void enableDivert() {
+            doDivert = true;
+        }
+
+        public void disableDivert() {
+            doDivert = false;
+        }
 
         public Adapter(InvocationHandler delegate) {
             this.delegate = delegate;
