@@ -14,6 +14,19 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
 
 public class AppReflectUtilTest {
+
+    @Test
+    public void testDefVal() {
+        assertEquals(defVal(Boolean.TYPE), Boolean.FALSE);
+        assertEquals(defVal(Byte.TYPE), (byte) 0);
+        assertEquals(defVal(Short.TYPE), (short) 0);
+        assertEquals(defVal(Integer.TYPE), 0);
+        assertEquals(defVal(Long.TYPE), 0L);
+        assertEquals(defVal(Float.TYPE), 0f);
+        assertEquals(defVal(Double.TYPE), 0.0);
+        assertEquals(defVal(Character.TYPE), '\u0000');
+    }
+
     @Test
     public void testCaptureInvocationClass() throws Exception {
         final Ref<Invocation> r = ref();
@@ -44,16 +57,33 @@ public class AppReflectUtilTest {
     }
 
     public static class MyClass {
-        // TODO: Constructor args
-        public void pop(String arg) {
+        private String arg1;
+        private int arg2;
+
+        public String getArg1() {
+            return arg1;
+        }
+
+        public int getArg2() {
+            return arg2;
+        }
+
+        // NOTE: Primitive argument
+        public MyClass(String arg1, int arg2) {
+            this.arg1 = arg1;
+            this.arg2 = arg2;
+            noise();
+        }
+
+        // NOTE: Primitive return type
+        public int pop(String arg) {
             throw illegalState("Should never reach here");
         }
 
         public void noise() {
-            // do nothing
+            // do something to prevent optimisation removal
+            arg1 += arg2;
         }
-
-        // TODO: Primitive return type
     }
 
     private static class RefInvocationHandler implements InvocationHandler {
