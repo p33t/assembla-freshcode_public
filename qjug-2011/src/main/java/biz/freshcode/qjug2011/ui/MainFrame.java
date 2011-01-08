@@ -18,6 +18,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Date;
 
+import static biz.freshcode.qjug2011.ui.RightClick.rightClickMenu;
 import static biz.freshcode.qjug2011.util.trigger.UseTrigger.useTrigger;
 import static java.awt.Font.MONOSPACED;
 import static javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED;
@@ -39,6 +40,12 @@ public class MainFrame extends JFrame implements InitializingBean {
         populateUi();
         useTrigger(btnGo).toCall(this).go();
         useTrigger(chkBackground).toCall(this).toggleWorker();
+        rightClickMenu(area, this).loadMenu();
+    }
+
+    JPopupMenu loadMenu() {
+        log.info("Load Menu at " + new Date());
+        return null;
     }
 
     public void launch() {
