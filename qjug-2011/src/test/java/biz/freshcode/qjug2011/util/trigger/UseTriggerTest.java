@@ -8,6 +8,7 @@ import javax.swing.*;
 import static biz.freshcode.qjug2011.util.Ref.ref;
 import static biz.freshcode.qjug2011.util.trigger.UseTrigger.useTrigger;
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 public class UseTriggerTest {
     Ref<String> actualRef = ref();
@@ -19,6 +20,11 @@ public class UseTriggerTest {
         actualRef.val = null;
         btn.doClick();
         assertEquals(actualRef.val, "bruce lee");
+    }
+
+    @Test
+    public void testVoid() {
+       assertTrue(Void.class.isAssignableFrom(Void.class));
     }
 
     void hello(String arg) {

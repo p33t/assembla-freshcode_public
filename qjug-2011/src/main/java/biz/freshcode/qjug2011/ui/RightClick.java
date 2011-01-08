@@ -1,36 +1,29 @@
 package biz.freshcode.qjug2011.ui;
 
+import biz.freshcode.qjug2011.util.Ref;
 import biz.freshcode.qjug2011.util.trigger.MethodTrigger;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
-import static biz.freshcode.qjug2011.util.AppExceptionUtil.illegalArg;
-import static biz.freshcode.qjug2011.util.AppObjectUtils.classOf;
-import static biz.freshcode.qjug2011.util.AppReflectUtil.captureInvocation;
+import static biz.freshcode.qjug2011.util.Ref.ref;
+import static biz.freshcode.qjug2011.util.trigger.UseTrigger.restrictedCapture;
 
+@org.springframework.stereotype.Component
 public class RightClick {
-    public static <T> T rightClickMenu(final Component c, final T inst, Object... constructorArgs) {
-        InvocationHandler ih = new InvocationHandler() {
-            public Object invoke(Object o, Method method, Object[] objects) throws Throwable {
-                checkReturnType(method, JPopupMenu.class);
-                MethodTrigger t = new MethodTrigger();
-                t.init(inst, method, objects);
-                c.addMouseListener(new Adapter(c, t));
-                return null;
-            }
-        };
-        Class<T> cls = classOf(inst);
-        return captureInvocation(cls, ih, constructorArgs);
+    public <T> T menu(final Component c, final T inst, Object... constructorArgs) {
+        Ref<T> r = ref();
+        restrictedCapture(inst, r, JPopupMenu.class).toCall(this).setupRightClick(c, inst, null, null);
+        return r.val;
     }
 
-    private static void checkReturnType(Method method, Class cls) {
-        boolean isCompatible = cls.isAssignableFrom(method.getReturnType());
-        if (!isCompatible) throw illegalArg("The specified method " + method + " does not return a " + cls.getSimpleName());
+    void setupRightClick(Component c, Object inst, Method method, Object[] suppliedArgs) {
+        MethodTrigger t = new MethodTrigger();
+        t.init(inst, method, suppliedArgs);
+        c.addMouseListener(new Adapter(c, t));
     }
 
     private static class Adapter extends MouseAdapter {
