@@ -6,7 +6,6 @@ import java.lang.reflect.Method;
 
 import static biz.freshcode.qjug2011.util.AppReflectUtil.*;
 
-// TODO: Need test.
 public class MethodTrigger implements InvocationHandler {
     private WeakReference<Object> targetRef;
     private Method method;
@@ -21,7 +20,7 @@ public class MethodTrigger implements InvocationHandler {
         setTarget(inst);
         InvocationHandler ih = new InvocationHandler() {
             @Override
-            public Object invoke(Object o, Method method, Object[] objects) throws Throwable {
+            public Object invoke(Object o, Method method, Object[] objects) {
                 MethodTrigger.this.method = method;
                 args = objects;
                 return defVal(method);
