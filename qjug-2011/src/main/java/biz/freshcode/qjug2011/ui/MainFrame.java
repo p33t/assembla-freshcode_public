@@ -5,7 +5,9 @@ import com.jgoodies.forms.builder.PanelBuilder;
 import com.jgoodies.forms.layout.CellConstraints;
 import com.jgoodies.forms.layout.FormLayout;
 import org.slf4j.Logger;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import javax.inject.Inject;
@@ -14,23 +16,29 @@ import javax.swing.text.DefaultCaret;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.Date;
 
+import static biz.freshcode.qjug2011.util.trigger.UseTrigger.useTrigger;
 import static java.awt.Font.MONOSPACED;
 import static javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED;
 import static javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER;
 
 @Component
-public class MainFrame extends JFrame {
+@Lazy(true) // prevents errors on a headless CI box.
+public class MainFrame extends JFrame implements InitializingBean {
     @Inject private ConfigurableApplicationContext ctx;
     @Logging private Logger log;
     private JButton btnGo = new JButton("Go");
     private JTextArea area = new JTextArea(1,1);
     private JCheckBox chkBackground = new JCheckBox("Background Task");
 
-    public MainFrame() {
+    @Override
+    public void afterPropertiesSet() throws Exception {
         setTitle("QJUG 2011 - Peter Leong");
         setupClose();
         populateUi();
+        useTrigger(btnGo).toCall(this).go();
+        useTrigger(chkBackground).toCall(this).toggleWorker();
     }
 
     public void launch() {
@@ -38,6 +46,10 @@ public class MainFrame extends JFrame {
         pack();
         setSize(800, 600);
         setVisible(true);
+    }
+
+    void go() {
+        log.info("Go pressed at " + new Date());
     }
 
     private void populateUi() {
@@ -81,5 +93,9 @@ public class MainFrame extends JFrame {
         DefaultCaret c = (DefaultCaret) area.getCaret();
         c.setUpdatePolicy(DefaultCaret.NEVER_UPDATE);
         return new JScrollPane(area, VERTICAL_SCROLLBAR_NEVER, HORIZONTAL_SCROLLBAR_AS_NEEDED);
+    }
+
+    void toggleWorker() {
+        log.info("Toggle worker at " + new Date());
     }
 }
