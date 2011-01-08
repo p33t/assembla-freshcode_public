@@ -6,7 +6,7 @@ import java.lang.reflect.Method;
 
 import static biz.freshcode.qjug2011.util.AppReflectUtil.*;
 
-public class MethodTrigger implements InvocationHandler {
+public class MethodTrigger implements InvocationHandler, Runnable {
     private WeakReference<Object> targetRef;
     private Method method;
     private Object[] args;
@@ -14,6 +14,17 @@ public class MethodTrigger implements InvocationHandler {
     @Override
     public Object invoke(Object o, Method method, Object[] objects) {
         return trigger(objects);
+    }
+
+    @Override
+    public void run() {
+        trigger();
+    }
+
+    public <T> T toCall(T inst, Object... constructorArgs) {
+        @SuppressWarnings({"unchecked"})
+        Class<T> cls = (Class<T>) inst.getClass();
+        return toCall(inst, cls, constructorArgs);
     }
 
     public <T> T toCall(Object inst, Class<T> cls, Object... constructorArgs) {
@@ -27,12 +38,6 @@ public class MethodTrigger implements InvocationHandler {
             }
         };
         return captureInvocation(cls, ih, constructorArgs);
-    }
-
-    public <T> T toCall(T inst, Object... constructorArgs) {
-        @SuppressWarnings({"unchecked"})
-        Class<T> cls = (Class<T>) inst.getClass();
-        return toCall(inst, cls, constructorArgs);
     }
     
     public <T> T trigger(Object... possibleArgs) {

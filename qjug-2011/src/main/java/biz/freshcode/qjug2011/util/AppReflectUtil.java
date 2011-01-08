@@ -64,7 +64,7 @@ public class AppReflectUtil {
         return true;
     }
 
-    private static <T> T proxy(InvocationHandler ih, Class<T> iface) {
+    public static <T> T proxy(InvocationHandler ih, Class<T> iface) {
         ClassLoader l = findLoader(ih.getClass());
         return iface.cast(newProxyInstance(l, arr(iface), ih));
     }
