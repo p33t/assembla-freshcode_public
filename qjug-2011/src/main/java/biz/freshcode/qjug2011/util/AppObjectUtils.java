@@ -7,4 +7,9 @@ public class AppObjectUtils {
         }
         return false;
     }
+
+    public static <T> Class<T> classOf(T inst) {
+        //noinspection unchecked
+        return (Class<T>) inst.getClass();
+    }
 }
