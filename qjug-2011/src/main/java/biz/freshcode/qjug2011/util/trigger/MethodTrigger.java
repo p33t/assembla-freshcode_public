@@ -12,6 +12,16 @@ public class MethodTrigger implements InvocationHandler, Runnable {
     private Method method;
     private Object[] args;
 
+    public Object[] getOriginalArgs() {
+        return args.clone();
+    }
+
+    public void init(Object inst, Method method, Object... args) {
+        setTarget(inst);
+        this.method = method;
+        this.args = args;
+    }
+    
     @Override
     public Object invoke(Object o, Method method, Object[] objects) {
         return trigger(objects);
@@ -25,12 +35,6 @@ public class MethodTrigger implements InvocationHandler, Runnable {
     public <T> T toCall(T inst, Object... constructorArgs) {
         Class<T> cls = classOf(inst);
         return toCall(inst, cls, constructorArgs);
-    }
-
-    public void init(Object inst, Method method, Object... args) {
-        setTarget(inst);
-        this.method = method;
-        this.args = args;
     }
 
     public <T> T toCall(final Object inst, Class<T> cls, Object... constructorArgs) {

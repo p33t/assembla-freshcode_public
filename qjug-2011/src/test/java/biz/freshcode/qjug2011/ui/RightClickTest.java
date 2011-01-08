@@ -7,16 +7,17 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseListener;
 
-import static biz.freshcode.qjug2011.ui.RightClick.rightClickMenu;
 import static biz.freshcode.qjug2011.util.Ref.ref;
 import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.fail;
 
 public class RightClickTest {
+    RightClick subject = new RightClick();
+
     @Test
     public void testBadMethod() {
         try {
-            rightClickMenu(new JButton(), this).badMenu();
+            subject.menu(new JButton(), this).badMenu();
             fail("Did not check method return type.");
         } catch (IllegalArgumentException e) {
             //expected
@@ -33,7 +34,7 @@ public class RightClickTest {
                 super.addMouseListener(listener);
             }
         };
-        rightClickMenu(c, this).loadMenu();
+        subject.menu(c, this).loadMenu();
         // Hmm... don't know how to test this.
         assertNotNull(r.val);
     }

@@ -110,6 +110,11 @@ public class AppReflectUtil {
         return args;
     }
 
+    public static void checkReturnType(Method method, Class cls) {
+        boolean isCompatible = cls.isAssignableFrom(method.getReturnType());
+        if (!isCompatible) throw illegalArg("The specified method " + method + " does not return a " + cls.getSimpleName());
+    }
+
     private static class Adapter implements MethodHandler, InvocationHandler {
         private final InvocationHandler delegate;
         private boolean doDivert = true;
