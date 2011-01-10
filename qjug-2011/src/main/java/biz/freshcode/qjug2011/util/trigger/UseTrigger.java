@@ -1,18 +1,18 @@
 package biz.freshcode.qjug2011.util.trigger;
 
 import biz.freshcode.qjug2011.util.Ref;
+import org.springframework.util.ReflectionUtils;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
-import static biz.freshcode.qjug2011.util.AppExceptionUtil.runtime;
 import static biz.freshcode.qjug2011.util.AppObjectUtils.classOf;
 import static biz.freshcode.qjug2011.util.AppReflectUtil.*;
 
 public class UseTrigger {
-    public static final Method SUPPLIED_METHOD = getSuppliedMethod();
+    public static final Method SUPPLIED_METHOD = ReflectionUtils.findMethod(Some.class, "method");
     public static final Object[] SUPPLIED_ARGS = new Object[]{new Object()};
 
     public static MethodTrigger useTrigger(AbstractButton btn) {
@@ -35,14 +35,6 @@ public class UseTrigger {
         Class<T> cls = classOf(inst);
         capturer.val = captureInvocation(cls, ih, constructorArgs);
         return t;
-    }
-
-    private static Method getSuppliedMethod() {
-        try {
-            return Some.class.getMethod("method");
-        } catch (NoSuchMethodException e) {
-            throw runtime(e);
-        }
     }
 
     private static void graphtArgs(Object[] args, Method suppliedMethod, Object[] suppliedArgs) {
