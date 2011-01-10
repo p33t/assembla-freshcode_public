@@ -7,10 +7,14 @@ import java.awt.event.ActionListener;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
+import static biz.freshcode.qjug2011.util.AppExceptionUtil.runtime;
 import static biz.freshcode.qjug2011.util.AppObjectUtils.classOf;
 import static biz.freshcode.qjug2011.util.AppReflectUtil.*;
 
 public class UseTrigger {
+    public static final Method SUPPLIED_METHOD = getSuppliedMethod();
+    public static final Object[] SUPPLIED_ARGS = new Object[]{new Object()};
+
     public static MethodTrigger useTrigger(AbstractButton btn) {
         MethodTrigger t = new MethodTrigger();
         btn.addActionListener(proxy(t, ActionListener.class));
@@ -33,9 +37,19 @@ public class UseTrigger {
         return t;
     }
 
-    private static void graphtArgs(Object[] args, Method method, Object[] objects) {
-        int len = args.length;
-        args[len - 2] = method;
-        args[len - 1] = objects;
+    private static Method getSuppliedMethod() {
+        try {
+            return Some.class.getMethod("method");
+        } catch (NoSuchMethodException e) {
+            throw runtime(e);
+        }
+    }
+
+    private static void graphtArgs(Object[] args, Method suppliedMethod, Object[] suppliedArgs) {
+        for (int i = 0; i < args.length; i++) {
+            Object arg = args[i];
+            if (arg == SUPPLIED_ARGS) args[i] = suppliedArgs;
+            else if (arg == SUPPLIED_METHOD) args[i] = suppliedMethod;
+        }
     }
 }
