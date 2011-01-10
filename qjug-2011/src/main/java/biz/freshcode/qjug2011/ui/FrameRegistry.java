@@ -4,6 +4,7 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.stereotype.Component;
 
+import javax.swing.*;
 import java.awt.*;
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
@@ -13,8 +14,8 @@ import static biz.freshcode.qjug2011.util.AppCollectionUtils.newList;
 
 // TODO: Use or lose.
 @Component
-public class WindowRegistry implements BeanPostProcessor {
-    private List<WeakReference<Window>> refs = newList();
+public class FrameRegistry implements BeanPostProcessor {
+    private List<WeakReference<JFrame>> refs = newList();
 
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
@@ -27,11 +28,11 @@ public class WindowRegistry implements BeanPostProcessor {
         return bean;
     }
 
-    public List<Window> listWindows() {
-        List<Window>  l = newList();
-        for (Iterator<WeakReference<Window>> it = refs.iterator(); it.hasNext();) {
-            WeakReference<Window> next = it.next();
-            Window window = next.get();
+    public List<JFrame> listFrames() {
+        List<JFrame>  l = newList();
+        for (Iterator<WeakReference<JFrame>> it = refs.iterator(); it.hasNext();) {
+            WeakReference<JFrame> next = it.next();
+            JFrame window = next.get();
             if (window == null) it.remove();
             else l.add(window);
         }
@@ -39,6 +40,6 @@ public class WindowRegistry implements BeanPostProcessor {
     }
 
     private void add(Object bean) {
-        refs.add(new WeakReference<Window>((Window) bean));
+        refs.add(new WeakReference<JFrame>((JFrame) bean));
     }
 }
