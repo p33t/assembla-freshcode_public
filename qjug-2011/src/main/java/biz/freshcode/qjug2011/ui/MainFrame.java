@@ -18,6 +18,8 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Date;
 
+import static biz.freshcode.qjug2011.util.AppStringUtil.repeat;
+import static biz.freshcode.qjug2011.util.AppThreadUtil.sleep;
 import static biz.freshcode.qjug2011.util.trigger.UseTrigger.useTrigger;
 import static java.awt.Font.MONOSPACED;
 import static javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED;
@@ -28,6 +30,7 @@ import static javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER;
 public class MainFrame extends JFrame implements InitializingBean {
     @Inject private ConfigurableApplicationContext ctx;
     @Inject private RightClick rightClick;
+    @Inject private Hourglass hourglass;
     @Logging private Logger log;
     private JButton btnGo = new JButton("Go");
     private JTextArea area = new JTextArea(1,1);
@@ -56,7 +59,16 @@ public class MainFrame extends JFrame implements InitializingBean {
     }
 
     void go() {
-        log.info("Go pressed at " + new Date());
+        // NOTE: Not working yet until swing worker done.
+        hourglass.surround(this).goAlt();
+    }
+
+    // TODO: Need proxying to prevent need to two methods.
+    void goAlt() {
+        for (int i = 0; i < 10; i++) {
+            sleep(500);
+            log.info(repeat("zz", i));
+        }
     }
 
     private void populateUi() {
