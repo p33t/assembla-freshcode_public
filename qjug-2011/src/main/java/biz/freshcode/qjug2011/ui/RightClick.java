@@ -10,13 +10,13 @@ import java.awt.event.MouseEvent;
 import java.lang.reflect.Method;
 
 import static biz.freshcode.qjug2011.util.Ref.ref;
-import static biz.freshcode.qjug2011.util.trigger.UseTrigger.restrictedCapture;
+import static biz.freshcode.qjug2011.util.trigger.UseTrigger.*;
 
 @org.springframework.stereotype.Component
 public class RightClick {
     public <T> T menu(final Component c, final T inst, Object... constructorArgs) {
         Ref<T> r = ref();
-        restrictedCapture(inst, r, JPopupMenu.class).toCall(this).setupRightClick(c, inst, null, null);
+        restrictedCapture(inst, r, JPopupMenu.class).toCall(this).setupRightClick(c, inst, SUPPLIED_METHOD, SUPPLIED_ARGS);
         return r.val;
     }
 

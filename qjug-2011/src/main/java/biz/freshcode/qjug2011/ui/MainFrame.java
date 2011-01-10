@@ -40,11 +40,11 @@ public class MainFrame extends JFrame implements InitializingBean {
         populateUi();
         useTrigger(btnGo).toCall(this).go();
         useTrigger(chkBackground).toCall(this).toggleWorker();
-        rightClick.menu(area, this).loadMenu();
+        rightClick.menu(area, this).loadMenu(null);
     }
 
-    JPopupMenu loadMenu() {
-        log.info("Load Menu at " + new Date());
+    JPopupMenu loadMenu(Point p) {
+        log.info("Load Menu at point " + p);
         return null;
     }
 
