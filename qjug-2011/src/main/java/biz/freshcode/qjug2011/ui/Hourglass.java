@@ -1,22 +1,42 @@
 package biz.freshcode.qjug2011.ui;
 
+import biz.freshcode.qjug2011.util.AppReflectUtil;
 import biz.freshcode.qjug2011.util.Ref;
 import biz.freshcode.qjug2011.util.trigger.MethodTrigger;
+import biz.freshcode.qjug2011.util.trigger.ProxyProvider;
 import org.springframework.stereotype.Component;
 
 import javax.inject.Inject;
 import javax.swing.*;
+import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.util.List;
 
 import static biz.freshcode.qjug2011.ui.Blocker.blockerFor;
+import static biz.freshcode.qjug2011.util.AppExceptionUtil.illegalArg;
 import static biz.freshcode.qjug2011.util.AppReflectUtil.invokeMethod;
 import static biz.freshcode.qjug2011.util.Ref.ref;
 import static biz.freshcode.qjug2011.util.trigger.UseTrigger.*;
 
 @Component
-public class Hourglass {
+public class Hourglass implements ProxyProvider {
     @Inject private FrameRegistry frameReg;
+
+    @Override
+    public <T> T proxy(final Object obj, final Class<T> iface) {
+        InvocationHandler ih = new InvocationHandler() {
+            @Override
+            public Object invoke(Object o, Method method, Object[] objects) throws Throwable {
+                if (!iface.equals(method.getDeclaringClass())) return method.invoke(obj, objects);
+                if (!Void.TYPE.equals(method.getReturnType())) throw illegalArg("Can only put hourglass around void return types.");
+                MethodTrigger t = new MethodTrigger();
+                t.init(obj, method, objects);
+                surround(t).run();
+                return null;
+            }
+        };
+        return AppReflectUtil.proxy(ih, iface);
+    }
 
     public <T> T surround(T inst, Object... constructorArgs) {
         // TODO: Thread and serial access checks.
