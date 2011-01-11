@@ -16,8 +16,14 @@ public class UseTrigger {
     public static final Object[] SUPPLIED_ARGS = new Object[]{new Object()};
 
     public static MethodTrigger useTrigger(AbstractButton btn) {
+        return useTrigger(btn, null);
+    }
+
+    public static MethodTrigger useTrigger(AbstractButton btn, ProxyProvider ppOrNull) {
         MethodTrigger t = new MethodTrigger();
-        btn.addActionListener(proxy(t, ActionListener.class));
+        ActionListener listener = proxy(t, ActionListener.class);
+        if (ppOrNull != null) listener = ppOrNull.proxy(listener, ActionListener.class);
+        btn.addActionListener(listener);
         return t;
     }
 

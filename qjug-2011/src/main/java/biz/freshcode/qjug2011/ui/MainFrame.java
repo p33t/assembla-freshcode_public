@@ -41,8 +41,8 @@ public class MainFrame extends JFrame implements InitializingBean {
         setTitle("QJUG 2011 - Peter Leong");
         setupClose();
         populateUi();
-        useTrigger(btnGo).toCall(this).go();
-        useTrigger(chkBackground).toCall(this).toggleWorker();
+        useTrigger(btnGo, hourglass).toCall(this).go();
+        useTrigger(chkBackground, hourglass).toCall(this).toggleWorker();
         rightClick.menu(area, this).loadMenu(null);
     }
 
@@ -59,12 +59,6 @@ public class MainFrame extends JFrame implements InitializingBean {
     }
 
     void go() {
-        // NOTE: Not working yet until swing worker done.
-        hourglass.surround(this).goAlt();
-    }
-
-    // TODO: Need proxying to prevent need to two methods.
-    void goAlt() {
         for (int i = 0; i < 10; i++) {
             sleep(500);
             log.info(repeat("zz", i));
