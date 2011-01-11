@@ -26,11 +26,11 @@ public class Hourglass implements ProxyProvider {
     public <T> T proxy(final Object obj, final Class<T> iface) {
         InvocationHandler ih = new InvocationHandler() {
             @Override
-            public Object invoke(Object o, Method method, Object[] objects) throws Throwable {
-                if (!iface.equals(method.getDeclaringClass())) return method.invoke(obj, objects);
-                if (!Void.TYPE.equals(method.getReturnType())) throw illegalArg("Can only put hourglass around void return types.");
+            public Object invoke(Object o, Method m, Object[] objects) throws Throwable {
+                if (!declaredOn(m, iface)) return m.invoke(obj, objects);
+                if (!voidReturn(m)) throw illegalArg("Can only put hourglass around void return types.");
                 MethodTrigger t = new MethodTrigger();
-                t.init(obj, method, objects);
+                t.init(obj, m, objects);
                 surround(t).run();
                 return null;
             }
@@ -46,6 +46,10 @@ public class Hourglass implements ProxyProvider {
         return r.val;
     }
 
+    private boolean declaredOn(Method m, Class iface) {
+        return iface.equals(m.getDeclaringClass());
+    }
+
     // TODO: Use swing workers.
     <T> void surround(T inst, Method m, Object[] args) {
         List<JFrame> frames = frameReg.listFrames();
@@ -59,5 +63,9 @@ public class Hourglass implements ProxyProvider {
                 blockerFor(frame).unblock();
             }
         }
+    }
+
+    private boolean voidReturn(Method method) {
+        return Void.TYPE.equals(method.getReturnType());
     }
 }
