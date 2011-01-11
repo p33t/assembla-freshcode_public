@@ -20,6 +20,7 @@ public class Blocker extends JPanel {
 
     public Blocker(JFrame f) {
         owner = f;
+        f.setGlassPane(this);
         setOpaque(false);
         setCursor(Cursor.getPredefinedCursor(WAIT_CURSOR));
         addMouseListener(new MouseAdapter() {
