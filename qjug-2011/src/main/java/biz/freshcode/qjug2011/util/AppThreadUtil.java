@@ -8,4 +8,10 @@ public class AppThreadUtil {
             e.printStackTrace();
         }
     }
+
+    public static Thread daemon(Runnable r) {
+        Thread t = new Thread(r);
+        t.setDaemon(true);
+        return t;
+    }
 }

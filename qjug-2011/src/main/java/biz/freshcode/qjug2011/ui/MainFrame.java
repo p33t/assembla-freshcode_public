@@ -15,7 +15,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.Date;
 
 import static biz.freshcode.qjug2011.util.AppStringUtil.repeat;
 import static biz.freshcode.qjug2011.util.AppThreadUtil.sleep;
@@ -27,6 +26,7 @@ public class MainFrame extends JFrame implements InitializingBean {
     @Inject private ConfigurableApplicationContext ctx;
     @Inject private Hourglass hourglass;
     @Inject private TailingPane tailer;
+    @Inject private BackgroundWorker worker;
     @Logging private Logger log;
     private JButton btnGo = new JButton("Go");
     private JCheckBox chkBackground = new JCheckBox("Background Task");
@@ -87,6 +87,7 @@ public class MainFrame extends JFrame implements InitializingBean {
     }
 
     void toggleWorker() {
-        tailer.append("Toggle worker at " + new Date());
+        if (chkBackground.isSelected()) worker.activate();
+        else worker.deactivate();
     }
 }
