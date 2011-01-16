@@ -48,4 +48,11 @@ public class TailingPane extends JScrollPane implements InitializingBean{
         DefaultCaret c = (DefaultCaret) area.getCaret();
         c.setUpdatePolicy(DefaultCaret.NEVER_UPDATE);
     }
+
+    public void append(String msg) {
+        area.append(msg);
+        area.append("\n");
+        int len = area.getText().length();
+        area.setCaretPosition(len - 2);
+    }
 }
