@@ -50,7 +50,7 @@ public class MainFrame extends JFrame implements InitializingBean {
     void go() {
         for (int i = 0; i < 10; i++) {
             sleep(500);
-            log.info(repeat("zz", i));
+            tailer.append(repeat("z", i + 1));
         }
     }
 
@@ -87,6 +87,6 @@ public class MainFrame extends JFrame implements InitializingBean {
     }
 
     void toggleWorker() {
-        log.info("Toggle worker at " + new Date());
+        tailer.append("Toggle worker at " + new Date());
     }
 }
