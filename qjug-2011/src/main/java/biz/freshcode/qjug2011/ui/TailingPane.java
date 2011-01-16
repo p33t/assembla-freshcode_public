@@ -3,7 +3,7 @@ package biz.freshcode.qjug2011.ui;
 import biz.freshcode.qjug2011.logging.Logging;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.InitializingBean;
-import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import javax.inject.Inject;
@@ -14,7 +14,8 @@ import java.awt.*;
 import static java.awt.Font.MONOSPACED;
 
 @Component
-@Scope("prototype")
+//@Scope("prototype")
+@Lazy(true)
 public class TailingPane extends JScrollPane implements InitializingBean{
     @Inject private RightClick rightClick;
     @Logging private Logger log;
