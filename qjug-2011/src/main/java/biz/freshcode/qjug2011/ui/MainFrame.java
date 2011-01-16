@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 
 import javax.inject.Inject;
 import javax.swing.*;
-import javax.swing.text.DefaultCaret;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -21,19 +20,15 @@ import java.util.Date;
 import static biz.freshcode.qjug2011.util.AppStringUtil.repeat;
 import static biz.freshcode.qjug2011.util.AppThreadUtil.sleep;
 import static biz.freshcode.qjug2011.util.trigger.UseTrigger.useTrigger;
-import static java.awt.Font.MONOSPACED;
-import static javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED;
-import static javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER;
 
 @Component
 @Lazy(true) // prevents errors on a headless CI box.
 public class MainFrame extends JFrame implements InitializingBean {
     @Inject private ConfigurableApplicationContext ctx;
-    @Inject private RightClick rightClick;
     @Inject private Hourglass hourglass;
+    @Inject private TailingPane tailer;
     @Logging private Logger log;
     private JButton btnGo = new JButton("Go");
-    private JTextArea area = new JTextArea(1,1);
     private JCheckBox chkBackground = new JCheckBox("Background Task");
 
     @Override
@@ -43,12 +38,6 @@ public class MainFrame extends JFrame implements InitializingBean {
         populateUi();
         useTrigger(btnGo, hourglass).toCall(this).go();
         useTrigger(chkBackground, hourglass).toCall(this).toggleWorker();
-        rightClick.menu(area, this).loadMenu(null);
-    }
-
-    JPopupMenu loadMenu(Point p) {
-        log.info("Load Menu at point " + p);
-        return null;
     }
 
     public void launch() {
@@ -66,8 +55,6 @@ public class MainFrame extends JFrame implements InitializingBean {
     }
 
     private void populateUi() {
-        JScrollPane textPane = setupTextArea();
-
         FormLayout layout = new FormLayout(
                 "right:pref, 3dlu, pref, pref:grow", // cols
                 "p, 3dlu, p, 3dlu, p, 3dlu, p, fill:pref:grow, 3dlu"); // rows
@@ -82,7 +69,7 @@ public class MainFrame extends JFrame implements InitializingBean {
         builder.add(btnGo, c.xy(3, row));
         builder.add(chkBackground, c.xy(3, row += 2));
         builder.addLabel("Output:", c.xy(1, row += 2));
-        builder.add(textPane, c.xyw(col = 1, row += 1, fullWidth - col));
+        builder.add(tailer, c.xyw(col = 1, row += 1, fullWidth - col));
 
         Container cp = getContentPane();
         cp.setLayout(new BorderLayout());
@@ -97,15 +84,6 @@ public class MainFrame extends JFrame implements InitializingBean {
                 ctx.close();
             }
         });
-    }
-
-    private JScrollPane setupTextArea() {
-        area.setEditable(false);
-        Font f = Font.decode(MONOSPACED);
-        area.setFont(f);
-        DefaultCaret c = (DefaultCaret) area.getCaret();
-        c.setUpdatePolicy(DefaultCaret.NEVER_UPDATE);
-        return new JScrollPane(area, VERTICAL_SCROLLBAR_NEVER, HORIZONTAL_SCROLLBAR_AS_NEEDED);
     }
 
     void toggleWorker() {
