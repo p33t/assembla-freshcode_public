@@ -11,6 +11,7 @@ import javax.swing.*;
 import javax.swing.text.DefaultCaret;
 import java.awt.*;
 
+import static biz.freshcode.qjug2011.util.trigger.UseTrigger.useTrigger;
 import static java.awt.Font.MONOSPACED;
 
 @Component
@@ -37,9 +38,27 @@ public class TailingPane extends JScrollPane implements InitializingBean{
         rightClick.menu(area, this).loadMenu(null);
     }
 
+    public void append(String msg) {
+        area.append(msg);
+        area.append("\n");
+        int len = area.getText().length();
+        area.setCaretPosition(len - 2);
+    }
+
+    void clear() {
+        area.setText("");
+    }
+
     JPopupMenu loadMenu(Point p) {
-        log.info("Right click at " + p);
-        return null;
+        JPopupMenu m = new JPopupMenu();
+        if (isEmpty()) return m;
+        JMenuItem item = m.add("Clear");
+        useTrigger(item).toCall(this).clear();
+        return m;
+    }
+
+    private boolean isEmpty() {
+        return area.getText().isEmpty();
     }
 
     private void setupTextArea() {
@@ -48,12 +67,5 @@ public class TailingPane extends JScrollPane implements InitializingBean{
         area.setFont(f);
         DefaultCaret c = (DefaultCaret) area.getCaret();
         c.setUpdatePolicy(DefaultCaret.NEVER_UPDATE);
-    }
-
-    public void append(String msg) {
-        area.append(msg);
-        area.append("\n");
-        int len = area.getText().length();
-        area.setCaretPosition(len - 2);
     }
 }
