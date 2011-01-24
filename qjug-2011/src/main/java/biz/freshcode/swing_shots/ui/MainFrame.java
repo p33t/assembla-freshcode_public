@@ -33,7 +33,7 @@ public class MainFrame extends JFrame implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        setTitle("QJUG 2011 - Peter Leong");
+        setTitle("Swing Shots - Peter Leong");
         setupClose();
         populateUi();
         useTrigger(btnGo, hourglass).toCall(this).go();
