@@ -1,6 +1,5 @@
-package biz.freshcode.swing_shots.ui;
+package biz.freshcode.swing_shots.ui.util;
 
-import biz.freshcode.swing_shots.ui.util.RightClick;
 import biz.freshcode.swing_shots.util.Ref;
 import org.testng.annotations.Test;
 
