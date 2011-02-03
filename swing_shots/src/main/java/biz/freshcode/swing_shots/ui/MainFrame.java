@@ -68,7 +68,7 @@ public class MainFrame extends JFrame implements InitializingBean {
         builder.addLabel("Button:", c.xy(1, row += 2));
         builder.add(btnGo, c.xy(3, row));
         builder.add(chkBackground, c.xy(3, row += 2));
-        builder.addLabel("Output:", c.xy(1, row += 2));
+        builder.addLabel("Output (right-click to clear):", c.xyw(1, row += 2, 3));
         builder.add(tailer, c.xyw(col = 1, row += 1, fullWidth - col));
 
         Container cp = getContentPane();
