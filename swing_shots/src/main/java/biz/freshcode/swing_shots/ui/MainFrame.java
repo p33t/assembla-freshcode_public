@@ -55,6 +55,11 @@ public class MainFrame extends JFrame implements InitializingBean {
         }
     }
 
+    void toggleWorker() {
+        if (chkBackground.isSelected()) worker.activate();
+        else worker.deactivate();
+    }
+
     private void populateUi() {
         FormLayout layout = new FormLayout(
                 "right:pref, 3dlu, pref, pref:grow", // cols
@@ -85,10 +90,5 @@ public class MainFrame extends JFrame implements InitializingBean {
                 ctx.close();
             }
         });
-    }
-
-    void toggleWorker() {
-        if (chkBackground.isSelected()) worker.activate();
-        else worker.deactivate();
     }
 }
