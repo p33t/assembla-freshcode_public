@@ -1,6 +1,7 @@
 package biz.freshcode.swing_shots.ui;
 
 import biz.freshcode.swing_shots.logging.Logging;
+import biz.freshcode.swing_shots.ui.util.Hourglass;
 import com.jgoodies.forms.builder.PanelBuilder;
 import com.jgoodies.forms.layout.CellConstraints;
 import com.jgoodies.forms.layout.FormLayout;

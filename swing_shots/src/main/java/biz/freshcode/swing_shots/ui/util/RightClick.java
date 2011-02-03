@@ -1,4 +1,4 @@
-package biz.freshcode.swing_shots.ui;
+package biz.freshcode.swing_shots.ui.util;
 
 import biz.freshcode.swing_shots.util.Ref;
 import biz.freshcode.swing_shots.util.trigger.MethodTrigger;

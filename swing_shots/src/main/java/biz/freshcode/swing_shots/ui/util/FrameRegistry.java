@@ -1,4 +1,4 @@
-package biz.freshcode.swing_shots.ui;
+package biz.freshcode.swing_shots.ui.util;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
@@ -12,7 +12,6 @@ import java.util.List;
 
 import static biz.freshcode.swing_shots.util.AppCollectionUtils.newList;
 
-// TODO: Use or lose.
 @Component
 public class FrameRegistry implements BeanPostProcessor {
     private List<WeakReference<JFrame>> refs = newList();

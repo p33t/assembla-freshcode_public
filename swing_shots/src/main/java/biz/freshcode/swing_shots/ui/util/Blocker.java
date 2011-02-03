@@ -1,4 +1,4 @@
-package biz.freshcode.swing_shots.ui;
+package biz.freshcode.swing_shots.ui.util;
 
 import javax.swing.*;
 import java.awt.*;
