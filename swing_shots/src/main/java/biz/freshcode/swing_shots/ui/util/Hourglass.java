@@ -1,4 +1,4 @@
-package biz.freshcode.swing_shots.ui;
+package biz.freshcode.swing_shots.ui.util;
 
 import biz.freshcode.swing_shots.util.AppReflectUtil;
 import biz.freshcode.swing_shots.util.Ref;
@@ -12,7 +12,7 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.util.List;
 
-import static biz.freshcode.swing_shots.ui.Blocker.blockerFor;
+import static biz.freshcode.swing_shots.ui.util.Blocker.blockerFor;
 import static biz.freshcode.swing_shots.util.AppExceptionUtil.illegalArg;
 import static biz.freshcode.swing_shots.util.AppReflectUtil.invokeMethod;
 import static biz.freshcode.swing_shots.util.Ref.ref;

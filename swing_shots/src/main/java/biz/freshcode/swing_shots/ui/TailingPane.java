@@ -1,6 +1,7 @@
 package biz.freshcode.swing_shots.ui;
 
 import biz.freshcode.swing_shots.logging.Logging;
+import biz.freshcode.swing_shots.ui.util.RightClick;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.annotation.Lazy;
