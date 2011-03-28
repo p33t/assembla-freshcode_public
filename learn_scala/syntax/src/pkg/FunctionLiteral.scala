@@ -9,6 +9,7 @@ object FunctionLiteral {
 
     targetTyping
     placeHolderSyntax
+    partialApplication
   }
 
   private def targetTyping: Unit = {
@@ -28,5 +29,15 @@ object FunctionLiteral {
     // can apply to multiple args but each can only be used once and types are probably needed
     intx3ToInt = _ + _ + _
     println(intx3ToInt(2, 7, 9))
+  }
+
+  private def partialApplication: Unit = {
+    def myFunct(i: Int): String = {
+      "A nested function " + i
+    }
+    println(myFunct(10))
+    // need the place holder to convert a function into a function value, which can then be passed around
+    val myFunctionValue = myFunct _
+    myFunctionValue(20)
   }
 }
