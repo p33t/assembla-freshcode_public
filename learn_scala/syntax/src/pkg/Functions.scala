@@ -10,7 +10,7 @@ object Functions {
     targetedTypingOfFunctionLiteral
   }
 
-  private def targetedTypingOfFunctionLiteral: Unit = {
+  private def targetTypingOfFunctionLiteral: Unit = {
     var intToString: Int => String = null
     // type of args is inferred and no need for redundant parens
     intToString = x => "Minimal Syntax " + x
