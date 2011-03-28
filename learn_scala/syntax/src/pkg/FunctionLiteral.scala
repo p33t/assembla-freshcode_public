@@ -39,5 +39,17 @@ object FunctionLiteral {
     // need the place holder to convert a function into a function value, which can then be passed around
     val myFunctionValue = myFunct _
     myFunctionValue(20)
+
+    def intIntToString(i: Int, j: Int): String = {
+      "Sum of " + i + " and " + j + " is " + (i + j)
+    }
+    println(intIntToString(2, 2))
+
+    // only need 1 place holder (with no parens) to signify entire arg list
+    val argListed = intIntToString _
+    
+    // is this that fabled currying?
+    val partial = argListed((_:Int), 1)
+    println(partial(9))
   }
 }
