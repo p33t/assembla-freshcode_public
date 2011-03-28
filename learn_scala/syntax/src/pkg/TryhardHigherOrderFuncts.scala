@@ -1,6 +1,6 @@
 package pkg
 
-object Closures {
+object TryhardHigherOrderFuncts {
   def noArgsToUnit() = println("noArgsToUnit called")
   def noArgsToString() = {"noArgsToString called"}
   def intToString(i: Int) = {"intToString called with arg:" + i}
