@@ -14,6 +14,7 @@ object Implicits {
     printString(10)
 
     // Will not apply two implicits at a time
+    printString(boolToInt(true))
     // Doesn't work...printString(true)
 
     // can grapht a method onto a different receiver
