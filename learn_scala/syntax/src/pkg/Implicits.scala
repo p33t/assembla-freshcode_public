@@ -4,6 +4,7 @@ package pkg
 object Implicits {
   private implicit def intToString(i: Int) = "" + i
   private implicit def boolToInt(b: Boolean) = if (b) 1 else 0
+  private implicit def makeLessBoring(b: Boring) = new LessBoring()
 
 
   def main(args: Array[String]) {
@@ -14,7 +15,21 @@ object Implicits {
 
     // Will not apply two implicits at a time
     // Doesn't work...printString(true)
+
+    // can grapht a method onto a different receiver
+    val lb = new LessBoring()
+    lb.veryUniqueName()
+    val b = new Boring()
+    b.veryUniqueName()
   }
 
   def printString(s: String) = println(s)
+}
+
+class Boring
+
+class LessBoring {
+  def veryUniqueName() {
+    println("veryUniqueName called")
+  }
 }
