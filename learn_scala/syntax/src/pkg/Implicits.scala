@@ -22,6 +22,11 @@ object Implicits {
     lb.veryUniqueName()
     val b = new Boring()
     b.veryUniqueName()
+
+    // the -> map building syntax is not actually syntax
+    // its a method on an implicit that takes any type
+    val t = 3 -> "three"
+    println(t)
   }
 
   def printString(s: String) = println(s)
