@@ -1,5 +1,7 @@
 package pkg
 
+import java.awt.Dimension
+
 
 object Implicits {
   private implicit def intToString(i: Int) = "" + i
@@ -13,6 +15,35 @@ object Implicits {
     receiverConversion
     pseudoSyntax
     implicitArgList
+    viewBounds
+  }
+
+  def viewBounds {
+    // view bounds ('can treat as a') differ from upper bounds ('is a')
+    class Shape {
+      def getLocation: Dimension = null
+    }
+    class Square(side: Int) extends Shape {
+      def getSide = side
+    }
+    class Rect(length: Int, width: Int) extends Shape {
+      def getLength = length
+      def getWidth = width
+    }
+
+    def draw[A <: Shape](s: A) {
+      println("Drew a " + s + " at " + s.getLocation)
+    }
+
+    implicit def squareToRect(s: Square): Rect = new Rect(s.getSide, s.getSide)
+    def calcArea[A <% Rect](r: A) { // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< EG
+      println("Area is " + r.getLength + " x " + r.getWidth)
+    }
+
+    draw(new Shape())
+    draw(new Square(3))
+    calcArea(new Rect(3, 4))
+    calcArea(new Square(4))
   }
 
   def receiverConversion: Unit = {
