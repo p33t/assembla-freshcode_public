@@ -21,23 +21,17 @@ object Implicits {
   def viewBounds {
     // view bounds ('can treat as a') differ from upper bounds ('is a')
     class Shape {
-      def getLocation: Dimension = null
+      val location: Dimension = null
     }
-    class Square(side: Int) extends Shape {
-      def getSide = side
-    }
-    class Rect(length: Int, width: Int) extends Shape {
-      def getLength = length
-      def getWidth = width
-    }
-
+    class Square(val side: Int) extends Shape
+    class Rect(val length: Int, val width: Int) extends Shape
     def draw[A <: Shape](s: A) {
-      println("Drew a " + s + " at " + s.getLocation)
+      println("Drew a " + s + " at " + s.location)
     }
 
-    implicit def squareToRect(s: Square): Rect = new Rect(s.getSide, s.getSide)
+    implicit def squareToRect(s: Square): Rect = new Rect(s.side, s.side)
     def calcArea[A <% Rect](r: A) { // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< EG
-      println("Area is " + r.getLength + " x " + r.getWidth)
+      println("Area is " + r.length + " x " + r.width)
     }
 
     draw(new Shape())
@@ -86,16 +80,12 @@ object Implicits {
           else maxRest
       }
     // define the implicit transformer method
-    implicit val myOrderer: Unordered => Int = un => un.getSortVal
+    implicit val myOrderer: Unordered => Int = un => un.sortVal
     val max = myMax(List(new Unordered(3), new Unordered(2), new Unordered(5)))
-    println("Should be 5... " + max.getSortVal)
+    println("Should be 5... " + max.sortVal)
   }
 
-  class Unordered(sortVal: Int) {
-    // TODO not sure why this is necessary
-    def getSortVal = sortVal
-  }
-
+  class Unordered(val sortVal: Int)
   def printString(s: String) = println(s)
 }
 
