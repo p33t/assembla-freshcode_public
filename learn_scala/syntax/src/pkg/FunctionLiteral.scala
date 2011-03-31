@@ -1,5 +1,7 @@
 package pkg
 
+import util.Random
+
 
 object FunctionLiteral {
   def main(args: Array[String]) {
@@ -7,11 +9,24 @@ object FunctionLiteral {
 
     println(myFunct(22))
 
+    multiline
     targetTyping
     placeHolderSyntax
     partialApplication
     parameterLists
     parameterListsAlt
+  }
+
+  private def multiline() {
+    // Hmmm this appears to be only way to define explicit return type
+    val f:() => String = () => {
+      if (Random.nextBoolean()) "TRUE"
+      else "FALSE"
+    }
+
+    println(f())
+    println(f())
+    println(f())
   }
 
   private def targetTyping() {
