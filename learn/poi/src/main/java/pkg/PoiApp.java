@@ -49,10 +49,10 @@ public class PoiApp {
 
         out("");
         WordExtractor extractor = new WordExtractor(getStream(fileName));
-        String[] paras = extractor.getParagraphText();
+        String[] lines = extractor.getParagraphText();
 //        TODO: Make doc vs docx transparent.
         System.out.println("<" + fileName + ">.getText()...");
-        for (String line : paras) {
+        for (String line : lines) {
             out(cleanString(line));
         }
         out("---------------End of getText()");
