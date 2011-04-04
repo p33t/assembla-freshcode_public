@@ -1,5 +1,6 @@
 package pkg;
 
+import org.apache.poi.hwpf.extractor.WordExtractor;
 import org.apache.poi.poifs.filesystem.DirectoryNode;
 import org.apache.poi.poifs.filesystem.DocumentInputStream;
 import org.apache.poi.poifs.filesystem.Entry;
@@ -33,12 +34,22 @@ public class Minimal {
         out(bytes.length + " bytes allocated.");
         int readCout = doc.read(bytes);
         out("Read " + readCout + " bytes.");
+
+        WordExtractor extractor = new WordExtractor(getStream("minimal.doc"));
+        String text = extractor.getText();
+        System.out.println("getText()...");
+        out(text);
+        out("---------------End of getText()");
     }
 
     private DirectoryNode getRoot(String fileName) throws IOException {
-        InputStream inputStream = getClass().getClassLoader().getResourceAsStream(fileName);
+        InputStream inputStream = getStream(fileName);
         POIFSFileSystem fs = new POIFSFileSystem(inputStream);
         return fs.getRoot();
+    }
+
+    private InputStream getStream(String fileName) {
+        return getClass().getClassLoader().getResourceAsStream(fileName);
     }
 
     private void out(Object s) {
