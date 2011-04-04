@@ -44,17 +44,6 @@ public class PoiApp {
         return list;
     }
 
-    private String cleanString(String line) {
-        if (line == null) return "";
-        if (line.isEmpty()) return "";
-        if (line.charAt(0) == '\f') return cleanString(line.substring(1));
-        int len = line.length();
-        if (line.charAt(len - 1) == '\u0007') return cleanString(line.substring(0, len - 1));
-        String trimmed = line.trim();
-        if (trimmed.length() != len) return cleanString(trimmed);
-        return line;
-    }
-
     private List<String> docX(File myFile) throws Exception {
         ZipFile zip = new ZipFile(myFile);
         ZipEntry documentXML = zip.getEntry("word/document.xml");
@@ -72,6 +61,17 @@ public class PoiApp {
             list.add(cleanString(line));
         }
         return list;
+    }
+
+    private String cleanString(String line) {
+        if (line == null) return "";
+        if (line.isEmpty()) return "";
+        if (line.charAt(0) == '\f') return cleanString(line.substring(1));
+        int len = line.length();
+        if (line.charAt(len - 1) == '\u0007') return cleanString(line.substring(0, len - 1));
+        String trimmed = line.trim();
+        if (trimmed.length() != len) return cleanString(trimmed);
+        return line;
     }
 
     private File file(String fileName) {
