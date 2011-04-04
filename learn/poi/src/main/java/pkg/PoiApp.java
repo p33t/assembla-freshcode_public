@@ -11,19 +11,20 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import javax.xml.parsers.DocumentBuilderFactory;
-import java.io.*;
-import java.net.URL;
-import java.util.ArrayList;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.Iterator;
-import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
-public class Minimal {
+public class PoiApp {
     public static void main(String[] args) throws Exception {
-        Minimal min = new Minimal();
-        min.doc("minimal.doc");
-        min.docX("minimal.docx");
+        PoiApp p = new PoiApp();
+        p.doc("minimal.doc");
+        p.docX("minimal.docx");
+        p.doc("tables.doc");
+        p.docX("tables.docx");
     }
 
     private void doc(String fileName) throws Exception {
@@ -48,11 +49,24 @@ public class Minimal {
 
         out("");
         WordExtractor extractor = new WordExtractor(getStream(fileName));
-        // TODO: Make doc vs docx transparent.
-        String text = extractor.getText();
+        String[] paras = extractor.getParagraphText();
+//        TODO: Make doc vs docx transparent.
         System.out.println("<" + fileName + ">.getText()...");
-        out(text);
+        for (String line : paras) {
+            out(cleanString(line));
+        }
         out("---------------End of getText()");
+    }
+
+    private String cleanString(String line) {
+        if (line == null) return "";
+        if (line.isEmpty()) return "";
+        if (line.charAt(0) == '\f') return cleanString(line.substring(1));
+        int len = line.length();
+        if (line.charAt(len - 1) == '\u0007') return cleanString(line.substring(0, len - 1));
+        String trimmed = line.trim();
+        if (trimmed.length() != len) return cleanString(trimmed);
+        return line;
     }
 
     private void docX(String fileName) throws Exception {
@@ -71,9 +85,10 @@ public class Minimal {
             Node child = n.item(j);
             String line = child.getTextContent();
 
-            if (line != null && !line.trim().isEmpty()) {
-                out(line);
-            }
+            out(cleanString(line));
+//            if (isNotEmpty(line)) {
+//                out(line);
+//            }
         }
         out("---------------- end of lines.");
     }
