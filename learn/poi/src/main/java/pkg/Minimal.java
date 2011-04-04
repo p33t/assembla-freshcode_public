@@ -35,9 +35,13 @@ public class Minimal {
         int readCout = doc.read(bytes);
         out("Read " + readCout + " bytes.");
 
-        WordExtractor extractor = new WordExtractor(getStream("minimal.doc"));
+        outputText("minimal.doc");
+    }
+
+    private void outputText(String fileName) throws IOException {
+        WordExtractor extractor = new WordExtractor(getStream(fileName));
         String text = extractor.getText();
-        System.out.println("getText()...");
+        System.out.println("<" + fileName + ">.getText()...");
         out(text);
         out("---------------End of getText()");
     }
