@@ -1,6 +1,7 @@
 package pkg;
 
 import org.apache.poi.poifs.filesystem.DirectoryNode;
+import org.apache.poi.poifs.filesystem.DocumentInputStream;
 import org.apache.poi.poifs.filesystem.Entry;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 
@@ -17,13 +18,21 @@ public class Minimal {
         // need an open InputStream; for a file-based system, this would be appropriate:
         // InputStream stream = new FileInputStream(fileName);
         DirectoryNode root = getRoot("minimal.doc");
-        String s = root.getName() + " " + root.getEntryCount();
+        String s = root.getName() + " with " + root.getEntryCount() + " entries...";
         out(s);
         Iterator<Entry> entries = root.getEntries();
         while (entries.hasNext()) {
             Entry next = entries.next();
             out(next.getName());
         }
+        out("");
+
+        out("Obtaining document: WordDocument");
+        DocumentInputStream doc = root.createDocumentInputStream("WordDocument");
+        byte[] bytes = new byte[doc.available()];
+        out(bytes.length + " bytes allocated.");
+        int readCout = doc.read(bytes);
+        out("Read " + readCout + " bytes.");
     }
 
     private DirectoryNode getRoot(String fileName) throws IOException {
