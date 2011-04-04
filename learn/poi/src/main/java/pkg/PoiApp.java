@@ -44,14 +44,6 @@ public class PoiApp {
         return list;
     }
 
-    private void outParagraphs(String fileName, List<String> lines) {
-        System.out.println("<" + fileName + "> paragraphs...");
-        for (String line : lines) {
-            out(line);
-        }
-        out("---------------End of paragraphs");
-    }
-
     private String cleanString(String line) {
         if (line == null) return "";
         if (line.isEmpty()) return "";
@@ -84,6 +76,14 @@ public class PoiApp {
 
     private File file(String fileName) {
         return new File("src/main/resources/" + fileName);
+    }
+
+    private void outParagraphs(String fileName, List<String> lines) {
+        System.out.println("<" + fileName + "> paragraphs...");
+        for (String line : lines) {
+            out(line);
+        }
+        out("---------------End of paragraphs");
     }
 
     private FileInputStream stream(File file) throws FileNotFoundException {
