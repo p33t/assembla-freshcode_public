@@ -20,6 +20,10 @@ object VarianceAnnotations {
 
     // doens't compile...
 //    def setValue(newVal: T) = value = newVal
+
+    // a contrived example of a lower bound for U
+    // just pretend this is a Queue and not a Cell
+    def assignValue[U >: T](newVal: U):CoVariantCell[U] = new CoVariantCell(newVal)
   }
 
   def main(args: Array[String]) {
@@ -27,9 +31,10 @@ object VarianceAnnotations {
     //    Doesn't work...
     //    val anyCell: NonVariantCell[AnyRef] = stringOnly
 
-    var rootPlus = new CoVariantCell(new Root)
-    val subRootPlus = new CoVariantCell(new SubRoot)
-    rootPlus = subRootPlus // should work (?)
+    var rootPlus = new CoVariantCell(new Fruit)
+    val subRootPlus = new CoVariantCell(new Apple)
+    rootPlus = subRootPlus
+    rootPlus = subRootPlus.assignValue(new Orange)
     println("No Problems")
   }
 }

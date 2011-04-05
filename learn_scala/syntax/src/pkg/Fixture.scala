@@ -3,9 +3,11 @@ package pkg
 
 object Fixture {
 
-  class Root
+  class Fruit
 
-  class SubRoot extends Root
+  class Apple extends Fruit
 
-  class SubSubRoot extends SubRoot
+  class Orange extends Fruit
+
+  class GalaApple extends Apple
 }
