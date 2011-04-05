@@ -1,5 +1,6 @@
 package pkg
 
+import pkg.Fixture._
 
 object VarianceAnnotations {
 
@@ -31,12 +32,4 @@ object VarianceAnnotations {
     rootPlus = subRootPlus // should work (?)
     println("No Problems")
   }
-
-
-  class Root
-
-  class SubRoot extends Root
-
-  class SubSubRoot extends SubRoot
-
 }
