@@ -36,5 +36,14 @@ object VarianceAnnotations {
     rootPlus = subRootPlus
     rootPlus = subRootPlus.assignValue(new Orange)
     println("No Problems")
+
+    functionIllustration
+  }
+
+  def functionIllustration() {
+    // Liskov Substitution Principal: Can assume subtype if substitution is satisfactory
+    // the val type is a super type of the supplied function literal
+    val f:GalaApple => Fruit = (a:Apple) => new Apple
+    println("GalaApple in and apple out: " + f(new GalaApple))
   }
 }
