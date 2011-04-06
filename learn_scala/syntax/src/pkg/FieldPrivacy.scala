@@ -1,7 +1,7 @@
 package pkg
 
 
-object Constructors {
+object FieldPrivacy {
   def main(args: Array[String]) {
 
 //    Not allowed...
