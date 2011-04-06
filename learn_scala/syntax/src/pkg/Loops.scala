@@ -11,7 +11,7 @@ object Loops {
     var i = 0
     while (i < elems.size) {
       print(" " + elems(i))
-      i = i + 1
+      i += 1
     }
     println
 
