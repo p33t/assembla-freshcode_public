@@ -64,15 +64,7 @@ public class PoiApp {
     }
 
     private String cleanString(String line) {
-        if (line == null) return "";
-        if (line.isEmpty()) return "";
-        if (line.charAt(0) == '\f') return cleanString(line.substring(1));
-        int len = line.length();
-// this is trimmed anyway...
-//        if (line.charAt(len - 1) == '\u0007') return cleanString(line.substring(0, len - 1));
-        String trimmed = line.trim();
-        if (trimmed.length() != len) return cleanString(trimmed);
-        return line;
+        return line.trim();
     }
 
     private File file(String fileName) {
