@@ -68,7 +68,8 @@ public class PoiApp {
         if (line.isEmpty()) return "";
         if (line.charAt(0) == '\f') return cleanString(line.substring(1));
         int len = line.length();
-        if (line.charAt(len - 1) == '\u0007') return cleanString(line.substring(0, len - 1));
+// this is trimmed anyway...
+//        if (line.charAt(len - 1) == '\u0007') return cleanString(line.substring(0, len - 1));
         String trimmed = line.trim();
         if (trimmed.length() != len) return cleanString(trimmed);
         return line;
