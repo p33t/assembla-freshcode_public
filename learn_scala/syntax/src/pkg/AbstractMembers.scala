@@ -7,6 +7,7 @@ object AbstractMembers {
     // An 'abstract type' member
     type T
     var value: T = _
+    var val2: T
     val valueString: String = ""
     def valueToString = value.toString
   }
@@ -22,6 +23,10 @@ object AbstractMembers {
 
     // implementing a method as a val is supported
     override val valueToString = "Not Supported"
+
+    // Can implement a getter and setter to behave like a field
+    override def val2 = "Bruce"
+    override def val2_=(s: String) = {}
   }
 
   def main(args: Array[String]) {
