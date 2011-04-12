@@ -21,5 +21,8 @@ object Traits {
     val g: GrowsOnTree = new Apple
     println(g)
     println(new Orange)
+    // Anonymous class!
+    val someFruit = new Fruit("plum") with GrowsOnTree
+    println(someFruit.getClass + " - " + someFruit)
   }
 }
