@@ -13,6 +13,7 @@ trait GrowsOnTree {
   override def toString = {super.toString + " grows on a tree"}
 }
 
+// NOTE: Linearization will ensure inherited methods are called in a consistent order
 class Apple extends Fruit("apple") with GrowsOnTree
 class Orange extends Fruit("orange") with GrowsOnTree with EasyPeel
 
