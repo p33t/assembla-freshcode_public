@@ -22,5 +22,7 @@ object Loops {
 
     for (elem <- elems) print(" " + elem)
     println
+
+    for (j <- 0 to 10) print(" " + j)
   }
 }
