@@ -1,15 +1,17 @@
 package pkg
 
-
-class Outer {
-  class Inner
-}
-
+/**
+ * Similar to nested classes.
+ * @see pkg.InnerClassish
+ */
 object PathDepTypes {
+  class Outer {
+    class Inner
+  }
 
   def main(args: Array[String]) {
 //    Doesn't work... need an instance
-//    val staticInner = new Outer#Inner
+//    val staticInner = new Outer#InnerEnum
 //    println(staticInner)
     val outer1 = new Outer
     val inner1 = new outer1.Inner
@@ -27,5 +29,6 @@ object PathDepTypes {
     // specific type
     var inner22: outer2.Inner = null
     inner22 = inner2
+    println("No problems: " + this)
   }
 }
