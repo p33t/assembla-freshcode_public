@@ -19,8 +19,8 @@ object Regexpr2 {
           require(m.groupCount == 4)
           val found = (m.group(1), m.group(2), m.group(3))
           accum += found
-          val rest = str.substring(m.matched.length)
-          if (!rest.isEmpty) findMatches(m.group(4) + rest)
+          val rest = m.group(4) + str.substring(m.matched.length)
+          if (!rest.isEmpty) findMatches(rest)
         }
       }
     }
