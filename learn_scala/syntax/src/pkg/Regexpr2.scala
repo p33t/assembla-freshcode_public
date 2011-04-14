@@ -12,14 +12,14 @@ object Regexpr2 {
     val accum = new ListBuffer[(String,String,String)]
 
     def findMatches(str: String) {
-      val first = expr.findPrefixMatchOf(str)
+      val first = expr.findFirstMatchIn(str)
       first match {
         case None => //println("no match on " + str)
         case Some(m) => {
           require(m.groupCount == 4)
           val found = (m.group(1), m.group(2), m.group(3))
           accum += found
-          val rest = m.group(4) + str.substring(m.matched.length)
+          val rest = m.group(4) + str.substring(m.end)
           if (!rest.isEmpty) findMatches(rest)
         }
       }
@@ -37,8 +37,8 @@ object Regexpr2 {
   def main(args: Array[String]) {
     val in1 = "<header>bruce lee<body-elem-1>was here<body-elem-2>and kicked azz"
     val out1 = ("bruce lee", "was here", "and kicked azz")
-    test(in1, out1)
-    test(in1 * 2, out1, out1)
+    test("garbage" + in1, out1)
+    test("garbage" + in1 * 2, out1, out1)
   }
 
 }
