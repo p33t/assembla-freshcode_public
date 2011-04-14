@@ -39,6 +39,9 @@ object Regexpr2 {
     val out1 = ("bruce lee", "was here", "and kicked azz")
     test("garbage" + in1, out1)
     test("garbage" + in1 * 2, out1, out1)
+    // Too difficult...
+//    val expr = """<header>(.*?(?!<header>))<body-elem-1>(.*?)<body-elem-2>(.*?)(<header>|\z)""".r
+//    test("garbage<header>this should be ignored" + in1, out1)
   }
 
 }
