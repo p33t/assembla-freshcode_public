@@ -20,8 +20,10 @@ object Regexpr {
   }
 
   def numbers {
-    val matchStr = """\d+"""
+    val matchStr = """\d+(\.\d+)?"""
     require("1234".matches(matchStr))
+    require("1.12".matches(matchStr))
+    require("0".matches(matchStr))
     require(!"abc".matches(matchStr))
     require(!"12 abc".matches(matchStr))
     require(!"abc 1234".matches(matchStr))
