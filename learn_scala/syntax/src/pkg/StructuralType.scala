@@ -1,5 +1,6 @@
 package pkg
 
+// AKA Duck Typing
 object StructuralType {
 
   class A
