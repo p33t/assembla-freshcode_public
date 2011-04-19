@@ -30,9 +30,20 @@ object Regexpr {
     println("Numbers is fine")
   }
 
+  def strange {
+    val reg = """\d+( ?- ?\d+)?"""
+    println("Matches: " + "1 - 2".matches(reg))
+    println("Matches: " + "1-2".matches(reg))
+    // Ahh... turns out it was a different strange character 'EN DASH'
+    val s = "-–"
+    println("0: " + s(0).toInt)
+    println("1: " + s(1).toInt)
+  }
+
   def main(args: Array[String]) {
     simple
     strangeChars
     numbers
+    strange
   }
 }
