@@ -11,6 +11,8 @@ object PatternMatching {
 
   case class Elem[T](head: T, tail: TupSeq) extends TupSeq
 
+  val fiver = Elem(5, Elem("four", Elem(3, Elem("two", Elem(1, Terminator())))))
+
   def describe(ts: TupSeq) {
     def desc(input: TupSeq): String = input match {
       case Elem(h, Terminator()) => "Last elem is " + h
@@ -32,11 +34,22 @@ object PatternMatching {
   }
 
 
-  def main(args: Array[String]) {
-    val fiver = Elem(5, Elem("four", Elem(3, Elem("two", Elem(1, Terminator())))))
+  def caseClasses {
     // auto 'toString()'
     println(fiver)
 
     describe(fiver)
+  }
+
+  def patternedVals {
+    // can deconstruct if we know the structure
+    val Elem(fifth, Elem(fourth, tail)) = fiver
+    require(fifth == 5)
+    require(fourth == "four")
+  }
+
+  def main(args: Array[String]) {
+    caseClasses
+    patternedVals
   }
 }
