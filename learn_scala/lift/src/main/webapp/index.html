@@ -1,4 +1,16 @@
+<html>
+<head>
+
+</head>
+<!-- This class indicates the true content of the page is in div with id 'main'
+     I'm guessing the ignored bits mean the file can be loaded by itself and still
+     be real HTML.
+ -->
+<body class="lift:content_id=main">
+<p>You shouldn't see this!!</p>
 <div id="main" class="lift:surround?with=default;at=content">
     <h1>The new default page</h1>
     <a href="index.jsp">The old one</a>
 </div>
+</body>
+</html>
