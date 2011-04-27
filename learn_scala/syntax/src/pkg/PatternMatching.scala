@@ -51,8 +51,37 @@ object PatternMatching {
     require(fourth == "four")
   }
 
+  def forLoopFilters {
+    class TupSequenceIterator(t: TupSeq) extends Iterator[TupSeq] {
+      var current = t
+
+      // A partial function has an 'isDefinedAt' to test if there is an answer for certain inputs
+      def nextPartial: PartialFunction[TupSeq, (TupSeq, TupSeq)] = {
+        case t: Terminator => (t, null)
+        case e @ Elem(_, t) => (e, t)
+      }
+
+      def next() = {
+        val (n, newCurrent) = nextPartial(current)
+        current = newCurrent
+        n
+      }
+
+      def hasNext = nextPartial.isDefinedAt(current)
+    }
+
+    println("\nThe full list...")
+    new TupSequenceIterator(fiver).foreach(println)
+
+    println("\nThere should be no 'Terminator()'...")
+    for (Elem(h, t) <- new TupSequenceIterator(fiver)) {
+      println(h)
+    }
+  }
+
   def main(args: Array[String]) {
     caseClasses
     patternedVals
+    forLoopFilters
   }
 }
