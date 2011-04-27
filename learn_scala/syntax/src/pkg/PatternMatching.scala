@@ -15,6 +15,8 @@ object PatternMatching {
 
   def describe(ts: TupSeq) {
     def desc(input: TupSeq): String = input match {
+        // `xx` prevents variable assignment and instead looks for a constant or variable
+      case `fiver` => "This is the 'fiver'"
       case Elem(h, Terminator()) => "Last elem is " + h
       // assigning a variable name to a more complex part
       case Elem(h, t@Elem(_, Terminator())) => "Second last elem is " + h + " followed by... " + desc(t)
