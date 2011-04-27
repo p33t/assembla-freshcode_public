@@ -49,9 +49,25 @@ object ActorDemo {
     act ! "exit"
   }
 
+  def loopDemo {
+    val act = actor {
+      loop {
+        react {
+          case "exit" => println("Goodbye"); exit
+          case s: String => println("Msg : " + s)
+        }
+      }
+    }
+
+    act ! "Loop"
+    act ! "Demo"
+    act ! "exit"
+  }
+
   def main(args: Array[String]) {
     basics
     useCurrentThread
     reactDemo
+    loopDemo
   }
 }
