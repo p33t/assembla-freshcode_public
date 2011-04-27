@@ -1,6 +1,7 @@
 package pkg
 
 import scala.actors.Actor._
+import actors.Actor
 
 object ActorDemo {
   def basics: Unit = {
@@ -29,8 +30,28 @@ object ActorDemo {
     println(result)
   }
 
+  def reactDemo {
+    val act = new Actor{
+      override def act() {
+        // react does not block and returns 'Nothing'
+        react {
+          case "exit" => println("Goodbye") // no recursion so exit
+          case s: String => {
+            println("Rec msg: " + s)
+            act // tail recurse.  Stack frame is not retained (?)
+          }
+        }
+      }
+    }
+    act.start
+    act ! "Hello"
+    act ! "You"
+    act ! "exit"
+  }
+
   def main(args: Array[String]) {
     basics
     useCurrentThread
+    reactDemo
   }
 }
