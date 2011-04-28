@@ -64,10 +64,28 @@ object ActorDemo {
     act ! "exit"
   }
 
+  def noBlock {
+    def remindMeLater {
+      val host = self
+      actor {
+        Thread.sleep(100)
+        host ! "reminder"
+        println("Reminder has been sent")
+      }
+    }
+
+    println("Forgetting now...")
+    remindMeLater
+    self.receive {
+      case "reminder" => println("Thanks for the reminder.")
+    }
+  }
+
   def main(args: Array[String]) {
     basics
     useCurrentThread
     reactDemo
     loopDemo
+    noBlock
   }
 }
