@@ -261,6 +261,7 @@
       </CLASSES>
       <JAVADOC>
         <root url="jar://$MAVEN_REPOSITORY$/net/liftweb/lift-webkit_2.8.1/2.3/lift-webkit_2.8.1-2.3-javadoc.jar!/" />
+        <root url="file://$USER_HOME$/devsw/lift/liftweb-2.3-docs" />
       </JAVADOC>
       <SOURCES>
         <root url="jar://$MAVEN_REPOSITORY$/net/liftweb/lift-webkit_2.8.1/2.3/lift-webkit_2.8.1-2.3-sources.jar!/" />
