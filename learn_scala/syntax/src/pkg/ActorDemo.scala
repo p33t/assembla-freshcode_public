@@ -1,7 +1,7 @@
 package pkg
 
 import scala.actors.Actor._
-import actors.Actor
+import actors.{TIMEOUT, Actor}
 
 object ActorDemo {
   def basics: Unit = {
@@ -81,11 +81,20 @@ object ActorDemo {
     }
   }
 
+  def withinDemo {
+    println("Starting receiveWithin test...")
+    self.receiveWithin(1) {
+      case TIMEOUT => println("Timeout received")
+    }
+    println("Finished receiveWithin test.")
+  }
+
   def main(args: Array[String]) {
     basics
     useCurrentThread
     reactDemo
     loopDemo
     noBlock
+    withinDemo
   }
 }
