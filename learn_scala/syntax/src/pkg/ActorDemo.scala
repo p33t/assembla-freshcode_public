@@ -3,6 +3,13 @@ package pkg
 import scala.actors.Actor._
 import actors.{TIMEOUT, Actor}
 
+/**
+ * Guide lines for mult-threading:
+ * - Actors should not block
+ * - Communicate with actors only via messages
+ * - Prefer immutable messages
+ * - Use self contained messages (IE: Case classes)
+ */
 object ActorDemo {
   def basics: Unit = {
     val act1 = actor {
@@ -33,7 +40,8 @@ object ActorDemo {
   def reactDemo {
     val act = new Actor{
       override def act() {
-        // react does not block and returns 'Nothing'
+        // react does not block and returns 'Nothing' (IE: ends abruptly with an exception that the thread promptly forgets about)
+        // react is the way to conserve/reuse threads
         react {
           case "exit" => println("Goodbye") // no recursion so exit
           case s: String => {
