@@ -4,6 +4,11 @@ package pkg
 import java.io.File
 
 object DesignChallenge {
+  def main(args: Array[String]) {
+    firstAttempt()
+    secondAttempt()
+  }
+
   /////////////////// Building Blocks ///////////////////
   def streamFiles(folder: File) = Stream("f1", "f2", "f3").map(new File(folder, _))
 
@@ -18,19 +23,51 @@ object DesignChallenge {
 
   def recogniseTable(paras: List[String]) = if (paras == List("Good")) Some(new MyTable) else None
 
+  /////////////////// Second Attempt ////////////////////
+  case class Stats(fileCount: Int, pageCount: Int, tableCount: Int)
+
+  class CountingFilter[T] extends Function1[T, Boolean] {
+    var count = 0
+
+    def currentCount = count
+
+    def apply(v1: T) = {
+      count += 1
+      true
+    }
+  }
+
+  def parseDocs(f: File, dest: MyTable => Unit): Stats = {
+    val fileCount = new CountingFilter[File]
+    val files = streamFiles(f).filter(fileCount)
+    val pageCount = new CountingFilter[List[String]]
+    val pages = files.map(readParas _).flatMap(dividePages _).filter(pageCount)
+    val tableCount = new CountingFilter[MyTable]
+    val tables = pages.flatMap(recogniseTable(_)).filter(tableCount)
+    tables.foreach(dest(_))
+    Stats(fileCount.currentCount, pageCount.currentCount, tableCount.currentCount)
+  }
+
+  def secondAttempt() {
+    println("\nSecond Attempt...")
+    val expected = Stats(3, 9, 8)
+    val actual: Stats = parseDocs(new File("."), {
+      _: MyTable => () // do nothing
+    })
+    println("Should be " + expected + ": " + actual)
+    println("expected " + (if (expected == actual) "" else "!") + "= actual")
+  }
+
   /////////////////// First Attempt ////////////////////
-  val SourceFolder = new File(".") // pretend this is a global constant
+  val SourceFolder = new File(".")
+  // pretend this is a global constant
 
   def pageStream = streamFiles(SourceFolder).map(readParas _).flatMap(dividePages _)
 
   def tableStream = pageStream.flatMap(recogniseTable(_))
 
   def firstAttempt() {
-    println("Should be 8: " + tableStream.size)
-  }
-
-  def main(args: Array[String]) {
-    firstAttempt()
+    println("\nFirst Attempt...\nShould be 8: " + tableStream.size)
   }
 
   ////////////////// Challenge I ////////////////////////
