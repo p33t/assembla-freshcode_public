@@ -2,11 +2,23 @@ package pkg
 
 
 import java.io.File
+import collection.immutable.List
+import java.lang.String
 
 object DesignChallenge {
   def main(args: Array[String]) {
     firstAttempt()
     secondAttempt()
+    thirdAttempt()
+  }
+
+  def check(funct: (File, MyTable => Unit) => Stats) {
+    val expected = Stats(3, 9, 8)
+    val actual: Stats = funct(new File("."), {
+      _: MyTable => () // do nothing
+    })
+    println("Should be " + expected + ": " + actual)
+    println("expected " + (if (expected == actual) "" else "!") + "= actual")
   }
 
   /////////////////// Building Blocks ///////////////////
@@ -22,6 +34,38 @@ object DesignChallenge {
   class MyTable
 
   def recogniseTable(paras: List[String]) = if (paras == List("Good")) Some(new MyTable) else None
+
+  /////////////////// Third Attempt ////////////////////
+  def parseDocs3(f: File, dest: MyTable => Unit): Stats = {
+    def foldMyTable(count: Int, tab: MyTable): Int = {
+      dest(tab)
+      count + 1
+    }
+
+    def foldPage(pageTableCount: (Int, Int), page: List[String]): (Int, Int) = {
+      val (oldPageCount, oldTableCount) = pageTableCount
+      val tableOpt = recogniseTable(page)
+      val tableCount = tableOpt.foldLeft(oldTableCount)(foldMyTable _)
+      (oldPageCount + 1, tableCount)
+    }
+
+    def foldFile(filePageTableCount: (Int, Int, Int), file: File): (Int, Int, Int) = {
+      val (oldFileCount, oldPageCount, oldTableCount) = filePageTableCount
+      val paras: List[String] = readParas(file)
+      val pages = dividePages(paras)
+      val (pageCount, fileCount) = pages.foldLeft((oldPageCount, oldTableCount))(foldPage _)
+      (oldFileCount + 1, pageCount, fileCount)
+    }
+
+    val fileStream = streamFiles(f)
+    val (fileCount, pageCount, tableCount) = fileStream.foldLeft((0, 0, 0))(foldFile _)
+    Stats(fileCount, pageCount, tableCount)
+  }
+
+  def thirdAttempt() {
+    println("Third Attempt...")
+    check(parseDocs3 _)
+  }
 
   /////////////////// Second Attempt ////////////////////
   case class Stats(fileCount: Int, pageCount: Int, tableCount: Int)
@@ -50,12 +94,7 @@ object DesignChallenge {
 
   def secondAttempt() {
     println("\nSecond Attempt...")
-    val expected = Stats(3, 9, 8)
-    val actual: Stats = parseDocs(new File("."), {
-      _: MyTable => () // do nothing
-    })
-    println("Should be " + expected + ": " + actual)
-    println("expected " + (if (expected == actual) "" else "!") + "= actual")
+    check(parseDocs _)
   }
 
   /////////////////// First Attempt ////////////////////
