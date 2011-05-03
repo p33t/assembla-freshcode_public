@@ -3,7 +3,7 @@ package bootstrap.liftweb
 import net.liftweb._
 import http._
 import sitemap.Loc.Hidden
-import sitemap.{SiteMap, Menu}
+import sitemap.{Loc, SiteMap, Menu}
 
 /**
  * A class that's instantiated early and run.  It allows the application
@@ -21,16 +21,15 @@ class Boot {
     LiftRules.htmlProperties.default.set((r: Req) => new Html5Properties(r.userAgent))
 
     // Build SiteMap
-    //    def sitemap(): SiteMap = SiteMap(Menu.i("Home") / "index")
-    def siteMap(): SiteMap = SiteMap(
-      Menu.i("Home") / "index", // the simple way to declare a menu
-      Menu.i("XHTML Experiment") / "xhtml-experiment" >> Hidden , // permitted but not shown in default map
-      Menu.i("First Snippet") / "experiments" / "first_snippet"
-      // TODO: Finish sub menus
-      //      , Menu.i("Experiments") / "experiments" submenus (
-      //        Menu.i("My first snippet") / "first_snippet"
-      //        )
-    )
+    def siteMap(): SiteMap = {
+      SiteMap(
+        Menu.i("Home") / "index", // the simple way to declare a menu
+        Menu.i("XHTML Experiment") / "xhtml-experiment" >> Hidden, // permitted but not shown in default map
+        Menu.i("Experiments") / "experiments" / "index" submenus (
+          Menu.i("First Snippet") / "experiments" / "first_snippet" // TODO: Figure out putting link in multiple places in site map
+          )
+      )
+    }
 
     //      // more complex because this menu allows anything in the
     //      // /static path to be visible
