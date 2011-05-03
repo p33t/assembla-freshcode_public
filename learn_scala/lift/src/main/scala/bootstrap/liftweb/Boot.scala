@@ -2,7 +2,7 @@ package bootstrap.liftweb
 
 import net.liftweb._
 import http._
-import sitemap.Loc.Hidden
+import sitemap.Loc.{LocGroup, Hidden}
 import sitemap.{Loc, SiteMap, Menu}
 
 /**
@@ -27,7 +27,9 @@ class Boot {
         Menu.i("XHTML Experiment") / "xhtml-experiment" >> Hidden, // permitted but not shown in default map
         Menu.i("Experiments") / "experiments" / "index" submenus (
           Menu.i("First Snippet") / "experiments" / "first_snippet" // TODO: Figure out putting link in multiple places in site map
-          )
+          ),
+        Menu.i("About") / "meta-content" / "about" >> Hidden >> LocGroup("footer"),
+        Menu.i("Contact") / "meta-content" / "contact" >> Hidden >> LocGroup("footer")
       )
     }
 
