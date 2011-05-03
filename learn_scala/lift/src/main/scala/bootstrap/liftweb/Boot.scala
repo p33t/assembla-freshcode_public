@@ -21,6 +21,7 @@ class Boot {
     LiftRules.htmlProperties.default.set((r: Req) => new Html5Properties(r.userAgent))
 
     // Build SiteMap
+    // NOTE: will NOT serve files / folders that start with '.' or '_' or end with '-hidden'
     def siteMap(): SiteMap = {
       SiteMap(
         Menu.i("Home") / "index", // the simple way to declare a menu
