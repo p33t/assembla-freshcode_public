@@ -4,6 +4,8 @@ import net.liftweb._
 import http._
 import sitemap.Loc.{LocGroup, Hidden}
 import sitemap.{SiteMap, Menu, **}
+import pkg.UrlRemainder
+import code.snippet.WildProcessing
 
 // NOTE: ** is red because Intellij has a bug.
 
@@ -32,10 +34,15 @@ class Boot {
         Menu.i("XHTML Experiment") / "xhtml-experiment" >> Hidden, // permitted but not shown in default map
         Menu.i("Experiments") / "experiments" / "index" submenus (
           Menu.i("First Snippet") / "experiments" / "first_snippet", // TODO: Figure out putting link in multiple places in site map
-          Menu.i("Embed") / "experiments" / "embed"
+          Menu.i("Embed") / "experiments" / "embed",
+          Menu.i("Wildcard Path Starter") / "experiments" / "wild" / "start",
+          Menu.param[UrlRemainder]("Wildcard-In-Path",
+            "Wildcard-In-Path",
+            WildProcessing.parser,
+            WildProcessing.encoder) / "experiments" / "wild"
           ),
-        Menu.i("Wildcards") / "wildcards" submenus (
-          Menu.i("Wild Pages") / "wild" / ** >> Hidden
+        Menu.i("Wildcard Permissions") / "wildcards" submenus (
+          Menu.i("Wildly Permitted") / "wild" / ** >> Hidden
           ),
         Menu.i("About") / "meta-content" / "about" >> Hidden >> LocGroup("footer"),
         Menu.i("Contact") / "meta-content" / "contact" >> Hidden >> LocGroup("footer")
