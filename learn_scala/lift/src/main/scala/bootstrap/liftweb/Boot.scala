@@ -2,6 +2,7 @@ package bootstrap.liftweb
 
 import net.liftweb._
 import http._
+import sitemap.Loc.Hidden
 import sitemap.{SiteMap, Menu}
 
 /**
@@ -23,7 +24,8 @@ class Boot {
     //    def sitemap(): SiteMap = SiteMap(Menu.i("Home") / "index")
     def siteMap(): SiteMap = SiteMap(
       Menu.i("Home") / "index", // the simple way to declare a menu
-      Menu.i("XHTML Experiment") / "xhtml-experiment" >> Hidden // permitted but not shown in default map
+      Menu.i("XHTML Experiment") / "xhtml-experiment" >> Hidden , // permitted but not shown in default map
+      Menu.i("First Snippet") / "experiments" / "first_snippet"
       // TODO: Finish sub menus
       //      , Menu.i("Experiments") / "experiments" submenus (
       //        Menu.i("My first snippet") / "first_snippet"
