@@ -27,7 +27,6 @@ class Boot {
     // Build SiteMap
     // NOTE:
     // 1) will NOT serve files / folders that start with '.' or '_' or end with '-hidden'
-    // 2) can obtain a wildcard path element as a parameter.  EG: resources/xxx ... can get xxx as an param.
     def siteMap(): SiteMap = {
       SiteMap(
         Menu.i("Home") / "index", // the simple way to declare a menu
