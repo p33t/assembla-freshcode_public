@@ -2,6 +2,7 @@ package bootstrap.liftweb
 
 import net.liftweb._
 import http._
+import sitemap.Loc.Hidden
 import sitemap.{SiteMap, Menu}
 
 /**
@@ -22,7 +23,8 @@ class Boot {
     // Build SiteMap
     //    def sitemap(): SiteMap = SiteMap(Menu.i("Home") / "index")
     def siteMap(): SiteMap = SiteMap(
-      Menu.i("Home") / "index" // the simple way to declare a menu
+      Menu.i("Home") / "index", // the simple way to declare a menu
+      Menu.i("XHTML Experiment") / "xhtml-experiment" >> Hidden // permitted but not shown in default map
       // TODO: Finish sub menus
       //      , Menu.i("Experiments") / "experiments" submenus (
 //        Menu.i("My first snippet") / "first_snippet"
@@ -37,7 +39,7 @@ class Boot {
     // set the sitemap.  Note if you don't want access control for
     // each page, just comment this line out.
     //        LiftRules.setSiteMap(siteMap)
-    LiftRules.setSiteMapFunc(() => siteMap()) // TODO: Try siteMap _
+    LiftRules.setSiteMapFunc(siteMap _)
     //
     //    //Show the spinny image when an Ajax call starts
     //    LiftRules.ajaxStart =
