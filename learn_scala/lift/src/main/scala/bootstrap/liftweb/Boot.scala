@@ -20,6 +20,8 @@ class Boot {
 
     // where to search for snippet
     LiftRules.addToPackages("code")
+    // NOTE: Cannot use subpackages per se.  Can use package structure mirror of URL path.
+    // See LifRules.searchSnippetsWithRequestPath
 
     // Use HTML5 for rendering (instead of the default xhtml)
     LiftRules.htmlProperties.default.set((r: Req) => new Html5Properties(r.userAgent))
