@@ -43,8 +43,11 @@ class Boot {
           Menu.i("Notice") / "experiments" / "notice"
           ),
         Menu.i("Wildcard Permissions") / "wildcards" submenus (
+//          Is nesting good here?
           Menu.i("Wildly Permitted") / "wild" / ** >> Hidden
           ),
+        Menu.i("Forms") / "forms",
+        Menu.i("form permissions") / "form" / ** >> Hidden,
         Menu.i("About") / "meta-content" / "about" >> Hidden >> LocGroup("footer"),
         Menu.i("Contact") / "meta-content" / "contact" >> Hidden >> LocGroup("footer")
       )
