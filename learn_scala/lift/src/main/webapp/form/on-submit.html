@@ -6,7 +6,8 @@
 <div id="main" class="lift:surround?with=default;at=content">
     <p>Onsubmit Form</p>
 
-    <!-- The form=post causes action='<this page>' and method='post' to be added for 'form' -->
+    <!-- The form=post causes action='<this page>' and method='post' to be added for 'form'
+         This technique is discouraged because the entire contents of the form a lost during a failed submission -->
     <form class="lift:FormOnSubmit?form=post">
         <label>Number To Add:<input type="text" name="number"/></label><br>
         <input type="submit" value="Submit">
