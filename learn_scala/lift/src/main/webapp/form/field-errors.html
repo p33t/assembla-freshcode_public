@@ -1,0 +1,29 @@
+<html>
+<head>
+    <title></title>
+</head>
+<body class="lift:content_id=main">
+<div id="main" class="lift:surround?with=default;at=content">
+    <p>Field Errors Example</p>
+
+    <div class="lift:FieldErrors">FieldErrors successfully passed on its content</div>
+
+    <style type="text/css">
+        .error_class {
+            color: red
+        }
+        .warning_class {
+            color: orange;
+        }
+        .notice_class {
+            color: blue;
+        }
+    </style>
+
+    <p>Field Messages: <span
+            class="lift:Msg?id=myField;errorClass=error_class;warningClass=warning_class;noticeClass=notice_class">BAD</span>
+    </p>
+
+</div>
+</body>
+</html>
