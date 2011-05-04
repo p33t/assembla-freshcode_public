@@ -38,7 +38,8 @@ class Boot {
           Menu.param[UrlRemainder]("Wildcard-In-Path",
             "Wildcard-In-Path",
             WildProcessing.parser,
-            WildProcessing.encoder) / "experiments" / "wild"
+            WildProcessing.encoder) / "experiments" / "wild",
+          Menu.i("Recusion") / "experiments" / "recurse"
           ),
         Menu.i("Wildcard Permissions") / "wildcards" submenus (
           Menu.i("Wildly Permitted") / "wild" / ** >> Hidden
