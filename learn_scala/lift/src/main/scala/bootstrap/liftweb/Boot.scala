@@ -39,7 +39,8 @@ class Boot {
             "Wildcard-In-Path",
             WildProcessing.parser,
             WildProcessing.encoder) / "experiments" / "wild",
-          Menu.i("Recusion") / "experiments" / "recurse"
+          Menu.i("Recusion") / "experiments" / "recurse",
+          Menu.i("Notice") / "experiments" / "notice"
           ),
         Menu.i("Wildcard Permissions") / "wildcards" submenus (
           Menu.i("Wildly Permitted") / "wild" / ** >> Hidden
