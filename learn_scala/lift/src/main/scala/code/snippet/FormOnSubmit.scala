@@ -2,10 +2,9 @@ package code
 package snippet
 
 import net.liftweb._
-import common.{Box, Full}
+import common.Full
 import http._
 import util.Helpers._
-import xml.NodeSeq
 
 object FormOnSubmit {
   // NOTE: This cannot return a NodeSeq nor can it take a NodeSeq arg.
