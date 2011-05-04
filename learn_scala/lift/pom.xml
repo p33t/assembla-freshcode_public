@@ -43,6 +43,12 @@
             <version>2.3</version>
         </dependency>
 
+        <dependency>
+            <groupId>net.liftweb</groupId>
+            <artifactId>lift-wizard_2.8.1</artifactId>
+            <version>2.3</version>
+        </dependency>
+
         <!-- Test -->
         <dependency>
             <groupId>org.scalatest</groupId>
