@@ -9,6 +9,7 @@ object Extractor {
         case StringPair("bruce", "lee") => println("normal")
           // Apparently this is called 'infix notation'.
           // See https://github.com/dpp/simply_lift/blob/master/samples/http_rest/src/main/scala/code/lib/BasicWithHelper.scala#L46
+          // And http://stackoverflow.com/questions/4008271/explain-this-pattern-matching-code/4008797#4008797
         case "bruce" StringPair "springsteen" => println("strange syntax")
       }
     }
