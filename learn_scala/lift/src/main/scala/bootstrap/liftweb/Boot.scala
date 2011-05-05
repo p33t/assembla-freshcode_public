@@ -1,6 +1,7 @@
 package bootstrap.liftweb
 
 import net.liftweb._
+import common.Full
 import http._
 import sitemap.Loc.{LocGroup, Hidden}
 import sitemap.{SiteMap, Menu, **}
@@ -46,7 +47,7 @@ class Boot {
           Menu.i("Redirection") / "experiments" / "redirect"
           ),
         Menu.i("Wildcard Permissions") / "wildcards" submenus (
-//          Is nesting good here?
+          //          Is nesting good here?
           Menu.i("Wildly Permitted") / "wild" / ** >> Hidden
           ),
         Menu.i("Forms") / "forms",
@@ -65,18 +66,16 @@ class Boot {
     // each page, just comment this line out.
     //        LiftRules.setSiteMap(siteMap)
     LiftRules.setSiteMapFunc(siteMap _)
-    //
-    //    //Show the spinny image when an Ajax call starts
-    //    LiftRules.ajaxStart =
-    //      Full(() => LiftRules.jsArtifacts.show("ajax-loader").cmd)
-    //
-    //    // Make the spinny image go away when it ends
-    //    LiftRules.ajaxEnd =
-    //      Full(() => LiftRules.jsArtifacts.hide("ajax-loader").cmd)
-    //
-    //    // Use jQuery 1.4
-    //    LiftRules.jsArtifacts = net.liftweb.http.js.jquery.JQuery14Artifacts
-    //
-    // Force the request to be UTF-8
+
+    //Show the spinny image when an Ajax call starts
+    LiftRules.ajaxStart =
+      Full(() => LiftRules.jsArtifacts.show("ajax-loader").cmd)
+
+    // Make the spinny image go away when it ends
+    LiftRules.ajaxEnd =
+      Full(() => LiftRules.jsArtifacts.hide("ajax-loader").cmd)
+
+    // Use jQuery 1.4
+    LiftRules.jsArtifacts = net.liftweb.http.js.jquery.JQuery14Artifacts
   }
 }
