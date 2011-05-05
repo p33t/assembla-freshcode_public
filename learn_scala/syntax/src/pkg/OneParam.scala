@@ -11,6 +11,10 @@ object OneParam {
     println("Arg1-: " + s)
   }
 
+  def oneOne(s1: String)(s2:String) {
+    println(s1 + " and then " + s2)
+  }
+
   def main(args: Array[String]) {
     one("simple")
 
@@ -30,5 +34,11 @@ object OneParam {
 
     val f5 = oneNone(_: String)()
     f5("Removed extra para list?")
+
+    val f6 = oneOne(_:String)(_:String)
+    f6("one", "another")
+
+    val f7 = (s1: String, s2: String) => oneOne(s1)(s2)
+    f7("nothing", "special")
   }
 }
