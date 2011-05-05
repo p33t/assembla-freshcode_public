@@ -7,7 +7,7 @@ import sitemap.Loc.{LocGroup, Hidden}
 import sitemap.{SiteMap, Menu, **}
 import pkg.UrlRemainder
 import code.snippet.WildProcessing
-import code.lib.MyStatelessDispatch
+import code.lib.{MyEasyStatelessDispatch, MyStatelessDispatch}
 
 // NOTE: ** is red because Intellij has a bug.
 
@@ -82,5 +82,6 @@ class Boot {
 
     // stateless dispatch handlers (like for REST)... are these like servlets?
     LiftRules.statelessDispatchTable.append(MyStatelessDispatch.dispatchThis)
+    LiftRules.statelessDispatchTable.append(MyEasyStatelessDispatch)
   }
 }
