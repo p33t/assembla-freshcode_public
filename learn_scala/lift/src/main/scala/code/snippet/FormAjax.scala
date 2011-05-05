@@ -18,7 +18,7 @@ object FormAjax {
       Thread.sleep(500)
 
       if (message.length < 5) {
-        S.error("Message must be >= 5 chars: " + message)
+        S.error("message", "Message must be >= 5 chars: " + message)
         Noop
       }
       else RedirectTo(referer, () => S.notice("Message: " + message))
