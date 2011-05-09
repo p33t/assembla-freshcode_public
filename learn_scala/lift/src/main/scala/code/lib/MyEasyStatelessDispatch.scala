@@ -16,6 +16,7 @@ object MyEasyStatelessDispatch extends RestHelper {
 
   /*Notes:
     - Post/Put have different pattern match signatures (EG: (List[String],(JValue,Req))
+    - Can do async on server using 'RestContinuation.async'.  Can schedule a timeout default response.
   */
 
   // Auto switch between XML / JSON
