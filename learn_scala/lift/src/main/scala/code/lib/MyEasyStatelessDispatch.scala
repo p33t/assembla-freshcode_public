@@ -14,6 +14,10 @@ object MyEasyStatelessDispatch extends RestHelper {
     case (XmlSelect, r, _) => r: Node
   }
 
+  /*Notes:
+    - Post/Put have different pattern match signatures (EG: (List[String],(JValue,Req))
+  */
+
   // Auto switch between XML / JSON
   serveJx[Rhyme] {
     "stateless-easy" / "blah" prefixJx {
