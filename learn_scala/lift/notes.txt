@@ -1,0 +1,10 @@
+Some more notes that are can't be illustrated with code...
+
+From 'Simply Lift' - Scaling
+Lift requires session affinity.
+IE: A load balancer must route a request to the same JVM that serviced the previous request on the same session.
+Lift sessions are too complex to serialize.
+
+Lift resists a number of attack vectors due to GUID/function association...the client never sees relational data IDs.
+
+
