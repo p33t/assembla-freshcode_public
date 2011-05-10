@@ -23,6 +23,7 @@ object FormCellWireAjax {
       Noop;
     }
 
+    // NOTE: The SHtml.ajaxInvoke() for the submit button might be a better option than the hidden field.
     "name=newValue" #> (SHtml.text(newValue, newValue = _) ++ SHtml.hidden(process _))
   }
 
