@@ -167,6 +167,18 @@
         .sf-shadow ul.sf-shadow-off {
             background: transparent;
         }
+
+
+        /* Customisations to get it working smoothly */
+        .sf-menu span {
+            display: block;
+            position: relative;
+            border-left: 1px solid #fff;
+            border-top: 1px solid #CFDEFF;
+            padding: .75em 1em;
+            text-decoration: none;
+            /*color: #13a;            keep it distinct for now */
+        }
     </style>
 </head>
 <body>
@@ -189,5 +201,33 @@
     </ul>
 </div>
 <p>Attempting to debug the superfish menu which is used in lift widgets: MenuWidget.</p>
+
+<p>one</p>
+
+<p>two</p>
+
+<p>three</p>
+
+<p>four</p>
+
+<div>
+    <ul class="sf-menu">
+        <li><a href="/scala-lift/index">Home</a></li>
+        <li><a href="/scala-lift/experiments/">Experiments</a>
+            <ul>
+                <li><a href="/scala-lift/experiments/first_snippet">First Snippet</a></li>
+                <li><span>Embed</span></li>
+                <li><a href="/scala-lift/experiments/wild/start">Wildcard Path Starter</a></li>
+                <li><a href="/scala-lift/experiments/recurse">Recusion</a></li>
+                <li><a href="/scala-lift/experiments/notice">Notice</a></li>
+                <li><a href="/scala-lift/experiments/redirect">Redirection</a></li>
+            </ul>
+        </li>
+        <li><a href="/scala-lift/wildcards">Wildcard Permissions</a></li>
+        <li><a href="/scala-lift/forms">Forms</a></li>
+        <li><a href="/scala-lift/stateless-dispatch">Stateless Dispatch</a></li>
+    </ul>
+</div>
 </body>
 </html>
+        
