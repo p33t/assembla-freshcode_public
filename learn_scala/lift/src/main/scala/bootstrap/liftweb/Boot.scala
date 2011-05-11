@@ -8,6 +8,7 @@ import sitemap.{SiteMap, Menu, **}
 import pkg.UrlRemainder
 import code.snippet.WildProcessing
 import code.lib.{MyEasyStatelessDispatch, MyStatelessDispatch}
+import widgets.menu.MenuWidget
 
 // NOTE: ** is red because Intellij has a bug.
 
@@ -68,6 +69,7 @@ class Boot {
     // each page, just comment this line out.
     //        LiftRules.setSiteMap(siteMap)
     LiftRules.setSiteMapFunc(siteMap _)
+    MenuWidget.init
 
     //Show the spinny image when an Ajax call starts
     LiftRules.ajaxStart =
