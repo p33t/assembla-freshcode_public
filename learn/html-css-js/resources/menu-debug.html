@@ -69,7 +69,7 @@
 
         /*** DEMO SKIN ***/
         .sf-menu {
-            /*float: left; Doesn't seem to affect things */
+        /*float: left; Doesn't seem to affect things */
             margin-bottom: 1em;
         }
 
@@ -168,7 +168,6 @@
             background: transparent;
         }
 
-
         /* Customisations to get it working smoothly */
         .sf-menu span {
             display: block;
@@ -176,13 +175,25 @@
             border-left: 1px solid #fff;
             border-top: 1px solid #CFDEFF;
             padding: .75em 1em;
-            text-decoration: none;
-            /*color: #13a;            keep it distinct for now */
+            text-decoration: none; /*color: #13a;            keep it distinct for now */
+        }
+
+        ul.sf-menu {
+            left: 50%;
+            position: relative;
+        }
+
+        .menu-wrapper {
+            float: right;
+            position: relative;
+            left: -50%;
+            text-align: left;
+            margin-bottom: 2em;
         }
     </style>
 </head>
 <body>
-<div>
+<div class="menu-wrapper">
     <ul class="sf-menu">
         <li><a href="/scala-lift/index">Home</a></li>
         <li><a href="/scala-lift/experiments/">Experiments</a>
@@ -200,6 +211,9 @@
         <li><a href="/scala-lift/stateless-dispatch">Stateless Dispatch</a></li>
     </ul>
 </div>
+<!-- Escapes the floating menu elements above -->
+<div style="height:1px; overflow:hidden; margin-top:-1px; clear:both;"></div>
+
 <p>Attempting to debug the superfish menu which is used in lift widgets: MenuWidget.</p>
 
 <p>one</p>
@@ -210,7 +224,7 @@
 
 <p>four</p>
 
-<div>
+<div class="menu-wrapper">
     <ul class="sf-menu">
         <li><a href="/scala-lift/index">Home</a></li>
         <li><a href="/scala-lift/experiments/">Experiments</a>
