@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Style Override</title>
+    <style type="text/css">
+        .float-me {
+            float: left;
+        }
+
+        p.float-me {
+            float: right;
+        }
+    </style>
+</head>
+<body>
+<!--
+Notes:
+- Specificity rules: http://www.w3.org/TR/CSS2/cascade.html#specificity
+
+
+-->
+<h1>The Title</h1>
+
+<div class="float-me">
+    <ul>
+        <li>
+            Item 1
+        </li>
+        <li>
+            Item 2
+        </li>
+        <li>
+            Item 3
+        </li>
+    </ul>
+</div>
+
+<p class="float-me">This should be floating to the right.</p>
+
+<p>This page illustrates overriding style for a particular class.</p>
+</body>
+</html>
