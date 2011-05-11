@@ -118,7 +118,7 @@
             height: 10px;
             text-indent: -999em;
             overflow: hidden;
-            background: url('../menu/images/arrows-ffffff.png') no-repeat -10px -100px; /* 8-bit indexed alpha png. IE6 gets solid image only */
+            background: url('menu/images/arrows-ffffff.png') no-repeat -10px -100px; /* 8-bit indexed alpha png. IE6 gets solid image only */
         }
 
         a > .sf-sub-indicator {
@@ -156,7 +156,7 @@
 
         /*** shadows for all but IE6 ***/
         .sf-shadow ul {
-            background: url('../menu/images/shadow.png') no-repeat bottom right;
+            background: url('menu/images/shadow.png') no-repeat bottom right;
             padding: 0 8px 9px 0;
             -moz-border-radius-bottomleft: 17px;
             -moz-border-radius-topright: 17px;
@@ -190,6 +190,13 @@
             text-align: left;
             margin-bottom: 2em;
         }
+
+        .menu-chaser {
+            height:1px;
+            overflow:hidden;
+            margin-top:-1px;
+            clear:both;
+        }
     </style>
 </head>
 <body>
@@ -212,7 +219,7 @@
     </ul>
 </div>
 <!-- Escapes the floating menu elements above -->
-<div style="height:1px; overflow:hidden; margin-top:-1px; clear:both;"></div>
+<div class="menu-chaser"></div>
 
 <p>Attempting to debug the superfish menu which is used in lift widgets: MenuWidget.</p>
 
