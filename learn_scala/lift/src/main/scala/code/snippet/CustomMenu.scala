@@ -20,7 +20,9 @@ object CustomMenu {
         ".float-clear {\n" +
         "  clear:both;\n" +
         "}\n" +
-        "ul.sf-menu {margin-bottom: 0}"
+        "ul.sf-menu {\n" +
+        "  margin-bottom: 0\n" +
+        "}\n"
     )}
     </style>
   }
