@@ -20,6 +20,7 @@ object CustomMenu {
         ".float-clear {\n" +
         "  clear:both;\n" +
         "}\n" +
+        "/* Margin fix for FireFox */\n" +
         "ul.sf-menu {\n" +
         "  margin-bottom: 0\n" +
         "}\n"
