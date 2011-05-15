@@ -178,30 +178,32 @@
             text-decoration: none; /*color: #13a;            keep it distinct for now */
         }
 
-        ul.sf-menu {
+        .float-center-item {
             left: 50%;
             position: relative;
         }
 
-        .menu-wrapper {
+        .float-center-wrapper {
             float: right;
             position: relative;
             left: -50%;
             text-align: left;
-            margin-bottom: 2em;
+            margin-bottom: 0;
         }
 
-        .menu-chaser {
-            height:1px;
-            overflow:hidden;
-            margin-top:-1px;
+        .float-clear {
             clear:both;
         }
+
+        /* Doesn't work... don't know how to insert actual content and not just text*/
+        /*.float-center-wrapper:after {*/
+            /*content:<div></div>*/
+        /*}*/
     </style>
 </head>
 <body>
-<div class="menu-wrapper">
-    <ul class="sf-menu">
+<div class="float-center-wrapper">
+    <ul class="sf-menu float-center-item">
         <li><a href="/scala-lift/index">Home</a></li>
         <li><a href="/scala-lift/experiments/">Experiments</a>
             <ul>
@@ -219,7 +221,7 @@
     </ul>
 </div>
 <!-- Escapes the floating menu elements above -->
-<div class="menu-chaser"></div>
+<div class="float-clear"></div>
 
 <p>Attempting to debug the superfish menu which is used in lift widgets: MenuWidget.</p>
 
@@ -231,8 +233,8 @@
 
 <p>four</p>
 
-<div class="menu-wrapper">
-    <ul class="sf-menu">
+<div class="float-center-wrapper">
+    <ul class="sf-menu float-center-item">
         <li><a href="/scala-lift/index">Home</a></li>
         <li><a href="/scala-lift/experiments/">Experiments</a>
             <ul>
