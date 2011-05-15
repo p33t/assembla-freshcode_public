@@ -13,7 +13,9 @@ object Constructors {
   }
 
   class Parent(val p: String)
+  // parent constructor args are supplied during 'extends' statement
   class Child(val c: String) extends Parent(c + " Parent") {
+    // alternate constructors need to feed into primary constructor
     def this(j: Int) = this(j.toString)
   }
 }
