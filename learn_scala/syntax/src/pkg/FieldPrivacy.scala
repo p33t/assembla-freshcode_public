@@ -27,7 +27,7 @@ object FieldPrivacy {
   }
 
   class FieldIsPrivate (private val s:String) {
-    def this(j: Int) = this(j.toString)
+//    def this(j: Int) = this(j.toString)
   }
 
   class IsPublic(val s:String) {
