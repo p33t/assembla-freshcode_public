@@ -7,11 +7,11 @@ package pkg
  */
 object InnerClassish {
   class Outer {
-    class Nested
+    class Inner
   }
 
   object Outer {
-    class Inner {}
+    class StaticNested {}
 
     object InnerEnum extends Enumeration {
       val A,B = Value
@@ -20,9 +20,9 @@ object InnerClassish {
 
   def main(args: Array[String]) {
     val outer = new Outer
-    val nested = new outer.Nested
-    val innerEnum = Outer.InnerEnum.A
-    val inner = new Outer.Inner()
+    val inner = new outer.Inner
+    val nestedEnum = Outer.InnerEnum.A
+    val nested = new Outer.StaticNested()
     println("No problems: " + this)
   }
 }
