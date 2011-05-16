@@ -44,9 +44,10 @@ class Boot {
             "Wildcard-In-Path",
             WildProcessing.parser,
             WildProcessing.encoder) / "experiments" / "wild",
-          Menu.i("Recusion") / "experiments" / "recurse",
+          Menu.i("Recursion") / "experiments" / "recurse",
           Menu.i("Notice") / "experiments" / "notice",
-          Menu.i("Redirection") / "experiments" / "redirect"
+          Menu.i("Redirection") / "experiments" / "redirect",
+          Menu.i("Formatting") / "experiments" / "formatting"
           ),
         Menu.i("Wildcard Permissions") / "wildcards" submenus (
           //          Is nesting good here?
