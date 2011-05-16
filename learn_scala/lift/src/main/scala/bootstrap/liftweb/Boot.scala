@@ -4,10 +4,11 @@ import net.liftweb._
 import common.Full
 import http._
 import sitemap.Loc.{LocGroup, Hidden}
-import sitemap.{SiteMap, Menu, **}
 import pkg.UrlRemainder
 import code.snippet.WildProcessing
 import code.lib.{MyEasyStatelessDispatch, MyStatelessDispatch}
+import sitemap.{Loc, SiteMap, Menu, **}
+import Loc._
 import widgets.menu.MenuWidget
 
 // NOTE: ** is red because Intellij has a bug.
@@ -55,6 +56,8 @@ class Boot {
           ),
         Menu.i("Forms") / "forms",
         Menu.i("form permissions") / "form" / ** >> Hidden,
+        Menu.i("Widgets") / "widgets",
+        Menu.i("widget permissions") / "widget" / ** >> Hidden,
         Menu.i("Stateless Dispatch") / "stateless-dispatch",
         Menu.i("About") / "meta-content" / "about" >> Hidden >> LocGroup("footer"),
         Menu.i("Contact") / "meta-content" / "contact" >> Hidden >> LocGroup("footer")
