@@ -1,7 +1,7 @@
 package bootstrap.liftweb
 
 import net.liftweb._
-import common.Full
+import common.{Loggable, Full}
 import http._
 import pkg.UrlRemainder
 import code.snippet.WildProcessing
@@ -16,8 +16,9 @@ import widgets.menu.MenuWidget
  * A class that's instantiated early and run.  It allows the application
  * to modify lift's environment
  */
-class Boot {
+class Boot extends Loggable {
   def boot {
+    logger.info("Starting bootstrap...")
     // LiftRules singleton provides configuration but is only mutable at boot time.
     LiftRules.early.append(_.setCharacterEncoding("UTF-8"))
 
@@ -84,5 +85,6 @@ class Boot {
     // stateless dispatch handlers (like for REST)... are these like servlets?
     LiftRules.statelessDispatchTable.append(MyStatelessDispatch.dispatchThis)
     LiftRules.statelessDispatchTable.append(MyEasyStatelessDispatch)
+    logger.info("Finished boostrap.")
   }
 }
