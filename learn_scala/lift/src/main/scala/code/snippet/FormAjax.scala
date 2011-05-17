@@ -1,6 +1,7 @@
 package code.snippet
 
 import net.liftweb._
+import common.Loggable
 import http._
 import js._
 import JsCmds._
@@ -8,12 +9,12 @@ import util._
 import Helpers._
 
 
-object FormAjax {
+object FormAjax extends Loggable {
   def render = {
     var message = ""
     val referer = S.referer openOr "/"
     def process: JsCmd = {
-
+      logger.info("Processing submission.")
       // pause for effect
       Thread.sleep(500)
 
