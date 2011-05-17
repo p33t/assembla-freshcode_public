@@ -8,7 +8,7 @@ object FormTraditional {
     if (S.post_?) {
       val box = S.param("message")
       box.foreach{s: String => S.notice("Message is " + s)}
-      S.redirectTo("/forms.html")
+      S.redirectTo("/form")
       NodeSeq.Empty
     }
     else in

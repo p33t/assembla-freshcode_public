@@ -302,6 +302,7 @@
       </JAVADOC>
       <SOURCES>
         <root url="jar://$MAVEN_REPOSITORY$/net/liftweb/lift-webkit_2.8.1/2.3/lift-webkit_2.8.1-2.3-sources.jar!/" />
+        <root url="file://$USER_HOME$/devsw/lift/lift-framework-78f1737/web/webkit/src/main/scala" />
       </SOURCES>
     </library>
     <library name="Maven: net.liftweb:lift-widgets_2.8.1:2.3">

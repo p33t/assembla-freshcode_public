@@ -3,7 +3,6 @@ package bootstrap.liftweb
 import net.liftweb._
 import common.Full
 import http._
-import sitemap.Loc.{LocGroup, Hidden}
 import pkg.UrlRemainder
 import code.snippet.WildProcessing
 import code.lib.{MyEasyStatelessDispatch, MyStatelessDispatch}
@@ -54,21 +53,17 @@ class Boot {
           //          Is nesting good here?
           Menu.i("Wildly Permitted") / "wild" / ** >> Hidden
           ),
-        Menu.i("Forms") / "forms",
-        Menu.i("form permissions") / "form" / ** >> Hidden,
-        Menu.i("Widgets") / "widgets",
-        Menu.i("widget permissions") / "widget" / ** >> Hidden,
+        Menu.i("Forms") / "form" / **,
+        // using static content technique
+        Menu(Loc("widget", new Link(List("widget"), true), "Widgets")),
+        // this ends up with 'Widget Anchor Text' in the address bar
+        // Menu(Loc("widget", Link(List("widget"), true, "Widget Anchor Text"), "Widgets")),
         Menu.i("Stateless Dispatch") / "stateless-dispatch",
         Menu.i("About") / "meta-content" / "about" >> Hidden >> LocGroup("footer"),
         Menu.i("Contact") / "meta-content" / "contact" >> Hidden >> LocGroup("footer")
       )
     }
 
-    //      // more complex because this menu allows anything in the
-    //      // /static path to be visible
-    //      Menu(Loc("Static", Link(List("static"), true, "/static/index"),
-    //	       "Static Content")))
-    //
     // set the sitemap.  Note if you don't want access control for
     // each page, just comment this line out.
     //        LiftRules.setSiteMap(siteMap)
