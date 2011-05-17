@@ -10,7 +10,7 @@ class FormStateful extends StatefulSnippet {
   private var messages: List[String] = Nil
   private var message = ""
   // original origin
-  private val origin = S.referer openOr "/forms.html"
+  private val origin = S.referer openOr "/form"
 
   def dispatch = {
     case "render" => render
