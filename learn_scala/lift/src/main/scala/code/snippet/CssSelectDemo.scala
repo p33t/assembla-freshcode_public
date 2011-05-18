@@ -46,6 +46,7 @@ object CssSelectDemo {
     test(in, "*", <c/>, "Retain top attributes only") ::
     test(in, "* *", <c/>, "Replace children") ::
     test(in, "* ^*", Text("Doesn't matter"), "Elevate children (arg ignored)") ::
+    test(in, "* ^^", Text("Doesn't matter"), "Noop (arg ignored)") ::
       Nil
   }
 
@@ -55,10 +56,6 @@ object CssSelectDemo {
   }
 
   def main(args: Array[String]) {
-    val para = <p>Some text in a paragraph</p>
-    val aDiv = <div class="someclass">
-      {para}
-    </div>
     println(tests)
   }
 }
