@@ -55,6 +55,7 @@ class Boot extends Loggable {
           //          Is nesting good here?
           Menu.i("Wildly Permitted") / "wild" / ** >> Hidden
           ),
+        Menu.i("Css Selector") / "css-select" / **,
         Menu.i("Forms") / "form" / **,
         // using static content technique
         Menu(Loc("widget", new Link(List("widget"), true), "Widgets")),
