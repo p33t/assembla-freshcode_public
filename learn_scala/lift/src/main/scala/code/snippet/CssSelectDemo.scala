@@ -13,7 +13,7 @@ object CssSelectDemo {
     </pre>
   }
 
-  case class TestItem(in: NodeSeq, selector: String, arg: NodeSeq, result: NodeSeq)
+  case class TestItem(in: NodeSeq, selector: String, arg: NodeSeq, result: NodeSeq, desc: String)
 
   def table(in: NodeSeq): NodeSeq = {
     def nsCell(ns: NodeSeq) = {
@@ -26,7 +26,7 @@ object CssSelectDemo {
 
     <table border="1">
       <tr>
-        <th>Input</th> <th>Selector</th> <th>Param</th> <th>Result</th>
+        <th>Input</th> <th>Selector</th> <th>Arg</th> <th>Result</th>
       </tr>{tests.map {
       t: TestItem =>
         <tr>
@@ -39,15 +39,19 @@ object CssSelectDemo {
   }
 
   private def tests: Seq[TestItem] = {
-    test(<a attr="attrVal">
-        <b/>
-    </a>, "*", <c/>) ::
+    val in = <a attr="attrVal">
+        <b1 attr="b1attr"/>
+        <b2 attr="b2attr"/>
+    </a>
+    test(in, "*", <c/>, "Retain top attributes only") ::
+    test(in, "* *", <c/>, "Replace children") ::
+    test(in, "* ^*", Text("Doesn't matter"), "Elevate children (arg ignored)") ::
       Nil
   }
 
-  private def test(in: NodeSeq, selector: String, arg: NodeSeq) = {
+  private def test(in: NodeSeq, selector: String, arg: NodeSeq, desc: String) = {
     val result = (selector #> arg)(in)
-    TestItem(in, selector, arg, result)
+    TestItem(in, selector, arg, result, desc)
   }
 
   def main(args: Array[String]) {
