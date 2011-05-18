@@ -1,10 +1,12 @@
 package code
 package snippet
 
-import xml.NodeSeq
+import net.liftweb.http.S
+import xml.{Text, NodeSeq}
 
 object MyFirstSnippet {
   def render(n: NodeSeq) = {
-    <p>My first snippet output</p>
+    val message = S.attr("message") openOr "<no message>"
+    <p>My first snippet output.  Message: '{Text(message)}'</p>
   }
 }
