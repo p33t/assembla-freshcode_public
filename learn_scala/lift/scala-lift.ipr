@@ -383,6 +383,14 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/beanshell/bsh/2.0b4/bsh-2.0b4-sources.jar!/" />
       </SOURCES>
     </library>
+    <library name="Maven: org.scala-lang:scala-compiler-bundle:2.8.1">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-compiler/2.8.1/scala-compiler-2.8.1.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-library/2.8.1/scala-library-2.8.1.jar!/" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES />
+    </library>
     <library name="Maven: org.scala-lang:scala-compiler-bundle:WrappedArray(2.8.1)">
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-compiler/2.8.1/scala-compiler-2.8.1.jar!/" />
@@ -400,6 +408,7 @@
       </JAVADOC>
       <SOURCES>
         <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-library/2.8.1/scala-library-2.8.1-sources.jar!/" />
+        <root url="file://$USER_HOME$/devsw/scala-2.8.1.final/scala-2.8.1.final-sources/src/library" />
       </SOURCES>
     </library>
     <library name="Maven: org.scalatest:scalatest:1.3">
