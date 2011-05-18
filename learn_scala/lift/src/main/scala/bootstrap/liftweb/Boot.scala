@@ -9,6 +9,7 @@ import code.lib.{MyEasyStatelessDispatch, MyStatelessDispatch}
 import sitemap.{Loc, SiteMap, Menu, **}
 import Loc._
 import widgets.menu.MenuWidget
+import widgets.tree.TreeView
 
 // NOTE: ** is red because Intellij has a bug.
 
@@ -17,7 +18,7 @@ import widgets.menu.MenuWidget
  * to modify lift's environment
  */
 class Boot extends Loggable {
-  def boot {
+  def boot() {
     logger.info("Starting bootstrap...")
     // LiftRules singleton provides configuration but is only mutable at boot time.
     LiftRules.early.append(_.setCharacterEncoding("UTF-8"))
@@ -69,7 +70,8 @@ class Boot extends Loggable {
     // each page, just comment this line out.
     //        LiftRules.setSiteMap(siteMap)
     LiftRules.setSiteMapFunc(siteMap _)
-    MenuWidget.init
+    MenuWidget.init()
+    TreeView.init()
 
     //Show the spinny image when an Ajax call starts
     LiftRules.ajaxStart =
