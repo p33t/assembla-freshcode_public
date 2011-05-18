@@ -3,24 +3,21 @@ package code.snippet
 import net.liftweb.util._
 import Helpers._
 import xml._
+import org.scalatest.tools.PresentInfoProvided
 
 object CssSelectDemo {
   private val pretty = new PrettyPrinter(80, 2)
 
   def echo(in: NodeSeq): NodeSeq = {
-    in ++ <pre>
-      {Text(in.toString())}
-    </pre>
+    in ++ pre(in)
   }
 
   case class TestItem(in: NodeSeq, selector: String, arg: NodeSeq, result: NodeSeq, desc: String)
 
   def table(in: NodeSeq): NodeSeq = {
     def nsCell(ns: NodeSeq) = {
-      // Trying to prevent extra whitespace inside a 'pre'
-      val pre = ("* *" #> Text(pretty.formatNodes(ns)))(<pre/>)
       <td>
-        {pre}
+        {pre(ns)}
       </td>
     }
 
@@ -38,34 +35,11 @@ object CssSelectDemo {
     </table>
   }
 
-  private def tests: Seq[TestItem] = {
-    val in = <a attr="attrVal">
-        <b1 attr="b1attr"/>
-        <b2 attr="b2attr"/>
-    </a>
-    test(in, "*", <c/>, "Retain top attributes only") ::
-      test(in, "* *", <c/>, "Replace children") ::
-      test(in, "* ^*", Text("Doesn't matter"), "Elevate children (arg ignored)") ::
-      test(in, "* ^^", Text("Doesn't matter"), "Noop (arg ignored)") ::
-      Nil
-  }
-
-  def run(in: NodeSeq, selector: String, arg: NodeSeq): NodeSeq = {
-    (selector #> arg)(in)
-  }
-
-  private def test(in: NodeSeq, selector: String, arg: NodeSeq, desc: String) = {
-    val result = run(in, selector, arg)
-    TestItem(in, selector, arg, result, desc)
-  }
-
-  def main(args: Array[String]) {
-    println(tests)
-
-    println("Compound?")
+  def childBonusClass(in: NodeSeq): NodeSeq = {
     val in = <a1 a1-attr="a1-attr">
         <a1b1 a1b1-attr="a1b1-attr"/>
-    </a1> ++ 
+    </a1>
+    val in2 = in ++
       <a2 a2-attr="a2-attr">
           <a2b1 a2b1-attr="a2b1-attr"/>
       </a2>
@@ -78,7 +52,34 @@ object CssSelectDemo {
       ("* *" #> altChildren)(in)
     }
 
-    val out = bonusAttribOnChildren(in)
-    println(pretty.formatNodes(out))
+    <p>Simple case: Seems to work fine</p> ++ pre(in) ++
+      <p>Becomes</p> ++ pre(bonusAttribOnChildren(in)) ++
+      <p>Complex case not so much...</p> ++ pre(in2) ++
+      <p>Becomes</p> ++ pre(bonusAttribOnChildren(in2))
+
+  }
+
+  // Trying to prevent extra whitespace inside a 'pre'
+  private def pre(ns: NodeSeq) = ("* *" #> Text(pretty.formatNodes(ns)))(<pre/>)
+
+  private def tests: Seq[TestItem] = {
+    val in = <a attr="attrVal">
+        <b1 attr="b1attr"/>
+        <b2 attr="b2attr"/>
+    </a>
+    test(in, "*", <c/>, "Retain top attributes only") ::
+      test(in, "* *", <c/>, "Replace children") ::
+      test(in, "* ^*", Text("Doesn't matter"), "Elevate children (arg ignored)") ::
+      test(in, "* ^^", Text("Doesn't matter"), "Noop (arg ignored)") ::
+      Nil
+  }
+
+  private def test(in: NodeSeq, selector: String, arg: NodeSeq, desc: String) = {
+    val result = (selector #> arg)(in)
+    TestItem(in, selector, arg, result, desc)
+  }
+
+  def main(args: Array[String]) {
+    println(tests)
   }
 }
