@@ -10,6 +10,16 @@
         function feedback(msg) {
             $('#feedback').text(msg.concat(' (', new Date().toISOString(), ')'));
         }
+
+// This didn't work because $(this) is context dependent... it resolves differently depending on where it is used!
+//        function clickMsg(selector, callback) {
+//            $(selector).click(function(evt) {
+//                evt.preventDefault();
+//                var msg = callback(evt);
+//                if (msg) feedback(msg)
+//            });
+//        }
+
         $(document).ready(function() {
             $('#byId').click(function(event) {
                 event.preventDefault();
