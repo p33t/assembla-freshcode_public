@@ -47,6 +47,9 @@
                 feedback(msg);
             });
 
+            // NOTE: Safe handling if item is not found
+            $('#impossibleId').show();
+
             feedback('Finished doc-ready.');
         });
     </script>
