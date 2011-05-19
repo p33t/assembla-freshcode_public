@@ -11,14 +11,14 @@
             $('#feedback').text(msg.concat(' (', new Date().toISOString(), ')'));
         }
 
-// This didn't work because $(this) is context dependent... it resolves differently depending on where it is used!
-//        function clickMsg(selector, callback) {
-//            $(selector).click(function(evt) {
-//                evt.preventDefault();
-//                var msg = callback(evt);
-//                if (msg) feedback(msg)
-//            });
-//        }
+        // This didn't work because $(this) is context dependent... it resolves differently depending on where it is used!
+        //        function clickMsg(selector, callback) {
+        //            $(selector).click(function(evt) {
+        //                evt.preventDefault();
+        //                var msg = callback(evt);
+        //                if (msg) feedback(msg)
+        //            });
+        //        }
 
         $(document).ready(function() {
             $('#byId').click(function(event) {
@@ -35,8 +35,16 @@
             });
             $('#testHidden').click(function(evt) {
                 evt.preventDefault();
-                if ($('#clickToHide').is(':hidden')) feedback('Its hidden');
+                if ($('#clickToHide').is(':hidden')) {
+                    feedback('Its hidden');
+                    $('#unhide').show('slow');
+                }
                 else feedback('Its NOT hidden')
+            });
+            $('#unhide').click(function(evt) {
+                evt.preventDefault();
+                $('#clickToHide').show('slow');
+                $('#unhide').hide("slow");
             });
             $('#examineClass').click(function(event) {
                 event.preventDefault();
@@ -71,7 +79,8 @@
     <a id='byId' href='#'>By Id</a><br/>
     <a class='byClass' href='#'>By Class</a><br/>
     <a id="clickToHide" href='#'>Click To Hide</a><br/>
-    <a id="testHidden" href='#'>Test Hidden</a><br/>
+    <!--NOTE: id's are case sensitive !!!!-->
+    <a id="testHidden" href='#'>Test Hidden</a> <a style="display:none" id="unhide" href="#">Unhide</a><br/>
     <a id="examineClass" class="firstClass secondClass" href='#'>Test For Class</a><br/>
     <a id="testExists" href='#'>Test Exists</a><br/>
 </p>
