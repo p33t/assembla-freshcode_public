@@ -7,22 +7,34 @@
     <style>
     </style>
     <script>
+        function feedback(msg) {
+            $('#feedback').text(msg.concat(' (', new Date().toISOString(), ')'));
+        }
         $(document).ready(function() {
             $('#byId').click(function(event) {
                 event.preventDefault();
-                $(this).hide("slow")
+                feedback('This event handler was set using the #anId css selector')
             });
             $('.byClass').click(function(event) {
                 event.preventDefault();
-                $(this).hide("fast")
-            })
+                feedback('This event handler was set using the .aClass css selector')
+            });
+            $('#clickToHide').click(function(event) {
+                event.preventDefault();
+                $(this).hide("slow");
+            });
+
+            feedback('Finished doc-ready.');
         });
     </script>
 </head>
 <body>
+<p id='feedback'>(none)</p>
+
 <p>
     <a id='byId' href='#'>By Id</a><br/>
     <a class='byClass' href='#'>By Class</a><br/>
+    <a id="clickToHide" href='#'>Click To Hide</a><br/>
 </p>
 <hr/>
 </body>
