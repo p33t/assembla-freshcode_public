@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Demo</title>
+    <script src="jquery.js"></script>
+    <style>
+    </style>
+    <script>
+        $(document).ready(function() {
+            $('#byId').click(function(event) {
+                event.preventDefault();
+                $(this).hide("slow")
+            });
+        });
+    </script>
+</head>
+<body>
+<p>
+    <a id='byId' href='#'>By Id</a>
+</p>
+</body>
+</html>
