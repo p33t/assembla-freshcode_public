@@ -36,6 +36,14 @@
         function slideDown() {
             target().slideDown('slow');
         }
+        function combo() {
+            // I don't really understand this.  Its from jquery doco.
+            target().animate({
+                        opacity: 0.25,
+                        left: '+=50',
+                        height: 'toggle'
+                    }, 5000)
+        }
     </script>
 </head>
 <body>
@@ -50,6 +58,7 @@
     <a href='#' onclick='hidex(); return false;'>hide</a>
     <a href='#' onclick='slideUp(); return false;'>slideUp</a>
     <a href='#' onclick='slideDown(); return false;'>slideDown</a>
+    <a href='#' onclick='combo(); return false;'>combination</a>
 </p>
 <p>
     Nunc mi nibh, ullamcorper sit amet laoreet ac, dapibus sed felis. Donec nec magna vitae ligula tempus consequat.
