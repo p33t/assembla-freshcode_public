@@ -39,6 +39,13 @@
 
                 feedback(msg);
             });
+            $('#testExists').click(function(evt) {
+                evt.preventDefault();
+                var msg = 'Test Exists: ';
+                if ($('#clickToHide').length) msg = msg.concat('#clickToHide exists');
+                if ($('#impossibleId').length) msg = msg.concat(', NOT GOOD!!!!!');
+                feedback(msg);
+            });
 
             feedback('Finished doc-ready.');
         });
@@ -53,6 +60,7 @@
     <a id="clickToHide" href='#'>Click To Hide</a><br/>
     <a id="testHidden" href='#'>Test Hidden</a><br/>
     <a id="examineClass" class="firstClass secondClass" href='#'>Test For Class</a><br/>
+    <a id="testExists" href='#'>Test Exists</a><br/>
 </p>
 <hr/>
 </body>
