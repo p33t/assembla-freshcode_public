@@ -23,6 +23,17 @@
                 event.preventDefault();
                 $(this).hide("slow");
             });
+            $('#examineClass').click(function(event) {
+                event.preventDefault();
+                var msg = 'Test For Class:';
+                if ($(this).hasClass('firstClass')) msg = msg.concat(', firstClass found');
+                if ($(this).hasClass('secondClass')) msg = msg.concat(', secondClass found');
+
+                if ($(this).is('.firstClass')) msg = msg.concat(', firstClass found again');
+                if ($(this).is('.secondClass')) msg = msg.concat(', secondClass found again');
+
+                feedback(msg);
+            });
 
             feedback('Finished doc-ready.');
         });
@@ -35,6 +46,7 @@
     <a id='byId' href='#'>By Id</a><br/>
     <a class='byClass' href='#'>By Class</a><br/>
     <a id="clickToHide" href='#'>Click To Hide</a><br/>
+    <a id="examineClass" class="firstClass secondClass" href='#'>Test For Class</a><br/>
 </p>
 <hr/>
 </body>
