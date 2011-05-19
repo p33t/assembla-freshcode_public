@@ -105,5 +105,24 @@
     <a id='ajaxFetch' href='#'>Fetch 'some.json'</a><br/>
 </p>
 <hr/>
+<h3>Extra Notes</h3>
+
+<p>jQuery objects are an array-like wrapper around the <strong>actual DOM objects</strong>. The actual DOM objects can
+    be obtained using array syntax like '[0]'.
+    The array of original DOM objects is returned with 'get' (so get(0) works but is slower).
+</p>
+
+<p>Event handlers are bound to object instances in the DOM tree. When ajax is used to replace or add new objects, the
+    <strong>events handlers are not automatically rebound</strong>.
+    There are a number of techniques available to address this issue.<br/>
+    These include 'live/die' methods (as of 1.3), event delegation with 'delegate/undelegate' methods (as of 1.4).
+    The 'bind' method is a lower level way to bind event handlers with DOM tree elements.
+</p>
+
+<p>Animations show, hide, slideUp and slideDown <strong>require 'block' style elements</strong> and will change the
+    target object if necessary for the duration of an animation. If the resulting side affects are undesirable then use
+    the fadeIn or fadeOut, which do not require 'block' style elements. Alternatively, the target object can be
+    permanently changed to a block style and 'floated' to appear inline.
+</p>
 </body>
 </html>
