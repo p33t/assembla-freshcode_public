@@ -14,10 +14,43 @@
     </style>
     <script src="jquery.js"></script>
     <script>
-
+        function target() {
+            var id = $('#targetId').val();
+            return $(id);
+        }
+        function fadeOut() {
+            target().fadeOut('slow');
+        }
+        function fadeIn() {
+            target().fadeIn('slow');
+        }
+        function showx() {
+            target().show('slow');
+        }
+        function hidex() {
+            target().hide('slow');
+        }
+        function slideUp() {
+            target().slideUp('slow');
+        }
+        function slideDown() {
+            target().slideDown('slow');
+        }
     </script>
 </head>
 <body>
+<p>
+    <label for="targetId">Target: </label><select id="targetId">
+    <option value="#para">Paragraph</option>
+    <option value="#sentence">Sentence</option>
+</select>
+    <a href='#' onclick='fadeOut(); return false;'>fadeOut</a>
+    <a href='#' onclick='fadeIn(); return false;'>fadeIn</a>
+    <a href='#' onclick='showx(); return false;'>show</a>
+    <a href='#' onclick='hidex(); return false;'>hide</a>
+    <a href='#' onclick='slideUp(); return false;'>slideUp</a>
+    <a href='#' onclick='slideDown(); return false;'>slideDown</a>
+</p>
 <p>
     Nunc mi nibh, ullamcorper sit amet laoreet ac, dapibus sed felis. Donec nec magna vitae ligula tempus consequat.
     Nulla laoreet libero ac enim aliquet nec lacinia enim pretium. Duis aliquet ultricies tortor eget convallis. Donec
@@ -32,8 +65,8 @@
 
 <p id="para">
     Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi porta lobortis quam
-    sed varius. Aenean consequat malesuada aliquet. <span id="sentence">Cras nibh tellus, congue ut sollicitudin sed, eleifend vel augue!
-    Fusce consequat lobortis mauris eu suscipit</span>. Suspendisse semper interdum nibh nec accumsan. Cras orci risus,
+    sed varius. Aenean consequat malesuada aliquet.<span id="sentence"> Cras nibh tellus, congue ut sollicitudin sed, eleifend vel augue!
+    Fusce consequat lobortis mauris eu suscipit.</span> Suspendisse semper interdum nibh nec accumsan. Cras orci risus,
     accumsan a scelerisque dictum; rutrum at erat! Morbi eu leo mi, sit amet lacinia diam. Aliquam sit amet tempus nibh.
     Aenean pharetra magna a odio vulputate sed luctus urna lacinia. Vivamus bibendum placerat nulla.
 </p>
