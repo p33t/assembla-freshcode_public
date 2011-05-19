@@ -65,6 +65,14 @@
                 if ($('#impossibleId').length) msg = msg.concat(', NOT GOOD!!!!!');
                 feedback(msg);
             });
+            $('#enableIp').click(function(evt) {
+                evt.preventDefault();
+                $('#ip').removeAttr('disabled')
+            });
+            $('#disableIp').click(function(evt) {
+                evt.preventDefault();
+                $('#ip').attr('disabled', 'disabled')
+            });
 
             // NOTE: Safe handling if item is not found
             $('#impossibleId').show();
@@ -84,6 +92,7 @@
     <a id="testHidden" href='#'>Test Hidden</a> <a style="display:none" id="unhide" href="#">Unhide</a><br/>
     <a id="examineClass" class="firstClass secondClass" href='#'>Test For Class</a><br/>
     <a id="testExists" href='#'>Test Exists</a><br/>
+    <a id='enableIp' href='#'>Enable</a> <a id='disableIp' href='#'>Disable</a> <label for="ip">Input: </label><input type="text" id="ip"/><br/>
 </p>
 <hr/>
 </body>
