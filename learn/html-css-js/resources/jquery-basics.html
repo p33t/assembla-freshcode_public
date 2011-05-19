@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Demo</title>
+    <style>
+        a.test {
+            font-weight: bold;
+        }
+        
+    </style>
+</head>
+<body>
+<a href="http://jquery.com/">jQuery</a><br/>
+<a href="http://jquery.com/">jQuery</a><br/>
+<!-- Check it out.  jQuery is just one file. -->
+<script src="jquery.js"></script>
+
+<script>
+    // This is WRONG!  It waits until all images etc are loaded.
+    //        window.onload = function(){ alert("welcome"); }
+
+    $(document).ready(function() {
+        $("a").click(function(event) {
+            event.preventDefault();
+               $(this).hide("slow");
+        });
+
+        // adding a class to an element
+        $("a").addClass("test");
+// Can remove too!        $("a").removeClass("test");
+
+    });
+
+    /* NOTE: Need to use anonymous functions when providing callbacks that have args
+       EG: callThis(noArgFunct); // for no args
+           callThis(function() {oneArgFunct(someArg);});
+    */
+</script>
+</body>
+</html>
