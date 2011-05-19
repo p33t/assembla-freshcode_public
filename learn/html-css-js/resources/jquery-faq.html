@@ -35,7 +35,8 @@
             });
             $('#testHidden').click(function(evt) {
                 evt.preventDefault();
-                if ($('#clickToHide').is(':hidden')) {
+                if ($('#clickToHide:hidden').length) {
+// Alternate impl...  if ($('#clickToHide').is(':hidden')) {
                     feedback('Its hidden');
                     $('#unhide').show('slow');
                 }
