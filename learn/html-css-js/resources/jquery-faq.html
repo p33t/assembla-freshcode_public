@@ -12,12 +12,18 @@
                 event.preventDefault();
                 $(this).hide("slow")
             });
+            $('.byClass').click(function(event) {
+                event.preventDefault();
+                $(this).hide("fast")
+            })
         });
     </script>
 </head>
 <body>
 <p>
-    <a id='byId' href='#'>By Id</a>
+    <a id='byId' href='#'>By Id</a><br/>
+    <a class='byClass' href='#'>By Class</a><br/>
 </p>
+<hr/>
 </body>
 </html>
