@@ -23,6 +23,11 @@
                 event.preventDefault();
                 $(this).hide("slow");
             });
+            $('#testHidden').click(function(evt) {
+                evt.preventDefault();
+                if ($('#clickToHide').is(':hidden')) feedback('Its hidden');
+                else feedback('Its NOT hidden')
+            });
             $('#examineClass').click(function(event) {
                 event.preventDefault();
                 var msg = 'Test For Class:';
@@ -46,6 +51,7 @@
     <a id='byId' href='#'>By Id</a><br/>
     <a class='byClass' href='#'>By Class</a><br/>
     <a id="clickToHide" href='#'>Click To Hide</a><br/>
+    <a id="testHidden" href='#'>Test Hidden</a><br/>
     <a id="examineClass" class="firstClass secondClass" href='#'>Test For Class</a><br/>
 </p>
 <hr/>
