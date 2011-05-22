@@ -44,6 +44,16 @@
                         height: 'toggle'
                     }, 2000)
         }
+
+        function combo2() {
+            // TODO: Fix this
+            alert('bugged');
+            target().fadeTo("slow", 0.01, function() { //fade
+                $(this).slideUp("slow", function() { //slide up
+                    $(this).opacity = 1.0; //then restore opacity
+                });
+            });
+        }
     </script>
 </head>
 <body>
@@ -59,6 +69,7 @@
     <a href='#' onclick='slideUp(); return false;'>slideUp</a>
     <a href='#' onclick='slideDown(); return false;'>slideDown</a>
     <a href='#' onclick='combo(); return false;'>combination</a>
+    <a href='#' onclick='combo2(); return false;'>combination II</a>
 </p>
 <p>
     Nunc mi nibh, ullamcorper sit amet laoreet ac, dapibus sed felis. Donec nec magna vitae ligula tempus consequat.
