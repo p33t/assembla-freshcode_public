@@ -1,16 +1,14 @@
 package code.snippet
 
 import net.liftweb._
-import common.Empty
-import http.js.JE.JsRaw
 import http.js.jquery.JqWiringSupport
-import http.js.JsCmds.CmdPair
 import http.js.{JsCmd, JsCmds}
-import net.liftweb.http.js.JsCmds._
+import JsCmds._
 import http.{WiringUI, SHtml}
 import util._
 import Helpers._
 import xml.Text
+import java.util.Date
 
 object AjaxDemo {
   // TODO: Change this to XML type (not string :)
@@ -23,6 +21,11 @@ object AjaxDemo {
   }
 
   def basic() = {
-    "href=# [onclick]" #>  List(Alert("Yay!"), JsReturn(false)).toJsCmd
+    val invoke = SHtml.ajaxInvoke {
+      () =>
+        feedbackCell.set("You clicked at" + new Date)
+        Noop
+    }
+    "href=# [onclick]" #> invoke._2.toJsCmd //List(Alert("Yay!"), JsReturn(false)).toJsCmd
   }
 }
