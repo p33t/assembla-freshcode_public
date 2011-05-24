@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Content After</title>
+    <script type="text/javascript">
+        function testFunction(param) {
+            console.log('test function: '.concat(param));
+        }
+    </script>
+    <style type="text/css">
+        #theSpan:after {
+            content: url('treeview/images/file.gif');
+        }
+
+        #anotherSpan:after {
+            content: ' (id is ' attr(id) ')';
+        }
+
+        /* I don't think this will ever work. */
+        #yetAnotherSpan:after {
+            content: '<a href="#" onclick="alert(\'hi\'); return false">Hi</a>';
+        }
+    </style>
+</head>
+<body>
+<h2>Trying to get add content to a span</h2>
+<span id='theSpan'>Span Text</span><br/>
+<span id='anotherSpan'>Another Span Text</span><br/>
+<span id='yetAnotherSpan'>Yet Another Span Text</span><br/>
+</body>
+</html>
