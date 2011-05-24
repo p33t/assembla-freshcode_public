@@ -13,7 +13,7 @@ import net.liftweb.http.{WiringUI, SHtml}
 object FormCellWireAjax {
   val theCell = ValueCell("Not Set")
 
-  def updateForm = {
+  def updateForm() = {
     var newValue = ""
     def process: JsCmd = {
       // pause for effect
