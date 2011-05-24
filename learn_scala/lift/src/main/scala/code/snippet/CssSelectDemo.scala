@@ -71,6 +71,8 @@ object CssSelectDemo {
       test(in, "* *", <c/>, "Replace children") ::
       test(in, "* ^*", Text("Doesn't matter"), "Elevate children (arg ignored)") ::
       test(in, "* ^^", Text("Doesn't matter"), "Noop (arg ignored)") ::
+      test(in, "b1 [onclick]", Text("alert('click'); return false;"), "bind a javascript call to an element") ::
+// Nope...     test(in, "b1 attr=b1attr [onclick]", Text("alert('click'); return false;"), "'' but more specialized") ::
       Nil
   }
 
