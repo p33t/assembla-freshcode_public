@@ -11,16 +11,21 @@
         <script src="jquery.treeview.edit.js" type="text/javascript"></script>
         <link rel="stylesheet" href="jquery.treeview.css"/>
         <script type="text/javascript">
+            function treeNodeFunction(path) {
+                console.log('Click on '.concat(path));
+            }
+
             $(function() {
                 $('#theTree').treeview({collapsed: true});
+                $('#liftBackedTree').treeview({collapsed: true});
             })
         </script>
         <style type="text/css">
-            /* Fancy fonts for the tree */
-            #theTree {
+                /* Fancy fonts for the tree */
+            #theTree, #liftBackedTree {
                 font-family: Verdana, helvetica, arial, sans-serif;
                 font-size: 68.75%;
-              }
+            }
         </style>
     </head_merge>
 
@@ -41,6 +46,24 @@
         <li>Tree Item 2</li>
         <li><span class='file'>Tree Item 3</span></li>
     </ul>
+
+    <h2>This one will be populated from lift</h2>
+
+    <div class='lift:TreeviewDemo'>
+        <ul id='liftBackedTree' class='filetree'>
+            <li><span class='file'>[A File]
+                <a href='#' onclick='treeNodeFunction("someFilePath"); return false;'>(view)</a></span>
+            </li>
+            <li>
+                <span class='folder'>[A Folder]
+                    <a href='#' onclick='treeNodeFunction("anotherFolderPath"); return false;'>(view)</a>
+                </span>
+                <ul>
+                    <li><span class='file'>Another file</span></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
 </div>
 </body>
 </html>
