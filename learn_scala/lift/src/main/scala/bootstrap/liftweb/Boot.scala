@@ -50,7 +50,8 @@ class Boot extends Loggable {
           Menu.i("Notice") / "experiments" / "notice",
           Menu.i("Redirection") / "experiments" / "redirect",
           Menu.i("Formatting") / "experiments" / "formatting",
-          Menu.i("Treeview") / "experiments" / "treeview" / **
+          Menu.i("Treeview") / "experiments" / "treeview" / **,
+          Menu.i("Ajax") / "experiments" / "ajax"
           ),
         Menu.i("Wildcard Permissions") / "wildcards" submenus (
           //          Is nesting good here?
