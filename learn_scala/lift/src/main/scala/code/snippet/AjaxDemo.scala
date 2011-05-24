@@ -7,25 +7,24 @@ import JsCmds._
 import http.{WiringUI, SHtml}
 import util._
 import Helpers._
-import xml.Text
 import java.util.Date
+import xml.Text
+import java.lang.Thread
 
 object AjaxDemo {
-  // TODO: Change this to XML type (not string :)
-  val feedbackCell = ValueCell("default message");
+  val feedbackCell = ValueCell(<p>default message</p>);
 
   def feedback() = {
-    "*" #> WiringUI.toNode(feedbackCell, JqWiringSupport.fade)((str, in) => <p>
-      {Text(str)}
-    </p>)
+    "*" #> WiringUI.toNode(feedbackCell, JqWiringSupport.fade)((xml, in) => xml)
   }
 
   def basic() = {
-    val invoke = SHtml.ajaxInvoke {
+    val (_, invoker) = SHtml.ajaxInvoke {
       () =>
-        feedbackCell.set("You clicked at" + new Date)
+        Thread.sleep(800)
+        feedbackCell.set(<p>{Text("You clicked at " + new Date)}</p>)
         Noop
     }
-    "href=# [onclick]" #> invoke._2.toJsCmd //List(Alert("Yay!"), JsReturn(false)).toJsCmd
+    "href=# [onclick]" #> List[JsCmd](invoker, JsReturn(false)).toJsCmd
   }
 }
