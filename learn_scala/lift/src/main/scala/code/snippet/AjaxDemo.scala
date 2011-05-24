@@ -13,6 +13,7 @@ import Helpers._
 import xml.Text
 
 object AjaxDemo {
+  // TODO: Change this to XML type (not string :)
   val feedbackCell = ValueCell("default message");
 
   def feedback() = {
