@@ -1,9 +1,11 @@
 <html>
 <head>
+    <!-- Import jquery directly for stand-alone usage.  It is bundled with lift and imported in the template. -->
     <script id="jquery" src="../../_jquery.js" type="text/javascript"></script>
 </head>
 <body class="lift:content_id=main">
 <div id="main" class="lift:surround?with=default;at=content">
+    <!-- Contents of 'head_merge' will me put in the header.  Firefox supports these outside the header. -->
     <head_merge>
         <script src="jquery.treeview.js" type="text/javascript"></script>
         <script src="jquery.treeview.edit.js" type="text/javascript"></script>
