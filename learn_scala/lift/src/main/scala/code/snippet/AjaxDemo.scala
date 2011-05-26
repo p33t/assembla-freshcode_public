@@ -9,10 +9,10 @@ import util._
 import Helpers._
 import java.util.Date
 import java.lang.Thread
-import xml.{Text, NodeSeq}
+import xml.{Node, Elem, Text, NodeSeq}
 
 object AjaxDemo {
-  val feedbackCell = ValueCell(<p>default message</p>);
+  val feedbackCell = ValueCell[NodeSeq](<p>default message</p>);
 
   def feedback() = {
     "*" #> WiringUI.toNode(feedbackCell, JqWiringSupport.fade)((xml, in) => xml)
@@ -35,16 +35,26 @@ object AjaxDemo {
     }
   }
 
-  private def onclick(msg: String): String = {
+  def tables(in: NodeSeq): NodeSeq = {
+    val render = ".cellText *" #> "Custom Cell Text"
+    val content = render(in)
+    <a href='#' onclick={Text(onclickNode(content))}>Display Table</a>
+  }
+
+  def onclickNode(content: NodeSeq): String = {
     val (_, invoker) = SHtml.ajaxInvoke {
       () =>
         Thread.sleep(800)
-        feedbackCell.set(<p>
-          {Text(msg)}
-        </p>)
+        feedbackCell.set(content)
         Noop
     }
-    invoker
     List[JsCmd](invoker, JsReturn(false)).toJsCmd
+  }
+
+  private def onclick(msg: String): String = {
+    val content = <p>
+      {Text(msg)}
+    </p>
+    onclickNode(content)
   }
 }
