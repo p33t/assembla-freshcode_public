@@ -59,6 +59,18 @@ object CssSelectDemo {
 
   }
 
+  def nesting(ignored: NodeSeq): NodeSeq = {
+    val in = <a href='#'>[Some Text]</a> ++ <br/>
+
+    val render = "href=#" #> (
+      "* [onclick]" #> Text("onclick val") & "* *" #> Text("Real Text")
+      )
+
+    <p>Hopefully this renders with line breaks...</p> ++
+      <p>Before</p> ++ pre(in) ++
+      <p>After</p> ++ pre(render(in))
+  }
+
   // Trying to prevent extra whitespace inside a 'pre'
   private def pre(ns: NodeSeq) = ("* *" #> Text(pretty.formatNodes(ns)))(<pre/>)
 
@@ -71,8 +83,8 @@ object CssSelectDemo {
       test(in, "* *", <c/>, "Replace children") ::
       test(in, "* ^*", Text("Doesn't matter"), "Elevate children (arg ignored)") ::
       test(in, "* ^^", Text("Doesn't matter"), "Noop (arg ignored)") ::
-      test(in, "b1 [onclick]", Text("alert('click'); return false;"), "bind a javascript call to an element") ::
-// Nope...     test(in, "b1 attr=b1attr [onclick]", Text("alert('click'); return false;"), "'' but more specialized") ::
+      test(in, "b1 [onclick]", Text("onclick val"), "bind a javascript call to an element") ::
+      // Nope...     test(in, "b1 attr=b1attr [onclick]", Text("alert('click'); return false;"), "'' but more specialized") ::
       Nil
   }
 
