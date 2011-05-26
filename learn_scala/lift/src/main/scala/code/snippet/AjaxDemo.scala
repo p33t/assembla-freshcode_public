@@ -27,10 +27,11 @@ object AjaxDemo {
 
     elems.flatMap {
       elem =>
-        // TODO: Can we nest?
-        val f = "href=# [onclick]" #> onclick("You clicked on " + elem) &
-          "href=# *" #> Text(" Item " + elem)
-        f(in)
+        val render = "href=#" #> (
+          "* [onclick]" #> onclick("You clicked on " + elem) &
+            "* *" #> ("Item " + elem.toString)
+          )
+        render(in)
     }
   }
 
