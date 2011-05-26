@@ -3,7 +3,6 @@ package code.snippet
 import net.liftweb.util._
 import Helpers._
 import xml._
-import org.scalatest.tools.PresentInfoProvided
 
 object CssSelectDemo {
   private val pretty = new PrettyPrinter(80, 2)
