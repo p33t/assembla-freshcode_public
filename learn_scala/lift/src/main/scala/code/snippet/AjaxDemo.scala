@@ -22,16 +22,15 @@ object AjaxDemo {
     "href=# [onclick]" #> onclick("You clicked at " + new Date)
   }
 
-  def multi() = {
-    // TODO: Figure out line breaks.
+  def multi(in: NodeSeq): NodeSeq = {
     val elems = Range(1, 10)
-    "href=#" #> {
-      (in: NodeSeq) =>
-        require(in.length == 1, "Only one href=# element expected.")
-        elems.flatMap {
-          elem =>
-            ("* *" #> Text(" Item " + elem) & "* [onclick]" #> onclick("You clicked on " + elem))(in)
-        }
+
+    elems.flatMap {
+      elem =>
+        // TODO: Can we nest?
+        val f = "href=# [onclick]" #> onclick("You clicked on " + elem) &
+          "href=# *" #> Text(" Item " + elem)
+        f(in)
     }
   }
 
