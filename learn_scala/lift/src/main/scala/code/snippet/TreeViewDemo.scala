@@ -12,12 +12,20 @@ object TreeViewDemo {
     def fileNode(name: String) = {
       (".sampleText" #> name)(sampleFile)
     }
-    // TODO: Add folders and nesting.
-    def folderNode(name: String, contents: NodeSeq) {
-      (".sampleText" #> name & "* *+" #> contents)(sampleFolder)
+    def folderNode(name: String, contents: NodeSeq = NodeSeq.Empty) = {
+      var out = (".sampleText" #> name)(sampleFolder)
+      if (!contents.isEmpty) out = ("* *+" #> <ul>
+        {contents}
+      </ul>)(out)
+      out
     }
     val funct = "ul *" #> (
-      fileNode("file 1")
+      fileNode("file 1") ++
+        folderNode("folder 1 is empty") ++
+        folderNode("folder 2",
+          fileNode("file 2") ++
+            fileNode("file 3")
+        )
       )
     funct(in)
   }
