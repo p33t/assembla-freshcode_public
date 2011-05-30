@@ -1,9 +1,9 @@
 package pkg
 
-
 object Enums {
 
   object Direction extends Enumeration {
+    // These are of type Direction.Value
     val North, South = Value
   }
 
