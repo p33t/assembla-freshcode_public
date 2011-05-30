@@ -2,6 +2,7 @@ package pkg
 
 /**
  * Remember that Assertions can be enabled / disabled using JVM flags.
+ * See also http://subversion.assembla.com/svn/freshcode_public/learn_scala/testing
  */
 object ErrorCheck {
   val One = 1
