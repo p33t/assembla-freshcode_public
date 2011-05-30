@@ -10,25 +10,27 @@ object SingletonInit {
   def main(args: Array[String]) {
     param = "After"
     // Unfortunately need to put () at each usage.
-    require(FirstAttempt().theString == "After")
-    require(SecondAttempt.second.theString() == "After")
+    require(Singleton1().theString == "After")
+    import Singleton2.second
+    second // This causes the initialisation 
+    require(second.theString() == "After")
     println(this + " works!")
   }
 
-  class FirstAttempt private (s: String) {
+  class Singleton1 private (s: String) {
     def theString() = s
   }
 
-  object FirstAttempt {
-    private lazy val INSTANCE = new FirstAttempt(param)
+  object Singleton1 {
+    private lazy val INSTANCE = new Singleton1(param)
     def apply() = INSTANCE
   }
 
-  class SecondAttempt private (s: String) {
+  class Singleton2 private (s: String) {
     def theString() = s
   }
 
-  object SecondAttempt {
-    lazy val second = new SecondAttempt(param)
+  object Singleton2 {
+    lazy val second = new Singleton2(param)
   }
 }
