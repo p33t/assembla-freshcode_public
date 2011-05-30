@@ -1,5 +1,8 @@
 package pkg
 
+/**
+ * Remember that Assertions can be enabled / disabled using JVM flags.
+ */
 object ErrorCheck {
   val One = 1
   val Two = 2
