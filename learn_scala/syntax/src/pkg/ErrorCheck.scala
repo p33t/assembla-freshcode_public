@@ -11,21 +11,21 @@ object ErrorCheck {
   }
 
   private def requireCheck() {
-    expect(require(One > Two, "Still as expected"), _.isInstanceOf[IllegalArgumentException])
+    expect[IllegalArgumentException](require(One > Two, "Still as expected"))
   }
 
   private def assertCheck() {
-    expect(assert(One > Two, "Naturally, one is not greater than two"), _.isInstanceOf[AssertionError])
+    expect[AssertionError](assert(One > Two, "Naturally, one is not greater than two"))
   }
 
-  private def expect(op: => Unit, allowable: Throwable => Boolean) {
+  private def expect[T](op: => Unit) {
     var didPop = true
     try {
       op
       didPop = false
     }
     catch {
-      case e: Throwable => if (!allowable(e)) throw e
+      case e: Throwable => if (!e.isInstanceOf[T]) throw e
     }
     require(didPop, "Expression did not result in an exception.")
   }
