@@ -7,7 +7,12 @@ object ErrorCheck {
   def main(args: Array[String]) {
     assertCheck()
     requireCheck()
+    ensureCheck()
     println(this + " works")
+  }
+
+  private def ensureCheck() {
+    expect[AssertionError](One.ensuring(_ > Two, "And still it continues"))
   }
 
   private def requireCheck() {
