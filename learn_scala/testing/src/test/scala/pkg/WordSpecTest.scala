@@ -16,4 +16,12 @@ class WordSpecTest extends WordSpec with MustMatchers {
       "be blank" in {}
     }
   }
+
+  // 'it' is not available (?!)
+  "A file path again?" must never {
+    // It looks like these can be switched around but output is messed up a little.
+    "be blank" when {
+      "ever" in {}
+    }
+  }
 }
