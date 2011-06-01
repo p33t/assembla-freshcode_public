@@ -1,0 +1,75 @@
+<html>
+<head>
+
+</head>
+<body class="lift:content_id=main">
+<div id="main" class="lift:surround?with=default;at=content">
+    <head_merge>
+        <style type="text/css">
+            .rosterTable {
+                background: rgb(191, 191, 191);
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: x-small;
+            }
+
+            .rosterTable td {
+                background: rgb(242, 242, 242);
+            }
+
+            .rosterTable th, td {
+                text-align: center;
+                padding: .5em;
+            }
+
+            .rosterTable .hoursCell {
+                background: rgb(227, 108, 10);
+            }
+
+            .rosterTable .headerRow, .rosterTable .crewCell, .rosterTable .weekCell {
+                background: rgb(255, 192, 0);
+            }
+
+        </style>
+    </head_merge>
+
+
+    <h2>Table for stand alone AND lift backed</h2>
+    <table class='rosterTable'>
+        <tr class='headerRow'>
+            <th class='crewCell'>
+                Crew
+            </th>
+            <th class='weekCell'>
+                Week
+            </th>
+            <th>
+                M
+            </th>
+            <th>
+                T
+            </th>
+            <th>
+                Roster<br/>Hours
+            </th>
+        </tr>
+        <tr>
+            <td class='crewCell'>
+                A
+            </td>
+            <td class='weekCell'>
+                1
+            </td>
+            <td>
+                D
+            </td>
+            <td>
+                -
+            </td>
+            <td class='hoursCell'>
+                99
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
