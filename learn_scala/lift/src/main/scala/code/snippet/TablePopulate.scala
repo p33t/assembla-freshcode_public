@@ -16,7 +16,7 @@ object TablePopulate {
   val Rows = Range(1, (Crews.size * WeeksPerCrew) + 1)
   val Shifts = "ADN--" // Hmmm... it appears the parameter to Random.nextInt(Int) is actually exclusive.
 
-  // TODO: Figure out 'memoise'
+  // TODO: Figure out SHtml.memoize
   def render(in: NodeSeq): NodeSeq = {
     val headerTemplate = (".headerRow ^^" #> "")(in)
     val headerDays = Days.foldLeft(Empty) {(xml, day) => xml ++ <th>{day}</th>}
