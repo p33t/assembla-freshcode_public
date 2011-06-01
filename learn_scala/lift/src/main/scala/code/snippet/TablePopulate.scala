@@ -9,7 +9,6 @@ import util.Random
 object TablePopulate {
   val blank: Option[String] = None
   val removeIds = "* [id]" #> blank
-//    val tidyUp = removeIds
   val tidyUp = ClearClearable & removeIds
   val Days = "SMTWTFS"
   val Crews = "ABCDE"
