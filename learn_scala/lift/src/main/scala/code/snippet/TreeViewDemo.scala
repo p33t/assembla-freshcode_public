@@ -7,6 +7,7 @@ import xml._
 object TreeViewDemo {
 
   def render(in: NodeSeq): NodeSeq = {
+    // these are like little templates
     val sampleFile = (".sampleFile ^^" #> "")(in)
     val sampleFolder = (".sampleFolder ^^" #> "" & "ul" #> NodeSeq.Empty)(in) // clear out nested 'ul's
     def fileNode(name: String) = {
