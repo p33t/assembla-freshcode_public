@@ -14,7 +14,7 @@ object TablePopulate {
   val Crews = "ABCDE"
   val WeeksPerCrew = 2
   val Rows = Range(1, (Crews.size * WeeksPerCrew) + 1)
-  val Shifts = "ADN-"
+  val Shifts = "ADN--" // Hmmm... it appears the parameter to Random.nextInt(Int) is actually exclusive.
 
   // TODO: Figure out 'memoise'
   def render(in: NodeSeq): NodeSeq = {
