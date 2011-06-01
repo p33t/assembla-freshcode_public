@@ -20,8 +20,7 @@ object TablePopulate {
   def render(in: NodeSeq): NodeSeq = {
     val headerTemplate = (".headerRow ^^" #> "")(in)
     val headerDays = Days.foldLeft(Empty) {(xml, day) => xml ++ <th>{day}</th>}
-    val header = (".insertHere" #> headerDays &
-      tidyUp)(headerTemplate)
+    val header = (".insertHere" #> headerDays & tidyUp)(headerTemplate)
 
     val rowTemplate = ("#sampleRow ^^" #> "")(in)
     def rowContent(row: Int) = {
