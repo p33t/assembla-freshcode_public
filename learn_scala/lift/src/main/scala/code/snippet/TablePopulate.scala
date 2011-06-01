@@ -19,12 +19,12 @@ object TablePopulate {
   // TODO: Figure out SHtml.memoize
   def render(in: NodeSeq): NodeSeq = {
     val headerTemplate = (".headerRow ^^" #> "")(in)
-    val headerDays = Days.foldLeft(Empty) {(xml, day) => xml ++ <th>{day}</th>}
+    val headerDays = Days.map {day => <th>{day}</th>}
     val header = (".insertHere" #> headerDays & tidyUp)(headerTemplate)
 
     val rowTemplate = ("#sampleRow ^^" #> "")(in)
     def rowContent(row: Int) = {
-      val shiftCells = Days.foldLeft(Empty) {(xml, day) => xml ++ <td>{randomShift}</td>}
+      val shiftCells = Days.map {_ => <td> {randomShift} </td>}
       ("#sampleCrewCell *" #> crew(row) &
         "#sampleWeekCell *" #> row &
         "#sampleHoursCell *" #> Random.nextInt(99) &
