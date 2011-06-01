@@ -34,42 +34,45 @@
 
 
     <h2>Table for stand alone AND lift backed</h2>
-    <table class='rosterTable'>
-        <tr class='headerRow'>
-            <th class='crewCell'>
-                Crew
-            </th>
-            <th class='weekCell'>
-                Week
-            </th>
-            <th>
-                M
-            </th>
-            <th>
-                T
-            </th>
-            <th>
-                Roster<br/>Hours
-            </th>
-        </tr>
-        <tr>
-            <td class='crewCell'>
-                A
-            </td>
-            <td class='weekCell'>
-                1
-            </td>
-            <td>
-                D
-            </td>
-            <td>
-                -
-            </td>
-            <td class='hoursCell'>
-                99
-            </td>
-        </tr>
-    </table>
+
+    <div class="lift:TablePopulate">
+        <table class='rosterTable'>
+            <tr class='headerRow'>
+                <th class='crewCell'>
+                    Crew
+                </th>
+                <th class='weekCell'>
+                    Week
+                </th>
+                <th class='insertHere'>
+                    M
+                </th>
+                <th class='clearable'>
+                    T
+                </th>
+                <th>
+                    Roster<br/>Hours
+                </th>
+            </tr>
+            <tr id='sampleRow'>
+                <td id='sampleCrewCell' class='crewCell'>
+                    A
+                </td>
+                <td id='sampleWeekCell' class='weekCell'>
+                    1
+                </td>
+                <td class='insertHere'>
+                    D
+                </td>
+                <td class='clearable'>
+                    -
+                </td>
+                <td id='sampleHoursCell' class='hoursCell'>
+                    99
+                </td>
+            </tr>
+        </table>
+    </div>
 
     <p>&nbsp;</p>
 
