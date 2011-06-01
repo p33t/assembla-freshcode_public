@@ -23,9 +23,7 @@ object TreeViewDemo {
     def folderNode(name: String, contents: NodeSeq = NodeSeq.Empty) = {
       var out = (".sampleText" #> name &
         onclick(name))(sampleFolder)
-      if (!contents.isEmpty) out = ("* *+" #> <ul>
-        {contents}
-      </ul>)(out)
+      if (!contents.isEmpty) out = ("* *+" #> <ul>{contents}</ul>)(out)
       out
     }
     val funct = "ul *" #> (
