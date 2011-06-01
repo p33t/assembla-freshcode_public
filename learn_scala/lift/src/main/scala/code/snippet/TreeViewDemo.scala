@@ -3,13 +3,18 @@ package code.snippet
 import net.liftweb.util._
 import Helpers._
 import xml._
+import scala.None
 
 object TreeViewDemo {
+  val blank: Option[String] = None
 
   def render(in: NodeSeq): NodeSeq = {
     // these are like little templates
-    val sampleFile = (".sampleFile ^^" #> "")(in)
-    val sampleFolder = (".sampleFolder ^^" #> "" & "ul" #> NodeSeq.Empty)(in) // clear out nested 'ul's
+    val sampleFile = (".sampleFile ^^" #> "" & // lift template
+      ".sampleFile [class]" #> blank)(in) // erase 'sampleFile'
+    val sampleFolder = (".sampleFolder ^^" #> "" & // lift template
+      ".sampleFolder [class]" #> blank & // erase 'sampleFolder'
+      "ul" #> NodeSeq.Empty)(in) // clear out nested 'ul's
     def fileNode(name: String) = {
       (".sampleText" #> name)(sampleFile)
     }
