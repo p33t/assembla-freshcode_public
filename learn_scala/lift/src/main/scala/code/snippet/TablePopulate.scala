@@ -32,6 +32,8 @@ object TablePopulate {
         tidyUp)(rowTemplate)
     }
 
+    // NOTE: For some reason, using 'map' here doesn't work.  The implicit casting doesn't work.
+    // val body: NodeSeq = Rows.map(row => rowContent(row)).toList
     val body = Rows.foldLeft(Empty) {(xml, row) => xml ++ rowContent(row)}
     (".rosterTable *" #> (header ++ body))(in)
   }
