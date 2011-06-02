@@ -8,7 +8,7 @@ object EmbedDemo {
   val removeIds = "* [id]" #> blank
 
   def nested = {
-    // TODO: Use some sort of argument
+    // TODO: Use some sort of argument from the top level host page
     "#insertBelow *" #> "Replacement Dynamic Content" &
       removeIds
   }
