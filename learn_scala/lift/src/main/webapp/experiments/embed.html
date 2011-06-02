@@ -13,7 +13,9 @@
     <div class="lift:embed?what=experiments/_embed_snippet">DEV MODE</div>
 
     <h3>Embedding Specialised Page: Uses template, head_merge, bindings</h3>
-    <div class="lift:embed?what=experiments/_complex">DEV MODE</div>
+    <lift:embed what="experiments/_complex">
+        <lift:bind-at name="bindArg0">New Arg0 Value</lift:bind-at>
+    </lift:embed>
 </div>
 </body>
 </html>

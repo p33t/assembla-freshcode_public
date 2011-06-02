@@ -3,19 +3,23 @@
 
 </head>
 <body class="lift:content_id=main">
-<div id="main" class="lift:surround?with=unwrapped;at=content">
+<div id="main" class="lift:surround?with=unwrapped;at=content  italicise">
     <head_merge>
         <style type="text/css">
-            * {
+            .italicise {
                 font-style: italic;
             }
         </style>
     </head_merge>
 
     <p>This should be in italic</p>
+
     <div class="lift:EmbedDemo.nested">
         <p id="insertBelow">Original Static Content</p>
     </div>
+    <p>
+        <lift:bind name="bindArg0">Original Arg0</lift:bind>
+    </p>
 </div>
 </body>
 </html>
