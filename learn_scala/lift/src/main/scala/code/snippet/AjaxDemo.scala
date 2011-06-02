@@ -52,9 +52,7 @@ object AjaxDemo {
   }
 
   private def onclick(msg: String): String = {
-    val content = <p>
-      {Text(msg)}
-    </p>
+    val content = <p>{Text(msg)}</p> ++ <div class="lift:embed?what=experiments/_embed_simple"></div>
     onclickNode(content)
   }
 }
