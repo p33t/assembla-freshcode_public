@@ -24,6 +24,7 @@ object ErrorCheck {
   }
 
   private def assertCheck() {
+    // the least information.  Merely a false condition.
     expect[AssertionError](assert(One > Two, "Naturally, one is not greater than two"))
   }
 
@@ -34,7 +35,10 @@ object ErrorCheck {
       didPop = false
     }
     catch {
-      case e: Throwable => if (!e.isInstanceOf[T]) throw e
+      case e: Throwable => {
+        if (!e.isInstanceOf[T]) throw e
+        println("Successfully caught...\n" + e)
+      }
     }
     require(didPop, "Expression did not result in an exception.")
   }
