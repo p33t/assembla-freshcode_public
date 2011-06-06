@@ -1,5 +1,6 @@
 package biz.freshcode.swing_shots.ui;
 
+import biz.freshcode.swing_shots.config.Factory;
 import biz.freshcode.swing_shots.logging.Logging;
 import biz.freshcode.swing_shots.ui.util.Hourglass;
 import com.jgoodies.forms.builder.PanelBuilder;
@@ -23,11 +24,12 @@ import static biz.freshcode.swing_shots.util.trigger.UseTrigger.useTrigger;
 
 @Component
 @Lazy(true) // prevents errors on a headless CI box.
-public class MainFrame extends JFrame implements InitializingBean {
+public class MainFrame extends JFrame implements InitializingBean, MenuBar.Host {
     @Inject private ConfigurableApplicationContext ctx;
     @Inject private Hourglass hourglass;
     @Inject private TailingPane tailer;
     @Inject private BackgroundWorker worker;
+    @Inject private Factory factory;
     @Logging private Logger log;
     private JButton btnGo = new JButton("Go");
     private JCheckBox chkBackground = new JCheckBox("Background Task");
@@ -80,6 +82,8 @@ public class MainFrame extends JFrame implements InitializingBean {
         Container cp = getContentPane();
         cp.setLayout(new BorderLayout());
         cp.add(builder.getPanel(), BorderLayout.CENTER);
+
+        cp.add(factory.menuBar(this), BorderLayout.NORTH);
     }
 
     private void setupClose() {
@@ -90,5 +94,11 @@ public class MainFrame extends JFrame implements InitializingBean {
                 ctx.close();
             }
         });
+    }
+
+    @Override
+    public void dialogDemo() {
+        //TODO: Dialog box
+        sleep(2000);
     }
 }
