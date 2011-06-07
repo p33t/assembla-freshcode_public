@@ -111,9 +111,19 @@ public class Hourglass implements ProxyProvider {
         return Void.TYPE.equals(method.getReturnType());
     }
 
+    /**
+     * Defines an operation to put an hourglass around.
+     */
     public static interface Worker {
+        /**
+         * Performed on background thread while hourglass is showing.
+         */
         void doInBackground();
 
+        /**
+         * Performed on event dispatch thread while hourglass is showing,
+         * after the background task has completed.
+         */
         void done();
     }
 }

@@ -27,7 +27,7 @@ public class MenuBar extends JMenuBar implements InitializingBean {
     @Override
     public void afterPropertiesSet() throws Exception {
         JMenu mnu = new JMenu("The Menu");
-        useTrigger(mnu.add("Dialog Demo"), hourglass).toCall(host).dialogDemo();
+        useTrigger(mnu.add("Dialog Demo")).toCall(host).dialogDemo();
         add(mnu);
     }
 
