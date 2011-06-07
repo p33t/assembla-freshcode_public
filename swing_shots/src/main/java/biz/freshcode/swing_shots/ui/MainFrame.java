@@ -21,6 +21,9 @@ import java.awt.event.WindowEvent;
 import static biz.freshcode.swing_shots.util.AppStringUtil.repeat;
 import static biz.freshcode.swing_shots.util.AppThreadUtil.sleep;
 import static biz.freshcode.swing_shots.util.trigger.UseTrigger.useTrigger;
+import static javax.swing.JOptionPane.OK_CANCEL_OPTION;
+import static javax.swing.JOptionPane.WARNING_MESSAGE;
+import static javax.swing.JOptionPane.showConfirmDialog;
 
 @Component
 @Lazy(true) // prevents errors on a headless CI box.
@@ -98,7 +101,22 @@ public class MainFrame extends JFrame implements InitializingBean, MenuBar.Host 
 
     @Override
     public void dialogDemo() {
-        //TODO: Dialog box
-        sleep(2000);
+        boolean confirmed = showConfirmDialog(this
+                , "Perform some long operation?"
+                , "Confirm"
+                , OK_CANCEL_OPTION
+                , WARNING_MESSAGE) == JOptionPane.OK_OPTION;
+        tailer.append(confirmed ? "==== Operation Started..." : "==== Operation Aborted");
+        if (confirmed) {
+            hourglass.surround(new Hourglass.Worker() {
+                public void doInBackground() {
+                    sleep(3000);
+                }
+
+                public void done() {
+                    tailer.append("==== Operation finished.");
+                }
+            });
+        }
     }
 }
