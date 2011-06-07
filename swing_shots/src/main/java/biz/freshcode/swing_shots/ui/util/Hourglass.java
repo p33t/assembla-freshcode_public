@@ -14,9 +14,11 @@ import java.util.List;
 
 import static biz.freshcode.swing_shots.ui.util.Blocker.blockerFor;
 import static biz.freshcode.swing_shots.util.AppExceptionUtil.illegalArg;
+import static biz.freshcode.swing_shots.util.AppExceptionUtil.illegalState;
 import static biz.freshcode.swing_shots.util.AppReflectUtil.invokeMethod;
 import static biz.freshcode.swing_shots.util.Ref.ref;
 import static biz.freshcode.swing_shots.util.trigger.UseTrigger.*;
+import static javax.swing.SwingUtilities.isEventDispatchThread;
 
 @Component
 public class Hourglass implements ProxyProvider {
@@ -74,8 +76,14 @@ public class Hourglass implements ProxyProvider {
         };
     }
 
+    /**
+     * Display a wait cursor for the specified operation and then perform a callback.
+     * This can be used for complex operations that, upon completion need to update the screen.
+     * It is derived from SwingWorker functionality.
+     * @see javax.swing.SwingWorker
+     */
     public void surround(final Worker w) {
-        // TODO: Thread and serial access checks.
+        if (!isEventDispatchThread()) throw illegalState("Can only operate hourglass from event dispatch thread.");
         final List<JFrame> frames = frameReg.listFrames();
         // TODO: Conditional checks in case nesting?
         block(frames);
@@ -113,6 +121,7 @@ public class Hourglass implements ProxyProvider {
 
     /**
      * Defines an operation to put an hourglass around.
+     * @see Hourglass#surround(biz.freshcode.swing_shots.ui.util.Hourglass.Worker)
      */
     public static interface Worker {
         /**
