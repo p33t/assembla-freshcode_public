@@ -8,15 +8,15 @@ public class HourglassTest {
     public void testThreadCheck() {
         Hourglass h = new Hourglass();
         try {
-        h.surround(new Hourglass.Worker() {
-            public void doInBackground() {
-                // nothing
-            }
+            h.surround(new Hourglass.Worker() {
+                public void doInBackground() {
+                    // nothing
+                }
 
-            public void done() {
-                // nothing
-            }
-        });
+                public void done() {
+                    // nothing
+                }
+            });
         } catch (IllegalStateException ex) {
             // expected
         }
