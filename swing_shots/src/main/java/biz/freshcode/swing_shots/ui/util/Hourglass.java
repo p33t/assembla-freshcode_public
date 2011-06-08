@@ -1,8 +1,6 @@
 package biz.freshcode.swing_shots.ui.util;
 
 import biz.freshcode.swing_shots.util.AppReflectUtil;
-import biz.freshcode.swing_shots.util.Ref;
-import biz.freshcode.swing_shots.util.trigger.MethodTrigger;
 import biz.freshcode.swing_shots.util.trigger.ProxyProvider;
 import org.springframework.stereotype.Component;
 
@@ -16,8 +14,6 @@ import static biz.freshcode.swing_shots.ui.util.Blocker.blockerFor;
 import static biz.freshcode.swing_shots.util.AppExceptionUtil.illegalArg;
 import static biz.freshcode.swing_shots.util.AppExceptionUtil.illegalState;
 import static biz.freshcode.swing_shots.util.AppReflectUtil.invokeMethod;
-import static biz.freshcode.swing_shots.util.Ref.ref;
-import static biz.freshcode.swing_shots.util.trigger.UseTrigger.*;
 import static javax.swing.SwingUtilities.isEventDispatchThread;
 
 @Component
@@ -51,22 +47,11 @@ public class Hourglass implements ProxyProvider {
         return AppReflectUtil.proxy(ih, iface);
     }
 
-    public <T> T surround(T inst, Object... constructorArgs) {
-        Ref<T> r = ref();
-        MethodTrigger t = restrictedCapture(inst, r, Void.TYPE, constructorArgs);
-        t.toCall(this).surround(inst, SUPPLIED_METHOD, SUPPLIED_ARGS);
-        return r.val;
-    }
-
-    private boolean declaredOn(Method m, Class iface) {
-        return iface.equals(m.getDeclaringClass());
-    }
-
-    void surround(final Object inst, final Method m, final Object[] args) {
+    public void surround(final Runnable r) {
         Worker w = new Worker() {
             @Override
             public void doInBackground() {
-                invokeMethod(m, inst, args);
+                r.run();
             }
 
             @Override
@@ -74,12 +59,14 @@ public class Hourglass implements ProxyProvider {
                 // nothing
             }
         };
+        surround(w);
     }
 
     /**
      * Display a wait cursor for the specified operation and then perform a callback.
      * This can be used for complex operations that, upon completion need to update the screen.
      * It is derived from SwingWorker functionality.
+     *
      * @see javax.swing.SwingWorker
      */
     public void surround(final Worker w) {
@@ -103,6 +90,10 @@ public class Hourglass implements ProxyProvider {
         }.execute();
     }
 
+    private boolean declaredOn(Method m, Class iface) {
+        return iface.equals(m.getDeclaringClass());
+    }
+
     private void unblock(List<JFrame> frames) {
         for (JFrame frame : frames) {
             blockerFor(frame).unblock();
@@ -121,6 +112,7 @@ public class Hourglass implements ProxyProvider {
 
     /**
      * Defines an operation to put an hourglass around.
+     *
      * @see Hourglass#surround(biz.freshcode.swing_shots.ui.util.Hourglass.Worker)
      */
     public static interface Worker {
