@@ -79,6 +79,7 @@ public class Hourglass implements ProxyProvider {
 
     /**
      * Display a wait cursor for the specified operation and then perform a callback.
+     * The operation is performed on a background thread.
      * This can be used for complex operations that, upon completion need to update the screen.
      * It is derived from SwingWorker functionality.
      *
