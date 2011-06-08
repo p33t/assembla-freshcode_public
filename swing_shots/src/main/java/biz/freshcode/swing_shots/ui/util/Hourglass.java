@@ -16,12 +16,22 @@ import static biz.freshcode.swing_shots.util.AppExceptionUtil.illegalState;
 import static biz.freshcode.swing_shots.util.AppReflectUtil.invokeMethod;
 import static javax.swing.SwingUtilities.isEventDispatchThread;
 
+/**
+ * Utility methods for setting up hourglass / wait cursors during long operations.
+ */
 @Component
 public class Hourglass implements ProxyProvider {
     @Inject private FrameRegistry frameReg;
 
-    // TODO: todo(Runnable)
-
+    /**
+     * Provides a wrapper around an interface that will display an hourglass during any method call.
+     *
+     * @param delegate The wrapped instance
+     * @param iface    The interface being proxied
+     * @param <T>      The type of the interface being proxied
+     * @return A wrapper / proxy that will automatically display an hourglass.
+     * @see #surround(biz.freshcode.swing_shots.ui.util.Hourglass.Worker)
+     */
     @Override
     public <T> T proxy(final Object delegate, final Class<T> iface) {
         InvocationHandler ih = new InvocationHandler() {
@@ -47,6 +57,11 @@ public class Hourglass implements ProxyProvider {
         return AppReflectUtil.proxy(ih, iface);
     }
 
+    /**
+     * Convenience method for another method.
+     *
+     * @see #surround(biz.freshcode.swing_shots.ui.util.Hourglass.Worker)
+     */
     public void surround(final Runnable r) {
         Worker w = new Worker() {
             @Override
