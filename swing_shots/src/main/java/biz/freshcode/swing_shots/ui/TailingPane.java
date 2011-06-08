@@ -18,25 +18,25 @@ import static java.awt.Font.MONOSPACED;
 @Component
 //@Scope("prototype")
 @Lazy(true)
-public class TailingPane extends JScrollPane implements InitializingBean{
+public class TailingPane extends JScrollPane implements InitializingBean {
     @Inject private RightClick rightClick;
     @Logging private Logger log;
     private final JTextArea area;
 
-    
+
     public TailingPane() {
-        this(new JTextArea(1,1));
+        this(new JTextArea(1, 1));
     }
 
     private TailingPane(JTextArea area) {
-        super(area , VERTICAL_SCROLLBAR_NEVER, HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        super(area, VERTICAL_SCROLLBAR_NEVER, HORIZONTAL_SCROLLBAR_AS_NEEDED);
         this.area = area;
     }
 
     @Override
     public void afterPropertiesSet() throws Exception {
         setupTextArea();
-        rightClick.menu(area, this).loadMenu(null);
+        rightClick.menuComesFrom(area, this).loadMenu(null);
     }
 
     public void append(String msg) {

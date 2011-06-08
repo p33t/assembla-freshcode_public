@@ -14,10 +14,30 @@ import static biz.freshcode.swing_shots.util.AppReflectUtil.*;
 
 @org.springframework.stereotype.Component
 public class RightClick {
-    public <T> T menu(Component c, T inst, Object... constructorArgs) {
+    /**
+     * Setups up a right click menu source for the supplied component.
+     *
+     * @param c               The component that will be the source of the right click event.
+     * @param inst            The object whose method will supply the JPopupMenu
+     * @param constructorArgs Any arguments needed to create a new dummy instance of the 'inst' object for subclassing.
+     * @param <T>             The type of 'inst'.
+     * @return The dummy subclass used to designate the method that will supply the JPopupMenu.
+     */
+    public <T> T menuComesFrom(Component c, T inst, Object... constructorArgs) {
         SetupRightClick ih = new SetupRightClick(c, inst);
         return captureInvocation(classOf(inst), ih, constructorArgs);
     }
+
+    /* *
+     * Another way to set up right click that doesn't check the return type of the designated JPopupMenu source method.
+     * @param c The component that is the source of the right click event.
+     * @return A MethodTrigger used to designated the source of the menu.
+     */
+//    public MethodTrigger on(Component c) {
+//        MethodTrigger t = new MethodTrigger();
+//        c.addMouseListener(new Adapter(c, t));
+//        return t;
+//    }
 
     private static class SetupRightClick implements InvocationHandler {
         private final Component component;
