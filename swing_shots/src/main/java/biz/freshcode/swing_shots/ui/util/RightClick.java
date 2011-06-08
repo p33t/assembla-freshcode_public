@@ -12,6 +12,9 @@ import java.lang.reflect.Method;
 import static biz.freshcode.swing_shots.util.AppObjectUtils.classOf;
 import static biz.freshcode.swing_shots.util.AppReflectUtil.*;
 
+/**
+ * Utility methods for setting up right click menu's on a component.
+ */
 @org.springframework.stereotype.Component
 public class RightClick {
     /**
