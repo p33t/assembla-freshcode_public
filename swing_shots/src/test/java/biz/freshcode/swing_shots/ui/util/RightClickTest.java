@@ -17,7 +17,7 @@ public class RightClickTest {
     @Test
     public void testBadMethod() {
         try {
-            subject.menu(new JButton(), this).badMenu();
+            subject.menuComesFrom(new JButton(), this).badMenu();
             fail("Did not check method return type.");
         } catch (IllegalArgumentException e) {
             //expected
@@ -34,7 +34,7 @@ public class RightClickTest {
                 super.addMouseListener(listener);
             }
         };
-        subject.menu(c, this).loadMenu();
+        subject.menuComesFrom(c, this).loadMenu();
         // Hmm... don't know how to test this.
         assertNotNull(r.val);
     }
