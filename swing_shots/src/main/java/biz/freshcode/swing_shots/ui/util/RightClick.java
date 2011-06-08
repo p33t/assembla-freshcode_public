@@ -1,29 +1,41 @@
 package biz.freshcode.swing_shots.ui.util;
 
-import biz.freshcode.swing_shots.util.Ref;
 import biz.freshcode.swing_shots.util.trigger.MethodTrigger;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
-import static biz.freshcode.swing_shots.util.Ref.ref;
-import static biz.freshcode.swing_shots.util.trigger.UseTrigger.*;
+import static biz.freshcode.swing_shots.util.AppObjectUtils.classOf;
+import static biz.freshcode.swing_shots.util.AppReflectUtil.*;
 
 @org.springframework.stereotype.Component
 public class RightClick {
-    public <T> T menu(final Component c, final T inst, Object... constructorArgs) {
-        Ref<T> r = ref();
-        restrictedCapture(inst, r, JPopupMenu.class).toCall(this).setupRightClick(c, inst, SUPPLIED_METHOD, SUPPLIED_ARGS);
-        return r.val;
+    public <T> T menu(Component c, T inst, Object... constructorArgs) {
+        SetupRightClick ih = new SetupRightClick(c, inst);
+        return captureInvocation(classOf(inst), ih, constructorArgs);
     }
 
-    void setupRightClick(Component c, Object inst, Method method, Object[] suppliedArgs) {
-        MethodTrigger t = new MethodTrigger();
-        t.init(inst, method, suppliedArgs);
-        c.addMouseListener(new Adapter(c, t));
+    private static class SetupRightClick implements InvocationHandler {
+        private final Component component;
+        private final Object inst;
+
+        SetupRightClick(Component component, Object inst) {
+            this.component = component;
+            this.inst = inst;
+        }
+
+        @Override
+        public Object invoke(Object o, Method method, Object[] args) throws Throwable {
+            checkReturnType(method, JPopupMenu.class);
+            MethodTrigger t = new MethodTrigger();
+            t.init(inst, method, args);
+            component.addMouseListener(new Adapter(component, t));
+            return defVal(method);
+        }
     }
 
     private static class Adapter extends MouseAdapter {
