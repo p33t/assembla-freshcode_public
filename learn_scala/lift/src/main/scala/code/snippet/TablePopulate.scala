@@ -3,13 +3,12 @@ package code.snippet
 import net.liftweb.util._
 import Helpers._
 import xml._
-import NodeSeq.Empty
 import util.Random
 
 object TablePopulate {
-  val blank: Option[String] = None
-  val removeIds = "* [id]" #> blank
-  val tidyUp = ClearClearable & removeIds
+  val Blank: Option[String] = None
+  val RemoveIds = "* [id]" #> Blank
+  val TidyUp = ClearClearable & RemoveIds
   val Days = "SMTWTFS"
   val Crews = "ABCDE"
   val WeeksPerCrew = 2
@@ -20,7 +19,7 @@ object TablePopulate {
   def render(in: NodeSeq): NodeSeq = {
     val headerTemplate = (".headerRow ^^" #> "")(in)
     val headerDays = Days.map {day => <th>{day}</th>}
-    val header = (".insertHere" #> headerDays & tidyUp)(headerTemplate)
+    val header = (".insertHere" #> headerDays & TidyUp)(headerTemplate)
 
     val rowTemplate = ("#sampleRow ^^" #> "")(in)
     def rowContent(row: Int) = {
@@ -29,12 +28,12 @@ object TablePopulate {
         "#sampleWeekCell *" #> row &
         "#sampleHoursCell *" #> Random.nextInt(99) &
         ".insertHere" #> shiftCells &
-        tidyUp)(rowTemplate)
+        TidyUp)(rowTemplate)
     }
 
     // NOTE: For some reason, using 'map' here doesn't work.  The implicit casting doesn't work.
     // val body: NodeSeq = Rows.map(row => rowContent(row)).toList
-    val body = Rows.foldLeft(Empty) {(xml, row) => xml ++ rowContent(row)}
+    val body = Rows.map(rowContent).reduceLeft(_ ++ _)
     (".rosterTable *" #> (header ++ body))(in)
   }
 
