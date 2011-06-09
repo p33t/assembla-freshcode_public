@@ -3,10 +3,13 @@ package pkg.db
 import java.sql.{Connection, DriverManager}
 import org.h2.jdbcx.JdbcConnectionPool
 import pkg.log.Logging
+import org.squeryl.{Session, SessionFactory}
 
 object Db extends Logging {
   log.info("Creating connection Pool.")
   private val pool = JdbcConnectionPool.create("jdbc:h2:mem:appDb", "", "")
+
+  def openConnection() = pool.getConnection
 
   Runtime.getRuntime.addShutdownHook(new Thread(new Runnable {
     def run() {
@@ -15,8 +18,12 @@ object Db extends Logging {
     }
   }))
 
+  def triggerLoad() {
+    // nothing
+  }
+
   def withConnection[T](f: Connection => T): T = {
-    val conn = pool.getConnection
+    val conn = openConnection()
     try {
       f(conn)
     }
