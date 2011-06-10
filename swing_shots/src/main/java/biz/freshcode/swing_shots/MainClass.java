@@ -17,8 +17,7 @@ public class MainClass {
     }
 
     private static void launch() {
-        Bootstrap.bootstrap();
-        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(PACKAGE.getName());
+        AnnotationConfigApplicationContext ctx = Bootstrap.bootstrap(PACKAGE);
         MainFrame mf = ctx.getBean(MainFrame.class);
         mf.launch();
     }

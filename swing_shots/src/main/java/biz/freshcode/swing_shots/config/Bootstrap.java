@@ -1,5 +1,7 @@
 package biz.freshcode.swing_shots.config;
 
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
 import java.io.File;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -8,11 +10,18 @@ import static biz.freshcode.swing_shots.util.AppExceptionUtil.illegalState;
 import static biz.freshcode.swing_shots.util.AppExceptionUtil.runtime;
 
 public class Bootstrap {
-    private static final SysProp APP_HOME = new SysProp("app.home");
+    public static final SysProp APP_HOME = new SysProp("app.home");
 
-    public static void bootstrap() {
+    public static AnnotationConfigApplicationContext bootstrap(Package... basePackages) {
         setupAppHome();
         checkAppHome();
+        return createContext(basePackages);
+    }
+
+    private static AnnotationConfigApplicationContext createContext(Package[] basePackages) {
+        String[] names = new String[basePackages.length];
+        for (int i = 0; i < basePackages.length; i++) names[i] = basePackages[i].getName();
+        return new AnnotationConfigApplicationContext(names);
     }
 
     private static void checkAppHome() {
