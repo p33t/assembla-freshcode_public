@@ -5,7 +5,7 @@ import biz.freshcode.swing_shots.ui.MainFrame;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class MainClass {
-    private static final Package PACKAGE = MainClass.class.getPackage();
+    public static final Package PACKAGE = MainClass.class.getPackage();
 
     public static void main(String[] args) {
         try {
