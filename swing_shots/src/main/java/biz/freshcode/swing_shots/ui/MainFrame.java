@@ -21,9 +21,7 @@ import java.awt.event.WindowEvent;
 import static biz.freshcode.swing_shots.util.AppStringUtil.repeat;
 import static biz.freshcode.swing_shots.util.AppThreadUtil.sleep;
 import static biz.freshcode.swing_shots.util.trigger.UseTrigger.useTrigger;
-import static javax.swing.JOptionPane.OK_CANCEL_OPTION;
-import static javax.swing.JOptionPane.WARNING_MESSAGE;
-import static javax.swing.JOptionPane.showConfirmDialog;
+import static javax.swing.JOptionPane.*;
 
 @Component
 @Lazy(true) // prevents errors on a headless CI box.
@@ -39,7 +37,7 @@ public class MainFrame extends JFrame implements InitializingBean, MenuBar.Host 
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        setTitle("Swing Shots - Peter Leong");
+        setTitle("Swing Shots - freshcode.biz");
         setupClose();
         populateUi();
         useTrigger(btnGo, hourglass).toCall(this).go();
