@@ -89,8 +89,11 @@ H2 Database
 - Can use to manage resumable work in a thread gang
 - Good Practice: All state goes in db
 -- including property table
-- H2Database object... expected to have a Dao... difficult to hack.
+- H2Database object... expected to have a DAO... obstacle to hacking.
 -- 'data' folder calculated like 'log' folder
+- JdbcTemplate
+-- Probably the minimum ORM / JDBC support to use
+-- Can really tailor the DAO
 
 Wait Cursors
 ------------
