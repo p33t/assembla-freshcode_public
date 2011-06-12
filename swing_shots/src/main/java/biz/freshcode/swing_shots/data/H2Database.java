@@ -13,6 +13,10 @@ import java.util.List;
 import static biz.freshcode.swing_shots.config.Bootstrap.APP_HOME;
 import static java.io.File.separator;
 
+/**
+ * A utility class to police all interactions with JdbcTemplate and the database.
+ * Handy logging of SQL can happen here too.
+ */
 @Component
 @Scope("prototype")
 public class H2Database {
