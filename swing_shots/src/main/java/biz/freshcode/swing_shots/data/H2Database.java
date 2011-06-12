@@ -3,7 +3,6 @@ package biz.freshcode.swing_shots.data;
 import org.h2.jdbcx.JdbcConnectionPool;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.DisposableBean;
 import org.springframework.context.annotation.Scope;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -16,7 +15,7 @@ import static java.io.File.separator;
 
 @Component
 @Scope("prototype")
-public class H2Database implements DisposableBean {
+public class H2Database {
     public static final String DB_PATH = APP_HOME.get() + separator + "data";
     private final Logger log;
     private JdbcTemplate jt = null;
@@ -26,6 +25,14 @@ public class H2Database implements DisposableBean {
         this.name = name;
         // Specialized logger to distinguish messages for different db's
         log = LoggerFactory.getLogger(getClass().getName() + "[" + name + "]");
+
+        // prototype beans cannot use DisposableBean by default.
+        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+            @Override
+            public void run() {
+                closeIfNecessary();
+            }
+        }));
     }
 
     public void open() {
@@ -70,8 +77,7 @@ public class H2Database implements DisposableBean {
         return jt.query(sql, mapper, args);
     }
 
-    @Override
-    public void destroy() throws Exception {
+    public void closeIfNecessary() {
         if (isOpen()) close();
     }
 
