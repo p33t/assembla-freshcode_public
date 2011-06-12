@@ -1,0 +1,42 @@
+Some notes for the presentation...
+
+Summary
+-------
+Background
+Simple Platform Indep. Packaging
+Bootstrap
+Dependency Injection - Field-Based, Annotations
+
+
+Background
+----------
+- Contract in 2010 to start a new desktop application
+-- Unfamiliar territory: typically most tech decisions are already made (hastily)
+-- Spent a good deal of time sorting out the plumbing
+--- Not IP, just tech meshing, coding techniques and good practices
+-- Discovered that mocking frameworks use a technique that could be useful
+   in production code.  Called 'MethodTriggers'.
+
+- Created a demo app for reference purposes
+-- Don't want to have to retrace steps
+
+- Not
+-- Rich Client Platform tutorial (Netbeans, Eclipse etc.)
+--- Probably useful but not that much fun to learn
+-- A style guide
+--- Ask questions but be prepared to agree to disagree
+-- Idealogical crusade
+--- Dodgy practices that if used in controlled manner have high utility
+--- EG. Ref<T> ... effectively pass-by-reference
+-- An Introduction To Swing
+--- Ask questions but be prepared for an abbreviated answer
+--- Ask me later for a step in the right direction
+
+- I enjoy hobby projects immensely but have trouble getting them off the ground
+-- Hopefully anyone else that suffers from this will benefit
+
+
+Packaging
+---------
+- Build and install new Zip file
+- Open the jar and show the manifest: mainclass and classpath

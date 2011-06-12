@@ -15,9 +15,15 @@
     </dependencySets>
     <files>
         <file>
-            <!--<source>${project.build.directory}/swing_shots-${version}.jar</source>-->
             <source>${project.build.directory}/${project.name}-${version}.jar</source>
             <outputDirectory>/</outputDirectory>
+            <!--User can execute-->
+            <fileMode>0744</fileMode>
+        </file>
+        <file>
+            <source>src/assemble/run.sh</source>
+            <outputDirectory>/</outputDirectory>
+            <filtered>true</filtered>
             <!--User can execute-->
             <fileMode>0744</fileMode>
         </file>
@@ -31,7 +37,6 @@
             <directory>src/assemble</directory>
             <includes>
                 <include>README.txt</include>
-                <include>run.sh</include>
             </includes>
             <filtered>true</filtered>
             <outputDirectory>/</outputDirectory>
