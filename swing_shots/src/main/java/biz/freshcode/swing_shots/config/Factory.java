@@ -10,6 +10,12 @@ import javax.inject.Inject;
 import static org.springframework.util.StringUtils.uncapitalize;
 
 
+/**
+ * A surrogate class for object construction.
+ * This adds stricter typing to 'prototype' class constructors.
+ * <p/>
+ * TODO: DisposableBean support for prototype classes using weak-refs.
+ */
 @Component
 public class Factory {
     @Inject private ApplicationContext ctx;
