@@ -51,6 +51,10 @@ public class MainFrame extends JFrame implements InitializingBean, MenuBar.Host 
 //                }, ActionListener.class));
     }
 
+    /**
+     * A handy convention for launching frames.
+     * It keeps it all self-contained and dialogs could have a return value.
+     */
     public void launch() {
         log.info("Launching " + getClass().getSimpleName());
         pack();
