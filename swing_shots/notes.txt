@@ -38,5 +38,21 @@ Background
 
 Packaging
 ---------
-- Build and install new Zip file
-- Open the jar and show the manifest: mainclass and classpath
+- Demo the deployment
+-- Build and install new Zip file
+-- Open the jar and show the manifest: mainclass and classpath
+-- Show excutable bits on run.sh and jar
+-- Show the contents of
+--- run.sh... only need 2 lines
+--- READ_ME.txt... could build up a 'release.properties' file (jenkins props)
+-- Put 'space' in folder name and launch from another folder
+--- Note the appearance of log file
+
+Bootstrap
+---------
+- MainClass, Bootstrap... app.home calculation
+- log4j.properties
+-- ${app.home}
+-- more configuration files go here
+- Logging injection
+
