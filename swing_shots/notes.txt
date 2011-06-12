@@ -6,7 +6,12 @@ Background
 Simple Platform Indep. Packaging
 Bootstrap
 Dependency Injection - Field-Based, Annotations
-
+H2 Database
+Wait Cursors
+Background Tasks
+JGoodies Forms
+Suggested Practices
+Handy Tools
 
 Background
 ----------
@@ -111,4 +116,10 @@ Background Tasks
 -- Keep thread details private
 -- Manage with 'interrupt' and 'isInterrupted'
 -- Daemon status
+
+JGoodies
+--------
+- Form layout a bit like a table
+-- I'm not an expert
+- row+1 technique
 
