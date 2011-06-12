@@ -3,11 +3,13 @@ package biz.freshcode.swing_shots.data;
 import org.h2.jdbcx.JdbcConnectionPool;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.annotation.Scope;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 
+import javax.inject.Inject;
 import java.util.List;
 
 import static biz.freshcode.swing_shots.config.Bootstrap.APP_HOME;
@@ -19,24 +21,17 @@ import static java.io.File.separator;
  */
 @Component
 @Scope("prototype")
-public class H2Database {
+public class H2Database implements InitializingBean {
     public static final String DB_PATH = APP_HOME.get() + separator + "data";
     private final Logger log;
     private JdbcTemplate jt = null;
     private final String name;
+    @Inject private Runtime runtime;
 
     public H2Database(String name) {
         this.name = name;
         // Specialized logger to distinguish messages for different db's
         log = LoggerFactory.getLogger(getClass().getName() + "[" + name + "]");
-
-        // prototype beans cannot use DisposableBean by default.
-        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
-            @Override
-            public void run() {
-                closeIfNecessary();
-            }
-        }));
     }
 
     public void open() {
@@ -83,6 +78,17 @@ public class H2Database {
 
     public void closeIfNecessary() {
         if (isOpen()) close();
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        // prototype beans cannot use DisposableBean by default.
+        runtime.addShutdownHook(new Thread(new Runnable() {
+            @Override
+            public void run() {
+                closeIfNecessary();
+            }
+        }));
     }
 
     private JdbcConnectionPool pool() {
