@@ -87,4 +87,16 @@ H2 Database
 - H2Database object... expected to have a Dao... difficult to hack.
 -- 'data' folder calculated like 'log' folder
 
+Wait Cursors
+------------
+- How To
+-- Background thread to keep UI responsive (tailing, status bars, close)
+-- Transparent panel to capture and keep focus as well as block mouse clicks
+--- User actions are NOT buffered
+--- Graceful exception handling
+-- Proxy objects and reflection to make life easier
+-- Dynamic subclassing and MethodTriggers to make life easier again
+--- New and interesting ways to eliminate dupe / clean up code
+--- Right-click and menu bindings (return values!)
+--- Status bars anyone?
 
