@@ -104,6 +104,7 @@ public class MainFrame extends JFrame implements InitializingBean, MenuBar.Host 
      * It's easy to put a confirmation dialog here.
      */
     private void setupClose() {
+        // TODO: Setup confirmation if background thread is running.
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
             @Override
