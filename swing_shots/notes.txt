@@ -69,8 +69,7 @@ Dependency Injection
 --- Centralized construction in Factory
 -- External Objects (Configuration... gets subclassed)
 -- Object disposal (Singleton supported natively, but other workarounds)
-- Usage
--- Sort of like extended imports
---- Contrast with static util file style (potentially has state)
+- Usage: Sort of like extended imports
+-- Contrast with static util file style (potentially has state)
 - Gotcha: @Lazy(true) to prevent headless exceptions in CI, other uses
 
