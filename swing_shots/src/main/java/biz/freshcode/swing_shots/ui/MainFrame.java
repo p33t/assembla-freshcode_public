@@ -40,8 +40,15 @@ public class MainFrame extends JFrame implements InitializingBean, MenuBar.Host 
         setTitle("Swing Shots - freshcode.biz");
         setupClose();
         populateUi();
-        useTrigger(btnGo, hourglass).toCall(this).go();
         useTrigger(chkBackground, hourglass).toCall(this).toggleWorker();
+        useTrigger(btnGo, hourglass).toCall(this).go();
+        // Alternative implmentation without method triggers
+//        btnGo.addActionListener(hourglass.proxy(new ActionListener() {
+//                    @Override
+//                    public void actionPerformed(ActionEvent actionEvent) {
+//                        go();
+//                    }
+//                }, ActionListener.class));
     }
 
     public void launch() {
