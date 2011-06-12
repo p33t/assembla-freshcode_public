@@ -46,6 +46,7 @@ Packaging
 --- run.sh... only need 2 lines
 --- READ_ME.txt... could build up a 'release.properties' file (jenkins props)
 -- Put 'space' in folder name and launch from another folder
+--- Demo 'features' (Don't forget 'tailing' feature and resize... more handy than status)
 --- Note the appearance of log file
 
 Bootstrap
@@ -55,4 +56,21 @@ Bootstrap
 -- ${app.home}
 -- more configuration files go here
 - Logging injection
+
+Dependency Injection
+--------------------
+- field-based (vs. setters, constructors)
+-- Need init method
+- no-xml... just annotations
+- Use cases
+-- Simple singleton
+-- Simple non-singleton (Logger)
+-- Partially injected 'prototype'
+--- Centralized construction in Factory
+-- External Objects (Configuration... gets subclassed)
+-- Object disposal (Singleton supported natively, but other workarounds)
+- Usage
+-- Sort of like extended imports
+--- Contrast with static util file style (potentially has state)
+- Gotcha: @Lazy(true) to prevent headless exceptions in CI, other uses
 
