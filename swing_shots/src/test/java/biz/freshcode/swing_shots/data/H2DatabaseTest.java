@@ -5,12 +5,12 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-import static biz.freshcode.swing_shots.test.TestBootstrap.TEST_CONTEXT;
+import static biz.freshcode.swing_shots.test.TestBootstrap.factory;
 import static biz.freshcode.swing_shots.util.AppCollectionUtils.newList;
 import static junit.framework.Assert.*;
 
 public class H2DatabaseTest {
-    H2Database h2 = TEST_CONTEXT.getBean(H2Database.class);
+    H2Database h2 = factory().h2Database("testDb");
 
     @Test
     public void testOpenClose() {

@@ -1,5 +1,6 @@
 package biz.freshcode.swing_shots.config;
 
+import biz.freshcode.swing_shots.data.H2Database;
 import biz.freshcode.swing_shots.ui.MenuBar;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
@@ -18,6 +19,10 @@ public class Factory {
      */
     public MenuBar menuBar(MenuBar.Host host) {
         return bean(MenuBar.class, host);
+    }
+
+    public H2Database h2Database(String name) {
+        return bean(H2Database.class, name);
     }
 
     public <T> T bean(Class<T> cls, Object... args) {
