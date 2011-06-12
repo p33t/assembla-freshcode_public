@@ -34,25 +34,15 @@ public class H2Database implements InitializingBean {
         log = LoggerFactory.getLogger(getClass().getName() + "[" + name + "]");
     }
 
-    public void open() {
-        log.info("Opening database...\n   NOTE: If this doesn't work remember the stack traces are saved in " + DB_PATH);
-        String s = "jdbc:h2:" + DB_PATH + separator + name;
-        JdbcConnectionPool pool = JdbcConnectionPool.create(s, "", "");
-        jt = new JdbcTemplate(pool);
-        log.info("Database successfully opened.");
-    }
-
-    public boolean isOpen() {
-        return jt != null;
-    }
-
-    public void openAndResetIfNecessary() {
-        if (!isOpen()) open();
-        reset();
-    }
-
-    public void reset() {
-        execute("DROP ALL OBJECTS;");
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        // prototype beans cannot use DisposableBean by default.
+        runtime.addShutdownHook(new Thread(new Runnable() {
+            @Override
+            public void run() {
+                closeIfNecessary();
+            }
+        }));
     }
 
     public void close() {
@@ -64,31 +54,41 @@ public class H2Database implements InitializingBean {
         }
     }
 
-    public void update(String sql, Object... args) {
-        jt.update(sql, args);
+    public void closeIfNecessary() {
+        if (isOpen()) close();
     }
 
     public void execute(String sql) {
         jt.execute(sql);
     }
 
+    public boolean isOpen() {
+        return jt != null;
+    }
+
+    public void open() {
+        log.info("Opening database...\n   NOTE: If this doesn't work remember the stack traces are saved in " + DB_PATH);
+        String s = "jdbc:h2:" + DB_PATH + separator + name;
+        JdbcConnectionPool pool = JdbcConnectionPool.create(s, "", "");
+        jt = new JdbcTemplate(pool);
+        log.info("Database successfully opened.");
+    }
+
+    public void openAndResetIfNecessary() {
+        if (!isOpen()) open();
+        reset();
+    }
+
     public <T> List<T> query(String sql, RowMapper<T> mapper, Object... args) {
         return jt.query(sql, mapper, args);
     }
 
-    public void closeIfNecessary() {
-        if (isOpen()) close();
+    public void reset() {
+        execute("DROP ALL OBJECTS;");
     }
 
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        // prototype beans cannot use DisposableBean by default.
-        runtime.addShutdownHook(new Thread(new Runnable() {
-            @Override
-            public void run() {
-                closeIfNecessary();
-            }
-        }));
+    public void update(String sql, Object... args) {
+        jt.update(sql, args);
     }
 
     private JdbcConnectionPool pool() {

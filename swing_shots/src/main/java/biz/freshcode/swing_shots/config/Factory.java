@@ -20,19 +20,19 @@ import static org.springframework.util.StringUtils.uncapitalize;
 public class Factory {
     @Inject private ApplicationContext ctx;
 
-    /**
-     * An example of statically typing the constructor of a partially injected object.
-     */
-    public MenuBar menuBar(MenuBar.Host host) {
-        return bean(MenuBar.class, host);
+    public <T> T bean(Class<T> cls, Object... args) {
+        String name = uncapitalize(cls.getSimpleName());
+        return cls.cast(ctx.getBean(name, args));
     }
 
     public H2Database h2Database(String name) {
         return bean(H2Database.class, name);
     }
 
-    public <T> T bean(Class<T> cls, Object... args) {
-        String name = uncapitalize(cls.getSimpleName());
-        return cls.cast(ctx.getBean(name, args));
+    /**
+     * An example of statically typing the constructor of a partially injected object.
+     */
+    public MenuBar menuBar(MenuBar.Host host) {
+        return bean(MenuBar.class, host);
     }
 }

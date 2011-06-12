@@ -14,6 +14,29 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
 
 public class AppReflectUtilTest {
+    @Test
+    public void testCaptureInvocationClass() throws Exception {
+        final Ref<Invocation> r = ref();
+        InvocationHandler h = new RefInvocationHandler(r);
+        MyClass myClass = captureInvocation(MyClass.class, h);
+        myClass.pop("bruce");
+        myClass.noise();
+        assertNotNull(r.val);
+        assertEquals(r.val.method, MyClass.class.getMethod("pop", String.class));
+        assertEquals(r.val.args, arr("bruce"));
+    }
+
+    @Test
+    public void testCaptureInvocationInterface() throws Exception {
+        final Ref<Invocation> r = ref();
+        InvocationHandler h = new RefInvocationHandler(r);
+        MyInterface myInterface = captureInvocation(MyInterface.class, h);
+        myInterface.bruce("lee");
+        myInterface.noise();
+        assertNotNull(r.val);
+        assertEquals(r.val.method, MyInterface.class.getMethod("bruce", String.class));
+        assertEquals(r.val.args, arr("lee"));
+    }
 
     @Test
     public void testDefVal() {
@@ -27,32 +50,9 @@ public class AppReflectUtilTest {
         assertEquals(defVal(Character.TYPE), '\u0000');
     }
 
-    @Test
-    public void testCaptureInvocationClass() throws Exception {
-        final Ref<Invocation> r = ref();
-        InvocationHandler h = new RefInvocationHandler(r);
-        MyClass myClass = captureInvocation(MyClass.class, h);
-        myClass.pop("bruce");
-        myClass.noise();
-        assertNotNull(r.val);
-        assertEquals(r.val.method, MyClass.class.getMethod("pop", arr(String.class)));
-        assertEquals(r.val.args, arr("bruce"));
-    }
-    
-    @Test
-    public void testCaptureInvocationInterface() throws Exception {
-        final Ref<Invocation> r = ref();
-        InvocationHandler h = new RefInvocationHandler(r);
-        MyInterface myInterface = captureInvocation(MyInterface.class, h);
-        myInterface.bruce("lee");
-        myInterface.noise();
-        assertNotNull(r.val);
-        assertEquals(r.val.method, MyInterface.class.getMethod("bruce", arr(String.class)));
-        assertEquals(r.val.args, arr("lee"));
-    }
-
     public interface MyInterface {
         void bruce(String surname);
+
         void noise();
     }
 

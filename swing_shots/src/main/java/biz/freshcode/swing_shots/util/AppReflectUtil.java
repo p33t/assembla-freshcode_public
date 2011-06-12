@@ -15,7 +15,6 @@ import static java.lang.ClassLoader.getSystemClassLoader;
 import static java.lang.reflect.Proxy.newProxyInstance;
 
 public class AppReflectUtil {
-
     public static Object invokeMethod(Method m, Object inst, Object... args) {
         m.setAccessible(true);
         return ReflectionUtils.invokeMethod(m, inst, args);
@@ -48,6 +47,17 @@ public class AppReflectUtil {
         return matches(args, types);
     }
 
+    public static <T> T proxy(InvocationHandler ih, Class<T> iface) {
+        ClassLoader l = findLoader(ih.getClass());
+        return iface.cast(newProxyInstance(l, arr(iface), ih));
+    }
+
+    public static void checkReturnType(Method method, Class cls) {
+        boolean isCompatible = cls.isAssignableFrom(method.getReturnType());
+        if (!isCompatible)
+            throw illegalArg("The specified method " + method + " does not return a " + cls.getSimpleName());
+    }
+
     private static boolean matches(Constructor c, Object[] args) {
         Class[] types = c.getParameterTypes();
         return matches(args, types);
@@ -62,11 +72,6 @@ public class AppReflectUtil {
             if (!types[i].isAssignableFrom(argClass)) return false;
         }
         return true;
-    }
-
-    public static <T> T proxy(InvocationHandler ih, Class<T> iface) {
-        ClassLoader l = findLoader(ih.getClass());
-        return iface.cast(newProxyInstance(l, arr(iface), ih));
     }
 
     private static ClassLoader findLoader(Class cls) {
@@ -108,11 +113,6 @@ public class AppReflectUtil {
             args[i] = defVal(type);
         }
         return args;
-    }
-
-    public static void checkReturnType(Method method, Class cls) {
-        boolean isCompatible = cls.isAssignableFrom(method.getReturnType());
-        if (!isCompatible) throw illegalArg("The specified method " + method + " does not return a " + cls.getSimpleName());
     }
 
     private static class Adapter implements MethodHandler, InvocationHandler {

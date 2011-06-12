@@ -106,6 +106,12 @@ public class Hourglass implements ProxyProvider {
         }.execute();
     }
 
+    private void block(List<JFrame> frames) {
+        for (JFrame frame : frames) {
+            blockerFor(frame).block();
+        }
+    }
+
     private boolean declaredOn(Method m, Class iface) {
         return iface.equals(m.getDeclaringClass());
     }
@@ -113,12 +119,6 @@ public class Hourglass implements ProxyProvider {
     private void unblock(List<JFrame> frames) {
         for (JFrame frame : frames) {
             blockerFor(frame).unblock();
-        }
-    }
-
-    private void block(List<JFrame> frames) {
-        for (JFrame frame : frames) {
-            blockerFor(frame).block();
         }
     }
 

@@ -51,6 +51,27 @@ public class MainFrame extends JFrame implements InitializingBean, MenuBar.Host 
 //                }, ActionListener.class));
     }
 
+    @Override
+    public void dialogDemo() {
+        boolean confirmed = showConfirmDialog(this
+                , "Perform some long operation?"
+                , "Confirm"
+                , OK_CANCEL_OPTION
+                , WARNING_MESSAGE) == JOptionPane.OK_OPTION;
+        tailer.append(confirmed ? "==== Operation Started..." : "==== Operation Aborted");
+        if (confirmed) {
+            hourglass.surround(new Hourglass.Worker() {
+                public void doInBackground() {
+                    sleep(3000);
+                }
+
+                public void done() {
+                    tailer.append("==== Operation finished.");
+                }
+            });
+        }
+    }
+
     /**
      * A handy convention for launching frames.
      * It keeps it all self-contained and dialogs could have a return value.
@@ -67,11 +88,6 @@ public class MainFrame extends JFrame implements InitializingBean, MenuBar.Host 
             sleep(500);
             tailer.append(repeat("z", i + 1));
         }
-    }
-
-    void toggleWorker() {
-        if (chkBackground.isSelected()) worker.activate();
-        else worker.deactivate();
     }
 
     private void populateUi() {
@@ -114,24 +130,8 @@ public class MainFrame extends JFrame implements InitializingBean, MenuBar.Host 
         });
     }
 
-    @Override
-    public void dialogDemo() {
-        boolean confirmed = showConfirmDialog(this
-                , "Perform some long operation?"
-                , "Confirm"
-                , OK_CANCEL_OPTION
-                , WARNING_MESSAGE) == JOptionPane.OK_OPTION;
-        tailer.append(confirmed ? "==== Operation Started..." : "==== Operation Aborted");
-        if (confirmed) {
-            hourglass.surround(new Hourglass.Worker() {
-                public void doInBackground() {
-                    sleep(3000);
-                }
-
-                public void done() {
-                    tailer.append("==== Operation finished.");
-                }
-            });
-        }
+    void toggleWorker() {
+        if (chkBackground.isSelected()) worker.activate();
+        else worker.deactivate();
     }
 }

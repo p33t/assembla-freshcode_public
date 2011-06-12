@@ -50,16 +50,16 @@ public class TailingPane extends JScrollPane implements InitializingBean {
         area.setText("");
     }
 
+    private boolean isEmpty() {
+        return area.getText().isEmpty();
+    }
+
     JPopupMenu loadMenu(Point p) {
         JPopupMenu m = new JPopupMenu();
         if (isEmpty()) return m;
         JMenuItem item = m.add("Clear");
         useTrigger(item).toCall(this).clear();
         return m;
-    }
-
-    private boolean isEmpty() {
-        return area.getText().isEmpty();
     }
 
     private void setupTextArea() {

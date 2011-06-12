@@ -13,11 +13,6 @@ public class Blocker extends JPanel {
     private final JFrame owner;
     private java.awt.Component focusOwnerOrNull;
 
-    public static Blocker blockerFor(JFrame f) {
-        if (f.getGlassPane() instanceof Blocker) return (Blocker) f.getGlassPane();
-        return new Blocker(f);
-    }
-
     public Blocker(JFrame f) {
         owner = f;
         f.setGlassPane(this);
@@ -35,6 +30,11 @@ public class Blocker extends JPanel {
                 requestFocus();
             }
         });
+    }
+
+    public static Blocker blockerFor(JFrame f) {
+        if (f.getGlassPane() instanceof Blocker) return (Blocker) f.getGlassPane();
+        return new Blocker(f);
     }
 
     public void block() {

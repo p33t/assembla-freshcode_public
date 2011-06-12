@@ -16,9 +16,15 @@ import static biz.freshcode.swing_shots.util.AppCollectionUtils.newList;
 public class FrameRegistry implements BeanPostProcessor {
     private List<WeakReference<JFrame>> refs = newList();
 
-    @Override
-    public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-        return bean;
+    public List<JFrame> listFrames() {
+        List<JFrame> l = newList();
+        for (Iterator<WeakReference<JFrame>> it = refs.iterator(); it.hasNext(); ) {
+            WeakReference<JFrame> next = it.next();
+            JFrame window = next.get();
+            if (window == null) it.remove();
+            else l.add(window);
+        }
+        return l;
     }
 
     @Override
@@ -27,15 +33,9 @@ public class FrameRegistry implements BeanPostProcessor {
         return bean;
     }
 
-    public List<JFrame> listFrames() {
-        List<JFrame>  l = newList();
-        for (Iterator<WeakReference<JFrame>> it = refs.iterator(); it.hasNext();) {
-            WeakReference<JFrame> next = it.next();
-            JFrame window = next.get();
-            if (window == null) it.remove();
-            else l.add(window);
-        }
-        return l;
+    @Override
+    public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+        return bean;
     }
 
     private void add(Object bean) {
