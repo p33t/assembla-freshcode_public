@@ -15,6 +15,11 @@ import static org.springframework.util.ReflectionUtils.doWithFields;
 @Component
 public class LoggingProcessor implements BeanPostProcessor {
     @Override
+    public Object postProcessAfterInitialization(Object o, String s) throws BeansException {
+        return o;
+    }
+
+    @Override
     public Object postProcessBeforeInitialization(final Object bean, String beanName) {
         doWithFields(bean.getClass(), new ReflectionUtils.FieldCallback() {
             public void doWith(Field field) throws IllegalArgumentException, IllegalAccessException {
@@ -26,10 +31,5 @@ public class LoggingProcessor implements BeanPostProcessor {
             }
         });
         return bean;
-    }
-
-    @Override
-    public Object postProcessAfterInitialization(Object o, String s) throws BeansException {
-        return o;
     }
 }

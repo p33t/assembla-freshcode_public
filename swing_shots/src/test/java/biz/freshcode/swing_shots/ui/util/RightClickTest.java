@@ -14,6 +14,14 @@ import static org.testng.Assert.fail;
 public class RightClickTest {
     RightClick subject = new RightClick();
 
+    public JMenuItem badMenu() {
+        return null;
+    }
+
+    public JPopupMenu loadMenu() {
+        return new JPopupMenu();
+    }
+
     @Test
     public void testBadMethod() {
         try {
@@ -37,13 +45,5 @@ public class RightClickTest {
         subject.menuComesFrom(c, this).loadMenu();
         // Hmm... don't know how to test this.
         assertNotNull(r.val);
-    }
-
-    public JPopupMenu loadMenu() {
-        return new JPopupMenu();
-    }
-
-    public JMenuItem badMenu() {
-        return null;
     }
 }

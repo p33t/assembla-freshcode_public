@@ -7,11 +7,11 @@ import static org.testng.Assert.fail;
 
 public class MethodTriggerTest {
     @Test
-    public void testOverrideArgs() {
+    public void testConstructorArgs() {
         MethodTrigger t = new MethodTrigger();
-        t.toCall(new MyClass()).say("bad");
-        String actual = t.trigger("good");
-        assertEquals(actual, "good");
+        t.toCall(new MyClass("right"), "wrong").hello();
+        String actual = t.trigger();
+        assertEquals(actual, "right");
     }
 
     @Test
@@ -23,19 +23,19 @@ public class MethodTriggerTest {
     }
 
     @Test
-    public void testConstructorArgs() {
-        MethodTrigger t = new MethodTrigger();
-        t.toCall(new MyClass("right"), "wrong").hello();
-        String actual = t.trigger();
-        assertEquals(actual, "right");
-    }
-
-    @Test
     public void testInitChecks() {
         MethodTrigger t = new MethodTrigger();
         checkNoTrigger(t);
         t.toCall(new MyClass());
         checkNoTrigger(t);
+    }
+
+    @Test
+    public void testOverrideArgs() {
+        MethodTrigger t = new MethodTrigger();
+        t.toCall(new MyClass()).say("bad");
+        String actual = t.trigger("good");
+        assertEquals(actual, "good");
     }
 
     private void checkNoTrigger(MethodTrigger t) {

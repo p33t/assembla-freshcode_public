@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 import java.util.List;
 
 import static biz.freshcode.swing_shots.test.TestBootstrap.factory;
-import static biz.freshcode.swing_shots.util.AppCollectionUtils.newList;
+import static biz.freshcode.swing_shots.util.AppCollectionUtils.newListFrom;
 import static junit.framework.Assert.*;
 
 public class H2DatabaseTest {
@@ -30,6 +30,6 @@ public class H2DatabaseTest {
         h2.execute("create table t1(id int, name varchar(32));");
         h2.update("insert into t1 values (?, ?);", 1, "one");
         List<String> l = h2.query("select name from t1 where id = ?", new SingleColumnRowMapper<String>(), 1);
-        assertEquals(l, newList("one"));
+        assertEquals(l, newListFrom("one"));
     }
 }

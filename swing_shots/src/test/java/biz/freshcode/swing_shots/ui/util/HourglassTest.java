@@ -3,7 +3,6 @@ package biz.freshcode.swing_shots.ui.util;
 import org.testng.annotations.Test;
 
 public class HourglassTest {
-
     @Test
     public void testThreadCheck() {
         Hourglass h = new Hourglass();
