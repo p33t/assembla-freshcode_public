@@ -73,3 +73,18 @@ Dependency Injection
 -- Contrast with static util file style (potentially has state)
 - Gotcha: @Lazy(true) to prevent headless exceptions in CI, other uses
 
+H2 Database
+-----------
+- Cool features
+-- Different modes: memory w/wo multi connections, embedded, server
+-- Import/export to script w/wo compression, password (source control anyone?)
+-- full-text search
+-- 1.3 MB
+-- Really good doco
+- Can use to manage resumable work in a thread gang
+- Good Practice: All state goes in db
+-- including property table
+- H2Database object... expected to have a Dao... difficult to hack.
+-- 'data' folder calculated like 'log' folder
+
+
