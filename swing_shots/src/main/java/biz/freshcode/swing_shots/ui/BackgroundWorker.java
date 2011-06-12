@@ -10,10 +10,11 @@ import static biz.freshcode.swing_shots.util.AppExceptionUtil.illegalState;
 import static biz.freshcode.swing_shots.util.AppThreadUtil.daemon;
 
 /**
- * A canonical threading approach...
+ * An old-school threading approach...
  * - Make sure thread is privately managed
  * - Use the interrupt() and isInterrupted() to terminate loops
  * - A Daemon flag so it doesn't keep the application alive
+ * - Use SwingWorker instead (if possible)
  */
 @Component
 @Lazy(true)
