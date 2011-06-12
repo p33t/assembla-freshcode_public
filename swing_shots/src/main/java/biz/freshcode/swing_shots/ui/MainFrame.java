@@ -98,6 +98,11 @@ public class MainFrame extends JFrame implements InitializingBean, MenuBar.Host 
         cp.add(factory.menuBar(this), BorderLayout.NORTH);
     }
 
+    /**
+     * Properly set up closing of the frame.
+     * Note that using EXIT_ON_CLOSE here is a programming fail.
+     * It's easy to put a confirmation dialog here.
+     */
     private void setupClose() {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
