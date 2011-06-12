@@ -123,3 +123,17 @@ JGoodies
 -- I'm not an expert
 - row+1 technique
 
+Suggested Practices
+-------------------
+- Frame 'launch()' method
+-- Keep self contained
+-- Modal dialogs return a value
+- 'host' convention
+-- Don't need full 'listener' pattern
+-- Don't want cyclic dependencies
+
+Handy Tools
+-----------
+- Rearranger: Intellij plugin... formatting code can be automated!
+- Squirrel SQL Client: Platform independent, connect to anything
+- Jenkins (may need to 'cd' due to app.home calculation)
