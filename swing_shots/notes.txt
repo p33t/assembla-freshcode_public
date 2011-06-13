@@ -3,12 +3,15 @@ Some notes for the presentation...
 Summary
 -------
 Background
+
 Simple Platform Indep. Packaging
 Bootstrap
 Dependency Injection - Field-Based, Annotations
+
 H2 Database
 Wait Cursors
 Background Tasks
+
 JGoodies Forms
 Suggested Practices
 Handy Tools
