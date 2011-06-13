@@ -56,6 +56,7 @@ Packaging
 -- Put 'space' in folder name and launch from another folder
 --- Demo 'features' (Don't forget 'tailing' feature and resize... more handy than status)
 --- Note the appearance of log file
+- Look at pom.xml and descriptor.xml
 
 Bootstrap
 ---------
@@ -72,7 +73,7 @@ Dependency Injection
 - no-xml... just annotations
 - Use cases
 -- Simple singleton
--- Simple non-singleton (Logger)
+-- Simple non-singleton (H2Database)
 -- Partially injected 'prototype'
 --- Centralized construction in Factory
 -- External Objects (Configuration... gets subclassed)
