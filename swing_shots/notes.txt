@@ -146,3 +146,4 @@ Handy Tools
 - Rearranger: Intellij plugin... formatting code can be automated!
 - Squirrel SQL Client: Platform independent, connect to anything
 - Jenkins (may need to 'cd' due to app.home calculation)
+- assembla.com (free 2Gb repos: Git, Subversion)... no more excuses
