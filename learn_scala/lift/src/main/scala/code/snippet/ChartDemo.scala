@@ -1,6 +1,7 @@
 package code.snippet
 
 import net.liftweb._
+import http.js.JE.JsRaw
 import http.js.jquery.JqWiringSupport
 import http.js.{JsCmd, JsCmds}
 import JsCmds._
@@ -13,8 +14,6 @@ import xml.{Node, Elem, Text, NodeSeq}
 
 object ChartDemo {
   def defaultData(in: NodeSeq): NodeSeq = {
-    <script type="text/javascript">
-      dataD = [[0.0, 3.0], [0.25, 3.0], [0.5, 1.0], [0.75, 3.0], [1.0, 3.0]];
-    </script>
+    Script(JsRaw("dataD = [[0.0, 3.0], [0.25, 3.0], [0.5, 1.0], [0.75, 3.0], [1.0, 3.0]]"))
   }
 }
