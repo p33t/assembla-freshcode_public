@@ -9,13 +9,6 @@
         <script type="text/javascript" src="jquery.flot.stack.js"></script>
         <script type="text/javascript">
             $(document).ready(function() {
-                $.plot($("#elemental-chart-holder"), [
-                    [
-                        [0, 0],
-                        [1, 1]
-                    ]
-                ], { yaxis: { max: 1 } });
-
                 var chartData = [
                     {"label": "coverage(roster = AF)", "data": [
                         [0.0, null]
@@ -51,8 +44,6 @@
     </head_merge>
 
     <h2>Flot Charts Demo</h2>
-
-    <div id="elemental-chart-holder" style="width:600px;height:300px"></div>
     <div id="stacked-chart-holder" style="width:600px;height:300px"></div>
 </div>
 </body>
