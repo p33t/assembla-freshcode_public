@@ -1,0 +1,59 @@
+<html>
+<head>
+    <script id="jquery" src="../../_jquery.js" type="text/javascript"></script>
+</head>
+<body class="lift:content_id=main">
+<div id="main" class="lift:surround?with=default;at=content">
+    <head_merge>
+        <script type="text/javascript" src="jquery.flot.js"></script>
+        <script type="text/javascript" src="jquery.flot.stack.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $.plot($("#elemental-chart-holder"), [
+                    [
+                        [0, 0],
+                        [1, 1]
+                    ]
+                ], { yaxis: { max: 1 } });
+
+                var chartData = [
+                    {"label": "coverage(roster = AF)", "data": [
+                        [0.0, null]
+                        ,
+                        [0.25, 4.0]
+                        ,
+                        [0.5, 3.5]
+                        ,
+                        [0.75, 1.0]
+                        ,
+                        [1.0, 2.0]
+                    ], "yaxis": 1, "stack": true, "bars": {"show": true, "barWidth": 0.1}},
+                    {"label": "coverage(roster = D)", "data": [
+                        [0.0, null]
+                        ,
+                        [0.25, null] // replace 0.0 with 'null' to prevent 0 height bar (line)
+                        ,
+                        [0.5, 1.0]
+                        ,
+                        [0.75, 0.0]
+                        ,
+                        [1.0, 0.0]
+                    ], "yaxis": 1, "stack": true, "bars": {"show": true, "barWidth": 0.1}}
+                ];
+                var options = {"yaxes": [
+                    {"position": "left", "alignTicksWithAxis": 1},
+                    {"position": "right", "alignTicksWithAxis": 2}
+                ]};
+                $.plot($("#stacked-chart-holder"), chartData, options);
+
+            });
+        </script>
+    </head_merge>
+
+    <h2>Flot Charts Demo</h2>
+
+    <div id="elemental-chart-holder" style="width:600px;height:300px"></div>
+    <div id="stacked-chart-holder" style="width:600px;height:300px"></div>
+</div>
+</body>
+</html>
