@@ -13,6 +13,8 @@ import xml.{Node, Elem, Text, NodeSeq}
 
 object ChartDemo {
   def defaultData(in: NodeSeq): NodeSeq = {
-    NodeSeq.Empty
+    <script type="text/javascript">
+      dataD = [[0.0, 3.0], [0.25, 3.0], [0.5, 1.0], [0.75, 3.0], [1.0, 3.0]];
+    </script>
   }
 }
