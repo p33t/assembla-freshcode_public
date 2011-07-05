@@ -5,10 +5,36 @@
     <title>Javascript Objects</title>
     <script src="jquery.js" type="text/javascript"></script>
     <script type="text/javascript">
+
+        function Config() {
+            this.checked = "";
+            this.radio = "1";
+
+            this.toString = function() {
+                return "Config with check: " + this.checked + ", and radio: " + this.radio;
+            }
+        }
+
+        function readConfig() {
+            var c = new Config();
+            c.checked = $("#optCheckId").is(":checked");
+            c.radio = $('input:radio[name=optRadio]:checked').val();
+            return c;
+        }
+
+        function syncConfig() {
+            var str = readConfig().toString() + " - " + new Date();
+            $("#output").contents().replaceWith(str);
+        }
+
         $(document).ready(function() {
+
             $('.configInput').change(function(evt) {
-                console.log("Input change - " + evt.target.id)
+                console.log("Input change - " + evt.target.id);
+                // TODO: Involve a timer?
+                syncConfig();
             });
+            syncConfig();
         });
     </script>
     <style type="text/css">
@@ -19,7 +45,7 @@
     </style>
 </head>
 <body>
-<form name="configForm" action="#" onsubmit="return false;">
+<form name="configForm" id="configFormId" action="#" onsubmit="return false;">
     <input type="checkbox"
            class="configInput"
            name="optCheck"
