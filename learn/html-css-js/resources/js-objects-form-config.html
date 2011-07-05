@@ -24,7 +24,11 @@
 
         function syncConfig() {
             var str = readConfig().toString() + " - " + new Date();
-            $("#output").contents().replaceWith(str);
+            var target = $("#output");
+            target.fadeOut('fast', function() {
+                target.contents().replaceWith(str);
+            });
+            target.fadeIn('fast');
         }
 
         $(document).ready(function() {
