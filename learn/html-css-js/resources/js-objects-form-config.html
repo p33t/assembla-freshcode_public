@@ -11,7 +11,7 @@
             this.radio = "1";
 
             this.toString = function() {
-                return "Config with check: " + this.checked + ", and radio: " + this.radio;
+                return "Config: check=" + this.checked + " radio=" + this.radio;
             }
         }
 
@@ -23,7 +23,7 @@
         }
 
         function syncConfig() {
-            var str = readConfig().toString() + " - " + new Date();
+            var str = readConfig().toString(); // + " - " + new Date();
             var target = $("#output");
             target.fadeOut('fast', function() {
                 target.contents().replaceWith(str);
