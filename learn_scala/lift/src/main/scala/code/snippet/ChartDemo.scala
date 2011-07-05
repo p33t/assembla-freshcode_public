@@ -21,7 +21,7 @@ object ChartDemo {
     Script(JsRaw("dataD = " + dataDString()))
   }
 
-  def dataDString(): String = {
+  private def dataDString(): String = {
     //causes an exception... Serialization.write(dataD())
     val doc = JsonAST.render(dataD())
     val writer = new StringWriter()
@@ -30,7 +30,7 @@ object ChartDemo {
     writer.toString
   }
 
-  def dataD(): JValue = {
+  private def dataD(): JValue = {
     val v = List(List(0.0, 3.0), List(0.25, 3.0), List(0.5, 1.0), List(0.75, 3.0), List(1.0, 3.0))
     Extraction.decompose(v)
   }
