@@ -21,6 +21,7 @@ object ChartDemo {
   def fetchData() = {
     val (_, invoker) = SHtml.ajaxInvoke {
       () =>
+        Thread.sleep(800)
         val data = formatDataD(1.0, 1.0, 2.0, 1.0, 1.0)
         assignDataD(data) &
         JsCmds.Run("renderChart()")
