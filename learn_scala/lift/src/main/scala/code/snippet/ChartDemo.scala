@@ -3,7 +3,7 @@ package code.snippet
 import net.liftweb._
 import http.js.JE.JsRaw
 import http.js.jquery.JqWiringSupport
-import http.js.{JsCmd, JsCmds}
+import http.js.{JE, JsCmd, JsCmds}
 import JsCmds._
 import http.{WiringUI, SHtml}
 import json.JsonAST.JValue
@@ -40,16 +40,6 @@ object ChartDemo {
   }
 
   private def assignDataD(data: Any): JsCmd = {
-    JsRaw("dataD = " + dataDString(data))
-  }
-
-  private def dataDString(data: Any): String = {
-    //causes an exception... Serialization.write(dataD())
-    val json = Extraction.decompose(data)
-    val doc = JsonAST.render(json)
-    val writer = new StringWriter()
-    doc.format(80, writer)
-    writer.flush()
-    writer.toString
+    JsCmds.SetExp(JE.JsVar("dataD"), Extraction.decompose(data))
   }
 }
