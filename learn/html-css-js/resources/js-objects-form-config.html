@@ -22,6 +22,23 @@
             return c;
         }
 
+        var lastModifiedToken;
+
+        function notifyModified() {
+            var token = new Date().getMilliseconds();
+            lastModifiedToken = token;
+            setTimeout(function() {
+                if (token == lastModifiedToken) {
+                    // safe to continue
+                    syncConfig();
+                }
+                else {
+                    // another modification has been posted
+                    console.log('Modification superseeded: ' + token);
+                }
+            }, 2000);
+        }
+
         function syncConfig() {
             var str = readConfig().toString(); // + " - " + new Date();
             var target = $("#output");
@@ -35,8 +52,7 @@
 
             $('.configInput').change(function(evt) {
                 console.log("Input change - " + evt.target.id);
-                // TODO: Involve a timer?
-                syncConfig();
+                notifyModified();
             });
             syncConfig();
         });
