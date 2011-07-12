@@ -1,4 +1,4 @@
-package code.snippet
+package code.snippet.experiments.chart
 
 import net.liftweb._
 import http.js.JE.JsRaw

@@ -1,4 +1,4 @@
-package code.snippet
+package code.snippet.experiments
 
 import xml.NodeSeq
 import pkg.UrlRemainder

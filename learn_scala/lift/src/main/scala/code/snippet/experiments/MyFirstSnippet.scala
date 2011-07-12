@@ -1,5 +1,4 @@
-package code
-package snippet
+package code.snippet.experiments
 
 import net.liftweb.http.S
 import xml.{Text, NodeSeq}
