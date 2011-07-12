@@ -1,4 +1,4 @@
-package code.snippet
+package code.snippet.form
 
 import net.liftweb._
 import http.S

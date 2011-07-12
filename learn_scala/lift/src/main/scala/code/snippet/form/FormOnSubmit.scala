@@ -1,5 +1,4 @@
-package code
-package snippet
+package code.snippet.form
 
 import net.liftweb._
 import common.Full
