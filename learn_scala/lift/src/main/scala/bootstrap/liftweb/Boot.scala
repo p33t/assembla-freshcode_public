@@ -2,7 +2,6 @@ package bootstrap.liftweb
 
 import net.liftweb._
 import common.{Loggable, Full}
-import util.Vendor
 import util.Vendor._
 import http._
 import pkg.UrlRemainder
@@ -29,8 +28,7 @@ class Boot extends Loggable {
     LiftRules.addToPackages("code")
     // will cause search in a subpackage with same path as that of host html file.
     // EG: com/pkg/hostfile.html's snippets could be found in ...snippet.com.pkg.* package
-    val f: String => List[String] = LiftRules.searchSnippetsWithRequestPath(_)
-    LiftRules.snippetNamesToSearch.default.set(Vendor(f))
+    LiftRules.snippetNamesToSearch.default.set(LiftRules.searchSnippetsWithRequestPath(_:String))
 
     // Use HTML5 for rendering (instead of the default xhtml)
     LiftRules.htmlProperties.default.set((r: Req) => new Html5Properties(r.userAgent))
