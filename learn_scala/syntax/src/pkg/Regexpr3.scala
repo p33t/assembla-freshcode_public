@@ -20,8 +20,12 @@ G	7	-	n	n	n	n	-	-
         case Some(m) =>
           require(m.groupCount == 3)
           println("Found crew: " + m.group(1) + ", Week: " + m.group(2) +
-            ", Week pattern: " + m.group(3))
+            ", Week pattern: " + weekPattern(m.group(3)))
       }
     }
+  }
+
+  def weekPattern(s: String) = {
+    s.trim.split("\\s+").toList
   }
 }
