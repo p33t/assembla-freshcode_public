@@ -1,6 +1,7 @@
 package pkg
 
 object Regexpr3 {
+  // Tab separated input
   val input = """A	1	d	d	d	d	d	-	-
 B	2	a	a	a	a	a	-	-
 C	3	d	d	d	d	d	-	-
@@ -11,6 +12,7 @@ G	7	-	n	n	n	n	-	-
 """
 
   def main(args: Array[String]) {
+    // white space separated
     val re = """(\S*)\s+(\d+)((?:\s+(?:d|D|a|n|N|s|S|-)){7})""".r
     for (line <- io.Source.fromString(input).getLines()) {
       println(line)
