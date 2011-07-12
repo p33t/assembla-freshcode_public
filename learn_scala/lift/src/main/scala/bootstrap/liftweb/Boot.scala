@@ -6,7 +6,7 @@ import util.Vendor
 import util.Vendor._
 import http._
 import pkg.UrlRemainder
-import code.snippet.WildProcessing
+import code.snippet.experiments.WildProcessing
 import code.lib.{MyEasyStatelessDispatch, MyStatelessDispatch}
 import sitemap.{Loc, SiteMap, Menu, **}
 import Loc._

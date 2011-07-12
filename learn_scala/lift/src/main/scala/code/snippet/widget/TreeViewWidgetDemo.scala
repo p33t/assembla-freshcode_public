@@ -1,4 +1,4 @@
-package code.snippet
+package code.snippet.widget
 
 import xml.NodeSeq
 import net.liftweb._
