@@ -1,4 +1,4 @@
-package code.snippet
+package code.snippet.form
 
 import xml.NodeSeq
 import net.liftweb.http.S
