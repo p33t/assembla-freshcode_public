@@ -6,9 +6,13 @@ object VarArgs {
     println(s)
   }
 
+  def myArr[T](ts: T*) = {
+    ts
+  }
+
   def main(args: Array[String]) {
     varArgs("one", "two", "three")
-    val arr = Array("four", "five", "six")
+    val arr = myArr("four", "five", "six")
     varArgs(arr: _*)
   }
 }
