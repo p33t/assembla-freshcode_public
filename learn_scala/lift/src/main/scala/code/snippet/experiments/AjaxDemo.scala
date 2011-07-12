@@ -1,4 +1,4 @@
-package code.snippet
+package code.snippet.experiments
 
 import net.liftweb._
 import http.js.jquery.JqWiringSupport
