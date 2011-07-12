@@ -3,12 +3,11 @@ package pkg
 object Regexpr3 {
   // Tab separated input
   val input = """A	1	d	d	d	d	d	-	-
-B	2	a	a	a	a	a	-	-
+	2	a	a	a	a	a	-	-
 C	3	d	d	d	d	d	-	-
-D	4	a	a	a	a	a	-	-
+	4	a	a	a	a	a	-	-
 E	5	d	d	d	-	-	N	N
-F	6	n	-	-	d	d	D	D
-G	7	-	n	n	n	n	-	-
+	6	n	-	-	d	d	D	D
 """
 
   def main(args: Array[String]) {
