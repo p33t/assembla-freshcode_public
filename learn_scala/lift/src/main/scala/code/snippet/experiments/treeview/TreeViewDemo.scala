@@ -1,4 +1,4 @@
-package code.snippet
+package code.snippet.experiments.treeview
 
 import net.liftweb.util._
 import Helpers._
