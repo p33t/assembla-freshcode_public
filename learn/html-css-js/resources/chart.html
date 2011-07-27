@@ -8,6 +8,7 @@
     <script type="text/javascript" src="jquery.js"></script>
     <script type="text/javascript" src="chart/jquery.flot.js"></script>
     <script type="text/javascript" src="chart/jquery.flot.stack.js"></script>
+    <script type="text/javascript" src="chart/jquery.flot.orderBars.js"></script>
     <script type="text/javascript">
         function elementalChart() {
             $.plot($("#elemental-chart-holder"), [
@@ -42,8 +43,8 @@
         ];
         function stackedChart() {
             var chartData = [
-                {"label": "coverage(roster = AF)", "data": dataAF, "yaxis": 1, "stack": true, "bars": {"show": true, "barWidth": 0.1}},
-                {"label": "coverage(roster = D)",  "data": dataD,  "yaxis": 1, "stack": true, "bars": {"show": true, "barWidth": 0.1}}
+                {"label": "coverage(roster = AF)", "data": dataAF, "stack": true, "bars": {"show": true, "barWidth": 0.1}},
+                {"label": "coverage(roster = D)",  "data": dataD,  "stack": true, "bars": {"show": true, "barWidth": 0.1}}
             ];
             var options = {"yaxes": [
                 {"position": "left", "alignTicksWithAxis": 1},
@@ -53,8 +54,8 @@
         }
         function categoryChart() {
             var chartData = [
-                {"label": "coverage(roster = AF)", "data": dataAF, "yaxis": 1, "bars": {"show": true, "barWidth": 0.1}},
-                {"label": "coverage(roster = D)",  "data": dataD,  "yaxis": 1, "bars": {"show": true, "barWidth": 0.1}}
+                {"label": "coverage(roster = AF)", "data": dataAF, "yaxis": 1, "bars": {order: 1, "show": true, "barWidth": 0.05}},
+                {"label": "coverage(roster = D)",  "data": dataD,  "yaxis": 1, "bars": {order: 2, "show": true, "barWidth": 0.05}}
             ];
             var options = {"yaxes": [
                 {"position": "left", "alignTicksWithAxis": 1},
