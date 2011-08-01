@@ -19,6 +19,12 @@ class JsonTest extends Suite {
     check(m)
   }
 
+  def testSerializeTuple() {
+    val t = (1, 2)
+    // No joy... this produces: {"_1$mcI$sp":1,"_2$mcI$sp":2}
+    println(compact(render(decompose(t))))
+  }
+
   private def check(m: Any) {
     expect(desired) {compact(render(decompose(m)))}
   }
