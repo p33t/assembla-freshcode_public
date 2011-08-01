@@ -7,10 +7,24 @@ import net.liftweb.json.Printer._
 
 class JsonTest extends Suite {
   implicit val formats = net.liftweb.json.DefaultFormats
+  val desired = """{"one":1,"two":2,"three":[3,3,3]}"""
 
   def testSerializeMap() {
-
     val m = Map("one" -> 1, "two" -> 2, "three" -> List(3, 3, 3))
-    expect("""{"one":1,"two":2,"three":[3,3,3]}""") {compact(render(decompose(m)))}
+    check(m)
+  }
+
+  def testSerializeCaseClass() {
+    val m = MyClass(1, 2, List(3, 3, 3))
+    check(m)
+  }
+
+  private def check(m: Any) {
+    expect(desired) {compact(render(decompose(m)))}
   }
 }
+
+/**
+ * Note this must be declared as a top level class to be json serialized cleanly by automatic means.
+ */
+case class MyClass(one: Int, two: Int, three: List[Int])
