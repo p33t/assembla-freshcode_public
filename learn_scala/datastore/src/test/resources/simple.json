@@ -1,0 +1,10 @@
+{
+    "elem1": {
+        "name": "elem1 name",
+        "value": "elem1 value",
+        "list": ["one", "two", "three"]
+    },
+    "elem2": {
+        "name": "elem2 name"
+    }
+}
