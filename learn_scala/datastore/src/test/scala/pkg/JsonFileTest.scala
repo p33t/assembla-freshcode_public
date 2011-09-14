@@ -22,15 +22,7 @@ class JsonFileTest extends Suite {
 
   def testLoadFile() {
     val stream = ClassLoader.getSystemResourceAsStream(JsonFileName)
-
-    // this way gets an error about unknown types
-    //    val jval = JsonParser.parse(new InputStreamReader(stream))
-    //    val s = compact(render(jval))
-    //    println(s)
-    //extract[Map[String, Any]](jval)
-
     val actualBox = parseStream(stream)
-
     val actual = actualBox.get
     expect(Expected)(actual)
   }
