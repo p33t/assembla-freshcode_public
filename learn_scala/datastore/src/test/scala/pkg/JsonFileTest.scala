@@ -21,7 +21,8 @@ class JsonFileTest extends Suite {
     ), "elem2" -> Map("name" -> "elem2 name"))
 
   def testLoadFile() {
-    val actualBox = parseResourceFile(JsonFileName)
+    val contents = loadResourceFile(JsonFileName)
+    val actualBox = JSONParser.parse(contents)
     val actual = actualBox.get
     expect(Expected)(actual)
   }
@@ -37,10 +38,10 @@ class JsonFileTest extends Suite {
     }
   }
 
-  private def parseResourceFile(fileName: String) = {
+  private def loadResourceFile(fileName: String): String = {
     val stream = ClassLoader.getSystemResourceAsStream(fileName)
     try {
-      JSONParser.parse(io.Source.fromInputStream(stream).mkString)
+      io.Source.fromInputStream(stream).mkString
     }
     finally {
       stream.close()
