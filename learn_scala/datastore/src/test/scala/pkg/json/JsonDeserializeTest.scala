@@ -8,6 +8,7 @@ import net.liftweb.json._
 class JsonDeserializeTest extends Suite {
 
 
+  // TODO: A StringChild example... will need to convert VoidChildSerializer to RestrictedSerializer
   val TestParent = Parent("one", "two", Child("three"), new VoidChild)
 
   def testSerialize() {
