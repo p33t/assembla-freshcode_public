@@ -1,4 +1,4 @@
-package pkg
+package pkg.json
 
 import org.scalatest.Suite
 import org.testng.annotations.Test
@@ -6,20 +6,19 @@ import net.liftweb.json._
 
 @Test
 class JsonDeserializeTest extends Suite {
-  val TestParent = Parent("one", "two", Child("three"))
+
+
+  val TestParent = Parent("one", "two", Child("three"), new VoidChild)
 
   def testSerialize() {
-    implicit val JsonFormats = DefaultFormats // + Parent.Serializer // for Json conversion
+    implicit val JsonFormats = DefaultFormats + VoidChildSerializer // for Json conversion
     val str = Printer.compact(JsonAST.render(Extraction.decompose(TestParent)))
+    println(str)
     val actual = JsonParser.parse(str).extract[Parent]
     expect(TestParent)(actual)
   }
 
 }
-
-case class Parent(f1: String, f2: String, f3: Child)
-
-case class Child(f: String)
 
 //object Parent {
 //
