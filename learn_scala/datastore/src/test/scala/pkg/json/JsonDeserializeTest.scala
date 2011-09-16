@@ -6,29 +6,18 @@ import net.liftweb.json._
 
 @Test
 class JsonDeserializeTest extends Suite {
-
-
-  // TODO: A StringChild example... will need to convert VoidChildSerializer to RestrictedSerializer
-  val TestParent = Parent("one", "two", Child("three"), new VoidChild)
+  val TestParents = List(
+    Parent("one", "two", Child("three"), new VoidChild),
+    Parent("three", "four", Child("five"), new StringChild("six"))
+  )
 
   def testSerialize() {
-    implicit val JsonFormats = DefaultFormats + VoidChildSerializer // for Json conversion
-    val str = Printer.compact(JsonAST.render(Extraction.decompose(TestParent)))
-    println(str)
-    val actual = JsonParser.parse(str).extract[Parent]
-    expect(TestParent)(actual)
+    implicit val JsonFormats = DefaultFormats + RestrictedSerializer // for Json conversion
+    for (p <- TestParents) {
+      val str = Printer.compact(render(Extraction.decompose(p)))
+      val actual = parse(str).extract[Parent]
+      expect(p)(actual)
+    }
   }
 
 }
-
-//object Parent {
-//
-//  object Serializer extends net.liftweb.json.Serializer[Parent] {
-//    def deserialize(implicit format: Formats): PartialFunction[(TypeInfo, JValue), Parent] = Map.empty
-//
-//    def serialize(implicit format: Formats): PartialFunction[Any, JValue] = {
-//      case p: Parent => Extraction.decompose(List(p.f2, p.f1))(format)
-//    }
-//  }
-//
-//}

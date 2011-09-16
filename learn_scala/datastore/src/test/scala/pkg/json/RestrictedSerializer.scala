@@ -2,11 +2,12 @@ package pkg.json
 
 import net.liftweb.json._
 
-object VoidChildSerializer extends Serializer[VoidChild] {
+object RestrictedSerializer extends Serializer[Restricted] {
   private val StrRep = "VoidChild"
 
-  def deserialize(implicit format: Formats): PartialFunction[(TypeInfo, JValue), VoidChild] = {
+  def deserialize(implicit format: Formats): PartialFunction[(TypeInfo, JValue), Restricted] = {
     case (ti, jval) if (ti.clazz == classOf[Restricted] && jval == JString(StrRep)) => new VoidChild
+    case (ti, jval) if (ti.clazz == classOf[Restricted]) => jval.extract[StringChild]
   }
 
   def serialize(implicit format: Formats): PartialFunction[Any, JValue] = {
