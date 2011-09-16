@@ -30,7 +30,7 @@ class JsonDeserializeTest extends Suite {
   }
 
   def testPartialDeserialize() {
-    case class C(f: String, rest: JArray)
+    case class C(f: String, rest: JArray) // NOTE: JValue also works here
     val expected = C("bruce", JArray(List(JString("one"), JString("two"), JString("three"))))
     // Doesn't work...Extraction.decompose(expected)
     val ast = parse("""{"f":"bruce", "rest":["one","two","three"]}""")
