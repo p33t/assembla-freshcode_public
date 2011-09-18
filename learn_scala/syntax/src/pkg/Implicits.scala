@@ -16,6 +16,7 @@ object Implicits {
     pseudoSyntax()
     implicitArgList()
     viewBounds()
+    outOfBandComms()
   }
 
   def viewBounds() {
@@ -87,10 +88,29 @@ object Implicits {
     println("Should be 5... " + max.sortVal)
   }
 
+  def outOfBandComms() {
+    implicit val ih = new IntHandler(100)
+    cleanSignature(1)
+  }
+
+  def cleanSignature(i: Int) {
+    // No can do... must be resolved at compile time
+    println("Out of band comms via implicits doesn't work")
+    //    val ih = conjurer
+    //    println("Conjured up out of band information to obtain " + (ih.increment + i))
+  }
+
+  def conjurer(implicit ih: IntHandler) = {
+    ih
+  }
+
+
   class Unordered(val sortVal: Int)
 
   def printString(s: String) {println(s)}
 }
+
+class IntHandler(val increment: Int)
 
 class Boring
 
