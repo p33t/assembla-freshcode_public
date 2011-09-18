@@ -11,14 +11,14 @@ object Implicits {
   private implicit def makeLessBoring(b: Boring) = new LessBoring()
 
   def main(args: Array[String]) {
-    typeConversion
-    receiverConversion
-    pseudoSyntax
-    implicitArgList
-    viewBounds
+    typeConversion()
+    receiverConversion()
+    pseudoSyntax()
+    implicitArgList()
+    viewBounds()
   }
 
-  def viewBounds {
+  def viewBounds() {
     // view bounds ('can treat as a') differ from upper bounds ('is a')
     class Shape {
       val location: Dimension = null
@@ -30,7 +30,8 @@ object Implicits {
     }
 
     implicit def squareToRect(s: Square): Rect = new Rect(s.side, s.side)
-    def calcArea[A <% Rect](r: A) { // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< EG
+    def calcArea[A <% Rect](r: A) {
+      // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< EG
       println("Area is " + r.length + " x " + r.width)
     }
 
@@ -40,7 +41,7 @@ object Implicits {
     calcArea(new Square(4))
   }
 
-  def receiverConversion: Unit = {
+  def receiverConversion() {
     // can grapht a method onto a different receiver
     val lb = new LessBoring()
     lb.veryUniqueName()
@@ -49,7 +50,7 @@ object Implicits {
     b.veryUniqueName()
   }
 
-  def typeConversion: Unit = {
+  def typeConversion() {
     // Implicit is applied if it is a singular (non-composite) identifier.  EG. Not SomeClass.intToString
     // By convention one might import all members from a 'Preamble' object for a package EG. import pkg.Preamble._
     // Methods defined on a participating class's 'companion object' are also considered
@@ -60,14 +61,14 @@ object Implicits {
     // Doesn't work...printString(true)
   }
 
-  def pseudoSyntax: Unit = {
+  def pseudoSyntax() {
     // the -> map building syntax is not actually syntax
     // its a method on an implicit that takes any type
     val t = 3 -> "three"
     println(t)
   }
 
-  def implicitArgList: Unit = {
+  def implicitArgList() {
     // implicit args are typically used to adorn normally supplied args
     // and have a very specific type to prevent collisions
     def myMax[A](elements: List[A])(implicit orderer: A => Int): A =
@@ -87,7 +88,8 @@ object Implicits {
   }
 
   class Unordered(val sortVal: Int)
-  def printString(s: String) = println(s)
+
+  def printString(s: String) {println(s)}
 }
 
 class Boring
