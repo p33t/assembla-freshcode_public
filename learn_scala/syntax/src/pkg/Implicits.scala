@@ -45,6 +45,7 @@ object Implicits {
     val lb = new LessBoring()
     lb.veryUniqueName()
     val b = new Boring()
+    // 'makeLessBoring' is implicitly used here
     b.veryUniqueName()
   }
 
