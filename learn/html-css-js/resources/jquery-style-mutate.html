@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Demo</title>
+    <style>
+        .divClass {
+            height: 100px;
+            width: 100px;
+            background-color: yellow;
+        }
+    </style>
+    <!-- Check it out.  jQuery is just one file. -->
+    <script src="jquery.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $("a").click(function(event) {
+                $(".divClass").css("height", "200px"); ////////////////////////////////////// HERE
+            });
+        });
+    </script>
+</head>
+<body>
+<a href="#" onclick="return false;">Go</a><br/>
+
+<div class="divClass" id="divId">
+
+</div>
+
+</body>
+</html>
