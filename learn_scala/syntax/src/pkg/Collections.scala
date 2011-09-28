@@ -3,11 +3,12 @@ package pkg
 
 object Collections {
   def main(args: Array[String]) {
-    sets
-    maps
+    sets()
+    maps()
+    useToMap()
   }
 
-  def maps: Unit = {
+  def maps() {
     var immut = Map(1 -> "one", 2 -> "two")
     println(immut + (3 -> "three"))
     println(immut)
@@ -24,7 +25,7 @@ object Collections {
 //    mut + ("bruce" -> "willis")
   }
 
-  def sets: Unit = {
+  def sets() {
     var immut = Set("bruce", "lee", "springsteen")
     immut += "willis"
     println(immut)
@@ -34,4 +35,11 @@ object Collections {
     mut += "michelangelo"
     println(mut)
   }
+
+  def useToMap() {
+    val l = List(MyClass("one", 1), MyClass("two", 2))
+    println(l.map{c: MyClass => (c.name, c.value)}.toMap)
+  }
+
+  case class MyClass(name: String, value: Int)
 }
