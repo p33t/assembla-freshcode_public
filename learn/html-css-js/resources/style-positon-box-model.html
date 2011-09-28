@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Positioning and Box Model</title>
+    <style type="text/css">
+    </style>
+</head>
+<body style="background-color: gray;">
+<p>
+    Notes:<br/>
+    * border is lavendar colour<br/>
+    * margin is transparent<br/>
+    * top/left has also been specified relative to parent div
+</p>
+<!-- NOTE: Need a non-static (static = default/normal flow) so children can have 'absolute' -->
+<div style="background: #fafad2; position: relative;">
+    <div style="background-color: #f0f8ff;">prev div</div>
+    <div style="position: absolute; left: 50px; top: 50px; border: #BDD2FF solid 50px; margin: 50px; padding: 50px; background-color: #cccccc;">
+        Content Div
+    </div>
+    <div style="background-color: #f0f8ff">next div</div>
+</div>
+
+<div style="height: 300px;"></div>
+
+<div style="background: #fafad2; position: relative;">
+    <span style="background-color: #7fffd4">prev span</span>
+    <span style="position: absolute; left: 50px; top: 50px; border: #BDD2FF solid 50px; margin: 50px; padding: 50px; background-color: #cccccc;">
+        Content span
+    </span>
+    <span style="background-color: #7fffd4">next span</span>
+</div>
+</body>
+</html>
