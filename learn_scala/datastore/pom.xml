@@ -32,7 +32,15 @@
         <dependency>
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
-            <version>1.6.2</version>
+            <version>2.0</version>
+        </dependency>
+        <!-- Optional dependency for joda is not optional when using Scala
+        http://www.scala-lang.org/node/10575#comment-45638
+         -->
+        <dependency>
+            <groupId>org.joda</groupId>
+            <artifactId>joda-convert</artifactId>
+            <version>1.1</version>
         </dependency>
 
         <dependency>
