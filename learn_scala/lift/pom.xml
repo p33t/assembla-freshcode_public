@@ -27,7 +27,6 @@
         </pluginRepository>
     </pluginRepositories>
 
-    <!-- These dependencies are actually inherited -->
     <dependencies>
         <dependency>
             <groupId>org.scala-lang</groupId>
