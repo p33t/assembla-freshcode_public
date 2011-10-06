@@ -2,13 +2,13 @@ package pkg
 
 import org.testng.annotations.Test
 import org.scalatest.Suite
-import javax.script.{ScriptEngineManager, ScriptEngineFactory}
+import javax.script.{ScriptException, ScriptEngineManager}
 
 @Test
 class ScriptingTest extends Suite {
   def testJsIsPresent() {
     val em = new ScriptEngineManager()
-    val engine =  em.getEngineByMimeType("text/javascript")
+    val engine = em.getEngineByMimeType("text/javascript")
     assert(engine != null)
   }
 
@@ -24,9 +24,17 @@ class ScriptingTest extends Suite {
     binds.put("myClass", ScriptingTest.MyClass(3, "three"))
     js.eval(script, binds)
   }
+
+  def testErrorCondition() {
+    val js = new ScriptEngineManager().getEngineByMimeType("text/javascript")
+    intercept[ScriptException] {
+      js.eval("bruce;")
+    }
+  }
 }
 
 object ScriptingTest {
+
   case class MyClass(intVal: Int, stringVal: String)
 
   object Callback {
@@ -34,4 +42,5 @@ object ScriptingTest {
       println(s)
     }
   }
+
 }
