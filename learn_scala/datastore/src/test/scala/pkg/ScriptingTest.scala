@@ -32,6 +32,8 @@ class ScriptingTest extends Suite {
 
   def testReturns() {
     expect("springsteen") {js.eval("'springsteen';")}
+    // not allowed to use 'return' keyword outside a function in a script.
+    expect("bruce"){js.eval("if (true) 'bruce'; else 'lee';")}
   }
 
   def testApply_BAD() {
