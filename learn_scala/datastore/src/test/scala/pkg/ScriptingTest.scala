@@ -6,10 +6,10 @@ import javax.script.{ScriptException, ScriptEngineManager}
 
 @Test
 class ScriptingTest extends Suite {
+  val js = new ScriptEngineManager().getEngineByMimeType("text/javascript")
+
   def testJsIsPresent() {
-    val em = new ScriptEngineManager()
-    val engine = em.getEngineByMimeType("text/javascript")
-    assert(engine != null)
+    assert(js != null)
   }
 
   def testSimpleScript() {
@@ -18,7 +18,6 @@ class ScriptingTest extends Suite {
       var s = myClass.stringVal() + ' - ' + myClass.intVal();
       callback.output('You gave me ' + s);
       """
-    val js = new ScriptEngineManager().getEngineByMimeType("text/javascript")
     val binds = js.createBindings()
     binds.put("callback", ScriptingTest.Callback)
     binds.put("myClass", ScriptingTest.MyClass(3, "three"))
@@ -26,15 +25,24 @@ class ScriptingTest extends Suite {
   }
 
   def testErrorCondition() {
-    val js = new ScriptEngineManager().getEngineByMimeType("text/javascript")
     intercept[ScriptException] {
       js.eval("bruce;")
     }
   }
 
   def testReturns() {
-    val js = new ScriptEngineManager().getEngineByMimeType("text/javascript")
     expect("springsteen") {js.eval("'springsteen';")}
+  }
+
+  def testApply_BAD() {
+    val binds = js.createBindings()
+    binds.put("callback", ScriptingTest.Callback)
+    // It's a NativeJavaObject... not a function.
+    intercept[ScriptException] {
+      expect(ScriptingTest.Callback("bruce lee")) {
+        js.eval("""callback('bruce lee');""", binds)
+      }
+    }
   }
 }
 
@@ -45,6 +53,10 @@ object ScriptingTest {
   object Callback {
     def output(s: String) {
       println(s)
+    }
+
+    def apply(s: String) = {
+      s.reverse
     }
   }
 
