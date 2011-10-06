@@ -15,7 +15,7 @@ class JsonTest extends Suite {
   }
 
   def testSerializeCaseClass() {
-    val m = MyClass(1, 2, List(3, 3, 3))
+    val m = JsonTest.MyClass(1, 2, List(3, 3, 3))
     check(m)
   }
 
@@ -30,7 +30,7 @@ class JsonTest extends Suite {
   }
 }
 
-/**
- * Note this must be declared as a top level class to be json serialized cleanly by automatic means.
- */
-case class MyClass(one: Int, two: Int, three: List[Int])
+object JsonTest {
+  // NOTE: Cannot be a dependent type.  Class must stand alone.
+  case class MyClass(one: Int, two: Int, three: List[Int])
+}
