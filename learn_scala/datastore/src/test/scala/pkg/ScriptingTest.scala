@@ -15,13 +15,15 @@ class ScriptingTest extends Suite {
   def testSimpleScript() {
     val script = """
       callback.output('Hello from the script');
+      var s = myClass.stringVal() + ' - ' + myClass.intVal();
+      callback.output('You gave me ' + s);
       """
     val js = new ScriptEngineManager().getEngineByMimeType("text/javascript")
     val binds = js.createBindings()
     binds.put("callback", ScriptingTest.Callback)
+    binds.put("myClass", ScriptingTest.MyClass(3, "three"))
     js.eval(script, binds)
   }
-
 }
 
 object ScriptingTest {
