@@ -31,6 +31,11 @@ class ScriptingTest extends Suite {
       js.eval("bruce;")
     }
   }
+
+  def testReturns() {
+    val js = new ScriptEngineManager().getEngineByMimeType("text/javascript")
+    expect("springsteen") {js.eval("'springsteen';")}
+  }
 }
 
 object ScriptingTest {
