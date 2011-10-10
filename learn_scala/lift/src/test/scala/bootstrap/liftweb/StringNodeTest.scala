@@ -1,4 +1,4 @@
-package pkg
+package bootstrap.liftweb
 
 import org.testng.annotations.Test
 import org.scalatest.Suite
