@@ -60,9 +60,10 @@ class Boot extends Loggable {
 
       def menuFor(n: StringNode): ConvertableToMenu = {
         val target = altPath(n)
-        // TODO: Why can't we use the same label?
-        val label = UUID.randomUUID() + "_" + {if (n.isRoot) "Fancy Menus" else n.name}
-        val item = appendPath(Menu.i(label) / "experiments" / "fancy_menus_by_name", target)
+        val label = if (n.isRoot) "Fancy Menus" else n.name
+        val linkName = label + "_" + UUID.randomUUID() // the name needs to be unique
+        val menu = Menu(linkName, label)
+        val item = appendPath(menu / "experiments" / "fancy_menus_by_name", target)
         println("Path labelled '" + label + "' added " + item.path)
         if (!n.children.isEmpty) {
           val subs = n.children.toList.map(menuFor(_))
