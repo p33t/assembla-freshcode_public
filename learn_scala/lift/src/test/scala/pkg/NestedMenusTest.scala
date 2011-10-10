@@ -11,7 +11,7 @@ class NestedMenusTest extends Suite {
   import NestedMenusTest._
 
   def testNode() {
-    val root = new Node
+    val root = new StringNode
     expect(Nil)(root.path)
     def check(expected: List[String]) {
       expect(expected) {
@@ -49,10 +49,10 @@ class NestedMenusTest extends Suite {
     )
     expect(expected) {
       val paths = fancyData.map(_.split("/").toList)
-      val root = new Node
+      val root = new StringNode
       paths.map(root.ensurePath(_))
 
-      def altPath(n: Node): List[String] = {
+      def altPath(n: StringNode): List[String] = {
         val path = n.path
         if (paths.contains(path)) path
         else {
@@ -71,11 +71,11 @@ class NestedMenusTest extends Suite {
 
 object NestedMenusTest {
 
-  class Node(nameParent: Option[(String, Node)] = None) {
+  class StringNode(nameParent: Option[(String, StringNode)] = None) {
     val nameOpt: Option[String] = if (nameParent.isDefined) Some(nameParent.get._1) else None
-    val parentOpt: Option[Node] = if (nameParent.isDefined) Some(nameParent.get._2) else None
+    val parentOpt: Option[StringNode] = if (nameParent.isDefined) Some(nameParent.get._2) else None
     val isRoot = parentOpt.isEmpty
-    val children = new ListBuffer[Node]
+    val children = new ListBuffer[StringNode]
 
     def name = nameOpt.get
 
@@ -88,23 +88,23 @@ object NestedMenusTest {
       else name :: parent.pathRev
     }
 
-    def ensurePath(desiredPath: List[String]): Node = {
+    def ensurePath(desiredPath: List[String]): StringNode = {
       if (desiredPath.isEmpty) return this
       val head = desiredPath.head
       val childOpt = children.find(_.name == head)
       val child = childOpt.getOrElse {
-        val c = new Node(Some((head, this)))
+        val c = new StringNode(Some((head, this)))
         children += c
         c
       }
       child.ensurePath(desiredPath.tail)
     }
 
-    def walk[T](fn: Node => T): List[T] = {
+    def walk[T](fn: StringNode => T): List[T] = {
       fn(this) :: children.toList.flatMap(_.walk(fn))
     }
 
-    def walkChildren[T](fn: Node => T): List[T] = {
+    def walkChildren[T](fn: StringNode => T): List[T] = {
       children.toList.flatMap(_.walk(fn))
     }
   }
