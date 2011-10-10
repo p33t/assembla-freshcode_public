@@ -36,18 +36,19 @@ class Boot extends Loggable {
     // Use HTML5 for rendering (instead of the default xhtml)
     LiftRules.htmlProperties.default.set((r: Req) => new Html5Properties(r.userAgent))
 
-    def appendPath(pm: WithSlash, path: String): WithSlash = {
-      path.split("/").foldLeft(pm) {
-        (soFar, elem) =>
-          soFar / elem
+    val nestedMenus = {
+      def appendPath(pm: WithSlash, path: String): WithSlash = {
+        path.split("/").foldLeft(pm) {
+          (soFar, elem) =>
+            soFar / elem
+        }
       }
-    }
-
-    val fancyData = List("0/0/0", "0/1/0", "0/1/1", "1/0", "2", "2/0")
-    val nestedMenus = fancyData.map {
-      s =>
-        val base = Menu.i(s) / "experiments" / "fancy_menus_by_name"
-        appendPath(base, s).asInstanceOf[ConvertableToMenu]
+      val fancyData = List("0/0/0", "0/1/0", "0/1/1", "1/0", "2", "2/0")
+      fancyData.map {
+        s =>
+          val base = Menu.i(s) / "experiments" / "fancy_menus_by_name"
+          appendPath(base, s).asInstanceOf[ConvertableToMenu]
+      }
     }
 
     // Build SiteMap
