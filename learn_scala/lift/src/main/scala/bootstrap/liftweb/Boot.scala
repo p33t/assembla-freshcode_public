@@ -2,15 +2,16 @@ package bootstrap.liftweb
 
 import net.liftweb._
 import common.{Loggable, Full}
+import http.RewriteResponse._
 import util.Vendor._
 import http._
 import pkg.UrlRemainder
-import code.snippet.experiments.WildProcessing
 import code.lib.{MyEasyStatelessDispatch, MyStatelessDispatch}
 import sitemap.{Loc, SiteMap, Menu, **}
 import Loc._
 import widgets.menu.MenuWidget
 import widgets.tree.TreeView
+import code.snippet.experiments.{FancyMenus, WildProcessing}
 
 // NOTE: ** is red because Intellij has a bug.
 
@@ -59,8 +60,9 @@ class Boot extends Loggable {
           Menu.i("Ajax") / "experiments" / "ajax",
           Menu.i("Table") / "experiments" / "table",
           Menu.i("Brower Detect") / "experiments" / "browser_detect",
-          Menu.i("Chart") / "experiments" / "chart" / **,
-          Menu.i("Fancy Menu") / "experiments" / "fancy_menus" //..doesn't work...?fancyParam=fancy_param_value"
+          Menu.i("Chart") / "experiments" / "chart" / **
+          ,Menu.i("Fancy Menu Hidden") / "experiments" / "fancy_menus" / ** >> Hidden,
+          Menu.i("Fancy Menu") / "experiments" / "fancy_menus_by_name" / "fancy_param_value"
           ),
         Menu.i("Wildcard Permissions") / "wildcards" submenus (
           //          Is nesting good here?
@@ -76,6 +78,13 @@ class Boot extends Loggable {
         Menu.i("About") / "meta-content" / "about" >> Hidden >> LocGroup("footer"),
         Menu.i("Contact") / "meta-content" / "contact" >> Hidden >> LocGroup("footer")
       )
+    }
+
+    // requests of the form /charts/<xxx> get redirected to /chart with chart name param set
+    LiftRules.statefulRewrite.append {
+      case RewriteRequest(ParsePath("experiments" :: "fancy_menus_by_name" :: fancyParam :: Nil ,_,_,_),_,_) => {
+          RewriteResponse(List("experiments", "fancy_menus"), Map(FancyMenus.FancyParam -> fancyParam))
+      }
     }
 
     // set the sitemap.  Note if you don't want access control for
