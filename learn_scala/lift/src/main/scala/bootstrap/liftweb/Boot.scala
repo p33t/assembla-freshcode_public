@@ -37,47 +37,6 @@ class Boot extends Loggable {
     // Use HTML5 for rendering (instead of the default xhtml)
     LiftRules.htmlProperties.default.set((r: Req) => new Html5Properties(r.userAgent))
 
-    val fancyMenu = {
-      type FubarType = Menuable with WithSlash
-
-      def appendPath(pm: FubarType, path: List[String]): FubarType = {
-        path.foldLeft(pm) {
-          (soFar, elem) =>
-            soFar / elem
-        }
-      }
-      val fancyData = List("0/0/0", "0/1/0", "0/1/1", "1/0", "2", "2/0")
-      val paths = fancyData.map(_.split("/").toList)
-
-      // Use the path of the first non-generated node
-      def altPath(n: StringNode): List[String] = {
-        val path = n.path
-        if (paths.contains(path)) path
-        else {
-          require(!n.children.isEmpty, n.path + " is empty")
-          altPath(n.children(0))
-        }
-      }
-
-      def menuFor(n: StringNode): ConvertableToMenu = {
-        val target = altPath(n)
-        val label = if (n.isRoot) "Fancy Menus" else n.name
-        val linkName = label + "_" + UUID.randomUUID() // the name needs to be unique
-        val menu = Menu(linkName, label)
-        val item = appendPath(menu / "experiments" / "fancy_menus_by_name", target)
-        println("Path labelled '" + label + "' added " + item.path)
-        if (!n.children.isEmpty) {
-          val subs = n.children.toList.map(menuFor(_))
-          item.submenus(subs)
-        }
-        else item
-      }
-
-      val root = StringNode()
-      paths.map(root.ensurePath(_))
-      menuFor(root)
-    }
-
     // Build SiteMap
     // NOTE:
     // 1) will NOT serve files / folders that start with '.' or '_' or end with '-hidden'
@@ -103,7 +62,7 @@ class Boot extends Loggable {
           Menu.i("Brower Detect") / "experiments" / "browser_detect",
           Menu.i("Chart") / "experiments" / "chart" / **,
           Menu.i("Fancy Menu Hidden") / "experiments" / "fancy_menus" / ** >> Hidden,
-          fancyMenu
+          FancyMenu()
           ),
         Menu.i("Wildcard Permissions") / "wildcards" submenus (
           //          Is nesting good here?
