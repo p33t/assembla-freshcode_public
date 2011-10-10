@@ -80,7 +80,7 @@ class Boot extends Loggable {
       )
     }
 
-    // requests of the form /charts/<xxx> get redirected to /chart with chart name param set
+    // requests of the form ../fancy_menus_by_name/xxx mapped to ../fancy_menus?fancyParam=xxx
     LiftRules.statefulRewrite.append {
       case RewriteRequest(ParsePath("experiments" :: "fancy_menus_by_name" :: fancyParam :: Nil ,_,_,_),_,_) => {
           RewriteResponse(List("experiments", "fancy_menus"), Map(FancyMenus.FancyParam -> fancyParam))
