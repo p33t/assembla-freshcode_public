@@ -4,7 +4,7 @@ import net.liftweb._
 import common.{Loggable, Full}
 import http.RewriteResponse._
 import sitemap._
-import sitemap.Menu.WithSlash
+import sitemap.Menu.{Menuable, WithSlash}
 import util.Vendor._
 import http._
 import pkg.UrlRemainder
@@ -14,6 +14,7 @@ import widgets.menu.MenuWidget
 import widgets.tree.TreeView
 import code.snippet.experiments.{FancyMenus, WildProcessing}
 import java.io.File
+import java.util.UUID
 
 // NOTE: ** is red because Intellij has a bug.
 
@@ -36,19 +37,43 @@ class Boot extends Loggable {
     // Use HTML5 for rendering (instead of the default xhtml)
     LiftRules.htmlProperties.default.set((r: Req) => new Html5Properties(r.userAgent))
 
-    val nestedMenus = {
-      def appendPath(pm: WithSlash, path: String): WithSlash = {
-        path.split("/").foldLeft(pm) {
+    val fancyMenu = {
+      type FubarType = Menuable with WithSlash
+
+      def appendPath(pm: FubarType, path: List[String]): FubarType = {
+        path.foldLeft(pm) {
           (soFar, elem) =>
             soFar / elem
         }
       }
       val fancyData = List("0/0/0", "0/1/0", "0/1/1", "1/0", "2", "2/0")
-      fancyData.map {
-        s =>
-          val base = Menu.i(s) / "experiments" / "fancy_menus_by_name"
-          appendPath(base, s).asInstanceOf[ConvertableToMenu]
+      val paths = fancyData.map(_.split("/").toList)
+
+      def altPath(n: StringNode): List[String] = {
+        val path = n.path
+        if (paths.contains(path)) path
+        else {
+          require(!n.children.isEmpty, n.path + " is empty")
+          altPath(n.children(0))
+        }
       }
+
+      def menuFor(n: StringNode): ConvertableToMenu = {
+        val target = altPath(n)
+        // TODO: Why can't we use the same label?
+        val label = UUID.randomUUID() + "_" + {if (n.isRoot) "Fancy Menus" else n.name}
+        val item = appendPath(Menu.i(label) / "experiments" / "fancy_menus_by_name", target)
+        println("Path labelled '" + label + "' added " + item.path)
+        if (!n.children.isEmpty) {
+          val subs = n.children.toList.map(menuFor(_))
+          item.submenus(subs)
+        }
+        else item
+      }
+
+      val root = StringNode()
+      paths.map(root.ensurePath(_))
+      menuFor(root)
     }
 
     // Build SiteMap
@@ -76,7 +101,7 @@ class Boot extends Loggable {
           Menu.i("Brower Detect") / "experiments" / "browser_detect",
           Menu.i("Chart") / "experiments" / "chart" / **,
           Menu.i("Fancy Menu Hidden") / "experiments" / "fancy_menus" / ** >> Hidden,
-          Menu.i("Fancy Menu") / "experiments" submenus (nestedMenus)
+          fancyMenu
           ),
         Menu.i("Wildcard Permissions") / "wildcards" submenus (
           //          Is nesting good here?
@@ -101,6 +126,9 @@ class Boot extends Loggable {
         println("======== Emulating fancyParam=" + fancyParam)
         RewriteResponse(List("experiments", "fancy_menus"), Map(FancyMenus.FancyParam -> fancyParam))
     }
+
+    // Allow duplicate target links in menu
+    SiteMap.enforceUniqueLinks = false
 
     // set the sitemap.  Note if you don't want access control for
     // each page, just comment this line out.
