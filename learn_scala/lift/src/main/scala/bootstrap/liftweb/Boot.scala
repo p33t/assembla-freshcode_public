@@ -28,10 +28,13 @@ class Boot extends Loggable {
     LiftRules.addToPackages("code")
     // will cause search in a subpackage with same path as that of host html file.
     // EG: com/pkg/hostfile.html's snippets could be found in ...snippet.com.pkg.* package
-    LiftRules.snippetNamesToSearch.default.set(LiftRules.searchSnippetsWithRequestPath(_:String))
+    LiftRules.snippetNamesToSearch.default.set(LiftRules.searchSnippetsWithRequestPath(_: String))
 
     // Use HTML5 for rendering (instead of the default xhtml)
     LiftRules.htmlProperties.default.set((r: Req) => new Html5Properties(r.userAgent))
+
+    // TODO: Figure out how to convert this to a menu.
+    val fancyData = List("0/0/0", "0/1/0", "0/1/1", "1/0", "2")
 
     // Build SiteMap
     // NOTE:
@@ -40,7 +43,7 @@ class Boot extends Loggable {
       SiteMap(
         Menu.i("Home") / "index", // the simple way to declare a menu
         Menu.i("XHTML Experiment") / "xhtml-experiment" >> Hidden, // permitted but not shown in default map
-        Menu.i("Experiments") / "experiments" / "index" submenus (
+        Menu.i("Experiments") / "experiments" / "index" submenus(
           Menu.i("First Snippet") / "experiments" / "first_snippet", // TODO: Figure out putting link in multiple places in site map
           Menu.i("Embed") / "experiments" / "embed",
           Menu.i("Wildcard Path Starter") / "experiments" / "wild" / "start",
@@ -56,7 +59,8 @@ class Boot extends Loggable {
           Menu.i("Ajax") / "experiments" / "ajax",
           Menu.i("Table") / "experiments" / "table",
           Menu.i("Brower Detect") / "experiments" / "browser_detect",
-          Menu.i("Chart") / "experiments" / "chart" / **
+          Menu.i("Chart") / "experiments" / "chart" / **,
+          Menu.i("Fancy Menu") / "experiments" / "fancy_menus" //..doesn't work...?fancyParam=fancy_param_value"
           ),
         Menu.i("Wildcard Permissions") / "wildcards" submenus (
           //          Is nesting good here?
