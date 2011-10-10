@@ -1,13 +1,11 @@
 package pkg
 
 import org.testng.annotations.Test
-import collection.mutable.ListBuffer
 import org.scalatest.Suite
 import bootstrap.liftweb.StringNode
 
-
 @Test
-class NestedMenusTest extends Suite {
+class StringNodeTest extends Suite {
 
   def testNode() {
     val root = new StringNode
