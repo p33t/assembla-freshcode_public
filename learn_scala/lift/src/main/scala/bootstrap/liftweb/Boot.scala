@@ -49,6 +49,7 @@ class Boot extends Loggable {
       val fancyData = List("0/0/0", "0/1/0", "0/1/1", "1/0", "2", "2/0")
       val paths = fancyData.map(_.split("/").toList)
 
+      // Use the path of the first non-generated node
       def altPath(n: StringNode): List[String] = {
         val path = n.path
         if (paths.contains(path)) path
