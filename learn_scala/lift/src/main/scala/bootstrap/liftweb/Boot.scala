@@ -3,15 +3,17 @@ package bootstrap.liftweb
 import net.liftweb._
 import common.{Loggable, Full}
 import http.RewriteResponse._
+import sitemap._
+import sitemap.Menu.WithSlash
 import util.Vendor._
 import http._
 import pkg.UrlRemainder
 import code.lib.{MyEasyStatelessDispatch, MyStatelessDispatch}
-import sitemap.{Loc, SiteMap, Menu, **}
 import Loc._
 import widgets.menu.MenuWidget
 import widgets.tree.TreeView
 import code.snippet.experiments.{FancyMenus, WildProcessing}
+import java.io.File
 
 // NOTE: ** is red because Intellij has a bug.
 
@@ -34,8 +36,19 @@ class Boot extends Loggable {
     // Use HTML5 for rendering (instead of the default xhtml)
     LiftRules.htmlProperties.default.set((r: Req) => new Html5Properties(r.userAgent))
 
-    // TODO: Figure out how to convert this to a menu.
-    val fancyData = List("0/0/0", "0/1/0", "0/1/1", "1/0", "2")
+    def appendPath(pm: WithSlash, path: String): WithSlash = {
+      path.split("/").foldLeft(pm) {
+        (soFar, elem) =>
+          soFar / elem
+      }
+    }
+
+    val fancyData = List("0/0/0", "0/1/0", "0/1/1", "1/0", "2", "2/0")
+    val nestedMenus = fancyData.map {
+      s =>
+        val base = Menu.i(s) / "experiments" / "fancy_menus_by_name"
+        appendPath(base, s).asInstanceOf[ConvertableToMenu]
+    }
 
     // Build SiteMap
     // NOTE:
@@ -60,9 +73,9 @@ class Boot extends Loggable {
           Menu.i("Ajax") / "experiments" / "ajax",
           Menu.i("Table") / "experiments" / "table",
           Menu.i("Brower Detect") / "experiments" / "browser_detect",
-          Menu.i("Chart") / "experiments" / "chart" / **
-          ,Menu.i("Fancy Menu Hidden") / "experiments" / "fancy_menus" / ** >> Hidden,
-          Menu.i("Fancy Menu") / "experiments" / "fancy_menus_by_name" / "fancy_param_value"
+          Menu.i("Chart") / "experiments" / "chart" / **,
+          Menu.i("Fancy Menu Hidden") / "experiments" / "fancy_menus" / ** >> Hidden,
+          Menu.i("Fancy Menu") / "experiments" submenus (nestedMenus)
           ),
         Menu.i("Wildcard Permissions") / "wildcards" submenus (
           //          Is nesting good here?
@@ -82,9 +95,10 @@ class Boot extends Loggable {
 
     // requests of the form ../fancy_menus_by_name/xxx mapped to ../fancy_menus?fancyParam=xxx
     LiftRules.statefulRewrite.append {
-      case RewriteRequest(ParsePath("experiments" :: "fancy_menus_by_name" :: fancyParam :: Nil ,_,_,_),_,_) => {
-          RewriteResponse(List("experiments", "fancy_menus"), Map(FancyMenus.FancyParam -> fancyParam))
-      }
+      case RewriteRequest(ParsePath("experiments" :: "fancy_menus_by_name" :: fancyParamList, _, _, _), _, _) =>
+        val fancyParam = fancyParamList.mkString(File.separator)
+        println("======== Emulating fancyParam=" + fancyParam)
+        RewriteResponse(List("experiments", "fancy_menus"), Map(FancyMenus.FancyParam -> fancyParam))
     }
 
     // set the sitemap.  Note if you don't want access control for
