@@ -33,9 +33,9 @@ object FancyMenu {
       val label = if (n.isRoot) "Fancy Menus" else n.name
       val linkName = label + "_" + UUID.randomUUID() // the name needs to be unique
       val menu = Menu(linkName, label)
-      val item = appendPath(menu / "experiments" / "fancy_menus_by_name", target)
       // This technique seems to cause problems.
-//      val item = menu / "experiments" / "fancy_menus_by_name" / target
+//      val item = menu / "experiments" / "fancy_menus_by_name" / target.mkString("/")
+            val item = appendPath(menu / "experiments" / "fancy_menus_by_name", target)
       println("Path labelled '" + label + "' added " + item.path)
       if (!n.children.isEmpty) {
         val subs = n.children.toList.map(menuFor(_))
