@@ -16,8 +16,12 @@ class ScriptTypesTest extends Suite {
     checkReturnVal("99.9;", JDouble(99.9))
     // No...    checkReturnVal("99;", JInt(99))
     checkReturnVal("[1, 'two'];", JArray(List(JDouble(1), JString("two"))))
-    checkReturnVal("var x = {'one': 'uno', 'two': 'due'}; x;",
-      JObject(List(JField("one", JString("uno")), JField("two", JString("due")))))
+    checkReturnVal("var x = {'one': 'uno', 'two': 'due', 'three': [3], 'four': {'quatro': '4'}}; x;",
+      JObject(List(JField("one", JString("uno")),
+        JField("two", JString("due")),
+        JField("three", JArray(List(JDouble(3)))),
+        JField("four", JObject(List(JField("quatro", JString("4")))))
+      )))
   }
 
   private def convert(o: Any): JValue = {
