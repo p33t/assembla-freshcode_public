@@ -1,4 +1,4 @@
-package pkg
+package pkg.script
 
 import org.testng.annotations.Test
 import org.scalatest.Suite
