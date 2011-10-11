@@ -1,4 +1,4 @@
-package pkg
+package pkg.json
 
 import org.scalatest.Suite
 import net.liftweb.json.JsonAST._
