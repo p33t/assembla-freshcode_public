@@ -14,7 +14,8 @@ class ScriptTypesTest extends Suite {
   def testTypes() {
     checkReturnVal("'hello';", JString("hello"))
     checkReturnVal("99.9;", JDouble(99.9))
-//    checkReturnVal("99;", 99.0)
+// No...    checkReturnVal("99;", JInt(99))
+    checkReturnVal("[1, 'two']", JArray(List(JDouble(1), JString("two"))))
 
     //    js.getContext
     //    val ctx = Context.enter()
