@@ -81,11 +81,12 @@ class Boot extends Loggable {
     }
 
     // requests of the form ../fancy_menus_by_name/xxx mapped to ../fancy_menus?fancyParam=xxx
-    LiftRules.statefulRewrite.append {
-      case RewriteRequest(ParsePath("experiments" :: "fancy_menus_by_name" :: fancyParamList, _, _, _), _, _) =>
+    LiftRules.statelessRewrite.append {
+      case RewriteRequest(pp@ParsePath("experiments" :: "fancy_menus_by_name" :: fancyParamList, _, _, _), _, _) =>
         val fancyParam = fancyParamList.mkString(File.separator)
         println("======== Emulating fancyParam=" + fancyParam)
-        RewriteResponse(List("experiments", "fancy_menus"), Map(FancyMenus.FancyParam -> fancyParam))
+        val newPath = pp.copy(partPath = List("experiments", "fancy_menus"))
+        RewriteResponse(newPath, Map(FancyMenus.FancyParam -> fancyParam))
     }
 
     // Allow duplicate target links in menu
