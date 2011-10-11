@@ -14,25 +14,10 @@ class ScriptTypesTest extends Suite {
   def testTypes() {
     checkReturnVal("'hello';", JString("hello"))
     checkReturnVal("99.9;", JDouble(99.9))
-// No...    checkReturnVal("99;", JInt(99))
-    checkReturnVal("[1, 'two']", JArray(List(JDouble(1), JString("two"))))
-
-    //    js.getContext
-    //    val ctx = Context.enter()
-    //    ctx.isSealed
-
-    //    No.
-    //    val arr = new NativeArray(2L)
-    //    arr.put(0, Native 1.0)
-    //    arr.put(1, 2.0)
-    //    checkReturnVal("[1,2];", arr)
-    //    No.
-    //    checkReturnVal("[1,2];", new NativeArray(
-    //      Array[AnyRef](1.0.asInstanceOf[AnyRef], 2.0.asInstanceOf[AnyRef])
-    //    ))
-
-    //    No.
-    //    checkReturnVal("[1,2,3,4];", Array[java.lang.Object](1, 2, 3, 4))
+    // No...    checkReturnVal("99;", JInt(99))
+    checkReturnVal("[1, 'two'];", JArray(List(JDouble(1), JString("two"))))
+    checkReturnVal("var x = {'one': 'uno', 'two': 'due'}; x;",
+      JObject(List(JField("one", JString("uno")), JField("two", JString("due")))))
   }
 
   private def convert(o: Any): JValue = {
@@ -47,8 +32,15 @@ class ScriptTypesTest extends Suite {
             convert(elem)
         }.toList
         JArray(elems)
-//      case obj: NativeObject =>
-//        val fields = (0 until obj.)
+      case obj: NativeObject =>
+        val ids = obj.getIds.toList
+        val fields = ids.map {
+          fieldObj =>
+            val fieldName = fieldObj.toString
+            val fieldValue = obj.get(fieldName, obj)
+            JField(fieldName, convert(fieldValue))
+        }
+        JObject(fields)
     }
   }
 
