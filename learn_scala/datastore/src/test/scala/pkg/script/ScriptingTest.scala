@@ -28,6 +28,9 @@ class ScriptingTest extends Suite {
     intercept[ScriptException] {
       js.eval("bruce;")
     }
+    intercept[ScriptException] {
+      js.eval("throw 'augh';")
+    }
   }
 
   def testReturns() {
