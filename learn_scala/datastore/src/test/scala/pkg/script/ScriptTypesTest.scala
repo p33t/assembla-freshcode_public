@@ -2,10 +2,10 @@ package pkg.script
 
 import org.scalatest.Suite
 import org.testng.annotations.Test
-import net.liftweb.json.{JsonParser, JsonDSL, JsonAST}
-import javax.script.ScriptEngineManager
 import net.liftweb.json.JsonAST._
+import javax.script.ScriptEngineManager
 import sun.org.mozilla.javascript.internal.{NativeObject, Scriptable, Context, NativeArray}
+import net.liftweb.json.Printer
 
 @Test
 class ScriptTypesTest extends Suite {
@@ -15,6 +15,8 @@ class ScriptTypesTest extends Suite {
     checkReturnVal("'hello';", JString("hello"))
     checkReturnVal("true;", JBool(true))
     checkReturnVal("null;", JNull)
+    checkReturnVal("undefined;", JNull)
+    checkReturnVal(";", JNull)
     checkReturnVal("99.9;", JDouble(99.9))
     // No...    checkReturnVal("99;", JInt(99))
     checkReturnVal("[1, 'two'];", JArray(List(JDouble(1), JString("two"))))
