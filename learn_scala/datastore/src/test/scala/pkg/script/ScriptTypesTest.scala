@@ -4,8 +4,8 @@ import org.scalatest.Suite
 import org.testng.annotations.Test
 import net.liftweb.json.{JsonParser, JsonDSL, JsonAST}
 import javax.script.ScriptEngineManager
-import sun.org.mozilla.javascript.internal.{Scriptable, Context, NativeArray}
 import net.liftweb.json.JsonAST._
+import sun.org.mozilla.javascript.internal.{NativeObject, Scriptable, Context, NativeArray}
 
 @Test
 class ScriptTypesTest extends Suite {
@@ -36,7 +36,6 @@ class ScriptTypesTest extends Suite {
   }
 
   private def convert(o: Any): JValue = {
-    val scope = Context.enter().initStandardObjects()
     o match {
       case s: String => JString(s)
       case i: BigInt => JInt(i)
@@ -44,10 +43,12 @@ class ScriptTypesTest extends Suite {
       case arr: NativeArray =>
         val elems = (0 until arr.getLength.toInt).map {
           ix =>
-            val elem = arr.get(ix, scope)
+            val elem = arr.get(ix, arr)
             convert(elem)
         }.toList
         JArray(elems)
+//      case obj: NativeObject =>
+//        val fields = (0 until obj.)
     }
   }
 
