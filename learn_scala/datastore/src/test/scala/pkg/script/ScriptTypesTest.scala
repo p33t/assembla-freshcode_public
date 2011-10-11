@@ -14,9 +14,17 @@ class ScriptTypesTest extends Suite {
     checkReturnVal("'hello';", "hello")
     checkReturnVal("99.9;", 99.9)
     checkReturnVal("99;", 99.0)
+//    No.
+//    val arr = new NativeArray(2L)
+//    arr.put(0, Native 1.0)
+//    arr.put(1, 2.0)
+//    checkReturnVal("[1,2];", arr)
+//    No.
 //    checkReturnVal("[1,2];", new NativeArray(
 //      Array[AnyRef](1.0.asInstanceOf[AnyRef], 2.0.asInstanceOf[AnyRef])
 //    ))
+
+//    No.
 //    checkReturnVal("[1,2,3,4];", Array[java.lang.Object](1, 2, 3, 4))
   }
 
