@@ -1,4 +1,4 @@
-package pkg
+package pkg.json
 
 import org.testng.annotations.Test
 import io.Source
