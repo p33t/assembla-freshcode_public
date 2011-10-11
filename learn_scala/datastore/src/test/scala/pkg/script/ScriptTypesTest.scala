@@ -14,6 +14,7 @@ class ScriptTypesTest extends Suite {
   def testTypes() {
     checkReturnVal("'hello';", JString("hello"))
     checkReturnVal("true;", JBool(true))
+    checkReturnVal("null;", JNull)
     checkReturnVal("99.9;", JDouble(99.9))
     // No...    checkReturnVal("99;", JInt(99))
     checkReturnVal("[1, 'two'];", JArray(List(JDouble(1), JString("two"))))
@@ -27,6 +28,7 @@ class ScriptTypesTest extends Suite {
 
   private def convert(o: Any): JValue = {
     o match {
+      case null => JNull
       case b: Boolean => JBool(b)
       case s: String => JString(s)
       case i: BigInt => JInt(i)
