@@ -8,22 +8,37 @@ object CustomMenu {
   private def styleElem = {
     <style type="text/css">
       {Text(
-      ".float-center-item {\n" +
-        "  left: 50%;\n" +
-        "  position: relative;\n" +
-        "}\n\n" +
-        ".float-center-wrapper {\n" +
-        "  float: right;\n" +
-        "  position: relative;\n" +
-        "  left: -50%;\n" +
-        "}\n\n" +
-        ".float-clear {\n" +
-        "  clear:both;\n" +
-        "}\n" +
-        "/* Margin fix for FireFox */\n" +
-        "ul.sf-menu {\n" +
-        "  margin-bottom: 0\n" +
-        "}\n"
+      """
+.float-center-item {
+  left: 50%;
+  position: relative;
+}
+
+.float-center-wrapper {
+  float: right;
+  position: relative;
+  left: -50%;
+}
+
+.float-clear {
+  clear:both;
+}
+/* Margin fix for FireFox */
+ul.sf-menu {
+  margin-bottom: 0
+}
+.sf-menu a, .sf-menu a:visited  {
+    color: #13a;
+}
+.sf-menu li, .sf-menu li li, .sf-menu li li li {
+    background: rgb(252, 179, 22);
+}
+.sf-menu li:hover, .sf-menu li.sfHover,
+.sf-menu a:focus, .sf-menu a:hover, .sf-menu a:active {
+    background: rgb(255, 217, 79);
+    outline: 0;
+}
+      """
     )}
     </style>
   }
