@@ -14,7 +14,9 @@ class MyBeanTest extends Suite {
   def test() {
     val b = new MyBean
     b.stringField = "a"
+    b.intField = 11
     val violations = validator.validate(b)
+    expect(2)(violations.size)
     violations.foreach{
       println(_)
     }
