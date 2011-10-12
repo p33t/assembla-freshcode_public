@@ -8,4 +8,9 @@ class MyBean {
   @javax.validation.constraints.NotNull
   @Size(min = 3)
   var stringField: String = ""
+
+  // Non standard constraint
+  @org.hibernate.validator.constraints.Range(max=10)
+  @BeanProperty
+  var intField: Int = 0
 }
