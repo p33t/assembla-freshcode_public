@@ -20,18 +20,24 @@ class ExploreTest extends Suite {
     require(app.service.extras != app.altService.extras)
   }
 
-//  def testAltComponent() {
-//    implicit val bm: BindingModule = TheConfig.modifyBindings({
-//      m =>
-//        m.bind[TheExtra].toInstance(new TheExtra {
-//          override def supportMethod() = "bruce"
-//        })
-//    })
-//    val testApp = new TheApp
-//    expect("hello bruce") {
-//      testApp.service.operation()
-//    }
-//  }
+  def testAltComponent() {
+    // 'modifyBindings' doesn't do what you'd think.  It doesn't return an altered config.
+    // Instead all the test code needs to go into the closure.
+    TheConfig.modifyBindings({
+      m =>
+        m.bind[TheExtra].toInstance(new TheExtra {
+          override def supportMethod() = "bruce"
+        })
+
+        val testApp = new TheApp()(m)
+        expect("hello bruce") {
+          testApp.service.operation()
+        }
+        expect("around the bruce") {
+          testApp.altService.operation()
+        }
+    })
+  }
 }
 
 object ExploreTest {
