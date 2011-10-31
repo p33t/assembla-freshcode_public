@@ -17,6 +17,11 @@
             <name>Scala-tools Maven2 Repository</name>
             <url>http://scala-tools.org/repo-releases</url>
         </repository>
+        <repository>
+            <id>snapshots.scala-tools.org</id>
+            <name>Scala-tools Maven2 Repository - SNAPSHOT</name>
+            <url>http://scala-tools.org/repo-snapshots</url>
+        </repository>
 
         <!-- Needed for hibernate stuff
         From: http://community.jboss.org/wiki/MavenGettingStarted-Users
@@ -114,6 +119,13 @@
             <version>6.0.1</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.scala-tools</groupId>
+            <artifactId>subcut_2.8.1</artifactId>
+            <version>0.9-SNAPSHOT</version>
+        </dependency>
+
     </dependencies>
 
     <build>
