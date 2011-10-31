@@ -4,6 +4,7 @@ import org.scalatest.Suite
 import com.borachio.scalatest.MockFactory
 
 class MockTest extends Suite with MockFactory {
+  // This test code is from borachio.com
   def testFoldLeft() {
     val f = mockFunction[String, Int, String]
 
