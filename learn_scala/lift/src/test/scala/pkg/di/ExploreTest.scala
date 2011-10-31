@@ -7,30 +7,44 @@ import pkg.di.ExploreTest._
 
 @Test
 class ExploreTest extends Suite {
+
   def testBasic() {
     implicit val bm = TheConfig
-    val service = new TheService
-    expect("hello world"){service.operation()}
+    val app = new TheApp
+    val service = app.service
+    expect("hello world") {service.operation()}
   }
+
+  //  def testAltComponent() {
+  //    implicit val bm = TheConfig.modifyBindings({
+  //      module =>
+  //      m.bind[TheExtras].toInstance(new TheExtras{
+  //        override def supportMethod() = "bruce"
+  //      })
+  //    })
+  //    val service = b
+  //  }
 }
 
 object ExploreTest {
 
-  class TheExtras {
+  class TheExtra {
     def supportMethod() = "world"
   }
 
   class TheService(implicit val bindingModule: BindingModule) extends Injectable {
-    val extras = inject[TheExtras]
+    val extras = injectIfBound[TheExtra](new TheExtra)
 
     def operation() = {
       "hello " + extras.supportMethod()
     }
   }
 
+  class TheApp(implicit val bindingModule: BindingModule) extends Injectable {
+    val service = injectIfBound[TheService](new TheService)
+  }
+
   object TheConfig extends NewBindingModule({
     m =>
-    m.bind[TheExtras].toClass[TheExtras]
   })
-
 }
