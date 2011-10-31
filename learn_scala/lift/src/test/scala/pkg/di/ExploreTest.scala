@@ -7,10 +7,10 @@ import pkg.di.ExploreTest._
 
 @Test
 class ExploreTest extends Suite {
+  implicit val bm = TheConfig
+  val app = new TheApp
 
   def testBasic() {
-    implicit val bm = TheConfig
-    val app = new TheApp
     val service = app.service
     expect("hello world") {service.operation()}
   }
