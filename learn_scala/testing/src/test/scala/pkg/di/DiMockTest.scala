@@ -16,6 +16,7 @@ object DiMockTest {
 
   object Config extends NewBindingModule({
     m =>
+      // These need to be constructed in dependency order
       m.bind[Deep].toInstance(new Deep()(m))
       m.bind[Service].toInstance(new Service()(m))
       m.bind[App].toInstance(new App()(m))
