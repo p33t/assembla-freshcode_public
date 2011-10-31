@@ -63,6 +63,14 @@
             <version>6.0.1</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- Mocking with native scala -->
+        <dependency>
+            <groupId>com.borachio</groupId>
+            <artifactId>borachio_2.8.1</artifactId>
+            <version>1.2</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
