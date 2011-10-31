@@ -211,6 +211,17 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/scala-tools/testing/test-interface/0.5/test-interface-0.5-sources.jar!/" />
       </SOURCES>
     </library>
+    <library name="Maven: org.scala-tools:subcut_2.8.1:0.9-SNAPSHOT">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-tools/subcut_2.8.1/0.9-SNAPSHOT/subcut_2.8.1-0.9-SNAPSHOT.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-tools/subcut_2.8.1/0.9-SNAPSHOT/subcut_2.8.1-0.9-SNAPSHOT-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-tools/subcut_2.8.1/0.9-SNAPSHOT/subcut_2.8.1-0.9-SNAPSHOT-sources.jar!/" />
+      </SOURCES>
+    </library>
     <library name="Maven: org.scalatest:scalatest:1.3">
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/scalatest/scalatest/1.3/scalatest-1.3.jar!/" />

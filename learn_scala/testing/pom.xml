@@ -43,6 +43,13 @@
             <version>1.6.1</version>
         </dependency>
 
+        <!-- Dependency Injection -->
+        <dependency>
+            <groupId>org.scala-tools</groupId>
+            <artifactId>subcut_2.8.1</artifactId>
+            <version>0.9-SNAPSHOT</version>
+        </dependency>
+
         <!-- Test -->
         <dependency>
             <groupId>org.scalatest</groupId>
