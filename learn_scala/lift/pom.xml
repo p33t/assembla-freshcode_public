@@ -119,13 +119,6 @@
             <version>6.0.1</version>
             <scope>test</scope>
         </dependency>
-
-        <dependency>
-            <groupId>org.scala-tools</groupId>
-            <artifactId>subcut_2.8.1</artifactId>
-            <version>0.9-SNAPSHOT</version>
-        </dependency>
-
     </dependencies>
 
     <build>

@@ -40,7 +40,6 @@
             <element id="library" level="project" name="Maven: log4j:log4j:1.2.16" />
             <element id="library" level="project" name="Maven: org.hibernate:hibernate-validator:4.2.0.Final" />
             <element id="library" level="project" name="Maven: javax.validation:validation-api:1.0.0.GA" />
-            <element id="library" level="project" name="Maven: org.scala-tools:subcut_2.8.1:0.9-SNAPSHOT" />
           </element>
         </element>
       </root>
@@ -496,17 +495,6 @@
       <SOURCES>
         <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-library/2.8.1/scala-library-2.8.1-sources.jar!/" />
         <root url="file://$USER_HOME$/devsw/scala-2.8.1.final/scala-2.8.1.final-sources/src/library" />
-      </SOURCES>
-    </library>
-    <library name="Maven: org.scala-tools:subcut_2.8.1:0.9-SNAPSHOT">
-      <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scala-tools/subcut_2.8.1/0.9-SNAPSHOT/subcut_2.8.1-0.9-SNAPSHOT.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scala-tools/subcut_2.8.1/0.9-SNAPSHOT/subcut_2.8.1-0.9-SNAPSHOT-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scala-tools/subcut_2.8.1/0.9-SNAPSHOT/subcut_2.8.1-0.9-SNAPSHOT-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: org.scalatest:scalatest:1.3">
