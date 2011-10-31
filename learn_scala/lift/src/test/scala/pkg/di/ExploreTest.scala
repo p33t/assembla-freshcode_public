@@ -15,15 +15,23 @@ class ExploreTest extends Suite {
     expect("hello world") {service.operation()}
   }
 
-  //  def testAltComponent() {
-  //    implicit val bm = TheConfig.modifyBindings({
-  //      module =>
-  //      m.bind[TheExtras].toInstance(new TheExtras{
-  //        override def supportMethod() = "bruce"
-  //      })
-  //    })
-  //    val service = b
-  //  }
+  def testObjectRetention() {
+    // Looks like 'injectIfBound' does not retaing the dynamically created instance for reuse
+    require(app.service.extras != app.altService.extras)
+  }
+
+//  def testAltComponent() {
+//    implicit val bm: BindingModule = TheConfig.modifyBindings({
+//      m =>
+//        m.bind[TheExtra].toInstance(new TheExtra {
+//          override def supportMethod() = "bruce"
+//        })
+//    })
+//    val testApp = new TheApp
+//    expect("hello bruce") {
+//      testApp.service.operation()
+//    }
+//  }
 }
 
 object ExploreTest {
@@ -40,11 +48,22 @@ object ExploreTest {
     }
   }
 
+  class AltService(implicit val bindingModule: BindingModule) extends Injectable {
+    val extras = injectIfBound[TheExtra](new TheExtra)
+
+    def operation() = {
+      "around the " + extras.supportMethod
+    }
+  }
+
   class TheApp(implicit val bindingModule: BindingModule) extends Injectable {
     val service = injectIfBound[TheService](new TheService)
+    val altService = injectIfBound[AltService](new AltService)
   }
 
   object TheConfig extends NewBindingModule({
     m =>
+    //    m.bind[TheExtra].toInstance(new TheExtra)
   })
+
 }
