@@ -74,8 +74,14 @@
         <!-- Mocking with native scala -->
         <dependency>
             <groupId>com.borachio</groupId>
-            <artifactId>borachio_2.8.1</artifactId>
-            <version>1.2</version>
+            <artifactId>borachio-core_2.8.1</artifactId>
+            <version>1.4</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.borachio</groupId>
+            <artifactId>borachio-scalatest-support_2.8.1</artifactId>
+            <version>1.4</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
