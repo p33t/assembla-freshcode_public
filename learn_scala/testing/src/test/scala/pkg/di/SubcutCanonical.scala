@@ -3,10 +3,10 @@ package pkg.di
 import org.scalatest.Suite
 import org.testng.annotations.Test
 import org.scala_tools.subcut.inject.{Injectable, NewBindingModule, BindingModule}
-import pkg.di.DiOnlyTest._
+import pkg.di.SubcutCanonical._
 
 @Test
-class DiOnlyTest extends Suite {
+class SubcutCanonical extends Suite {
   implicit val bm = TheConfig
   val app = new TheApp
 
@@ -40,7 +40,7 @@ class DiOnlyTest extends Suite {
   }
 }
 
-object DiOnlyTest {
+object SubcutCanonical {
 
   class TheExtra {
     def supportMethod() = "world"
