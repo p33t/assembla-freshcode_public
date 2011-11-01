@@ -18,12 +18,14 @@ class MockTest extends Suite with MockFactory {
   }
 
   def testUnsatisfiedExpectations() {
-    autoVerify = false
     val f = mockFunction[String, String]
     f expects("bruce") returning "bruce"
 //    expect("bruce"){f("bruce")}
     intercept[ExpectationException]{
       verifyExpectations()
     }
+
+    // prevents the auto verify from barfing after this test.
+    resetExpectations()
   }
 }
