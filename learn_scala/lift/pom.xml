@@ -17,11 +17,6 @@
             <name>Scala-tools Maven2 Repository</name>
             <url>http://scala-tools.org/repo-releases</url>
         </repository>
-        <repository>
-            <id>snapshots.scala-tools.org</id>
-            <name>Scala-tools Maven2 Repository - SNAPSHOT</name>
-            <url>http://scala-tools.org/repo-snapshots</url>
-        </repository>
 
         <!-- Needed for hibernate stuff
         From: http://community.jboss.org/wiki/MavenGettingStarted-Users
