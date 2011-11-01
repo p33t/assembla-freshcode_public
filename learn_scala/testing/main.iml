@@ -35,7 +35,9 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.beanshell:bsh:2.0b4" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: com.beust:jcommander:1.12" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.yaml:snakeyaml:1.6" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: com.borachio:borachio_2.8.1:1.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.borachio:borachio-core_2.8.1:1.4" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: com.borachio:borachio-scalatest-support_2.8.1:1.4" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.scalatest:scalatest_2.8.1:1.5.1" level="project" />
   </component>
 </module>
 
