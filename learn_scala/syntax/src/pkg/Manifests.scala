@@ -19,6 +19,9 @@ object Manifests {
         val mf = ClassManifest.classType(cls)
         classOp(mf)
     }
+
+    // Thats more like it.
+    classOp(manifest[Bruce])
   }
 
   def classOp[T](implicit mf: ClassManifest[T]) {
