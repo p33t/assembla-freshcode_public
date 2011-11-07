@@ -3,7 +3,10 @@ package pkg
 import org.scalatest.{FlatSpec}
 import java.lang.UnsupportedOperationException
 import org.scalatest.matchers.MustMatchers
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
+@RunWith(classOf[JUnitRunner])
 class SpecTest extends FlatSpec with MustMatchers {
 
   class Subject {

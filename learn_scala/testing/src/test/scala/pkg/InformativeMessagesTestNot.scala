@@ -1,12 +1,11 @@
 package pkg
 
 import org.scalatest.Suite
-import java.lang.AssertionError
 
 /**
  * All these will fail.
  */
-class InformativeMessagesTest extends Suite {
+class InformativeMessagesTestNot extends Suite {
   val Actual = "Actual String"
   val Expected = "Expected String"
 

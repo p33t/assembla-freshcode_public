@@ -2,7 +2,10 @@ package pkg
 
 import org.scalatest.WordSpec
 import org.scalatest.matchers.MustMatchers
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
+@RunWith(classOf[JUnitRunner])
 class WordSpecTest extends WordSpec with MustMatchers {
   val never = afterWord("never") // custom word reuse
 

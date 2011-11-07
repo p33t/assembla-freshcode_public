@@ -3,7 +3,10 @@ package pkg.di
 import org.scalatest.Suite
 import org.scala_tools.subcut.inject.{Injectable, NewBindingModule, BindingModule}
 import pkg.di.SubcutCanonicalTest._
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
+@RunWith(classOf[JUnitRunner])
 class SubcutCanonicalTest extends Suite {
   implicit val bm = TheConfig
   val app = new TheApp
