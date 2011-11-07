@@ -3,7 +3,10 @@ package pkg.di
 import org.scalatest.Suite
 import org.scala_tools.subcut.inject._
 import Fixtures._
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
+@RunWith(classOf[JUnitRunner])
 class SubcutAlternativeTest extends Suite {
 
   import SubcutAlternativeTest._

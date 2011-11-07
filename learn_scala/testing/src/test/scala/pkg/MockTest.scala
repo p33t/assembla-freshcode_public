@@ -3,7 +3,10 @@ package pkg
 import org.scalatest.Suite
 import com.borachio.scalatest.MockFactory
 import com.borachio.ExpectationException
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
+@RunWith(classOf[JUnitRunner])
 class MockTest extends Suite with MockFactory {
   // This test code is from borachio.com
   def testFoldLeft() {
