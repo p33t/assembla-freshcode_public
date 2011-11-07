@@ -1,13 +1,14 @@
 package pkg.script
 
 import org.scalatest.Suite
-import org.testng.annotations.Test
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 import net.liftweb.json.JsonAST._
 import javax.script.ScriptEngineManager
 import sun.org.mozilla.javascript.internal.{NativeObject, Scriptable, Context, NativeArray}
 import net.liftweb.json.Printer
 
-@Test
+@RunWith(classOf[JUnitRunner])
 class ScriptTypesTest extends Suite {
   val js = new ScriptEngineManager().getEngineByMimeType("text/javascript")
 

@@ -1,6 +1,7 @@
 package pkg.json
 
-import org.testng.annotations.Test
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 import io.Source
 import net.liftweb.json.JsonAST._
 import net.liftweb.json.Extraction._
@@ -10,7 +11,7 @@ import net.liftweb.util.JSONParser
 import java.io.{InputStream, InputStreamReader, StringReader}
 import net.liftweb.json.{MappingException, JsonParser}
 
-@Test
+@RunWith(classOf[JUnitRunner])
 class JsonFileTest extends Suite {
   implicit val formats = net.liftweb.json.DefaultFormats
   val JsonFileName = "simple.json"

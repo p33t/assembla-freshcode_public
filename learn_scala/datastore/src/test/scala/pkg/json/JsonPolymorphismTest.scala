@@ -1,13 +1,14 @@
 package pkg.json
 
-import org.testng.annotations.Test
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 import net.liftweb.json.Serialization.{read, write}
 import org.joda.time.Period
 import org.scalatest.Suite
 import net.liftweb.json._
 import org.joda.time.format.ISOPeriodFormat
 
-@Test
+@RunWith(classOf[JUnitRunner])
 class JsonPolymorphismTest extends Suite {
   import JsonPolymorphismTest._
   implicit val Formats = Serialization.formats(ShortTypeHints(List(classOf[Dog], classOf[BigCat]))) + PeriodSerializer
