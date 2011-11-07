@@ -1,14 +1,12 @@
 package pkg.di
 
 import org.scalatest.Suite
-import org.testng.annotations.Test
 import org.scala_tools.subcut.inject._
 import Fixtures._
 
-@Test
-class SubcutAlternative extends Suite {
+class SubcutAlternativeTest extends Suite {
 
-  import SubcutAlternative._
+  import SubcutAlternativeTest._
 
   def testConfig() {
     val app = Config.inject(classOf[App], None)
@@ -51,7 +49,7 @@ class SubcutAlternative extends Suite {
  * - Factored out initXxxBinds() methods are used directly by tests to create custom bindings
  * - Unfortunately the injected fields must be 'lazy' initialised
  */
-object SubcutAlternative {
+object SubcutAlternativeTest {
   ////////////////////////////////// DI Plumbing ///////////////////////////////
   def initAppBinds(m: MutableBindingModule)(implicit outer: BindingModule) {
     m.bind[Deep].toInstance(new DeepImpl("world"))
