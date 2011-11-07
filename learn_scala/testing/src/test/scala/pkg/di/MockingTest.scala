@@ -32,7 +32,7 @@ class MockingTest extends Suite with MockFactory {
       protected def initBinds(m: MutableBindingModule) {
         implicit val bm = this
         Config.bind(m)
-        m.bind[Deep] toInstance deepMock
+        m.bind[Deep] toSingleInstance deepMock
       }
     }
 
@@ -47,9 +47,9 @@ object MockingTest {
 
   object Config extends InitBinds {
     def bind(m: MutableBindingModule)(implicit outer: BindingModule) {
-      m.bind[Deep] toInstance (new DeepImpl("world"))
-      m.bind[Service] toInstance (new Service())
-      m.bind[App] toInstance (new App())
+      m.bind[Deep] toSingleInstance (new DeepImpl("world"))
+      m.bind[Service] toSingleInstance (new Service())
+      m.bind[App] toSingleInstance (new App())
     }
 
     protected def initBinds(m: MutableBindingModule) {bind(m)(this)}

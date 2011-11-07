@@ -10,14 +10,19 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <scala.version>2.8.1</scala.version>
+        <scala.version>2.9.1</scala.version>
     </properties>
 
     <repositories>
         <repository>
-            <id>scala-tools.org</id>
+            <id>scala-tools.org (releases)</id>
             <name>Scala-tools Maven2 Repository</name>
             <url>http://scala-tools.org/repo-releases</url>
+        </repository>
+        <repository>
+            <id>scala-tools.org (snapshots)</id>
+            <name>Scala-tools Maven2 Repository</name>
+            <url>http://scala-tools.org/repo-snapshots</url>
         </repository>
     </repositories>
 
@@ -46,23 +51,23 @@
 
         <!-- Dependency Injection -->
         <dependency>
-            <groupId>org.scala-tools</groupId>
+            <groupId>org.scala-tools.subcut</groupId>
             <artifactId>subcut_${scala.version}</artifactId>
-            <version>0.8</version>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
 
         <!-- Test -->
         <dependency>
             <groupId>org.scalatest</groupId>
-            <artifactId>scalatest</artifactId>
-            <version>1.3</version>
+            <artifactId>scalatest_${scala.version}</artifactId>
+            <version>1.6.1</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.scala-tools.testing</groupId>
             <artifactId>scalacheck_${scala.version}</artifactId>
-            <version>1.8</version>
+            <version>1.9</version>
         </dependency>
 
         <!-- Trying to get tests working properly. TestNG not quite cutting it.  -->
@@ -77,13 +82,13 @@
         <dependency>
             <groupId>com.borachio</groupId>
             <artifactId>borachio-core_${scala.version}</artifactId>
-            <version>1.4</version>
+            <version>1.5</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.borachio</groupId>
             <artifactId>borachio-scalatest-support_${scala.version}</artifactId>
-            <version>1.4</version>
+            <version>1.5</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

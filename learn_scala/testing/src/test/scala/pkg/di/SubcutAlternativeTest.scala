@@ -24,10 +24,8 @@ class SubcutAlternativeTest extends Suite {
       }
     }
 
-    // ARGH!!... the doco says that this should be reversed!
-    val bruceBinds = AltConfig :: Config
-    check(bruceBinds, "bruce")
-    check(Config :: AltConfig, "world")
+    check(Config ~ AltConfig, "world")
+    check(AltConfig ~ Config, "bruce")
   }
 
   def testModifyBindings() {
@@ -55,13 +53,13 @@ class SubcutAlternativeTest extends Suite {
 object SubcutAlternativeTest {
   ////////////////////////////////// DI Plumbing ///////////////////////////////
   def initAppBinds(m: MutableBindingModule)(implicit outer: BindingModule) {
-    m.bind[Deep].toInstance(new DeepImpl("world"))
-    m.bind[Service].toInstance(new Service())
-    m.bind[App].toInstance(new App())
+    m.bind[Deep].toSingleInstance(new DeepImpl("world"))
+    m.bind[Service].toSingleInstance(new Service())
+    m.bind[App].toSingleInstance(new App())
   }
 
   def initAltBinds(m: MutableBindingModule)(implicit outer: BindingModule) {
-    m.bind[Deep].toInstance(new DeepImpl("bruce"))
+    m.bind[Deep].toSingleInstance(new DeepImpl("bruce"))
   }
 
   object Config extends InitBinds {
@@ -71,4 +69,5 @@ object SubcutAlternativeTest {
   object AltConfig extends InitBinds {
     protected def initBinds(m: MutableBindingModule) {initAltBinds(m)(this)}
   }
+
 }
