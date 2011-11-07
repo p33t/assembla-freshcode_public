@@ -19,23 +19,25 @@
             <element id="module-output" name="main" />
           </element>
           <element id="directory" name="lib">
-            <element id="library" level="project" name="Maven: org.scala-lang:scala-library:2.8.1" />
-            <element id="library" level="project" name="Maven: net.liftweb:lift-webkit_2.8.1:2.3" />
+            <element id="library" level="project" name="Maven: org.scala-lang:scala-library:2.9.1" />
+            <element id="library" level="project" name="Maven: net.liftweb:lift-webkit_2.9.1:2.4-M4" />
             <element id="library" level="project" name="Maven: commons-fileupload:commons-fileupload:1.2.2" />
-            <element id="library" level="project" name="Maven: net.liftweb:lift-util_2.8.1:2.3" />
+            <element id="library" level="project" name="Maven: net.liftweb:lift-util_2.9.1:2.4-M4" />
+            <element id="library" level="project" name="Maven: joda-time:joda-time:1.6.2" />
             <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.4" />
             <element id="library" level="project" name="Maven: nu.validator.htmlparser:htmlparser:1.2.1" />
-            <element id="library" level="project" name="Maven: javax.mail:mail:1.4.1" />
+            <element id="library" level="project" name="Maven: javax.mail:mail:1.4.4" />
             <element id="library" level="project" name="Maven: javax.activation:activation:1.1" />
-            <element id="library" level="project" name="Maven: joda-time:joda-time:1.6.2" />
-            <element id="library" level="project" name="Maven: net.liftweb:lift-actor_2.8.1:2.3" />
-            <element id="library" level="project" name="Maven: net.liftweb:lift-common_2.8.1:2.3" />
+            <element id="library" level="project" name="Maven: net.liftweb:lift-actor_2.9.1:2.4-M4" />
+            <element id="library" level="project" name="Maven: net.liftweb:lift-common_2.9.1:2.4-M4" />
             <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.6.1" />
-            <element id="library" level="project" name="Maven: net.liftweb:lift-json_2.8.1:2.3" />
+            <element id="library" level="project" name="Maven: net.liftweb:lift-json_2.9.1:2.4-M4" />
             <element id="library" level="project" name="Maven: com.thoughtworks.paranamer:paranamer:2.3" />
-            <element id="library" level="project" name="Maven: net.liftweb:lift-wizard_2.8.1:2.3" />
-            <element id="library" level="project" name="Maven: net.liftweb:lift-db_2.8.1:2.3" />
-            <element id="library" level="project" name="Maven: net.liftweb:lift-widgets_2.8.1:2.3" />
+            <element id="library" level="project" name="Maven: org.scala-lang:scalap:2.9.1" />
+            <element id="library" level="project" name="Maven: org.scala-lang:scala-compiler:2.9.1" />
+            <element id="library" level="project" name="Maven: net.liftweb:lift-wizard_2.9.1:2.4-M4" />
+            <element id="library" level="project" name="Maven: net.liftweb:lift-db_2.9.1:2.4-M4" />
+            <element id="library" level="project" name="Maven: net.liftweb:lift-widgets_2.9.1:2.4-M4" />
             <element id="library" level="project" name="Maven: org.slf4j:slf4j-log4j12:1.6.1" />
             <element id="library" level="project" name="Maven: log4j:log4j:1.2.16" />
             <element id="library" level="project" name="Maven: org.hibernate:hibernate-validator:4.2.0.Final" />
@@ -279,15 +281,15 @@
         <root url="jar://$MAVEN_REPOSITORY$/javax/activation/activation/1.1/activation-1.1-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: javax.mail:mail:1.4.1">
+    <library name="Maven: javax.mail:mail:1.4.4">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/javax/mail/mail/1.4.1/mail-1.4.1.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/javax/mail/mail/1.4.4/mail-1.4.4.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/javax/mail/mail/1.4.1/mail-1.4.1-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/javax/mail/mail/1.4.4/mail-1.4.4-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/javax/mail/mail/1.4.1/mail-1.4.1-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/javax/mail/mail/1.4.4/mail-1.4.4-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: javax.validation:validation-api:1.0.0.GA">
@@ -323,48 +325,48 @@
         <root url="jar://$MAVEN_REPOSITORY$/log4j/log4j/1.2.16/log4j-1.2.16-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: net.liftweb:lift-actor_2.8.1:2.3">
+    <library name="Maven: net.liftweb:lift-actor_2.9.1:2.4-M4">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/net/liftweb/lift-actor_2.8.1/2.3/lift-actor_2.8.1-2.3.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/net/liftweb/lift-actor_2.9.1/2.4-M4/lift-actor_2.9.1-2.4-M4.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/net/liftweb/lift-actor_2.8.1/2.3/lift-actor_2.8.1-2.3-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/net/liftweb/lift-actor_2.9.1/2.4-M4/lift-actor_2.9.1-2.4-M4-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/net/liftweb/lift-actor_2.8.1/2.3/lift-actor_2.8.1-2.3-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/net/liftweb/lift-actor_2.9.1/2.4-M4/lift-actor_2.9.1-2.4-M4-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: net.liftweb:lift-common_2.8.1:2.3">
+    <library name="Maven: net.liftweb:lift-common_2.9.1:2.4-M4">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/net/liftweb/lift-common_2.8.1/2.3/lift-common_2.8.1-2.3.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/net/liftweb/lift-common_2.9.1/2.4-M4/lift-common_2.9.1-2.4-M4.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/net/liftweb/lift-common_2.8.1/2.3/lift-common_2.8.1-2.3-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/net/liftweb/lift-common_2.9.1/2.4-M4/lift-common_2.9.1-2.4-M4-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/net/liftweb/lift-common_2.8.1/2.3/lift-common_2.8.1-2.3-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/net/liftweb/lift-common_2.9.1/2.4-M4/lift-common_2.9.1-2.4-M4-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: net.liftweb:lift-db_2.8.1:2.3">
+    <library name="Maven: net.liftweb:lift-db_2.9.1:2.4-M4">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/net/liftweb/lift-db_2.8.1/2.3/lift-db_2.8.1-2.3.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/net/liftweb/lift-db_2.9.1/2.4-M4/lift-db_2.9.1-2.4-M4.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/net/liftweb/lift-db_2.8.1/2.3/lift-db_2.8.1-2.3-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/net/liftweb/lift-db_2.9.1/2.4-M4/lift-db_2.9.1-2.4-M4-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/net/liftweb/lift-db_2.8.1/2.3/lift-db_2.8.1-2.3-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/net/liftweb/lift-db_2.9.1/2.4-M4/lift-db_2.9.1-2.4-M4-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: net.liftweb:lift-json_2.8.1:2.3">
+    <library name="Maven: net.liftweb:lift-json_2.9.1:2.4-M4">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/net/liftweb/lift-json_2.8.1/2.3/lift-json_2.8.1-2.3.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/net/liftweb/lift-json_2.9.1/2.4-M4/lift-json_2.9.1-2.4-M4.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/net/liftweb/lift-json_2.8.1/2.3/lift-json_2.8.1-2.3-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/net/liftweb/lift-json_2.9.1/2.4-M4/lift-json_2.9.1-2.4-M4-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/net/liftweb/lift-json_2.8.1/2.3/lift-json_2.8.1-2.3-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/net/liftweb/lift-json_2.9.1/2.4-M4/lift-json_2.9.1-2.4-M4-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: net.liftweb:lift-util_2.8.1:2.3">
@@ -377,6 +379,17 @@
       <SOURCES>
         <root url="jar://$MAVEN_REPOSITORY$/net/liftweb/lift-util_2.8.1/2.3/lift-util_2.8.1-2.3-sources.jar!/" />
         <root url="file://$USER_HOME$/devsw/lift/lift-framework-78f1737/core/util/src/main/scala" />
+      </SOURCES>
+    </library>
+    <library name="Maven: net.liftweb:lift-util_2.9.1:2.4-M4">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/net/liftweb/lift-util_2.9.1/2.4-M4/lift-util_2.9.1-2.4-M4.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/net/liftweb/lift-util_2.9.1/2.4-M4/lift-util_2.9.1-2.4-M4-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/net/liftweb/lift-util_2.9.1/2.4-M4/lift-util_2.9.1-2.4-M4-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: net.liftweb:lift-webkit_2.8.1:2.3">
@@ -392,26 +405,37 @@
         <root url="file://$USER_HOME$/devsw/lift/lift-framework-78f1737/web/webkit/src/main/scala" />
       </SOURCES>
     </library>
-    <library name="Maven: net.liftweb:lift-widgets_2.8.1:2.3">
+    <library name="Maven: net.liftweb:lift-webkit_2.9.1:2.4-M4">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/net/liftweb/lift-widgets_2.8.1/2.3/lift-widgets_2.8.1-2.3.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/net/liftweb/lift-webkit_2.9.1/2.4-M4/lift-webkit_2.9.1-2.4-M4.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/net/liftweb/lift-widgets_2.8.1/2.3/lift-widgets_2.8.1-2.3-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/net/liftweb/lift-webkit_2.9.1/2.4-M4/lift-webkit_2.9.1-2.4-M4-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/net/liftweb/lift-widgets_2.8.1/2.3/lift-widgets_2.8.1-2.3-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/net/liftweb/lift-webkit_2.9.1/2.4-M4/lift-webkit_2.9.1-2.4-M4-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: net.liftweb:lift-wizard_2.8.1:2.3">
+    <library name="Maven: net.liftweb:lift-widgets_2.9.1:2.4-M4">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/net/liftweb/lift-wizard_2.8.1/2.3/lift-wizard_2.8.1-2.3.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/net/liftweb/lift-widgets_2.9.1/2.4-M4/lift-widgets_2.9.1-2.4-M4.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/net/liftweb/lift-wizard_2.8.1/2.3/lift-wizard_2.8.1-2.3-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/net/liftweb/lift-widgets_2.9.1/2.4-M4/lift-widgets_2.9.1-2.4-M4-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/net/liftweb/lift-wizard_2.8.1/2.3/lift-wizard_2.8.1-2.3-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/net/liftweb/lift-widgets_2.9.1/2.4-M4/lift-widgets_2.9.1-2.4-M4-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: net.liftweb:lift-wizard_2.9.1:2.4-M4">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/net/liftweb/lift-wizard_2.9.1/2.4-M4/lift-wizard_2.9.1-2.4-M4.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/net/liftweb/lift-wizard_2.9.1/2.4-M4/lift-wizard_2.9.1-2.4-M4-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/net/liftweb/lift-wizard_2.9.1/2.4-M4/lift-wizard_2.9.1-2.4-M4-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: nu.validator.htmlparser:htmlparser:1.2.1">
@@ -444,6 +468,14 @@
       <JAVADOC />
       <SOURCES />
     </library>
+    <library name="Maven: org.scala-lang:scala-compiler-bundle:2.9.1">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-compiler/2.9.1/scala-compiler-2.9.1.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-library/2.9.1/scala-library-2.9.1.jar!/" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES />
+    </library>
     <library name="Maven: org.scala-lang:scala-compiler-bundle:WrappedArray(2.8.1)">
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-compiler/2.8.1/scala-compiler-2.8.1.jar!/" />
@@ -451,6 +483,17 @@
       </CLASSES>
       <JAVADOC />
       <SOURCES />
+    </library>
+    <library name="Maven: org.scala-lang:scala-compiler:2.9.1">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-compiler/2.9.1/scala-compiler-2.9.1.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-compiler/2.9.1/scala-compiler-2.9.1-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-compiler/2.9.1/scala-compiler-2.9.1-sources.jar!/" />
+      </SOURCES>
     </library>
     <library name="Maven: org.scala-lang:scala-library:2.8.1">
       <CLASSES>
@@ -462,6 +505,28 @@
       <SOURCES>
         <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-library/2.8.1/scala-library-2.8.1-sources.jar!/" />
         <root url="file://$USER_HOME$/devsw/scala-2.8.1.final/scala-2.8.1.final-sources/src/library" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.scala-lang:scala-library:2.9.1">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-library/2.9.1/scala-library-2.9.1.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-library/2.9.1/scala-library-2.9.1-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-library/2.9.1/scala-library-2.9.1-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.scala-lang:scalap:2.9.1">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scalap/2.9.1/scalap-2.9.1.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scalap/2.9.1/scalap-2.9.1-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scalap/2.9.1/scalap-2.9.1-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: org.scalatest:scalatest:1.3">
