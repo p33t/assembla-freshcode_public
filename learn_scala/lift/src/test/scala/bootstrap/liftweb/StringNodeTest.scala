@@ -1,10 +1,7 @@
 package bootstrap.liftweb
 
-import org.testng.annotations.Test
 import org.scalatest.Suite
-import bootstrap.liftweb.StringNode
 
-@Test
 class StringNodeTest extends Suite {
 
   def testNode() {
