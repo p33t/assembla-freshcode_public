@@ -1,19 +1,18 @@
 package pkg
 
-import org.testng.annotations.{Test, BeforeTest}
 import org.scalatest.Assertions
-import org.testng.Assert._
+import org.junit.{Before, Test}
 
 class Initialise extends Assertions {
   var s = "default"
 
-  @BeforeTest
+  @Before
   def init() {
     s = "initialised"
   }
 
   @Test
   def test1() {
-    assertEquals("initialised", s)
+    expect("initialised")(s)
   }
 }
