@@ -1,12 +1,13 @@
 package pkg.di
 
 import org.scalatest.Suite
-import org.testng.annotations.Test
 import com.borachio.scalatest.MockFactory
 import org.scala_tools.subcut.inject.{BindingModule, MutableBindingModule}
 import Fixtures._
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
-@Test
+@RunWith(classOf[JUnitRunner])
 class MockingTest extends Suite with MockFactory {
 
   import MockingTest._
