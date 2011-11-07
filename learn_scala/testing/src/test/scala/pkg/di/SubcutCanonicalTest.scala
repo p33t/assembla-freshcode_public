@@ -26,7 +26,7 @@ class SubcutCanonicalTest extends Suite {
     // Instead all the test code needs to go into the closure.
     TheConfig.modifyBindings({
       m =>
-        m.bind[TheExtra].toInstance(new TheExtra {
+        m.bind[TheExtra].toSingleInstance(new TheExtra {
           override def supportMethod() = "bruce"
         })
 
