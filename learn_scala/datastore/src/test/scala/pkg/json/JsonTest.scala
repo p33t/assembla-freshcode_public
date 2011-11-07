@@ -4,7 +4,10 @@ import org.scalatest.Suite
 import net.liftweb.json.JsonAST._
 import net.liftweb.json.Extraction._
 import net.liftweb.json.Printer._
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
+@RunWith(classOf[JUnitRunner])
 class JsonTest extends Suite {
   implicit val formats = net.liftweb.json.DefaultFormats
   val desired = """{"one":1,"two":2,"three":[3,3,3]}"""

@@ -1,10 +1,11 @@
 package pkg.json
 
 import org.scalatest.Suite
-import org.testng.annotations.Test
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 import net.liftweb.json._
 
-@Test
+@RunWith(classOf[JUnitRunner])
 class JsonMutationTest extends Suite {
   def testMutation() {
     val before = parse("""{

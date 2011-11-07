@@ -1,10 +1,11 @@
 package pkg.script
 
-import org.testng.annotations.Test
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 import org.scalatest.Suite
 import javax.script.{ScriptException, ScriptEngineManager}
 
-@Test
+@RunWith(classOf[JUnitRunner])
 class ScriptingTest extends Suite {
   val js = new ScriptEngineManager().getEngineByMimeType("text/javascript")
 

@@ -1,13 +1,12 @@
 package pkg
 
-import org.testng.annotations.Test
-import org.testng.Assert
+import org.scalatest.Assertions
+import org.junit.Test
 
-
-@Test
 class FirstTest {
 
+  @Test
   def smoke() {
-    Assert.assertTrue(true)
+    Assertions.expect(true)(true)
   }
 }

@@ -1,10 +1,11 @@
 package pkg.json
 
 import org.scalatest.Suite
-import org.testng.annotations.Test
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 import net.liftweb.json._
 
-@Test
+@RunWith(classOf[JUnitRunner])
 class JsonDeserializeTest extends Suite {
   implicit val JsonFormats = DefaultFormats + RestrictedSerializer // for Json conversion
   val StringParent = Parent("three", "four", Child("five"), new StringChild("six"))
