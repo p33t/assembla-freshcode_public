@@ -3,7 +3,7 @@ package pkg.script
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import org.scalatest.Suite
-import javax.script.{ScriptException, ScriptEngineManager}
+import javax.script.{Invocable, Compilable, ScriptException, ScriptEngineManager}
 
 @RunWith(classOf[JUnitRunner])
 class ScriptingTest extends Suite {
@@ -48,6 +48,25 @@ class ScriptingTest extends Suite {
       expect(ScriptingTest.Callback("bruce lee")) {
         js.eval("""callback('bruce lee');""", binds)
       }
+    }
+  }
+
+  def testInvoke() {
+    val comp = js.asInstanceOf[Compilable]
+    // compiled for speed (?)
+    // NOTE: Still not sure how to use this.
+    val script = comp.compile("""
+      function hello(arg) {
+        return arg;
+      }
+    """)
+
+    // run the script
+    script.eval()
+
+    val inv = script.getEngine.asInstanceOf[Invocable]
+    expect("bruce"){
+      inv.invokeFunction("hello", "bruce")
     }
   }
 }
