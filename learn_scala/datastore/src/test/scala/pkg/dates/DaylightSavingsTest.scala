@@ -4,7 +4,6 @@ import org.scalatest.Suite
 import org.scalatest.junit.JUnitRunner
 import org.junit.runner.RunWith
 import org.joda.time.chrono.ISOChronology
-import org.joda.time.format.ISODateTimeFormat
 import org.joda.time.{Period, DateTime, DateTimeZone}
 
 @RunWith(classOf[JUnitRunner])
