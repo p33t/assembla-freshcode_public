@@ -45,7 +45,7 @@ object AjaxRpcDemo {
     // NOTE: There are variants for specifying error handling.
     val (call, functDefn) = S.buildJsonFunc(fn)
 
-    val newProcess = JsRaw("function(param) {return " + call.funcId + "(param);}")
+    val newProcess = JsRaw("function(param) {" + call.funcId + "(param);}")
     Script(functDefn & JsCmds.SetExp(JE.JsVar("rpc.process"), newProcess))
   }
 
