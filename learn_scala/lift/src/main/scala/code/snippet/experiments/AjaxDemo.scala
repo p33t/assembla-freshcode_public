@@ -11,6 +11,11 @@ import java.util.Date
 import java.lang.Thread
 import xml.{Node, Elem, Text, NodeSeq}
 
+/**
+ * NOTE: This is uses comet to get a value back to the browser AND
+ * arguments are stored on the server... it doesn't come from the browser.
+ * This is merely 'invoking' something on the server.
+ */
 object AjaxDemo {
   val feedbackCell = ValueCell[NodeSeq](<p>default message</p>);
 

@@ -17,6 +17,10 @@ import java.lang.Thread
 import xml.{Node, Elem, Text, NodeSeq}
 import java.io.StringWriter
 
+/**
+ * A more complete Ajax demo with data being passed from the browser AND
+ * data is asynchronously being returned to the browser.
+ */
 object AjaxRpcDemo {
   implicit val formats = DefaultFormats
 
@@ -28,11 +32,13 @@ object AjaxRpcDemo {
       arg: Any =>
 
       // TODO: don't know how to get at original json (?!)
-      // So just undo any extracting that has happened so far.
+      // So just undo any extracting that has happened so far (arg is a map).
         val jv = Extraction.decompose(arg)
 
         val result = processJson(jv)
         Thread.sleep(800)
+
+        // Define how the result is handled in the browser.
         JE.Call("rpc.succeeded", JsExp.jValueToJsExp(result));
     }
 
