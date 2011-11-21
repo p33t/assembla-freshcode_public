@@ -58,6 +58,7 @@ class Boot extends Loggable {
           Menu.i("Formatting") / "experiments" / "formatting",
           Menu.i("Treeview") / "experiments" / "treeview" / **,
           Menu.i("Ajax") / "experiments" / "ajax",
+          Menu.i("Ajax RPC") / "experiments" / "ajax_rpc",
           Menu.i("Table") / "experiments" / "table",
           Menu.i("Brower Detect") / "experiments" / "browser_detect",
           Menu.i("Chart") / "experiments" / "chart" / **,
