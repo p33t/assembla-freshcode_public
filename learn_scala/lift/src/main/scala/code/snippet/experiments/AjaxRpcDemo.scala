@@ -28,15 +28,17 @@ object AjaxRpcDemo {
       arg: Any =>
 
       // TODO: don't know how to get at original json (?!)
+      // So just undo any extracting that has happened so far.
         val jv = Extraction.decompose(arg)
 
         val result = processJson(jv)
-        JsExp.jValueToJsExp(result)
+        Thread.sleep(800)
+        JE.Call("rpc.succeeded", JsExp.jValueToJsExp(result));
     }
 
+    // NOTE: There are variants for specifying error handling.
     val (call, functDefn) = S.buildJsonFunc(fn)
 
-    // TODO: This isn't working... it is still ajax... async callback.
     val newProcess = JsRaw("function(param) {return " + call.funcId + "(param);}")
     Script(functDefn & JsCmds.SetExp(JE.JsVar("rpc.process"), newProcess))
   }
