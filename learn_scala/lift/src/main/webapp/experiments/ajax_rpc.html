@@ -9,18 +9,18 @@
             var rpc = {
                 process: function(param) {
                     // stub implementation
-                    return {
+                    var result = {
                       len: 99 + param.origin,
                       diff: 22 + param.origin
                     };
+                    rpc.succeeded(result);
                 },
                 trigger: function(s, origin) {
                     var param = {
                         s: s,
                         origin: origin
                     };
-                    var result = rpc.process(param);
-                    rpc.succeeded(result);
+                    rpc.process(param);
                 },
                 succeeded: function(result) {
                     var msg = 'len:' + result.len + ', diff:' + result.diff;
