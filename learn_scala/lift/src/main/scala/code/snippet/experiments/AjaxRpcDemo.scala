@@ -28,9 +28,9 @@ object AjaxRpcDemo {
    * Replace the 'rpc.process' function with one that will invoke something on the server.
    */
   def alterMethod(in: NodeSeq) = {
-    val fn: (Any) => JsCmd = {
+    // NOTE: There are variants for specifying error handling.
+    val (call, functDefn) = S.buildJsonFunc {
       arg: Any =>
-
       // TODO: don't know how to get at original json (?!)
       // So just undo any extracting that has happened so far (arg is a map).
         val jv = Extraction.decompose(arg)
@@ -41,9 +41,6 @@ object AjaxRpcDemo {
         // Define how the result is handled in the browser.
         JE.Call("rpc.succeeded", JsExp.jValueToJsExp(result));
     }
-
-    // NOTE: There are variants for specifying error handling.
-    val (call, functDefn) = S.buildJsonFunc(fn)
 
     val replaceProcess = JsRaw("rpc.process = function(param) {" + call.funcId + "(param);};")
     Script(functDefn & replaceProcess)
