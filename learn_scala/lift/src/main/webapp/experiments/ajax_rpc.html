@@ -1,0 +1,51 @@
+<html>
+<head>
+    <script type="text/javascript" src="../_jquery.js"></script>
+</head>
+<body class="lift:content_id=main">
+<div id="main" class="lift:surround?with=default;at=content">
+    <head_merge>
+        <script type="text/javascript">
+            var rpc = {
+                process: function(param) {
+                    // stub implementation
+                    return {
+                      len: 99 + param.origin,
+                      diff: 22 + param.origin
+                    };
+                },
+                trigger: function(s, origin) {
+                    var param = {
+                        s: s,
+                        origin: origin
+                    };
+                    var result = rpc.process(param);
+                    rpc.succeeded(result);
+                },
+                succeeded: function(result) {
+                    var msg = 'len:' + result.len + ', diff:' + result.diff;
+                    $("#feedback").val(msg);
+                },
+                failed: function() {
+                    $("#feedback").val("failed");
+                }
+            }
+        </script>
+    </head_merge>
+
+    <h2>Ajax RPC</h2>
+
+    Feedback: <input type="text" id="feedback" size="30"/><br/>
+
+    <h3>Click one</h3>
+
+    <a href="#" onclick="rpc.trigger('bruce', 100);return false;">bruce, 100</a><br/>
+    <a href="#" onclick="rpc.trigger('lee', 100);return false;">lee, 100</a><br/>
+    <a href="#" onclick="rpc.trigger('springsteen', 100);return false;">springsteen, 100</a><br/>
+    <a href="#" onclick="rpc.trigger('goose', 100);return false;">goose, 100</a><br/>
+    <a href="#" onclick="rpc.trigger('bruce', 1000);return false;">bruce, 1000</a><br/>
+
+    <div class="lift:AjaxRpcDemo.alterMethod"></div>
+</div>
+</body>
+</html>
