@@ -9,6 +9,8 @@ Classes (from Class System)
 -------
 - v4 introduced a new way to define and instantiate classes for convenience and to facilitate dynamic loading
 -- Ext.define() and Ext.create() which require string class names
+-- No longer need to use ext-all.js in production
+--- Line number in error message is more usable
 - Ext.Class pre-processor provides support for rich, validated class configuration
 -- config field
 -- applyXxx() validation before setter
@@ -17,3 +19,5 @@ Classes (from Class System)
 -- statics field where 'this' has a different meaning (it is the class itself... used for new-ing)
 - Can produce error messages with name of origin method using Ext.getDisplayName()
 - Webkit enabled browsers will show a stack trace (for Ext.define() classes)
+- Mixins for adding functionality (like multi-inheritance)
+-- mixins field that has strings of desired mixin classes
