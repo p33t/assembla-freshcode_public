@@ -15,3 +15,5 @@ Classes (from Class System)
 -- configs can be nested and peeled open by relevant applyXxx() function
 - Static elements (common to all instances)
 -- statics field where 'this' has a different meaning (it is the class itself... used for new-ing)
+- Can produce error messages with name of origin method using Ext.getDisplayName()
+- Webkit enabled browsers will show a stack trace (for Ext.define() classes)
