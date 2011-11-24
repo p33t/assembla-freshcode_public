@@ -11,6 +11,7 @@ Classes (from Class System)
 -- Ext.define() and Ext.create() which require string class names
 -- No longer need to use ext-all.js in production
 --- Line number in error message is more usable
+-- Ext.require() to ensure a class is loaded
 - Ext.Class pre-processor provides support for rich, validated class configuration
 -- config field
 -- applyXxx() validation before setter
