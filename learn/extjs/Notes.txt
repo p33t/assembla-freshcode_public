@@ -1,0 +1,6 @@
+Additional notes about ExtJS...
+
+Deployment (from Getting Started | 3. Deployment)
+----------
+- Production deployment should use a custom built ExtJS (to shed unecessary classes)
+- SDK tool will perform this build AND create a minimised version of app.js
