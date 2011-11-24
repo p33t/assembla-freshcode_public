@@ -4,3 +4,14 @@ Deployment (from Getting Started | 3. Deployment)
 ----------
 - Production deployment should use a custom built ExtJS (to shed unecessary classes)
 - SDK tool will perform this build AND create a minimised version of app.js
+
+Classes (from Class System)
+-------
+- v4 introduced a new way to define and instantiate classes for convenience and to facilitate dynamic loading
+-- Ext.define() and Ext.create() which require string class names
+- Ext.Class pre-processor provides support for rich, validated class configuration
+-- config field
+-- applyXxx() validation before setter
+-- configs can be nested and peeled open by relevant applyXxx() function
+- Static elements (common to all instances)
+-- statics field where 'this' has a different meaning (it is the class itself... used for new-ing)
