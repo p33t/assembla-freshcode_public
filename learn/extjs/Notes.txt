@@ -22,3 +22,14 @@ Classes (from Class System)
 - Webkit enabled browsers will show a stack trace (for Ext.define() classes)
 - Mixins for adding functionality (like multi-inheritance)
 -- mixins field that has strings of desired mixin classes
+
+Layouts & Containers
+--------------------
+- Container / Component tree (Panel is most common container)
+- Lots of different layout managers (see demos)
+- Container.layout = 'named'
+- Component.items are managed by Component.layout
+- doLayout() called automatically, recursively
+- 'suspendLayout = false' for, say, adding multiple screen elements and preventing redundant doLayout() calls
+- Component.componentLayout for managing internal (non-'items') components
+
