@@ -40,3 +40,12 @@ Layouts & Containers
 - 'floating: true' components do not participate in layout and are not added to a host component's 'items'
 -- rendered to document body when show() is called
 -- see also 'draggable', 'shadow', alignTo(), center()
+- Opt for subclassing a similar Component (instead of composing a class with Components): Ext.define() & 'extend'
+-- 'onRender' can be used to customise but must(ish) call 'this.callParent(arguments)' first (template method pattern)
+-- Not to be confused with 'render' event listener which may be muted or postphoned
+-- Various other lifecycle methods
+--- Component: init, show/hide, enable/disable, resize, position, destroy
+--- Container: '' , add/remove, layout
+--- Panel: '', collapse/expand, docking
+-- Extending Panel is often overkill.  Try to extend Component or Container
+-- Need to be aware of layout being used when extending Container
