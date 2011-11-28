@@ -12,8 +12,28 @@ Ext.application({
 
     launch: function() {
         Ext.create('Ext.container.Viewport', {
-            layout: 'fit',
             items: [
+                {
+                    xtype: 'toolbar',
+                    items:[
+                        {xtype: 'tbfill'},
+                        {
+                            xtype: 'button',
+                            text: 'Link',
+                            handler: function() {
+                                window.location = 'http://www.google.com/';
+                            }
+                        },
+//                        Doesn't do the 'hover' thing
+//                        {
+//                            xtype: 'menuitem',
+//                            text: 'Link',
+//                            href: 'http://www.google.com/search',
+//                            hrefTarget: '_self'
+//                        },
+                        {xtype: 'tbfill'}
+                    ]
+                },
                 {
                     xtype: 'userlist'
                 }
