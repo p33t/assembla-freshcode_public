@@ -1,11 +1,10 @@
 Ext.define('LE.controller.Users', {
     extend: 'Ext.app.Controller',
 
-    views: [
-        'user.List',
-        'user.Edit'
-    ],
+    // these will be loaded up front
+    views: [ 'user.List', 'user.Edit' ],
     stores: ['Users'],
+    models: ['User'],
 
     init: function() {
         this.control({
