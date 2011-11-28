@@ -5,7 +5,10 @@ Ext.define('LE.store.Users', {
 
     proxy: {
         type: 'ajax', // there are other types of store proxies
-        url: 'data/users.json',
+        api: {
+            read: 'data/users.json',
+            update: 'data/updateUsers.json' // .sync() posts changes to here and looks for the success response
+        },
         reader: {
             type: 'json', // how to decode
             root: 'users',

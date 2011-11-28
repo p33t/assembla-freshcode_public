@@ -25,6 +25,7 @@ Ext.define('LE.controller.Users', {
 
         record.set(values);
         win.close();
+        this.getUsersStore().sync();
     },
 
     editUser: function(grid, record) {
