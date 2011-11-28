@@ -5,6 +5,8 @@ Ext.define('LE.store.Users', {
 
     proxy: {
         type: 'ajax', // there are other types of store proxies
+//        Use this instead of 'api' for not writing changes back to server
+//        url: 'data/users.json',
         api: {
             read: 'data/users.json',
             update: 'data/updateUsers.json' // .sync() posts changes to here and looks for the success response

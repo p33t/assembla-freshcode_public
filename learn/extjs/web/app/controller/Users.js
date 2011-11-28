@@ -25,6 +25,7 @@ Ext.define('LE.controller.Users', {
 
         record.set(values);
         win.close();
+        // this line to write changes back to server automatically
         this.getUsersStore().sync();
     },
 
