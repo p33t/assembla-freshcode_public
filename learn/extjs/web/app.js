@@ -19,18 +19,31 @@ Ext.application({
                         {xtype: 'tbfill'},
                         {
                             xtype: 'button',
-                            text: 'Link',
+                            text: 'Button',
                             handler: function() {
                                 window.location = 'http://www.google.com/';
                             }
                         },
 //                        Doesn't do the 'hover' thing
-//                        {
-//                            xtype: 'menuitem',
-//                            text: 'Link',
-//                            href: 'http://www.google.com/search',
-//                            hrefTarget: '_self'
-//                        },
+                        {
+                            xtype: 'menuitem',
+                            text: 'Menu Item',
+                            href: 'http://www.google.com/search',
+                            hrefTarget: '_self'
+                        },
+                        {
+                            xtype: 'menu',
+                            floating: false,
+                            text: 'Menu',
+                            plain: true,
+                            items: [
+                                {
+                                    xtype: 'menuitem',
+                                    text:'Sub Item 1',
+                                    handler: function() {window.location = 'http://www.google.com/';}
+                                }
+                            ]
+                        },
                         {xtype: 'tbfill'}
                     ]
                 },
