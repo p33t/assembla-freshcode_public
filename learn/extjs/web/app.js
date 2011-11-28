@@ -14,6 +14,25 @@ Ext.application({
         Ext.create('Ext.container.Viewport', {
             items: [
                 {
+                    xtype: 'menu',
+                    floating: false,
+                    plain: true,
+                    items: [
+                        {
+                            xtype: 'menuitem',
+                            text: 'Sub 1',
+                            href: 'http://www.google.com/search',
+                            hrefTarget: '_self'
+                        },
+                        {
+                            xtype: 'menuitem',
+                            text: 'Sub 2',
+                            href: 'http://www.google.com/search',
+                            hrefTarget: '_self'
+                        }
+                    ]
+                },
+                {
                     xtype: 'toolbar',
                     items:[
                         {xtype: 'tbfill'},
