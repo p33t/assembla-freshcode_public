@@ -14,6 +14,7 @@ Ext.application({
         Ext.create('Ext.container.Viewport', {
             items: [
                 {
+                    // stacks vertically
                     xtype: 'menu',
                     floating: false,
                     plain: true,
