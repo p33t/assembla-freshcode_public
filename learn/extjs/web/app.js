@@ -3,18 +3,20 @@
 Ext.require('Ext.container.Viewport');
 
 Ext.application({
-    name: 'HelloExt',
+    name: 'LE', // Learn ExtJS
+    appFolder: 'app',
+
+    controllers: [
+        'Users'
+    ],
+
     launch: function() {
         Ext.create('Ext.container.Viewport', {
-//            layout: 'fit',
+            layout: 'fit',
             items: [
                 {
-                    title: 'Hello Ext',
-                    html : 'Hello! Welcome to Ext JS.'
-                },
-                {
-                    title: 'Hello 2',
-                    html : 'Hello... again'
+                    title: 'Learn ExtJS',
+                    html : 'Yay, I\'m learning!'
                 }
             ]
         });
