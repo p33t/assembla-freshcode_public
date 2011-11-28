@@ -5,13 +5,7 @@ Ext.define('LE.view.user.List' ,{
     title : 'All Users',
 
     initComponent: function() {
-        this.store = {
-            fields: ['name', 'email'],
-            data  : [
-                {name: 'Ed',    email: 'ed@sencha.com'},
-                {name: 'Tommy', email: 'tommy@sencha.com'}
-            ]
-        };
+        this.store = 'Users';
 
         this.columns = [
             {header: 'Name',  dataIndex: 'name',  flex: 1},

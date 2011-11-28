@@ -2,8 +2,10 @@ Ext.define('LE.controller.Users', {
     extend: 'Ext.app.Controller',
 
     views: [
-        'user.List'
+        'user.List',
+        'user.Edit'
     ],
+    stores: ['Users'],
 
     init: function() {
         this.control({
@@ -14,6 +16,9 @@ Ext.define('LE.controller.Users', {
     },
 
     editUser: function(grid, record) {
-        console.log('Double clicked on ' + record.get('name'));
+        var view = Ext.widget('useredit'); // same as Ext.create('widget.useredit')
+
+        // every component has a 'down' that evaluates a ComponentQuery to identify a child.
+        view.down('form').loadRecord(record);
     }
 });
