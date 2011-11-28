@@ -10,8 +10,21 @@ Ext.define('LE.controller.Users', {
         this.control({
             userlist: { // v simple ComponentQuery
                 itemdblclick: this.editUser
+            },
+            'useredit button[action=save]': { // ComponentQuery: button inside a useredit with attribute 'action' set to value 'save'
+                click: this.updateUser
             }
         });
+    },
+
+    updateUser: function(button) {
+        var win = button.up('window'),
+            form = win.down('form'),
+            record = form.getRecord(),
+            values = form.getValues();
+
+        record.set(values);
+        win.close();
     },
 
     editUser: function(grid, record) {
