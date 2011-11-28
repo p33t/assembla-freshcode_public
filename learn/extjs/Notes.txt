@@ -32,4 +32,11 @@ Layouts & Containers
 - doLayout() called automatically, recursively
 - 'suspendLayout = false' for, say, adding multiple screen elements and preventing redundant doLayout() calls
 - Component.componentLayout for managing internal (non-'items') components
-
+- Lazy Instantiation
+-- Define 'items' using the 'xtype' to prevent upfront instantiation of entire UI
+-- Respond to 'render' event if necessary (only fired once)
+-- 'panel' is the default 'xtype'
+- hide()/show() on each component.  'hideMode' to influence manner
+- 'floating: true' components do not participate in layout and are not added to a host component's 'items'
+-- rendered to document body when show() is called
+-- see also 'draggable', 'shadow', alignTo(), center()
