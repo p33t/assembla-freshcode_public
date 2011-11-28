@@ -15,8 +15,7 @@ Ext.application({
             layout: 'fit',
             items: [
                 {
-                    title: 'Learn ExtJS',
-                    html : 'Yay, I\'m learning!'
+                    xtype: 'userlist'
                 }
             ]
         });

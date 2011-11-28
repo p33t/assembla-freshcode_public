@@ -1,6 +1,10 @@
 Ext.define('LE.controller.Users', {
     extend: 'Ext.app.Controller',
 
+    views: [
+        'user.List'
+    ],
+
     init: function() {
         this.control({
             'viewport > panel': { // A ComponentQuery that yields all panels that are on a view port
