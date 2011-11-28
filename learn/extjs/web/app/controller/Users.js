@@ -7,13 +7,13 @@ Ext.define('LE.controller.Users', {
 
     init: function() {
         this.control({
-            'viewport > panel': { // A ComponentQuery that yields all panels that are on a view port
-                render: this.onPanelRendered
+            userlist: { // v simple ComponentQuery
+                itemdblclick: this.editUser
             }
         });
     },
 
-    onPanelRendered: function() {
-        console.log('The panel was rendered');
+    editUser: function(grid, record) {
+        console.log('Double clicked on ' + record.get('name'));
     }
 });
