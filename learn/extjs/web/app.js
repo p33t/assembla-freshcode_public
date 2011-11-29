@@ -6,10 +6,6 @@ Ext.application({
     name: 'LE', // Learn ExtJS
     appFolder: 'app',
 
-    controllers: [
-        'Users'
-    ],
-
     launch: function() {
         Ext.create('Ext.container.Viewport', {
             items: [
@@ -161,9 +157,6 @@ Ext.application({
                         },
                         {xtype: 'tbfill'}
                     ]
-                },
-                {
-                    xtype: 'userlist'
                 }
             ]
         });
