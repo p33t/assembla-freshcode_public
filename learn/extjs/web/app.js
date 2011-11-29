@@ -13,6 +13,74 @@ Ext.application({
     launch: function() {
         Ext.create('Ext.container.Viewport', {
             items: [
+                // not really cutting it
+                {
+                    layout: 'hbox',
+                    items: [
+                        {
+                            xtype: 'menu',
+                            text: 'Menu 1',
+                            floating: false,
+                            plain: true,
+                            items: [
+                                {
+                                    xtype: 'menuitem',
+                                    text:'Sub 11',
+                                    handler: function() {window.location = 'http://www.google.com/';}
+                                }
+                            ]
+                        },
+                        {
+                            xtype: 'menu',
+                            text: 'Menu 2',
+                            floating: false,
+                            plain: true,
+                            items: [
+                                {
+                                    xtype: 'menuitem',
+                                    text: 'Sub 21',
+                                    href: 'http://www.google.com/search',
+                                    hrefTarget: '_self'
+                                }
+//                                Causes vertical stacking
+//                                ,
+//                                {
+//                                    xtype: 'menuitem',
+//                                    text: 'Sub 22',
+//                                    href: 'http://www.google.com/search',
+//                                    hrefTarget: '_self'
+//                                }
+                            ]
+                        },
+                        {
+                            xtype: 'menu',
+                            text: 'Menu 3',
+                            floating: false,
+                            plain: true,
+                            items: [
+                                {
+                                    xtype: 'menuitem',
+                                    text: 'Menu 31',
+                                    plain: true,
+                                    menu: {items:[
+                                        {
+                                            xtype: 'menuitem',
+                                            text: 'Sub 311',
+                                            href: 'http://www.google.com/search',
+                                            hrefTarget: '_self'
+                                        },
+                                        {
+                                            xtype: 'menuitem',
+                                            text: 'Sub 312',
+                                            href: 'http://www.google.com/search',
+                                            hrefTarget: '_self'
+                                        }
+                                    ]}
+                                }
+                            ]
+                        }
+                    ]
+                },
                 {
                     // stacks vertically
                     xtype: 'menu',
@@ -37,6 +105,20 @@ Ext.application({
                     xtype: 'toolbar',
                     items:[
                         {xtype: 'tbfill'},
+                        {
+                            // getting somewhere
+                            text:'Button w/ Menu',
+                            menu:{
+                                plain: true,
+                                items: [
+                                    {
+                                        text: 'Sub 1',
+                                        href: 'http://www.google.com/search',
+                                        hrefTarget: '_self'
+                                    }
+                                ]
+                            }
+                        },
                         {
                             xtype: 'button',
                             text: 'Button',
