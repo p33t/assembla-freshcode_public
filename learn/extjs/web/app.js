@@ -114,7 +114,18 @@ Ext.application({
                                     {
                                         text: 'Sub 1',
                                         href: 'http://www.google.com/search',
-                                        hrefTarget: '_self'
+                                    },
+                                    {
+                                        text: 'Nested',
+                                        menu: {
+                                            plain: true,
+                                            items: [
+                                                {
+                                                    text: 'Sub 11',
+                                                    href: 'http://www.google.com/search'
+                                                }
+                                            ]
+                                        }
                                     }
                                 ]
                             }
@@ -122,6 +133,8 @@ Ext.application({
                         {
                             xtype: 'button',
                             text: 'Button',
+// new window                            href: 'http://www.google.com/search',
+// ignored                           hrefTarget: '_self'
                             handler: function() {
                                 window.location = 'http://www.google.com/';
                             }
