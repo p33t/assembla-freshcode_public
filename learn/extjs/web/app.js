@@ -52,8 +52,9 @@ Ext.application({
                             xtype: 'splitbutton',
                             text:'Ajax Loader',
                             handler: function(btn) {
-                                var me = Ext.ComponentQuery.query('#ajaxLoader')[0];
-                                me.menu.query('menucheckitem[checked=false]')[0].setChecked(true); // TODO: Suppress events?
+                                var unchecked = btn.menu.query('menucheckitem[checked=false]')[0];
+                                // NOTE: A little dodgy because we're invoking other parts of the UI (?)
+                                unchecked.setChecked(true);
                             },
                             menu:{
                                 plain: true,
