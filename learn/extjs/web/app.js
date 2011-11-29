@@ -113,7 +113,7 @@ Ext.application({
                                 items: [
                                     {
                                         text: 'Sub 1',
-                                        href: 'http://www.google.com/search',
+                                        href: 'http://www.google.com/search'
                                     },
                                     {
                                         text: 'Nested',
