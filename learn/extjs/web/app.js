@@ -52,10 +52,8 @@ Ext.application({
                             xtype: 'splitbutton',
                             text:'Ajax Loader',
                             handler: function(btn) {
-                                var arr = Ext.ComponentQuery.query('#ajax-loader');
-                                var al = arr[0];
-                                if (al.hidden) al.show();
-                                else al.hide();
+                                var me = Ext.ComponentQuery.query('#ajaxLoader')[0];
+                                me.menu.query('menucheckitem[checked=false]')[0].setChecked(true); // TODO: Suppress events?
                             },
                             menu:{
                                 plain: true,
@@ -67,14 +65,14 @@ Ext.application({
                                         checked: false,
                                         group: 'ajaxLoaderVisible',
                                         checkHandler: function(item, checked) {
-                                            console.log('TODO');
+                                            if (checked) ajaxLoader().show();
                                         }
                                     }, {
                                         text: 'No',
                                         checked: true,
                                         group: 'ajaxLoaderVisible',
                                         checkHandler: function(item, checked) {
-                                            console.log('TODO');
+                                            if (checked) ajaxLoader().hide();
                                         }
                                     }
                                 ]
@@ -89,7 +87,8 @@ Ext.application({
                                 {
                                     xtype: 'image',
                                     id: 'ajax-loader',
-                                    src: 'image/ajax-loader.gif'
+                                    src: 'image/ajax-loader.gif',
+                                    hidden: true
                                 }
                             ]
                         }
@@ -99,3 +98,8 @@ Ext.application({
         });
     }
 });
+
+function ajaxLoader() {
+    var arr = Ext.ComponentQuery.query('#ajax-loader');
+    return arr[0];
+}
