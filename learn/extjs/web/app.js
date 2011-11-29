@@ -8,7 +8,12 @@ Ext.application({
             items: [
                 {
                     xtype: 'toolbar',
+                    style: {
+                        background: 'inherit',
+                        border: 0
+                    },
                     items:[
+                        {xtype:'image', src: 'image/logo-med.jpg', height: 50, width: 80},
                         {xtype: 'tbfill'},
                         {
                             text:'Experiments',
