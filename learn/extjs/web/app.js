@@ -47,7 +47,55 @@ Ext.application({
                                 window.location = 'mvc-tutorial';
                             }
                         },
-                        {xtype: 'tbfill'}
+                        {
+                            id: 'ajaxLoader',
+                            xtype: 'splitbutton',
+                            text:'Ajax Loader',
+                            handler: function(btn) {
+                                console.log('Toggling ajax loader...');
+                                var arr = Ext.ComponentQuery.query('#ajax-loader');
+                                console.log("Array: ", arr);
+                                var al = arr[0];
+                                console.log('Ajax loader: ', al);
+                                if (al.hidden) al.show();
+                                else al.hide();
+                            },
+                            menu:{
+                                plain: true,
+                                items: [
+                                    // stick any markup in a menu
+                                    '<b class="menu-title">Visible</b>',
+                                    {
+                                        text: 'Yes',
+                                        checked: false,
+                                        group: 'ajaxLoaderVisible',
+                                        checkHandler: function(item, checked) {
+                                            console.log('TODO');
+                                        }
+                                    }, {
+                                        text: 'No',
+                                        checked: true,
+                                        group: 'ajaxLoaderVisible',
+                                        checkHandler: function(item, checked) {
+                                            console.log('TODO');
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {xtype: 'tbfill'},
+                        {
+                            xtype: 'container',
+                            height: 50,
+                            width: 80,
+                            items:[
+                                {
+                                    xtype: 'image',
+                                    id: 'ajax-loader',
+                                    src: 'image/ajax-loader.gif'
+                                }
+                            ]
+                        }
                     ]
                 }
             ]
