@@ -52,11 +52,8 @@ Ext.application({
                             xtype: 'splitbutton',
                             text:'Ajax Loader',
                             handler: function(btn) {
-                                console.log('Toggling ajax loader...');
                                 var arr = Ext.ComponentQuery.query('#ajax-loader');
-                                console.log("Array: ", arr);
                                 var al = arr[0];
-                                console.log('Ajax loader: ', al);
                                 if (al.hidden) al.show();
                                 else al.hide();
                             },
