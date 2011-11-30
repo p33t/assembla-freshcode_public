@@ -48,7 +48,6 @@ function menubar(renderTo) {
                         }
                     },
                     {
-                        id: 'ajaxLoader',
                         xtype: 'splitbutton',
                         text:'Ajax Loader',
                         handler: function(btn) {
