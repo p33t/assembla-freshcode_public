@@ -15,7 +15,7 @@ function userList(renderTo) {
     Ext.create('Ext.container.Container', {
         renderTo: renderTo,
         items: [
-            EI.getView('EI.view.user.List').create()
+            EI.getView('user.List').create() // EI.view.user.List also works
         ]
     });
 }
