@@ -15,7 +15,10 @@ function userList(renderTo) {
     Ext.create('Ext.container.Container', {
         renderTo: renderTo,
         items: [
-            EI.getView('user.List').create() // EI.view.user.List also works
+            EI.getView('user.List').create(), // EI.view.user.List also works
+            {
+                html: '<p>Bonus Content!</p>'
+            }
         ]
     });
 }
