@@ -71,6 +71,7 @@ class Boot extends Loggable {
           ),
         Menu.i("Css Selector") / "css-select" / **,
         Menu.i("Forms") / "form" / **,
+        Menu.i("Ext JS") / "extjsinterop" / **,
         // using static content technique
         Menu(Loc("widget", new Link(List("widget"), true), "Widgets")),
         // this ends up with 'Widget Anchor Text' in the address bar
