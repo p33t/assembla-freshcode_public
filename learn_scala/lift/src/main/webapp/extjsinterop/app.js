@@ -2,22 +2,20 @@
 // it's like an import
 Ext.require('Ext.container.Viewport');
 
-Ext.application({
-    name: 'EI', // Learn ExtJS
+var EI = Ext.create('Ext.app.Application', {
+    name: 'EI', // ExtJS Interop
     appFolder: 'app',
-
     controllers: [
         'Users'
-    ],
-
-    launch: function() {
-        Ext.create('Ext.container.Viewport', {
-            layout: 'fit',
-            items: [
-                {
-                    xtype: 'userlist'
-                }
-            ]
-        });
-    }
+    ]
 });
+
+function userList(renderTo) {
+    // Argh!!! ViewPort.renderTo is ignored!!!!
+    Ext.create('Ext.container.Container', {
+        renderTo: renderTo,
+        items: [
+            EI.getView('EI.view.user.List').create()
+        ]
+    });
+}
