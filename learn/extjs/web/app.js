@@ -23,6 +23,10 @@ function menubar(renderTo) {
                                 {
                                     text: 'Menubar',
                                     href: 'experiment/menubar.html'
+                                },
+                                {
+                                    text: 'My Module',
+                                    href: 'experiment/mymodule'
                                 }
 //                                    May be useful later...
 //                                    {
