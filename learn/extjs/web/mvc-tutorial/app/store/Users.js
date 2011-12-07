@@ -1,6 +1,6 @@
-Ext.define('LE.store.Users', {
+Ext.define('MVC.store.Users', {
     extend: 'Ext.data.Store',
-    model: 'LE.model.User',
+    model: 'MVC.model.User',
     autoLoad: true,
 
     proxy: {

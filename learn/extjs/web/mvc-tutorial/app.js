@@ -3,7 +3,7 @@
 Ext.require('Ext.container.Viewport');
 
 Ext.application({
-    name: 'LE', // Learn ExtJS
+    name: 'MVC',
     appFolder: 'app',
 
     controllers: [

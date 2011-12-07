@@ -1,4 +1,4 @@
-Ext.define('LE.view.user.Edit', {
+Ext.define('MVC.view.user.Edit', {
     extend: 'Ext.window.Window',
     alias : 'widget.useredit',
 

@@ -1,4 +1,4 @@
-Ext.define('LE.controller.Users', {
+Ext.define('MVC.controller.Users', {
     extend: 'Ext.app.Controller',
 
     // these will be loaded up front

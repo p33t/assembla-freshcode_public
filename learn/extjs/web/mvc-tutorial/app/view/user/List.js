@@ -1,4 +1,4 @@
-Ext.define('LE.view.user.List' ,{
+Ext.define('MVC.view.user.List' ,{
     extend: 'Ext.grid.Panel',
     alias : 'widget.userlist', // xtype is 'userlist'
 
