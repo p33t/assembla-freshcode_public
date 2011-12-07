@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Module example</title>
+    <link rel="stylesheet" type="text/css" href="../../extjs/resources/css/ext-all.css">
+    <script type="text/javascript" src="../../extjs/ext-debug.js"></script>
+    <script type="text/javascript">
+        var MyModule = Ext.create('Ext.app.Application', {
+            name: 'LE',
+            appFolder: '../../app',
+            controllers: [
+                'Diary'
+            ]
+        });
+
+        Ext.onReady(function() {
+            myModule();
+        });
+
+        function myModule() {
+            // Argh!!! ViewPort.renderTo is ignored!!!!
+            Ext.create('Ext.container.Container', {
+                renderTo: 'myModuleLoc',
+                items: [
+                    MyModule.getView('appointment.List').create(), // LE.view.appointment.List also works
+                    {
+                        html: '<p>Bonus Content!</p>'
+                    }
+                ]
+            });
+        }
+    </script>
+</head>
+<body>
+<p>This is an example of embedding a resizable ext js component in a page</p>
+
+<p>Some content above</p>
+
+<div id="myModuleLoc"></div>
+
+<p>Some content below</p>
+</body>
+</html>
