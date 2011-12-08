@@ -5,6 +5,9 @@ Ext.require('Ext.panel.Panel');
 Ext.require('Ext.app.Application');
 
 function createApp(config) {
+    var def = {
+        tbar: menutoolbar(config.pathToRoot)
+    };
     return Ext.create('Ext.app.Application', {
         name: 'LE',
         appFolder: config.pathToRoot + '/app',
@@ -12,10 +15,7 @@ function createApp(config) {
             Ext.create('Ext.container.Viewport', {
                 layout: 'fit',
                 items: [
-                    Ext.create('Ext.panel.Panel', {
-                        tbar: menutoolbar(config.pathToRoot),
-                        contentEl: config.contentEl
-                    })
+                    Ext.create('Ext.panel.Panel', Ext.merge(def, config))
                 ]
             });
         }
