@@ -4,17 +4,17 @@ Ext.require('Ext.container.Viewport');
 Ext.require('Ext.panel.Panel');
 Ext.require('Ext.app.Application');
 
-function createApp(pathToRoot, contentEl) {
+function createApp(config) {
     return Ext.create('Ext.app.Application', {
         name: 'LE',
-        appFolder: pathToRoot + '/app',
+        appFolder: config.pathToRoot + '/app',
         launch: function() {
             Ext.create('Ext.container.Viewport', {
                 layout: 'fit',
                 items: [
                     Ext.create('Ext.panel.Panel', {
-                        tbar: menutoolbar(pathToRoot),
-                        contentEl: contentEl
+                        tbar: menutoolbar(config.pathToRoot),
+                        contentEl: config.contentEl
                     })
                 ]
             });
