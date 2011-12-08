@@ -43,30 +43,29 @@ function menutoolbar(pathToRoot) {
                                 href: pathPrefix + 'experiment/menubar.html'
                             },
                             {
-                                text: 'My Module',
-                                href: pathPrefix + 'experiment/mymodule'
-                            },
-                            {
                                 text: 'Whole Page',
                                 href: pathPrefix + 'experiment/wholepage'
                             },
                             {
                                 text: 'HTML Inside',
                                 href: pathPrefix + 'experiment/htmlinside'
+                            },
+                            {
+                                text: 'Modules',
+                                menu: {
+                                    plain: true,
+                                    items: [
+                                        {
+                                            text: 'Good',
+                                            href: pathPrefix + 'experiment/mymodule/good.html'
+                                        },
+                                        {
+                                            text: 'Bad',
+                                            href: pathPrefix + 'experiment/mymodule/bad.html'
+                                        }
+                                    ]
+                                }
                             }
-//                                    May be useful later...
-//                                    {
-//                                        text: 'Nested',
-//                                        menu: {
-//                                            plain: true,
-//                                            items: [
-//                                                {
-//                                                    text: 'Sub 11',
-//                                                    href: 'http://www.google.com/search'
-//                                                }
-//                                            ]
-//                                        }
-//                                    }
                         ]
                     }
                 },
