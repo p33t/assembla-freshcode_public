@@ -2,11 +2,10 @@
 // it's like an import
 Ext.require('Ext.container.Viewport');
 Ext.require('Ext.panel.Panel');
-//This causes an error ?!!! Ext.require('Ext.application.Application');
+Ext.require('Ext.app.Application');
 
 function createApp(pathToRoot, contentEl) {
-//    return Ext.create('Ext.application.Application', {
-    Ext.application({
+    return Ext.create('Ext.app.Application', {
         name: 'LE',
         appFolder: pathToRoot + '/app',
         launch: function() {
