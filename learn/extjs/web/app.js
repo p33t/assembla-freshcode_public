@@ -4,13 +4,14 @@ Ext.require('Ext.container.Viewport');
 Ext.require('Ext.panel.Panel');
 Ext.require('Ext.app.Application');
 
-function createApp(pathToRoot, panelConfig) {
+function createApp(pathToRoot, controllers, panelConfig) {
     var def = {
         tbar: menutoolbar(pathToRoot)
     };
     return Ext.create('Ext.app.Application', {
         name: 'LE',
         appFolder: pathToRoot + '/app',
+        controllers: controllers,
         launch: function() {
             Ext.create('Ext.container.Viewport', {
                 layout: 'fit',
