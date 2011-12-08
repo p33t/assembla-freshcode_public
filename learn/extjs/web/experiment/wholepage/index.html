@@ -2,7 +2,7 @@
         "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title>Module example</title>
+    <title>Whole Page Example</title>
     <link rel="stylesheet" type="text/css" href="../../extjs/resources/css/ext-all.css">
     <script type="text/javascript" src="../../extjs/ext-debug.js"></script>
     <script type="text/javascript">
@@ -15,9 +15,7 @@
         });
 
         Ext.onReady(function() {
-            // Argh!!! ViewPort.renderTo is ignored!!!!
-            Ext.create('Ext.container.Container', {
-                renderTo: 'myModuleLoc',
+            Ext.create('Ext.container.Viewport', {
                 layout: 'fit',
                 items: [
                     MyModule.getView('appointment.List').create(), // LE.view.appointment.List also works
@@ -30,11 +28,6 @@
     </script>
 </head>
 <body>
-<p>This is an example of embedding a resizable ext js component in a page.  It doesn't work.</p>
-
-<p>Some content above</p>
-<div id="myModuleLoc"></div>
-
-<p>Some content below</p>
+<p>This is an example of an ext js component taking a whole page</p>
 </body>
 </html>
