@@ -15,7 +15,9 @@
       <excludeFolder url="file://$MODULE_DIR$/web/extjs/build" />
       <excludeFolder url="file://$MODULE_DIR$/web/extjs/builds" />
       <excludeFolder url="file://$MODULE_DIR$/web/extjs/docs" />
+      <excludeFolder url="file://$MODULE_DIR$/web/extjs/examples" />
       <excludeFolder url="file://$MODULE_DIR$/web/extjs/jsbuilder" />
+      <excludeFolder url="file://$MODULE_DIR$/web/extjs/pkgs" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
