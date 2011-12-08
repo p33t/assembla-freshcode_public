@@ -8,10 +8,15 @@
     <script type="text/javascript" src="../../app.js"></script>
     <script type="text/javascript">
         Ext.onReady(function() {
-            createApp({
-                pathToRoot: '../..',
-                html: '<p>What do you know... it works!</p>'
+            var LE = createApp('../..',{
+                id: 'mainPanel'
             });
+            var mainPanel = Ext.ComponentQuery.query('#mainPanel')[0];
+            // TODO: Scroll bars
+            var diary = LE.getController('LE.controller.Diary').getView('LE.view.appointment.List').create({
+                layout: 'fit'
+            });
+            mainPanel.add(diary);
         });
     </script>
 </head>
