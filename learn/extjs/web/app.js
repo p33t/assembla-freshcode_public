@@ -4,18 +4,18 @@ Ext.require('Ext.container.Viewport');
 Ext.require('Ext.panel.Panel');
 Ext.require('Ext.app.Application');
 
-function createApp(config) {
+function createApp(pathToRoot, panelConfig) {
     var def = {
-        tbar: menutoolbar(config.pathToRoot)
+        tbar: menutoolbar(pathToRoot)
     };
     return Ext.create('Ext.app.Application', {
         name: 'LE',
-        appFolder: config.pathToRoot + '/app',
+        appFolder: pathToRoot + '/app',
         launch: function() {
             Ext.create('Ext.container.Viewport', {
                 layout: 'fit',
                 items: [
-                    Ext.create('Ext.panel.Panel', Ext.merge(def, config))
+                    Ext.create('Ext.panel.Panel', Ext.merge(def, panelConfig))
                 ]
             });
         }
