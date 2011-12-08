@@ -28,6 +28,10 @@ function menutoolbar() {
                             {
                                 text: 'Whole Page',
                                 href: 'experiment/wholepage'
+                            },
+                            {
+                                text: 'HTML Inside',
+                                href: 'experiment/htmlinside'
                             }
 //                                    May be useful later...
 //                                    {

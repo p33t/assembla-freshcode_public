@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Html Inside A Component</title>
+    <link rel="stylesheet" type="text/css" href="../../extjs/resources/css/ext-all.css">
+    <script type="text/javascript" src="../../extjs/ext-debug.js"></script>
+    <script type="text/javascript" src="../../app.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function() {
+            // TODO: Need to sort out paths.
+            Ext.create('Ext.container.Viewport', {
+                items: {
+                    tbar: menutoolbar(),
+                    contentEl: 'contentCenter'
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<div id="contentCenter">
+    <p>This content should be in the centre.</p>
+    <table>
+        <tr>
+            <th>C1</th>
+            <th>C2</th>
+        </tr>
+        <tr>
+            <td>r1c1</td>
+            <td>r1c2</td>
+        </tr>
+        <tr>
+            <td>r2c1</td>
+            <td>r2c2</td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
