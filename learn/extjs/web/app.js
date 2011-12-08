@@ -2,7 +2,7 @@
 // it's like an import
 Ext.require('Ext.container.Viewport');
 
-function menutoolbar() {
+function menutoolbar(pathPrefix) {
     return Ext.create('Ext.toolbar.Toolbar',
         {
             style: {
@@ -10,7 +10,7 @@ function menutoolbar() {
                 border: 0
             },
             items:[
-                {xtype:'image', src: 'image/logo-med.jpg', height: 50, width: 80},
+                {xtype:'image', src: pathPrefix + 'image/logo-med.jpg', height: 50, width: 80},
                 {xtype: 'tbfill'},
                 {
                     text:'Experiments',
@@ -19,19 +19,19 @@ function menutoolbar() {
                         items: [
                             {
                                 text: 'Menubar',
-                                href: 'experiment/menubar.html'
+                                href: pathPrefix + 'experiment/menubar.html'
                             },
                             {
                                 text: 'My Module',
-                                href: 'experiment/mymodule'
+                                href: pathPrefix + 'experiment/mymodule'
                             },
                             {
                                 text: 'Whole Page',
-                                href: 'experiment/wholepage'
+                                href: pathPrefix + 'experiment/wholepage'
                             },
                             {
                                 text: 'HTML Inside',
-                                href: 'experiment/htmlinside'
+                                href: pathPrefix + 'experiment/htmlinside'
                             }
 //                                    May be useful later...
 //                                    {
@@ -53,7 +53,7 @@ function menutoolbar() {
                     xtype: 'button',
                     text: 'MVC Tutorial',
                     handler: function() {
-                        window.location = 'mvc-tutorial';
+                        window.location = pathPrefix + 'mvc-tutorial';
                     }
                 },
                 {
@@ -103,7 +103,7 @@ function menutoolbar() {
                         {
                             xtype: 'image',
                             id: 'ajax-loader',
-                            src: 'image/ajax-loader.gif',
+                            src: pathPrefix + 'image/ajax-loader.gif',
                             hidden: true
                         }
                     ]
@@ -114,7 +114,7 @@ function menutoolbar() {
 }
 
 function menubar(renderTo) {
-    var tb = menutoolbar();
+    var tb = menutoolbar('');
     Ext.create('Ext.container.Container', {
         id: 'menubar',
         renderTo: renderTo,
