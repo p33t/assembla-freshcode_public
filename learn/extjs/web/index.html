@@ -6,13 +6,11 @@
     <script type="text/javascript" src="app.js"></script>
     <script type="text/javascript">
         Ext.onReady(function() {
-            menubar('menubarloc')
+            createApp('.', 'theContent');
         });
     </script>
 </head>
 <body>
-<p>This is above</p>
-<div id="menubarloc"></div>
-<p>This is below</p>
+<p id='theContent'>This is the content</p>
 </body>
 </html>
