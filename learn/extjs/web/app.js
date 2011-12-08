@@ -1,36 +1,8 @@
 // supposed to improve load times and prevent warning regarding synchronous loads
 // it's like an import
-//This causes an error ?!!! Ext.require('Ext.application.Application');
 Ext.require('Ext.container.Viewport');
 Ext.require('Ext.panel.Panel');
-
-//Ext.define('LE.app.Application', {
-//    extend: 'Ext.app.Application',
-//    config: {
-//        name: 'LE',
-//        relativePath: 'unknown',
-//        items: {
-//            xtype: 'panel',
-//            tbar: {html: 'The tool bar?'}
-//        }
-//    },
-//    constructor: function(config) {
-//        this.initConfig(config);
-//        return this;
-//    },
-////    initConfig: function(config) {
-////        var altConfig = Ext.clone(config);
-////        altConfig.appFolder = config.relativePath + 'app';
-////        this.callParent([altConfig]);
-////    },
-//    launch: function() {
-//        Ext.create('Ext.container.Viewport', {
-//            layout: 'fit',
-//            items: this.config.items
-//        });
-//        this.callParent(arguments);
-//    }
-//});
+//This causes an error ?!!! Ext.require('Ext.application.Application');
 
 function createApp(pathToRoot, contentEl) {
 //    return Ext.create('Ext.application.Application', {
@@ -161,17 +133,6 @@ function menutoolbar(pathToRoot) {
             ]
         }
     );
-}
-
-function menubar(renderTo) {
-    var tb = menutoolbar('');
-    Ext.create('Ext.container.Container', {
-        id: 'menubar',
-        renderTo: renderTo,
-        items: [
-            tb
-        ]
-    });
 }
 
 function ajaxLoader() {
