@@ -2,32 +2,33 @@
 // it's like an import
 Ext.require('Ext.container.Viewport');
 
-function menubar(renderTo) {
-    Ext.create('Ext.container.Viewport', {
-        renderTo: renderTo,
-        items: [
-            {
-                xtype: 'toolbar',
-                style: {
-                    background: 'inherit',
-                    border: 0
-                },
-                items:[
-                    {xtype:'image', src: 'image/logo-med.jpg', height: 50, width: 80},
-                    {xtype: 'tbfill'},
-                    {
-                        text:'Experiments',
-                        menu:{
-                            plain: true,
-                            items: [
-                                {
-                                    text: 'Menubar',
-                                    href: 'experiment/menubar.html'
-                                },
-                                {
-                                    text: 'My Module',
-                                    href: 'experiment/mymodule'
-                                }
+function menutoolbar() {
+    return Ext.create('Ext.toolbar.Toolbar',
+        {
+            style: {
+                background: 'inherit',
+                border: 0
+            },
+            items:[
+                {xtype:'image', src: 'image/logo-med.jpg', height: 50, width: 80},
+                {xtype: 'tbfill'},
+                {
+                    text:'Experiments',
+                    menu:{
+                        plain: true,
+                        items: [
+                            {
+                                text: 'Menubar',
+                                href: 'experiment/menubar.html'
+                            },
+                            {
+                                text: 'My Module',
+                                href: 'experiment/mymodule'
+                            },
+                            {
+                                text: 'Whole Page',
+                                href: 'experiment/wholepage'
+                            }
 //                                    May be useful later...
 //                                    {
 //                                        text: 'Nested',
@@ -41,63 +42,80 @@ function menubar(renderTo) {
 //                                            ]
 //                                        }
 //                                    }
-                            ]
-                        }
+                        ]
+                    }
+                },
+                {
+                    xtype: 'button',
+                    text: 'MVC Tutorial',
+                    handler: function() {
+                        window.location = 'mvc-tutorial';
+                    }
+                },
+                {
+                    xtype: 'button',
+                    text: 'Debug',
+                    handler: function() {
+                        alert('None');
+                    }
+                },
+                {
+                    xtype: 'splitbutton',
+                    text:'Ajax Loader',
+                    handler: function(btn) {
+                        var unchecked = btn.menu.query('menucheckitem[checked=false]')[0];
+                        // NOTE: A little dodgy because we're invoking other parts of the UI (?)
+                        unchecked.setChecked(true);
                     },
-                    {
-                        xtype: 'button',
-                        text: 'MVC Tutorial',
-                        handler: function() {
-                            window.location = 'mvc-tutorial';
-                        }
-                    },
-                    {
-                        xtype: 'splitbutton',
-                        text:'Ajax Loader',
-                        handler: function(btn) {
-                            var unchecked = btn.menu.query('menucheckitem[checked=false]')[0];
-                            // NOTE: A little dodgy because we're invoking other parts of the UI (?)
-                            unchecked.setChecked(true);
-                        },
-                        menu:{
-                            plain: true,
-                            items: [
-                                // stick any markup in a menu
-                                '<b class="menu-title">Visible</b>',
-                                {
-                                    text: 'Yes',
-                                    checked: false,
-                                    group: 'ajaxLoaderVisible',
-                                    checkHandler: function(item, checked) {
-                                        if (checked) ajaxLoader().show();
-                                    }
-                                }, {
-                                    text: 'No',
-                                    checked: true,
-                                    group: 'ajaxLoaderVisible',
-                                    checkHandler: function(item, checked) {
-                                        if (checked) ajaxLoader().hide();
-                                    }
-                                }
-                            ]
-                        }
-                    },
-                    {xtype: 'tbfill'},
-                    {
-                        xtype: 'container',
-                        height: 50,
-                        width: 80,
-                        items:[
+                    menu:{
+                        plain: true,
+                        items: [
+                            // stick any markup in a menu
+                            '<b class="menu-title">Visible</b>',
                             {
-                                xtype: 'image',
-                                id: 'ajax-loader',
-                                src: 'image/ajax-loader.gif',
-                                hidden: true
+                                text: 'Yes',
+                                checked: false,
+                                group: 'ajaxLoaderVisible',
+                                checkHandler: function(item, checked) {
+                                    if (checked) ajaxLoader().show();
+                                }
+                            }, {
+                                text: 'No',
+                                checked: true,
+                                group: 'ajaxLoaderVisible',
+                                checkHandler: function(item, checked) {
+                                    if (checked) ajaxLoader().hide();
+                                }
                             }
                         ]
                     }
-                ]
-            }
+                },
+                {xtype: 'tbfill'},
+                {
+                    xtype: 'container',
+                    height: 50,
+                    width: 80,
+                    items:[
+                        {
+                            xtype: 'image',
+                            id: 'ajax-loader',
+                            src: 'image/ajax-loader.gif',
+                            hidden: true
+                        }
+                    ]
+                }
+            ]
+        }
+    );
+}
+
+function menubar(renderTo) {
+    var tb = menutoolbar();
+    Ext.create('Ext.container.Container', {
+        id: 'menubar',
+        renderTo: renderTo,
+        items: [
+            tb
         ]
     });
 }

@@ -1,7 +1,6 @@
 Ext.define('LE.view.appointment.List' ,{
     extend: 'Ext.grid.Panel',
     alias : 'widget.appointmentlist',
-
     title : 'All Appointments',
 
     initComponent: function() {

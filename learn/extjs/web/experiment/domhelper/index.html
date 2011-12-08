@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Dom Helper Experiments</title>
+    <link rel="stylesheet" type="text/css" href="../../extjs/resources/css/ext-all.css">
+    <script type="text/javascript" src="../../extjs/ext-debug.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function() {
+
+        });
+    </script>
+</head>
+<body>
+    <div id='d0'>
+        <p>d0</p>
+        <div id='d00'>
+            <p>d00</p>
+        </div>
+        <div id='d01'>
+            <p>d01</p>
+        </div>
+    </div>
+    <div id='d1'>
+        <p>d1</p>
+        <div id='d10'>
+            <p>d10</p>
+        </div>
+        <div id='d11'>
+            <p>d11</p>
+        </div>
+    </div>
+    <a href="#" onclick="console.log('Smoke is working'); return false;">Smoke</a><br/>
+    <a href="#" onclick="var el = Ext.DomQuery.selectNode('#d0');console.log('#d0 resulted in', el); return false;">Simple selectNode</a><br/>
+    <a href="#" onclick="var d11 = Ext.DomQuery.selectNode('#d11'); var elD11 = new Ext.Element(d11); console.log(elD11); return false;">Obtain Element</a><br/>
+    <a href="#" onclick="var d11 = Ext.DomQuery.selectNode('#d11'); var el = new Ext.Element(d11); el.replace('d00'); return false;">Element Replace (d00 = d11)</a><br/>
+</body>
+</html>
