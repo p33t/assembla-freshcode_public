@@ -1,7 +1,6 @@
 // supposed to improve load times and prevent warning regarding synchronous loads
 // it's like an import
 Ext.require('Ext.container.Viewport');
-Ext.require('Ext.panel.Panel');
 Ext.require('Ext.app.Application');
 
 function createApp(pathToRoot, controllers, centerConfig) {
