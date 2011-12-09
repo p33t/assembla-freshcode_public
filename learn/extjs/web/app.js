@@ -9,7 +9,8 @@ function createApp(pathToRoot, controllers, centerConfig) {
         appFolder: pathToRoot + '/app',
         controllers: ['Menubar'].concat(controllers),
         launch: function() {
-            // NOTE: Taking this out to a separate statement will break the appointlist xtype (?!)
+            // NOTE: Taking this out to a separate statement will break the appointmentlist xtype
+            // It appears the 'controllers' field defines preloaded views whose xtypes can be used.
             Ext.create('Ext.container.Viewport', {
                 layout: 'border',
                 items:[
