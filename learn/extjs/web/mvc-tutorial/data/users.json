@@ -10,6 +10,16 @@
             "id": 2,
             "name": "Tommy",
             "email": "tommy@sencha.com"
+        },
+        {
+            "id": 3,
+            "name": "Sam",
+            "email": "sam@sencha.com"
+        },
+        {
+            "id": 4,
+            "name": "Lex",
+            "email": "lex@sencha.com"
         }
     ]
 }
