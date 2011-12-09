@@ -17,7 +17,8 @@ function userList(renderTo) {
         items: [
             EI.getView('user.List').create(), // EI.view.user.List also works
             {
-                html: '<p>Bonus Content!</p>'
+                html: '<p>Bonus Content!... Note that this does not resize.  ' +
+                    'A viewport (taking up entire screen) is necessary for that... at least at time or writing.</p>'
             }
         ]
     });
