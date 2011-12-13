@@ -31,6 +31,14 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/scala" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/scala" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/src/main/webapp/extjsinterop/extjs-4.0/build" />
+      <excludeFolder url="file://$MODULE_DIR$/src/main/webapp/extjsinterop/extjs-4.0/builds" />
+      <excludeFolder url="file://$MODULE_DIR$/src/main/webapp/extjsinterop/extjs-4.0/docs" />
+      <excludeFolder url="file://$MODULE_DIR$/src/main/webapp/extjsinterop/extjs-4.0/examples" />
+      <excludeFolder url="file://$MODULE_DIR$/src/main/webapp/extjsinterop/extjs-4.0/jsbuilder" />
+      <excludeFolder url="file://$MODULE_DIR$/src/main/webapp/extjsinterop/extjs-4.0/locale" />
+      <excludeFolder url="file://$MODULE_DIR$/src/main/webapp/extjsinterop/extjs-4.0/pkgs" />
+      <excludeFolder url="file://$MODULE_DIR$/src/main/webapp/extjsinterop/extjs-4.0/welcome" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
