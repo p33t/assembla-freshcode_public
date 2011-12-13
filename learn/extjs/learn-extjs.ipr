@@ -5,7 +5,7 @@
   </component>
   <component name="ArtifactManager">
     <artifact type="exploded-war" name="main:war exploded">
-      <output-path>$PROJECT_DIR$/out/artifacts/main_war_exploded</output-path>
+      <output-path>$PROJECT_DIR$/target/extjs-1.0-SNAPSHOT</output-path>
       <root id="root">
         <element id="javaee-facet-resources" facet="main/web/Web" />
         <element id="directory" name="WEB-INF">
@@ -13,6 +13,12 @@
             <element id="module-output" name="main" />
           </element>
         </element>
+      </root>
+    </artifact>
+    <artifact type="war" name="main:war">
+      <output-path>$PROJECT_DIR$/target</output-path>
+      <root id="archive" name="extjs-1.0-SNAPSHOT.war">
+        <element id="artifact" artifact-name="main:war exploded" />
       </root>
     </artifact>
   </component>
@@ -45,6 +51,15 @@
     <option name="SKIP_IMPORT_STATEMENTS" value="false" />
   </component>
   <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false" />
+  <component name="FacetAutodetectingManager">
+    <autodetection-disabled>
+      <facet-type id="web">
+        <modules>
+          <module name="main" />
+        </modules>
+      </facet-type>
+    </autodetection-disabled>
+  </component>
   <component name="JavadocGenerationManager">
     <option name="OUTPUT_DIRECTORY" />
     <option name="OPTION_SCOPE" value="protected" />
@@ -61,6 +76,13 @@
     <option name="HEAP_SIZE" />
     <option name="LOCALE" />
     <option name="OPEN_IN_BROWSER" value="true" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+      </list>
+    </option>
   </component>
   <component name="ProjectModuleManager">
     <modules>
