@@ -14,6 +14,7 @@ function userList(renderTo) {
     // Argh!!! ViewPort.renderTo is ignored!!!!
     Ext.create('Ext.container.Container', {
         renderTo: renderTo,
+        // Doesn't help...layout: 'fit',
         items: [
             EI.getView('user.List').create(), // EI.view.user.List also works
             {
