@@ -25,6 +25,7 @@
                 <configuration>
                     <jsSrcDir>${project.basedir}/src/main/webapp</jsSrcDir>
                     <sourceIncludes>
+                        <!-- This doesn't work properly.  The includes are done manually by the SpecRunner template -->
                         <include>nada</include>
                     </sourceIncludes>
                     <customRunnerTemplate>src/test/config/SpecRunner.htmltemplate</customRunnerTemplate>
