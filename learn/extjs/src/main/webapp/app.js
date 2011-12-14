@@ -3,7 +3,12 @@
 Ext.require('Ext.container.Viewport');
 Ext.require('Ext.app.Application');
 
-function createApp(pathToRoot, controllers, centerConfig) {
+function calcPathToRoot() {
+    return Ext.Loader.getPath('Ext') + '/../..';
+}
+
+function createApp(controllers, centerConfig) {
+    var pathToRoot = calcPathToRoot();
     var result = Ext.create('Ext.app.Application', {
         name: 'LE',
         appFolder: pathToRoot + '/app',
