@@ -44,7 +44,6 @@
         // include our scripts manually because of path issue
         writeScript('extjs-4.0/ext-debug.js');
         writeScript('app.js');
-
     </script>
 
 </body>
