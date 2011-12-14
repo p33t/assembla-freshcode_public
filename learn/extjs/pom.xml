@@ -23,7 +23,11 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <!-- configuration properties will go here -->
+                    <jsSrcDir>${project.basedir}/src/main/webapp</jsSrcDir>
+                    <sourceIncludes>
+                        <include>nada</include>
+                    </sourceIncludes>
+                    <customRunnerTemplate>src/test/config/SpecRunner.htmltemplate</customRunnerTemplate>
                 </configuration>
             </plugin>
         </plugins>
