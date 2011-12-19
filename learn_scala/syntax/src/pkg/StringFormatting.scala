@@ -17,5 +17,8 @@ object StringFormatting {
     println(hex.format(Double.MaxValue))
     println(hex.format(Double.MinPositiveValue))
     println(hex.format(Double.MinPositiveValue * 2))
+
+    // WTF! -ve zero?
+    println(hex.format(-0.0) + "... does 0.0 == -0.0 :" + (0.0 == -0.0) + "... does (0.0).compareTo(-0.0) : " + (0.0).compareTo(-0.0))
   }
 }
