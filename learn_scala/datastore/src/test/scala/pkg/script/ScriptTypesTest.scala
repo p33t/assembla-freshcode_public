@@ -4,8 +4,6 @@ import org.scalatest.Suite
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import net.liftweb.json.JsonAST._
-import javax.script.ScriptEngineManager
-import sun.org.mozilla.javascript.internal.{NativeObject, Scriptable, Context, NativeArray}
 import ScriptingUtil._
 
 @RunWith(classOf[JUnitRunner])
@@ -29,35 +27,9 @@ class ScriptTypesTest extends Suite {
       )))
   }
 
-  private def convert(o: Any): JValue = {
-    o match {
-      case null => JNull
-      case b: Boolean => JBool(b)
-      case s: String => JString(s)
-      case i: BigInt => JInt(i)
-      case d: Double => JDouble(d)
-      case arr: NativeArray =>
-        val elems = (0 until arr.getLength.toInt).map {
-          ix =>
-            val elem = arr.get(ix, arr)
-            convert(elem)
-        }.toList
-        JArray(elems)
-      case obj: NativeObject =>
-        val ids = obj.getIds.toList
-        val fields = ids.map {
-          fieldObj =>
-            val fieldName = fieldObj.toString
-            val fieldValue = obj.get(fieldName, obj)
-            JField(fieldName, convert(fieldValue))
-        }
-        JObject(fields)
-    }
-  }
-
   private def checkReturnVal(script: String, expected: Any) {
     val result = js.eval(script)
-    val converted = convert(result)
+    val converted = jsToAst(result)
     expect(expected) {
       converted
     }
