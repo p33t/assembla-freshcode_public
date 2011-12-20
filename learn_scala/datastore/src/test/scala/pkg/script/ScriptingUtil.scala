@@ -15,19 +15,33 @@ object ScriptingUtil {
   def newEngine() = JsFactory.getScriptEngine.asInstanceOf[RhinoScriptEngine]
 
   def obtainScope(js: ScriptEngine) = {
+    // Doesn't work...     js.eval("[].getParentScope();").asInstanceOf[Scriptable]
+
     // this is really dodgy but I can't find any other way.
     val arr = js.eval("[];").asInstanceOf[Scriptable]
-    arr.getParentScope
+    val s = arr.getParentScope
+    require(s != null, "No scope available.")
+    s
   }
 
+  /**
+   * Convert a JsonAst Element to a JavaScript compatible object.
+   * It appears this cannot be run outside of a scripting engine invocation (?!).
+   */
   def astToJs(jv: JValue, scope: Scriptable): Any = {
-    def toJs(a: Any) = Context.javaToJS(a, scope)
+    def toJs(a: Any) = {
+      println("Converting " + a)
+      Context.javaToJS(a, scope)
+    }
     jv match {
       case JString(s) => toJs(s)
       case JInt(i) => toJs(i)
       case JDouble(d) => toJs(d)
       case JBool(b) => toJs(b)
-//      case JNull => toJs(null) // RuntimeException: No Context associated with current Thread
+      //      case JNull => toJs(null) // RuntimeException: No Context associated with current Thread
+      case JArray(elems) =>
+        val arr = elems.toArray.map(astToJs(_, scope).asInstanceOf[Object])
+        new NativeArray(arr)
       case _ => null
     }
   }
@@ -58,6 +72,31 @@ object ScriptingUtil {
             JField(fieldName, jsToAst(fieldValue))
         }
         JObject(fields)
+      case _ =>
+        // used for break points
+        throw new MatchError(o);
     }
   }
+
+//  class ArrayAdapter(arr: JArray) extends ScriptableObject {
+//    /**
+//     * The Java method defining the JavaScript resetCounter function.
+//     *
+//     * Resets the counter to 0.
+//     */
+//    def jsFunction_resetCounter: Unit = {
+//      counter = 0
+//    }
+//
+//    /**
+//     * The Java method implementing the getter for the counter property.
+//     * <p>
+//     * If "setCounter" had been defined in this class, the runtime would
+//     * call the setter when the property is assigned to.
+//     */
+//    def jsGet_counter: Int = {
+//      return ({counter += 1; counter})
+//    }
+//  }
+
 }

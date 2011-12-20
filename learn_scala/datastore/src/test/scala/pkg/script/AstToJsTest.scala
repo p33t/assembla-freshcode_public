@@ -8,12 +8,14 @@ import util.Random
 class AstToJsTest extends Suite {
   val js = newEngine()
   val scope = obtainScope(js)
+  println("Obtainted scope " + scope)
   def test() {
     check(JString("String" + Random.nextInt()))
     check(JInt(Random.nextInt()))
     check(JDouble(Random.nextDouble()))
     check(JBool(Random.nextBoolean()))
     check(JNull) // not sure about this one
+    check(JArray(List(JString("hello"), JInt(99))))
   }
 
   private def check(jv: JValue) {
