@@ -6,13 +6,12 @@ import org.scalatest.Suite
 import javax.script.{Invocable, Compilable, ScriptException, ScriptEngineManager}
 import ScriptingTest._
 import sun.org.mozilla.javascript.internal.EvaluatorException
-import scala.collection.JavaConversions._
+import ScriptingUtil._
 
 @RunWith(classOf[JUnitRunner])
 class ScriptingTest extends Suite {
   // alternative... val js = new ScriptEngineManager().getEngineByMimeType("text/javascript")
-  val factory = new ScriptEngineManager().getEngineFactories.find(_.getMimeTypes.contains("text/javascript")).get
-  val js = factory.getScriptEngine
+  val js = JsFactory.getScriptEngine
 
   def testJsIsPresent() {
     assert(js != null)
@@ -91,7 +90,6 @@ class ScriptingTest extends Suite {
 }
 
 object ScriptingTest {
-
   case class MyClass(intVal: Int, stringVal: String)
 
   object Callback {
