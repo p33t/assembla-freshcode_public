@@ -6,11 +6,11 @@ import org.scalatest.junit.JUnitRunner
 import net.liftweb.json.JsonAST._
 import javax.script.ScriptEngineManager
 import sun.org.mozilla.javascript.internal.{NativeObject, Scriptable, Context, NativeArray}
-import net.liftweb.json.Printer
+import ScriptingUtil._
 
 @RunWith(classOf[JUnitRunner])
 class ScriptTypesTest extends Suite {
-  val js = new ScriptEngineManager().getEngineByMimeType("text/javascript")
+  val js = JsFactory.getScriptEngine
 
   def testTypes() {
     checkReturnVal("'hello';", JString("hello"))
