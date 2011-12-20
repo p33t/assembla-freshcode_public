@@ -26,6 +26,8 @@ object ScriptingUtil {
       case JString(s) => toJs(s)
       case JInt(i) => toJs(i)
       case JDouble(d) => toJs(d)
+      case JBool(b) => toJs(b)
+//      case JNull => toJs(null) // RuntimeException: No Context associated with current Thread
       case _ => null
     }
   }
