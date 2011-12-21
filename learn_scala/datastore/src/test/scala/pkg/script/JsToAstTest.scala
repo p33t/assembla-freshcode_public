@@ -7,19 +7,19 @@ import net.liftweb.json.JsonAST._
 import ScriptingUtil._
 
 @RunWith(classOf[JUnitRunner])
-class ScriptTypesTest extends Suite {
+class JsToAstTest extends Suite {
   val js = JsFactory.getScriptEngine
 
   def testTypes() {
-    checkReturnVal("'hello';", JString("hello"))
-    checkReturnVal("true;", JBool(true))
-    checkReturnVal("null;", JNull)
-    checkReturnVal("undefined;", JNull)
-    checkReturnVal(";", JNull)
-    checkReturnVal("99.9;", JDouble(99.9))
+    check("'hello';", JString("hello"))
+    check("true;", JBool(true))
+    check("null;", JNull)
+    check("undefined;", JNull)
+    check(";", JNull)
+    check("99.9;", JDouble(99.9))
     // No...    checkReturnVal("99;", JInt(99))
-    checkReturnVal("[1, 'two'];", JArray(List(JDouble(1), JString("two"))))
-    checkReturnVal("var x = {'one': 'uno', 'two': 'due', 'three': [3], 'four': {'quatro': '4'}}; x;",
+    check("[1, 'two'];", JArray(List(JDouble(1), JString("two"))))
+    check("var x = {'one': 'uno', 'two': 'due', 'three': [3], 'four': {'quatro': '4'}}; x;",
       JObject(List(JField("one", JString("uno")),
         JField("two", JString("due")),
         JField("three", JArray(List(JDouble(3)))),
@@ -27,7 +27,7 @@ class ScriptTypesTest extends Suite {
       )))
   }
 
-  private def checkReturnVal(script: String, expected: Any) {
+  private def check(script: String, expected: Any) {
     val result = js.eval(script)
     val converted = jsToAst(result)
     expect(expected) {

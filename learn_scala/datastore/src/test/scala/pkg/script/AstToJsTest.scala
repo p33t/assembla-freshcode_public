@@ -5,7 +5,10 @@ import net.liftweb.json.JsonAST._
 import ScriptingUtil._
 import util.Random
 import net.liftweb.json.JsonParser
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
+@RunWith(classOf[JUnitRunner])
 class AstToJsTest extends Suite {
   val js = newEngine()
   val scope = obtainScope(js)

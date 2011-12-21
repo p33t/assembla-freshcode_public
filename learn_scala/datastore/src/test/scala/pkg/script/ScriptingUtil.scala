@@ -29,10 +29,7 @@ object ScriptingUtil {
    * It appears this cannot be run outside of a scripting engine invocation (?!).
    */
   def astToJs(jv: JValue, scope: Scriptable): Any = {
-    def toJs(a: Any) = {
-      println("Converting " + a)
-      Context.javaToJS(a, scope)
-    }
+    def toJs(a: Any) = Context.javaToJS(a, scope)
     jv match {
       case JString(s) => toJs(s)
       case JInt(i) => toJs(i)
