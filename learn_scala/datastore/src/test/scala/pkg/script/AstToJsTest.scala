@@ -8,8 +8,8 @@ import util.Random
 class AstToJsTest extends Suite {
   val js = newEngine()
   val scope = obtainScope(js)
-  println("Obtainted scope " + scope)
-  def test() {
+
+  def testSimple() {
     check(JString("String" + Random.nextInt()))
     check(JInt(Random.nextInt()))
     check(JDouble(Random.nextDouble()))
