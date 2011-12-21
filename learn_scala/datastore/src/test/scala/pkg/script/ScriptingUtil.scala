@@ -14,6 +14,7 @@ object ScriptingUtil {
 
   def newEngine() = JsFactory.getScriptEngine
 
+  // This does not appear to be necessary... just use 'null'?!
   def obtainScope(js: ScriptEngine) = {
     // Doesn't work...     js.eval("[].getParentScope();").asInstanceOf[Scriptable]
 
@@ -26,10 +27,9 @@ object ScriptingUtil {
 
   /**
    * Convert a JsonAst Element to a JavaScript compatible object.
-   * It appears this cannot be run outside of a scripting engine invocation (?!).
    */
-  def astToJs(jv: JValue, scope: Scriptable): Any = {
-    def toJs(a: Any) = Context.javaToJS(a, scope)
+  def astToJs(jv: JValue): Any = {
+    def toJs(a: Any) = Context.javaToJS(a, null)
     jv match {
       case JString(s) => toJs(s)
       case JInt(i) => toJs(i)
@@ -37,13 +37,13 @@ object ScriptingUtil {
       case JBool(b) => toJs(b)
       //      case JNull => toJs(null) // RuntimeException: No Context associated with current Thread
       case JArray(elems) =>
-        val arr = elems.toArray.map(astToJs(_, scope).asInstanceOf[Object])
+        val arr = elems.toArray.map(astToJs(_).asInstanceOf[Object])
         new NativeArray(arr)
       case JObject(fields) =>
         val obj = new NativeObject()
         fields.foreach {
           f =>
-            obj.put(f.name, obj, astToJs(f.value, scope))
+            obj.put(f.name, obj, astToJs(f.value))
         }
         obj
       case _ => null

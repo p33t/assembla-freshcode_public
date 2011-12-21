@@ -11,7 +11,6 @@ import org.scalatest.junit.JUnitRunner
 @RunWith(classOf[JUnitRunner])
 class AstToJsTest extends Suite {
   val js = newEngine()
-  val scope = obtainScope(js)
 
   def testSimple() {
     checkSymmetry(JString("String" + Random.nextInt()))
@@ -40,7 +39,7 @@ class AstToJsTest extends Suite {
   private def eval(jv: JValue, expr: String): AnyRef = {
     val binds = js.createBindings()
     js.getContext
-    binds.put("jv", astToJs(jv, scope))
+    binds.put("jv", astToJs(jv))
     js.eval( expr + ";", binds)
   }
 
