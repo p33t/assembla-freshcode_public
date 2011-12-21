@@ -16,6 +16,7 @@ class AstToJsTest extends Suite {
     check(JBool(Random.nextBoolean()))
     check(JNull) // not sure about this one
     check(JArray(List(JString("hello"), JInt(99))))
+    check(JObject(List(JField("one", JInt(1)), JField("two", JString("due")))))
   }
 
   private def check(jv: JValue) {
