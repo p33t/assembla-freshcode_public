@@ -1,9 +1,9 @@
 package pkg.script
 
 import net.liftweb.json.JsonAST._
-import sun.org.mozilla.javascript.internal._
 import com.sun.script.javascript.RhinoScriptEngine
 import javax.script.{ScriptEngine, ScriptEngineManager}
+import sun.org.mozilla.javascript.internal._
 
 object ScriptingUtil {
   lazy val JsFactory = {
@@ -42,6 +42,13 @@ object ScriptingUtil {
       case JArray(elems) =>
         val arr = elems.toArray.map(astToJs(_, scope).asInstanceOf[Object])
         new NativeArray(arr)
+      case JObject(fields) =>
+        val obj = new NativeObject()
+        fields.foreach {
+          f =>
+            obj.put(f.name, obj, astToJs(f.value, scope))
+        }
+        obj
       case _ => null
     }
   }
@@ -78,25 +85,25 @@ object ScriptingUtil {
     }
   }
 
-//  class ArrayAdapter(arr: JArray) extends ScriptableObject {
-//    /**
-//     * The Java method defining the JavaScript resetCounter function.
-//     *
-//     * Resets the counter to 0.
-//     */
-//    def jsFunction_resetCounter: Unit = {
-//      counter = 0
-//    }
-//
-//    /**
-//     * The Java method implementing the getter for the counter property.
-//     * <p>
-//     * If "setCounter" had been defined in this class, the runtime would
-//     * call the setter when the property is assigned to.
-//     */
-//    def jsGet_counter: Int = {
-//      return ({counter += 1; counter})
-//    }
-//  }
+  //  class ArrayAdapter(arr: JArray) extends ScriptableObject {
+  //    /**
+  //     * The Java method defining the JavaScript resetCounter function.
+  //     *
+  //     * Resets the counter to 0.
+  //     */
+  //    def jsFunction_resetCounter: Unit = {
+  //      counter = 0
+  //    }
+  //
+  //    /**
+  //     * The Java method implementing the getter for the counter property.
+  //     * <p>
+  //     * If "setCounter" had been defined in this class, the runtime would
+  //     * call the setter when the property is assigned to.
+  //     */
+  //    def jsGet_counter: Int = {
+  //      return ({counter += 1; counter})
+  //    }
+  //  }
 
 }
