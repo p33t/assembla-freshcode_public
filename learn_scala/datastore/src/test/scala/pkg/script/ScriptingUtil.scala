@@ -12,7 +12,7 @@ object ScriptingUtil {
     factories.find(_.getMimeTypes.contains("text/javascript")).get
   }
 
-  def newEngine() = JsFactory.getScriptEngine.asInstanceOf[RhinoScriptEngine]
+  def newEngine() = JsFactory.getScriptEngine
 
   def obtainScope(js: ScriptEngine) = {
     // Doesn't work...     js.eval("[].getParentScope();").asInstanceOf[Scriptable]
