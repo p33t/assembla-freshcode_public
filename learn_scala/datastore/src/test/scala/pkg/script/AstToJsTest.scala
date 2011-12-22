@@ -37,7 +37,7 @@ class AstToJsTest extends Suite {
     check(json, "jv[0].springsteen", 99)
   }
 
-  def testJsFunctions() {
+  def testArrayConcat() {
     val a1234 = JsonParser.parse("""["one", "two", "three", "four"]""")
     // control case
     expect(a1234) {
@@ -48,7 +48,11 @@ class AstToJsTest extends Suite {
       val result = eval(a34, """["one", "two"].concat(jv)""")
       jsToAst(result)
     }
-    // TODO: Other way round
+    expect(a1234) {
+      val a12 = JsonParser.parse("""["one", "two"]""")
+      val result = eval(a12, """jv.concat(["three", "four"])""")
+      jsToAst(result)
+    }
   }
 
   private def eval(jv: JValue, expr: String): AnyRef = {
