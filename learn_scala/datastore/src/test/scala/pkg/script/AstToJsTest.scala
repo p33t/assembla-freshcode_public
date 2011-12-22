@@ -37,8 +37,7 @@ class AstToJsTest extends Suite {
     check(json, "jv[0].springsteen", 99)
   }
 
-  // TODO: This needs to work... maybe its a prototype thing?
-  def testJsFunctions_BAD() {
+  def testJsFunctions() {
     val a1234 = JsonParser.parse("""["one", "two", "three", "four"]""")
     // control case
     expect(a1234) {
@@ -54,7 +53,6 @@ class AstToJsTest extends Suite {
 
   private def eval(jv: JValue, expr: String): AnyRef = {
     val binds = js.createBindings()
-    js.getContext
     binds.put("jv", astToJs(jv, scope))
     js.eval(expr + ";", binds)
   }
