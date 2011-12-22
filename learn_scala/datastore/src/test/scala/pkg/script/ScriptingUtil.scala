@@ -16,25 +16,6 @@ object ScriptingUtil {
   def newEngine() = JsFactory.getScriptEngine
 
   /**
-   * Enables creation of Rhino native objects with access to a 'scope'.
-   */
-  class VarCreator(varMap: Map[String, JValue]) {
-    /**
-     * Called from within the script.  EG: creator.create([]);
-     */
-    def create(parentScopeProvider: Scriptable) {
-      val scope = parentScopeProvider.getParentScope
-      varMap.foreach {
-        t2 =>
-          val (name, jv) = t2
-          val jsVal = astToJs(jv, scope)
-          // weird, but that's the way it is done
-          scope.put(name, scope, jsVal)
-      }
-    }
-  }
-
-  /**
    * Convert a JsonAst Element to a JavaScript compatible object.
    */
   def astToJs(jv: JValue, scope: Scriptable): Any = {
@@ -92,6 +73,25 @@ object ScriptingUtil {
       case _ =>
         // used for break points
         throw new MatchError(o);
+    }
+  }
+
+  /**
+   * Enables creation of Rhino native objects with access to a 'scope'.
+   */
+  class VarCreator(varMap: Map[String, JValue]) {
+    /**
+     * Called from within the script.  EG: creator.create([]);
+     */
+    def create(parentScopeProvider: Scriptable) {
+      val scope = parentScopeProvider.getParentScope
+      varMap.foreach {
+        t2 =>
+          val (name, jv) = t2
+          val jsVal = astToJs(jv, scope)
+          // weird, but that's the way it is done
+          scope.put(name, scope, jsVal)
+      }
     }
   }
 }
