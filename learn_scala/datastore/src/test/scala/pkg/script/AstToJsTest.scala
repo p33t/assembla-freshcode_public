@@ -7,11 +7,11 @@ import util.Random
 import net.liftweb.json.JsonParser
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+import javax.script.{ScriptContext, SimpleScriptContext}
 
 @RunWith(classOf[JUnitRunner])
 class AstToJsTest extends Suite {
   val js = newEngine()
-  val scope = obtainScope(js)
 
   def testSimple() {
     checkSymmetry(JString("String" + Random.nextInt()))
@@ -56,9 +56,11 @@ class AstToJsTest extends Suite {
   }
 
   private def eval(jv: JValue, expr: String): AnyRef = {
+    val varMap = Map("jv" -> jv)
+    val creator = new VarCreator(varMap)
     val binds = js.createBindings()
-    binds.put("jv", astToJs(jv, scope))
-    js.eval(expr + ";", binds)
+    binds.put("creator", creator)
+    js.eval("creator.create([]);" + expr + ";", binds)
   }
 
   private def check(jv: JValue, expr: String, expected: Any) {

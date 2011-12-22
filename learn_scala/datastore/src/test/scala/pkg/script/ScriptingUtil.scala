@@ -3,6 +3,8 @@ package pkg.script
 import net.liftweb.json.JsonAST._
 import javax.script.{ScriptEngine, ScriptEngineManager}
 import sun.org.mozilla.javascript.internal._
+import com.sun.script.javascript.{RhinoTopLevel, RhinoScriptEngine}
+import util.Random
 
 object ScriptingUtil {
   lazy val JsFactory = {
@@ -13,14 +15,23 @@ object ScriptingUtil {
 
   def newEngine() = JsFactory.getScriptEngine
 
-  def obtainScope(js: ScriptEngine) = {
-    // Doesn't work...     js.eval("[].getParentScope();").asInstanceOf[Scriptable]
-
-    // this is really dodgy but I can't find any other way.
-    val arr = js.eval("[];").asInstanceOf[Scriptable]
-    val s = arr.getParentScope
-    require(s != null, "No scope available.")
-    s
+  /**
+   * Enables creation of Rhino native objects with access to a 'scope'.
+   */
+  class VarCreator(varMap: Map[String, JValue]) {
+    /**
+     * Called from within the script.  EG: creator.create([]);
+     */
+    def create(parentScopeProvider: Scriptable) {
+      val scope = parentScopeProvider.getParentScope
+      varMap.foreach {
+        t2 =>
+          val (name, jv) = t2
+          val jsVal = astToJs(jv, scope)
+          // weird, but that's the way it is done
+          scope.put(name, scope, jsVal)
+      }
+    }
   }
 
   /**
