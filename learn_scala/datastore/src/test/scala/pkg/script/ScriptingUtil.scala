@@ -1,7 +1,6 @@
 package pkg.script
 
 import net.liftweb.json.JsonAST._
-import com.sun.script.javascript.RhinoScriptEngine
 import javax.script.{ScriptEngine, ScriptEngineManager}
 import sun.org.mozilla.javascript.internal._
 
