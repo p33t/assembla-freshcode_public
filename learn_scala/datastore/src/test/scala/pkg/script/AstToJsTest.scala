@@ -45,8 +45,8 @@ class AstToJsTest extends Suite {
       jsToAst(js.eval("""["one", "two"].concat(["three", "four"])"""))
     }
     expect(a1234) {
-      val arr = JsonParser.parse("""["three", "four"]""")
-      val result = eval(arr, """["one", "two"].concat(jv)""")
+      val a34 = JsonParser.parse("""["three", "four"]""")
+      val result = eval(a34, """["one", "two"].concat(jv)""")
       jsToAst(result)
     }
     // TODO: Other way round
