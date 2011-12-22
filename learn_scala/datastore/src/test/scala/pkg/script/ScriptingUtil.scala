@@ -39,10 +39,11 @@ object ScriptingUtil {
       case JArray(elems) =>
         val arr = elems.toArray.map(astToJs(_, scope).asInstanceOf[Object])
         val na = new NativeArray(arr)
-        na.setPrototype(ScriptableObject.getClassPrototype(scope, "Object"))
+        na.setPrototype(ScriptableObject.getClassPrototype(scope, "Array"))
         na
       case JObject(fields) =>
         val obj = new NativeObject()
+//        obj.setPrototype(ScriptableObject.getClassPrototype(scope, "Object"))
         fields.foreach {
           f =>
             obj.put(f.name, obj, astToJs(f.value, scope))
