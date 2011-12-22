@@ -14,7 +14,6 @@ object ScriptingUtil {
 
   def newEngine() = JsFactory.getScriptEngine
 
-  // This does not appear to be necessary... just use 'null'?!
   def obtainScope(js: ScriptEngine) = {
     // Doesn't work...     js.eval("[].getParentScope();").asInstanceOf[Scriptable]
 
