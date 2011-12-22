@@ -28,8 +28,8 @@ object ScriptingUtil {
   /**
    * Convert a JsonAst Element to a JavaScript compatible object.
    */
-  def astToJs(jv: JValue): Any = {
-    def toJs(a: Any) = Context.javaToJS(a, null)
+  def astToJs(jv: JValue, scope: Scriptable): Any = {
+    def toJs(a: Any) = Context.javaToJS(a, scope)
     jv match {
       case JString(s) => toJs(s)
       case JInt(i) => toJs(i)
@@ -37,13 +37,15 @@ object ScriptingUtil {
       case JBool(b) => toJs(b)
       //      case JNull => toJs(null) // RuntimeException: No Context associated with current Thread
       case JArray(elems) =>
-        val arr = elems.toArray.map(astToJs(_).asInstanceOf[Object])
-        new NativeArray(arr)
+        val arr = elems.toArray.map(astToJs(_, scope).asInstanceOf[Object])
+        val na = new NativeArray(arr)
+        na.setPrototype(ScriptableObject.getClassPrototype(scope, "Object"))
+        na
       case JObject(fields) =>
         val obj = new NativeObject()
         fields.foreach {
           f =>
-            obj.put(f.name, obj, astToJs(f.value))
+            obj.put(f.name, obj, astToJs(f.value, scope))
         }
         obj
       case _ => null

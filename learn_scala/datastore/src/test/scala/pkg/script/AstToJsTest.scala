@@ -11,6 +11,7 @@ import org.scalatest.junit.JUnitRunner
 @RunWith(classOf[JUnitRunner])
 class AstToJsTest extends Suite {
   val js = newEngine()
+  val scope = obtainScope(js)
 
   def testSimple() {
     checkSymmetry(JString("String" + Random.nextInt()))
@@ -38,19 +39,23 @@ class AstToJsTest extends Suite {
 
   // TODO: This needs to work... maybe its a prototype thing?
   def testJsFunctions_BAD() {
-    val arr = JsonParser.parse("""["one", "two"]""")
-    val tfot = JsonParser.parse("""["three", "four", "one", "two"]""")
-    val expr = """["three", "four"].concat(jv)"""
-    val result = eval(arr, expr)
-    val actual = jsToAst(result)
-    expect(tfot)(actual)
+    val a1234 = JsonParser.parse("""["one", "two", "three", "four"]""")
+    // control case
+    expect(a1234) {
+      jsToAst(js.eval("""["one", "two"].concat(["three", "four"])"""))
+    }
+    expect(a1234) {
+      val arr = JsonParser.parse("""["three", "four"]""")
+      val result = eval(arr, """["one", "two"].concat(jv)""")
+      jsToAst(result)
+    }
     // TODO: Other way round
   }
 
   private def eval(jv: JValue, expr: String): AnyRef = {
     val binds = js.createBindings()
     js.getContext
-    binds.put("jv", astToJs(jv))
+    binds.put("jv", astToJs(jv, scope))
     js.eval(expr + ";", binds)
   }
 
