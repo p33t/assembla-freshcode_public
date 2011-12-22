@@ -83,26 +83,4 @@ object ScriptingUtil {
         throw new MatchError(o);
     }
   }
-
-  //  class ArrayAdapter(arr: JArray) extends ScriptableObject {
-  //    /**
-  //     * The Java method defining the JavaScript resetCounter function.
-  //     *
-  //     * Resets the counter to 0.
-  //     */
-  //    def jsFunction_resetCounter: Unit = {
-  //      counter = 0
-  //    }
-  //
-  //    /**
-  //     * The Java method implementing the getter for the counter property.
-  //     * <p>
-  //     * If "setCounter" had been defined in this class, the runtime would
-  //     * call the setter when the property is assigned to.
-  //     */
-  //    def jsGet_counter: Int = {
-  //      return ({counter += 1; counter})
-  //    }
-  //  }
-
 }
