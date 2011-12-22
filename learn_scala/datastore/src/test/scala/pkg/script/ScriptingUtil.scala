@@ -43,7 +43,8 @@ object ScriptingUtil {
         na
       case JObject(fields) =>
         val obj = new NativeObject()
-//        obj.setPrototype(ScriptableObject.getClassPrototype(scope, "Object"))
+        // TODO: Figure out what test would require this line of code
+        obj.setPrototype(ScriptableObject.getClassPrototype(scope, "Object"))
         fields.foreach {
           f =>
             obj.put(f.name, obj, astToJs(f.value, scope))
