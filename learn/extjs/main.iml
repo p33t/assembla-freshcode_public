@@ -16,14 +16,9 @@
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <exclude-output />
+    <content url="file://$USER_HOME$/devsw/ext-4.0.7-gpl/examples" />
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/target" />
-      <excludeFolder url="file://$MODULE_DIR$/web/extjs/build" />
-      <excludeFolder url="file://$MODULE_DIR$/web/extjs/builds" />
-      <excludeFolder url="file://$MODULE_DIR$/web/extjs/docs" />
-      <excludeFolder url="file://$MODULE_DIR$/web/extjs/examples" />
-      <excludeFolder url="file://$MODULE_DIR$/web/extjs/jsbuilder" />
-      <excludeFolder url="file://$MODULE_DIR$/web/extjs/pkgs" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
