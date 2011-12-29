@@ -85,40 +85,37 @@
             });
 
 
-//this data does not line up to our model fields - the phone field is called phoneNumber
             var data = [
                 {
                     id: 1,
                     name: 'Ed Spencer',
-                    phoneNumber: '555 1234'
+                    phone: '555 1234'
                 },
                 {
                     id: 2,
                     name: 'Abe Elias',
-                    phoneNumber: '666 1234'
+                    phone: '666 1234'
                 }
             ];
 
-            //this is the model we will be using in the store
             var userDef = Ext.define('User', {
                 extend: 'Ext.data.Model',
                 fields: [
                     {name: 'id',    type: 'int'},
                     {name: 'name',  type: 'string'},
-                    {name: 'phone', type: 'string', mapping: 'phoneNumber'}
-                ]
+                    {name: 'phone', type: 'string'}
+                ],
 //                proxy: store.getProxy()
-//                proxy: 'memory'
+                proxy: {type: 'memory'} // no effect..., data: data}
             });
             log("Created User: ", userDef);
 
-//note how we set the 'root' in the reader to match the data structure above
             var store = Ext.create('Ext.data.Store', {
 //                autoLoad: true,
 //                autoSync: true,
                 model: 'User',
-                data : data, // causes getTotalCount() to work
-                proxy: 'memory' // equivalent...{type: 'memory', reader: 'json', writer: 'json'}
+                data : data // causes getTotalCount() to work
+//                proxy: 'memory' // equivalent...{type: 'memory', reader: 'json', writer: 'json'}
 //                proxy: Ext.create('Ext.data.proxy.Memory', {
 //                    reader: {
 //                        type: 'json',
@@ -129,8 +126,9 @@
 
             log("Created store: ", store);
 
-            userDef.setProxy(store.getProxy()); // prevents 'url' error and proxy on new Users is 'memory', not 'ajax'.
-            log("Assigned proxy to model: ", userDef);
+//          no longer needed b/c proxy declared on User model
+//            userDef.setProxy(store.getProxy()); // prevents 'url' error and proxy on new Users is 'memory', not 'ajax'.
+//            log("Assigned proxy to model: ", userDef);
 
         });
     </script>
