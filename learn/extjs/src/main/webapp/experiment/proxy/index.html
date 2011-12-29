@@ -16,35 +16,40 @@
                         xtype: 'button',
                         text: 'Add to memory',
                         handler: function() {
-                            log('Adding a user...');
+                            log('Adding ...');
                             log('Current total count:', store.getTotalCount());
 
                             var user1 = store.getById(1);
                             log('Retrieved by id 1: ', user1);
 
-                            // Gives us a reference to the User class
-//                            var User = Ext.ModelManager.getModel('User');
-
                             var proxy = store.getProxy();
                             log("The store has proxy: ", proxy);
-                            var ed = Ext.create('User', {
+//                            var v = Ext.create('LE.model.Appointment', {
+//                                description: 'Test New One',
+//                                start: '123456789',
+//                                duration: 'the duration'
+////                                ,
+////                                proxy: proxy
+//                            });
+
+
+                            var v = Ext.create('User', {
                                 id: 3,
                                 name: 'Ed Spencer',
                                 phone: '123456789'
-                                ,
-                                proxy: proxy
                             });
 
 //                            log("Assigning proxy: ", proxy);
-                            ed.setProxy(proxy);
-                            log("Instanciated ", ed);
+                            log("Instanciated ", v);
+//                            v.setProxy(proxy);
+//                            log("Assigned proxy ", v);
                             log('Interim total count:', store.getTotalCount());
 //                            log('userArray length: ', userArray.length);
 
 
                             // We can save Ed directly without having to add him to a Store first because we
                             // configured a RestProxy this will automatically send a POST request to the url /users
-                            var after = ed.save({
+                            var after = v.save({
                                 success: function(record, operation) {
                                     log("Success function");
                                 },
@@ -53,15 +58,20 @@
                                 },
                                 callback: function(records, operation, success) {
                                     log("In callback ", records, operation, success);
-                                    if (success) log("Saved Ed! His ID is " + records[0].getId());
-                                    else log("Failed to add Ed.");
+                                    if (success) log("Saved!");
+                                    else log("Failed to add.");
                                 }
 
                             });
 
+                            store.sync();
+
                             log("After ", after);
                             log('After total count:', store.getTotalCount());
 //                            log('userArray length: ', userArray.length);
+
+                            var user3 = store.getById(3);
+                            log('Retrieved by id 3: ', user3);
 
                             // Load User 1 and do something with it (performs a GET request to /users/1)
 //                            User.load(1, {
@@ -74,15 +84,6 @@
                 ]
             });
 
-            //this is the model we will be using in the store
-            Ext.define('User', {
-                extend: 'Ext.data.Model',
-                fields: [
-                    {name: 'id',    type: 'int'},
-                    {name: 'name',  type: 'string'},
-                    {name: 'phone', type: 'string', mapping: 'phoneNumber'}
-                ]
-            });
 
 //this data does not line up to our model fields - the phone field is called phoneNumber
             var data = [
@@ -98,13 +99,26 @@
                 }
             ];
 
+            //this is the model we will be using in the store
+            var userDef = Ext.define('User', {
+                extend: 'Ext.data.Model',
+                fields: [
+                    {name: 'id',    type: 'int'},
+                    {name: 'name',  type: 'string'},
+                    {name: 'phone', type: 'string', mapping: 'phoneNumber'}
+                ]
+//                proxy: store.getProxy()
+//                proxy: 'memory'
+            });
+            log("Created User: ", userDef);
+
 //note how we set the 'root' in the reader to match the data structure above
             var store = Ext.create('Ext.data.Store', {
-                autoLoad: true,
-                autoSync: true,
+//                autoLoad: true,
+//                autoSync: true,
                 model: 'User',
-                data : data,
-                proxy: 'memory'
+                data : data, // causes getTotalCount() to work
+                proxy: 'memory' // equivalent...{type: 'memory', reader: 'json', writer: 'json'}
 //                proxy: Ext.create('Ext.data.proxy.Memory', {
 //                    reader: {
 //                        type: 'json',
@@ -112,7 +126,12 @@
 //                    }
 //                })
             });
+
             log("Created store: ", store);
+
+            userDef.setProxy(store.getProxy()); // prevents 'url' error and proxy on new Users is 'memory', not 'ajax'.
+            log("Assigned proxy to model: ", userDef);
+
         });
     </script>
 </head>
