@@ -18,54 +18,32 @@
                         handler: function() {
                             log('Adding ...');
                             log('Current total count:', store.getTotalCount());
+                            log('Current count:', store.getCount());
 
                             var user1 = store.getById(1);
                             log('Retrieved by id 1: ', user1);
 
                             var v = Ext.create('User', {
-//                                id: 3, // affects the 'phantom' property
+                                id: 3, // affects the 'phantom' property
                                 name: 'Ed Spencer',
                                 phone: '123456789'
                             });
 
                             log("Instanciated ", v);
-                            log('Interim total count:', store.getTotalCount());
-
-                            // Still not working....
-//                            var after = v.save({
-//                                scope: this,
-//                                success: function(record, operation) {
-//                                    log("Success function");
-//                                },
-//                                failure: function(record) {
-//                                    log("Failure function");
-//                                },
-//                                callback: function(records, operation, success) {
-//                                    log("In callback ", records, operation, success);
-//                                    if (success) log("Saved!");
-//                                    else log("Failed to add.");
-//                                }
-//
-//                            });
 
                             var after = store.add(v)[0];
+                            log('Interim total count:', store.getTotalCount());
+                            log('Interim count:', store.getCount());
 
                             store.sync();
-                            storeLoad();
+//                            storeLoad(); // this causes the new record to be lost!!!!!
 
                             log("After ", after);
                             log('After total count:', store.getTotalCount());
-//                            log('userArray length: ', userArray.length);
+                            log('After count:', store.getCount());
 
                             var user3 = store.getById(3);
                             log('Retrieved by id 3: ', user3);
-
-                            // Load User 1 and do something with it (performs a GET request to /users/1)
-//                            User.load(1, {
-//                                success: function(user) {
-//                                    console.log("Loaded user 1: " + user.get('name'));
-//                                }
-//                            });
                         }
                     }
                 ]
@@ -91,10 +69,10 @@
                     {name: 'id',    type: 'int'},
                     {name: 'name',  type: 'string'},
                     {name: 'phone', type: 'string'}
-                ],
+                ]
 //                proxy: store.getProxy()
                 // it appears whatever is behind a memory proxy does not behave like a real store.
-                proxy: {type: 'memory'} // no effect..., data: data}
+//                proxy: {type: 'memory'} // no effect..., data: data}
             });
             log("Created User: ", userDef);
 
@@ -102,8 +80,8 @@
 //                autoLoad: true,
 //                autoSync: true,
                 model: 'User',
-                data : data // causes getTotalCount() to work
-//                proxy: 'memory' // equivalent...{type: 'memory', reader: 'json', writer: 'json'}
+                data : data, // causes getTotalCount() to work
+                proxy: 'memory' // equivalent...{type: 'memory', reader: 'json', writer: 'json'}
 //                proxy: Ext.create('Ext.data.proxy.Memory', {
 //                    reader: {
 //                        type: 'json',
