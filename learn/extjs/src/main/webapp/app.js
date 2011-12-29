@@ -3,6 +3,14 @@
 Ext.require('Ext.container.Viewport');
 Ext.require('Ext.app.Application');
 
+/**
+ * Substitute for console.log that doesn't barf in certain browsers
+ */
+function log() {
+    if (typeof console == 'undefined') return;
+    console.log.apply(console, arguments);
+}
+
 function calcPathToRoot() {
     return Ext.Loader.getPath('Ext') + '/../..';
 }

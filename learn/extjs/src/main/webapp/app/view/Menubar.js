@@ -29,6 +29,9 @@ Ext.define('LE.view.Menubar', {
                         {
                             text: 'HTML Inside',
                             href: pathPrefix + 'experiment/htmlinside'
+                        },                        {
+                            text: 'Proxy',
+                            href: pathPrefix + 'experiment/proxy'
                         },
                         {
                             text: 'Modules',
