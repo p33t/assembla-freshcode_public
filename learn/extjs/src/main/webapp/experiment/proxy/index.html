@@ -22,49 +22,36 @@
                             var user1 = store.getById(1);
                             log('Retrieved by id 1: ', user1);
 
-                            var proxy = store.getProxy();
-                            log("The store has proxy: ", proxy);
-//                            var v = Ext.create('LE.model.Appointment', {
-//                                description: 'Test New One',
-//                                start: '123456789',
-//                                duration: 'the duration'
-////                                ,
-////                                proxy: proxy
-//                            });
-
-
                             var v = Ext.create('User', {
-                                id: 3,
+//                                id: 3, // affects the 'phantom' property
                                 name: 'Ed Spencer',
                                 phone: '123456789'
                             });
 
-//                            log("Assigning proxy: ", proxy);
                             log("Instanciated ", v);
-//                            v.setProxy(proxy);
-//                            log("Assigned proxy ", v);
                             log('Interim total count:', store.getTotalCount());
-//                            log('userArray length: ', userArray.length);
 
+                            // Still not working....
+//                            var after = v.save({
+//                                scope: this,
+//                                success: function(record, operation) {
+//                                    log("Success function");
+//                                },
+//                                failure: function(record) {
+//                                    log("Failure function");
+//                                },
+//                                callback: function(records, operation, success) {
+//                                    log("In callback ", records, operation, success);
+//                                    if (success) log("Saved!");
+//                                    else log("Failed to add.");
+//                                }
+//
+//                            });
 
-                            // We can save Ed directly without having to add him to a Store first because we
-                            // configured a RestProxy this will automatically send a POST request to the url /users
-                            var after = v.save({
-                                success: function(record, operation) {
-                                    log("Success function");
-                                },
-                                failure: function(record) {
-                                    log("Failure function");
-                                },
-                                callback: function(records, operation, success) {
-                                    log("In callback ", records, operation, success);
-                                    if (success) log("Saved!");
-                                    else log("Failed to add.");
-                                }
-
-                            });
+                            var after = store.add(v)[0];
 
                             store.sync();
+                            storeLoad();
 
                             log("After ", after);
                             log('After total count:', store.getTotalCount());
@@ -106,6 +93,7 @@
                     {name: 'phone', type: 'string'}
                 ],
 //                proxy: store.getProxy()
+                // it appears whatever is behind a memory proxy does not behave like a real store.
                 proxy: {type: 'memory'} // no effect..., data: data}
             });
             log("Created User: ", userDef);
@@ -125,6 +113,20 @@
             });
 
             log("Created store: ", store);
+
+            var storeLoad = function() {
+                store.load({
+                    scope   : this,
+                    callback: function(records, operation, success) {
+                        //the operation object contains all of the details of the load operation
+                        log("Finished explicitly loading records.");
+                    }
+                });
+            };
+
+            store.sync();
+            log("Store sync'd: ", store);
+            storeLoad();
 
 //          no longer needed b/c proxy declared on User model
 //            userDef.setProxy(store.getProxy()); // prevents 'url' error and proxy on new Users is 'memory', not 'ajax'.
