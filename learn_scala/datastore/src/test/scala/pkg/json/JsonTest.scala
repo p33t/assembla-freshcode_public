@@ -28,6 +28,13 @@ class JsonTest extends Suite {
     println(compact(render(decompose(t))))
   }
 
+  def testReplaceDoesNotAdd() {
+    val obj = JObject(List(JField("bruce", JString("lee"))))
+    expect(obj){
+      obj.replace("swamp" :: Nil, JString("thing"))
+    }
+  }
+
   private def check(m: Any) {
     expect(desired) {compact(render(decompose(m)))}
   }
