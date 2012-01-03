@@ -17,7 +17,7 @@ object SimpleRest extends RestHelper {
   var elems = Map[Int, RestElem](1 -> RestElem(1, 10, "ten"))
 
   // NOTE: Horribly non-thread safe
-  var prevId = 2
+  var prevId = 1
   def nextId() = {
     prevId = prevId + 1
     prevId
@@ -44,11 +44,10 @@ object SimpleRest extends RestHelper {
       }
       else NotFoundResponse("Unable to locate id " + id)
 
-    // TODO: Untested
     // PUT adds the item if the JSON is parsable
-    case Nil JsonPut (obj: JObject) => {
+    case Nil JsonPut jv -> _ => {
       // suppliment with an ID 0 if necessary
-      val json = mergeJson(JObject(List(JField("id", JInt(0)))), obj)
+      val json = mergeJson(JObject(List(JField("id", JInt(0)))), jv)
       val opt = extractOpt[RestElem](json)
       opt match {
         case None =>
