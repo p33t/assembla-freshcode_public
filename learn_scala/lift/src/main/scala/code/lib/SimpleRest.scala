@@ -48,7 +48,6 @@ object SimpleRest extends RestHelper {
         case None =>
           BadResponse()
         case Some(elem) =>
-          // TODO: What it it exists already?
           putElem(elem)
           decompose(elem)
       }
