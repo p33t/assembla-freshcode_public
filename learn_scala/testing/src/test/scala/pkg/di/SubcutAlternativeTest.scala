@@ -12,13 +12,13 @@ class SubcutAlternativeTest extends Suite {
   import SubcutAlternativeTest._
 
   def testConfig() {
-    val app = Config.inject(classOf[App], None)
+    val app = Config.inject[App](None)
     expect("hello world") {app.service.operation()}
   }
 
   def testAltConfig() {
     def check(binds: BindingModule, expected: String) {
-      val deep = binds.inject(classOf[Deep], None)
+      val deep = binds.inject[Deep](None)
       expect(expected) {
         deep.operation()
       }
@@ -36,7 +36,7 @@ class SubcutAlternativeTest extends Suite {
       }
     }
 
-    val app = TestBinds.inject(classOf[App], None)
+    val app = TestBinds.inject[App](None)
     expect("hello bruce") {
       app.service.operation()
     }

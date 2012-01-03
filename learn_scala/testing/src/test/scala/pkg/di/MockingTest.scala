@@ -13,7 +13,7 @@ class MockingTest extends Suite with MockFactory {
   import MockingTest._
 
   def testConfig() {
-    val app = Config.inject(classOf[App], None)
+    val app = Config.inject[App](None)
     expect("hello world") {
       app.service.operation()
     }
@@ -36,7 +36,7 @@ class MockingTest extends Suite with MockFactory {
       }
     }
 
-    val app = TestMod.inject(classOf[App], None)
+    val app = TestMod.inject[App](None)
     expect("hello bruce") {
       app.service.operation()
     }
