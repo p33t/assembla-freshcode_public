@@ -119,28 +119,6 @@
     <mapping directory="" vcs="svn" />
   </component>
   <component name="libraryTable">
-    <library name="Maven: com.borachio:borachio-core_2.9.1:1.5">
-      <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/borachio/borachio-core_2.9.1/1.5/borachio-core_2.9.1-1.5.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/com/borachio/borachio-core_2.9.1/1.5/borachio-core_2.9.1-1.5-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/borachio/borachio-core_2.9.1/1.5/borachio-core_2.9.1-1.5-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: com.borachio:borachio-scalatest-support_2.9.1:1.5">
-      <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/borachio/borachio-scalatest-support_2.9.1/1.5/borachio-scalatest-support_2.9.1-1.5.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/com/borachio/borachio-scalatest-support_2.9.1/1.5/borachio-scalatest-support_2.9.1-1.5-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/borachio/borachio-scalatest-support_2.9.1/1.5/borachio-scalatest-support_2.9.1-1.5-sources.jar!/" />
-      </SOURCES>
-    </library>
     <library name="Maven: junit:junit:4.8.1">
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/junit/junit/4.8.1/junit-4.8.1.jar!/" />
@@ -232,6 +210,28 @@
       </JAVADOC>
       <SOURCES>
         <root url="jar://$MAVEN_REPOSITORY$/org/scala-tools/testing/test-interface/0.5/test-interface-0.5-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.scalamock:scalamock-core_2.9.1:2.1">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/scalamock/scalamock-core_2.9.1/2.1/scalamock-core_2.9.1-2.1.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/scalamock/scalamock-core_2.9.1/2.1/scalamock-core_2.9.1-2.1-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/scalamock/scalamock-core_2.9.1/2.1/scalamock-core_2.9.1-2.1-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.scalamock:scalamock-scalatest-support_2.9.1:2.1">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/scalamock/scalamock-scalatest-support_2.9.1/2.1/scalamock-scalatest-support_2.9.1-2.1.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/scalamock/scalamock-scalatest-support_2.9.1/2.1/scalamock-scalatest-support_2.9.1-2.1-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/scalamock/scalamock-scalatest-support_2.9.1/2.1/scalamock-scalatest-support_2.9.1-2.1-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: org.scalatest:scalatest_2.9.1:1.6.1">

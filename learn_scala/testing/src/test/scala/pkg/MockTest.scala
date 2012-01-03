@@ -1,10 +1,10 @@
 package pkg
 
 import org.scalatest.Suite
-import com.borachio.scalatest.MockFactory
-import com.borachio.ExpectationException
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+import org.scalamock.scalatest.MockFactory
+import org.scalamock.ExpectationException
 
 @RunWith(classOf[JUnitRunner])
 class MockTest extends Suite with MockFactory {
