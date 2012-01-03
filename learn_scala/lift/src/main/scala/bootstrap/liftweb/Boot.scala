@@ -8,13 +8,13 @@ import sitemap.Menu.{Menuable, WithSlash}
 import util.Vendor._
 import http._
 import pkg.UrlRemainder
-import code.lib.{MyEasyStatelessDispatch, MyStatelessDispatch}
 import Loc._
 import widgets.menu.MenuWidget
 import widgets.tree.TreeView
 import code.snippet.experiments.{FancyMenus, WildProcessing}
 import java.io.File
 import java.util.UUID
+import code.lib.{SimpleRest, MyEasyStatelessDispatch, MyStatelessDispatch}
 
 // NOTE: ** is red because Intellij has a bug.
 
@@ -62,6 +62,7 @@ class Boot extends Loggable {
           Menu.i("Table") / "experiments" / "table",
           Menu.i("Brower Detect") / "experiments" / "browser_detect",
           Menu.i("Chart") / "experiments" / "chart" / **,
+//          Menu.i("Simple REST") / "extjsinterop" / "restelem", // this might interfere with permissions 
           Menu.i("Fancy Menu Hidden") / "experiments" / "fancy_menus" / ** >> Hidden,
           FancyMenu()
           ),
@@ -115,6 +116,10 @@ class Boot extends Loggable {
     // stateless dispatch handlers (like for REST)... are these like servlets?
     LiftRules.statelessDispatchTable.append(MyStatelessDispatch.dispatchThis)
     LiftRules.statelessDispatchTable.append(MyEasyStatelessDispatch)
+
+    // For ExtJS
+    LiftRules.statelessDispatchTable.append(SimpleRest)
+
     logger.info("Finished boostrap.")
   }
 }
