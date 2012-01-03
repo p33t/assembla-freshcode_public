@@ -22,10 +22,18 @@ object Manifests {
 
     // Thats more like it.
     classOp(manifest[Bruce])
+    classOpBetter[Bruce]()
   }
 
   def classOp[T](implicit mf: ClassManifest[T]) {
     println("You specified a " + mf.erasure.getSimpleName)
+  }
+
+  /**
+   * This technique was learned from subcut 1.0 and does away with the implicit parameter list.
+   */
+  def classOpBetter[T <: Any : Manifest]() {
+    classOp[T]
   }
 
   class Bruce
