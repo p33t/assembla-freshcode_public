@@ -46,17 +46,16 @@ object SimpleRest extends RestHelper {
 
     // PUT adds the item if the JSON is parsable
     case Nil JsonPut jv -> _ => {
-      // suppliment with an ID 0 if necessary
-      val json = mergeJson(JObject(List(JField("id", JInt(0)))), jv)
+      // ID is supplied by server
+      val json = mergeJson(JObject(List(JField("id", JInt(nextId())))), jv)
       val opt = extractOpt[RestElem](json)
       opt match {
         case None =>
           BadResponse()
         case Some(elem) =>
-          val newElem = elem.copy(id = nextId())
-          val t2 = newElem.id -> newElem
+          val t2 = elem.id -> elem
           elems = elems + t2
-          decompose(newElem)
+          decompose(elem)
       }
     }
 
