@@ -2,9 +2,13 @@
 // it's like an import
 Ext.require('Ext.container.Viewport');
 
+function calcPathToRoot() {
+    return Ext.Loader.getPath('Ext') + '/../..';
+}
+
 var EI = Ext.create('Ext.app.Application', {
     name: 'EI', // ExtJS Interop
-    appFolder: 'app',
+    appFolder: calcPathToRoot() + '/app',
     controllers: [
         'Users'
     ]

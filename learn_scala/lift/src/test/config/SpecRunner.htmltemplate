@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=$sourceEncoding$">
+	<title>Jasmine Spec Runner</title>
+	$cssDependencies$
+	$javascriptDependencies$
+	$sources$
+</head>
+<body>
+	<script type="text/javascript">
+		if(window.location.href.indexOf("ManualSpecRunner.html") !== -1) {
+			document.body.appendChild(document.createTextNode("Warning: opening this HTML file directly from the file system is deprecated. You should instead try running `mvn jasmine:bdd` from the command line, and then visit `http://localhost:8234` in your browser. "))
+		}
+	
+		var executeJasmineSpecs = function(){
+		    // Ext customisation: Wait for Ext to finish loading.
+		    // Original file at https://github.com/searls/jasmine-maven-plugin/blob/master/src/main/resources/jasmine-templates/SpecRunner.htmltemplate
+		    Ext.onReady(function() {
+                window.reporter = new jasmine.$reporter$(); jasmine.getEnv().addReporter(reporter);
+                jasmine.getEnv().execute();
+            });
+		};
+
+		if (window.addEventListener) {
+			addEventListener('DOMContentLoaded', executeJasmineSpecs, false);
+		} else {
+			attachEvent('onload', executeJasmineSpecs);
+		}		
+	</script>
+    <script type="text/javascript">
+    
+        // special workaround from https://github.com/searls/jasmine-maven-plugin/issues/35
+        var appDir = "src/"; //this works for jasmine:test
+        if (document.location.port == 8234) { //key off the port used for bdd
+            appDir = "src/main/webapp/";//this works for jasmine:bdd
+        }
+
+        function writeScript(scriptName) {
+            // separate out '<' to prevent browser interpretting as markup
+            document.write("<" + "script type='text/javascript' src='" + appDir + scriptName + "'><" + "/script>");
+        }
+
+        // include our scripts manually because of path issue
+        writeScript('extjsinterop/extjs-4.0/ext-debug.js');
+        writeScript('extjsinterop/app.js');
+    </script>
+
+</body>
+</html>

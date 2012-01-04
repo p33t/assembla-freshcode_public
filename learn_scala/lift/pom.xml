@@ -134,6 +134,27 @@
                     </jvmArgs>
                 </configuration>
             </plugin>
+            <plugin>
+                <!-- NOTE: There is a test/javascript/READ_ME.txt file -->
+                <groupId>com.github.searls</groupId>
+                <artifactId>jasmine-maven-plugin</artifactId>
+                <version>1.0.2-beta-5</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <jsSrcDir>${project.basedir}/src/main/webapp</jsSrcDir>
+                    <sourceIncludes>
+                        <!-- This doesn't work properly.  The includes are done manually by the SpecRunner template -->
+                        <include>nada</include>
+                    </sourceIncludes>
+                    <customRunnerTemplate>src/test/config/SpecRunner.htmltemplate</customRunnerTemplate>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>
