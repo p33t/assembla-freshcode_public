@@ -40,9 +40,10 @@ object SimpleRest extends RestHelper {
       })
 
     // PUT adds the item if the JSON is parsable
-    case Nil JsonPut jv -> _ =>
+    case Nil JsonPut (obj: JObject) -> _ =>
       // ID is supplied by server and need to happen before extract in case it is not supplied
-      val json = mergeJson(jv, JObject(List(JField("id", JInt(nextId())))))
+      // NOTE: This is vulnerable to id draining
+      val json = assignId(obj, nextId())
       val opt = extractOpt[RestElem](json)
       opt match {
         case None =>
@@ -91,6 +92,12 @@ object SimpleRest extends RestHelper {
   private def putElem(elem: SimpleRest.RestElem) {
     val t2 = elem.id -> elem
     elems = elems + t2
+  }
+
+  private def assignId(obj: JObject, id: Int) = {
+    val jid = JInt(id)
+    if (obj.obj.find(_.name == "id").isDefined) obj.replace("id" :: Nil, jid)
+    else JObject(JField("id", jid) :: obj.obj)
   }
 
   private def retrieveAndProcess(id: Int, fn: RestElem => LiftResponse): LiftResponse = {
