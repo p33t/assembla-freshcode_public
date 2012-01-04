@@ -36,7 +36,7 @@ object FancyMenu {
       // This technique seems to cause problems.
 //      val item = menu / "experiments" / "fancy_menus_by_name" / target.mkString("/")
             val item = appendPath(menu / "experiments" / "fancy_menus_by_name", target)
-      println("Path labelled '" + label + "' added " + item.path)
+//      println("Path labelled '" + label + "' added " + item.path)
       if (!n.children.isEmpty) {
         val subs = n.children.toList.map(menuFor(_))
         item.submenus(subs)
