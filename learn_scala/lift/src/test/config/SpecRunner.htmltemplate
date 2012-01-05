@@ -5,6 +5,23 @@
 	<title>Jasmine Spec Runner</title>
 	$cssDependencies$
 	$javascriptDependencies$
+    <script type="text/javascript">
+
+        // special workaround from https://github.com/searls/jasmine-maven-plugin/issues/35
+        var appDir = "src/"; //this works for jasmine:test
+        if (document.location.port == 8234) { //key off the port used for bdd
+            appDir = "src/main/webapp/";//this works for jasmine:bdd
+        }
+
+        function writeScript(scriptName) {
+            // separate out '<' to prevent browser interpretting as markup
+            document.write("<" + "script type='text/javascript' src='" + appDir + scriptName + "'><" + "/script>");
+        }
+
+        // include our scripts manually because of path issue
+        writeScript('extjsinterop/extjs-4.0/ext-debug.js');
+        writeScript('extjsinterop/app.js');
+    </script>
 	$sources$
 </head>
 <body>
@@ -28,23 +45,5 @@
 			attachEvent('onload', executeJasmineSpecs);
 		}		
 	</script>
-    <script type="text/javascript">
-    
-        // special workaround from https://github.com/searls/jasmine-maven-plugin/issues/35
-        var appDir = "src/"; //this works for jasmine:test
-        if (document.location.port == 8234) { //key off the port used for bdd
-            appDir = "src/main/webapp/";//this works for jasmine:bdd
-        }
-
-        function writeScript(scriptName) {
-            // separate out '<' to prevent browser interpretting as markup
-            document.write("<" + "script type='text/javascript' src='" + appDir + scriptName + "'><" + "/script>");
-        }
-
-        // include our scripts manually because of path issue
-        writeScript('extjsinterop/extjs-4.0/ext-debug.js');
-        writeScript('extjsinterop/app.js');
-    </script>
-
 </body>
 </html>

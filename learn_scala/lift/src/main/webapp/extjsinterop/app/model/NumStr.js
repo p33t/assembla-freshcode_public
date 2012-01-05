@@ -7,7 +7,7 @@ Ext.define('EI.model.NumStr', {
     ],
     proxy: {
         type: 'jsonp',
-        url: "http://localhost:8180/scala-lift/extjsinterop/r",
+        url: CONFIG.rootPath.ajax + "/extjsinterop/r",
         reader: {
             type: 'json',
             root: 'data'
