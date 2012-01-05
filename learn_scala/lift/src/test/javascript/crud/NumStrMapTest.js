@@ -5,6 +5,9 @@ function numStrMap() {
     return Ext.create('EI.store.NumStrMap');
 }
 
+/**
+ * This test requires the tomcat
+ */
 describe("Crud infrastructure", function() {
     it("can create a store with jsonp proxy", function() {
         var store = numStrMap();
