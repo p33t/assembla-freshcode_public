@@ -1,20 +1,17 @@
 
-function numStrMap() {
+function numStrStore() {
     var EI = testApp();
-    log("Created EI ", EI);
-    return Ext.create('EI.store.NumStrMap');
+//    log("Created EI ", EI);
+    return Ext.create('EI.store.NumStrStore');
 }
 
-/**
- * This test requires the tomcat
- */
 describe("Crud infrastructure", function() {
     it("can create a store with jsonp proxy", function() {
-        var store = numStrMap();
+        var store = numStrStore();
         expect(store).toBeDefined();
     });
     it("can load at least one record that has a num and a str", function() {
-        var store = numStrMap();
+        var store = numStrStore();
         store.load(function(records, operation, success) {
             expect(store.getTotalCount()).toBeGreaterThan(0);
             var first = records[0];
