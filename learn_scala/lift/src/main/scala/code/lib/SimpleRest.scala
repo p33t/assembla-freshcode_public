@@ -1,5 +1,6 @@
 package code.lib
 
+import extjsinterop.{NumStrMap, NumStr}
 import net.liftweb._
 import http.rest.RestHelper
 import http.{LiftResponse, BadResponse, NotFoundResponse, OkResponse}
@@ -10,49 +11,39 @@ import BasicTypesHelpers._
 import net.liftweb.json.{Extraction, JsonAST}
 import Extraction._
 
-
+/**
+ * A very simple REST service.  There is a SoapUI project in the base folder that tests this.
+ */
 object SimpleRest extends RestHelper {
 
-  // NOTE: Horribly non-thread safe
-  var elems = Map[Int, RestElem](1 -> RestElem(1, 10, "ten"))
-
-  // NOTE: Horribly non-thread safe
-  var prevId = 1
-
-  def nextId() = {
-    prevId = prevId + 1
-    prevId
-  }
+  val db = new NumStrMap
 
   serve("extjsinterop" / "restelem" prefix {
     // list all items
-    case Nil JsonGet _ => decompose(elems.values)
+    case Nil JsonGet _ => decompose(db.values())
 
     // /api/item/item_id gets the specified item (or a 404)
     case AsInt(id) :: Nil JsonGet _ => retrieveAndProcess(id, decompose(_))
 
     // DELETE the item in question
     case AsInt(id) :: Nil JsonDelete _ =>
-      retrieveAndProcess(id, {
-        elem =>
-          elems = elems - id
-          decompose(elem)
-      })
+      val removed = db.remove(id)
+      if (removed.isDefined) decompose(removed.get)
+      else notFound(id)
 
     // PUT adds the item if the JSON is parsable
     case Nil JsonPut (obj: JObject) -> _ =>
       // ID is supplied by server and need to happen before extract in case it is not supplied
       // NOTE: This is vulnerable to id draining
-      val json = assignId(obj, nextId())
-      val opt = extractOpt[RestElem](json)
+      val json = assignId(obj, db.nextId())
+      val opt = extractOpt[NumStr](json)
       opt match {
         case None =>
           BadResponse()
         case Some(elem) =>
-          putElem(elem)
+          db.put(elem)
           decompose(elem)
       }
-
 
     // POST if we find the item, merge the fields from the
     // the POST body and update the item
@@ -61,11 +52,11 @@ object SimpleRest extends RestHelper {
         elem =>
         val orig = decompose(elem)
         val newJv = mergeJson(orig, jv)
-        val opt = extractOpt[RestElem](newJv)
+        val opt = extractOpt[NumStr](newJv)
         opt match {
           case Some(newElem) =>
             val correctId = newElem.copy(id = id) // make sure ID has not changed
-            putElem(correctId)
+            db.put(correctId)
             OkResponse()
           case None =>
             BadResponse()
@@ -89,28 +80,19 @@ object SimpleRest extends RestHelper {
     */
   })
 
-  private def putElem(elem: SimpleRest.RestElem) {
-    val t2 = elem.id -> elem
-    elems = elems + t2
-  }
-
   private def assignId(obj: JObject, id: Int) = {
     val jid = JInt(id)
     if (obj.obj.find(_.name == "id").isDefined) obj.replace("id" :: Nil, jid)
     else JObject(JField("id", jid) :: obj.obj)
   }
 
-  private def retrieveAndProcess(id: Int, fn: RestElem => LiftResponse): LiftResponse = {
-    val opt = elems.get(id)
+  private def retrieveAndProcess(id: Int, fn: NumStr => LiftResponse): LiftResponse = {
+    val opt = db.get(id)
     if (opt.isDefined) fn(opt.get)
-    else NotFoundResponse("Unable to locate id " + id)
+    else notFound(id)
   }
 
-  case class RestElem(id: Int, num: Int, str: String)
-
-  //  object RestElem {
-  //    val Blank = RestElem(0, 0, "")
-  //    val BlankJson = decompose(Blank)
-  //  }
-
+  private def notFound(id: Int) = {
+    NotFoundResponse("Unable to locate id " + id)
+  }
 }

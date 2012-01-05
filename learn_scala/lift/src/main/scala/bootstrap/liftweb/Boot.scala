@@ -118,7 +118,8 @@ class Boot extends Loggable {
     LiftRules.statelessDispatchTable.append(MyEasyStatelessDispatch)
 
     // For ExtJS
-    LiftRules.statelessDispatchTable.append(SimpleRest)
+    LiftRules.statelessDispatchTable.append(SimpleRest) // Learning Rest
+    LiftRules.statelessDispatchTable.append(code.lib.extjsinterop.Crud)
 
     logger.info("Finished boostrap.")
   }
