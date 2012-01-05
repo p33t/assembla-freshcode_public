@@ -4,7 +4,7 @@
 function testApp() {
     var pathToRoot = calcPathToRoot();
     return Ext.create('Ext.app.Application', {
-        name: 'LE',
+        name: 'EI',
         appFolder: pathToRoot + '/app'
     });
 }
