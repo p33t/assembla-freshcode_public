@@ -2,13 +2,23 @@
 // it's like an import
 Ext.require('Ext.container.Viewport');
 
+/**
+ * Substitute for console.log that doesn't barf in certain browsers
+ */
+function log() {
+    if (typeof console == 'undefined') return;
+    console.log.apply(console, arguments);
+}
+
 function calcPathToRoot() {
     return Ext.Loader.getPath('Ext') + '/../..';
 }
 
+var PATH_TO_ROOT = calcPathToRoot();
+
 var EI = Ext.create('Ext.app.Application', {
     name: 'EI', // ExtJS Interop
-    appFolder: calcPathToRoot() + '/app',
+    appFolder: PATH_TO_ROOT + '/app',
     controllers: [
         'Users'
     ]
