@@ -1,4 +1,4 @@
-package pkg.json.mapserialize
+package pkg.json
 
 import org.scalatest.Suite
 import org.junit.runner.RunWith
