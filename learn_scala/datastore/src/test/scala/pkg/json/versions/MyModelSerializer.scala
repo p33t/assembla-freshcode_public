@@ -20,6 +20,7 @@ object MyModelSerializer extends Serializer[MyModel] {
     Map.empty
 //    weave in a version number
 //    case mm: MyModel => {
+    // THis causes StackOverflow
 //      val obj = Extraction.decompose(mm).asInstanceOf[JObject]
 //      JObject(CurrentVersionField :: obj.obj)
 //    }
