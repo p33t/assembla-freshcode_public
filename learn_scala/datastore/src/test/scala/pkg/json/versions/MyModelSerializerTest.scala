@@ -12,6 +12,7 @@ class MyModelSerializerTest extends Suite {
   // TODO: Deserialize
 
   def testSerialize() {
+    // This is horrible.... I want {"v": 2,...
     val json = JsonParser.parse("""{"jsonClass": "v2", "elems": {"one": {"num": 1}, "two": {"num": 2}}}""")
     expect(json) {
       Extraction.decompose(MyModel(Map(
