@@ -37,28 +37,28 @@ object PatternMatching {
   }
 
 
-  def caseClasses {
+  def caseClasses() {
     // auto 'toString()'
     println(fiver)
 
     describe(fiver)
   }
 
-  def patternedVals {
+  def patternedVals() {
     // can deconstruct if we know the structure
-    val Elem(fifth, Elem(fourth, tail)) = fiver
+    val Elem(fifth, Elem(fourth, _)) = fiver
     require(fifth == 5)
     require(fourth == "four")
   }
 
-  def forLoopFilters {
+  def forLoopFilters() {
     class TupSequenceIterator(t: TupSeq) extends Iterator[TupSeq] {
       var current = t
 
       // A partial function has an 'isDefinedAt' to test if there is an answer for certain inputs
       def nextPartial: PartialFunction[TupSeq, (TupSeq, TupSeq)] = {
         case t: Terminator => (t, null)
-        case e @ Elem(_, t) => (e, t)
+        case e @ Elem(_, tup) => (e, tup)
       }
 
       def next() = {
@@ -80,8 +80,8 @@ object PatternMatching {
   }
 
   def main(args: Array[String]) {
-    caseClasses
-    patternedVals
-    forLoopFilters
+    caseClasses()
+    patternedVals()
+    forLoopFilters()
   }
 }
