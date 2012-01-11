@@ -88,6 +88,10 @@
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_5" assert-keyword="true" jdk-15="true" project-jdk-name="1.6" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
+  <component name="ScalacSettings">
+    <option name="COMPILER_LIBRARY_NAME" value="scala-2.9.1" />
+    <option name="COMPILER_LIBRARY_LEVEL" value="Global" />
+  </component>
   <component name="SvnBranchConfigurationManager">
     <option name="myConfigurationMap">
       <map>

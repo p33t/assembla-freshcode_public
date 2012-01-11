@@ -6,6 +6,9 @@ object Collections {
     sets()
     maps()
     useToMap()
+
+    // List append
+    println(List(1,2,3) :+ 4)
   }
 
   def maps() {
