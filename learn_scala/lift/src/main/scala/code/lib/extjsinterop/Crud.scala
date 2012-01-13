@@ -12,6 +12,7 @@ import net.liftweb.json.{Extraction, JsonAST}
 import Extraction._
 import code.lib.SimpleRest
 import java.nio.charset.Charset
+import collection.JavaConverters._
 
 object Crud extends RestHelper with Loggable {
   private val db = new NumStrMap
@@ -31,8 +32,8 @@ object Crud extends RestHelper with Loggable {
 
   private def log(req: Req) {
     val body = req.body.getOrElse(Array())
-//    val str = new String(body, Charset.forName("UTF8"))
-    logger.warn("params: " + req.params)// + "\nbody: " + str)
+    val str = String.valueOf(body.map(_.toChar))
+    logger.warn("params: " + req.params + "\nbody: " + str)
   }
 
   /**
