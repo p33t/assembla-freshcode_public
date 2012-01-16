@@ -15,12 +15,17 @@ function calcPathToRoot() {
     return Ext.Loader.getPath('Ext') + '/../..';
 }
 
-function createApp(controllers, centerConfig) {
+var CONFIG = {
+  controllers: ['Menubar'],
+  centerConfig: {html: '<p>Default contents</p>'}
+};
+
+function createApp() {
     var pathToRoot = calcPathToRoot();
     var result = Ext.create('Ext.app.Application', {
         name: 'LE',
         appFolder: pathToRoot + '/app',
-        controllers: ['Menubar'].concat(controllers),
+        controllers: CONFIG.controllers,
         launch: function() {
             // NOTE: Taking this out to a separate statement will break the appointmentlist xtype
             // It appears the 'controllers' field defines preloaded views whose xtypes can be used.
@@ -35,7 +40,7 @@ function createApp(controllers, centerConfig) {
                         },
                         autoHeight: true
                     },
-                    Ext.apply(centerConfig, { region: 'center' })
+                    Ext.apply(CONFIG.centerConfig, { region: 'center' })
                 ]
             });
         }

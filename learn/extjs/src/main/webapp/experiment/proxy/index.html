@@ -8,7 +8,7 @@
     <script type="text/javascript" src="../../app.js"></script>
     <script type="text/javascript">
         Ext.onReady(function() {
-            var LE = createApp([], {
+            CONFIG.centerConfig = {
                 html: '<p>This just does not work.  Memory proxy / store will not save.<br/>'
                         + 'It is like the proxy just gets ignored and the default ajax one is used.</p>',
                 buttons: [
@@ -47,7 +47,8 @@
                         }
                     }
                 ]
-            });
+            }
+            var LE = createApp();
 
 
             var data = [
