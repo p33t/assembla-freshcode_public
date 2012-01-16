@@ -4,11 +4,7 @@ describe("Ext infrastructure", function() {
     });
 
     it("can load the application", function() {
-        var pathToRoot = calcPathToRoot();
-        var LE = Ext.create('Ext.app.Application', {
-            name: 'LE',
-            appFolder: pathToRoot + '/app'
-        });
+        var LE = testApp();
         return expect(LE).toBeTruthy();
     });
 
