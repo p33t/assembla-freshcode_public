@@ -7,7 +7,12 @@ Ext.define('EI.model.NumStr', {
     ],
     proxy: {
         type: 'jsonp',
-        url: CONFIG.rootPath.ajax + "/extjsinterop/r",
+        api: {
+            create: CONFIG.rootPath.ajax + "/extjsinterop/c",
+            read: CONFIG.rootPath.ajax + "/extjsinterop/r",
+            update: CONFIG.rootPath.ajax + "/extjsinterop/u",
+            destroy: CONFIG.rootPath.ajax + "/extjsinterop/d"
+        },
         reader: {
             type: 'json',
             root: 'data'
