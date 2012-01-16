@@ -19,21 +19,24 @@ object Crud extends RestHelper with Loggable {
 
   serve("extjsinterop" :: Nil prefix {
     case Post("c" :: Nil, req) =>
+      log(req)
       NotImplementedResponse()
     case Get("r" :: Nil, req) =>
       log(req)
       val data = db.values()
       respond(req, decompose(CrudResponse(data)))
     case Post("u" :: Nil, req) =>
+      log(req)
       NotImplementedResponse()
     case Post("d" :: Nil, req) =>
+      log(req)
       NotImplementedResponse()
   })
 
   private def log(req: Req) {
     val body = req.body.getOrElse(Array())
     val str = String.valueOf(body.map(_.toChar))
-    logger.warn("params: " + req.params + "\nbody: " + str)
+    logger.warn(req.requestType.method + " params: " + req.params + "\nbody: " + str)
   }
 
   /**

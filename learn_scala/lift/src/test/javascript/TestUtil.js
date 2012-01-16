@@ -12,6 +12,10 @@ function testApp() {
 CONFIG.rootPath.ajax = 'http://localhost:8180/scala-lift';
 log("CONFIG.rootPath.ajax changed to", CONFIG.rootPath.ajax);
 
+var TEST_CONFIG = {
+  ajaxTimeout: 200
+};
+
 /**
  * Returns 'true' if the current spec has experienced failures.
  */
@@ -23,6 +27,7 @@ function specFailed() {
 
 /**
  * Throws an error if the current spec has failed.
+ * Call this if the failure of the spec requires the abortion of the test, otherwise Jasmine just keeps on truckin'.
  */
 function specCheck() {
     if (specFailed()) {
