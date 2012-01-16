@@ -6,9 +6,10 @@
     <script type="text/javascript" src="app.js"></script>
     <script type="text/javascript">
         Ext.onReady(function() {
-            createApp([], {
+            CONFIG.centerConfig = {
                 contentEl: 'theContent'
-            });
+            };
+            createApp();
         });
     </script>
 </head>

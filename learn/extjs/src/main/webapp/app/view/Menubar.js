@@ -19,6 +19,10 @@ Ext.define('LE.view.Menubar', {
                     plain: true,
                     items: [
                         {
+                            text: 'HTML Render',
+                            href: pathPrefix + 'experiment/htmlrender'
+                        },
+                        {
                             text: 'Menubar',
                             href: pathPrefix + 'experiment/menubar.html'
                         },
