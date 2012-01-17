@@ -98,5 +98,9 @@ var Html = {
 
     p: function(attrs, content) {
         return this.elem('p', attrs, content);
+    },
+
+    a: function(attrs, content) {
+        return this.elem('a', attrs, content);
     }
 };

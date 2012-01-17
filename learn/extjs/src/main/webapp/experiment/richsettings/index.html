@@ -23,18 +23,36 @@
         });
 
         function debug() {
+            // Barfs...
+//            Ext.require('LE.view.richsettings.Panel');
             var center = Ext.getCmp('centerId');
             center.removeAll();
-//            var panel = Ext.create('Ext.panel.Panel', {
-//                html: Html.p('WTF')
-//            });
-            var panel = Ext.create('LE.view.richsettings.Panel', [
-                    "My very easy memory jingle",
-                    "saves us naming",
-                    "planets"
-            ]);
+            var dc = Html.a({href: '#', onclick: 'dynamicChange(); return false;'}, "Dynamic Change");
+            log("dc", dc);
+            var panel = Ext.create('LE.view.richsettings.Panel');
+//            var panel = Ext.create('LE.view.richsettings.Panel', [
+//                    "My very easy memory jingle",
+//                    "saves us naming",
+//                    "planets",
+//                    dc
+//            ]);
             log("Created panel", panel);
             center.add(panel);
+            panel.setSettings([
+                    "My very easy memory jingle",
+                    "saves us naming",
+                    "planets",
+                    dc
+            ]);
+        }
+
+        function dynamicChange() {
+            var panels = Ext.ComponentQuery.query("richPanel");
+            log('Dynamic Change :', panels);
+            panels[0].setSettings([
+                    'Settings',
+                    'Changed'
+            ]);
         }
     </script>
 </head>
