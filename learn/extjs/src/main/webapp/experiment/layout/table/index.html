@@ -10,6 +10,7 @@
                 contentEl: 'centerId'
             };
             CONFIG.westConfig = {
+                autoScroll: true,
                 layout: {
                     type: 'table',
                     columns: 1,
@@ -17,19 +18,30 @@
                         style: {
                             width: '100%'
                         }
+                        // No help
+//                        bindToOwnerCtContainer: true,
+//                        bindToOwnerCtComponent: true
                     }
                 },
                 items: [
                     {
                         title: 'Number 1',
-                        html: Html.elem('p', 'One')
+                        html: Html.elem('p', 'One' + Html.elem('br') + 'Uno')
                     },
                     {
                         title: 'Number 2',
-                        html: Html.elem('p', 'Two')
+                        html: Html.elem('p', 'This is an example of ' +
+                                Html.elem('span', {style: 'font-weight: bold'}, 'fancy formatted') +
+                                ' html'),
+                        layout: 'fit'
+                    },
+                    {
+                        title: 'Number 3',
+                        html: Html.elem('p', 'Tre'),
+                        layout: 'fit'
                     }
                 ],
-                width: 300,
+                width: 100,
                 split: true
             };
             createApp();
