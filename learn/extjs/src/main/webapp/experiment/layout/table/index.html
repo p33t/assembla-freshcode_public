@@ -5,14 +5,30 @@
     <script type="text/javascript" src="../../../extjs-4.0/ext-debug.js"></script>
     <script type="text/javascript" src="../../../app.js"></script>
     <script type="text/javascript">
-        var theHtml = Html.elem('p', 'West side');
-        log("theHtml ", theHtml);
         Ext.onReady(function() {
             CONFIG.centerConfig = {
                 contentEl: 'centerId'
             };
             CONFIG.westConfig = {
-                html: theHtml,
+                layout: {
+                    type: 'table',
+                    columns: 1,
+                    tableAttrs: {
+                        style: {
+                            width: '100%'
+                        }
+                    }
+                },
+                items: [
+                    {
+                        title: 'Number 1',
+                        html: Html.elem('p', 'One')
+                    },
+                    {
+                        title: 'Number 2',
+                        html: Html.elem('p', 'Two')
+                    }
+                ],
                 width: 300,
                 split: true
             };
