@@ -1,10 +1,12 @@
 Ext.define("LE.view.richsettings.Panel", {
     extend: "Ext.container.Container",
     alias: 'widget.richPanel',
-//    html: '<p>Ugh</p>',
     config: {
         settings: []
     },
+    // NOTE: No compatibility of constructor with 'config' fields
+    // Also, we can't just plonk fields in the base of the class in case they collide with
+    // parent configuration.
     useless____constructor: function(settings) {
         log("constructor with config", settings);
 //        this.config.settings = settings;
@@ -18,7 +20,6 @@ Ext.define("LE.view.richsettings.Panel", {
         log('initComponent');
         var result = this.callParent(arguments);
         log('initComponent callParent result:', result);
-//        this.syncDisplay();
         return result;
     },
     applySettings: function(settings) {
