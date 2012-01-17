@@ -7,22 +7,31 @@
     <script type="text/javascript">
         CONFIG.centerConfig = {
             id: 'centerId',
-            items: [
-                {
-                    html: '<p>Original center content</p><br/>' +
-                            Html.elem('a', {
-                                href: '#',
-                                onclick: 'debug(); return false;'
-                            }, 'Debug')
-                }
-            ],
+// No longer necessary due to CONFIG.onLaunch()
+//            items: [
+//                {
+//                    html: '<p>Original center content</p><br/>' +
+//                            Html.elem('a', {
+//                                href: '#',
+//                                onclick: 'setup(); return false;'
+//                            }, 'Debug')
+//                }
+//            ],
             layout: 'fit'
+        };
+        CONFIG.onLaunch = function(app) {
+            setup();
         };
         Ext.onReady(function() {
             var LE = createApp();
+
+            // still not available...
+//            Ext.onReady(function() {
+//                log("Another on ready, Ext.getCmp('centerId')", Ext.getCmp('centerId'));
+//            });
         });
 
-        function debug() {
+        function setup() {
             // Barfs...
 //            Ext.require('LE.view.richsettings.Panel');
             var center = Ext.getCmp('centerId');

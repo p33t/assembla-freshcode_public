@@ -18,7 +18,13 @@ function calcPathToRoot() {
 var CONFIG = {
     controllers: ['Menubar'],
     centerConfig: {html: '<p>Default contents</p>'},
-    westConfig: undefined
+    westConfig: undefined,
+    /**
+     * Called after application is launched.  See Controller.onLaunch()
+     */
+    onLaunch: function(application) {
+        //nothing
+    }
 };
 
 function createApp() {
@@ -49,6 +55,7 @@ function createApp() {
                 layout: 'border',
                 items: items
             });
+            if (Ext.isFunction(CONFIG.onLaunch)) CONFIG.onLaunch(result);
         }
     });
     console.log("Created app: ", result);
