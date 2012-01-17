@@ -1,0 +1,27 @@
+<html>
+<head>
+    <title>Hello Ext</title>
+    <link rel="stylesheet" type="text/css" href="../../../extjs-4.0/resources/css/ext-all.css">
+    <script type="text/javascript" src="../../../extjs-4.0/ext-debug.js"></script>
+    <script type="text/javascript" src="../../../app.js"></script>
+    <script type="text/javascript">
+        var theHtml = Html.elem('p', 'West side');
+        log("theHtml ", theHtml);
+        Ext.onReady(function() {
+            CONFIG.centerConfig = {
+                contentEl: 'centerId'
+            };
+            CONFIG.westConfig = {
+                html: theHtml,
+                width: 100
+            };
+            createApp();
+        });
+    </script>
+</head>
+<body>
+<p id="centerId">
+    This should appear in the center.
+</p>
+</body>
+</html>

@@ -52,6 +52,18 @@ Ext.define('LE.view.Menubar', {
                                     }
                                 ]
                             }
+                        },
+                        {
+                            text: 'Layout',
+                            menu: {
+                                plain: true,
+                                items: [
+                                    {
+                                        text: 'Table',
+                                        href: pathPrefix + 'experiment/layout/table'
+                                    }
+                                ]
+                            }
                         }
                     ]
                 }
