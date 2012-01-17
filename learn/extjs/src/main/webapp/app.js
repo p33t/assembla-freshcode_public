@@ -16,8 +16,9 @@ function calcPathToRoot() {
 }
 
 var CONFIG = {
-  controllers: ['Menubar'],
-  centerConfig: {html: '<p>Default contents</p>'}
+    controllers: ['Menubar'],
+    centerConfig: {html: '<p>Default contents</p>'},
+    westConfig: undefined
 };
 
 function createApp() {
@@ -27,21 +28,26 @@ function createApp() {
         appFolder: pathToRoot + '/app',
         controllers: CONFIG.controllers,
         launch: function() {
+            var items = [
+                {
+                    region: 'north',
+                    items: {
+                        xtype: 'appmenubar',
+                        pathToRoot: pathToRoot
+                    },
+                    autoHeight: true
+                },
+                Ext.apply(CONFIG.centerConfig, { region: 'center' })
+            ];
+            if (Ext.isDefined(CONFIG.westConfig)) {
+                var west = Ext.apply(CONFIG.westConfig, {region: 'west'});
+                items.push(west);
+            }
             // NOTE: Taking this out to a separate statement will break the appointmentlist xtype
             // It appears the 'controllers' field defines preloaded views whose xtypes can be used.
             Ext.create('Ext.container.Viewport', {
                 layout: 'border',
-                items:[
-                    {
-                        region: 'north',
-                        items: {
-                            xtype: 'appmenubar',
-                            pathToRoot: pathToRoot
-                        },
-                        autoHeight: true
-                    },
-                    Ext.apply(CONFIG.centerConfig, { region: 'center' })
-                ]
+                items: items
             });
         }
     });
