@@ -94,5 +94,9 @@ var Html = {
         var lead = '<' + name + attrString;
         if (Ext.isDefined(content)) return lead + '>' + content + '</' + name + '>';
         else return lead + "/>";
+    },
+
+    p: function(attrs, content) {
+        return this.elem('p', attrs, content);
     }
 };
