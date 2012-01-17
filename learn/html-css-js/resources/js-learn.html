@@ -3,8 +3,21 @@
 <html>
 <head>
     <title>Learning about Javascript</title>
+    <script type="text/javascript">
+        function noReturn() { }
+
+        function returnUndefined() {
+            return undefined;
+        }
+    </script>
 </head>
 <body>
-    <a href="#" onclick="alert('hello' !== 'Hello') ;return false;">Strings are case sensitive?</a><br/>
+<a href="#" onclick="alert('hello' !== 'Hello') ;return false;">Strings are case sensitive?</a><br/>
+
+<a href="#" onclick="alert(noReturn()) ;return false;">What is returned when there is no 'return'?</a><br/>
+
+<a href="#" onclick="alert(returnUndefined() === noReturn()) ;return false;">'return undefined' is the same as no
+    return?</a><br/>
+
 </body>
 </html>
