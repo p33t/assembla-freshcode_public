@@ -1,0 +1,43 @@
+<html>
+<head>
+    <title>Rich Settings</title>
+    <link rel="stylesheet" type="text/css" href="../../extjs-4.0/resources/css/ext-all.css">
+    <script type="text/javascript" src="../../extjs-4.0/ext-debug.js"></script>
+    <script type="text/javascript" src="../../app.js"></script>
+    <script type="text/javascript">
+        CONFIG.centerConfig = {
+            id: 'centerId',
+            items: [
+                {
+                    html: '<p>Original center content</p><br/>' +
+                            Html.elem('a', {
+                                href: '#',
+                                onclick: 'debug(); return false;'
+                            }, 'Debug')
+                }
+            ],
+            layout: 'fit'
+        };
+        Ext.onReady(function() {
+            var LE = createApp();
+        });
+
+        function debug() {
+            var center = Ext.getCmp('centerId');
+            center.removeAll();
+//            var panel = Ext.create('Ext.panel.Panel', {
+//                html: Html.p('WTF')
+//            });
+            var panel = Ext.create('LE.view.richsettings.Panel', [
+                    "My very easy memory jingle",
+                    "saves us naming",
+                    "planets"
+            ]);
+            log("Created panel", panel);
+            center.add(panel);
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>
