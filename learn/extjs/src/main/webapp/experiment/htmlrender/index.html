@@ -5,7 +5,10 @@
     <script type="text/javascript" src="../../extjs-4.0/ext-debug.js"></script>
     <script type="text/javascript" src="../../app.js"></script>
     <script type="text/javascript">
-        var theHtml = '<p>' + Ext.htmlEncode('How the &<>; are you?') + '</p>';
+        var theHtml = Html.elem('p',  Ext.htmlEncode('"&<>;"')) +
+                Html.elem('p', {style: "background-color:yellow;", bruce: "lee"}, 'A yellow background') +
+                Html.elem('p', 'Line' + Html.elem('br') + 'Break');
+        log("theHtml ", theHtml);
         Ext.onReady(function() {
             CONFIG.centerConfig = {
                 html: theHtml
