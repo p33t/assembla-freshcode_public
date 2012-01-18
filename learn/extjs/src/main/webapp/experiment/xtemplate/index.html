@@ -1,0 +1,37 @@
+<html>
+<head>
+    <title>XTemplate</title>
+    <link rel="stylesheet" type="text/css" href="../../extjs-4.0/resources/css/ext-all.css">
+    <script type="text/javascript" src="../../extjs-4.0/ext-debug.js"></script>
+    <script type="text/javascript" src="../../app.js"></script>
+    <script type="text/javascript">
+        var tpl = Html.p('Name: {name}');
+        var data = {name: 'Bruce'};
+        CONFIG.centerConfig = {
+            id: 'centerId',
+            items: {
+                xtype: 'panel',
+                html: Html.p('Template...') +
+                        Html.pre(Ext.htmlEncode(tpl)) +
+                        Html.p('Data...') +
+                        Html.pre(Ext.htmlEncode(Ext.encode(data))) +
+                        Html.p(Html.a({href: '#', onclick: 'go(); return false;'}, 'Go'))
+            }
+        };
+        Ext.onReady(function() {
+            var LE = createApp();
+        });
+
+        function go() {
+            var x = Ext.create('Ext.XTemplate', tpl);
+            var html = x.applyTemplate(data);
+            var centerId = Ext.getCmp('centerId');
+            centerId.removeAll();
+            centerId.add(Ext.create('Ext.panel.Panel', {html: html}));
+        }
+
+    </script>
+</head>
+<body>
+</body>
+</html>

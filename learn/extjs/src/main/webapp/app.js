@@ -110,5 +110,9 @@ var Html = {
 
     a: function(attrs, content) {
         return this.elem('a', attrs, content);
+    },
+
+    pre: function(attrs, content) {
+        return this.elem('pre', attrs, content);
     }
 };
