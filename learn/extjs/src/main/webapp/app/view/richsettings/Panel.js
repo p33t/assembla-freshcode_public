@@ -5,9 +5,9 @@ Ext.define("LE.view.richsettings.Panel", {
     paragraphs: ['&lt;none&gt;'],
 
     // the less component-y, more object-y way
-    config: {
-        settings: []
-    },
+//    config: {
+//        settings: []
+//    },
 
     // NOTE: No compatibility of constructor with 'config' fields
     // Also, we can't just plonk fields in the base of the class in case they collide with

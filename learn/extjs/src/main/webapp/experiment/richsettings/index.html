@@ -5,57 +5,22 @@
     <script type="text/javascript" src="../../extjs-4.0/ext-debug.js"></script>
     <script type="text/javascript" src="../../app.js"></script>
     <script type="text/javascript">
+        CONFIG.controllers.push('RichSettings');
         CONFIG.centerConfig = {
             id: 'centerId',
-// No longer necessary due to CONFIG.onLaunch()
-//            items: [
-//                {
-//                    html: '<p>Original center content</p><br/>' +
-//                            Html.elem('a', {
-//                                href: '#',
-//                                onclick: 'setup(); return false;'
-//                            }, 'Debug')
-//                }
-//            ],
-            layout: 'fit'
-        };
-        CONFIG.onLaunch = function(app) {
-            setup();
-        };
-        Ext.onReady(function() {
-            var LE = createApp();
-
-            // still not available...
-//            Ext.onReady(function() {
-//                log("Another on ready, Ext.getCmp('centerId')", Ext.getCmp('centerId'));
-//            });
-        });
-
-        function setup() {
-            // Barfs...
-//            Ext.require('LE.view.richsettings.Panel');
-            var center = Ext.getCmp('centerId');
-            center.removeAll();
-            var dc = Html.a({href: '#', onclick: 'dynamicChange(); return false;'}, "Dynamic Change");
-            log("dc", dc);
-//            var panel = Ext.create('LE.view.richsettings.Panel');
-            var panel = Ext.create('LE.view.richsettings.Panel', {
+            items: {
+                xtype: 'richPanel',
                 paragraphs: [
                     "My very easy memory jingle",
                     "saves us naming",
                     "planets",
-                    dc
-                ]
-            });
-            log("Created panel", panel);
-            center.add(panel);
-//            panel.setSettings([
-//                    "My very easy memory jingle",
-//                    "saves us naming",
-//                    "planets",
-//                    dc
-//            ]);
-        }
+                    Html.a({href: '#', onclick: 'dynamicChange(); return false;'}, "Dynamic Change")
+                ]},
+            layout: 'fit'
+        };
+        Ext.onReady(function() {
+            var LE = createApp();
+        });
 
         function dynamicChange() {
             var panels = Ext.ComponentQuery.query("richPanel");

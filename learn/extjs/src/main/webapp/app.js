@@ -20,7 +20,8 @@ var CONFIG = {
     centerConfig: {html: '<p>Default contents</p>'},
     westConfig: undefined,
     /**
-     * Called after application is launched.  See Controller.onLaunch()
+     * Called after application is launched.  See Controller.onLaunch().
+     * Hmmm... this may not be needed because one can attach a listener to, say, the 'render' event.
      */
     onLaunch: function(application) {
         //nothing
