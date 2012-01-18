@@ -19,6 +19,10 @@ Ext.define('LE.view.Menubar', {
                     plain: true,
                     items: [
                         {
+                            text: 'Drag \'n Drop',
+                            href: pathPrefix + 'experiment/draganddrop'
+                        },
+                        {
                             text: 'XTemplate',
                             href: pathPrefix + 'experiment/xtemplate'
                         },
