@@ -8,15 +8,23 @@
         CONFIG.controllers.push('RichSettings');
         CONFIG.centerConfig = {
             id: 'centerId',
-            items: {
-                xtype: 'richPanel',
-                paragraphs: [
-                    "My very easy memory jingle",
-                    "saves us naming",
-                    "planets",
-                    Html.a({href: '#', onclick: 'dynamicChange(); return false;'}, "Dynamic Change")
-                ]},
-            layout: 'fit'
+            items: [
+                {
+                    xtype: 'richPanel',
+                    paragraphs: [
+                        "My very easy memory jingle",
+                        "saves us naming",
+                        "planets",
+                        Html.a({href: '#', onclick: 'dynamicChange(); return false;'}, "Dynamic Change")
+                    ]
+                },
+                {
+                    xtype: 'richPanel',
+                    paragraphs: 'This is invalid because it is not an array.'
+                }
+            ]
+//            ,
+//            layout: 'fit'
         };
         Ext.onReady(function() {
             var LE = createApp();
