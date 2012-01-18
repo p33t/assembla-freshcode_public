@@ -5,8 +5,23 @@
     <script type="text/javascript" src="../../extjs-4.0/ext-debug.js"></script>
     <script type="text/javascript" src="../../app.js"></script>
     <script type="text/javascript">
-        var tpl = Html.p('Name: {name}');
-        var data = {name: 'Bruce'};
+        var tpl = Html.p('Name: {name}') +
+                Html.p('Offsets: ' +
+                        Html.elem('tpl', {'for': 'crewOffsetsAlt'}, ' {code}:{offset}')
+                );
+
+        var data = {name: 'Bruce', crewOffsets: {A: 2, B: 3}};
+
+        //!!!!!!!! nasty... don't know how to iterate an object ?!
+        data.crewOffsetsAlt = function() {
+            var arr = [];
+            var offsets = data.crewOffsets;
+            for (var code in offsets) {
+                if (offsets.hasOwnProperty(code)) arr.push({code: code, offset: offsets[code]})
+            }
+            return arr;
+        }();
+
         CONFIG.centerConfig = {
             id: 'centerId',
             items: {
