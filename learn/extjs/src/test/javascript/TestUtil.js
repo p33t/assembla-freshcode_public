@@ -1,12 +1,19 @@
+var TEST_CONFIG = {
+    app: undefined
+};
+
 /**
  * Creates the Learn Extjs (LE) application and returns it.
  */
 function testApp() {
-    var pathToRoot = calcPathToRoot();
-    return Ext.create('Ext.app.Application', {
-        name: 'LE',
-        appFolder: pathToRoot + '/app'
-    });
+    if (TEST_CONFIG.app === undefined) {
+        var pathToRoot = calcPathToRoot();
+        TEST_CONFIG.app = Ext.create('Ext.app.Application', {
+            name: 'LE',
+            appFolder: pathToRoot + '/app'
+        });
+    }
+    return TEST_CONFIG.app;
 }
 
 /**
