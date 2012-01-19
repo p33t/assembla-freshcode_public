@@ -49,3 +49,12 @@ Layouts & Containers
 --- Panel: '', collapse/expand, docking
 -- Extending Panel is often overkill.  Try to extend Component or Container
 -- Need to be aware of layout being used when extending Container
+
+Drag And Drop
+-------------
+- Defined
+-- Draggable item is 'dragged' -> Drag initiated
+-- Drop target -> Invite to drop -> Complete Drop
+-- Non-drop Target -> Remove invite -> Repair Drag
+- DD class instances have 'overrides' applied to them to define behaviour
+TODO: Resume at Step 2
