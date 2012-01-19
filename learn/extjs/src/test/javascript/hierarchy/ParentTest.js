@@ -15,7 +15,7 @@ describe('Parent model', function() {
         expect(p.get('id')).toBeDefined();
         specCheck();
         var p2 = parent();
-        expect(p.get('id')).not.toBe(p2.get('id'))
+        expect(p.get('id')).not.toBe(p2.get('id'));
         specCheck();
     });
 });
