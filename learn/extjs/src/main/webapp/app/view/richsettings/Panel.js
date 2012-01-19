@@ -1,3 +1,7 @@
+/**
+ * NOTE: This was written before learning more advanced features of views.
+ * These advanced features are illustrated in examples/dd/dragdropzones.js.
+ */
 Ext.define("LE.view.richsettings.Panel", {
     extend: "Ext.panel.Panel",
     alias: 'widget.richPanel',
