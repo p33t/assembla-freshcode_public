@@ -3,15 +3,20 @@ var TEST_CONFIG = {
 };
 
 /**
- * Creates the Learn Extjs (LE) application and returns it.
+ * Creates the Learn Extjs (LE) application and returns it.  Result is cached in TEST_CONFIG.app var.
  */
 function testApp() {
     if (TEST_CONFIG.app === undefined) {
+        var launched = false;
         var pathToRoot = calcPathToRoot();
         TEST_CONFIG.app = Ext.create('Ext.app.Application', {
             name: 'LE',
-            appFolder: pathToRoot + '/app'
+            appFolder: pathToRoot + '/app',
+            launch: function() {
+                log('App successfully launched.');
+            }
         });
+        log('Created app', TEST_CONFIG.app);
     }
     return TEST_CONFIG.app;
 }
