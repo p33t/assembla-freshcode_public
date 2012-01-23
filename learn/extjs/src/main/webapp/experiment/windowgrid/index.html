@@ -4,6 +4,11 @@
     <link rel="stylesheet" type="text/css" href="../../extjs-4.0/resources/css/ext-all.css">
     <script type="text/javascript" src="../../extjs-4.0/ext-debug.js"></script>
     <script type="text/javascript" src="../../app.js"></script>
+    <style type="text/css">
+        .background-center {
+            background-position: center
+        }
+    </style>
     <script type="text/javascript">
         Ext.define('wgWindow', {
             extend: 'Ext.window.Window',
@@ -12,6 +17,14 @@
             height: 200,
             width: 400,
             layout: 'fit',
+            tbar: [
+                '->',
+                {text: 'All'},
+                {text: 'None'},
+                '-',
+                {iconCls: 'col-move-bottom background-center'},
+                {iconCls: 'col-move-top background-center'}
+            ],
             items: {  // Let's put an empty grid in just to illustrate fit layout
                 xtype: 'grid',
                 border: false,
