@@ -1,0 +1,21 @@
+<html>
+<head>
+    <title>Window Form</title>
+    <link rel="stylesheet" type="text/css" href="../../extjs-4.0/resources/css/ext-all.css">
+    <script type="text/javascript" src="../../extjs-4.0/ext-debug.js"></script>
+    <script type="text/javascript" src="../../app.js"></script>
+    <script type="text/javascript">
+        Ext.define('wgCenter', {
+            extend: 'Ext.panel.Panel',
+            html: Html.p('Window Grid')
+        });
+        Ext.onReady(function() {
+            var center = Ext.create('wgCenter');
+            CONFIG.centerConfig = center;
+            var LE = createApp();
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>
