@@ -59,7 +59,7 @@ function createApp() {
             if (Ext.isFunction(CONFIG.onLaunch)) CONFIG.onLaunch(result);
         }
     });
-    console.log("Created app: ", result);
+    log("Created app: ", result);
     return result;
 }
 
