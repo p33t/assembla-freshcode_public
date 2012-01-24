@@ -6,9 +6,48 @@
     <script type="text/javascript" src="../../../app.js"></script>
     <script type="text/javascript">
         CONFIG.centerConfig = {
-            xtype: 'panel',
+            xtype: 'form',
             layout: 'fit',
-            html: Html.p('Hello')
+            url: calcPathToRoot() + "/echo",
+            items: [
+                {
+                    xtype: 'textfield',
+                    fieldLabel: 'First Name',
+                    name: 'first',
+                    allowBlank: false
+                }
+            ],
+// Reset and Submit buttons
+            buttons: [
+                {
+                    text: 'Reset',
+                    handler: function() {
+                        this.up('form').getForm().reset();
+                    }
+                },
+                {
+                    text: 'Submit',
+                    formBind: true, //only enabled once the form is valid
+                    disabled: true,
+                    handler: function() {
+                        var form = this.up('form').getForm();
+                        if (form.isValid()) {
+                            var values = form.getValues();
+                            log("Values: ", values);
+                            window.location = calcPathToRoot() + '/echo?' + Ext.Object.toQueryString(values);
+                            // This is all ajax.
+//                            form.submit({
+//                                success: function(form, action) {
+//                                    Ext.Msg.alert('Success', action.result.msg);
+//                                },
+//                                failure: function(form, action) {
+//                                    Ext.Msg.alert('Failed', action.result.msg);
+//                                }
+//                            });
+                        }
+                    }
+                }
+            ]
         };
         Ext.onReady(function() {
             var LE = createApp();
