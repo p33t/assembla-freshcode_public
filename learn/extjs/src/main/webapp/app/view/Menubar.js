@@ -19,6 +19,18 @@ Ext.define('LE.view.Menubar', {
                     plain: true,
                     items: [
                         {
+                            text: 'Forms',
+                            menu: {
+                                plain: true,
+                                items: [
+                                    {
+                                        text: 'Simple',
+                                        href: pathPrefix + 'experiment/form/simple'
+                                    }
+                                ]
+                            }
+                        },
+                        {
                             text: 'Window Grid',
                             href: pathPrefix + 'experiment/windowgrid'
                         },
@@ -49,7 +61,8 @@ Ext.define('LE.view.Menubar', {
                         {
                             text: 'HTML Inside',
                             href: pathPrefix + 'experiment/htmlinside'
-                        },                        {
+                        },
+                        {
                             text: 'Proxy',
                             href: pathPrefix + 'experiment/proxy'
                         },
@@ -110,7 +123,7 @@ Ext.define('LE.view.Menubar', {
                     plain: true,
                     items: [
                         // stick any markup in a menu
-                        '<b class="menu-title">Visible</b>',
+                        Html.elem('b', {class: "menu-title"}, 'Visible'),
                         {
                             text: 'Yes',
                             checked: false,
