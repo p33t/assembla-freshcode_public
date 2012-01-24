@@ -12,6 +12,7 @@
     <script type="text/javascript">
         Ext.define('wgWindow', {
             extend: 'Ext.window.Window',
+            alias: 'widget.wgWindow',
             closeAction: 'hide',
             title: 'Hello',
             height: 200,
@@ -37,6 +38,7 @@
 
         Ext.define('wgCenter', {
             extend: 'Ext.panel.Panel',
+            alias: 'widget.wgCenter',
             html: Html.p(Html.a({
                 href: '#',
                 onclick: 'showWindow(); return false;'
@@ -46,13 +48,13 @@
         var theWindow = undefined;
 
         function showWindow() {
-            if (theWindow === undefined) theWindow = Ext.create('wgWindow');
+            if (theWindow === undefined) theWindow = Ext.widget('wgWindow');
             if (theWindow.isHidden()) theWindow.show();
             else log('Skipping display of theWindow because it is already visible.');
         }
 
         Ext.onReady(function() {
-            CONFIG.centerConfig = Ext.create('wgCenter');
+            CONFIG.centerConfig = Ext.widget('wgCenter');
             var LE = createApp();
         });
     </script>
