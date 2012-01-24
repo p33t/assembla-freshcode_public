@@ -84,7 +84,7 @@ var Html = {
      * Render a string element.
      * @param name The name of the element.
      * @param attrs Optional json object describing the desired attributes.
-     * @param content Optional string which will be the content.
+     * @param content Optional string which will be the content.  If this is not supplied then &lt;xxx/&gt; is assumed.
      */
     elem: function(name, attrs, content) {
         if (Ext.isDefined(attrs) && !Ext.isDefined(content)) {
