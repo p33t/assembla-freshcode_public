@@ -13,4 +13,5 @@ and the error goes away when it is changed to
 IE: Take out the extra line and special comment: + "\n//@ sourceURL=" + fileName
 
 Some user extensions have been added:
-- examples/ux/form & layout have been copied to src/ux/form & layout
+- examples/ux/form & layout have been copied to src/ux/...
+- examples/ux/css/images/(x6).gif & ItemSelector.css "dido"
