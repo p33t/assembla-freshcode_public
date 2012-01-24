@@ -11,8 +11,8 @@ Ext.define('LE.view.windowform.Window', {
         {text: 'All'},
         {text: 'None'},
         '-',
-        {iconCls: 'col-move-bottom background-center'},
-        {iconCls: 'col-move-top background-center'}
+        {iconCls: 'col-move-bottom'},
+        {iconCls: 'col-move-top'}
     ],
     items: {  // Let's put an empty grid in just to illustrate fit layout
         xtype: 'grid',
