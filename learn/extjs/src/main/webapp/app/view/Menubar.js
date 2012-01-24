@@ -31,8 +31,8 @@ Ext.define('LE.view.Menubar', {
                             }
                         },
                         {
-                            text: 'Window Grid',
-                            href: pathPrefix + 'experiment/windowgrid'
+                            text: 'Window Form',
+                            href: pathPrefix + 'experiment/windowform'
                         },
                         {
                             text: 'Drag \'n Drop',

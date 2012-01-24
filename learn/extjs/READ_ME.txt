@@ -11,3 +11,6 @@ The offending line of code is
 and the error goes away when it is changed to
   new Function(xhr.responseText)();
 IE: Take out the extra line and special comment: + "\n//@ sourceURL=" + fileName
+
+Some user extensions have been added:
+- examples/ux/form & layout have been copied to src/ux/form & layout
