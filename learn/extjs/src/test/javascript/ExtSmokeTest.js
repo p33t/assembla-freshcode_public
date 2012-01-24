@@ -1,3 +1,7 @@
+beforeEach(function() {
+    testApp();
+});
+
 describe("Ext infrastructure", function() {
     it("is available", function() {
         return expect(Ext).toBeDefined();
