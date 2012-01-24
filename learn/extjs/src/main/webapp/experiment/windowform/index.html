@@ -3,7 +3,7 @@
     <title>Window Form</title>
     <link rel="stylesheet" type="text/css" href="../../extjs-4.0/resources/css/ext-all.css">
     <!-- !!!!!!! Need this for arrows -->
-    <link rel="stylesheet" type="text/css" href="../../../extjs-4.0/src/ux/css/ItemSelector.css" />
+    <link rel="stylesheet" type="text/css" href="../../extjs-4.0/src/ux/css/ItemSelector.css" />
     <script type="text/javascript" src="../../extjs-4.0/ext-debug.js"></script>
     <script type="text/javascript" src="../../app.js"></script>
     <script type="text/javascript">
@@ -16,6 +16,7 @@
             }, 'Window Grid')),
             onRender: function() {
                 this.callParent(arguments);
+                // enables the wfWindow xtype
                 Ext.require('LE.view.windowform.Window');
             }
         });

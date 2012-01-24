@@ -7,11 +7,6 @@ Ext.define('LE.view.windowform.Window', {
     height: 200,
     width: 400,
     layout: 'fit',
-    onRender: function() {
-        this.callParent(arguments);
-        log('Rendered wfWindow:', this);
-        log('Callback is', this.getCallback());
-    },
     items: {
         xtype: 'form',
         items: {
@@ -61,14 +56,10 @@ Ext.define('LE.view.windowform.Window', {
                     var form = basicForm.getForm();
                     if (form.isValid()) {
                         var values = form.getFieldValues();
-                        log("Values: ", values);
                         var win = basicForm.up('wfWindow');
-                        log("wfWindow", win);
                         win.hide();
                         var callback = win.getCallback();
-                        log("Callback: ", callback);
-                        // TODO: Figure out this.
-//                        callback(values);
+                        callback(values);
                     }
                 }
             }
@@ -78,5 +69,10 @@ Ext.define('LE.view.windowform.Window', {
         callback: function(result) {
             log('Result from Window Form: ', result);
         }
+    },
+    // Will enable the read/write vars
+    constructor: function(config) {
+        this.callParent(arguments);
+        this.initConfig(config);
     }
 });
