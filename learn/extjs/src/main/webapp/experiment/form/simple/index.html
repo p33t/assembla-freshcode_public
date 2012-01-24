@@ -2,40 +2,74 @@
 <head>
     <title>Simple Form</title>
     <link rel="stylesheet" type="text/css" href="../../../extjs-4.0/resources/css/ext-all.css">
+    <!-- !!!!!!! Need this for arrows -->
+    <link rel="stylesheet" type="text/css" href="../../../extjs-4.0/src/ux/css/ItemSelector.css" />
     <script type="text/javascript" src="../../../extjs-4.0/ext-debug.js"></script>
     <script type="text/javascript" src="../../../app.js"></script>
     <script type="text/javascript">
-        CONFIG.centerConfig = {
-            xtype: 'form',
-            layout: 'fit',
-            url: calcPathToRoot() + "/echo",
-            items: [
-                {
-                    xtype: 'textfield',
-                    fieldLabel: 'First Name',
-                    name: 'first',
-                    allowBlank: false
-                }
-            ],
-// Reset and Submit buttons
-            buttons: [
-                {
-                    text: 'Reset',
-                    handler: function() {
-                        this.up('form').getForm().reset();
+        Ext.onReady(function() {
+            Ext.require('Ext.ux.form.ItemSelector');
+
+            CONFIG.centerConfig = {
+                xtype: 'form',
+                layout: 'fit',
+                url: calcPathToRoot() + "/echo",
+                items: [
+                    {
+                        xtype: 'itemselector',
+                        name: 'itemselector',
+                        id: 'itemselector-field',
+                        anchor: '100%',
+                        fieldLabel: 'Selection',
+                        store: Ext.create('Ext.data.ArrayStore', {
+                            data: [
+                                [123,'One Hundred Twenty Three'],
+                                [1, 'One'],
+                                [2, 'Two'],
+                                [3, 'Three'],
+                                [4, 'Four'],
+                                [5, 'Five'],
+                                [6, 'Six'],
+                                [7, 'Seven'],
+                                [8, 'Eight'],
+                                [9, 'Nine']
+                            ],
+                            fields: ['value','text'],
+                            sortInfo: {
+                                field: 'value',
+                                direction: 'ASC'
+                            }
+                        }),
+                        displayField: 'text',
+                        valueField: 'value',
+                        value: ['3', '4', '6'],
+                        allowBlank: false,
+                        msgTarget: 'side'
                     }
-                },
-                {
-                    text: 'Submit',
-                    formBind: true, //only enabled once the form is valid
-                    disabled: true,
-                    handler: function() {
-                        var form = this.up('form').getForm();
-                        if (form.isValid()) {
-                            var values = form.getValues();
-                            log("Values: ", values);
-                            window.location = calcPathToRoot() + '/echo?' + Ext.Object.toQueryString(values);
-                            // This is all ajax / json.
+                ],
+// Reset and Submit buttons
+                buttons: [
+                    {
+                        text: 'Reset',
+                        handler: function() {
+                            this.up('form').getForm().reset();
+                        }
+                    },
+                    {
+                        text: 'Submit',
+                        formBind: true, //only enabled once the form is valid
+                        disabled: true,
+                        handler: function() {
+                            var form = this.up('form').getForm();
+                            if (form.isValid()) {
+                                var values = form.getFieldValues();
+                                log("Values: ", values);
+                                Ext.Msg.show({
+                                    msg: Ext.encode(values),
+                                    closable: true
+                                });
+                                //window.location = calcPathToRoot() + '/echo?' + Ext.Object.toQueryString(values);
+                                // This is all ajax / json.
 //                            form.submit({
 //                                success: function(form, action) {
 //                                    Ext.Msg.alert('Success', action.result.msg);
@@ -44,12 +78,11 @@
 //                                    Ext.Msg.alert('Failed', action.result.msg);
 //                                }
 //                            });
+                            }
                         }
                     }
-                }
-            ]
-        };
-        Ext.onReady(function() {
+                ]
+            };
             var LE = createApp();
         });
     </script>
