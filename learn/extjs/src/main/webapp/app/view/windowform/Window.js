@@ -65,14 +65,34 @@ Ext.define('LE.view.windowform.Window', {
         ]
     },
     config: {
+        /**
+         * The callback that will be called when 'submit' is pressed.
+         * @param result The json object pulled from the form.
+         */
         callback: function(result) {
             log('Result from Window Form: ', result);
-        }
+        },
+        /**
+         * A 2D array of key/value pairs to place in the item selector.
+         */
+        data: undefined
     },
     // Will enable the read/write vars
     constructor: function(config) {
         this.callParent(arguments);
         this.initConfig(config);
+    },
+    initComponent: function() {
+        this.callParent(arguments);
+        var data = this.getData();
+        var store = this.down('itemselector').store;
+        if (data !== undefined) {
+            store.removeAll();
+            Ext.iterate(data, function(elem, ix, arr) {
+                store.add({value: elem[0], text: elem[1]});
+            });
+        }
+        else log('No data supplied.');
     },
     launch: function(current) {
         var is = this.down('itemselector');

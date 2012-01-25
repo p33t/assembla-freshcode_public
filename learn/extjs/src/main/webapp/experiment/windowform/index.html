@@ -21,7 +21,19 @@
                                     wg.removeAll();
                                     var html = Html.p('Result: ' + Ext.htmlEncode(Ext.encode(result)));
                                     wg.add(Ext.create('Ext.Component', {html: html}))
-                                }
+                                },
+                                data: [
+                                    [123,'One Hundred Twenty Three'],
+                                    [1, 'One'],
+                                    [2, 'Two'],
+                                    [3, 'Three'],
+                                    [4, 'Four'],
+                                    [5, 'Five'],
+                                    [6, 'Six'],
+                                    [7, 'Seven'],
+                                    [8, 'Eight'],
+                                    [9, 'Nine']
+                                ]
                             });
                         }
                         if (wg.theWindow.isHidden()) wg.theWindow.launch({itemselector: ['3', '4', '6']});
