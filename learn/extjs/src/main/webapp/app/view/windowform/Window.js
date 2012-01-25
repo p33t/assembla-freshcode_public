@@ -4,7 +4,7 @@ Ext.define('LE.view.windowform.Window', {
     alias: 'widget.wfWindow',
     closeAction: 'hide',
     title: 'Hello',
-    height: 200,
+    height: 300,
     width: 400,
     layout: 'fit',
     items: {
@@ -13,7 +13,7 @@ Ext.define('LE.view.windowform.Window', {
             xtype: 'itemselector',
             name: 'itemselector',
             id: 'itemselector-field',
-            anchor: '100%',
+            anchor: '100% 100%',
             labelStyle: {display: 'none'},
             store: Ext.create('Ext.data.ArrayStore', {
                 data: [
