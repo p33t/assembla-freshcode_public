@@ -3,7 +3,7 @@
     <title>Window Form</title>
     <link rel="stylesheet" type="text/css" href="../../extjs-4.0/resources/css/ext-all.css">
     <!-- !!!!!!! Need this for arrows -->
-    <link rel="stylesheet" type="text/css" href="../../extjs-4.0/src/ux/css/ItemSelector.css" />
+    <link rel="stylesheet" type="text/css" href="../../extjs-4.0/src/ux/css/ItemSelector.css"/>
     <script type="text/javascript" src="../../extjs-4.0/ext-debug.js"></script>
     <script type="text/javascript" src="../../app.js"></script>
     <script type="text/javascript">
@@ -24,13 +24,24 @@
         var theWindow = undefined;
 
         function showWindow() {
-            if (theWindow === undefined) theWindow = Ext.widget('wfWindow');
+            if (theWindow === undefined) {
+                theWindow = Ext.widget('wfWindow', {
+                    callback: function(result) {
+                        var wg = Ext.getCmp('centerId');
+                        wg.removeAll();
+                        var html = Html.p('Result: ' + Ext.htmlEncode(Ext.encode(result)));
+                        wg.add(Ext.create('Ext.Component', {html: html}))
+                    }
+                });
+            }
             if (theWindow.isHidden()) theWindow.show();
             else log('Skipping display of theWindow because it is already visible.');
         }
 
         Ext.onReady(function() {
-            CONFIG.centerConfig = Ext.widget('wgCenter');
+            CONFIG.centerConfig = Ext.widget('wgCenter', {
+                id: 'centerId'
+            });
             var LE = createApp();
         });
     </script>
