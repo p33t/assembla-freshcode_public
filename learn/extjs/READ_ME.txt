@@ -13,5 +13,6 @@ and the error goes away when it is changed to
 IE: Take out the extra line and special comment: + "\n//@ sourceURL=" + fileName
 
 Some user extensions have been added:
-- examples/ux/form & layout have been copied to src/ux/...
+- examples/ux/form & layout have been copied to src/ux/... (Extra layout components needed in 4.0.7 but not in 4.1)
 - examples/ux/css/images/(x6).gif & ItemSelector.css "dido"
+- ItemSelector.onAddBtnClick() need 'this.checkChange();' appended.  There is a bug which appears to have been fixed in 4.1.0.
