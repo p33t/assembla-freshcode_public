@@ -14,7 +14,7 @@ Ext.define('LE.view.windowform.Window', {
             name: 'itemselector',
             id: 'itemselector-field',
             anchor: '100%',
-            fieldLabel: 'Selection',
+            labelStyle: {display: 'none'},
             store: Ext.create('Ext.data.ArrayStore', {
                 data: [
                     [0, 'No data supplied']
