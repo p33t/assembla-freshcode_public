@@ -17,16 +17,7 @@ Ext.define('LE.view.windowform.Window', {
             fieldLabel: 'Selection',
             store: Ext.create('Ext.data.ArrayStore', {
                 data: [
-                    [123,'One Hundred Twenty Three'],
-                    [1, 'One'],
-                    [2, 'Two'],
-                    [3, 'Three'],
-                    [4, 'Four'],
-                    [5, 'Five'],
-                    [6, 'Six'],
-                    [7, 'Seven'],
-                    [8, 'Eight'],
-                    [9, 'Nine']
+                    [0, 'No data supplied']
                 ],
                 fields: ['value','text'],
                 sortInfo: {
@@ -88,9 +79,10 @@ Ext.define('LE.view.windowform.Window', {
         var store = this.down('itemselector').store;
         if (data !== undefined) {
             store.removeAll();
-            Ext.iterate(data, function(elem, ix, arr) {
-                store.add({value: elem[0], text: elem[1]});
+            var elems = Ext.Array.map(data, function(elem) {
+                return {value: elem[0], text: elem[1]};
             });
+            store.add(elems);
         }
         else log('No data supplied.');
     },
