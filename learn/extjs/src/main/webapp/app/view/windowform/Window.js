@@ -47,7 +47,7 @@ Ext.define('LE.view.windowform.Window', {
                     if (form.isValid()) {
                         var values = form.getFieldValues();
                         var win = basicForm.up('wfWindow');
-                        win.hide();
+                        win.close();
                         var callback = win.getCallback();
                         callback(values);
                     }
