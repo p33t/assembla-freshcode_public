@@ -29,14 +29,18 @@
                     }
                 }
             ],
+            onRender: function() {
+                this.callParent(arguments);
+                // enables the wfWindow xtype later
+                // this completes asynchronously so it must be launched well before it is needed
+                Ext.require('LE.view.windowform.Window');
+            },
             theWindow: undefined
         });
 
         Ext.onReady(function() {
             CONFIG.centerConfig = Ext.widget('wgCenter');
             var LE = createApp();
-            // enables the wfWindow xtype
-            Ext.require('LE.view.windowform.Window');
         });
     </script>
 </head>
