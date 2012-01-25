@@ -130,6 +130,13 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="svn" />
   </component>
+  <component name="WebContextManager">
+    <option name="state">
+      <map>
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/experiment/windowform/index.html" value="file://$PROJECT_DIR$/src/main/webapp/experiment/windowform" />
+      </map>
+    </option>
+  </component>
   <component name="libraryTable">
     <library name="Maven: javax.servlet:servlet-api:2.5">
       <CLASSES>

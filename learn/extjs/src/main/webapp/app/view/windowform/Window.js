@@ -36,7 +36,6 @@ Ext.define('LE.view.windowform.Window', {
             }),
             displayField: 'text',
             valueField: 'value',
-            value: ['3', '4', '6'],
             allowBlank: false,
             msgTarget: 'side'
         },
@@ -74,5 +73,10 @@ Ext.define('LE.view.windowform.Window', {
     constructor: function(config) {
         this.callParent(arguments);
         this.initConfig(config);
+    },
+    launch: function(current) {
+        var is = this.down('itemselector');
+        is.setValue(current.itemselector);
+        this.show();
     }
 });
