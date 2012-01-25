@@ -18,9 +18,10 @@
                         if (wg.theWindow === undefined) {
                             wg.theWindow = Ext.widget('wfWindow', {
                                 callback: function(result) {
+                                    wg.theValue = result;
                                     wg.removeAll();
                                     var html = Html.p('Result: ' + Ext.htmlEncode(Ext.encode(result)));
-                                    wg.add(Ext.create('Ext.Component', {html: html}))
+                                    wg.add(Ext.create('Ext.Component', {html: html}));
                                 },
                                 data: [
                                     [123,'One Hundred Twenty Three'],
@@ -36,7 +37,7 @@
                                 ]
                             });
                         }
-                        if (wg.theWindow.isHidden()) wg.theWindow.launch({itemselector: ['3', '4', '6']});
+                        if (wg.theWindow.isHidden()) wg.theWindow.launch(wg.theValue);
                         else log('Skipping display of theWindow because it is already visible.');
                     }
                 }
@@ -47,7 +48,8 @@
                 // this completes asynchronously so it must be launched well before it is needed
                 Ext.require('LE.view.windowform.Window');
             },
-            theWindow: undefined
+            theWindow: undefined,
+            theValue: {itemselector: []}
         });
 
         Ext.onReady(function() {
