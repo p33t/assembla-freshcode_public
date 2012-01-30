@@ -87,6 +87,7 @@ Ext.define('LE.view.windowform.Window', {
         }
         else log('No data supplied.');
     },
+    // NOTE: This is a little clunky.  Just use 'config' facility.
     launch: function(current) {
         var is = this.down('itemselector');
         is.setValue(current.itemselector);
