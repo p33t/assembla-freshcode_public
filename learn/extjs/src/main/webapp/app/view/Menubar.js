@@ -26,6 +26,10 @@ Ext.define('LE.view.Menubar', {
                                     {
                                         text: 'Simple',
                                         href: pathPrefix + 'experiment/form/simple'
+                                    },
+                                    {
+                                        text: 'Sliders',
+                                        href: pathPrefix + 'experiment/form/sliders'
                                     }
                                 ]
                             }
