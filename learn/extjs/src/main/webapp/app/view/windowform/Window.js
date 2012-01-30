@@ -2,6 +2,7 @@ Ext.define('LE.view.windowform.Window', {
     extend: 'Ext.window.Window',
     requires: ['Ext.ux.form.ItemSelector'],
     alias: 'widget.wfWindow',
+    // NOTE: 'hide' was just an experiment.  It retains the prev position and size of window but is not necessary.
     closeAction: 'hide',
     title: 'Hello',
     height: 300,
