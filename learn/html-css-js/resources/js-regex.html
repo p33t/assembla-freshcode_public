@@ -11,11 +11,12 @@
         }
 
         run(/(\d+):(\d+)/, '1:2');
-        var rePeriod = /(-?)(\d+):([0-5]?)(\d)$/;
+        var rePeriod = /^(-?)(\d+)(:([0-5]?)(\d))?$/;
         run(rePeriod, 'bruce');
         run(rePeriod, '8:90');
         run(rePeriod, '8:00');
         run(rePeriod, '-98:59');
+        run(rePeriod, '-9');
 
 
     </script>
