@@ -1,0 +1,72 @@
+<html>
+<head>
+    <title>Custom Field</title>
+    <link rel="stylesheet" type="text/css" href="../../../extjs-4.0/resources/css/ext-all.css">
+    <script type="text/javascript" src="../../../extjs-4.0/ext-debug.js"></script>
+    <script type="text/javascript" src="../../../app.js"></script>
+    <script type="text/javascript">
+        Ext.onReady(function() {
+            CONFIG.centerConfig = {
+                xtype: 'form',
+//                layout: 'fit',
+                url: calcPathToRoot() + "/echo",
+                autoScroll: true,
+                autoHeight: true,
+                defaults: {
+                    msgTarget : 'side',
+                    anchor: '90%'
+                },
+                items: [
+                    {
+                        xtype: 'numberfield',
+                        name: 'mynumber',
+                        fieldLabel: 'My Number',
+                        value: 99,
+                        maxValue: 100,
+                        minValue: 0,
+                        allowBlank: false
+                    }
+                ],
+// Reset and Submit buttons
+                buttons: [
+                    {
+                        text: 'Reset',
+                        handler: function() {
+                            this.up('form').getForm().reset();
+                        }
+                    },
+                    {
+                        text: 'Submit',
+                        formBind: true, //only enabled once the form is valid
+                        disabled: true,
+                        handler: function() {
+                            var form = this.up('form').getForm();
+                            if (form.isValid()) {
+                                var values = form.getFieldValues();
+                                log("Values: ", values);
+                                Ext.Msg.show({
+                                    msg: Ext.encode(values),
+                                    closable: true
+                                });
+                                //window.location = calcPathToRoot() + '/echo?' + Ext.Object.toQueryString(values);
+                                // This is all ajax / json.
+//                            form.submit({
+//                                success: function(form, action) {
+//                                    Ext.Msg.alert('Success', action.result.msg);
+//                                },
+//                                failure: function(form, action) {
+//                                    Ext.Msg.alert('Failed', action.result.msg);
+//                                }
+//                            });
+                            }
+                        }
+                    }
+                ]
+            };
+            var LE = createApp();
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

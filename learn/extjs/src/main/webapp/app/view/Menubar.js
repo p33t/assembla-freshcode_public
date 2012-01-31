@@ -24,6 +24,10 @@ Ext.define('LE.view.Menubar', {
                                 plain: true,
                                 items: [
                                     {
+                                        text: 'Custom Field',
+                                        href: pathPrefix + 'experiment/form/customfield'
+                                    },
+                                    {
                                         text: 'Simple',
                                         href: pathPrefix + 'experiment/form/simple'
                                     },
