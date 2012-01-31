@@ -18,6 +18,12 @@
         run(rePeriod, '-98:59');
         run(rePeriod, '-9');
 
+        // simple decimal for testing purposes
+        var reDecimal = /^\d\.\d$/;
+        run(reDecimal, 'bruce');
+        run(reDecimal, '9.0');
+        run(reDecimal, '3');
+        run(reDecimal, '.4');
 
     </script>
 </head>
