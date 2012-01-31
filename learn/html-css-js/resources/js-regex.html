@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Regular Expressions</title>
+    <script type='text/javascript'>
+
+        function run(re, str) {
+            var arr = re.exec(str);
+            console.log('Regex', re, 'exec "' + str + '" to get', arr);
+        }
+
+        run(/(\d+):(\d+)/, '1:2');
+        var rePeriod = /(-?)(\d+):([0-5]?)(\d)$/;
+        run(rePeriod, 'bruce');
+        run(rePeriod, '8:90');
+        run(rePeriod, '8:00');
+        run(rePeriod, '-98:59');
+
+
+    </script>
+</head>
+<body>
+    <h2>Regular Expression Tests</h2>
+
+    <p>See log output.</p>
+
+
+
+</body>
+</html>
