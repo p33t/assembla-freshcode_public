@@ -15,13 +15,17 @@ Ext.define('CoordField', {
     items: [
         {
             xtype: 'numberfield',
-            dimension: 'x',
             value: 0
         },
         {
             xtype: 'numberfield',
-            dimension: 'y',
             value: 0
         }
-    ]
+    ],
+    getValue: function() {
+        var nums = this.query('numberfield');
+        return Ext.Array.map(nums, function(num){
+            return num.getValue();
+        });
+    }
 });
