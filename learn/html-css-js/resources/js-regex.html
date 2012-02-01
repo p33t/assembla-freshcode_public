@@ -18,12 +18,17 @@
         run(rePeriod, '-98:59');
         run(rePeriod, '-9');
 
-        // simple decimal for testing purposes
-        var reDecimal = /^\d\.\d$/;
-        run(reDecimal, 'bruce');
-        run(reDecimal, '9.0');
-        run(reDecimal, '3');
-        run(reDecimal, '.4');
+        // simple format for testing purposes
+        var rePercent = /^ *(\d?\d|100)%? *$/;
+        run(rePercent, 'bruce%');
+        run(rePercent, '100%');
+        run(rePercent, '0%');
+        run(rePercent, '34%');
+        run(rePercent, '%');
+        run(rePercent, '23');
+        run(rePercent, '23 ');
+        run(rePercent, ' 23 %');
+        run(rePercent, ' 23% ');
 
     </script>
 </head>
