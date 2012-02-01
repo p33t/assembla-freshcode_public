@@ -55,7 +55,7 @@
                         xtype: 'coordfield',
                         name: 'mycoord',
                         fieldLabel: 'My Coordinate',
-                        value: [2, 4],
+                        value: 99.9,
                         allowBlank: false
                     }
                 ],
@@ -74,7 +74,8 @@
                         handler: function() {
                             var form = this.up('form').getForm();
                             if (form.isValid()) {
-                                var values = form.getFieldValues();
+                                var values = form.getFieldValues(); // uses .getModelData() which is typed
+//                                var values = form.getValues(); // uses .getSubmitData() which is less useful
                                 log("Values: ", values);
                                 Ext.Msg.show({
                                     msg: Ext.encode(values),
