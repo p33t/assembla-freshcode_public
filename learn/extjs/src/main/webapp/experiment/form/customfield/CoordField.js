@@ -2,24 +2,25 @@
  * A field representing a dual value.
  */
 Ext.define('CoordField', {
-    extend: 'Ext.form.field.Base',
+    extend: 'Ext.form.FieldContainer',
     alias: 'widget.coordfield',
-    valueToRaw: function(v) {
-        log('Encoding', v);
-        return Ext.encode(v);
-    },
-    rawToValue: function(raw) {
-        log('Decoding', raw);
-        var v = Ext.decode(raw, true);
-        log('Got', v);
-        return v;
-    },
-    getErrors: function(raw) {
-        var arr = this.callParent(arguments);
-        if (Ext.isEmpty(arr)) {
-            // no errors so far
-            if (this.rawToValue(raw) === null) arr.push('Invalid JSON string.');
-        }
-        return arr;
+    mixins: ['Ext.form.field.Field'],
+    initComponent: function() {
+        this.callParent(arguments);
+        this.add(Ext.widget('field', {
+            value: 'abc',
+            name: 'neverSubmitted',
+            hideLabel: true,
+
+            // Only relevant to Basic.getValues() which is not typed.
+//            submitValue: false,
+//            getSubmitData: function() {return null;},
+//            getSubmitValue: function() {return null;}
+
+            // prevent input from participating
+            // the typed data accessor, used during Basic.getFieldValues().
+            getModelData: function() {return null;}
+
+        }));
     }
 });
