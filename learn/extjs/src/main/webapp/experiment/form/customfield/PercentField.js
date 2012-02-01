@@ -13,5 +13,7 @@ Ext.define('PercentField', {
     onBlur: function() {
         // trigger reformat... is there a nicer way?
         if (this.isValid()) this.setValue(this.getValue());
-    }
+    },
+    // needed to enable 'this.callParent(..)' in children.
+    validator: function(v) {return true;}
 });
