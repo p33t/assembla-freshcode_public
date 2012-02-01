@@ -1,6 +1,8 @@
 describe('Parent model', function() {
     it('boots', function() {
         Hierarchy.boot();
+        // NOTE: There might be a simpler explanation to the error messages.
+        // Try putting them in adjacent files like /experiment/form/customfield
         log('Completely and utterly owned by "hasMany"');
     });
     xit('models are registered', function() {
