@@ -5,6 +5,36 @@
     <script type="text/javascript" src="../../../extjs-4.0/ext-debug.js"></script>
     <script type="text/javascript" src="../../../app.js"></script>
     <script type="text/javascript">
+
+        /**
+         * A number between 0 and 1 behind the scenes but a whole percent number to the user.
+         */
+        var Percent = {
+            REG_EXP: /^ *(\d?\d|100)%? *$/,
+            toText: function(d) {
+                return '' + Math.round(d * 100) + '%';
+            },
+            fromText: function(s) {
+                var match = Percent.REG_EXP.exec(s);
+                if (match === null) return NaN; // not sure about this
+                return parseInt(match[1]) / 100;
+            }
+        };
+
+        // TODO: Slider stuff.
+        /**
+         * A number field with a slider underneath for small adjustments.
+         * NOTE: vTypes don't seem to have a string<->altValue conversion like valueToRaw() and rawToValue() so can't use.
+         */
+        Ext.define('PercentField', {
+            extend: 'Ext.form.field.Text',
+            alias: 'widget.percentfield',
+            regex: Percent.REG_EXP,
+            regexText: 'Must be between 0% and 100% inclusive, no decimals, "%" optional.',
+            rawToValue: Percent.fromText,
+            valueToRaw: Percent.toText
+        });
+
         Ext.onReady(function() {
             CONFIG.centerConfig = {
                 xtype: 'form',
@@ -24,6 +54,13 @@
                         value: 99,
                         maxValue: 100,
                         minValue: 0,
+                        allowBlank: false
+                    },
+                    {
+                        xtype: 'percentfield',
+                        name: 'mypercent',
+                        fieldLabel: 'My Percent',
+                        value: 0.23,
                         allowBlank: false
                     }
                 ],
@@ -48,16 +85,6 @@
                                     msg: Ext.encode(values),
                                     closable: true
                                 });
-                                //window.location = calcPathToRoot() + '/echo?' + Ext.Object.toQueryString(values);
-                                // This is all ajax / json.
-//                            form.submit({
-//                                success: function(form, action) {
-//                                    Ext.Msg.alert('Success', action.result.msg);
-//                                },
-//                                failure: function(form, action) {
-//                                    Ext.Msg.alert('Failed', action.result.msg);
-//                                }
-//                            });
                             }
                         }
                     }
