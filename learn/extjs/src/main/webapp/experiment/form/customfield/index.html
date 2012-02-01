@@ -7,7 +7,7 @@
     <script type="text/javascript" src="Percent.js"></script>
     <script type="text/javascript">
 
-        Ext.require(['PercentField', 'AltPercentField', 'ObjectField']);
+        Ext.require(['PercentField', 'AltPercentField', 'ObjectField', 'CoordField']);
 
         Ext.onReady(function() {
             CONFIG.centerConfig = {
@@ -49,6 +49,13 @@
                         name: 'myobject',
                         fieldLabel: 'My Object',
                         value: {bruce: 'lee'},
+                        allowBlank: false
+                    },
+                    {
+                        xtype: 'coordfield',
+                        name: 'mycoord',
+                        fieldLabel: 'My Coordinate',
+                        value: [2, 4],
                         allowBlank: false
                     }
                 ],
