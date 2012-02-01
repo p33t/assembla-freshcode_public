@@ -5,13 +5,22 @@ Ext.define('CoordField', {
     extend: 'Ext.form.FieldContainer',
     alias: 'widget.coordfield',
     mixins: ['Ext.form.field.Field'],
+    layout: 'hbox',
+    defaults: {
+        getModelData: function() {return null;},
+        getSubmitData: function() {return null;},
+        hideLabel: true
+    },
     items: [
         {
-            xtype: 'textfield',
-            value: 'abc',
-            // need to factor this out
-            getModelData: function() {return null;},
-            getSubmitData: function() {return null;}
+            xtype: 'numberfield',
+            dimension: 'x',
+            value: 0
+        },
+        {
+            xtype: 'numberfield',
+            dimension: 'y',
+            value: 0
         }
     ]
 });
