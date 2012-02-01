@@ -34,7 +34,7 @@
             rawToValue: Percent.fromText,
             valueToRaw: Percent.toText,
             onBlur: function() {
-                // trigger reformat... would be nice
+                // trigger reformat... is there a nicer way?
                 if (this.isValid()) this.setValue(this.getValue());
             }
         });
