@@ -5,14 +5,13 @@ Ext.define('CoordField', {
     extend: 'Ext.form.FieldContainer',
     alias: 'widget.coordfield',
     mixins: ['Ext.form.field.Field'],
-    requires: ['SuppressField'],
-    initComponent: function() {
-        this.callParent(arguments);
-        this.add(Ext.widget('field', Ext.apply({
-//            mixins: ['SuppressField'], // causes error
+    items: [
+        {
+            xtype: 'textfield',
             value: 'abc',
-            name: 'neverSubmitted',
-            hideLabel: true
-        }, SuppressFieldConfig)));
-    }
+            // need to factor this out
+            getModelData: function() {return null;},
+            getSubmitData: function() {return null;}
+        }
+    ]
 });
