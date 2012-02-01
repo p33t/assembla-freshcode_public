@@ -10,6 +10,7 @@ Ext.define('PercentField', {
     regexText: 'Must be between 0% and 100% inclusive, no decimals, "%" optional.',
     rawToValue: Percent.fromText,
     valueToRaw: Percent.toText,
+    // NOTE: processRawValue() doesn't seem to be a replacement for this.
     onBlur: function() {
         // trigger reformat... is there a nicer way?
         if (this.isValid()) this.setValue(this.getValue());
