@@ -4,24 +4,10 @@
     <link rel="stylesheet" type="text/css" href="../../../extjs-4.0/resources/css/ext-all.css">
     <script type="text/javascript" src="../../../extjs-4.0/ext-debug.js"></script>
     <script type="text/javascript" src="../../../app.js"></script>
+    <script type="text/javascript" src="Percent.js"></script>
     <script type="text/javascript">
 
-        /**
-         * A number between 0 and 1 behind the scenes but a whole percent number to the user.
-         */
-        var Percent = {
-            REG_EXP: /^ *(\d?\d|100)%? *$/,
-            toText: function(d) {
-                return '' + Math.round(d * 100) + '%';
-            },
-            fromText: function(s) {
-                var match = Percent.REG_EXP.exec(s);
-                if (match === null) return NaN; // not sure about this
-                return parseInt(match[1]) / 100;
-            }
-        };
-
-        Ext.require(['PercentField', 'AltPercentField']);
+        Ext.require(['PercentField', 'AltPercentField', 'ObjectField']);
 
         Ext.onReady(function() {
             CONFIG.centerConfig = {
@@ -58,6 +44,13 @@
                         value: 0.29,
                         allowBlank: false
                     }
+//                    {
+//                        xtype: 'objectfield',
+//                        name: 'myobject',
+//                        fieldLabel: 'My Object',
+//                        value: {bruce: 'lee'},
+//                        allowBlank: false
+//                    }
                 ],
 // Reset and Submit buttons
                 buttons: [
