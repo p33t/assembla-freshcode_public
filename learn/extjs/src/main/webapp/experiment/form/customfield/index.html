@@ -32,7 +32,11 @@
             regex: Percent.REG_EXP,
             regexText: 'Must be between 0% and 100% inclusive, no decimals, "%" optional.',
             rawToValue: Percent.fromText,
-            valueToRaw: Percent.toText
+            valueToRaw: Percent.toText,
+            onBlur: function() {
+                // trigger reformat... would be nice
+                if (this.isValid()) this.setValue(this.getValue());
+            }
         });
 
         Ext.onReady(function() {
