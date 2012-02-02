@@ -7,7 +7,11 @@
     <script type="text/javascript" src="Percent.js"></script>
     <script type="text/javascript">
 
-        Ext.require(['PercentField', 'AltPercentField', 'ObjectField', 'CoordField']);
+        Ext.require(['PercentField',
+            'AltPercentField',
+            'ObjectField',
+            'CoordField',
+            'NumSlideField']);
 
         Ext.onReady(function() {
             CONFIG.centerConfig = {
@@ -55,6 +59,13 @@
                         name: 'mycoord',
                         fieldLabel: 'My Coordinate',
                         value: [-1, -1],
+                        allowBlank: false
+                    },
+                    {
+                        xtype: 'numslidefield',
+                        name: 'mynumslide',
+                        fieldLabel: 'My Number Slide',
+                        value: 2,
                         allowBlank: false
                     }
                 ],
