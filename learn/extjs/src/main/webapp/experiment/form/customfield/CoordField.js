@@ -15,6 +15,7 @@ Ext.define('CoordField', {
         maxValue: 10,
         minValue: -10,
         allowBlank: false,
+        msgTarget: 'side',
         onChange: function(newValue, oldValue) {
             var coord = this.up('coordfield');
             var arr = coord.readValue();
@@ -26,7 +27,13 @@ Ext.define('CoordField', {
             value: 0
         },
         {
-            value: 0
+            value: 0,
+            validator: function(v) {
+                // NOTE: Designate a convenient control that will do the check and display cross validation messages.
+                var numX = this.up('coordfield').down('numberfield');
+                if (this.rawToValue(v) === numX.getValue()) return 'Cannot have same x,y coord values.';
+                return true;
+            }
         }
     ],
     readValue: function() {
@@ -65,7 +72,7 @@ Ext.define('CoordField', {
 
         // visit each of the components... this also fixes an issue with error propagation and submit button state
         var nums = this.query('numberfield');
-        Ext.Array.each(nums, function(num, ix){
+        Ext.Array.each(nums, function(num, ix) {
             if (!num.isValid()) errs.push('Error in elem #' + (ix + 1));
         });
         // TODO: Put this aggregate check somewhere
