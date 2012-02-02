@@ -5,6 +5,8 @@ Ext.define('CoordField', {
     extend: 'Ext.form.FieldContainer',
     alias: 'widget.coordfield',
     mixins: {field: 'Ext.form.field.Field'},
+    // Errors show when hover over any control
+    combineErrors: true,
     layout: 'hbox',
     defaults: {
         // prevent participation in form values / submission.
@@ -28,13 +30,19 @@ Ext.define('CoordField', {
             value: 0
         },
         {
-            value: 0,
-            validator: function(v) {
-                // NOTE: Designate a convenient control that will do the check and display cross validation messages.
-                var numX = this.up('coordfield').down('numberfield');
-                if (this.rawToValue(v) === numX.getValue()) return 'Cannot have same x,y coord values.';
-                return true;
-            }
+            value: 0
+        },
+        {
+            // NOTE: Nasty hack because FieldContainer can't itself show error messages... don't know why.
+            xtype: 'field',
+            name: 'errors',
+            msgTarget: 'side',
+            value: 'x',
+            // suppresses display of a control
+            inputType: 'hidden',
+            // wide enough for error icon
+            width: 20
+//            flex: 1 // puts error icon on edge
         }
     ],
     readValue: function() {
@@ -78,8 +86,12 @@ Ext.define('CoordField', {
         });
 
         // TODO: This error is not displaying on screen but it is influencing the 'submit' button.
-//        if (nums[0].getValue() === nums[1].getValue()) errs.push('Cannot have same x,y coord values.');
-        
+        if (nums[0].getValue() === nums[1].getValue()) errs.push('Cannot have same x,y coord values.');
+
+        var errCtl = this.down('[name=errors]');
+        if (Ext.isEmpty(errs)) errCtl.clearInvalid();
+        else errCtl.markInvalid(errs);
+
         return errs;
     }
 //    markInvalid : function(errors) {
