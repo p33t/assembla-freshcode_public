@@ -94,13 +94,4 @@ Ext.define('CoordField', {
 
         return errs;
     }
-//    markInvalid : function(errors) {
-//        Save the message and fire the 'invalid' event
-//        var oldMsg = this.getActiveError();
-//        var newMsg = Ext.Array.from(errors);
-//        if (oldMsg !== this.getActiveError()) {
-//            this.setActiveErrors(newMsg);
-//            this.doComponentLayout();
-//        }
-//    }
 });
