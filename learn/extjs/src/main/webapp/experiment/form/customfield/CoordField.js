@@ -17,7 +17,7 @@ Ext.define('CoordField', {
         maxValue: 10,
         minValue: -10,
         allowBlank: false,
-        onChange: function(newValue, oldValue) {
+        onChange: function() {
             // keep the container value synchronised
             var coord = this.up('coordfield');
             var arr = coord.readValue();
