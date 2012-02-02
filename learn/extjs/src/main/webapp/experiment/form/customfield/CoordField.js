@@ -21,6 +21,7 @@ Ext.define('CoordField', {
             var arr = coord.readValue();
             coord.setValue(arr);
         }
+// fields get too long... flex: 1
     },
     items: [
         {
@@ -75,6 +76,19 @@ Ext.define('CoordField', {
         Ext.Array.each(nums, function(num, ix) {
             if (!num.isValid()) errs.push('Error in elem #' + (ix + 1));
         });
+
+        // TODO: This error is not displaying on screen but it is influencing the 'submit' button.
+//        if (nums[0].getValue() === nums[1].getValue()) errs.push('Cannot have same x,y coord values.');
+        
         return errs;
     }
+//    markInvalid : function(errors) {
+//        Save the message and fire the 'invalid' event
+//        var oldMsg = this.getActiveError();
+//        var newMsg = Ext.Array.from(errors);
+//        if (oldMsg !== this.getActiveError()) {
+//            this.setActiveErrors(newMsg);
+//            this.doComponentLayout();
+//        }
+//    }
 });
