@@ -58,12 +58,18 @@ Ext.define('CoordField', {
         return result;
     },
     getErrors: function(v) {
-        // TODO: These errors are not being displayed on screen.
-        // Not sure why this is necessary
-        if (v === undefined) v = this.getValue();
+        // NOTE: Don't know how to display these errors onscreen.
+        // Cross validation should happen at each or one of the components.
+
         var errs = this.mixins.field.getErrors.call(this, v);
-        // TODO: Maybe check component errors?  This will help with bug regarding 'submit' button state.
-        if (Ext.isEmpty(errs) && v[0] === v[1]) errs.push('Cannot have same x,y coord values.');
+
+        // visit each of the components... this also fixes an issue with error propagation and submit button state
+        var nums = this.query('numberfield');
+        Ext.Array.each(nums, function(num, ix){
+            if (!num.isValid()) errs.push('Error in elem #' + (ix + 1));
+        });
+        // TODO: Put this aggregate check somewhere
+//        if (Ext.isEmpty(errs) && v[0] === v[1]) errs.push('Cannot have same x,y coord values.');
         return errs;
     }
 });
