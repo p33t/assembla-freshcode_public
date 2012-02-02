@@ -15,7 +15,6 @@ Ext.define('CoordField', {
         maxValue: 10,
         minValue: -10,
         allowBlank: false,
-        msgTarget: 'side',
         onChange: function(newValue, oldValue) {
             // keep the container value synchronised
             var coord = this.up('coordfield');
