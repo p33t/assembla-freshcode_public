@@ -75,8 +75,6 @@ Ext.define('CoordField', {
     },
     getErrors: function(v) {
         // NOTE: Don't know how to display these errors onscreen.
-        // Cross validation should happen at each or one of the components.
-
         var errs = this.mixins.field.getErrors.call(this, v);
 
         // visit each of the components... this also fixes an issue with error propagation and submit button state
@@ -85,9 +83,10 @@ Ext.define('CoordField', {
             if (!num.isValid()) errs.push('Error in elem #' + (ix + 1));
         });
 
-        // TODO: This error is not displaying on screen but it is influencing the 'submit' button.
+        // Having the check here influences the 'submit' button.
         if (nums[0].getValue() === nums[1].getValue()) errs.push('Cannot have same x,y coord values.');
 
+        // Hack: Put errors in the special 'errors' control because FieldContainer is not displaying errors.
         var errCtl = this.down('[name=errors]');
         if (Ext.isEmpty(errs)) errCtl.clearInvalid();
         else errCtl.markInvalid(errs);
