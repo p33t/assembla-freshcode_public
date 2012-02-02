@@ -31,7 +31,14 @@ Ext.define('NumSlideField', {
         {
             xtype: 'slider',
             value: 0,
-            flex: 1
+            flex: 1,
+            listeners:{
+//                scope : this, // this breaks it ?!
+                change: function(sldr, newVal) {
+                    var num = this.up('fieldcontainer').down('numberfield');
+                    num.setValue(newVal);
+                }
+            }
         },
         {
             // NOTE: Nasty hack because FieldContainer can't itself show error messages... don't know why.
