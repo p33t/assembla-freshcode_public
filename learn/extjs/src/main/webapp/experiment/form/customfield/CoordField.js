@@ -76,8 +76,6 @@ Ext.define('CoordField', {
         Ext.Array.each(nums, function(num, ix) {
             if (!num.isValid()) errs.push('Error in elem #' + (ix + 1));
         });
-        // TODO: Put this aggregate check somewhere
-//        if (Ext.isEmpty(errs) && v[0] === v[1]) errs.push('Cannot have same x,y coord values.');
         return errs;
     }
 });
