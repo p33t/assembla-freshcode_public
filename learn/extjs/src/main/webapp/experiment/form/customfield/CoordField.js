@@ -7,7 +7,7 @@ Ext.define('CoordField', {
     mixins: {field: 'Ext.form.field.Field'},
     layout: 'hbox',
     defaults: {
-        // prevent participation if form values / submission.
+        // prevent participation in form values / submission.
         getModelData: function() {return null;},
         getSubmitData: function() {return null;},
         hideLabel: true,
