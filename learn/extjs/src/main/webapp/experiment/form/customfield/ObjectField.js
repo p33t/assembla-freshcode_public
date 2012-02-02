@@ -9,10 +9,7 @@ Ext.define('ObjectField', {
         return Ext.encode(v);
     },
     rawToValue: function(raw) {
-        log('Decoding', raw);
-        var v = Ext.decode(raw, true);
-        log('Got', v);
-        return v;
+        return Ext.decode(raw, true);
     },
     getErrors: function(raw) {
         var arr = this.callParent(arguments);

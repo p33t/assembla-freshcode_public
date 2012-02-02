@@ -14,17 +14,20 @@ Ext.define('CoordField', {
         xtype: 'numberfield',
         maxValue: 10,
         minValue: -10,
-        allowBlank: false
+        allowBlank: false,
+        onChange: function(newValue, oldValue) {
+            var coord = this.up('coordfield');
+            coord.setValue(coord.readValue());
+        }
     },
     items: [
         {
             value: 0
         },
         {
-            value: 0 //'xxx'
+            value: 0
         }
     ],
-    // TODO: Need to use this in an event handler or something.
     readValue: function() {
         var nums = this.query('numberfield');
         return [nums[0].getValue(), nums[1].getValue()];
@@ -44,9 +47,11 @@ Ext.define('CoordField', {
     initComponent: function() {
         this.callParent(arguments);
         this.initField();
+        var nums = this.query('numberfield');
+        nums[0].resetOriginalValue();
+        nums[1].resetOriginalValue();
     },
     setValue: function(v) {
-        log('this', this);
         var result = this.mixins.field.setValue.call(this, v);
         this.writeValue(v);
         return result;
