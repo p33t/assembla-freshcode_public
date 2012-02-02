@@ -17,7 +17,8 @@ Ext.define('CoordField', {
         allowBlank: false,
         onChange: function(newValue, oldValue) {
             var coord = this.up('coordfield');
-            coord.setValue(coord.readValue());
+            var arr = coord.readValue();
+            coord.setValue(arr);
         }
     },
     items: [
@@ -55,5 +56,14 @@ Ext.define('CoordField', {
         var result = this.mixins.field.setValue.call(this, v);
         this.writeValue(v);
         return result;
+    },
+    getErrors: function(v) {
+        // TODO: These errors are not being displayed on screen.
+        // Not sure why this is necessary
+        if (v === undefined) v = this.getValue();
+        var errs = this.mixins.field.getErrors.call(this, v);
+        // TODO: Maybe check component errors?  This will help with bug regarding 'submit' button state.
+        if (Ext.isEmpty(errs) && v[0] === v[1]) errs.push('Cannot have same x,y coord values.');
+        return errs;
     }
 });
