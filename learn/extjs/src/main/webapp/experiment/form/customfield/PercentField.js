@@ -1,4 +1,3 @@
-// TODO: Slider stuff.
 /**
  * A number field with a slider underneath for small adjustments.
  * NOTE: vTypes don't seem to have a string<->altValue conversion like valueToRaw() and rawToValue() so can't use.
