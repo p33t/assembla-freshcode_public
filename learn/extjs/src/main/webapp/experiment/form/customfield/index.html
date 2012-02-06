@@ -59,7 +59,7 @@
                         xtype: 'coordfield',
                         name: 'mycoord',
                         fieldLabel: 'My Coordinate',
-                        value: [-1, -2],
+                        value: [-1, -1],
                         allowBlank: false
                     },
                     {
@@ -76,8 +76,14 @@
                         xtype: 'textfield',
                         name: 'mynonblank',
                         fieldLabel: 'My Non-blank',
-                        value: '2',
-                        allowBlank: false
+                        value: '',
+                        allowBlank: false,
+                        // cause field to be shown as 'invalid' if necessary upon display
+                        listeners: {
+                            render: function() {
+                                this.validate();
+                            }
+                        }
                     }
                 ],
 // Reset and Submit buttons
