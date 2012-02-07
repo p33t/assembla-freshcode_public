@@ -36,8 +36,11 @@
             var op = Ext.getCmp('output');
             var defs = {
                 url: '/echo',
-                success: function(response, opts) {
+                // called before either success or failure
+                callback: function() {
                     op.getEl().unmask();
+                },
+                success: function(response, opts) {
                     op.removeAll();
                     var txt = Ext.htmlEncode(response.responseText);
                     response.responseText = '[[omitted]]'; // prevent spamming the display
@@ -45,7 +48,6 @@
                     op.update(html);
                 },
                 failure: function(response, opts) {
-                    op.getEl().unmask();
                     var msg = 'server-side failure with status code ' + response.status;
                     op.update(Html.p(msg));
                 }
