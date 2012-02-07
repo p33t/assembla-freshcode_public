@@ -1,22 +1,9 @@
 var Hierarchy = {
     boot: function() {
         testApp();
-        Ext.define('Child', {
-            extend: 'Ext.data.Model',
-            idgen: 'sequential',
-            fields: ['name', 'parent_id']
-//    belongsTo: 'hierarchy.Parent'
-        });
-
-        Ext.define('Parent', {
-            extend: 'Ext.data.Model',
-            idgen: 'sequential',
-            fields: ['name']
-            // enabling this line makes everything barf
-            //hasMany: {model: 'Child', name: 'children'}
-        });
+//        Ext.syncRequire(['LE.model.hierarchy.Parent', 'LE.model.hierarchy.Child']);
     },
     parent: function () {
-        return Ext.create('Parent');
+        return Ext.create('LE.model.hierarchy.Parent');
     }
 };

@@ -160,7 +160,7 @@ describe('Parent model', function() {
         ];
 
         var store = Ext.create('Ext.data.Store', {
-            model: 'Parent',
+            model: 'LE.model.hierarchy.Parent',
             data: data
         });
 
