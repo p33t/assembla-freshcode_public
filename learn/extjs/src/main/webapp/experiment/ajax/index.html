@@ -12,7 +12,8 @@
                 },
                 {
                     id: 'output',
-                    items: {html: '<p>Nothing yet</p>'}
+                    items: {html: '<p>Nothing yet</p>'},
+                    layout: 'fit'
                 }
             ]
         };
@@ -23,27 +24,29 @@
         function output(html) {
             var op = Ext.getCmp('output');
             op.removeAll();
-            op.add(Ext.widget('panel', {html: html}));
+            op.add(Ext.widget('panel', {html: html, autoScroll: true}));
         }
 
         /**
          * Runs the given opts which will be supplimented with a default configuration
          * that encodes and outputs the result.
-         * @param opts Options for the Ext.Ajax.request() call.
+         * @param altOpts Options for the Ext.Ajax.request() call.
          */
-        function run(opts) {
+        function run(altOpts) {
             var defs = {
                 url: '/echo',
                 success: function(response, opts) {
                     var txt = Ext.htmlEncode(response.responseText);
-                    output(Html.pre(txt));
+                    response.responseText = '[[omitted]]'; // prevent spamming the display
+                    var html = Html.pre(Ext.encode(response)) + '<br/>' + Html.pre(txt);
+                    output(html);
                 },
                 failure: function(response, opts) {
                     var msg = 'server-side failure with status code ' + response.status;
                     output(Html.p(msg));
                 }
             };
-            var options = Ext.apply(defs, opts);
+            var options = Ext.apply(defs, altOpts);
             Ext.Ajax.request(options);
         }
 
