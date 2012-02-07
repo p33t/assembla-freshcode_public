@@ -26,11 +26,22 @@
             op.add(Ext.widget('panel', {html: html}));
         }
 
+        function simpleRequest() {
+            Ext.Ajax.request({
+                url: '/echo',
+                success: function(response, opts) {
+                    var html = Ext.htmlEncode(response.responseText);
+                    output(html);
+                }
+            });
+        }
+
     </script>
 </head>
 <body>
 <div id="contentId">
-    <a href="#" onclick="output('<p>Yay!</p>'); return false;">Smoke Check</a>
+    <a href='#' onclick="output('<p>Yay!</p>'); return false;">Smoke Check</a><br/>
+    <a href='#' onclick="simpleRequest(); return false;">Simple Request</a><br/>
 </div>
 </body>
 </html>
