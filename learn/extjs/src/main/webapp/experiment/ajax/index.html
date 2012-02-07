@@ -38,7 +38,7 @@
                 success: function(response, opts) {
                     var txt = Ext.htmlEncode(response.responseText);
                     response.responseText = '[[omitted]]'; // prevent spamming the display
-                    var html = Html.pre(Ext.encode(response)) + '<br/>' + Html.pre(txt);
+                    var html = Html.p(Ext.encode(response)) + '<hr/>' + Html.pre(txt);
                     output(html);
                 },
                 failure: function(response, opts) {
