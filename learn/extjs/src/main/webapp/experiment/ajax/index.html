@@ -12,8 +12,8 @@
                 },
                 {
                     id: 'output',
-                    html: '<p>Nothing yet</p>',
                     layout: 'fit',
+                    html: '<p>Nothing yet</p>',
                     autoScroll: true
                 }
             ]
@@ -33,21 +33,58 @@
          * @param altOpts Options for the Ext.Ajax.request() call.
          */
         function run(altOpts) {
+            var op = Ext.getCmp('output');
             var defs = {
                 url: '/echo',
                 success: function(response, opts) {
+                    op.getEl().unmask();
+                    op.removeAll();
                     var txt = Ext.htmlEncode(response.responseText);
                     response.responseText = '[[omitted]]'; // prevent spamming the display
                     var html = Html.p(Ext.encode(response)) + '<hr/>' + Html.pre(txt);
-                    output(html);
+                    op.update(html);
                 },
                 failure: function(response, opts) {
+                    op.getEl().unmask();
                     var msg = 'server-side failure with status code ' + response.status;
-                    output(Html.p(msg));
+                    op.update(Html.p(msg));
                 }
             };
             var options = Ext.apply(defs, altOpts);
+            op.getEl().mask('Wait a sec...');
             Ext.Ajax.request(options);
+
+
+            // Cannot get a message to display
+//            var renderer = function(loader, response, active) {
+//                log('renderer() arg', arguments);
+//                loader.getTarget().update('<p>Hello from beyond</p>');
+//                return true;
+//            };
+
+
+            // There is no loader automatically created
+//            log('op.getLoader()', op.getLoader());
+
+
+            // This one is DOMElement oriented (?)
+//            op.getEl().load({
+//                ajaxOptions: options,
+//                renderer: renderer
+//            });
+
+            /* Not sure what...
+             op.add(Ext.widget('panel', {
+             loader: {
+             loadMask: {msg: 'Hold your horses...', useTargetEl: true},
+             ajaxOptions: options,
+             renderer: renderer,
+             autoLoad: true
+             },
+             layout: 'fit',
+             autoScroll: true
+             }));
+             */
         }
 
         function simpleRequest() {
