@@ -32,7 +32,7 @@ public class EchoServlet extends HttpServlet {
                 "<HEAD><TITLE>Echo Servlet</TITLE></HEAD>\n" +
                 "<BODY>\n" +
                 // A little dodgy... really need to determine deployment context
-                "<p>Back to <a href='" + request.getContextPath() + "/..'>main app</a></p>\n" +
+                "<p>Back to <a href='" + request.getContextPath() + "/'>main app</a></p>\n" +
                 "<p>" + request.getMethod() + "</p>\n" +
                 "<pre>" + display(request) + "</pre>\n" +
                 "</BODY></HTML>");
