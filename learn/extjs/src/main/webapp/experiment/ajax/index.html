@@ -57,6 +57,15 @@
             });
         }
 
+        function paramRequest() {
+            run({
+                params: {
+                    bruce: ['lee', 'springsteen'],
+                    hello: 99
+                }
+            });
+        }
+
     </script>
 </head>
 <body>
@@ -64,6 +73,7 @@
     <a href='#' onclick="output('<p>Yay!</p>'); return false;">Smoke Check</a><br/>
     <a href='#' onclick="simpleRequest(); return false;">Simple Request</a><br/>
     <a href='#' onclick="badRequest(); return false;">Bad Request</a><br/>
+    <a href='#' onclick="paramRequest(); return false;">Param Request</a><br/>
 </div>
 </body>
 </html>
