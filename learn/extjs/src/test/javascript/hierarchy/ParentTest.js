@@ -17,6 +17,7 @@ describe('Parent model', function() {
                 {name: 'user_id', type: 'int'},
                 {name: 'name',    type: 'string'}
             ]
+//            belongsTo: 'User'
         });
 
         Ext.define('User', {
@@ -28,6 +29,10 @@ describe('Parent model', function() {
             // we can use the hasMany shortcut on the model to create a hasMany association
             hasMany: {model: 'Product', name: 'products'}
         });
+
+        // NOTE: 'User' is not registered with the ModelManager for some reason.
+        //  However, remove the 'hasMany' and it shows up ?!
+        log('Model Manager', Ext.ModelManager);
 
         log('About to create');
         //first, we load up a User with id of 1
