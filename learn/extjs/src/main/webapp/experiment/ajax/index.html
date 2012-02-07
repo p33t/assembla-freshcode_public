@@ -5,15 +5,32 @@
     <script type="text/javascript" src="../../extjs-4.0/ext-debug.js"></script>
     <script type="text/javascript" src="../../app.js"></script>
     <script type="text/javascript">
-        CONFIG.centerConfig = {contentEl: 'contentId'};
+        CONFIG.centerConfig = {
+            items: [
+                {
+                    contentEl: 'contentId'
+                },
+                {
+                    id: 'output',
+                    items: {html: '<p>Nothing yet</p>'}
+                }
+            ]
+        };
         Ext.onReady(function() {
             var LE = createApp();
         });
+
+        function output(html) {
+            var op = Ext.getCmp('output');
+            op.removeAll();
+            op.add(Ext.widget('panel', {html: html}));
+        }
+
     </script>
 </head>
 <body>
 <div id="contentId">
-    <p>Hello</p>
+    <a href="#" onclick="output('<p>Yay!</p>'); return false;">Smoke Check</a>
 </div>
 </body>
 </html>
