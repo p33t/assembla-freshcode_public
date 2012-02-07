@@ -24,6 +24,13 @@ public class EchoServlet extends HttpServlet {
     }
 
     private void respond(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        // simluate network lag
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            System.err.println("Interrupted sleep...\n " + e);
+        }
+
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 " +
