@@ -36,7 +36,7 @@
                 url: '/echo',
                 success: function(response, opts) {
                     var txt = Ext.htmlEncode(response.responseText);
-                    output(Html.p(txt));
+                    output(Html.pre(txt));
                 },
                 failure: function(response, opts) {
                     var msg = 'server-side failure with status code ' + response.status;
