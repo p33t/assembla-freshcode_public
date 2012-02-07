@@ -53,37 +53,26 @@
             var options = Ext.apply(defs, altOpts);
             op.getEl().mask('Wait a sec...');
             Ext.Ajax.request(options);
+            /*
+            // Cannot get a message to display (remove 'success' & 'failure' functions and remove Ajax.request())
+            var renderer = function(loader, response, active) {
+                log('renderer() arg', arguments);
+                loader.getTarget().update('<p>Hello from beyond</p>');
+                return true;
+            };
+            op.add(Ext.widget('panel', {
+                height: 100,
+                loader: {
+                    loadMask: true, // {msg: 'Hold your horses...'},
+                    ajaxOptions: options,
+                    renderer: renderer,
+                    autoLoad: true
+                },
+                layout: 'fit',
+                autoScroll: true
+            }));
+        }
 
-
-            // Cannot get a message to display
-//            var renderer = function(loader, response, active) {
-//                log('renderer() arg', arguments);
-//                loader.getTarget().update('<p>Hello from beyond</p>');
-//                return true;
-//            };
-
-
-            // There is no loader automatically created
-//            log('op.getLoader()', op.getLoader());
-
-
-            // This one is DOMElement oriented (?)
-//            op.getEl().load({
-//                ajaxOptions: options,
-//                renderer: renderer
-//            });
-
-            /* Not sure what...
-             op.add(Ext.widget('panel', {
-             loader: {
-             loadMask: {msg: 'Hold your horses...', useTargetEl: true},
-             ajaxOptions: options,
-             renderer: renderer,
-             autoLoad: true
-             },
-             layout: 'fit',
-             autoScroll: true
-             }));
              */
         }
 
