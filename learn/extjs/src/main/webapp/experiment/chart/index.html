@@ -6,13 +6,21 @@
     <script type="text/javascript" src="../../app.js"></script>
     <script type="text/javascript">
         CONFIG.centerConfig = {
-            xtype: 'chtMulti'
+            xtype: 'panel',
+            id: 'centerId',
+            layout: 'fit'
         };
 
         Ext.require(['Multi']);
 
         Ext.onReady(function() {
             var LE = createApp();
+
+            // TODO: Sort out startup.... prob'ly need a controller.
+            Ext.defer(function() {
+                var center = Ext.getCmp('centerId');
+                center.add(Ext.widget('chtMulti'));
+            }, 500);
         });
     </script>
 </head>
