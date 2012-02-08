@@ -116,3 +116,8 @@ var Html = {
         return this.elem('pre', attrs, content);
     }
 };
+
+var Period = {
+    MIN: 60000,
+    HR: 3600000
+};
