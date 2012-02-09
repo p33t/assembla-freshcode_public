@@ -66,6 +66,12 @@ Ext.define('Multi', {
             }
         });
     },
+    createStore: function() {
+        return Ext.create('Ext.data.ArrayStore', {
+            fields: this.getDataFields(),
+            data: this.getData()
+        });
+    },
     initConfig: function(config) {
         this.callParent(arguments);
         var me = this;
@@ -77,10 +83,7 @@ Ext.define('Multi', {
             theme: 'chtMulti',
             shadow: false,
             legend: true,
-            store: Ext.create('Ext.data.ArrayStore', {
-                fields: me.getDataFields(),
-                data: this.getData()
-            }),
+            store: me.createStore(),
             axes: [
                 {
                     // NOTE: Ideally we'd use a date but Date axis not working so well.
@@ -117,6 +120,7 @@ Ext.define('Multi', {
                     type: 'line',
                     showMarkers: false,
                     style: {
+                        // Lucky they have an override... the theme stuff is impossible.
                         stroke: 'black',
                         "stroke-width": 2
                     },
