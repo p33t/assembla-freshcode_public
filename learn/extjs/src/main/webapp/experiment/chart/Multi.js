@@ -43,19 +43,6 @@ Ext.define('Multi', {
         fields.push({name: lineSeries.name, type: 'float'});
         return fields;
     },
-    getData: function() {
-        // NOTE: This assume each 'data' field has the correct number of elements (dictated by xSeries)
-        var stackSeries = this.getStackSeries();
-        var lineSeries = this.getLineSeries();
-        return Ext.Array.map(this.getXSeries().data, function(xVal, ix) {
-            var row = [xVal];
-            Ext.iterate(stackSeries, function(ss) {
-                row.push(ss.data[ix]);
-            });
-            row.push(lineSeries.data[ix]);
-            return row;
-        });
-    },
     createColorTheme: function(themeName) {
         var colors = Ext.Array.pluck(this.getStackSeries(), 'color');
         Ext.chart.theme[themeName] = Ext.extend(Ext.chart.theme.Base, {
@@ -67,9 +54,20 @@ Ext.define('Multi', {
         });
     },
     createStore: function() {
+        // NOTE: This assume each 'data' field has the correct number of elements (dictated by xSeries)
+        var stackSeries = this.getStackSeries();
+        var lineSeries = this.getLineSeries();
+        var data = Ext.Array.map(this.getXSeries().data, function(xVal, ix) {
+            var row = [xVal];
+            Ext.iterate(stackSeries, function(ss) {
+                row.push(ss.data[ix]);
+            });
+            row.push(lineSeries.data[ix]);
+            return row;
+        });
         return Ext.create('Ext.data.ArrayStore', {
             fields: this.getDataFields(),
-            data: this.getData()
+            data: data
         });
     },
     initConfig: function(config) {
