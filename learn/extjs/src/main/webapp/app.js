@@ -118,6 +118,26 @@ var Html = {
 };
 
 var Period = {
+    MIN: 60000,
+    HR: 60 * 60000,
+    DAY: 24 * 60 * 60000,
+    WEEK: 7 * 24 * 60 * 60000,
+    toWeekDayTimeString: function(per) {
+        var s = 'W';
+        s += Math.floor(per / Period.WEEK) + 1;
+        s += ' ';
+        // NOTE: Assuming week starts 'Monday'.
+        s += ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'][Math.floor(per % Period.WEEK / Period.DAY)];
+        s += ' ';
+        s += Math.floor(per % Period.DAY / Period.HR);
+        s += ':';
+        var min = Math.floor(per % Period.HR / Period.MIN);
+        if (min < 10) s += '0';
+        s += min;
+        return s;
+    },
+    // NOTE: Unfortunately there isn't much value in this.
+    // It suffers from many caveats and ExtJS chart dates are stuffed anyway.
     /**
      * Add this to a period 'millis' to get a date
      */
@@ -130,24 +150,6 @@ var Period = {
         offset -= 3 * 24 * 60 * 60000; // correct for 'Monday'... still retains ISO-8601 week number
         return offset;
     }(),
-    MIN: 60000,
-    HR: 60 * 60000,
-    DAY: 24 * 60 * 60000,
-    WEEK: 7 * 24 * 60 * 60000,
-//    toWeekDayTimeString: function(per) {
-//        var s = 'W';
-//        s += Math.floor(per / Period.WEEK) + 1;
-//        s += ' ';
-//        // NOTE: Assuming week starts 'Monday'.
-//        s += ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'][Math.floor(per % Period.WEEK / Period.DAY)];
-//        s += ' ';
-//        s += Math.floor(per % Period.DAY / Period.HR);
-//        s += ':';
-//        var min = Math.floor(per % Period.HR / Period.MIN);
-//        if (min < 10) s += '0';
-//        s += min;
-//        return s;
-//    },
     toDate: function(per) {
         return new Date(per + Period.DATE_DIFF);
     }
