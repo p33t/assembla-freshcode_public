@@ -9,7 +9,7 @@
         Ext.require(['Multi']);
 
         var ixs = [];
-        for (var ix = 0; ix <= 30; ix ++) {
+        for (var ix = 0; ix <= 3 * 12; ix ++) {
             ixs.push(ix);
         }
 
@@ -29,9 +29,9 @@
                 xtype: 'chtMulti',
                 yTitle: 'Goals',
                 xSeries: {
-                    // Minutes
+                    // 5 Minutes intervals
                     data: Ext.Array.map(ixs, function(ix) {
-                        return ix * Period.MIN;
+                        return ix * 5 * Period.MIN;
                     }),
                     title: 'Time'
                 },

@@ -122,7 +122,7 @@ Ext.define('Multi', {
                     style: {
                         // Lucky they have an override... the theme stuff is impossible.
                         stroke: 'black',
-                        "stroke-width": 2
+                        "stroke-width": 1
                     },
                     axis: 'left',
                     yField: lineSeries.name,
