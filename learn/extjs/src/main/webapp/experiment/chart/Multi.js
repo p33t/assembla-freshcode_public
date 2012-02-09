@@ -5,10 +5,8 @@ Ext.define('Multi', {
     layout: 'fit',
     config: {
         yTitle: 'Gigawatts',
-        xSeries: {
-            data: [0, 60000],
-            title: 'Time'
-        },
+        xTitle: 'Time',
+        xData: [0, 60000],
         stackSeries: [
             {
                 name: 's1',
@@ -55,10 +53,10 @@ Ext.define('Multi', {
         });
     },
     createStore: function() {
-        // NOTE: This assume each 'data' field has the correct number of elements (dictated by xSeries)
+        // NOTE: This assume each 'data' field has the correct number of elements (dictated by xdata)
         var stackSeries = this.getStackSeries();
         var lineSeries = this.getLineSeries();
-        var data = Ext.Array.map(this.getXSeries().data, function(xVal, ix) {
+        var data = Ext.Array.map(this.getXData(), function(xVal, ix) {
             var row = [xVal];
             Ext.iterate(stackSeries, function(ss) {
                 row.push(ss.data[ix]);
@@ -90,7 +88,7 @@ Ext.define('Multi', {
                     type: 'Category',
                     position: 'bottom',
                     fields: ['x_axis'],
-                    title: me.getXSeries().title,
+                    title: me.getXTitle(),
                     label: {
                         // This doesn't work (4.0.7)
 //                        orientation: 'vertical',
