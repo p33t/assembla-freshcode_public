@@ -28,13 +28,11 @@
             CONFIG.centerConfig = {
                 xtype: 'chtMulti',
                 yTitle: 'Goals',
-                xSeries: {
-                    // 5 Minutes intervals
-                    data: Ext.Array.map(ixs, function(ix) {
-                        return ix * 5 * Period.MIN;
-                    }),
-                    title: 'Time'
-                },
+                // 5 Minutes intervals
+                xData: Ext.Array.map(ixs, function(ix) {
+                    return ix * 5 * Period.MIN;
+                }),
+                xTitle: 'Length of Overtime',
                 stackSeries: [
                     {
                         name: 's1',
