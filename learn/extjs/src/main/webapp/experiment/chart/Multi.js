@@ -83,9 +83,9 @@ Ext.define('Multi', {
         });
         log('data', data);
 
-        // TODO: Try supplying actual instance (not subclassing)
         var colors = Ext.Array.pluck(stackSeries, 'color');
-        Ext.chart.theme.Multi = Ext.extend(Ext.chart.theme.Base, {
+        colors.push('#000000'); // for the 'line'
+        Ext.chart.theme.chtMulti = Ext.extend(Ext.chart.theme.Base, {
             constructor: function(config) {
                 this.callParent([Ext.apply({
                     colors: colors
@@ -94,7 +94,7 @@ Ext.define('Multi', {
         });
 
         this.add(Ext.widget('chart', {
-            theme: 'Multi',
+            theme: 'chtMulti',
             shadow: false,
             legend: true,
             store: Ext.create('Ext.data.ArrayStore', {
