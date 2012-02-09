@@ -58,7 +58,6 @@ Ext.define('Multi', {
 
         // Construct fields for the data
         var fields = [
-            // NOTE: No type, trying to debug
             {name: 'x_axis', type: 'float'}
         ];
         var stackSeries = this.getStackSeries();
@@ -74,7 +73,7 @@ Ext.define('Multi', {
         // NOTE: This assume each 'data' field has the correct number of elements (dictated by xSeries)
         var xSeries = this.getXSeries();
         log('xSeries', xSeries);
-        var data = Ext.Array.map(xSeries.data, function(xVal, ix){
+        var data = Ext.Array.map(xSeries.data, function(xVal, ix) {
             var row = [xVal];
             Ext.iterate(stackSeries, function(ss) {
                 row.push(ss.data[ix]);
@@ -93,6 +92,7 @@ Ext.define('Multi', {
             }),
             axes: [
                 {
+                    // NOTE: Ideally we'd use a date but Date axis not working so well.
                     type: 'Numeric',
                     position: 'bottom',
                     fields: ['x_axis'],
@@ -101,12 +101,9 @@ Ext.define('Multi', {
                         renderer: function(ms) {
                             // uterly useless... cannot escape the timezone
 //                            return Ext.Date.format(new Date(ms), '\\WW D H:i Z');
-//                            return Period.toWeekDayTimeString(ms);
-                            return Ext.Date.format(Period.toDate(ms), '\\WW D G:i').replace('W0', 'W');
+                            return Period.toWeekDayTimeString(ms);
                         }
                     }
-//                    dateFormat: '\\WW D H:i'
-//                    dateFormat: 'g:i:s A' //'\\WW H:i'
                 },
                 {
                     type: 'Numeric',
