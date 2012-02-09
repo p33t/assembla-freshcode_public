@@ -93,6 +93,8 @@ Ext.define('Multi', {
                     fields: ['x_axis'],
                     title: 'X Axis',
                     label: {
+                        // This doesn't work (4.0.7)
+                        orientation: 'vertical',
                         renderer: Period.toWeekDayTimeString
                     }
                 },
