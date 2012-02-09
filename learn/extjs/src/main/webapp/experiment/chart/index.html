@@ -5,14 +5,8 @@
     <script type="text/javascript" src="../../extjs-4.0/ext-debug.js"></script>
     <script type="text/javascript" src="../../app.js"></script>
     <script type="text/javascript">
-        CONFIG.centerConfig = {
-            xtype: 'panel',
-            id: 'centerId',
-            layout: 'fit'
-        };
 
         Ext.require(['Multi']);
-
 
         var ixs = [];
         for (var ix = 0; ix <= 30; ix ++) {
@@ -31,9 +25,8 @@
         }
 
         Ext.onReady(function() {
-            var LE = createApp();
-
-            var multiConfig = {
+            CONFIG.centerConfig = {
+                xtype: 'chtMulti',
                 xSeries: {
                     // Minutes
                     data: Ext.Array.map(ixs, function(ix) {
@@ -63,11 +56,8 @@
                     data: genData(5)
                 }
             };
-            // TODO: Sort out startup.... prob'ly need a controller.
-            Ext.defer(function() {
-                var center = Ext.getCmp('centerId');
-                center.add(Ext.widget('chtMulti', multiConfig));
-            }, 500);
+
+            var LE = createApp();
         });
     </script>
 </head>
