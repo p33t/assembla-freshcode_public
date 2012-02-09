@@ -105,7 +105,8 @@ Ext.define('Multi', {
             axes: [
                 {
                     // NOTE: Ideally we'd use a date but Date axis not working so well.
-                    type: 'Numeric',
+                    // Also, Mixed series only works with 'Category'.
+                    type: 'Category',
                     position: 'bottom',
                     fields: ['x_axis'],
                     title: 'X Axis',
@@ -120,7 +121,7 @@ Ext.define('Multi', {
                 {
                     type: 'Numeric',
                     position: 'left',
-                    fields: stackNames,
+                    fields: stackNames.concat([lineSeries.name]),
                     title: 'Y Axis',
                     minimum: 0
                 }
@@ -130,7 +131,14 @@ Ext.define('Multi', {
                     type: 'column',
                     axis: 'left',
                     yField: stackNames,
-                    stacked: true
+                    stacked: true,
+                    xField: 'x_axis'
+                },
+                {
+                    type: 'line',
+                    axis: 'left',
+                    yField: lineSeries.name,
+                    xField: 'x_axis'
                 }
             ]
         }));
