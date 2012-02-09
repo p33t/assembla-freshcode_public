@@ -94,7 +94,10 @@ Ext.define('Multi', {
                     title: 'X Axis',
                     label: {
                         // This doesn't work (4.0.7)
-                        orientation: 'vertical',
+//                        orientation: 'vertical',
+                        rotate: {
+                            degrees: 270
+                        },
                         renderer: Period.toWeekDayTimeString
                     }
                 },
