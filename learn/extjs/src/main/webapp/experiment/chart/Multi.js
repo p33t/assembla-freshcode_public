@@ -52,28 +52,24 @@ Ext.define('Multi', {
         this.initConfig(config);
 
     },
-    initConfig: function(config) {
-        this.callParent(arguments);
-        var me = this;
-
+    getDataFields: function() {
         // Construct fields for the data
         var fields = [
             {name: 'x_axis', type: 'float'}
         ];
         var stackSeries = this.getStackSeries();
-        log('stackSeries', stackSeries);
-        var stackNames = Ext.Array.pluck(stackSeries, 'name');
-        Ext.iterate(stackNames, function(name) {
-            fields.push({name: name, type: 'float'})
+        Ext.iterate(stackSeries, function(ss) {
+            fields.push({name: ss.name, type: 'float'})
         });
         var lineSeries = this.getLineSeries();
-        log('lineSeries', lineSeries);
         fields.push({name: lineSeries.name, type: 'float'});
-
+        return fields;
+    },
+    getData: function() {
         // NOTE: This assume each 'data' field has the correct number of elements (dictated by xSeries)
-        var xSeries = this.getXSeries();
-        log('xSeries', xSeries);
-        var data = Ext.Array.map(xSeries.data, function(xVal, ix) {
+        var stackSeries = this.getStackSeries();
+        var lineSeries = this.getLineSeries();
+        return Ext.Array.map(this.getXSeries().data, function(xVal, ix) {
             var row = [xVal];
             Ext.iterate(stackSeries, function(ss) {
                 row.push(ss.data[ix]);
@@ -81,25 +77,32 @@ Ext.define('Multi', {
             row.push(lineSeries.data[ix]);
             return row;
         });
-        log('data', data);
-
-        var colors = Ext.Array.pluck(stackSeries, 'color');
-        Ext.chart.theme.chtMulti = Ext.extend(Ext.chart.theme.Base, {
+    },
+    createColorTheme: function(themeName) {
+        var colors = Ext.Array.pluck(this.getStackSeries(), 'color');
+        Ext.chart.theme[themeName] = Ext.extend(Ext.chart.theme.Base, {
             constructor: function(config) {
                 this.callParent([Ext.apply({
                     colors: colors
                 }, config)]);
             }
         });
+    },
+    initConfig: function(config) {
+        this.callParent(arguments);
+        var me = this;
+        var stackNames = Ext.Array.pluck(this.getStackSeries(), 'name');
+        var lineSeries = this.getLineSeries();
+        this.createColorTheme('chtMulti');
 
         this.add(Ext.widget('chart', {
             theme: 'chtMulti',
             shadow: false,
             legend: true,
+            // TODO: Use a regular store with 'ArrayReader'?
             store: Ext.create('Ext.data.ArrayStore', {
-//                idIndex: 0,
-                fields: fields,
-                data: data
+                fields: me.getDataFields(),
+                data: this.getData()
             }),
             axes: [
                 {
