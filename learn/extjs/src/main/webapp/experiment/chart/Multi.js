@@ -27,17 +27,17 @@ Ext.define('Multi', {
         stackSeries: [
             {
                 name: 's1',
-                color: '#226622',
+                color: '#226699',
                 data: genData(1)
             },
             {
                 name: 's2',
-                color: '#220022',
+                color: '#BB00BB',
                 data: genData(2)
             },
             {
                 name: 's2',
-                color: '#002200',
+                color: '#339933',
                 data: genData(3)
             }
         ],
@@ -82,7 +82,19 @@ Ext.define('Multi', {
             return row;
         });
         log('data', data);
+
+        // TODO: Try supplying actual instance (not subclassing)
+        var colors = Ext.Array.pluck(stackSeries, 'color');
+        Ext.chart.theme.Multi = Ext.extend(Ext.chart.theme.Base, {
+            constructor: function(config) {
+                this.callParent([Ext.apply({
+                    colors: colors
+                }, config)]);
+            }
+        });
+
         this.add(Ext.widget('chart', {
+            theme: 'Multi',
             shadow: false,
             legend: true,
             store: Ext.create('Ext.data.ArrayStore', {
