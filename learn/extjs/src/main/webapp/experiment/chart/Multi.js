@@ -27,17 +27,17 @@ Ext.define('Multi', {
         stackSeries: [
             {
                 name: 's1',
-                color: '#226699',
+                color: 'green',
                 data: genData(1)
             },
             {
                 name: 's2',
-                color: '#BB00BB',
+                color: 'red',
                 data: genData(2)
             },
             {
                 name: 's2',
-                color: '#339933',
+                color: 'blue',
                 data: genData(3)
             }
         ],
@@ -84,7 +84,6 @@ Ext.define('Multi', {
         log('data', data);
 
         var colors = Ext.Array.pluck(stackSeries, 'color');
-        colors.push('#000000'); // for the 'line'
         Ext.chart.theme.chtMulti = Ext.extend(Ext.chart.theme.Base, {
             constructor: function(config) {
                 this.callParent([Ext.apply({
@@ -112,7 +111,7 @@ Ext.define('Multi', {
                     title: 'X Axis',
                     label: {
                         renderer: function(ms) {
-                            // uterly useless... cannot escape the timezone
+                            // utterly useless... cannot escape the timezone
 //                            return Ext.Date.format(new Date(ms), '\\WW D H:i Z');
                             return Period.toWeekDayTimeString(ms);
                         }
@@ -136,6 +135,11 @@ Ext.define('Multi', {
                 },
                 {
                     type: 'line',
+                    showMarkers: false,
+                    style: {
+                        stroke: 'black',
+                        "stroke-width": 2
+                    },
                     axis: 'left',
                     yField: lineSeries.name,
                     xField: 'x_axis'
