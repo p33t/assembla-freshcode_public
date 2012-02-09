@@ -1,16 +1,3 @@
-var ix10 = [];
-for (var ix = 0; ix <= 10; ix ++) {
-    ix10.push(ix);
-}
-function genData(ixData) {
-    var divisor = ixData + 1;
-    return Ext.Array.map(ix10, function(ix) {
-        if (ix % divisor === 0) return 0.5;
-        return ix;
-    });
-}
-
-
 Ext.define('Multi', {
     extend: 'Ext.panel.Panel',
     alias: 'widget.chtMulti',
@@ -18,33 +5,24 @@ Ext.define('Multi', {
     layout: 'fit',
     config: {
         xSeries: {
-            // Minutes 0 thru 10
-            data: Ext.Array.map(ix10, function(ix) {
-                return ix * Period.MIN;
-            }),
+            data: [0, 60000],
             title: 'Time'
         },
         stackSeries: [
             {
                 name: 's1',
                 color: 'green',
-                data: genData(1)
+                data: [1,2]
             },
             {
                 name: 's2',
-                color: 'red',
-                data: genData(2)
-            },
-            {
-                name: 's2',
-                color: 'blue',
-                data: genData(3)
+                color: 'orange',
+                data: [2,3]
             }
         ],
         lineSeries: {
             name: 'load',
-            color: '#000000',
-            data: genData(5)
+            data: [2,4]
         }
     },
     constructor: function(config) {
