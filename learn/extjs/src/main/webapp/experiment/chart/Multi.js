@@ -4,6 +4,7 @@ Ext.define('Multi', {
     requires: ['Ext.chart.*'],
     layout: 'fit',
     config: {
+        yTitle: 'Gigawatts',
         xSeries: {
             data: [0, 60000],
             title: 'Time'
@@ -89,7 +90,7 @@ Ext.define('Multi', {
                     type: 'Category',
                     position: 'bottom',
                     fields: ['x_axis'],
-                    title: 'X Axis',
+                    title: me.getXSeries().title,
                     label: {
                         // This doesn't work (4.0.7)
 //                        orientation: 'vertical',
@@ -103,7 +104,7 @@ Ext.define('Multi', {
                     type: 'Numeric',
                     position: 'left',
                     fields: stackNames.concat([lineSeries.name]),
-                    title: 'Y Axis',
+                    title: this.getYTitle(),
                     minimum: 0
                 }
             ],
