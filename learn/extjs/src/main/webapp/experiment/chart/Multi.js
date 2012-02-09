@@ -99,7 +99,6 @@ Ext.define('Multi', {
             theme: 'chtMulti',
             shadow: false,
             legend: true,
-            // TODO: Use a regular store with 'ArrayReader'?
             store: Ext.create('Ext.data.ArrayStore', {
                 fields: me.getDataFields(),
                 data: this.getData()
