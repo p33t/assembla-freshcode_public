@@ -1,11 +1,11 @@
 var ix10 = [];
-for (var ix = 0; ix < 10; ix ++) {
+for (var ix = 0; ix <= 10; ix ++) {
     ix10.push(ix);
 }
 function genData(ixData) {
     var divisor = ixData + 1;
     return Ext.Array.map(ix10, function(ix) {
-        if (ix % divisor === 0) return 0;
+        if (ix % divisor === 0) return 0.5;
         return ix;
     });
 }
@@ -18,11 +18,11 @@ Ext.define('Multi', {
     layout: 'fit',
     config: {
         xSeries: {
+            // Minutes 0 thru 10
             data: Ext.Array.map(ix10, function(ix) {
-                return ix * Period.MIN
+                return ix * Period.MIN;
             }),
-            title: 'Time',
-            timeFormat: '\\WW H:i'
+            title: 'Time'
         },
         stackSeries: [
             {
@@ -58,7 +58,8 @@ Ext.define('Multi', {
 
         // Construct fields for the data
         var fields = [
-            {name: 'x-axis', type: 'date', dateFormat: 'time'} // should this be 'timestamp'?  UNIX vs Javascript
+            // NOTE: No type, trying to debug
+            {name: 'x_axis', type: 'float'}
         ];
         var stackSeries = this.getStackSeries();
         log('stackSeries', stackSeries);
@@ -86,18 +87,26 @@ Ext.define('Multi', {
             shadow: false,
             legend: true,
             store: Ext.create('Ext.data.ArrayStore', {
-                idIndex: 0,
+//                idIndex: 0,
                 fields: fields,
                 data: data
             }),
             axes: [
-                // TODO: Sort out time.
                 {
-                    type: 'Category',
+                    type: 'Numeric',
                     position: 'bottom',
-                    fields: ['x-axis'],
+                    fields: ['x_axis'],
                     title: 'X Axis',
-                    grid: true
+                    label: {
+                        renderer: function(ms) {
+                            // uterly useless... cannot escape the timezone
+//                            return Ext.Date.format(new Date(ms), '\\WW D H:i Z');
+//                            return Period.toWeekDayTimeString(ms);
+                            return Ext.Date.format(Period.toDate(ms), '\\WW D G:i').replace('W0', 'W');
+                        }
+                    }
+//                    dateFormat: '\\WW D H:i'
+//                    dateFormat: 'g:i:s A' //'\\WW H:i'
                 },
                 {
                     type: 'Numeric',
@@ -111,7 +120,6 @@ Ext.define('Multi', {
                 {
                     type: 'column',
                     axis: 'left',
-                    xField: 'x',
                     yField: stackNames,
                     stacked: true
                 }
