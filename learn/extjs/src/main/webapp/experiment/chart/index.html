@@ -13,13 +13,60 @@
 
         Ext.require(['Multi']);
 
+
+        var ixs = [];
+        for (var ix = 0; ix <= 10; ix ++) {
+            ixs.push(ix);
+        }
+
+        /**
+         * Generates some data for the graph.
+         */
+        function genData(ixData) {
+            var divisor = ixData + 1;
+            return Ext.Array.map(ixs, function(ix) {
+                if (ix % divisor === 0) return 0.5;
+                return ix;
+            });
+        }
+
         Ext.onReady(function() {
             var LE = createApp();
 
+            var multiConfig = {
+                xSeries: {
+                    // Minutes 0 thru 10
+                    data: Ext.Array.map(ixs, function(ix) {
+                        return ix * Period.MIN;
+                    }),
+                    title: 'Time'
+                },
+                stackSeries: [
+                    {
+                        name: 's1',
+                        color: 'green',
+                        data: genData(1)
+                    },
+                    {
+                        name: 's2',
+                        color: 'orange',
+                        data: genData(2)
+                    },
+                    {
+                        name: 's2',
+                        color: 'blue',
+                        data: genData(3)
+                    }
+                ],
+                lineSeries: {
+                    name: 'load',
+                    data: genData(5)
+                }
+            };
             // TODO: Sort out startup.... prob'ly need a controller.
             Ext.defer(function() {
                 var center = Ext.getCmp('centerId');
-                center.add(Ext.widget('chtMulti'));
+                center.add(Ext.widget('chtMulti', multiConfig));
             }, 500);
         });
     </script>
