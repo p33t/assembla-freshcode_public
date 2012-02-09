@@ -93,11 +93,7 @@ Ext.define('Multi', {
                     fields: ['x_axis'],
                     title: 'X Axis',
                     label: {
-                        renderer: function(ms) {
-                            // utterly useless... cannot escape the timezone
-//                            return Ext.Date.format(new Date(ms), '\\WW D H:i Z');
-                            return Period.toWeekDayTimeString(ms);
-                        }
+                        renderer: Period.toWeekDayTimeString
                     }
                 },
                 {
