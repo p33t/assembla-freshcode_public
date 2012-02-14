@@ -28,7 +28,7 @@
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>securedapp</web-resource-name>
-            <url-pattern>/experiments/restricted/*</url-pattern>
+            <url-pattern>/experiments/confidential/*</url-pattern>
         </web-resource-collection>
         <user-data-constraint>
             <transport-guarantee>CONFIDENTIAL</transport-guarantee>
