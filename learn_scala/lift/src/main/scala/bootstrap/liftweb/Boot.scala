@@ -62,7 +62,8 @@ class Boot extends Loggable {
           Menu.i("Table") / "experiments" / "table",
           Menu.i("Brower Detect") / "experiments" / "browser_detect",
           Menu.i("Chart") / "experiments" / "chart" / **,
-//          Menu.i("Simple REST") / "extjsinterop" / "restelem", // this might interfere with permissions 
+          Menu.i("Restricted") / "experiments" / "restricted" / **,
+          //          Menu.i("Simple REST") / "extjsinterop" / "restelem", // this might interfere with permissions
           Menu.i("Fancy Menu Hidden") / "experiments" / "fancy_menus" / ** >> Hidden,
           FancyMenu()
           ),
