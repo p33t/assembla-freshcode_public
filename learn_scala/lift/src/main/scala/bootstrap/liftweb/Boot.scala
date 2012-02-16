@@ -75,22 +75,24 @@ class Boot extends Loggable {
           Menu.i("Fancy Menu Hidden") / "experiments" / "fancy_menus" / ** >> Hidden,
           FancyMenu()
           ),
-        Menu.i("Wildcard Permissions") / "wildcards" submenus (
-          //          Is nesting good here?
-          Menu.i("Wildly Permitted") / "wild" / ** >> Hidden
+        Menu.i("More") / "index" submenus(
+          Menu.i("Wildcard Permissions") / "wildcards" submenus (
+            //          Is nesting good here?
+            Menu.i("Wildly Permitted") / "wild" / ** >> Hidden
+            ),
+          Menu.i("Css Selector") / "css-select" / **,
+          Menu.i("Forms") / "form" / **,
+          Menu.i("Ext JS") / "extjsinterop" / **,
+          // using static content technique
+          Menu(Loc("widget", new Link(List("widget"), true), "Widgets")),
+          // this ends up with 'Widget Anchor Text' in the address bar
+          // Menu(Loc("widget", Link(List("widget"), true, "Widget Anchor Text"), "Widgets")),
+          Menu.i("Stateless Dispatch") / "stateless-dispatch"
           ),
-        Menu.i("Css Selector") / "css-select" / **,
-        Menu.i("Forms") / "form" / **,
-        Menu.i("Ext JS") / "extjsinterop" / **,
-        // using static content technique
-        Menu(Loc("widget", new Link(List("widget"), true), "Widgets")),
-        // this ends up with 'Widget Anchor Text' in the address bar
-        // Menu(Loc("widget", Link(List("widget"), true, "Widget Anchor Text"), "Widgets")),
-        Menu.i("Stateless Dispatch") / "stateless-dispatch",
         Menu.i("About") / "meta-content" / "about" >> Hidden >> LocGroup("footer"),
         Menu.i("Contact") / "meta-content" / "contact" >> Hidden >> LocGroup("footer"),
-        Menu.i("User") / "index" submenus(
-            User.sitemap: _*
+        Menu.i("User") / "index" submenus (
+          User.sitemap: _*
           )
       )
       sm
