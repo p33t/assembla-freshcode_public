@@ -2,12 +2,14 @@ package bootstrap.liftweb
 
 import net.liftweb._
 import common.{Loggable, Full}
+import db._
 import http.RewriteResponse._
+import mapper.Schemifier
 import sitemap._
 import sitemap.Menu.{Menuable, WithSlash}
 import util.Vendor._
 import http._
-import pkg.UrlRemainder
+import auth._
 import Loc._
 import widgets.menu.MenuWidget
 import widgets.tree.TreeView
@@ -15,6 +17,7 @@ import code.snippet.experiments.{FancyMenus, WildProcessing}
 import java.io.File
 import java.util.UUID
 import code.lib.{SimpleRest, MyEasyStatelessDispatch, MyStatelessDispatch}
+import pkg.{User, DbVendor, UrlRemainder}
 
 // NOTE: ** is red because Intellij has a bug.
 
@@ -25,6 +28,11 @@ import code.lib.{SimpleRest, MyEasyStatelessDispatch, MyStatelessDispatch}
 class Boot extends Loggable {
   def boot() {
     logger.info("Starting bootstrap...")
+
+    // Database stuff
+    DB.defineConnectionManager(DefaultConnectionIdentifier, DbVendor)
+    Schemifier.schemify(true, Schemifier.infoF _, User)
+
     // LiftRules singleton provides configuration but is only mutable at boot time.
     LiftRules.early.append(_.setCharacterEncoding("UTF-8"))
 
@@ -41,7 +49,7 @@ class Boot extends Loggable {
     // NOTE:
     // 1) will NOT serve files / folders that start with '.' or '_' or end with '-hidden'
     def siteMap(): SiteMap = {
-      SiteMap(
+      val sm = SiteMap(
         Menu.i("Home") / "index", // the simple way to declare a menu
         Menu.i("XHTML Experiment") / "xhtml-experiment" >> Hidden, // permitted but not shown in default map
         Menu.i("Experiments") / "experiments" / "index" submenus(
@@ -82,6 +90,7 @@ class Boot extends Loggable {
         Menu.i("About") / "meta-content" / "about" >> Hidden >> LocGroup("footer"),
         Menu.i("Contact") / "meta-content" / "contact" >> Hidden >> LocGroup("footer")
       )
+      User.sitemapMutator(sm)
     }
 
     // requests of the form ../fancy_menus_by_name/xxx mapped to ../fancy_menus?fancyParam=xxx
@@ -121,6 +130,24 @@ class Boot extends Loggable {
     // For ExtJS
     LiftRules.statelessDispatchTable.append(SimpleRest) // Learning Rest
     LiftRules.statelessDispatchTable.append(code.lib.extjsinterop.Crud)
+
+    //    // Authentication Setup... Http Auth is discouraged for HTML Apps
+    //    LiftRules.authentication = HttpBasicAuthentication("SomeRealm") {
+    //      case (userName, userPass, _) => {
+    //        logger.debug("Authenticating: " + userName)
+    //        // Dodgy authentication... password must be same as the username
+    //        if (userName == userPass) {
+    //          logger.debug("Auth succeeded for " + userName)
+    //          User.logUserIn(user) true
+    //        } else {
+    //          logger.warn("Auth failed for " + userName)
+    //          false
+    //        }
+    //      } openOr false
+    //    }
+    //
+    //    // Authorisation
+
 
     logger.info("Finished boostrap.")
   }
