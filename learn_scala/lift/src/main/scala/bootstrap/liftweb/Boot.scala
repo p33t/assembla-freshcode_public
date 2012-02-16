@@ -88,9 +88,12 @@ class Boot extends Loggable {
         // Menu(Loc("widget", Link(List("widget"), true, "Widget Anchor Text"), "Widgets")),
         Menu.i("Stateless Dispatch") / "stateless-dispatch",
         Menu.i("About") / "meta-content" / "about" >> Hidden >> LocGroup("footer"),
-        Menu.i("Contact") / "meta-content" / "contact" >> Hidden >> LocGroup("footer")
+        Menu.i("Contact") / "meta-content" / "contact" >> Hidden >> LocGroup("footer"),
+        Menu.i("User") / "index" submenus(
+            User.sitemap: _*
+          )
       )
-      User.sitemapMutator(sm)
+      sm
     }
 
     // requests of the form ../fancy_menus_by_name/xxx mapped to ../fancy_menus?fancyParam=xxx
