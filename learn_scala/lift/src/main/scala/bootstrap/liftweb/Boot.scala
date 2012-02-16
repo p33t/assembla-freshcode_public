@@ -53,7 +53,7 @@ class Boot extends Loggable {
         Menu.i("Home") / "index", // the simple way to declare a menu
         Menu.i("XHTML Experiment") / "xhtml-experiment" >> Hidden, // permitted but not shown in default map
         Menu.i("Experiments") / "experiments" / "index" submenus(
-          Menu.i("First Snippet") / "experiments" / "first_snippet", // TODO: Figure out putting link in multiple places in site map
+          Menu.i("First Snippet") / "experiments" / "first_snippet",
           Menu.i("Embed") / "experiments" / "embed",
           Menu.i("Wildcard Path Starter") / "experiments" / "wild" / "start",
           Menu.param[UrlRemainder]("Wildcard-In-Path",
