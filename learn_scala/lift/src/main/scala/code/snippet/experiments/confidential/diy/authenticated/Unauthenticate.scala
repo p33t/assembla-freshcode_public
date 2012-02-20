@@ -1,11 +1,11 @@
-package code.snippet.experiments.confidential.authenticated
+package code.snippet.experiments.confidential.diy.authenticated
 
 import xml.NodeSeq
-import pkg.CurrentUser
+import pkg.CurrentDiyUser
 
 object Unauthenticate {
   def render(ns: NodeSeq): NodeSeq = {
-    CurrentUser.logout()
+    CurrentDiyUser.logout()
     <p>You have successfully logged out</p>
   }
 }

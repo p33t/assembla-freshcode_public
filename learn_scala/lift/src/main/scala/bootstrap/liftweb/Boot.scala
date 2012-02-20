@@ -17,7 +17,7 @@ import code.snippet.experiments.{FancyMenus, WildProcessing}
 import java.io.File
 import java.util.UUID
 import code.lib.{SimpleRest, MyEasyStatelessDispatch, MyStatelessDispatch}
-import pkg.{CurrentUser, User, DbVendor, UrlRemainder}
+import pkg.{CurrentDiyUser, User, DbVendor, UrlRemainder}
 
 // NOTE: ** is red because Intellij has a bug.
 
@@ -26,8 +26,8 @@ import pkg.{CurrentUser, User, DbVendor, UrlRemainder}
  * to modify lift's environment
  */
 class Boot extends Loggable {
-  val NeedAuth = If(() => CurrentUser.isLoggedIn, "Authentication required")
-  
+  private val NeedDiyAuth = If(() => CurrentDiyUser.isLoggedIn, "Authentication required")
+
   def boot() {
     logger.info("Starting bootstrap...")
 
@@ -76,9 +76,11 @@ class Boot extends Loggable {
           Menu.i("Security") / "experiments" / "confidential" submenus(
             // This url requires HTTPS as defined in web.xml
             Menu.i("Confidential (HTTPS)") / "experiments" / "confidential" / "index",
-            Menu.i("Real Login") / "experiments" / "confidential" / "authenticate" >> If(() => !CurrentUser.isLoggedIn, "Already logged in"),
-            Menu.i("Real Logout") / "experiments" / "confidential" / "authenticated" / "unauthenticate" >> NeedAuth,
-            Menu.i("Authenticated") / "experiments" / "confidential" / "authenticated" / "index" >> NeedAuth
+            Menu.i("DIY") / "experiments" / "confidential" / "index" submenus(
+              Menu.i("DIY Login") / "experiments" / "confidential" / "diy" / "authenticate" >> If(() => !CurrentDiyUser.isLoggedIn, "Already logged in"),
+              Menu.i("DIY Logout") / "experiments" / "confidential" / "diy" / "authenticated" / "unauthenticate" >> NeedDiyAuth,
+              Menu.i("DIY Authenticated") / "experiments" / "confidential" / "diy" / "authenticated" / "index" >> NeedDiyAuth
+              )
             ),
           //          Menu.i("Simple REST") / "extjsinterop" / "restelem", // this might interfere with permissions
           Menu.i("Fancy Menu Hidden") / "experiments" / "fancy_menus" / ** >> Hidden,

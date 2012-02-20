@@ -1,17 +1,17 @@
-package code.snippet.experiments.confidential
+package code.snippet.experiments.confidential.diy
 
 import net.liftweb.util.FieldError
-import pkg.CurrentUser
+import pkg.CurrentDiyUser
 import net.liftweb.http.{S, LiftScreen}
 
 
 object Authenticate extends LiftScreen {
-  val username = field("Username", "")
+  val username = field("Username", "", valMinLen(1, "Username cannot be blank"))
   val pwd = password("Password", "")
 
   protected def finish() {
     val uname = username.is
-    CurrentUser.login(uname)
+    CurrentDiyUser.login(uname)
     S.notice("Welcome " + uname)
   }
 
