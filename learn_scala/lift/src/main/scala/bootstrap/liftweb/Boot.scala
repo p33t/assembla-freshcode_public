@@ -17,7 +17,7 @@ import code.snippet.experiments.{FancyMenus, WildProcessing}
 import java.io.File
 import java.util.UUID
 import code.lib.{SimpleRest, MyEasyStatelessDispatch, MyStatelessDispatch}
-import pkg.{User, DbVendor, UrlRemainder}
+import pkg.{CurrentUser, User, DbVendor, UrlRemainder}
 
 // NOTE: ** is red because Intellij has a bug.
 
@@ -71,7 +71,13 @@ class Boot extends Loggable {
           Menu.i("Table") / "experiments" / "table",
           Menu.i("Brower Detect") / "experiments" / "browser_detect",
           Menu.i("Chart") / "experiments" / "chart" / **,
-          Menu.i("Confidential (HTTPS)") / "experiments" / "confidential" / **,
+          Menu.i("Security") / "experiments" / "confidential" submenus(
+            // This url requires HTTPS as defined in web.xml
+            Menu.i("Confidential (HTTPS)") / "experiments" / "confidential" / **,
+            Menu.i("Real Login") / "experiments" / "confidential" / "authenticate" >> If(() => !CurrentUser.isLoggedIn, "Already logged in"),
+            // TODO: Logout?
+            Menu.i("Authenticated") / "experiments" / "confidential" / "authenticated" / ** >> If(() => CurrentUser.isLoggedIn, "Authentication required")
+            ),
           //          Menu.i("Simple REST") / "extjsinterop" / "restelem", // this might interfere with permissions
           Menu.i("Fancy Menu Hidden") / "experiments" / "fancy_menus" / ** >> Hidden,
           FancyMenu()
