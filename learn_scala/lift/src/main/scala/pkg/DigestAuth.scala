@@ -4,6 +4,9 @@ import net.liftweb.http.auth._
 import net.liftweb.sitemap.Loc.HttpAuthProtected
 import net.liftweb.common.{Loggable, Full, Empty}
 
+/**
+ * Bits of HTTP Digest Auth config that are used by Boot.scala
+ */
 object DigestAuth extends Loggable {
   private val DrNonPriv = AuthRole("non-privileged")
   private val DrSuperUser = AuthRole("superuser", DrNonPriv)
