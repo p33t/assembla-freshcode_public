@@ -29,9 +29,10 @@ class Boot extends Loggable {
   private val NeedDiyAuth = If(() => CurrentDiyUser.isLoggedIn, "Authentication required")
 
   private val DrNonPriv = AuthRole("non-privileged")
-  private val DigestRoles = AuthRole("superuser", DrNonPriv)
+  private val DrSuperUser = AuthRole("superuser", DrNonPriv)
   // No specific roles required, only need to be logged in
   private val DigestAuthenticated = HttpAuthProtected(req => Empty)
+  private val DigestSuperUser = HttpAuthProtected(req => Full(DrSuperUser))
 
   def boot() {
     logger.info("Starting bootstrap...")
@@ -60,7 +61,11 @@ class Boot extends Loggable {
         if (authenticates("s3cret")) {
           logger.info("Auth succeeded for " + username)
           // set up roles for remainder of request
-          userRoles(List(DrNonPriv))
+          val role = {
+            if (username == "super") DrSuperUser
+            else DrNonPriv
+          }
+          userRoles(List(role))
           true
         } else {
           logger.warn("Auth failed for " + username)
@@ -68,7 +73,7 @@ class Boot extends Loggable {
         }
       }
     }
-    
+
     // Build SiteMap
     // NOTE:
     // 1) will NOT serve files / folders that start with '.' or '_' or end with '-hidden'
@@ -97,7 +102,10 @@ class Boot extends Loggable {
           Menu.i("Security") / "experiments" / "confidential" submenus(
             // This url requires HTTPS as defined in web.xml
             Menu.i("Confidential (HTTPS)") / "experiments" / "confidential" / "index",
-            Menu.i("Digest") / "experiments" / "confidential" / "digest" / "index" >> DigestAuthenticated,
+            Menu.i("Digest") / "experiments" / "confidential" / "index" submenus(
+              Menu.i("Digest Need Login Only") / "experiments" / "confidential" / "digest" / "index" >> DigestAuthenticated,
+              Menu.i("Digest Need 'super' login") / "experiments" / "confidential" / "digest" / "sensitive" >> DigestSuperUser
+              ),
             Menu.i("DIY") / "experiments" / "confidential" / "index" submenus(
               Menu.i("DIY Login") / "experiments" / "confidential" / "diy" / "authenticate" >> If(() => !CurrentDiyUser.isLoggedIn, "Already logged in"),
               Menu.i("DIY Logout") / "experiments" / "confidential" / "diy" / "authenticated" / "unauthenticate" >> NeedDiyAuth,
