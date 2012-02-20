@@ -30,6 +30,7 @@ class Boot extends Loggable {
     logger.info("Starting bootstrap...")
 
     // Database stuff
+    // TODO: Confirm this is working
     DB.defineConnectionManager(DefaultConnectionIdentifier, DbVendor)
     Schemifier.schemify(true, Schemifier.infoF _, User)
 
@@ -91,7 +92,7 @@ class Boot extends Loggable {
           ),
         Menu.i("About") / "meta-content" / "about" >> Hidden >> LocGroup("footer"),
         Menu.i("Contact") / "meta-content" / "contact" >> Hidden >> LocGroup("footer"),
-        Menu.i("User") / "index" submenus (
+        Menu.i("User (bad)") / "index" submenus (
           User.sitemap: _*
           )
       )
@@ -136,7 +137,7 @@ class Boot extends Loggable {
     LiftRules.statelessDispatchTable.append(SimpleRest) // Learning Rest
     LiftRules.statelessDispatchTable.append(code.lib.extjsinterop.Crud)
 
-    //    // Authentication Setup... Http Auth is discouraged for HTML Apps
+    //    // Authentication Setup... Http Basic Auth is discouraged for HTML Apps
     //    LiftRules.authentication = HttpBasicAuthentication("SomeRealm") {
     //      case (userName, userPass, _) => {
     //        logger.debug("Authenticating: " + userName)
