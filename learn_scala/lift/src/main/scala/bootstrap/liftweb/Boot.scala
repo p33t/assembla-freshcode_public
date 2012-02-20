@@ -26,6 +26,8 @@ import pkg.{CurrentUser, User, DbVendor, UrlRemainder}
  * to modify lift's environment
  */
 class Boot extends Loggable {
+  val NeedAuth = If(() => CurrentUser.isLoggedIn, "Authentication required")
+  
   def boot() {
     logger.info("Starting bootstrap...")
 
@@ -73,10 +75,10 @@ class Boot extends Loggable {
           Menu.i("Chart") / "experiments" / "chart" / **,
           Menu.i("Security") / "experiments" / "confidential" submenus(
             // This url requires HTTPS as defined in web.xml
-            Menu.i("Confidential (HTTPS)") / "experiments" / "confidential" / **,
+            Menu.i("Confidential (HTTPS)") / "experiments" / "confidential" / "index",
             Menu.i("Real Login") / "experiments" / "confidential" / "authenticate" >> If(() => !CurrentUser.isLoggedIn, "Already logged in"),
-            // TODO: Logout?
-            Menu.i("Authenticated") / "experiments" / "confidential" / "authenticated" / ** >> If(() => CurrentUser.isLoggedIn, "Authentication required")
+            Menu.i("Real Logout") / "experiments" / "confidential" / "authenticated" / "unauthenticate" >> NeedAuth,
+            Menu.i("Authenticated") / "experiments" / "confidential" / "authenticated" / "index" >> NeedAuth
             ),
           //          Menu.i("Simple REST") / "extjsinterop" / "restelem", // this might interfere with permissions
           Menu.i("Fancy Menu Hidden") / "experiments" / "fancy_menus" / ** >> Hidden,
