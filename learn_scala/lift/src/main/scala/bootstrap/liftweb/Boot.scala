@@ -17,7 +17,7 @@ import code.snippet.experiments.{FancyMenus, WildProcessing}
 import java.io.File
 import java.util.UUID
 import code.lib.{SimpleRest, MyEasyStatelessDispatch, MyStatelessDispatch}
-import pkg.{CurrentDiyUser, User, DbVendor, UrlRemainder}
+import pkg._
 
 // NOTE: ** is red because Intellij has a bug.
 
@@ -27,12 +27,6 @@ import pkg.{CurrentDiyUser, User, DbVendor, UrlRemainder}
  */
 class Boot extends Loggable {
   private val NeedDiyAuth = If(() => CurrentDiyUser.isLoggedIn, "Authentication required")
-
-  private val DrNonPriv = AuthRole("non-privileged")
-  private val DrSuperUser = AuthRole("superuser", DrNonPriv)
-  // No specific roles required, only need to be logged in
-  private val DigestAuthenticated = HttpAuthProtected(req => Empty)
-  private val DigestSuperUser = HttpAuthProtected(req => Full(DrSuperUser))
 
   def boot() {
     logger.info("Starting bootstrap...")
@@ -54,25 +48,7 @@ class Boot extends Loggable {
     // Use HTML5 for rendering (instead of the default xhtml)
     LiftRules.htmlProperties.default.set((r: Req) => new Html5Properties(r.userAgent))
 
-    LiftRules.authentication = HttpDigestAuthentication("Password is 's3cret'") {
-      case (username, _, authenticates) => {
-        logger.info("Authenticating: " + username)
-        // NOTE: Need the password in plain text to use digest auth
-        if (authenticates("s3cret")) {
-          logger.info("Auth succeeded for " + username)
-          // set up roles for remainder of request
-          val role = {
-            if (username == "super") DrSuperUser
-            else DrNonPriv
-          }
-          userRoles(List(role))
-          true
-        } else {
-          logger.warn("Auth failed for " + username)
-          false
-        }
-      }
-    }
+    LiftRules.authentication = DigestAuth.authentication
 
     // Build SiteMap
     // NOTE:
@@ -103,8 +79,8 @@ class Boot extends Loggable {
             // This url requires HTTPS as defined in web.xml
             Menu.i("Confidential (HTTPS)") / "experiments" / "confidential" / "index",
             Menu.i("Digest") / "experiments" / "confidential" / "index" submenus(
-              Menu.i("Digest Need Login Only") / "experiments" / "confidential" / "digest" / "index" >> DigestAuthenticated,
-              Menu.i("Digest Need 'super' login") / "experiments" / "confidential" / "digest" / "sensitive" >> DigestSuperUser
+              Menu.i("Digest Need Login Only") / "experiments" / "confidential" / "digest" / "index" >> DigestAuth.DigestAuthenticated,
+              Menu.i("Digest Need 'super' login") / "experiments" / "confidential" / "digest" / "sensitive" >> DigestAuth.DigestSuperUser
               ),
             Menu.i("DIY") / "experiments" / "confidential" / "index" submenus(
               Menu.i("DIY Login") / "experiments" / "confidential" / "diy" / "authenticate" >> If(() => !CurrentDiyUser.isLoggedIn, "Already logged in"),
