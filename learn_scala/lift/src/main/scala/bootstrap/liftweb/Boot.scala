@@ -1,7 +1,7 @@
 package bootstrap.liftweb
 
 import net.liftweb._
-import common.{Loggable, Full}
+import common.{Empty, Box, Loggable, Full}
 import db._
 import http.RewriteResponse._
 import mapper.Schemifier
@@ -28,10 +28,10 @@ import pkg.{CurrentDiyUser, User, DbVendor, UrlRemainder}
 class Boot extends Loggable {
   private val NeedDiyAuth = If(() => CurrentDiyUser.isLoggedIn, "Authentication required")
 
-  private val DrFundamental = AuthRole("fundamental")
-  private val DigestRoles = AuthRole("superuser", DrFundamental)
-  // TODO: What happens when empty box? (Not 'Full...')
-  private val digestFundamental = HttpAuthProtected(req => Full(DrFundamental))
+  private val DrNonPriv = AuthRole("non-privileged")
+  private val DigestRoles = AuthRole("superuser", DrNonPriv)
+  // No specific roles required, only need to be logged in
+  private val DigestAuthenticated = HttpAuthProtected(req => Empty)
 
   def boot() {
     logger.info("Starting bootstrap...")
@@ -60,7 +60,7 @@ class Boot extends Loggable {
         if (authenticates("s3cret")) {
           logger.info("Auth succeeded for " + username)
           // set up roles for remainder of request
-          userRoles(List(DrFundamental))
+          userRoles(List(DrNonPriv))
           true
         } else {
           logger.warn("Auth failed for " + username)
@@ -97,7 +97,7 @@ class Boot extends Loggable {
           Menu.i("Security") / "experiments" / "confidential" submenus(
             // This url requires HTTPS as defined in web.xml
             Menu.i("Confidential (HTTPS)") / "experiments" / "confidential" / "index",
-            Menu.i("Digest") / "experiments" / "confidential" / "digest" / "index" >> digestFundamental,
+            Menu.i("Digest") / "experiments" / "confidential" / "digest" / "index" >> DigestAuthenticated,
             Menu.i("DIY") / "experiments" / "confidential" / "index" submenus(
               Menu.i("DIY Login") / "experiments" / "confidential" / "diy" / "authenticate" >> If(() => !CurrentDiyUser.isLoggedIn, "Already logged in"),
               Menu.i("DIY Logout") / "experiments" / "confidential" / "diy" / "authenticated" / "unauthenticate" >> NeedDiyAuth,
