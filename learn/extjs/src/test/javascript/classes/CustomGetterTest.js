@@ -24,6 +24,10 @@ describe('Getter override', function() {
 
     it('dodgy override works', function() {
         var mc = Ext.create('MyClass', {str: 'bruce'});
+        // instantiate twice in case prototype was disturbed
+        var mc2 = Ext.create('MyClass', {str: 'lee'});
+//        log(mc2);
         expect(mc.getStr()).toBe('bruce');
+        expect(mc2.getStr()).toBe('lee');
     });
 });
