@@ -5,7 +5,7 @@
     <script type="text/javascript" src="../../extjs-4.0/ext-debug.js"></script>
     <script type="text/javascript" src="../../app.js"></script>
     <style type="text/css">
-        .specialOp {
+        .special-op {
             background-image: url(../../image/magician-sml.png);
             /*Sprite stuff doesn't work... background-position: -10px -20px;*/
         }
@@ -23,7 +23,10 @@
             tbar: [
                 {
                     text: 'Magician Icon',
-                    iconCls: 'specialOp'
+                    iconCls: 'special-op'
+                },
+                {
+                    icon: Ext.Loader.getPath('Ext') + '/../resources/themes/images/default/shared/right-btn.gif'
                 }
             ]
         };
