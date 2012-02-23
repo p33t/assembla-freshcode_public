@@ -13,7 +13,7 @@ describe('Getter override', function() {
                     // this same technique can be used for overriding setters etc.
                     var orig = this.getStr;
                     this.getStr = function() {
-                        var s = orig.call(this);
+                        var s = orig.apply(this);
                         log('getStr() called.  Returning ', s);
                         return s;
                     };
