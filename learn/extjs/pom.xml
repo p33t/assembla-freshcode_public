@@ -39,6 +39,8 @@
                 <configuration>
                     <contextPath>/</contextPath>
                     <scanIntervalSeconds>5</scanIntervalSeconds>
+                    <stopPort>8090</stopPort>
+                    <stopKey>Stooooop</stopKey>
                 </configuration>
             </plugin>
             <plugin>
