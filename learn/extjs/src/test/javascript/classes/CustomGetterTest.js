@@ -10,7 +10,7 @@ describe('Getter override', function() {
                 },
                 constructor: function(config) {
                     this.initConfig(config);
-                    // this same technique can be used for overriding getters etc.
+                    // this same technique can be used for overriding setters etc.
                     var orig = this.getStr;
                     this.getStr = function() {
                         var s = orig.call(this);
