@@ -14,6 +14,9 @@ describe('config read/write fields work', function() {
                 // Why is this necessary?
                 constructor: function(config) {
                     this.initConfig(config);
+                },
+                altGetStr: function() {
+                    return this.str;
                 }
             });
             log('Defined MyClass as', MyClass);
@@ -46,5 +49,14 @@ describe('config read/write fields work', function() {
         specCheck();
         v.getFunct()('testing');
         expect(v.getFunct()).toBe(custom);
+    });
+
+    it ('getter is not that special', function() {
+        var v = Ext.create('MyClass');
+        expect(v.getStr()).toBe('default str');
+        expect(v.altGetStr()).toBe('default str');
+        v.setStr('bruce');
+        expect(v.getStr()).toBe('bruce');
+        expect(v.altGetStr()).toBe('bruce');
     });
 });
