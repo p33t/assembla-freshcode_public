@@ -11,9 +11,9 @@ describe('Getter override', function() {
                 constructor: function(config) {
                     this.initConfig(config);
                     // this same technique can be used for overriding setters etc.
-                    var orig = this.getStr;
+                    this.getStrOrig = this.getStr;
                     this.getStr = function() {
-                        var s = orig.apply(this);
+                        var s = this.getStrOrig();
                         log('getStr() called.  Returning ', s);
                         return s;
                     };
