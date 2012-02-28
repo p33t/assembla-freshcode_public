@@ -1,0 +1,16 @@
+<!-- Tomcat 'context fragment'...
+Drop this into the '.../conf/Catalina/localhost' folder to deploy the application.
+IE: $CATALINA_BASE/conf/[engine_name]/[host_name]
+NOTE: Need to do a 'mvn package' first to produce the war
+
+OR
+
+Use the deploy facility with:
+Context path: /platform-probe (don't forget the slash)
+XML Configuration file URL: /home/pleong/work/learn/platform-probe/src/main/config/platform-probe.xml
+... it has the same effect
+
+ -->
+<Context docBase="/home/pleong/work/learn/platform-probe/target/platform-probe.war">
+    <Parameter name="app.home" value="/some/custom/folder"/>
+</Context>
