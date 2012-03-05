@@ -17,5 +17,7 @@ Tips:
                             <extraJvmArgs>-Xmx512m -Xms256m</extraJvmArgs>
                         </configuration>
                     </execution>
+ - Need Plugin for browser for Development Mode.. https://dl-ssl.google.com/gwt/plugins/chrome/gwt-dev-plugin.crx
+ -- Or use Getting Started guide to prime system: http://code.google.com/webtoolkit/gettingstarted.html
 
 
