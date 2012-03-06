@@ -6,6 +6,7 @@ mvn archetype:generate -DarchetypeRepository=repo1.maven.org -DarchetypeGroupId=
   -DartifactId=learn-gwt
 
   entered 'm1' when prompted for a module.
+  !!!! But should have been captialised like M1 or Mod1
 
 Tips:
  - Bootstrap dev with, say, 'package'.  Will trigger generation of src files from gwt:generateAsync, gwt:i18n (?)
@@ -19,5 +20,7 @@ Tips:
                     </execution>
  - Need Plugin for browser for Development Mode.. https://dl-ssl.google.com/gwt/plugins/chrome/gwt-dev-plugin.crx
  -- Or use Getting Started guide to prime system: http://code.google.com/webtoolkit/gettingstarted.html
-
+ - Use get:debug to launch in debug mode
+ -- Will await debugger to attach on 8000 before completing startup
+ -- Intellij IDEA: Use the 'Remote' run configuration and specify the 8000 port to connect to
 
