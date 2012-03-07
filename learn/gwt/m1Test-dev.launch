@@ -17,6 +17,6 @@
 <stringAttribute key="org.eclipse.jdt.junit.TESTNAME" value=""/>
 <stringAttribute key="org.eclipse.jdt.junit.TEST_KIND" value="org.eclipse.jdt.junit.loader.junit4"/>
 <stringAttribute key="org.eclipse.jdt.launching.CLASSPATH_PROVIDER" value="com.google.gdt.eclipse.maven.mavenClasspathProvider"/>
-<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="biz.freshcode.learn.gwt.client.GwtTestm1"/>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="biz.freshcode.learn.gwt.client.GwtTestGreet"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="learn-gwt"/>
 </launchConfiguration>
