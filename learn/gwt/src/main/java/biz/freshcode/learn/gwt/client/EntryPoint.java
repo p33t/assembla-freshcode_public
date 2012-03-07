@@ -7,10 +7,8 @@ public class EntryPoint implements com.google.gwt.core.client.EntryPoint {
     @Override
     public void onModuleLoad() {
         MainPanel main = new MainPanel();
-        VLayout vl = new VLayout();
-        vl.setHeight100();
-        vl.setWidth100();
-        vl.addMember(main);
-        RootPanel.get().add(vl);
+        main.setHeight100();
+        main.setWidth100();
+        RootPanel.get().add(main);
     }
 }
