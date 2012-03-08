@@ -20,15 +20,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <!-- Needed for SmartGWT -->
-    <repositories>
-        <repository>
-            <id>smartclient</id>
-            <name>smartclient.com</name>
-            <url>http://www.smartclient.com/maven2</url>
-        </repository>
-    </repositories>
-
     <dependencies>
         <dependency>
             <groupId>com.google.gwt</groupId>
@@ -60,11 +51,6 @@
             <version>1.0.0.GA</version>
             <classifier>sources</classifier>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.smartgwt</groupId>
-            <artifactId>smartgwt</artifactId>
-            <version>3.0</version>
         </dependency>
     </dependencies>
 
