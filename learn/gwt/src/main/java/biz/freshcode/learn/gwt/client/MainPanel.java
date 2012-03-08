@@ -23,18 +23,6 @@ public class MainPanel extends Composite {
                 Window.alert("Consider yourself alerted");
             }
         });
-//        addMember(mb);
-//        Menu m = new Menu();
-//        m.setTitle("Experiments");
-//        MenuItem alert = new MenuItem("Alert");
-//        m.addItem(alert);
-//        alert.addClickHandler(new ClickHandler() {
-//            @Override
-//            public void onClick(MenuItemClickEvent menuItemClickEvent) {
-//                SC.say("Self destruct sequence has initiated.");
-//            }
-//        });
-//        mb.setMenus(m);
 
         HTMLPanel html = new HTMLPanel("<p>This is the contents.  It carries on for a little bit but I don't know if it will get a scroll bar.</p>");
         vp.add(html);
