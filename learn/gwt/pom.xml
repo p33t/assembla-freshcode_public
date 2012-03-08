@@ -12,6 +12,18 @@
     <version>1.0-SNAPSHOT</version>
     <name>Learn GWT</name>
 
+    <repositories>
+        <!-- Needed for GXT 3.0.0-beta4 -->
+        <repository>
+            <id>sonatype-snapshots</id>
+            <name>Sonatype Snapshots</name>
+            <url>https://oss.sonatype.org/content/repositories/releases/</url>
+            <!--<snapshots>-->
+                <!--<enabled>true</enabled>-->
+            <!--</snapshots>-->
+        </repository>
+    </repositories>
+
     <properties>
         <!-- Convenience property to set the GWT version -->
         <gwtVersion>2.4.0</gwtVersion>
@@ -51,6 +63,12 @@
             <version>1.0.0.GA</version>
             <classifier>sources</classifier>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sencha.gxt</groupId>
+            <artifactId>gxt</artifactId>
+            <version>3.0.0-beta4</version>
         </dependency>
     </dependencies>
 
