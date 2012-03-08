@@ -23,7 +23,7 @@ Tips:
  - Use get:debug to launch in debug mode
  -- Will await debugger to attach on 8000 before completing startup
  -- Intellij IDEA: Use the 'Remote' run configuration and specify the 8000 port to connect to
- - Added GWT_HOME environment variable to make like easier when loading up samples
+ - Added GWT_HOME environment variable to make life easier when loading up samples
  - GXT 3.0.0-beta4: Repository indicated in doco is wrong.  Used https://oss.sonatype.org/content/repositories/releases
  - SmartGXT is a wrapper for a JS library and is difficult to debug
  
