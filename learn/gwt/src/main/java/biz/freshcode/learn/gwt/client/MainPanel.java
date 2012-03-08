@@ -1,15 +1,28 @@
 package biz.freshcode.learn.gwt.client;
 
+import com.google.gwt.user.client.Command;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTMLPanel;
+import com.google.gwt.user.client.ui.MenuBar;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class MainPanel extends Composite {
     {
-        // NOTE: Seems to cause scroll bar (container is 100% height)
-//        setShowEdges(true);
+        VerticalPanel vp = new VerticalPanel();
+        vp.setHeight("100%");
+        vp.setWidth("100%");
 
-//        MenuBar mb = new MenuBar();
+        MenuBar mb = new MenuBar();
+        vp.add(mb);
+        MenuBar exps = new MenuBar(true);
+        mb.addItem("Experiments", exps);
+        exps.addItem("Alert", new Command() {
+            @Override
+            public void execute() {
+                Window.alert("Consider yourself alerted");
+            }
+        });
 //        addMember(mb);
 //        Menu m = new Menu();
 //        m.setTitle("Experiments");
@@ -23,7 +36,6 @@ public class MainPanel extends Composite {
 //        });
 //        mb.setMenus(m);
 
-        VerticalPanel vp = new VerticalPanel();
         HTMLPanel html = new HTMLPanel("<p>This is the contents.  It carries on for a little bit but I don't know if it will get a scroll bar.</p>");
         vp.add(html);
         initWidget(vp);
