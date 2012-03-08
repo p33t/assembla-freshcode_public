@@ -20,6 +20,8 @@
           </element>
           <element id="directory" name="lib">
             <element id="library" level="project" name="Maven: com.google.gwt:gwt-servlet:2.4.0" />
+            <element id="library" level="project" name="Maven: com.sencha.gxt:gxt:3.0.0-beta4" />
+            <element id="library" level="project" name="Maven: org.json:json:20090211" />
           </element>
         </element>
         <element id="gwt-compiler-output" facet="learn-gwt/gwt/GWT" />
@@ -340,6 +342,17 @@
         <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-user/2.4.0/gwt-user-2.4.0-sources.jar!/" />
       </SOURCES>
     </library>
+    <library name="Maven: com.sencha.gxt:gxt:3.0.0-beta4">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt/3.0.0-beta4/gxt-3.0.0-beta4.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt/3.0.0-beta4/gxt-3.0.0-beta4-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt/3.0.0-beta4/gxt-3.0.0-beta4-sources.jar!/" />
+      </SOURCES>
+    </library>
     <library name="Maven: javax.validation:validation-api:1.0.0.GA">
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/javax/validation/validation-api/1.0.0.GA/validation-api-1.0.0.GA.jar!/" />
@@ -371,6 +384,17 @@
       </JAVADOC>
       <SOURCES>
         <root url="jar://$MAVEN_REPOSITORY$/junit/junit/4.7/junit-4.7-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.json:json:20090211">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/json/json/20090211/json-20090211.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/json/json/20090211/json-20090211-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/json/json/20090211/json-20090211-sources.jar!/" />
       </SOURCES>
     </library>
   </component>
