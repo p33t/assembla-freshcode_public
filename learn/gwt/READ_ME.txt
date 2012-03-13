@@ -9,7 +9,8 @@ mvn archetype:generate -DarchetypeRepository=repo1.maven.org -DarchetypeGroupId=
   !!!! But should have been captialised like M1 or Mod1
 
 Tips:
- - Bootstrap dev with, say, 'package'.  Will trigger generation of src files from gwt:generateAsync, gwt:i18n (?)
+ - Bootstrap dev with call to maven plugin goal, say, 'package'.
+ -- Will trigger generation of src files from gwt:generateAsync, gwt:i18n (?)
  - Create IDEA project from 'external model'
  - Needed this in pom.xml to get Tomcat working in IDEA...
                         </goals>
