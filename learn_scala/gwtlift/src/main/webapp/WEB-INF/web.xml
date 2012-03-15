@@ -25,9 +25,19 @@
         <servlet-class>pkg.GreetingServiceScalaImpl</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>experimentServlet</servlet-name>
+        <servlet-class>pkg.ExperimentServiceImpl</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>greetServlet</servlet-name>
         <url-pattern>/Mod1/greet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+
+        <servlet-name>experimentServlet</servlet-name>
+        <url-pattern>/Mod1/experiment</url-pattern>
     </servlet-mapping>
 
     <!-- Default page to serve -->
