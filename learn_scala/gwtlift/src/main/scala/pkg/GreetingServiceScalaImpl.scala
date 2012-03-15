@@ -5,6 +5,7 @@ import biz.freshcode.learn.gwtlift.client.GreetingService
 import java.lang.String
 import biz.freshcode.learn.gwtlift.shared.FieldVerifier
 import net.liftweb.http.SHtml
+import xml.Text
 
 class GreetingServiceScalaImpl extends RemoteServiceServlet with GreetingService {
   def greetServer(input: String): String = {
@@ -24,5 +25,5 @@ class GreetingServiceScalaImpl extends RemoteServiceServlet with GreetingService
       ".<br><br>It looks like you are using:<br>" + userAgentAlt
   }
 
-  private def escapeHtml(in: String) = in
+  private def escapeHtml(in: String) = Text(in).toString()
 }
