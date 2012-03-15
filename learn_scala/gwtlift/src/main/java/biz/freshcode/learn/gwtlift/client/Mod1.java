@@ -1,5 +1,6 @@
 package biz.freshcode.learn.gwtlift.client;
 
+import biz.freshcode.learn.gwtlift.shared.AnObject;
 import biz.freshcode.learn.gwtlift.shared.FieldVerifier;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
@@ -34,6 +35,7 @@ public class Mod1 implements EntryPoint {
      * Create a remote service proxy to talk to the server-side Greeting service.
      */
     private final GreetingServiceAsync greetingService = GWT.create(GreetingService.class);
+    private final ExperimentServiceAsync experimentService = GWT.create(ExperimentService.class);
 
     private final Messages messages = GWT.create(Messages.class);
 
@@ -46,6 +48,7 @@ public class Mod1 implements EntryPoint {
         nameField.setText(messages.nameField());
         final Label errorLabel = new Label();
         final Button btnSendObject = new Button("Send Object");
+
 
         // We can add style names to widgets
         sendButton.addStyleName("sendButton");
@@ -80,6 +83,25 @@ public class Mod1 implements EntryPoint {
         dialogVPanel.setHorizontalAlignment(VerticalPanel.ALIGN_RIGHT);
         dialogVPanel.add(closeButton);
         dialogBox.setWidget(dialogVPanel);
+
+        final AsyncCallback<String> generalStringCallback = new AsyncCallback<String>() {
+            public void onFailure(Throwable caught) {
+                // Show the RPC error message to the user
+                dialogBox.setText("Remote Procedure Call - Failure");
+                serverResponseLabel.addStyleName("serverResponseLabelError");
+                serverResponseLabel.setHTML(SERVER_ERROR);
+                dialogBox.center();
+                closeButton.setFocus(true);
+            }
+
+            public void onSuccess(String result) {
+                dialogBox.setText("Remote Procedure Call");
+                serverResponseLabel.removeStyleName("serverResponseLabelError");
+                serverResponseLabel.setHTML(result);
+                dialogBox.center();
+                closeButton.setFocus(true);
+            }
+        };
 
         // Add a handler to close the DialogBox
         closeButton.addClickHandler(new ClickHandler() {
@@ -124,24 +146,7 @@ public class Mod1 implements EntryPoint {
                 sendButton.setEnabled(false);
                 textToServerLabel.setText(textToServer);
                 serverResponseLabel.setText("");
-                greetingService.greetServer(textToServer, new AsyncCallback<String>() {
-                    public void onFailure(Throwable caught) {
-                        // Show the RPC error message to the user
-                        dialogBox.setText("Remote Procedure Call - Failure");
-                        serverResponseLabel.addStyleName("serverResponseLabelError");
-                        serverResponseLabel.setHTML(SERVER_ERROR);
-                        dialogBox.center();
-                        closeButton.setFocus(true);
-                    }
-
-                    public void onSuccess(String result) {
-                        dialogBox.setText("Remote Procedure Call");
-                        serverResponseLabel.removeStyleName("serverResponseLabelError");
-                        serverResponseLabel.setHTML(result);
-                        dialogBox.center();
-                        closeButton.setFocus(true);
-                    }
-                });
+                greetingService.greetServer(textToServer, generalStringCallback);
             }
         }
 
@@ -152,7 +157,11 @@ public class Mod1 implements EntryPoint {
 
         btnSendObject.addClickHandler(new ClickHandler() {
             public void onClick(ClickEvent clickEvent) {
-                Window.alert("Sending the object.");
+                AnObject obj = new AnObject();
+                obj.num = 99;
+                obj.str = "ninty-nine";
+                experimentService.sendObject(obj, generalStringCallback);
+
             }
         });
     }
