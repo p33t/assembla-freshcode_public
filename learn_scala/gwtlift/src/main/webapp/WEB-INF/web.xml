@@ -22,7 +22,7 @@
     <!-- Servlets -->
     <servlet>
         <servlet-name>greetServlet</servlet-name>
-        <servlet-class>biz.freshcode.learn.gwtlift.server.GreetingServiceImpl</servlet-class>
+        <servlet-class>pkg.GreetingServiceScalaImpl</servlet-class>
     </servlet>
 
     <servlet-mapping>
