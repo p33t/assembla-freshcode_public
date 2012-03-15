@@ -15,7 +15,8 @@
 
     <filter-mapping>
         <filter-name>LiftFilter</filter-name>
-        <url-pattern>/*</url-pattern>
+        <!-- IE: XMLHttpRequest -->
+        <url-pattern>/xhr/*</url-pattern>
     </filter-mapping>
 
     <!-- Servlets -->
