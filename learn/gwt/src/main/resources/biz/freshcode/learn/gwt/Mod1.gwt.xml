@@ -11,11 +11,11 @@
   <!-- the theme of your GWT application by uncommenting          -->
   <!-- any one of the following lines.                            -->
   <inherits name='com.google.gwt.user.theme.standard.Standard' />
-  <inherits name='com.sencha.gxt.ui.GXT'/>
   <!-- <inherits name='com.google.gwt.user.theme.chrome.Chrome'/> -->
   <!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/>     -->
 
   <!-- Other module inherits                                      -->
+  <inherits name='com.sencha.gxt.ui.GXT'/>
 
   <!-- Specify the app entry point class.                         -->
   <entry-point class='biz.freshcode.learn.gwt.client.EntryPoint' />
