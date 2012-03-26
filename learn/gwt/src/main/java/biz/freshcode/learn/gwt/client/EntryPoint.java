@@ -7,6 +7,7 @@ public class EntryPoint implements com.google.gwt.core.client.EntryPoint {
     @Override
     public void onModuleLoad() {
         MainPanel main = new MainPanel();
+        // RootLayoutPanel causes an error here... not sure why.
         RootPanel.get().add(main);
         DOM.removeChild(RootPanel.getBodyElement(), DOM.getElementById("loading"));
     }

@@ -27,4 +27,11 @@ Tips:
  - Added GWT_HOME environment variable to make life easier when loading up samples
  - GXT 3.0.0-beta4: Repository indicated in doco is wrong.  Used https://oss.sonatype.org/content/repositories/releases
  - SmartGXT is a wrapper for a JS library and is difficult to debug
- 
+
+ Notes
+ -----
+ - Use layout panels for non-document-like outer structure of UI.  Otherwise use html or widgets
+ - Use ResizeComposite (not Composite) to auto propagate resize events properly
+ - Opt for XxxLayoutPanel (not XxxPanel).  They work properly with 'standards mode'
+ -- Dock, Vertical, Split, Stack Panels are discouraged
+ -- Horizontal can be used with caveats
