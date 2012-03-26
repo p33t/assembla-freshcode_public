@@ -19,7 +19,7 @@
             <name>Sonatype Snapshots</name>
             <url>https://oss.sonatype.org/content/repositories/releases/</url>
             <!--<snapshots>-->
-                <!--<enabled>true</enabled>-->
+            <!--<enabled>true</enabled>-->
             <!--</snapshots>-->
         </repository>
     </repositories>
@@ -130,6 +130,17 @@
                 <configuration>
                     <source>1.6</source>
                     <target>1.6</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>maven-jetty-plugin</artifactId>
+                <version>6.1.22</version>
+                <configuration>
+                    <contextPath>/</contextPath>
+                    <scanIntervalSeconds>5</scanIntervalSeconds>
+                    <stopKey>59a65811-ad00-468d-ba60-9591bc3c5d97</stopKey>
+                    <stopPort>8090</stopPort>
                 </configuration>
             </plugin>
         </plugins>
