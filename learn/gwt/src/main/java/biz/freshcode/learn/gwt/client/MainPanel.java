@@ -1,12 +1,17 @@
 package biz.freshcode.learn.gwt.client;
 
+import biz.freshcode.learn.gwt.client.uibinder.Basic;
 import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
 
+import java.util.Date;
+
 public class MainPanel extends Composite {
+    Widget content = new HTMLPanel("<p>This is the contents.  It carries on for a little bit but I don't know if it will get a scroll bar.</p>");
+
     {
-        FlowPanel fp = new FlowPanel();
+        final FlowPanel fp = new FlowPanel();
         fp.setHeight("100%");
         fp.setWidth("100%");
 
@@ -20,9 +25,16 @@ public class MainPanel extends Composite {
                 Window.alert("Consider yourself alerted");
             }
         });
+        exps.addItem("Basic Binder", new Command() {
+            @Override
+            public void execute() {
+                fp.remove(content);
+                content = new Basic();
+                fp.add(content);
+            }
+        });
 
-        HTMLPanel html = new HTMLPanel("<p>This is the contents.  It carries on for a little bit but I don't know if it will get a scroll bar.</p>");
-        fp.add(html);
+        fp.add(content);
         initWidget(fp);
     }
 }
