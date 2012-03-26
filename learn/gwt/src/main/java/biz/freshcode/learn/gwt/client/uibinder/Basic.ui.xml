@@ -5,5 +5,6 @@
     <!-- NOTE: We could use HTML directly if we weren't using widgets -->
     <g:HTMLPanel>
         <p>Welcome to basic &lt;UI Binder&gt; Examples</p>
+        <p>Choose One:<g:ListBox ui:field='listBox' visibleItemCount='1'/></p>
     </g:HTMLPanel>
 </ui:UiBinder>
