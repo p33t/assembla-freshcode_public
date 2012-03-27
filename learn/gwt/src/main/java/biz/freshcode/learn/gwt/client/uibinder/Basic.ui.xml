@@ -6,11 +6,16 @@
     <ui:style>
         .mono {font-family: "Lucida Console", Monaco, monospace}
     </ui:style>
+
+    <!--Bind var name to a client bundle-->
+    <ui:with field="bundle" type="biz.freshcode.learn.gwt.client.uibinder.Bundle"/>
+
     <!-- NOTE: We could use HTML directly if we weren't using widgets -->
     <g:HTMLPanel>
         <p>Welcome to basic &lt;UI Binder&gt; Examples</p>
         <p>Choose One:<g:ListBox ui:field='listBox' visibleItemCount='1'/></p>
         <p>Randoms:<g:ListBox ui:field='randomsListBox' visibleItemCount='1'/></p>
         <p><g:Button styleName="{style.mono}" ui:field='button'>Rock 'n Roll</g:Button></p>
+        <g:Image resource='{bundle.logo}'/>
     </g:HTMLPanel>
 </ui:UiBinder>
