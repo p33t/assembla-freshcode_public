@@ -298,6 +298,17 @@
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="SvnBranchConfigurationManager">
+    <option name="myConfigurationMap">
+      <map>
+        <entry key="$PROJECT_DIR$">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="trunkUrl" value="https://subversion.assembla.com/svn/freshcode_public/learn/gwt" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="mySupportsUserInfoFilter" value="true" />
   </component>
   <component name="SvnConfiguration" maxAnnotateRevisions="500">
