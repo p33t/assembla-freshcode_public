@@ -2,7 +2,6 @@ package biz.freshcode.learn.gwt.client;
 
 import biz.freshcode.learn.gwt.client.uibinder.Basic;
 import biz.freshcode.learn.gwt.client.uibinder.Composed;
-import biz.freshcode.learn.gwt.client.uibinder.PanelMagic;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.Command;
@@ -31,21 +30,24 @@ public class MainPanel extends Composite {
         MenuBar uiBinder = new MenuBar(true);
         exps.addItem("Ui Binder", uiBinder);
 
-        uiBinder.addItem(simpleItem("Basic", Basic.class));
-        uiBinder.addItem(simpleItem("Composed", Composed.class));
+        uiBinder.addItem(new MenuItem("Basic", new Command() {
+            @Override
+            public void execute() {
+                Widget w = GWT.create(Basic.class);
+                replaceContent(w);
+            }
+        }));
+        
+        uiBinder.addItem(new MenuItem("Composed", new Command() {
+            @Override
+            public void execute() {
+                Widget w = GWT.create(Composed.class);
+                replaceContent(w);
+            }
+        }));
 
         pnl.add(content);
         initWidget(pnl);
-    }
-
-    private MenuItem simpleItem(String text, final Class<? extends Widget> cls) {
-        return new MenuItem(text, new Command() {
-            @Override
-            public void execute() {
-                Widget w = GWT.create(cls);
-                replaceContent(w);
-            }
-        });
     }
 
     private void replaceContent(Widget newContent) {
