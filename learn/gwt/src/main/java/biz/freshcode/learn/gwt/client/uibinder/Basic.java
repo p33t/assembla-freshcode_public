@@ -1,8 +1,13 @@
 package biz.freshcode.learn.gwt.client.uibinder;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ChangeEvent;
+import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.Widget;
@@ -21,6 +26,8 @@ public class Basic extends Composite {
     private static Binder binder = GWT.create(Binder.class);
     @UiField
     ListBox listBox;
+    @UiField
+    Button button;
 
     {
         // This must come first to bind fields to instance variables
@@ -30,5 +37,15 @@ public class Basic extends Composite {
             listBox.addItem(trans);
         }
         logger.info("Finished Initializing");
+    }
+
+    @UiHandler("button")
+    void handleClick(ClickEvent e) {
+        Window.alert("Woo Hoo!");
+    }
+
+    @UiHandler("listBox")
+    void handleChange(ChangeEvent e) {
+        logger.info("listBox change " + System.currentTimeMillis());
     }
 }
