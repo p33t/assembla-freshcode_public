@@ -22,7 +22,7 @@
     <!--
        NOTE: This requires tomcat's server.xml to have an SSL enabled port (search for 8443)
        AND the host system need to have an SSL certificate.  Generate it using:
-         $JAVA_HOME/bin/keytool -genkey -alias tomcat -keyalg RSA
+         $JAVA_HOME/bin/keytool -genkey -alias tomcat -keyalg RSA -keysize 2048
          and use password 'changeit' which is the default used by Tomcat
      -->
     <security-constraint>
