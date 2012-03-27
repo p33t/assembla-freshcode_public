@@ -1,0 +1,29 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+    <g:DockLayoutPanel unit='EM'>
+        <!--These are not real 'runtime' objects. Note the lowercase element name. -->
+        <!--They just gather config as designed by the host widget.-->
+        <g:center>
+            <g:HorizontalPanel>
+                <!--Labels are just text (no markup) for simplicity / security-->
+                <g:Label>Body</g:Label>
+                <g:Label>Content</g:Label>
+                <!-- Results in a span -->
+                <g:InlineHTML>
+                    <b>Special</b>
+                </g:InlineHTML>
+            </g:HorizontalPanel>
+        </g:center>
+        <g:west size='10'>
+            <!-- Results in a div (block layout) -->
+            <g:HTML>
+                <ul>
+                    <li>One</li>
+                    <li>Two</li>
+                    <li>Buckle My Shoe</li>
+                </ul>
+            </g:HTML>
+        </g:west>
+    </g:DockLayoutPanel>
+</ui:UiBinder>
