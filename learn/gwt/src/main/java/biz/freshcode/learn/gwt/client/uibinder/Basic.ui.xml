@@ -16,6 +16,7 @@
         <p>Choose One:<g:ListBox ui:field='listBox' visibleItemCount='1'/></p>
         <p>Randoms:<g:ListBox ui:field='randomsListBox' visibleItemCount='1'/></p>
         <p><g:Button styleName="{style.mono}" ui:field='button'>Rock 'n Roll</g:Button></p>
+        <!-- No working...<p class="{bundle.style.redText}">This should be red</p>-->
         <g:Image resource='{bundle.logo}'/>
     </g:HTMLPanel>
 </ui:UiBinder>
