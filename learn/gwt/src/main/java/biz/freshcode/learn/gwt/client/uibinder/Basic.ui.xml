@@ -2,11 +2,15 @@
 <!-- Above line facilitates use of HTML-like entites like &gt; -->
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
         xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+    <!--Specialized style.  Can come from external stylesheet, and can apply multiple styles to a widget etc.-->
+    <ui:style>
+        .mono {font-family: "Lucida Console", Monaco, monospace}
+    </ui:style>
     <!-- NOTE: We could use HTML directly if we weren't using widgets -->
     <g:HTMLPanel>
         <p>Welcome to basic &lt;UI Binder&gt; Examples</p>
         <p>Choose One:<g:ListBox ui:field='listBox' visibleItemCount='1'/></p>
         <p>Randoms:<g:ListBox ui:field='randomsListBox' visibleItemCount='1'/></p>
-        <p><g:Button ui:field='button'>Rock 'n Roll</g:Button></p>
+        <p><g:Button styleName="{style.mono}" ui:field='button'>Rock 'n Roll</g:Button></p>
     </g:HTMLPanel>
 </ui:UiBinder>

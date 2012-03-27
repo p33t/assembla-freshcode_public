@@ -27,7 +27,7 @@ public class Basic extends Composite {
     private static Binder binder = GWT.create(Binder.class);
     @UiField
     ListBox listBox;
-    // This one is supplied manually
+    // This one is supplied manually.  There are @UiFactory and @UiConstructor alternatives.
     @UiField(provided=true)
     ListBox randomsListBox;
     @UiField
