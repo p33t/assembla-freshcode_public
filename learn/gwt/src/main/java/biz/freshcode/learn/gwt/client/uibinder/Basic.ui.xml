@@ -6,6 +6,7 @@
     <g:HTMLPanel>
         <p>Welcome to basic &lt;UI Binder&gt; Examples</p>
         <p>Choose One:<g:ListBox ui:field='listBox' visibleItemCount='1'/></p>
+        <p>Randoms:<g:ListBox ui:field='randomsListBox' visibleItemCount='1'/></p>
         <p><g:Button ui:field='button'>Rock 'n Roll</g:Button></p>
     </g:HTMLPanel>
 </ui:UiBinder>

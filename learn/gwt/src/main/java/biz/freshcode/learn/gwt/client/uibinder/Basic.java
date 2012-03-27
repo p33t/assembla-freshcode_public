@@ -6,6 +6,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.Random;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
@@ -26,11 +27,18 @@ public class Basic extends Composite {
     private static Binder binder = GWT.create(Binder.class);
     @UiField
     ListBox listBox;
+    // This one is supplied manually
+    @UiField(provided=true)
+    ListBox randomsListBox;
     @UiField
     Button button;
 
     {
-        // This must come first to bind fields to instance variables
+        randomsListBox = new ListBox(false);
+        for (int i = 0; i < 10; i++) {
+            randomsListBox.addItem("s-" + Random.nextInt());
+        }
+        // This must come first to bind non-provided fields to instance variables
         initWidget(binder.createAndBindUi(this));
         logger.info("Initializing...");
         for (String trans : Arrays.asList("Ferry", "Train", "Bus")) {
