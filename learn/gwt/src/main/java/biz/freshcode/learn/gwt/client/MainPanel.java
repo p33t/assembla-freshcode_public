@@ -1,22 +1,23 @@
 package biz.freshcode.learn.gwt.client;
 
 import biz.freshcode.learn.gwt.client.uibinder.Basic;
+import biz.freshcode.learn.gwt.client.uibinder.Composed;
+import biz.freshcode.learn.gwt.client.uibinder.PanelMagic;
+import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
 
-import java.util.Date;
-
 public class MainPanel extends Composite {
+    DockLayoutPanel pnl = new DockLayoutPanel(Style.Unit.EM);
     Widget content = new HTMLPanel("<p>This is the contents.  It carries on for a little bit but I don't know if it will get a scroll bar.</p>");
 
     {
-        final FlowPanel fp = new FlowPanel();
-        fp.setHeight("100%");
-        fp.setWidth("100%");
+        pnl.setHeight("100%");
+        pnl.setWidth("100%");
 
         MenuBar mb = new MenuBar();
-        fp.add(mb);
+        pnl.addNorth(mb, 2);
         MenuBar exps = new MenuBar(true);
         mb.addItem("Experiments", exps);
         exps.addItem("Alert", new Command() {
@@ -25,16 +26,31 @@ public class MainPanel extends Composite {
                 Window.alert("Consider yourself alerted");
             }
         });
-        exps.addItem("Basic Binder", new Command() {
+
+        MenuBar uiBinder = new MenuBar(true);
+        exps.addItem("Ui Binder", uiBinder);
+
+        // NOTE: Tried to replace this with cls.newInstance() but GWT barfed.
+        uiBinder.addItem("Basic", new Command() {
             @Override
             public void execute() {
-                fp.remove(content);
-                content = new Basic();
-                fp.add(content);
+                replaceContent(new Basic());
             }
         });
 
-        fp.add(content);
-        initWidget(fp);
+        uiBinder.addItem("Composed", new Command() {
+            @Override
+            public void execute() {
+                replaceContent(new Composed());
+            }
+        });
+        pnl.add(content);
+        initWidget(pnl);
+    }
+
+    private void replaceContent(Widget newContent) {
+        pnl.remove(content);
+        content = newContent;
+        pnl.add(content);
     }
 }
