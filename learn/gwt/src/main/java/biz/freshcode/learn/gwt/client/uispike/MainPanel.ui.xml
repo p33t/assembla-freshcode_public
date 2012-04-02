@@ -1,8 +1,30 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
-<!-- Above line facilitates use of HTML-like entites like &gt; -->
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
-        xmlns:g='urn:import:com.google.gwt.user.client.ui'>
-    <g:HTMLPanel>
-        <p>Hello</p>
-    </g:HTMLPanel>
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'
+             xmlns:container='urn:import:com.sencha.gxt.widget.core.client.container'
+             xmlns:gxt='urn:import:com.sencha.gxt.widget.core.client'
+        >
+
+    <ui:style>
+        .highlight {
+            background-color: #e0ffff;
+        }
+    </ui:style>
+
+    <ui:with field="westData"
+             type="com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData"/>
+    <!--<ui:with field="centerData" type="com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData"/>-->
+
+    <container:BorderLayoutContainer borders="true">
+        <container:north>
+            <g:HTMLPanel>
+                <p>Hello</p>
+            </g:HTMLPanel>
+        </container:north>
+        <container:west layoutData="{westData}">
+            <g:HTMLPanel styleName="{style.highlight}">
+                <p>World</p>
+            </g:HTMLPanel>
+        </container:west>
+    </container:BorderLayoutContainer>
 </ui:UiBinder>
