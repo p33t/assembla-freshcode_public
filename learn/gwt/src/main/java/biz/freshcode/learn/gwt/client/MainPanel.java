@@ -20,34 +20,43 @@ public class MainPanel extends Composite {
         pnl.addNorth(mb, 2);
         MenuBar exps = new MenuBar(true);
         mb.addItem("Experiments", exps);
+
+        exps.addItem("UI Spike", new Command() {
+            public void execute() {
+                Widget w = GWT.create(biz.freshcode.learn.gwt.client.uispike.MainPanel.class);
+                replaceContent(w);
+            }
+        });
+
         exps.addItem("Alert", new Command() {
-            @Override
             public void execute() {
                 Window.alert("Consider yourself alerted");
             }
         });
 
-        MenuBar uiBinder = new MenuBar(true);
+        MenuBar uiBinder = uiBinder();
         exps.addItem("Ui Binder", uiBinder);
 
-        uiBinder.addItem(new MenuItem("Basic", new Command() {
-            @Override
+        pnl.add(content);
+        initWidget(pnl);
+    }
+
+    private MenuBar uiBinder() {
+        MenuBar mb = new MenuBar(true);
+        mb.addItem("Basic", new Command() {
             public void execute() {
                 Widget w = GWT.create(Basic.class);
                 replaceContent(w);
             }
-        }));
-        
-        uiBinder.addItem(new MenuItem("Composed", new Command() {
-            @Override
+        });
+
+        mb.addItem("Composed", new Command() {
             public void execute() {
                 Widget w = GWT.create(Composed.class);
                 replaceContent(w);
             }
-        }));
-
-        pnl.add(content);
-        initWidget(pnl);
+        });
+        return mb;
     }
 
     private void replaceContent(Widget newContent) {
