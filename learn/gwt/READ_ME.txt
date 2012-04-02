@@ -35,3 +35,7 @@ Tips:
  - Opt for XxxLayoutPanel (not XxxPanel).  They work properly with 'standards mode'
  -- Dock, Vertical, Split, Stack Panels are discouraged
  -- Horizontal can be used with caveats
+- Autobeans for reducing boilerplate that arises in Java Beans
+-- Interface with get/set declared
+-- Use AutoBeanFactory to instantiate (Or AutoBeanFactorySource outside of GWT code (?)
+-- 'Category' used to implement additional non-property methods
