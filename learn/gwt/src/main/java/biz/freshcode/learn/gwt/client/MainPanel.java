@@ -2,7 +2,7 @@ package biz.freshcode.learn.gwt.client;
 
 import biz.freshcode.learn.gwt.client.uibinder.Basic;
 import biz.freshcode.learn.gwt.client.uibinder.Composed;
-import biz.freshcode.learn.gwt.client.uibinder.eg.BorderLayoutUiBinderExample;
+import biz.freshcode.learn.gwt.client.uibinder.eg.BorderLayoutEg;
 import biz.freshcode.learn.gwt.client.uibinder.eg.Tutorial1;
 import biz.freshcode.learn.gwt.client.uibinder.eg.Tutorial2;
 import com.google.gwt.core.client.GWT;
@@ -10,7 +10,6 @@ import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
-import com.sencha.gxt.widget.core.client.menu.Menu;
 
 public class MainPanel extends Composite {
     DockLayoutPanel pnl = new DockLayoutPanel(Style.Unit.EM);
@@ -62,7 +61,7 @@ public class MainPanel extends Composite {
         MenuBar mb = new MenuBar(true);
         mb.addItem("Border Eg", new Command() {
             public void execute() {
-                IsWidget w = GWT.create(BorderLayoutUiBinderExample.class);
+                IsWidget w = GWT.create(BorderLayoutEg.class);
                 replaceRoot(w.asWidget());
             }
         });
