@@ -1,0 +1,18 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+        xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+
+    <ui:style>
+        .highlight {
+            background-color: #ffe4c4;
+            border: #8a2be2 solid medium;
+        }
+    </ui:style>
+
+    <!-- NOTE: We could use HTML directly if we weren't using widgets -->
+    <g:SimpleLayoutPanel styleName="{style.highlight}" title="Resizer">
+        <g:HTMLPanel>
+            <p>Some writing</p>
+        </g:HTMLPanel>
+    </g:SimpleLayoutPanel>
+</ui:UiBinder>

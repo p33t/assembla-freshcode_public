@@ -1,5 +1,6 @@
 package biz.freshcode.learn.gwt.client;
 
+import biz.freshcode.learn.gwt.client.experiment.Resizer;
 import biz.freshcode.learn.gwt.client.uibinder.Basic;
 import biz.freshcode.learn.gwt.client.uibinder.Composed;
 import biz.freshcode.learn.gwt.client.uibinder.eg.BorderLayoutEg;
@@ -34,6 +35,13 @@ public class MainPanel extends Composite {
         exps.addItem("Alert", new Command() {
             public void execute() {
                 Window.alert("Consider yourself alerted");
+            }
+        });
+
+        exps.addItem("Resizer", new Command() {
+            public void execute() {
+                Widget w = GWT.create(Resizer.class);
+                replaceContent(w);
             }
         });
 
