@@ -14,23 +14,47 @@
              xmlns:g="urn:import:com.google.gwt.user.client.ui">
 
     <ui:style>
-        .centerMargin {
-            margin: 10px;
+        .summer {
+            background-color: #daa520;
         }
     </ui:style>
 
+    <ui:with type="com.sencha.gxt.core.client.util.Margins" field="northMargins">
+        <ui:attributes top="5" right="5" bottom="5" left="5"/>
+    </ui:with>
+    <ui:with type="com.sencha.gxt.core.client.util.Margins" field="westMargins">
+        <ui:attributes top="0" right="5" bottom="0" left="5"/>
+    </ui:with>
+    <ui:with type="com.sencha.gxt.core.client.util.Margins" field="centerMargins">
+        <ui:attributes top="0" right="0" bottom="0" left="0"/>
+    </ui:with>
+    <ui:with type="com.sencha.gxt.core.client.util.Margins" field="eastMargins">
+        <ui:attributes top="0" right="5" bottom="0" left="5"/>
+    </ui:with>
+    <ui:with type="com.sencha.gxt.core.client.util.Margins" field="southMargins">
+        <ui:attributes top="5" right="5" bottom="5" left="5"/>
+    </ui:with>
 
     <ui:with type="com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData"
-             field="northData"/>
+             field="northData">
+        <ui:attributes size="100" margins="{northMargins}"/>
+    </ui:with>
+    <ui:with type="com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData" field="westData">
+        <ui:attributes size="150" margins="{westMargins}" collapsible="true" split="true"/>
+    </ui:with>
+    <ui:with type="com.sencha.gxt.widget.core.client.container.MarginData" field="centerData">
+        <ui:attributes margins="{centerMargins}"/>
+    </ui:with>
+    <ui:with type="com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData" field="eastData">
+        <ui:attributes size="150" margins="{eastMargins}"/>
+    </ui:with>
     <ui:with type="com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData"
-             field="westData"/>
-    <ui:with type="com.sencha.gxt.widget.core.client.container.MarginData" field="centerData"/>
-    <ui:with type="com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData"
-             field="eastData"/>
-    <ui:with type="com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData"
-             field="southData"/>
+             field="southData">
+        <ui:attributes size="100" margins="{southMargins}"/>
+    </ui:with>
 
-    <container:BorderLayoutContainer ui:field="con" borders="true">
+    <!-- TODO: Need to sort out sizing -->
+    <container:BorderLayoutContainer ui:field="con" borders="true" height="500">
         <container:north layoutData="{northData}">
             <gxt:ContentPanel/>
         </container:north>
@@ -39,7 +63,7 @@
         </container:west>
         <container:center layoutData="{centerData}">
             <gxt:ContentPanel headingText="BorderLayout UiBinder Example" resize="false">
-                <g:FlexTable ui:field="table" addStyleNames="{style.centerMargin}" cellSpacing="8" cellPadding="4"/>
+                <g:FlexTable/>
             </gxt:ContentPanel>
         </container:center>
         <container:east layoutData="{eastData}">
