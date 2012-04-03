@@ -34,8 +34,6 @@ public class BorderLayoutUiBinderExample implements IsWidget, EntryPoint {
   private static MyUiBinder uiBinder = GWT.create(MyUiBinder.class);
 
   @UiField(provided = true)
-  MarginData outerData = new MarginData(20);
-  @UiField(provided = true)
   BorderLayoutData northData = new BorderLayoutData(100);
   @UiField(provided = true)
   BorderLayoutData westData = new BorderLayoutData(150);
