@@ -53,24 +53,25 @@
         <ui:attributes size="100" margins="{southMargins}"/>
     </ui:with>
 
-    <!-- TODO: Need to sort out sizing -->
-    <container:BorderLayoutContainer ui:field="con" borders="true" height="500">
-        <container:north layoutData="{northData}">
-            <gxt:ContentPanel/>
-        </container:north>
-        <container:west layoutData="{westData}">
-            <gxt:ContentPanel/>
-        </container:west>
-        <container:center layoutData="{centerData}">
-            <gxt:ContentPanel headingText="BorderLayout UiBinder Example" resize="false">
-                <g:FlexTable/>
-            </gxt:ContentPanel>
-        </container:center>
-        <container:east layoutData="{eastData}">
-            <gxt:ContentPanel/>
-        </container:east>
-        <container:south layoutData="{southData}">
-            <gxt:ContentPanel/>
-        </container:south>
-    </container:BorderLayoutContainer>
+    <container:Viewport>
+        <container:BorderLayoutContainer ui:field="con" borders="true">
+            <container:north layoutData="{northData}">
+                <gxt:ContentPanel/>
+            </container:north>
+            <container:west layoutData="{westData}">
+                <gxt:ContentPanel/>
+            </container:west>
+            <container:center layoutData="{centerData}">
+                <gxt:ContentPanel headingText="BorderLayout UiBinder Example" resize="false">
+                    <g:FlexTable/>
+                </gxt:ContentPanel>
+            </container:center>
+            <container:east layoutData="{eastData}">
+                <gxt:ContentPanel/>
+            </container:east>
+            <container:south layoutData="{southData}">
+                <gxt:ContentPanel/>
+            </container:south>
+        </container:BorderLayoutContainer>
+    </container:Viewport>
 </ui:UiBinder>
