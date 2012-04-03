@@ -20,7 +20,7 @@
                     <menu:MenuBarItem text="File">
                         <menu:menu>
                             <menu:Menu>
-                                <menu:MenuItem text="New" ui:field="newFile"/>
+                                <menu:MenuItem text="New *Click Me*" ui:field="newFile"/>
                                 <menu:MenuItem text="Open File">
                                     <menu:submenu>
                                         <menu:Menu>

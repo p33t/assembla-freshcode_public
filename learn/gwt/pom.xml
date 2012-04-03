@@ -71,6 +71,18 @@
             <artifactId>gxt</artifactId>
             <version>3.0.0-rc</version>
         </dependency>
+        <!-- Trying to debug Border layout -->
+        <dependency>
+            <groupId>com.sencha.gxt</groupId>
+            <artifactId>uibinder-bridge</artifactId>
+            <version>${gwtVersion}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.gwt.inject</groupId>
+            <artifactId>gin</artifactId>
+            <!-- TODO: Confirm this version -->
+            <version>1.5.0</version>
+        </dependency>
     </dependencies>
 
     <build>

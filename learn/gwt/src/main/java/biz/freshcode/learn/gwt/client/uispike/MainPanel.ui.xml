@@ -15,16 +15,21 @@
              type="com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData"/>
     <!--<ui:with field="centerData" type="com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData"/>-->
 
-    <container:BorderLayoutContainer borders="true">
-        <container:north>
-            <g:HTMLPanel>
-                <p>Hello</p>
-            </g:HTMLPanel>
-        </container:north>
+    <container:BorderLayoutContainer>
+        <!--<container:north>-->
+            <!--<g:HTMLPanel>-->
+                <!--<p>Hello</p>-->
+            <!--</g:HTMLPanel>-->
+        <!--</container:north>-->
         <container:west layoutData="{westData}">
-            <g:HTMLPanel styleName="{style.highlight}">
-                <p>World</p>
-            </g:HTMLPanel>
+            <container:SimpleContainer>
+                <g:HTMLPanel styleName="{style.highlight}">
+                    <p>World</p>
+                </g:HTMLPanel>
+            </container:SimpleContainer>
         </container:west>
+        <container:center>
+            <gxt:ContentPanel/>
+        </container:center>
     </container:BorderLayoutContainer>
 </ui:UiBinder>
