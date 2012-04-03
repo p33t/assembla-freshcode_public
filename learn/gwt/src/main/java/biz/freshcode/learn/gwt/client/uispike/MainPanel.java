@@ -17,8 +17,6 @@ public class MainPanel extends Composite {
     }
 
     private static Binder binder = GWT.create(Binder.class);
-    @UiField
-    BorderLayoutData westData;
 
     {
         initWidget(binder.createAndBindUi(this));
