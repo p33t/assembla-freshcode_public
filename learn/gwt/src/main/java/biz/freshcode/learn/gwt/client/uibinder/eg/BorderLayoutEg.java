@@ -24,9 +24,9 @@ import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.event.SelectEvent.SelectHandler;
 
 // Borrowed from Sencha examples to try and debug problems / learn
-public class BorderLayoutUiBinderExample implements IsWidget, EntryPoint {
+public class BorderLayoutEg implements IsWidget, EntryPoint {
 
-    interface MyUiBinder extends UiBinder<Component, BorderLayoutUiBinderExample> {
+    interface MyUiBinder extends UiBinder<Component, BorderLayoutEg> {
     }
 
     private static MyUiBinder uiBinder = GWT.create(MyUiBinder.class);
