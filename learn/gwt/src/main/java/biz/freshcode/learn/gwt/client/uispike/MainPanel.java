@@ -17,15 +17,10 @@ public class MainPanel extends Composite {
     }
 
     private static Binder binder = GWT.create(Binder.class);
-    @UiField(provided = true)
+    @UiField
     BorderLayoutData westData;
 
     {
-        westData = new BorderLayoutData(100);
-        westData.setMargins(new Margins(0, 5, 0, 5));
-        westData.setCollapsible(true);
-        westData.setSplit(true);
-        westData.setCollapseMini(true);
         initWidget(binder.createAndBindUi(this));
     }
 }
