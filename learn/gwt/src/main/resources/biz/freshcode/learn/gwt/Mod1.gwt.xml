@@ -16,9 +16,21 @@
 
     <!-- Other module inherits                                      -->
     <inherits name='com.sencha.gxt.ui.GXT'/>
+
+    <!-- Trying to debug UI Binder & Sencha -->
+    <inherits name='com.google.gwt.activity.Activity' />
+    <inherits name='com.google.gwt.place.Place' />
+    <inherits name="com.google.gwt.inject.Inject" />
+    <inherits name="com.sencha.gwt.uibinder.UiBinder" />
+    <set-configuration-property name="UiBinder.useLazyWidgetBuilders" value="true" />
+
+    <!-- GZip the output files by default -->
+    <!--<inherits name='com.google.gwt.precompress.Precompress' />-->
+
     <inherits name="com.google.gwt.logging.Logging"/>
     <!--Don't want the logging on the pop in top-left of screen -->
     <set-property name="gwt.logging.popupHandler" value="DISABLED"/>
+
     <!-- Trying to get ClientBundle styling working -->
     <!--<inherits name="com.google.gwt.resources.Resources" />-->
 
@@ -29,4 +41,5 @@
     <source path='client'/>
     <source path='shared'/>
 
+    <!-- TODO: How about some 'servlet' elements?-->
 </module>
