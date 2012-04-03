@@ -12,7 +12,7 @@
     </ui:style>
 
     <ui:with field="westMargins" type="com.sencha.gxt.core.client.util.Margins">
-        <ui:attributes top="0" right="5" bottom="5" left="0"/>
+        <ui:attributes top="0" right="5" bottom="0" left="5"/>
     </ui:with>
 
     <ui:with field="westData"
@@ -23,7 +23,6 @@
                        collapseMini="true"
                        margins="{westMargins}"/>
     </ui:with>
-    <!--<ui:with field="centerData" type="com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData"/>-->
 
     <container:BorderLayoutContainer>
         <!--<container:north>-->
@@ -32,10 +31,18 @@
         <!--</g:HTMLPanel>-->
         <!--</container:north>-->
         <container:west layoutData="{westData}">
-            <gxt:ContentPanel/>
+            <gxt:ContentPanel headingText="West Heading">
+                <g:HTMLPanel>
+                    <p>This is some HTML</p>
+                </g:HTMLPanel>
+            </gxt:ContentPanel>
         </container:west>
         <container:center>
-            <gxt:ContentPanel/>
+            <gxt:ContentPanel>
+                <g:HTMLPanel>
+                    <p>This is some more HTML</p>
+                </g:HTMLPanel>
+            </gxt:ContentPanel>
         </container:center>
     </container:BorderLayoutContainer>
 </ui:UiBinder>
