@@ -24,25 +24,27 @@
                        margins="{westMargins}"/>
     </ui:with>
 
-    <container:BorderLayoutContainer>
-        <!--<container:north>-->
-        <!--<g:HTMLPanel>-->
-        <!--<p>Hello</p>-->
-        <!--</g:HTMLPanel>-->
-        <!--</container:north>-->
-        <container:west layoutData="{westData}">
-            <gxt:ContentPanel headingText="West Heading">
-                <g:HTMLPanel>
-                    <p>This is some HTML</p>
-                </g:HTMLPanel>
-            </gxt:ContentPanel>
-        </container:west>
-        <container:center>
-            <gxt:ContentPanel>
-                <g:HTMLPanel>
-                    <p>This is some more HTML</p>
-                </g:HTMLPanel>
-            </gxt:ContentPanel>
-        </container:center>
-    </container:BorderLayoutContainer>
+    <container:Viewport styleName="{style.highlight}">
+        <container:BorderLayoutContainer>
+            <!--<container:north>-->
+            <!--<g:HTMLPanel>-->
+            <!--<p>Hello</p>-->
+            <!--</g:HTMLPanel>-->
+            <!--</container:north>-->
+            <container:west layoutData="{westData}">
+                <gxt:ContentPanel headingText="West Heading">
+                    <g:HTMLPanel>
+                        <p>This is some HTML</p>
+                    </g:HTMLPanel>
+                </gxt:ContentPanel>
+            </container:west>
+            <container:center>
+                <gxt:ContentPanel>
+                    <g:HTMLPanel>
+                        <p>This is some more HTML</p>
+                    </g:HTMLPanel>
+                </gxt:ContentPanel>
+            </container:center>
+        </container:BorderLayoutContainer>
+    </container:Viewport>
 </ui:UiBinder>
