@@ -1,0 +1,39 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder
+        xmlns:ui='urn:ui:com.google.gwt.uibinder'
+        xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client"
+        xmlns:menu="urn:import:com.sencha.gxt.widget.core.client.menu"
+        xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container"
+        >
+
+    <ui:style>
+        .menuBorder {
+            border-top: none;
+        }
+    </ui:style>
+
+    <gxt:ContentPanel headingText="MenuBar Example" pixelSize="400, 300">
+        <!-- NOTE: This used to be called TopBottomContainer -->
+        <container:NorthSouthContainer>
+            <container:north>
+                <menu:MenuBar borders="true" addStyleNames="{style.menuBorder}">
+                    <menu:MenuBarItem text="File">
+                        <menu:menu>
+                            <menu:Menu>
+                                <menu:MenuItem text="New" ui:field="newFile"/>
+                                <menu:MenuItem text="Open File">
+                                    <menu:submenu>
+                                        <menu:Menu>
+                                            <menu:MenuItem text="readme.txt"/>
+                                            <menu:MenuItem text="helloworld.txt"/>
+                                        </menu:Menu>
+                                    </menu:submenu>
+                                </menu:MenuItem>
+                            </menu:Menu>
+                        </menu:menu>
+                    </menu:MenuBarItem>
+                </menu:MenuBar>
+            </container:north>
+        </container:NorthSouthContainer>
+    </gxt:ContentPanel>
+</ui:UiBinder>
