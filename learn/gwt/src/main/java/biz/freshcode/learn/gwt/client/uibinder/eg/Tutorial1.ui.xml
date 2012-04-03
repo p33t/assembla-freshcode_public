@@ -1,0 +1,11 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder
+        xmlns:ui="urn:ui:com.google.gwt.uibinder"
+        xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client"
+        xmlns:button="urn:import:com.sencha.gxt.widget.core.client.button">
+
+    <gxt:FramedPanel collapsible="true" headingText="Example" pixelSize="100, 80">
+        <button:TextButton ui:field="exampleButton" text="Click Me"/>
+    </gxt:FramedPanel>
+
+</ui:UiBinder>
