@@ -20,9 +20,6 @@
           </element>
           <element id="directory" name="lib">
             <element id="library" level="project" name="Maven: com.google.gwt:gwt-servlet:2.4.0" />
-            <element id="library" level="project" name="Maven: com.sencha.gxt:gxt:3.0.0-rc" />
-            <element id="library" level="project" name="Maven: org.json:json:20090211" />
-            <element id="library" level="project" name="Maven: com.sencha.gxt:uibinder-bridge:2.4.0" />
             <element id="library" level="project" name="Maven: com.google.gwt.inject:gin:1.5.0" />
             <element id="library" level="project" name="Maven: com.google.inject:guice:3.0-rc2" />
             <element id="library" level="project" name="Maven: javax.inject:javax.inject:1" />
