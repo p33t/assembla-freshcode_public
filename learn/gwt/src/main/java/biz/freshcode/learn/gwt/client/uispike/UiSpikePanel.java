@@ -2,17 +2,15 @@ package biz.freshcode.learn.gwt.client.uispike;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
-import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
-import com.sencha.gxt.core.client.util.Margins;
 import com.sencha.gxt.widget.core.client.Component;
 import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData;
 
 import java.util.logging.Logger;
 
 //  NOTE: Using 'Composite' doesn't play well with GXT.  IsWidget seems to work fine.
-public class MainPanel implements IsWidget {
+public class UiSpikePanel implements IsWidget {
     private static Binder binder = GWT.create(Binder.class);
     Logger logger = Logger.getLogger(getClass().getName());
 
@@ -20,7 +18,7 @@ public class MainPanel implements IsWidget {
         return binder.createAndBindUi(this);
     }
 
-    interface Binder extends UiBinder<Component, MainPanel> {
+    interface Binder extends UiBinder<Component, UiSpikePanel> {
     }
 
     /**
@@ -29,7 +27,7 @@ public class MainPanel implements IsWidget {
     static class UiConfig {
         BorderLayoutData westLayout() {
             return new BorderLayoutDataBuilder()
-                    .size(100)
+                    .size(200)
                     .collapsible(true)
                     .split(true)
                     .collapseMini(true)
