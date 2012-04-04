@@ -3,6 +3,7 @@
              xmlns:g='urn:import:com.google.gwt.user.client.ui'
              xmlns:container='urn:import:com.sencha.gxt.widget.core.client.container'
              xmlns:gxt='urn:import:com.sencha.gxt.widget.core.client'
+             xmlns:my='urn:import:biz.freshcode.learn.gwt.client.uispike'
         >
 
     <ui:style>
@@ -22,9 +23,7 @@
             <!--</container:north>-->
             <container:west layoutData="{config.westLayout}">
                 <gxt:ContentPanel headingText="West Heading">
-                    <g:HTMLPanel>
-                        <p>This is some HTML</p>
-                    </g:HTMLPanel>
+                    <my:ControlPanel/>
                 </gxt:ContentPanel>
             </container:west>
             <container:center>
