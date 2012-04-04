@@ -12,14 +12,13 @@ import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderL
 import java.util.logging.Logger;
 
 public class MainPanel extends Composite {
-    Logger logger = Logger.getLogger(getClass().getName());
-
-    interface Binder extends UiBinder<Widget, MainPanel> {
-    }
-
     private static Binder binder = GWT.create(Binder.class);
+    Logger logger = Logger.getLogger(getClass().getName());
 
     {
         initWidget(binder.createAndBindUi(this));
+    }
+
+    interface Binder extends UiBinder<Widget, MainPanel> {
     }
 }
