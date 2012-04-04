@@ -5,18 +5,19 @@
              xmlns:gxt='urn:import:com.sencha.gxt.widget.core.client'
         >
 
-    <!--<ui:with field="config" type="biz.freshcode.learn.gwt.client.uispike.MainPanel.UiConfig"/>-->
+    <ui:with field="config" type="biz.freshcode.learn.gwt.client.uispike.ControlPanel.UiConfig"/>
 
     <container:BorderLayoutContainer>
-        <container:north>
+        <container:north layoutData="{config.northLayout}">
             <!-- NOTE: Scrolling is not available on SimpleContainer or ContentPanel.  Look for implementors of 'HasScrollSupport'. -->
             <container:VerticalLayoutContainer ui:field="north">
-                <g:HTMLPanel>
-                    <p>
-                        North panel that has lots of writing so it will wrap. No? Oh well, I'll keep on typing. How about
-                        now?
-                    </p>
-                </g:HTMLPanel>
+                    <g:HTMLPanel>
+                        <p>
+                            North panel that has lots of writing so it will wrap. No? Oh well, I'll keep on typing. How
+                            about
+                            now?
+                        </p>
+                    </g:HTMLPanel>
             </container:VerticalLayoutContainer>
         </container:north>
         <container:center>
