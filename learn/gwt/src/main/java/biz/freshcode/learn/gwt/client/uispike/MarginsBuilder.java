@@ -2,6 +2,7 @@ package biz.freshcode.learn.gwt.client.uispike;
 
 import com.sencha.gxt.core.client.util.Margins;
 
+@BeanBuilder(Margins.class)
 public class MarginsBuilder {
     public final Margins margins;
 
