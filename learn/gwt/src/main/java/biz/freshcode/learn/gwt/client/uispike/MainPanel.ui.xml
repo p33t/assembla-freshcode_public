@@ -11,18 +11,7 @@
         }
     </ui:style>
 
-    <ui:with field="westMargins" type="com.sencha.gxt.core.client.util.Margins">
-        <ui:attributes top="0" right="5" bottom="0" left="5"/>
-    </ui:with>
-
-    <ui:with field="westData"
-             type="com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData">
-        <ui:attributes size="100"
-                       collapsible="true"
-                       split="true"
-                       collapseMini="true"
-                       margins="{westMargins}"/>
-    </ui:with>
+    <ui:with field="config" type="biz.freshcode.learn.gwt.client.uispike.MainPanel.UiConfig"/>
 
     <container:Viewport styleName="{style.highlight}">
         <container:BorderLayoutContainer>
@@ -31,7 +20,7 @@
             <!--<p>Hello</p>-->
             <!--</g:HTMLPanel>-->
             <!--</container:north>-->
-            <container:west layoutData="{westData}">
+            <container:west layoutData="{config.westLayout}">
                 <gxt:ContentPanel headingText="West Heading">
                     <g:HTMLPanel>
                         <p>This is some HTML</p>
