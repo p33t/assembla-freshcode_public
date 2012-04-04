@@ -55,7 +55,7 @@ public class MainPanel extends Composite {
 
         mbGxt.addItem("UI Spike", new Command() {
             public void execute() {
-                Widget w = GWT.create(biz.freshcode.learn.gwt.client.uispike.MainPanel.class);
+                IsWidget w = GWT.create(biz.freshcode.learn.gwt.client.uispike.MainPanel.class);
                 replaceRoot(w);
             }
         });
@@ -70,30 +70,30 @@ public class MainPanel extends Composite {
         mb.addItem("Border Eg", new Command() {
             public void execute() {
                 IsWidget w = GWT.create(BorderLayoutEg.class);
-                replaceRoot(w.asWidget());
+                replaceRoot(w);
             }
         });
 
         mb.addItem("Tutorial 1 (simple frame)", new Command() {
             public void execute() {
                 IsWidget w = GWT.create(Tutorial1.class);
-                replaceRoot(w.asWidget());
+                replaceRoot(w);
             }
         });
 
         mb.addItem("Tutorial 2 (menu + event)", new Command() {
             public void execute() {
                 IsWidget w = GWT.create(Tutorial2.class);
-                replaceRoot(w.asWidget());
+                replaceRoot(w);
             }
         });
         return mb;
     }
 
-    private void replaceRoot(Widget w) {
+    private void replaceRoot(IsWidget w) {
         RootPanel root = RootPanel.get();
         root.clear();
-        root.add(w);
+        root.add(w.asWidget());
     }
 
     private MenuBar uiBinder() {
