@@ -25,29 +25,18 @@ public class MainPanel extends Composite {
      */
     static class UiConfig {
         BorderLayoutData westLayout() {
-            BorderLayoutData b = new BorderLayoutData();
-            b.setSize(100);
-            b.setCollapsible(true);
-            b.setSplit(true);
-            b.setCollapseMini(true);
-            b.setMargins(westMargins());
-            return b;
-        }
-
-        Margins westMargins() {
-//            Old Way
-//            Margins m = new Margins();
-//            m.setTop(0);
-//            m.setRight(5);
-//            m.setBottom(m.getTop());
-//            m.setLeft(m.getRight());
-//            return m;
-            return new MarginsBuilder()
-                    .top(0)
-                    .right(5)
-                    .bottom(0)
-                    .left(5)
-                    .margins;
+            return new BorderLayoutDataBuilder()
+                    .size(100)
+                    .collapsible(true)
+                    .split(true)
+                    .collapseMini(true)
+                    .margins(new MarginsBuilder()
+                            .top(0)
+                            .right(5)
+                            .bottom(0)
+                            .left(5)
+                            .margins)
+                    .borderLayoutData;
         }
     }
 }
