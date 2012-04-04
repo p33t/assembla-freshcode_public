@@ -47,6 +47,7 @@ public class ControlPanel implements IsWidget {
     static class UiConfig {
         BorderLayoutData northLayout() {
             return new BorderLayoutDataBuilder()
+                    .size(250)
                     .split(true)
                     .margins(new MarginsBuilder()
                             .bottom(5)
