@@ -3,7 +3,15 @@ package biz.freshcode.learn.gwt.client.uispike;
 import com.sencha.gxt.core.client.util.Margins;
 
 public class MarginsBuilder {
-    public final Margins margins = new Margins();
+    public final Margins margins;
+
+    public MarginsBuilder() {
+        this(new Margins());
+    }
+
+    public MarginsBuilder(Margins m) {
+        margins = m;
+    }
 
     public MarginsBuilder top(int v) {
         margins.setTop(v);
