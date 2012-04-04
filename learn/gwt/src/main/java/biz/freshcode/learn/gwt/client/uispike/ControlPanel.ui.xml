@@ -9,9 +9,12 @@
 
     <container:BorderLayoutContainer>
         <container:north>
-            <g:HTMLPanel>
-                <p>North</p>
-            </g:HTMLPanel>
+                <g:HTMLPanel>
+                    <p>
+                        North panel that has lots of writing so it will wrap. No? Oh well, I'll keep on typing. How about
+                        now?
+                    </p>
+                </g:HTMLPanel>
         </container:north>
         <container:center>
             <gxt:ContentPanel>

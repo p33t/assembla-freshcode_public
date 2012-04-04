@@ -11,6 +11,7 @@ import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderL
 
 import java.util.logging.Logger;
 
+//  NOTE: Using 'Composite' doesn't play well with GXT.  IsWidget seems to work fine.
 public class MainPanel implements IsWidget {
     private static Binder binder = GWT.create(Binder.class);
     Logger logger = Logger.getLogger(getClass().getName());
