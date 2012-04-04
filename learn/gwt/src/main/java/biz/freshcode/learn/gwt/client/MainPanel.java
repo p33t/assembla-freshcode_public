@@ -6,6 +6,7 @@ import biz.freshcode.learn.gwt.client.uibinder.Composed;
 import biz.freshcode.learn.gwt.client.uibinder.eg.BorderLayoutEg;
 import biz.freshcode.learn.gwt.client.uibinder.eg.Tutorial1;
 import biz.freshcode.learn.gwt.client.uibinder.eg.Tutorial2;
+import biz.freshcode.learn.gwt.client.uispike.UiSpikePanel;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.Command;
@@ -55,7 +56,7 @@ public class MainPanel extends Composite {
 
         mbGxt.addItem("UI Spike", new Command() {
             public void execute() {
-                IsWidget w = GWT.create(biz.freshcode.learn.gwt.client.uispike.MainPanel.class);
+                IsWidget w = GWT.create(UiSpikePanel.class);
                 replaceRoot(w);
             }
         });

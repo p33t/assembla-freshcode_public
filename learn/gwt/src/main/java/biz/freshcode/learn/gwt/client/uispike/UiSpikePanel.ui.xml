@@ -12,7 +12,7 @@
         }
     </ui:style>
 
-    <ui:with field="config" type="biz.freshcode.learn.gwt.client.uispike.MainPanel.UiConfig"/>
+    <ui:with field="config" type="biz.freshcode.learn.gwt.client.uispike.UiSpikePanel.UiConfig"/>
 
     <container:Viewport styleName="{style.highlight}">
         <container:BorderLayoutContainer>
