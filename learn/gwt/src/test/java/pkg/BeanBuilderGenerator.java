@@ -3,6 +3,7 @@ package pkg;
 import biz.freshcode.learn.gwt.client.uispike.BeanBuilder;
 import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
@@ -46,13 +47,15 @@ public class BeanBuilderGenerator {
         src += "\n@" + BeanBuilder.class.getSimpleName() + "(" + simpleName + ".class)";
         src += "\npublic class " + builderName + " {";
         src += line("  public final " + simpleName + " " + varName);
-        src += "\n\n  public " + builderName + "() {";
-        src += line("    this(new " + simpleName + "())");
-        src += "\n  }";
+        if (hasDefaultConstructor(cls)) {
+            src += "\n\n  public " + builderName + "() {";
+            src += line("    this(new " + simpleName + "())");
+            src += "\n  }";
+        }
         src += "\n\n  public " + builderName + "(" + simpleName + " v) {";
         src += line("    " + varName + " = v");
         src += "\n  }";
-        for (Method m: cls.getMethods()) {
+        for (Method m : cls.getMethods()) {
             if (isSetter(m)) {
                 src += "\n\n  public " + builderName + " " + shortName(m) + "(" + argType(m) + " v) {";
                 src += line("    " + varName + "." + m.getName() + "(v)");
@@ -62,6 +65,13 @@ public class BeanBuilderGenerator {
         }
         src += "\n}";
         return src;
+    }
+
+    private static boolean hasDefaultConstructor(Class cls) {
+        for (Constructor c : cls.getConstructors()) {
+            if (c.getParameterTypes().length == 0) return true;
+        }
+        return false;
     }
 
     private static String decapitalize(String simpleName) {
