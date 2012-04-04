@@ -22,6 +22,7 @@
             <!--</g:HTMLPanel>-->
             <!--</container:north>-->
             <container:west layoutData="{config.westLayout}">
+                <!-- NOTE: We must have some sort of container here... having another control directly messes up resizing -->
                 <gxt:ContentPanel headingText="West Heading">
                     <my:ControlPanel/>
                 </gxt:ContentPanel>
