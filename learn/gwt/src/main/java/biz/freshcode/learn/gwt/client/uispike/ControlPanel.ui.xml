@@ -9,12 +9,15 @@
 
     <container:BorderLayoutContainer>
         <container:north>
+            <!-- NOTE: Scrolling is not available on SimpleContainer or ContentPanel.  Look for implementors of 'HasScrollSupport'. -->
+            <container:VerticalLayoutContainer ui:field="north">
                 <g:HTMLPanel>
                     <p>
                         North panel that has lots of writing so it will wrap. No? Oh well, I'll keep on typing. How about
                         now?
                     </p>
                 </g:HTMLPanel>
+            </container:VerticalLayoutContainer>
         </container:north>
         <container:center>
             <gxt:ContentPanel>
