@@ -16,19 +16,14 @@
 
     <!-- Other module inherits                                      -->
     <inherits name='com.sencha.gxt.ui.GXT'/>
-
-    <!-- Trying to debug UI Binder & Sencha -->
     <inherits name="com.sencha.gwt.uibinder.UiBinder" />
 
     <!-- GZip the output files by default -->
-    <!--<inherits name='com.google.gwt.precompress.Precompress' />-->
+    <inherits name='com.google.gwt.precompress.Precompress' />
 
     <inherits name="com.google.gwt.logging.Logging"/>
     <!--Don't want the logging on the pop in top-left of screen -->
     <set-property name="gwt.logging.popupHandler" value="DISABLED"/>
-
-    <!-- Trying to get ClientBundle styling working -->
-    <!--<inherits name="com.google.gwt.resources.Resources" />-->
 
     <!-- Specify the app entry point class.                         -->
     <entry-point class='biz.freshcode.learn.gwt.client.EntryPoint'/>
