@@ -14,7 +14,7 @@
             <toolbar:ToolBar>
                 <!-- Hmmm... this isn't responding to resize events properly.  Collapse and restore seems to rectify location. -->
                 <toolbar:FillToolItem/>
-                <button:TextButton text="Go" ui:field="btnGo"/>
+                <button:TextButton text="Add" ui:field="btnAdd"/>
             </toolbar:ToolBar>
         </container:north>
         <container:center>

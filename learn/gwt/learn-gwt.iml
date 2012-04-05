@@ -9,12 +9,6 @@
         <webroots>
           <root url="file://$MODULE_DIR$/src/main/webapp" relative="/" />
         </webroots>
-        <sourceRoots>
-          <root url="file://$MODULE_DIR$/src/main/java" />
-          <root url="file://$MODULE_DIR$/src/main/resources" />
-          <root url="file://$MODULE_DIR$/target/generated-sources/gwt" />
-          <root url="file://$MODULE_DIR$/target/generated-sources/annotations" />
-        </sourceRoots>
       </configuration>
     </facet>
     <facet type="gwt" name="GWT">
@@ -53,11 +47,6 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.sencha.gxt:gxt:3.0.0-rc" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.json:json:20090211" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.sencha.gxt:uibinder-bridge:2.4.0" level="project" />
-    <orderEntry type="library" name="Maven: com.google.gwt.inject:gin:1.5.0" level="project" />
-    <orderEntry type="library" name="Maven: com.google.inject:guice:3.0-rc2" level="project" />
-    <orderEntry type="library" name="Maven: javax.inject:javax.inject:1" level="project" />
-    <orderEntry type="library" name="Maven: aopalliance:aopalliance:1.0" level="project" />
-    <orderEntry type="library" name="Maven: com.google.inject.extensions:guice-assistedinject:3.0-rc2" level="project" />
   </component>
 </module>
 
