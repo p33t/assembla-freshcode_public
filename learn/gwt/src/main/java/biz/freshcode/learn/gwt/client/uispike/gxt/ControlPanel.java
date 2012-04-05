@@ -1,4 +1,4 @@
-package biz.freshcode.learn.gwt.client.uispike;
+package biz.freshcode.learn.gwt.client.uispike.gxt;
 
 import biz.freshcode.learn.gwt.client.uispike.builder.BorderLayoutDataBuilder;
 import com.google.gwt.core.client.GWT;

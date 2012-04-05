@@ -1,4 +1,4 @@
-package biz.freshcode.learn.gwt.client.uispike;
+package biz.freshcode.learn.gwt.client.uispike.gxt;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;

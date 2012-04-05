@@ -1,4 +1,4 @@
-package biz.freshcode.learn.gwt.client.uispike;
+package biz.freshcode.learn.gwt.client.uispike.gxt;
 
 public class Row {
     private String str;
