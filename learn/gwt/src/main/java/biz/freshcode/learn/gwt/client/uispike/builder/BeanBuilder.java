@@ -1,4 +1,4 @@
-package biz.freshcode.learn.gwt.client.uispike;
+package biz.freshcode.learn.gwt.client.uispike.builder;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

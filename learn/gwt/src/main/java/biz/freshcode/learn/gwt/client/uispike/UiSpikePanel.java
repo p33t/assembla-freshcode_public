@@ -1,5 +1,7 @@
 package biz.freshcode.learn.gwt.client.uispike;
 
+import biz.freshcode.learn.gwt.client.uispike.builder.BorderLayoutDataBuilder;
+import biz.freshcode.learn.gwt.client.uispike.builder.MarginsBuilder;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.ui.IsWidget;

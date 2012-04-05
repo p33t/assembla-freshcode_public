@@ -32,11 +32,8 @@
             </container:VerticalLayoutContainer>
         </container:north>
         <container:center>
-            <gxt:ContentPanel>
-                <g:HTMLPanel>
-                    <p>Center</p>
-                </g:HTMLPanel>
-            </gxt:ContentPanel>
+            <container:VerticalLayoutContainer ui:field="lines">
+            </container:VerticalLayoutContainer>
         </container:center>
     </container:BorderLayoutContainer>
 </ui:UiBinder>
