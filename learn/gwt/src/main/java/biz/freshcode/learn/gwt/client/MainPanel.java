@@ -6,7 +6,7 @@ import biz.freshcode.learn.gwt.client.uibinder.Composed;
 import biz.freshcode.learn.gwt.client.uibinder.eg.BorderLayoutEg;
 import biz.freshcode.learn.gwt.client.uibinder.eg.Tutorial1;
 import biz.freshcode.learn.gwt.client.uibinder.eg.Tutorial2;
-import biz.freshcode.learn.gwt.client.uispike.UiSpikePanel;
+import biz.freshcode.learn.gwt.client.uispike.gxt.UiSpikePanel;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.Command;
