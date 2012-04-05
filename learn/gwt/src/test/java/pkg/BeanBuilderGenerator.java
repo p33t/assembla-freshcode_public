@@ -1,7 +1,7 @@
 package pkg;
 
-import biz.freshcode.learn.gwt.client.uispike.BeanBuilder;
-import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
+import biz.freshcode.learn.gwt.client.uispike.builder.BeanBuilder;
+import com.google.gwt.user.client.ui.HTMLPanel;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
@@ -29,7 +29,7 @@ import java.lang.reflect.Modifier;
  * </pre>
  */
 public class BeanBuilderGenerator {
-    static final Class CLASS = BorderLayoutContainer.BorderLayoutData.class;
+    static final Class CLASS = HTMLPanel.class;
 
 
     public static void main(String[] args) {

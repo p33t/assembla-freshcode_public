@@ -13,6 +13,7 @@ import com.sencha.gxt.core.client.dom.ScrollSupport;
 import com.sencha.gxt.widget.core.client.Component;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData;
+import com.sencha.gxt.widget.core.client.container.NorthSouthContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.info.Info;
@@ -24,15 +25,12 @@ public class ControlPanel implements IsWidget {
     Logger logger = Logger.getLogger(getClass().getName());
 
     @UiField
-    VerticalLayoutContainer north;
-    @UiField
     TextButton btnGo;
     @UiField
     VerticalLayoutContainer lines;
 
     public Widget asWidget() {
         Component c = binder.createAndBindUi(this);
-        north.setScrollMode(ScrollSupport.ScrollMode.AUTOY);
         lines.setScrollMode(ScrollSupport.ScrollMode.AUTOY);
         return c;
     }
@@ -51,15 +49,4 @@ public class ControlPanel implements IsWidget {
     interface Binder extends UiBinder<Component, ControlPanel> {
     }
 
-    static class UiConfig {
-        BorderLayoutData northLayout() {
-            return new BorderLayoutDataBuilder()
-                    .size(250)
-                    .split(true)
-                    .margins(new MarginsBuilder()
-                            .bottom(5)
-                            .margins)
-                    .borderLayoutData;
-        }
-    }
 }
