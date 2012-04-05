@@ -18,9 +18,6 @@
     <inherits name='com.sencha.gxt.ui.GXT'/>
 
     <!-- Trying to debug UI Binder & Sencha -->
-    <inherits name='com.google.gwt.activity.Activity' />
-    <inherits name='com.google.gwt.place.Place' />
-    <inherits name="com.google.gwt.inject.Inject" />
     <inherits name="com.sencha.gwt.uibinder.UiBinder" />
 
     <!-- GZip the output files by default -->

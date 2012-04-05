@@ -79,12 +79,6 @@
             <version>${gwtVersion}</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>com.google.gwt.inject</groupId>
-            <artifactId>gin</artifactId>
-            <!-- TODO: Confirm this version -->
-            <version>1.5.0</version>
-        </dependency>
     </dependencies>
 
     <build>
