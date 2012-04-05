@@ -7,13 +7,17 @@
              xmlns:button="urn:import:com.sencha.gxt.widget.core.client.button"
         >
 
-    <ui:with field="config" type="biz.freshcode.learn.gwt.client.uispike.ControlPanel.UiConfig"/>
+    <ui:style>
+        .outline {
+            border: aqua solid thin;
+        }
+    </ui:style>
 
     <container:BorderLayoutContainer>
-        <container:north layoutData="{config.northLayout}">
+        <container:north>
             <!-- NOTE: Scrolling is not available on SimpleContainer or ContentPanel.  Look for implementors of 'HasScrollSupport'. -->
-            <container:VerticalLayoutContainer ui:field="north">
-                <container:child>
+            <container:NorthSouthContainer styleName="{style.outline}">
+                <container:north>
                     <g:HTMLPanel>
                         <p>
                             North panel that has lots of writing so it will wrap. No? Oh well, I'll keep on typing. How
@@ -21,15 +25,15 @@
                             now?
                         </p>
                     </g:HTMLPanel>
-                </container:child>
-                <container:child>
+                </container:north>
+                <container:south>
                     <toolbar:ToolBar>
                         <!-- Hmmm... this isn't responding to resize events properly.  Collapse and restore seems to rectify location. -->
                         <toolbar:FillToolItem/>
                         <button:TextButton text="Go" ui:field="btnGo"/>
                     </toolbar:ToolBar>
-                </container:child>
-            </container:VerticalLayoutContainer>
+                </container:south>
+            </container:NorthSouthContainer>
         </container:north>
         <container:center>
             <container:VerticalLayoutContainer ui:field="lines">
