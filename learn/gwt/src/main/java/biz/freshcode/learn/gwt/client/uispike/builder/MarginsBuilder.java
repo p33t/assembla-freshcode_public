@@ -1,4 +1,4 @@
-package biz.freshcode.learn.gwt.client.uispike;
+package biz.freshcode.learn.gwt.client.uispike.builder;
 
 import com.sencha.gxt.core.client.util.Margins;
 
