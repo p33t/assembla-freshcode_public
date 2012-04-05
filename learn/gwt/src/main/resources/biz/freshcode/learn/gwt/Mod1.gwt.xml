@@ -22,7 +22,6 @@
     <inherits name='com.google.gwt.place.Place' />
     <inherits name="com.google.gwt.inject.Inject" />
     <inherits name="com.sencha.gwt.uibinder.UiBinder" />
-    <set-configuration-property name="UiBinder.useLazyWidgetBuilders" value="true" />
 
     <!-- GZip the output files by default -->
     <!--<inherits name='com.google.gwt.precompress.Precompress' />-->
