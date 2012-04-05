@@ -15,7 +15,7 @@
             </toolbar:ToolBar>
         </container:child>
         <container:child>
-            <container:SimpleContainer ui:field="pnlContent"/>
+            <g:HTMLPanel ui:field="pnlContent"/>
         </container:child>
     </container:VerticalLayoutContainer>
 </ui:UiBinder>

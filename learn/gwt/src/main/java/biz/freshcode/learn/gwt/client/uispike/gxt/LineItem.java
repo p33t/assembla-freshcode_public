@@ -20,8 +20,8 @@ import java.util.ArrayList;
 
 public class LineItem implements IsWidget {
     private static final Binder binder = GWT.create(Binder.class);
-    @UiField
-    SimpleContainer pnlContent;
+    @UiField(provided = true)
+    HTMLPanel pnlContent;
     @UiField
     TextButton btnEdit;
     @UiField(provided = true)
@@ -35,10 +35,9 @@ public class LineItem implements IsWidget {
     @Override
     public Widget asWidget() {
         lblName = new Label(row.getStr());
-        Component c = binder.createAndBindUi(this);
         // TODO: Replace with a template
-        pnlContent.setWidget(new HTMLPanel("<p>Number: " + row.getNum() + "</p>"));
-        return c;
+        pnlContent = new HTMLPanel("<p>Number: " + row.getNum() + "</p>");
+        return binder.createAndBindUi(this);
     }
 
     @UiHandler("btnEdit")
