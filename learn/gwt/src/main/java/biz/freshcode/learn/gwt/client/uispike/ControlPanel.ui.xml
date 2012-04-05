@@ -4,38 +4,21 @@
              xmlns:container='urn:import:com.sencha.gxt.widget.core.client.container'
              xmlns:gxt='urn:import:com.sencha.gxt.widget.core.client'
              xmlns:toolbar='urn:import:com.sencha.gxt.widget.core.client.toolbar'
-             xmlns:button="urn:import:com.sencha.gxt.widget.core.client.button"
+             xmlns:button='urn:import:com.sencha.gxt.widget.core.client.button'
         >
 
-    <ui:style>
-        .outline {
-            border: aqua solid thin;
-        }
-    </ui:style>
+    <ui:with field="config" type="biz.freshcode.learn.gwt.client.uispike.ControlPanel.Config"/>
 
     <container:BorderLayoutContainer>
-        <container:north>
-            <!-- NOTE: Scrolling is not available on SimpleContainer or ContentPanel.  Look for implementors of 'HasScrollSupport'. -->
-            <container:NorthSouthContainer styleName="{style.outline}">
-                <container:north>
-                    <g:HTMLPanel>
-                        <p>
-                            North panel that has lots of writing so it will wrap. No? Oh well, I'll keep on typing. How
-                            about
-                            now?
-                        </p>
-                    </g:HTMLPanel>
-                </container:north>
-                <container:south>
-                    <toolbar:ToolBar>
-                        <!-- Hmmm... this isn't responding to resize events properly.  Collapse and restore seems to rectify location. -->
-                        <toolbar:FillToolItem/>
-                        <button:TextButton text="Go" ui:field="btnGo"/>
-                    </toolbar:ToolBar>
-                </container:south>
-            </container:NorthSouthContainer>
+        <container:north layoutData="{config.northLayout}">
+            <toolbar:ToolBar>
+                <!-- Hmmm... this isn't responding to resize events properly.  Collapse and restore seems to rectify location. -->
+                <toolbar:FillToolItem/>
+                <button:TextButton text="Go" ui:field="btnGo"/>
+            </toolbar:ToolBar>
         </container:north>
         <container:center>
+            <!-- NOTE: Scrolling is not available on SimpleContainer or ContentPanel.  Look for implementors of 'HasScrollSupport'. -->
             <container:VerticalLayoutContainer ui:field="lines">
             </container:VerticalLayoutContainer>
         </container:center>
