@@ -49,4 +49,11 @@ public class ControlPanel implements IsWidget {
     interface Binder extends UiBinder<Component, ControlPanel> {
     }
 
+    static class Config {
+        BorderLayoutData northLayout() {
+            return new BorderLayoutDataBuilder()
+                    .size(40) // Would have been nice for toolbar to automatically set container height
+                    .borderLayoutData;
+        }
+    }
 }
