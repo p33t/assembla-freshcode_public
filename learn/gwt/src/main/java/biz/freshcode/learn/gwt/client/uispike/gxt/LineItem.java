@@ -17,6 +17,7 @@ import com.sencha.gxt.widget.core.client.container.SimpleContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.info.Info;
+import com.sencha.gxt.widget.core.client.toolbar.LabelToolItem;
 
 import java.util.ArrayList;
 
@@ -29,7 +30,7 @@ public class LineItem implements IsWidget {
     @UiField
     TextButton btnEdit;
     @UiField(provided = true)
-    Label lblName;
+    LabelToolItem lblName;
     private final Row row;
 
     public LineItem(Row row) {
@@ -44,14 +45,14 @@ public class LineItem implements IsWidget {
 
     @Override
     public Widget asWidget() {
-        lblName = new Label(row.getStr());
+        lblName = new LabelToolItem(row.getStr());
         pnlContent = new HTMLPanel(renderer.render(row));
         return binder.createAndBindUi(this);
     }
 
     @UiHandler("btnEdit")
     public void onEdit(SelectEvent evt) {
-        Info.display("Note", "Editing " + lblName.getText());
+        Info.display("Note", "Editing " + lblName.getLabel());
     }
 
     interface Binder extends UiBinder<Component, LineItem> {

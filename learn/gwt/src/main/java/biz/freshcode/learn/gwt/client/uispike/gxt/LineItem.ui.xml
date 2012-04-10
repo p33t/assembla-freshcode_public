@@ -9,7 +9,7 @@
     <container:VerticalLayoutContainer>
         <container:child>
             <toolbar:ToolBar>
-                <g:Label ui:field="lblName"/>
+                <toolbar:LabelToolItem ui:field="lblName"/>
                 <toolbar:FillToolItem/>
                 <button:TextButton text="Edit.." ui:field="btnEdit"/>
             </toolbar:ToolBar>
