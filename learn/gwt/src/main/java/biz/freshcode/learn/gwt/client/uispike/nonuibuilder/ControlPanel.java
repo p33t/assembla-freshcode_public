@@ -1,7 +1,9 @@
 package biz.freshcode.learn.gwt.client.uispike.nonuibuilder;
 
 import biz.freshcode.learn.gwt.client.uispike.Row;
+import biz.freshcode.learn.gwt.client.uispike.builder.BorderLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.BorderLayoutDataBuilder;
+import biz.freshcode.learn.gwt.client.uispike.builder.VerticalLayoutContainerBuilder;
 import com.google.gwt.user.client.Random;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
@@ -21,7 +23,9 @@ public class ControlPanel implements IsWidget {
     final Logger logger = Logger.getLogger(getClass().getName());
     final Host host;
 
-    VerticalLayoutContainer lines = new VerticalLayoutContainer();
+    VerticalLayoutContainer lines = new VerticalLayoutContainerBuilder()
+            .scrollMode(ScrollSupport.ScrollMode.AUTOY)
+            .verticalLayoutContainer;
 
     ArrayList<LineItem> items = new ArrayList<LineItem>();
 
@@ -30,7 +34,6 @@ public class ControlPanel implements IsWidget {
     }
 
     public Widget asWidget() {
-        BorderLayoutContainer c = new BorderLayoutContainer();
         ToolBar tb = new ToolBar();
         tb.add(new FillToolItem());
         tb.add(new TextButton("Process", new SelectEvent.SelectHandler() {
@@ -44,12 +47,14 @@ public class ControlPanel implements IsWidget {
                 add();
             }
         }));
-        c.setNorthWidget(tb, new BorderLayoutDataBuilder()
-                .size(40) // Would have been nice for toolbar to automatically set container height
-                .borderLayoutData);
-        c.setCenterWidget(lines);
-        lines.setScrollMode(ScrollSupport.ScrollMode.AUTOY);
-        return c;
+
+        return new BorderLayoutContainerBuilder()
+                .northWidget(tb, new BorderLayoutDataBuilder()
+                        .size(40) // Would have been nice for toolbar to automatically set container height
+                        .borderLayoutData
+                )
+                .centerWidget(lines)
+                .borderLayoutContainer;
     }
 
     private void process() {
