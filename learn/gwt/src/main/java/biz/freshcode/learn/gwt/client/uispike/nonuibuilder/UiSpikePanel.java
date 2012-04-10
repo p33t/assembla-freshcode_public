@@ -22,7 +22,7 @@ public class UiSpikePanel implements IsWidget, ControlPanel.Host {
     public Widget asWidget() {
         Viewport v = new Viewport();
         BorderLayoutContainer b = new BorderLayoutContainer();
-        // TODO: Do we still need the content panel?
+        // NOTE: We still need the content panel here to get resizing to work.
         ContentPanel west = new ContentPanel();
         west.setWidget(new ControlPanel(this));
         b.setWestWidget(west, new BorderLayoutDataBuilder()
