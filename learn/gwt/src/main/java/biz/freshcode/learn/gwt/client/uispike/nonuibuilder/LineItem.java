@@ -1,8 +1,8 @@
 package biz.freshcode.learn.gwt.client.uispike.nonuibuilder;
 
-import biz.freshcode.learn.gwt.client.uispike.gxt.Row;
-import biz.freshcode.learn.gwt.client.uispike.gxt.RowBuilder;
-import biz.freshcode.learn.gwt.client.uispike.gxt.RowRenderer;
+import biz.freshcode.learn.gwt.client.uispike.Row;
+import biz.freshcode.learn.gwt.client.uispike.RowRenderer;
+import biz.freshcode.learn.gwt.client.uispike.builder.RowBuilder;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.IsWidget;

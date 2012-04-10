@@ -1,7 +1,7 @@
 package pkg;
 
+import biz.freshcode.learn.gwt.client.uispike.Row;
 import biz.freshcode.learn.gwt.client.uispike.builder.BeanBuilder;
-import biz.freshcode.learn.gwt.client.uispike.gxt.Row;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
