@@ -2,6 +2,7 @@ package pkg;
 
 import biz.freshcode.learn.gwt.client.uispike.builder.BeanBuilder;
 import com.google.gwt.user.client.ui.HTMLPanel;
+import com.sencha.gxt.core.client.util.Margins;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
@@ -29,7 +30,7 @@ import java.lang.reflect.Modifier;
  * </pre>
  */
 public class BeanBuilderGenerator {
-    static final Class CLASS = HTMLPanel.class;
+    static final Class CLASS = Margins.class;
 
 
     public static void main(String[] args) {
@@ -70,10 +71,33 @@ public class BeanBuilderGenerator {
             }
         }
 
-        // IDEA: init method to pull all values from another instance?
+        // init method to pull all values from another instance
+        src += "\n\n  public " + builderName + " initFrom(" + simpleName + " v) {";
+        src += "\n    return this";
+        for (Method m : cls.getMethods()) {
+            if (isSetter(m) && hasGetter(cls, m)) {
+                src+= "\n      ." + shortName(m) + "(v.g" + m.getName().substring(1) + "())";
+            }
+        }
+        src += ";";
+        src += "\n  }";
         
         src += "\n}";
         return src;
+    }
+
+    /**
+     * Returns 'true' if the given setter has a corrresponding getter method.
+     */
+    private static boolean hasGetter(Class cls, Method setter) {
+        String getterName = "g" + setter.getName().substring(1);
+        try {
+            Method getter = cls.getMethod(getterName);
+            boolean isPrivate = Modifier.isPrivate(getter.getModifiers());
+            return !isPrivate;
+        } catch (NoSuchMethodException e) {
+            return false;
+        }
     }
 
     private static boolean hasDefaultConstructor(Class cls) {
