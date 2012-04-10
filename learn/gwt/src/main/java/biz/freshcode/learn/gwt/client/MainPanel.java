@@ -54,16 +54,28 @@ public class MainPanel extends Composite {
     private MenuBar mbGxt() {
         MenuBar mbGxt = new MenuBar(true);
 
-        mbGxt.addItem("UI Spike", new Command() {
+        mbGxt.addItem("UI Spike", uiSpike());
+
+        MenuBar uibGxt = uibGxt();
+        mbGxt.addItem("Ui Binder", uibGxt);
+        return mbGxt;
+    }
+
+    private MenuBar uiSpike() {
+        MenuBar mb = new MenuBar(true);
+        mb.addItem("UiBuilder", new Command() {
             public void execute() {
                 IsWidget w = GWT.create(UiSpikePanel.class);
                 replaceRoot(w);
             }
         });
-
-        MenuBar uibGxt = uibGxt();
-        mbGxt.addItem("Ui Binder", uibGxt);
-        return mbGxt;
+        mb.addItem("Non UiBuilder", new Command() {
+            public void execute() {
+                IsWidget w = GWT.create(biz.freshcode.learn.gwt.client.uispike.nonuibuilder.UiSpikePanel.class);
+                replaceRoot(w);
+            }
+        });
+        return mb;
     }
 
     private MenuBar uibGxt() {
