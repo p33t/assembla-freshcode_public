@@ -1,11 +1,13 @@
 package pkg;
 
 import biz.freshcode.learn.gwt.client.uispike.builder.BeanBuilder;
-import com.sencha.gxt.widget.core.client.ContentPanel;
+import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 /**
  * Generates a bean builder so instead of:
@@ -29,7 +31,7 @@ import java.lang.reflect.Modifier;
  * </pre>
  */
 public class BeanBuilderGenerator {
-    static final Class CLASS = ContentPanel.class;
+    static final Class CLASS = BorderLayoutContainer.class;
 
 
     public static void main(String[] args) {
@@ -73,11 +75,14 @@ public class BeanBuilderGenerator {
         // init method to pull all values from another instance
         src += "\n\n  public " + builderName + " initFrom(" + simpleName + " v) {";
         src += "\n    return this";
+        Set<String> initCmds = new LinkedHashSet<String>(); // will remove dupes from overloaded setters
         for (Method m : cls.getMethods()) {
             if (isSetter(m) && hasGetter(cls, m)) {
-                src+= "\n      ." + shortName(m) + "(v.g" + m.getName().substring(1) + "())";
+                String cmd = "\n      ." + shortName(m) + "(v.g" + m.getName().substring(1) + "())";
+                initCmds.add(cmd);
             }
         }
+        for (String cmd: initCmds) src += cmd;
         src += ";";
         src += "\n  }";
         
