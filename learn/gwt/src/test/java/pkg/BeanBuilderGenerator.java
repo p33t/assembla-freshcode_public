@@ -1,7 +1,7 @@
 package pkg;
 
-import biz.freshcode.learn.gwt.client.uispike.Row;
 import biz.freshcode.learn.gwt.client.uispike.builder.BeanBuilder;
+import com.sencha.gxt.widget.core.client.ContentPanel;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
@@ -29,7 +29,7 @@ import java.lang.reflect.Modifier;
  * </pre>
  */
 public class BeanBuilderGenerator {
-    static final Class CLASS = Row.class;
+    static final Class CLASS = ContentPanel.class;
 
 
     public static void main(String[] args) {
@@ -89,11 +89,15 @@ public class BeanBuilderGenerator {
      * Returns 'true' if the given setter has a corrresponding getter method.
      */
     private static boolean hasGetter(Class cls, Method setter) {
+        Class<?>[] types = setter.getParameterTypes();
+        if (types.length > 1) return false; // no getter if setter has >1 arg
         String getterName = "g" + setter.getName().substring(1);
         try {
             Method getter = cls.getMethod(getterName);
+            // Make sure types are compatible (EG. ContentPanel.getToolTip() is a problem child)
+            boolean typesMatch = types[0].isAssignableFrom(getter.getReturnType());
             boolean isPrivate = Modifier.isPrivate(getter.getModifiers());
-            return !isPrivate;
+            return !isPrivate && typesMatch;
         } catch (NoSuchMethodException e) {
             return false;
         }
