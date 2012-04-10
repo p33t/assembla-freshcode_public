@@ -1,4 +1,4 @@
-package biz.freshcode.learn.gwt.client.uispike.gxt;
+package biz.freshcode.learn.gwt.client.uispike;
 
 import com.google.gwt.safehtml.shared.SafeHtml;
 import com.sencha.gxt.core.client.XTemplates;
