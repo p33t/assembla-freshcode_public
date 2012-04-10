@@ -37,10 +37,9 @@ public class LineItem implements IsWidget {
     }
 
     public Row getRow() {
-        Row r = new Row();
-        r.setNum(row.getNum());
-        r.setStr(row.getStr());
-        return r;
+        return new RowBuilder()
+                .initFrom(row)
+                .row;
     }
 
     @Override

@@ -1,8 +1,7 @@
 package pkg;
 
 import biz.freshcode.learn.gwt.client.uispike.builder.BeanBuilder;
-import com.google.gwt.user.client.ui.HTMLPanel;
-import com.sencha.gxt.core.client.util.Margins;
+import biz.freshcode.learn.gwt.client.uispike.gxt.Row;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
@@ -30,7 +29,7 @@ import java.lang.reflect.Modifier;
  * </pre>
  */
 public class BeanBuilderGenerator {
-    static final Class CLASS = Margins.class;
+    static final Class CLASS = Row.class;
 
 
     public static void main(String[] args) {
