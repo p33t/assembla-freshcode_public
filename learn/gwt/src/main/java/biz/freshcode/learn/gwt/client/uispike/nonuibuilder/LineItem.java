@@ -3,6 +3,7 @@ package biz.freshcode.learn.gwt.client.uispike.nonuibuilder;
 import biz.freshcode.learn.gwt.client.uispike.Row;
 import biz.freshcode.learn.gwt.client.uispike.RowRenderer;
 import biz.freshcode.learn.gwt.client.uispike.builder.RowBuilder;
+import biz.freshcode.learn.gwt.client.uispike.builder.VerticalLayoutContainerBuilder;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.IsWidget;
