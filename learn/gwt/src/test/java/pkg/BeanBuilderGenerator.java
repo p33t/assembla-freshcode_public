@@ -69,6 +69,9 @@ public class BeanBuilderGenerator {
                 src += "\n  }";
             }
         }
+
+        // IDEA: init method to pull all values from another instance?
+        
         src += "\n}";
         return src;
     }
