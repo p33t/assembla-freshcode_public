@@ -1,8 +1,7 @@
 package pkg;
 
 import biz.freshcode.learn.gwt.client.uispike.builder.BeanBuilder;
-import com.google.gwt.util.tools.shared.StringUtils;
-import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
+import com.sencha.gxt.widget.core.client.container.Viewport;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
@@ -31,7 +30,7 @@ import java.util.*;
  * </pre>
  */
 public class BeanBuilderGenerator {
-    static final Class CLASS = BorderLayoutContainer.class;
+    static final Class CLASS = Viewport.class;
 
 
     public static void main(String[] args) {
