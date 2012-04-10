@@ -36,6 +36,13 @@ public class LineItem implements IsWidget {
         this.row = row;
     }
 
+    public Row getRow() {
+        Row r = new Row();
+        r.setNum(row.getNum());
+        r.setStr(row.getStr());
+        return r;
+    }
+
     @Override
     public Widget asWidget() {
         lblName = new Label(row.getStr());
