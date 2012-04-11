@@ -22,7 +22,7 @@ public class GwtTestGreet extends GWTTestCase {
    * Must refer to a valid module that sources this class.
    */
   public String getModuleName() {
-    return "biz.freshcode.learn.gwt.m1JUnit";
+    return "biz.freshcode.learn.gwt.Mod1JUnit";
   }
 
   /**
@@ -41,7 +41,7 @@ public class GwtTestGreet extends GWTTestCase {
    * This test will send a request to the server using the greetServer method in
    * GreetingService and verify the response.
    */
-  public void testGreetingService() {
+  public void DISABLED_testGreetingService() {
     // Create the service that we will test.
     GreetingServiceAsync greetingService = GWT.create(GreetingService.class);
     ServiceDefTarget target = (ServiceDefTarget) greetingService;
