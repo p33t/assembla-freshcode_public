@@ -1,7 +1,7 @@
 package pkg;
 
 import biz.freshcode.learn.gwt.client.uispike.builder.BeanBuilder;
-import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
+import com.sencha.gxt.widget.core.client.container.SimpleContainer;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
@@ -30,7 +30,7 @@ import java.util.*;
  * </pre>
  */
 public class BeanBuilderGenerator {
-    static final Class CLASS = VerticalLayoutContainer.class;
+    static final Class CLASS = SimpleContainer.class;
 
 
     public static void main(String[] args) {

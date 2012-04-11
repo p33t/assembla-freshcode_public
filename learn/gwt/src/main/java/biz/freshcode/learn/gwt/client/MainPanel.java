@@ -1,6 +1,7 @@
 package biz.freshcode.learn.gwt.client;
 
 import biz.freshcode.learn.gwt.client.experiment.Resizer;
+import biz.freshcode.learn.gwt.client.experiment.celltable.CellTableDemo;
 import biz.freshcode.learn.gwt.client.uibinder.Basic;
 import biz.freshcode.learn.gwt.client.uibinder.Composed;
 import biz.freshcode.learn.gwt.client.uibinder.eg.BorderLayoutEg;
@@ -53,6 +54,13 @@ public class MainPanel extends Composite {
 
     private MenuBar mbGxt() {
         MenuBar mbGxt = new MenuBar(true);
+
+        mbGxt.addItem("Cell Table Demo", new Command() {
+            public void execute() {
+                IsWidget w = GWT.create(CellTableDemo.class);
+                replaceRoot(w);
+            }
+        });
 
         mbGxt.addItem("UI Spike", uiSpike());
 
