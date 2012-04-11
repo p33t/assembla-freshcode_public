@@ -16,10 +16,13 @@
 
     <!-- Other module inherits                                      -->
     <inherits name='com.sencha.gxt.ui.GXT'/>
-    <inherits name="com.sencha.gwt.uibinder.UiBinder" />
+    <inherits name="com.sencha.gwt.uibinder.UiBinder"/>
+
+    <!--Trying to debug client bundles... not sure if this is necessary-->
+    <inherits name="com.google.gwt.resources.Resources"/>
 
     <!-- GZip the output files by default -->
-    <inherits name='com.google.gwt.precompress.Precompress' />
+    <inherits name='com.google.gwt.precompress.Precompress'/>
 
     <inherits name="com.google.gwt.logging.Logging"/>
     <!--Don't want the logging on the pop in top-left of screen -->
@@ -27,6 +30,9 @@
 
     <!-- Specify the app entry point class.                         -->
     <entry-point class='biz.freshcode.learn.gwt.client.EntryPoint'/>
+
+    <!-- Disable style obfuscation for debug purposes -->
+    <!--<set-configuration-property name="CssResource.style" value="pretty"/>-->
 
     <!-- Specify the paths for translatable code                    -->
     <source path='client'/>

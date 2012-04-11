@@ -41,3 +41,4 @@ Tips:
  -- Streamlined JSON serial/deserial
  -- 'Category' used to implement additional non-property methods
  - GWTTestCase doesn't work with Maven.  GwtTest* naming convention will prevent them running.  See GwtTestGreet.java
+ - CssResource.ensureInjected() ... ouch!
