@@ -5,7 +5,7 @@ import com.google.gwt.junit.client.GWTTestCase;
 import com.google.web.bindery.autobean.shared.AutoBean;
 import com.google.web.bindery.autobean.shared.AutoBeanFactory;
 
-public class TestBeanTest extends GWTTestCase {
+public class GwtTestBean extends GWTTestCase {
 
     public void testSmoke() {
         assertTrue(true);
