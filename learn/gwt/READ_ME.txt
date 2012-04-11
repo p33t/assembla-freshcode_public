@@ -35,8 +35,9 @@ Tips:
  - Opt for XxxLayoutPanel (not XxxPanel).  They work properly with 'standards mode'
  -- Dock, Vertical, Split, Stack Panels are discouraged
  -- Horizontal can be used with caveats
-- Autobeans for reducing boilerplate that arises in Java Beans
--- Interface with get/set declared
--- Use AutoBeanFactory to instantiate (Or AutoBeanFactorySource outside of GWT code (?)
--- Streamlined JSON serial/deserial
--- 'Category' used to implement additional non-property methods
+ - Autobeans for reducing boilerplate that arises in Java Beans
+ -- Interface with get/set declared
+ -- Use AutoBeanFactory to instantiate (Or AutoBeanFactorySource outside of GWT code (?)
+ -- Streamlined JSON serial/deserial
+ -- 'Category' used to implement additional non-property methods
+ - GWTTestCase doesn't work with Maven.  GwtTest* naming convention will prevent them running.  See GwtTestGreet.java
