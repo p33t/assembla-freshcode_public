@@ -20,6 +20,10 @@ public class TestBeanTest extends GWTTestCase {
         assertNotNull(ab);
         TestBean b = ab.as();
         assertNotNull(b);
+
+        assertNotNull(f.create(TestBean.class));
+//        Doesn't work
+//        assertNotNull(f.create(TestBean2.class));
     }
 
     @Override
