@@ -3,6 +3,7 @@ package biz.freshcode.learn.gwt.client.uispike.nonuibuilder;
 import biz.freshcode.learn.gwt.client.uispike.Row;
 import biz.freshcode.learn.gwt.client.uispike.builder.BorderLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.BorderLayoutDataBuilder;
+import biz.freshcode.learn.gwt.client.uispike.builder.ToolBarBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.VerticalLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import com.google.gwt.user.client.Random;
@@ -33,24 +34,24 @@ public class ControlPanel extends AbstractIsWidget {
 
     @Override
     protected Widget createWidget() {
-        ToolBar tb = new ToolBar();
-        tb.add(new FillToolItem());
-        tb.add(new TextButton("Process", new SelectEvent.SelectHandler() {
-            public void onSelect(SelectEvent event) {
-                process();
-            }
-        }));
-        tb.add(new SeparatorToolItem());
-        tb.add(new TextButton("Add", new SelectEvent.SelectHandler() {
-            public void onSelect(SelectEvent event) {
-                add();
-            }
-        }));
-
         return new BorderLayoutContainerBuilder()
-                .northWidget(tb, new BorderLayoutDataBuilder()
-                        .size(40) // Would have been nice for toolbar to automatically set container height
-                        .borderLayoutData
+                .northWidget(new ToolBarBuilder()
+                        .add(new FillToolItem())
+                        .add(new TextButton("Process", new SelectEvent.SelectHandler() {
+                            public void onSelect(SelectEvent event) {
+                                process();
+                            }
+                        }))
+                        .add(new SeparatorToolItem())
+                        .add(new TextButton("Add", new SelectEvent.SelectHandler() {
+                            public void onSelect(SelectEvent event) {
+                                add();
+                            }
+                        }))
+                        .toolBar,
+                        new BorderLayoutDataBuilder()
+                                .size(40) // Would have been nice for toolbar to automatically set container height
+                                .borderLayoutData
                 )
                 .centerWidget(lines = new VerticalLayoutContainerBuilder()
                         .scrollMode(ScrollSupport.ScrollMode.AUTOY)
