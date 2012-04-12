@@ -23,9 +23,7 @@ public class ControlPanel implements IsWidget {
     final Logger logger = Logger.getLogger(getClass().getName());
     final Host host;
 
-    VerticalLayoutContainer lines = new VerticalLayoutContainerBuilder()
-            .scrollMode(ScrollSupport.ScrollMode.AUTOY)
-            .verticalLayoutContainer;
+    VerticalLayoutContainer lines;
 
     ArrayList<LineItem> items = new ArrayList<LineItem>();
 
@@ -53,7 +51,10 @@ public class ControlPanel implements IsWidget {
                         .size(40) // Would have been nice for toolbar to automatically set container height
                         .borderLayoutData
                 )
-                .centerWidget(lines)
+                .centerWidget(lines = new VerticalLayoutContainerBuilder()
+                        .scrollMode(ScrollSupport.ScrollMode.AUTOY)
+                        .verticalLayoutContainer
+                )
                 .borderLayoutContainer;
     }
 
