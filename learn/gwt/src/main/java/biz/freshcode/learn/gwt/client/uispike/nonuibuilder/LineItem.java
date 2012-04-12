@@ -3,7 +3,7 @@ package biz.freshcode.learn.gwt.client.uispike.nonuibuilder;
 import biz.freshcode.learn.gwt.client.uispike.Row;
 import biz.freshcode.learn.gwt.client.uispike.RowRenderer;
 import biz.freshcode.learn.gwt.client.uispike.builder.RowBuilder;
-import biz.freshcode.learn.gwt.client.uispike.builder.VerticalLayoutContainerBuilder;
+import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.IsWidget;
@@ -16,7 +16,7 @@ import com.sencha.gxt.widget.core.client.toolbar.FillToolItem;
 import com.sencha.gxt.widget.core.client.toolbar.LabelToolItem;
 import com.sencha.gxt.widget.core.client.toolbar.ToolBar;
 
-public class LineItem implements IsWidget {
+public class LineItem extends AbstractIsWidget {
     private static final RowRenderer renderer = GWT.create(RowRenderer.class);
 
     private final Row row;
@@ -32,7 +32,7 @@ public class LineItem implements IsWidget {
     }
 
     @Override
-    public Widget asWidget() {
+    protected Widget createWidget() {
         VerticalLayoutContainer c = new VerticalLayoutContainer();
         ToolBar tb = new ToolBar();
         tb.add(new LabelToolItem(row.getStr()));

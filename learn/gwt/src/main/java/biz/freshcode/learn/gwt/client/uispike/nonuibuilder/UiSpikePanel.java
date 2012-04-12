@@ -2,6 +2,7 @@ package biz.freshcode.learn.gwt.client.uispike.nonuibuilder;
 
 import biz.freshcode.learn.gwt.client.uispike.Row;
 import biz.freshcode.learn.gwt.client.uispike.builder.*;
+import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.IsWidget;
@@ -11,13 +12,13 @@ import com.sencha.gxt.widget.core.client.ContentPanel;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
-public class UiSpikePanel implements IsWidget, ControlPanel.Host {
+public class UiSpikePanel extends AbstractIsWidget implements  ControlPanel.Host {
     Logger logger = Logger.getLogger(getClass().getName());
-    private ContentPanel pnlCenter = new ContentPanelBuilder()
-            .widget(new HTMLPanel("<p>This is the default center content.</p>"))
-            .contentPanel;
+    private ContentPanel pnlCenter;
 
-    public Widget asWidget() {
+    @Override
+    protected Widget createWidget() {
+        // Hmm...Is this going to far?
         return new ViewportBuilder()
                 .widget(new BorderLayoutContainerBuilder()
                         .westWidget(
@@ -39,7 +40,10 @@ public class UiSpikePanel implements IsWidget, ControlPanel.Host {
                                         )
                                         .borderLayoutData
                         )
-                        .centerWidget(pnlCenter)
+                        .centerWidget(pnlCenter = new ContentPanelBuilder()
+                                .widget(new HTMLPanel("<p>This is the default center content.</p>"))
+                                .contentPanel
+                        )
                         .borderLayoutContainer
                 )
                 .viewport;
