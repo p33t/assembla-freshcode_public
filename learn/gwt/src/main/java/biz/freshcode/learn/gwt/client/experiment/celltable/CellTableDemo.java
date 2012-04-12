@@ -19,18 +19,15 @@ public class CellTableDemo extends AbstractIsWidget {
     @Override
     protected Widget createWidget() {
         String highlight = Bundle.INSTANCE.style().highlight();
-        // TODO: Remove viewport.  It should come from somewhere else.
-        return new ViewportBuilder()
-                .widget(new BorderLayoutContainerBuilder()
-                        .stylePrimaryName(highlight)
-                        .northWidget(new SimpleContainerBuilder()
-                                .widget(new HTMLPanel("Unfortunately the resizing and layout are stuffed."))
-                                .simpleContainer)
-                        .centerWidget(new SimpleContainerBuilder()
-                                .widget(createTable())
-                                .simpleContainer)
-                        .borderLayoutContainer)
-                .viewport;
+        return new BorderLayoutContainerBuilder()
+                .stylePrimaryName(highlight)
+                .northWidget(new SimpleContainerBuilder()
+                        .widget(new HTMLPanel("Phew, resizing and layout are OK."))
+                        .simpleContainer)
+                .centerWidget(new SimpleContainerBuilder()
+                        .widget(createTable())
+                        .simpleContainer)
+                .borderLayoutContainer;
     }
 
     /*
