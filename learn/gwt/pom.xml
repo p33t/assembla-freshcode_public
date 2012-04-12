@@ -103,6 +103,8 @@
                         <configuration>
                             <!-- Needed to prevent 'OutOfMemoryError: GC overhead limit exceeded' -->
                             <extraJvmArgs>-Xmx512m -Xms256m</extraJvmArgs>
+                            <!-- For inspecting cross compiled javascript -->
+                            <!--<style>DETAILED</style>-->
                         </configuration>
                     </execution>
                 </executions>
