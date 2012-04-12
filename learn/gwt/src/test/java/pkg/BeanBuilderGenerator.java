@@ -6,7 +6,9 @@ import com.sencha.gxt.widget.core.client.container.SimpleContainer;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.ListIterator;
 
 /**
  * Generates a bean builder so instead of:
@@ -63,7 +65,8 @@ public class BeanBuilderGenerator {
 
         // assignment methods
         for (Method m : cls.getMethods()) {
-            if (isSetter(m)) {
+            boolean isSetter = isSetter(m);
+            if (isSetter || isAdder(m)) {
 
                 // Support for multi-arg setters
                 List<Class<?>> types = Arrays.asList(m.getParameterTypes());
@@ -77,7 +80,8 @@ public class BeanBuilderGenerator {
                     signature = join(signature, ", ", canonicalName + " " + arg);
                 }
 
-                src += "\n\n  public " + builderName + " " + shortName(m) + "(" + signature + ") {";
+                String methodName = isSetter ? shortName(m): m.getName();
+                src += "\n\n  public " + builderName + " " + methodName + "(" + signature + ") {";
                 src += line("    " + varName + "." + m.getName() + "(" + args + ")");
                 src += line("    return this");
                 src += "\n  }";
@@ -85,6 +89,7 @@ public class BeanBuilderGenerator {
         }
 
         // init method to pull all values from another instance
+        /* Don't bother.  Not useful and not comprehensive
         src += "\n\n  public " + builderName + " initFrom(" + simpleName + " v) {";
         src += "\n    return this";
         Set<String> initCmds = new LinkedHashSet<String>(); // will remove dupes from overloaded setters
@@ -97,6 +102,7 @@ public class BeanBuilderGenerator {
         for (String cmd : initCmds) src += cmd;
         src += ";";
         src += "\n  }";
+        */
 
         src += "\n}";
         return src;
@@ -140,19 +146,26 @@ public class BeanBuilderGenerator {
         return Character.toLowerCase(simpleName.charAt(0)) + simpleName.substring(1);
     }
 
-    private static String argType(Method m) {
-        return m.getParameterTypes()[0].getCanonicalName();
-    }
-
     private static boolean isSetter(Method m) {
         String name = m.getName();
         return name.length() > 3
                 && name.startsWith("set")
                 && Character.isUpperCase(name.charAt(3))
-                && !Modifier.isPrivate(m.getModifiers())
-                && !Modifier.isStatic(m.getModifiers());
-        // Permit Multi-parameter setters
-//                && m.getParameterTypes().length == 1;
+                && eligible(m);
+    }
+
+    private static boolean eligible(Method m) {
+        int mods = m.getModifiers();
+        return !Modifier.isPrivate(mods)
+                && !Modifier.isStatic(mods)
+                && Void.TYPE.equals(m.getReturnType());
+    }
+
+    private static boolean isAdder(Method m) {
+        String name = m.getName();
+        return name.startsWith("add")
+                && (name.length() == 3 || Character.isUpperCase(name.charAt(3)))
+                && eligible(m);
     }
 
     /**
