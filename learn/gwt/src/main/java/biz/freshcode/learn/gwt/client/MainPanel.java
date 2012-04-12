@@ -7,12 +7,14 @@ import biz.freshcode.learn.gwt.client.uibinder.Composed;
 import biz.freshcode.learn.gwt.client.uibinder.eg.BorderLayoutEg;
 import biz.freshcode.learn.gwt.client.uibinder.eg.Tutorial1;
 import biz.freshcode.learn.gwt.client.uibinder.eg.Tutorial2;
+import biz.freshcode.learn.gwt.client.uispike.builder.ViewportBuilder;
 import biz.freshcode.learn.gwt.client.uispike.gxt.UiSpikePanel;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
+import com.sencha.gxt.widget.core.client.container.Viewport;
 
 public class MainPanel extends Composite {
     DockLayoutPanel pnl = new DockLayoutPanel(Style.Unit.EM);
@@ -114,7 +116,9 @@ public class MainPanel extends Composite {
     private void replaceRoot(IsWidget w) {
         RootPanel root = RootPanel.get();
         root.clear();
-        root.add(w.asWidget());
+        root.add(new ViewportBuilder()
+                .widget(w)
+                .viewport);
     }
 
     private MenuBar uiBinder() {
