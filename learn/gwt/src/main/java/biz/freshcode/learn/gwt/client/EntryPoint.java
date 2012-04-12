@@ -1,6 +1,5 @@
 package biz.freshcode.learn.gwt.client;
 
-import biz.freshcode.learn.gwt.client.uispike.gxt.UiSpikePanel;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.RootPanel;
