@@ -15,13 +15,7 @@
     <ui:with field="config" type="biz.freshcode.learn.gwt.client.uispike.gxt.UiSpikePanel.UiConfig"/>
 
     <container:BorderLayoutContainer styleName="{style.highlight}">
-        <!--<container:north>-->
-        <!--<g:HTMLPanel>-->
-        <!--<p>Hello</p>-->
-        <!--</g:HTMLPanel>-->
-        <!--</container:north>-->
         <container:west layoutData="{config.westLayout}">
-            <!-- NOTE: We must have some sort of container here... having another control directly messes up resizing -->
             <gxt:ContentPanel headingText="West Heading">
                 <my:ControlPanel ui:field="pnlControl"/>
             </gxt:ContentPanel>
