@@ -20,7 +20,7 @@ public class UiSpikePanel extends AbstractIsWidget implements ControlPanel.Host 
     protected Widget createWidget() {
         return new BorderLayoutContainerBuilder()
                 .westWidget(
-                        // NOTE: We still need the content panel here to get resizing to work.
+                        // NOTE: ContentPanel for a header and collapse button to work-around resize bug.
                         new ContentPanelBuilder()
                                 .widget(new ControlPanel(this))
                                 .contentPanel,

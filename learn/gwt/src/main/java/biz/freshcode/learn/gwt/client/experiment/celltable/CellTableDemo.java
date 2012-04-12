@@ -21,12 +21,8 @@ public class CellTableDemo extends AbstractIsWidget {
         String highlight = Bundle.INSTANCE.style().highlight();
         return new BorderLayoutContainerBuilder()
                 .stylePrimaryName(highlight)
-                .northWidget(new SimpleContainerBuilder()
-                        .widget(new HTMLPanel("Phew, resizing and layout are OK."))
-                        .simpleContainer)
-                .centerWidget(new SimpleContainerBuilder()
-                        .widget(createTable())
-                        .simpleContainer)
+                .northWidget(new HTMLPanel("Phew, resizing and layout are OK."))
+                .centerWidget(createTable())
                 .borderLayoutContainer;
     }
 
