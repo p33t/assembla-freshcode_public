@@ -16,6 +16,7 @@
 
     <container:BorderLayoutContainer styleName="{style.highlight}">
         <container:west layoutData="{config.westLayout}">
+            <!-- NOTE: ContentPanel for heading and work-around for resize bug -->
             <gxt:ContentPanel headingText="West Heading">
                 <my:ControlPanel ui:field="pnlControl"/>
             </gxt:ContentPanel>
