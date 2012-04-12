@@ -4,12 +4,12 @@ import biz.freshcode.learn.gwt.client.uispike.Row;
 import biz.freshcode.learn.gwt.client.uispike.builder.BorderLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.BorderLayoutDataBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.VerticalLayoutContainerBuilder;
+import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import com.google.gwt.user.client.Random;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.core.client.dom.ScrollSupport;
 import com.sencha.gxt.widget.core.client.button.TextButton;
-import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.toolbar.FillToolItem;
@@ -19,7 +19,7 @@ import com.sencha.gxt.widget.core.client.toolbar.ToolBar;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
-public class ControlPanel implements IsWidget {
+public class ControlPanel extends AbstractIsWidget {
     final Logger logger = Logger.getLogger(getClass().getName());
     final Host host;
 
@@ -31,7 +31,8 @@ public class ControlPanel implements IsWidget {
         this.host = host;
     }
 
-    public Widget asWidget() {
+    @Override
+    protected Widget createWidget() {
         ToolBar tb = new ToolBar();
         tb.add(new FillToolItem());
         tb.add(new TextButton("Process", new SelectEvent.SelectHandler() {
