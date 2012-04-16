@@ -1,14 +1,16 @@
 package pkg;
 
 import biz.freshcode.learn.gwt.client.uispike.builder.BeanBuilder;
-import com.sencha.gxt.widget.core.client.container.SimpleContainer;
+import com.sencha.gxt.widget.core.client.Dialog;
+import com.sencha.gxt.widget.core.client.FramedPanel;
+import com.sencha.gxt.widget.core.client.button.TextButton;
+import com.sencha.gxt.widget.core.client.container.FlowLayoutContainer;
+import com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer;
+import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
+import com.sencha.gxt.widget.core.client.form.TextField;
+import sun.reflect.generics.reflectiveObjects.TypeVariableImpl;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
-import java.util.Arrays;
-import java.util.List;
-import java.util.ListIterator;
+import java.lang.reflect.*;
 
 /**
  * Generates a bean builder so instead of:
@@ -32,7 +34,7 @@ import java.util.ListIterator;
  * </pre>
  */
 public class BeanBuilderGenerator {
-    static final Class CLASS = SimpleContainer.class;
+    static final Class CLASS = FlowLayoutContainer.class;
 
 
     public static void main(String[] args) {
@@ -66,25 +68,29 @@ public class BeanBuilderGenerator {
         // assignment methods
         for (Method m : cls.getMethods()) {
             boolean isSetter = isSetter(m);
+            boolean hasGenerics = hasGenerics(m);
             if (isSetter || isAdder(m)) {
 
                 // Support for multi-arg setters
-                List<Class<?>> types = Arrays.asList(m.getParameterTypes());
                 String signature = "";
                 String args = "";
-                for (ListIterator<Class<?>> li = types.listIterator(); li.hasNext(); ) {
-                    String canonicalName = li.next().getCanonicalName();
-                    int ix = li.previousIndex();
-                    String arg = "v" + ix;
+                for (int i = 0; i < m.getParameterTypes().length; i ++) {
+                    Class<?> typ = m.getParameterTypes()[i];
+                    String argType = typ.getCanonicalName();
+                    String arg = "v" + i;
                     args = join(args, ", ", arg);
-                    signature = join(signature, ", ", canonicalName + " " + arg);
+                    signature = join(signature, ", ", argType + " " + arg);
                 }
 
                 String methodName = isSetter ? shortName(m): m.getName();
-                src += "\n\n  public " + builderName + " " + methodName + "(" + signature + ") {";
+
+                src += "\n";
+                if (hasGenerics) src += ("\n/* Generics too hard at the moment");
+                src += "\n  public " + builderName + " " + methodName + "(" + signature + ") {";
                 src += line("    " + varName + "." + m.getName() + "(" + args + ")");
                 src += line("    return this");
                 src += "\n  }";
+                if (hasGenerics) src +=("\n*/");
             }
         }
 
@@ -106,6 +112,13 @@ public class BeanBuilderGenerator {
 
         src += "\n}";
         return src;
+    }
+
+    private static boolean hasGenerics(Method m) {
+        for (Type t: m.getGenericParameterTypes()) {
+            if (t instanceof TypeVariableImpl) return true;
+        }
+        return false;
     }
 
     /**

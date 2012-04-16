@@ -15,6 +15,11 @@ public class VerticalLayoutContainerBuilder {
         verticalLayoutContainer = v;
     }
 
+    public VerticalLayoutContainerBuilder add(com.google.gwt.user.client.ui.IsWidget v0, com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData v1) {
+        verticalLayoutContainer.add(v0, v1);
+        return this;
+    }
+
     public VerticalLayoutContainerBuilder adjustForScroll(boolean v0) {
         verticalLayoutContainer.setAdjustForScroll(v0);
         return this;
@@ -30,6 +35,16 @@ public class VerticalLayoutContainerBuilder {
         return this;
     }
 
+    public VerticalLayoutContainerBuilder add(com.google.gwt.user.client.ui.IsWidget v0) {
+        verticalLayoutContainer.add(v0);
+        return this;
+    }
+
+    public VerticalLayoutContainerBuilder add(com.google.gwt.user.client.ui.Widget v0) {
+        verticalLayoutContainer.add(v0);
+        return this;
+    }
+
     public VerticalLayoutContainerBuilder size(java.lang.String v0, java.lang.String v1) {
         verticalLayoutContainer.setSize(v0, v1);
         return this;
@@ -42,6 +57,11 @@ public class VerticalLayoutContainerBuilder {
 
     public VerticalLayoutContainerBuilder pixelSize(int v0, int v1) {
         verticalLayoutContainer.setPixelSize(v0, v1);
+        return this;
+    }
+
+    public VerticalLayoutContainerBuilder addStyleOnOver(com.google.gwt.dom.client.Element v0, java.lang.String v1) {
+        verticalLayoutContainer.addStyleOnOver(v0, v1);
         return this;
     }
 
@@ -165,8 +185,18 @@ public class VerticalLayoutContainerBuilder {
         return this;
     }
 
+    public VerticalLayoutContainerBuilder addStyleDependentName(java.lang.String v0) {
+        verticalLayoutContainer.addStyleDependentName(v0);
+        return this;
+    }
+
     public VerticalLayoutContainerBuilder styleDependentName(java.lang.String v0, boolean v1) {
         verticalLayoutContainer.setStyleDependentName(v0, v1);
+        return this;
+    }
+
+    public VerticalLayoutContainerBuilder addStyleName(java.lang.String v0) {
+        verticalLayoutContainer.addStyleName(v0);
         return this;
     }
 
@@ -188,20 +218,5 @@ public class VerticalLayoutContainerBuilder {
     public VerticalLayoutContainerBuilder title(java.lang.String v0) {
         verticalLayoutContainer.setTitle(v0);
         return this;
-    }
-
-    public VerticalLayoutContainerBuilder initFrom(VerticalLayoutContainer v) {
-        return this
-                .scrollMode(v.getScrollMode())
-                .scrollSupport(v.getScrollSupport())
-                .hideMode(v.getHideMode())
-                .id(v.getId())
-                .itemId(v.getItemId())
-                .shadow(v.getShadow())
-                .stateId(v.getStateId())
-                .layoutData(v.getLayoutData())
-                .styleName(v.getStyleName())
-                .stylePrimaryName(v.getStylePrimaryName())
-                .title(v.getTitle());
     }
 }

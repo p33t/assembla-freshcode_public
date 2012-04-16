@@ -3,14 +3,14 @@ package biz.freshcode.learn.gwt.client.util;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 
-public abstract class AbstractIsWidget implements IsWidget {
-    private Widget w;
+public abstract class AbstractIsWidget<T extends Widget> implements IsWidget {
+    protected T w;
 
     @Override
-    public final Widget asWidget() {
+    public final T asWidget() {
         if (w == null) w = createWidget();
         return w;
     }
 
-    protected abstract Widget createWidget();
+    protected abstract T createWidget();
 }
