@@ -2,6 +2,7 @@ package biz.freshcode.learn.gwt.client;
 
 import biz.freshcode.learn.gwt.client.experiment.Resizer;
 import biz.freshcode.learn.gwt.client.experiment.celltable.CellTableDemo;
+import biz.freshcode.learn.gwt.client.experiment.forms.Landing;
 import biz.freshcode.learn.gwt.client.uibinder.Basic;
 import biz.freshcode.learn.gwt.client.uibinder.Composed;
 import biz.freshcode.learn.gwt.client.uibinder.eg.BorderLayoutEg;
@@ -68,6 +69,14 @@ public class MainPanel extends Composite {
 
         MenuBar uibGxt = uibGxt();
         mbGxt.addItem("Ui Binder", uibGxt);
+
+        mbGxt.addItem("Forms", new Command() {
+            @Override
+            public void execute() {
+                IsWidget w = GWT.create(Landing.class);
+                replaceContent(w.asWidget());
+            }
+        });
         return mbGxt;
     }
 
