@@ -1,32 +1,20 @@
 package biz.freshcode.learn.gwt.client.experiment.forms;
 
+import com.google.web.bindery.autobean.shared.AutoBean;
+import com.google.web.bindery.autobean.shared.AutoBeanFactory;
+
 import java.util.Date;
 
-public class FormBeanSub {
-    private Date dt;
-    private String name;
+public interface FormBeanSub {
+    Date getDt();
 
-    // TODO: Try with AutoBean?
-//    Date getDt();
-//    void setDt(Date dt);
-//
-//    interface Factory extends AutoBeanFactory {
-//        AutoBean<FormBeanSub> create();
-//    }
+    void setDt(Date dt);
 
-    public Date getDt() {
-        return dt;
-    }
+    String getName();
 
-    public void setDt(Date dt) {
-        this.dt = dt;
-    }
+    void setName(String name);
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    interface Factory extends AutoBeanFactory {
+        AutoBean<FormBeanSub> create();
     }
 }
