@@ -6,6 +6,8 @@ import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.EditorError;
 import com.google.gwt.editor.client.SimpleBeanEditorDriver;
+import com.google.web.bindery.autobean.shared.AutoBean;
+import com.google.web.bindery.autobean.shared.AutoBeanCodex;
 import com.sencha.gxt.widget.core.client.Dialog;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
@@ -15,14 +17,14 @@ import java.util.logging.Logger;
 
 public class FormDialog extends AbstractIsWidget<Dialog> {
     Logger logger = Logger.getLogger(getClass().getName());
-    private FormBean formBean;
+    private AutoBean<FormBean> formBean;
 
     interface Driver extends SimpleBeanEditorDriver<FormBean, FormBeanEditor> {
     }
 
     private Driver driver = GWT.create(Driver.class);
 
-    public FormDialog(FormBean formBean) {
+    public FormDialog(AutoBean<FormBean> formBean) {
         this.formBean = formBean;
     }
 
@@ -44,7 +46,7 @@ public class FormDialog extends AbstractIsWidget<Dialog> {
 
         // Initialize editing
         driver.initialize(editor);
-        driver.edit(formBean);
+        driver.edit(formBean.as());
 
         btnOk.addSelectHandler(new SelectEvent.SelectHandler() {
             public void onSelect(SelectEvent event) {
@@ -64,7 +66,8 @@ public class FormDialog extends AbstractIsWidget<Dialog> {
                 }
                 Info.display("Error", msg);
             } else {
-                String msg = "Finished editting " + formBean.getStr();
+                String json = AutoBeanCodex.encode(formBean).getPayload();
+                String msg = "Finished editting...\n" + json;
                 logger.info(msg);
                 Info.display("Note", msg);
                 dlg.hide((TextButton) event.getSource());
