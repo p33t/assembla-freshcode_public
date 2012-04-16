@@ -15,13 +15,11 @@ import com.sencha.gxt.data.shared.ListStore;
 import com.sencha.gxt.data.shared.ModelKeyProvider;
 import com.sencha.gxt.data.shared.PropertyAccess;
 import com.sencha.gxt.widget.core.client.container.FlowLayoutContainer;
-import com.sencha.gxt.widget.core.client.form.FormPanel;
-import com.sencha.gxt.widget.core.client.form.NumberField;
-import com.sencha.gxt.widget.core.client.form.NumberPropertyEditor;
-import com.sencha.gxt.widget.core.client.form.TextField;
+import com.sencha.gxt.widget.core.client.form.*;
 import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
 import com.sencha.gxt.widget.core.client.grid.ColumnModel;
 import com.sencha.gxt.widget.core.client.grid.Grid;
+import com.sencha.gxt.widget.core.client.grid.editing.GridInlineEditing;
 
 import java.util.Date;
 
@@ -36,6 +34,8 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
     protected Widget createWidget() {
 
         Grid<FormBeanSub> grid;
+        ColumnConfig<FormBeanSub, String> nameCol;
+        ColumnConfig<FormBeanSub, Date> dateCol;
         FlowLayoutContainer w = new FlowLayoutContainerBuilder()
                 .add(new FieldLabelBuilder()
                         .text("Str")
@@ -58,15 +58,26 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
                                 grid = new Grid<FormBeanSub>(
                                         subStore,
                                         columnModel(
-                                                columnConfig(subProps.name(), 200, "Name"),
-                                                columnConfig(subProps.dt(), 100, "Date")
+                                                nameCol = columnConfig(subProps.name(), 200, "Name"),
+                                                dateCol = columnConfig(subProps.dt(), 100, "Date")
                                         )
                                 )
                         )
 //                                .grid)
                         .fieldLabel)
                 .flowLayoutContainer;
+
+        // column sizing
+        // TODO: This does not auto resize
         grid.getView().setForceFit(true);
+
+        // Editing in the grid
+        GridInlineEditing<FormBeanSub> inlineEditor = new GridInlineEditing<FormBeanSub>(grid);
+        inlineEditor.addEditor(nameCol, new TextFieldBuilder()
+                .allowBlank(false)
+                .textField);
+        inlineEditor.addEditor(dateCol, new DateField(new DateTimePropertyEditor()));
+
         return w;
     }
 
@@ -76,7 +87,7 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
     }
 
     // Cut down code noise
-    private <T> ColumnConfig<FormBeanSub, ?> columnConfig(ValueProvider<FormBeanSub, T> provider, int width, String title) {
+    private <T> ColumnConfig<FormBeanSub, T> columnConfig(ValueProvider<FormBeanSub, T> provider, int width, String title) {
         return new ColumnConfig<FormBeanSub, T>(provider, width, title);
     }
 

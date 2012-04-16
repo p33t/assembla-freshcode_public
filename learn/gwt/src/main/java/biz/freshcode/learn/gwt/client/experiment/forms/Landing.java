@@ -15,15 +15,16 @@ import java.util.Date;
 import java.util.List;
 
 public class Landing extends AbstractIsWidget {
-    FormBean.Factory factory = GWT.create(FormBean.Factory.class);
+    FormBean.Factory factFormBean = GWT.create(FormBean.Factory.class);
+    FormBeanSub.Factory factFormBeanSub = GWT.create(FormBeanSub.Factory.class);
     // Keep this around so that changes can be accumulated.
-    private AutoBean<FormBean> formBean = factory.create();
+    private AutoBean<FormBean> formBean = factFormBean.create();
 
     {
         // Populate some default sub beans
         FormBean bean = formBean.as();
-        List<FormBeanSub> subs = Util.<FormBeanSub>createList();
-        FormBeanSub sub = new FormBeanSub();
+        List<FormBeanSub> subs = Util.createList();
+        FormBeanSub sub = factFormBeanSub.create().as();
         sub.setDt(new Date(0L));
         sub.setName("Epoch");
         subs.add(sub);
