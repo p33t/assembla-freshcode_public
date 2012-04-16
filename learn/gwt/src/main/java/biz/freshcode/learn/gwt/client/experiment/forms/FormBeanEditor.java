@@ -14,6 +14,7 @@ import com.sencha.gxt.data.client.editor.ListStoreEditor;
 import com.sencha.gxt.data.shared.ListStore;
 import com.sencha.gxt.data.shared.ModelKeyProvider;
 import com.sencha.gxt.data.shared.PropertyAccess;
+import com.sencha.gxt.widget.core.client.container.FlowLayoutContainer;
 import com.sencha.gxt.widget.core.client.form.FormPanel;
 import com.sencha.gxt.widget.core.client.form.NumberField;
 import com.sencha.gxt.widget.core.client.form.NumberPropertyEditor;
@@ -33,7 +34,9 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
 
     @Override
     protected Widget createWidget() {
-        return new FlowLayoutContainerBuilder()
+
+        Grid<FormBeanSub> grid;
+        FlowLayoutContainer w = new FlowLayoutContainerBuilder()
                 .add(new FieldLabelBuilder()
                         .text("Str")
                         .widget(str = new TextFieldBuilder()
@@ -52,19 +55,29 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
                         .text("Subs")
                         .labelAlign(FormPanel.LabelAlign.TOP)
                         .widget(//new GridBuilder(
-                                new Grid<FormBeanSub>(
+                                grid = new Grid<FormBeanSub>(
                                         subStore,
-                                        new ColumnModel<FormBeanSub>(
-                                                Util.<ColumnConfig<FormBeanSub, ?>>createList(
-                                                        new ColumnConfig<FormBeanSub, String>(subProps.name(), 200, "Name"),
-                                                        new ColumnConfig<FormBeanSub, Date>(subProps.dt(), 100, "Date")
-                                                )
+                                        columnModel(
+                                                columnConfig(subProps.name(), 200, "Name"),
+                                                columnConfig(subProps.dt(), 100, "Date")
                                         )
                                 )
                         )
 //                                .grid)
                         .fieldLabel)
                 .flowLayoutContainer;
+        grid.getView().setForceFit(true);
+        return w;
+    }
+
+    // Cut down code noise
+    private ColumnModel<FormBeanSub> columnModel(ColumnConfig<FormBeanSub, ?>... cols) {
+        return new ColumnModel(Util.createList(cols));
+    }
+
+    // Cut down code noise
+    private <T> ColumnConfig<FormBeanSub, ?> columnConfig(ValueProvider<FormBeanSub, T> provider, int width, String title) {
+        return new ColumnConfig<FormBeanSub, T>(provider, width, title);
     }
 
     interface FormBeanSubProperties extends PropertyAccess<FormBeanSub> {
