@@ -39,6 +39,7 @@ public class Landing extends AbstractIsWidget {
                         .text("Dialog Form")
                         .textButton)
                 .flowLayoutContainer;
+        
         btnDialog.addSelectHandler(new SelectEvent.SelectHandler() {
             @Override
             public void onSelect(SelectEvent event) {

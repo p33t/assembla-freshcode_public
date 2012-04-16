@@ -37,7 +37,7 @@ public class FormDialog extends AbstractIsWidget<Dialog> {
                 .width(500)
                 .height(300)
                 .add(editor = new FormBeanEditor())
-                        // The predefined buttons are a litle useless.  You have to dig them out again to define handlers (?)
+                // The predefined buttons are a litle useless.  You have to dig them out again to define handlers (?)
                 .predefinedButtons(new Dialog.PredefinedButton[0])
                 .addButton(btnOk = new TextButtonBuilder()
                         .text("OK")
