@@ -28,6 +28,7 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
     TextField str;
     NumberField<Integer> num;
     ListStore<FormBeanSub> subStore = new ListStore<FormBeanSub>(subProps.key());
+    // NOTE: This is not used directly.  It appears to register itself as a listener.
     ListStoreEditor<FormBeanSub> subs = new ListStoreEditor<FormBeanSub>(subStore);
 
     @Override
