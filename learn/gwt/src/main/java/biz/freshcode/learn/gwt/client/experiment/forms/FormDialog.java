@@ -35,7 +35,7 @@ public class FormDialog extends AbstractIsWidget<Dialog> {
     @Override
     protected Dialog createWidget() {
         logger.info("Creating widget");
-        TextButton btnOk;
+        TextButton btnClose;
         FormBeanEditor editor;
         final Dialog dlg = new DialogBuilder()
                 .headingText("Forms Demo")
@@ -44,8 +44,9 @@ public class FormDialog extends AbstractIsWidget<Dialog> {
                 .add(editor = new FormBeanEditor())
                 // The predefined buttons are a litle useless.  You have to dig them out again to define handlers (?)
                 .predefinedButtons(new Dialog.PredefinedButton[0])
-                .addButton(btnOk = new TextButtonBuilder()
-                        .text("OK")
+                // TODO: Replace with predefined button that closes the dialog
+                .addButton(btnClose = new TextButtonBuilder()
+                        .text("Close")
                         .textButton)
                 .dialog;
 
@@ -55,15 +56,16 @@ public class FormDialog extends AbstractIsWidget<Dialog> {
         original = AutoBeanCodex.decode(GWT.<AutoBeanFactory>create(FormBean.Factory.class), FormBean.class, AutoBeanCodex.encode(formBean));
         driver.edit(formBean.as());
 
-        btnOk.addSelectHandler(new SelectEvent.SelectHandler() {
+        btnClose.addSelectHandler(new SelectEvent.SelectHandler() {
             public void onSelect(SelectEvent event) {
-                onOk(event, dlg);
+                onClose(event, dlg);
             }
         });
         return dlg;
     }
 
-    private void onOk(SelectEvent event, Dialog dlg) {
+    // TODO: Tap into 'close' life cycle to properly
+    private void onClose(SelectEvent event, Dialog dlg) {
         // trying to debug
         driver.flush();
         String json = getFormBeanJson();
