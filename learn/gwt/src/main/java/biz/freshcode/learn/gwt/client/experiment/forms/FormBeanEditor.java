@@ -33,7 +33,6 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
 
     @Override
     protected Widget createWidget() {
-
         Grid<FormBeanSub> grid;
         ColumnConfig<FormBeanSub, String> nameCol;
         ColumnConfig<FormBeanSub, Date> dateCol;
@@ -73,6 +72,7 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
         grid.getView().setForceFit(true);
 
         // Editing in the grid
+        // This seems to help a little with commits lagging flush but it doesn't fix it totally.
         subStore.setAutoCommit(true); // Important for changes to propagate properly.
         GridInlineEditing<FormBeanSub> inlineEditor = new GridInlineEditing<FormBeanSub>(grid);
         inlineEditor.addEditor(nameCol, new TextFieldBuilder()
