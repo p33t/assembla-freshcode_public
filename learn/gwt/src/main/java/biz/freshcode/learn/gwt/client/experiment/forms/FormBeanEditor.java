@@ -73,7 +73,7 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
         grid.getView().setForceFit(true);
 
         // Editing in the grid
-//        subStore.setAutoCommit(true); // prevents the red corner tags
+//        subStore.setAutoCommit(true); // prevents the red corner tags but may interfere with .flush() process (?)
         GridInlineEditing<FormBeanSub> inlineEditor = new GridInlineEditing<FormBeanSub>(grid);
         inlineEditor.addEditor(nameCol, new TextFieldBuilder()
                 // TODO: This does not appear to be working
