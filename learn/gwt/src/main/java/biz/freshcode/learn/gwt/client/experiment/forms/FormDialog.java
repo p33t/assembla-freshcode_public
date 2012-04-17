@@ -45,7 +45,7 @@ public class FormDialog extends AbstractIsWidget<Dialog> {
         dlg.addBeforeHideHandler(new BeforeHideEvent.BeforeHideHandler() {
             @Override
             public void onBeforeHide(BeforeHideEvent event) {
-                FormBean formBean = driver.flush();
+                final FormBean formBean = driver.flush();
                 if (driver.hasErrors()) {
                     String msg = "";
                     for (EditorError e : driver.getErrors()) {
@@ -54,7 +54,9 @@ public class FormDialog extends AbstractIsWidget<Dialog> {
                     Info.display("Error", msg);
                     event.setCancelled(true);
                 } else {
-                    String json = getFormBeanJson(AutoBeanUtils.getAutoBean(formBean));
+                    // TODO: It seem that the ListStoreEdit has outstanding changes that are applied after the flush returns.
+                    // Scheduler.defer() doesn't work.
+                    String json = getFormBeanJson(formBean);
                     Dialog result = new DialogBuilder()
                             .title("Result")
                             .widget(new HTMLPanel("<p>Finished editting...</p><p>" + SafeHtmlUtils.htmlEscape(json) + "</p>"))
@@ -69,8 +71,9 @@ public class FormDialog extends AbstractIsWidget<Dialog> {
         return dlg;
     }
 
-    private String getFormBeanJson(AutoBean<FormBean> formBean) {
-        return AutoBeanCodex.encode(formBean).getPayload();
+    private String getFormBeanJson(FormBean formBean) {
+        AutoBean<FormBean> auto = AutoBeanUtils.getAutoBean(formBean);
+        return AutoBeanCodex.encode(auto).getPayload();
     }
 
     public void edit(FormBean formBean) {
