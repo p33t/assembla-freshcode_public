@@ -6,6 +6,11 @@ import com.google.web.bindery.autobean.shared.AutoBeanFactory;
 import java.util.Date;
 
 public interface FormBeanSub {
+
+    Integer getKey();
+
+    void setKey(Integer key);
+
     Date getDt();
 
     void setDt(Date dt);

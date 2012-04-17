@@ -25,9 +25,17 @@ public class Landing extends AbstractIsWidget {
         FormBean bean = formBean.as();
         List<FormBeanSub> subs = Util.createList();
         FormBeanSub sub = factFormBeanSub.create().as();
+        sub.setKey(1);
         sub.setDt(new Date(0L));
         sub.setName("Epoch");
         subs.add(sub);
+
+        sub = factFormBeanSub.create().as();
+        sub.setKey(2);
+        sub.setDt(new Date(1970, 12, 25));
+        sub.setName("Xmas");
+        subs.add(sub);
+
         bean.setSubs(subs);
     }
 
