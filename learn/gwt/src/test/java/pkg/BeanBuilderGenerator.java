@@ -1,16 +1,13 @@
 package pkg;
 
 import biz.freshcode.learn.gwt.client.uispike.builder.BeanBuilder;
-import com.sencha.gxt.widget.core.client.Dialog;
-import com.sencha.gxt.widget.core.client.FramedPanel;
-import com.sencha.gxt.widget.core.client.button.TextButton;
-import com.sencha.gxt.widget.core.client.container.FlowLayoutContainer;
-import com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer;
-import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
-import com.sencha.gxt.widget.core.client.form.TextField;
+import com.sencha.gxt.widget.core.client.Popup;
 import sun.reflect.generics.reflectiveObjects.TypeVariableImpl;
 
-import java.lang.reflect.*;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
+import java.lang.reflect.Type;
 
 /**
  * Generates a bean builder so instead of:
@@ -34,7 +31,7 @@ import java.lang.reflect.*;
  * </pre>
  */
 public class BeanBuilderGenerator {
-    static final Class CLASS = FlowLayoutContainer.class;
+    static final Class CLASS = Popup.class;
 
 
     public static void main(String[] args) {
