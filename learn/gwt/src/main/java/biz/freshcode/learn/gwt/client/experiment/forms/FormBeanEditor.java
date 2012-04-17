@@ -73,9 +73,10 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
         grid.getView().setForceFit(true);
 
         // Editing in the grid
-        subStore.setAutoCommit(true); // prevents the red corner tags
+//        subStore.setAutoCommit(true); // prevents the red corner tags
         GridInlineEditing<FormBeanSub> inlineEditor = new GridInlineEditing<FormBeanSub>(grid);
         inlineEditor.addEditor(nameCol, new TextFieldBuilder()
+                // TODO: This does not appear to be working
                 .allowBlank(false)
                 .textField);
         inlineEditor.addEditor(dateCol, new DateField(new DateTimePropertyEditor()));
@@ -94,7 +95,7 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
     }
 
     interface FormBeanSubProperties extends PropertyAccess<FormBeanSub> {
-// Use an immutable key value instead to rule out strange errors        @Path("name")
+        // Use an immutable key value instead to rule out strange errors        @Path("name")
         ModelKeyProvider<FormBeanSub> key();
 
         ValueProvider<FormBeanSub, String> name();
