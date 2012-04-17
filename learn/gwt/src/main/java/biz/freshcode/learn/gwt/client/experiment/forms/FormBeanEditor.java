@@ -28,7 +28,7 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
     TextField str;
     NumberField<Integer> num;
     ListStore<FormBeanSub> subStore = new ListStore<FormBeanSub>(subProps.key());
-    // NOTE: This is not used directly.  It appears to register itself as a listener.
+    // NOTE: This is not used directly.  It needs to have non-private scope and same name as bean property.
     ListStoreEditor<FormBeanSub> subs = new ListStoreEditor<FormBeanSub>(subStore);
 
     @Override
@@ -94,7 +94,7 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
     }
 
     interface FormBeanSubProperties extends PropertyAccess<FormBeanSub> {
-        @Path("name")
+// Use an immutable key value instead to rule out strange errors        @Path("name")
         ModelKeyProvider<FormBeanSub> key();
 
         ValueProvider<FormBeanSub, String> name();
