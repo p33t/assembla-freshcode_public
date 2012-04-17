@@ -48,9 +48,13 @@ public class Landing extends AbstractIsWidget {
     @Override
     protected Widget createWidget() {
         TextButton btnDialog;
+        TextButton btnOutput;
         FlowLayoutContainer ctr = new FlowLayoutContainerBuilder()
                 .add(btnDialog = new TextButtonBuilder()
-                        .text("Dialog Form")
+                        .text("Object Graph Edit")
+                        .textButton)
+                .add(btnOutput = new TextButtonBuilder()
+                        .text("Output Contents")
                         .textButton)
                 .flowLayoutContainer;
 
@@ -60,18 +64,28 @@ public class Landing extends AbstractIsWidget {
                 FormDialog dialog = new FormDialog();
                 dialog.asWidget().addHideHandler(new HideEvent.HideHandler() {
                     public void onHide(HideEvent event) {
-                        String json = AutoBeanCodex.encode(formBeanAuto).getPayload();
-                        Dialog result = new DialogBuilder()
-                                .title("Result")
-                                .widget(new HTMLPanel("<p>Finished editing...</p><p>" + SafeHtmlUtils.htmlEscape(json) + "</p>"))
-                                .hideOnButtonClick(true)
-                                .dialog;
-                        result.show();
+                        outputContents();
                     }
                 });
                 dialog.edit(formBeanAuto.as());
             }
         });
+
+        btnOutput.addSelectHandler(new SelectEvent.SelectHandler() {
+            public void onSelect(SelectEvent event) {
+                outputContents();
+            }
+        });
         return ctr;
+    }
+
+    private void outputContents() {
+        String json = AutoBeanCodex.encode(formBeanAuto).getPayload();
+        Dialog result = new DialogBuilder()
+                .title("Result")
+                .widget(new HTMLPanel("<p>Finished editing...</p><p>" + SafeHtmlUtils.htmlEscape(json) + "</p>"))
+                .hideOnButtonClick(true)
+                .dialog;
+        result.show();
     }
 }
