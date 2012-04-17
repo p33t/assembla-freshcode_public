@@ -5,11 +5,6 @@ import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.EditorError;
 import com.google.gwt.editor.client.SimpleBeanEditorDriver;
-import com.google.gwt.safehtml.shared.SafeHtmlUtils;
-import com.google.gwt.user.client.ui.HTMLPanel;
-import com.google.web.bindery.autobean.shared.AutoBean;
-import com.google.web.bindery.autobean.shared.AutoBeanCodex;
-import com.google.web.bindery.autobean.shared.AutoBeanUtils;
 import com.sencha.gxt.widget.core.client.Dialog;
 import com.sencha.gxt.widget.core.client.event.BeforeHideEvent;
 import com.sencha.gxt.widget.core.client.info.Info;
@@ -36,6 +31,7 @@ public class FormDialog extends AbstractIsWidget<Dialog> {
                 .add(editor = new FormBeanEditor())
                         // The predefined buttons are a litle useless.  You have to dig them out again to define handlers (?)
                 .predefinedButtons(new Dialog.PredefinedButton[0])
+                .modal(true)
                 .dialog;
 
         // Initialize editing
@@ -45,24 +41,17 @@ public class FormDialog extends AbstractIsWidget<Dialog> {
         dlg.addBeforeHideHandler(new BeforeHideEvent.BeforeHideHandler() {
             @Override
             public void onBeforeHide(BeforeHideEvent event) {
-                final FormBean formBean = driver.flush();
+                // TODO: It seem that the ListStoreEdit has outstanding changes that are applied after the flush returns.
+                // Scheduler.defer() doesn't work.
+                driver.flush();
                 if (driver.hasErrors()) {
                     String msg = "";
                     for (EditorError e : driver.getErrors()) {
                         msg += e.getMessage();
                     }
                     Info.display("Error", msg);
+                    //TODO: This is dangerous without a 'Cancel' button
                     event.setCancelled(true);
-                } else {
-                    // TODO: It seem that the ListStoreEdit has outstanding changes that are applied after the flush returns.
-                    // Scheduler.defer() doesn't work.
-                    String json = getFormBeanJson(formBean);
-                    Dialog result = new DialogBuilder()
-                            .title("Result")
-                            .widget(new HTMLPanel("<p>Finished editting...</p><p>" + SafeHtmlUtils.htmlEscape(json) + "</p>"))
-                            .hideOnButtonClick(true)
-                            .dialog;
-                    result.show();
                 }
 
             }
@@ -71,15 +60,11 @@ public class FormDialog extends AbstractIsWidget<Dialog> {
         return dlg;
     }
 
-    private String getFormBeanJson(FormBean formBean) {
-        AutoBean<FormBean> auto = AutoBeanUtils.getAutoBean(formBean);
-        return AutoBeanCodex.encode(auto).getPayload();
-    }
-
-    public void edit(FormBean formBean) {
-        asWidget();
+    public void edit(final FormBean formBean) {
+        Dialog w = asWidget();
         logger.info("Driver about to edit.");
         driver.edit(formBean);
-        asWidget().show();
+        // NOTE: This call does block despite .setModal(true).
+        w.show();
     }
 }
