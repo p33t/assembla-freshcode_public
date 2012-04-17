@@ -5,29 +5,24 @@ import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.EditorError;
 import com.google.gwt.editor.client.SimpleBeanEditorDriver;
+import com.google.gwt.safehtml.shared.SafeHtmlUtils;
+import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.web.bindery.autobean.shared.AutoBean;
 import com.google.web.bindery.autobean.shared.AutoBeanCodex;
-import com.google.web.bindery.autobean.shared.AutoBeanFactory;
+import com.google.web.bindery.autobean.shared.AutoBeanUtils;
 import com.sencha.gxt.widget.core.client.Dialog;
-import com.sencha.gxt.widget.core.client.event.HideEvent;
+import com.sencha.gxt.widget.core.client.event.BeforeHideEvent;
 import com.sencha.gxt.widget.core.client.info.Info;
 
 import java.util.logging.Logger;
 
 public class FormDialog extends AbstractIsWidget<Dialog> {
     Logger logger = Logger.getLogger(getClass().getName());
-    private AutoBean<FormBean> formBean;
-    private AutoBean<FormBean> original;
 
     interface Driver extends SimpleBeanEditorDriver<FormBean, FormBeanEditor> {
     }
 
     private Driver driver = GWT.create(Driver.class);
-
-    public FormDialog(AutoBean<FormBean> formBean) {
-        this.formBean = formBean;
-        logger.info("Init with ...\n" + getFormBeanJson());
-    }
 
     @Override
     protected Dialog createWidget() {
@@ -39,39 +34,34 @@ public class FormDialog extends AbstractIsWidget<Dialog> {
                 .width(500)
                 .height(300)
                 .add(editor = new FormBeanEditor())
-                // The predefined buttons are a litle useless.  You have to dig them out again to define handlers (?)
+                        // The predefined buttons are a litle useless.  You have to dig them out again to define handlers (?)
                 .predefinedButtons(new Dialog.PredefinedButton[0])
-                // TODO: Replace with predefined button that closes the dialog
-//                .addButton(btnClose = new TextButtonBuilder()
-//                        .text("Close")
-//                        .textButton)
                 .dialog;
 
         // Initialize editing
+        logger.info("Driver initializing.");
         driver.initialize(editor);
-        // Trying to debug
-        original = AutoBeanCodex.decode(GWT.<AutoBeanFactory>create(FormBean.Factory.class), FormBean.class, AutoBeanCodex.encode(formBean));
-        driver.edit(formBean.as());
 
-//        btnClose.addSelectHandler(new SelectEvent.SelectHandler() {
-//            public void onSelect(SelectEvent event) {
-//                onClose(event, dlg);
-//            }
-//        });
-
-        dlg.addHideHandler(new HideEvent.HideHandler() {
+        dlg.addBeforeHideHandler(new BeforeHideEvent.BeforeHideHandler() {
             @Override
-            public void onHide(HideEvent event) {
-                driver.flush();
+            public void onBeforeHide(BeforeHideEvent event) {
+                FormBean formBean = driver.flush();
                 if (driver.hasErrors()) {
                     String msg = "";
-                    for (EditorError e: driver.getErrors()) {
+                    for (EditorError e : driver.getErrors()) {
                         msg += e.getMessage();
                     }
                     Info.display("Error", msg);
+                    event.setCancelled(true);
+                } else {
+                    String json = getFormBeanJson(AutoBeanUtils.getAutoBean(formBean));
+                    Dialog result = new DialogBuilder()
+                            .title("Result")
+                            .widget(new HTMLPanel("<p>Finished editting...</p><p>" + SafeHtmlUtils.htmlEscape(json) + "</p>"))
+                            .hideOnButtonClick(true)
+                            .dialog;
+                    result.show();
                 }
-                String json = getFormBeanJson();
-                Info.display("Result", "Finished editting...\n" + json);
 
             }
         });
@@ -79,35 +69,14 @@ public class FormDialog extends AbstractIsWidget<Dialog> {
         return dlg;
     }
 
-//    // TODO: Tap into 'close' life cycle to properly
-//    private void onClose(SelectEvent event, Dialog dlg) {
-//        // trying to debug
-//        boolean isDirty = driver.isDirty();
-////        driver.flush();
-////        boolean differ = !AutoBeanUtils.deepEquals(formBean, original);
-////        if (differ != isDirty) json += "\n Something weird.  isDirty != differ";
-//        // TODO: Hmmm.... looks like isDirty is not doing a deep check.  Do I need to manually assemble an 'Editor Hierarchy'?
-//
-//        if (isDirty) {
-//            driver.flush();
-//            if (driver.hasErrors()) {
-//                String msg = "";
-//                for (EditorError e: driver.getErrors()) {
-//                    msg += e.getMessage();
-//                }
-//                Info.display("Error", msg);
-//            } else {
-//                String json = getFormBeanJson();
-//                String msg = "Finished editting...\n" + json;
-//                logger.info(msg);
-//                Info.display("Note", msg);
-//                dlg.hide((TextButton) event.getSource());
-//            }
-//        }
-//        else Info.display("Note", "No Changes");
-//    }
-
-    private String getFormBeanJson() {
+    private String getFormBeanJson(AutoBean<FormBean> formBean) {
         return AutoBeanCodex.encode(formBean).getPayload();
+    }
+
+    public void edit(FormBean formBean) {
+        asWidget();
+        logger.info("Driver about to edit.");
+        driver.edit(formBean);
+        asWidget().show();
     }
 }

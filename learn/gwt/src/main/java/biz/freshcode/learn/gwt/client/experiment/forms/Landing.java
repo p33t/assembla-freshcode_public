@@ -51,7 +51,7 @@ public class Landing extends AbstractIsWidget {
         btnDialog.addSelectHandler(new SelectEvent.SelectHandler() {
             @Override
             public void onSelect(SelectEvent event) {
-                new FormDialog(formBean).asWidget().show();
+                new FormDialog().edit(formBean.as());
             }
         });
         return ctr;
