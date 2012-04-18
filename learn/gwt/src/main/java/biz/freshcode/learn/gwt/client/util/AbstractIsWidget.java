@@ -4,7 +4,7 @@ import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 
 public abstract class AbstractIsWidget<T extends Widget> implements IsWidget {
-    protected T w;
+    private T w;
 
     @Override
     public final T asWidget() {
