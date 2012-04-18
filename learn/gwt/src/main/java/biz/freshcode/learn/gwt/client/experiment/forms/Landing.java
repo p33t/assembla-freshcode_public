@@ -29,6 +29,7 @@ public class Landing extends AbstractIsWidget {
     {
         // Populate some default sub beans
         FormBean bean = formBeanAuto.as();
+        bean.setStr("Default String");
         List<FormBeanChild> subs = Util.createList();
         FormBeanChild sub = factFormBeanSub.create().as();
         sub.setKey(1);
