@@ -24,19 +24,6 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
     TextField str;
     NumberField<Integer> num;
     ListStore<FormBeanChild> childStore = new ListStore<FormBeanChild>(ChildAccess.INSTANCE.key());
-    /*
-    TODO: This is having problems.  It seems that if I close the dialog during a table cell edit the processing
-    of the changes likely happens in response to a 'lost-focus' event which happens too late for the changes
-     to be captured during the BeforeHide event handler.  Further, the changes do eventually make their way to
-     the object graph some time later.  Here is the experiment that suggests it:
-     - During a dialog show / edit
-     - Make sure there are no errors
-     - Enter a cell and make a change
-     - Hover the mouse over the 'close' icon
-     - Hit tab, pause, and then click close
-     - Depending on how long the pause was the change may or may not be apparent in the BeforeHide handler
-     - The changes are always committed to the object graph eventually
-     */
     // NOTE: This is not used directly.  It needs to have non-private scope and same name as bean property.
     @SuppressWarnings({"UnusedDeclaration"})
     ListStoreEditor<FormBeanChild> children = new ListStoreEditor<FormBeanChild>(childStore);
@@ -51,7 +38,7 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
                         .text("Str")
                         .widget(str = new TextFieldBuilder()
                                 .emptyText("<Enter a string value>")
-                                // NOTE: This does NOT prevent a blank value from being 'flushed' to the object.
+                                        // NOTE: This does NOT prevent a blank value from being 'flushed' to the object.
                                 .allowBlank(false)
                                 .textField)
                         .fieldLabel)
@@ -65,16 +52,13 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
                 .add(new FieldLabelBuilder()
                         .text("Children")
                         .labelAlign(FormPanel.LabelAlign.TOP)
-                        .widget(//new GridBuilder(
-                                grid = new Grid<FormBeanChild>(
-                                        childStore,
-                                        columnModel(
-                                                nameCol = columnConfig(ChildAccess.INSTANCE.name(), 200, "Name"),
-                                                dateCol = columnConfig(ChildAccess.INSTANCE.dt(), 100, "Date")
-                                        )
+                        .widget(grid = new Grid<FormBeanChild>(
+                                childStore,
+                                columnModel(
+                                        nameCol = columnConfig(ChildAccess.INSTANCE.name(), 200, "Name"),
+                                        dateCol = columnConfig(ChildAccess.INSTANCE.dt(), 100, "Date")
                                 )
-                        )
-//                                .grid)
+                        ))
                         .fieldLabel)
                 .flowLayoutContainer;
 
@@ -83,7 +67,6 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
         grid.getView().setForceFit(true);
 
         // Editing in the grid
-        // This seems to help a little with commits lagging flush but it doesn't fix it totally.
         childStore.setAutoCommit(true); // Important for changes to propagate properly.
         GridInlineEditing<FormBeanChild> inlineEditor = new GridInlineEditing<FormBeanChild>(grid);
         inlineEditor.addEditor(nameCol, new TextFieldBuilder()
