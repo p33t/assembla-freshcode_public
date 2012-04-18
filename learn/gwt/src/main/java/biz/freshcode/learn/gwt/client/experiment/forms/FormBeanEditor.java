@@ -54,6 +54,7 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
                         .text("Str")
                         .widget(str = new TextFieldBuilder()
                                 .emptyText("<Enter a string value>")
+                                // NOTE: This does NOT prevent a blank value from being 'flushed' to the object.
                                 .allowBlank(false)
                                 .textField)
                         .fieldLabel)
