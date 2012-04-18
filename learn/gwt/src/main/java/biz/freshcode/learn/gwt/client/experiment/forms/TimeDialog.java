@@ -8,20 +8,20 @@ import com.google.web.bindery.autobean.shared.AutoBean;
 import com.sencha.gxt.widget.core.client.Dialog;
 
 public class TimeDialog extends AbstractIsWidget<Dialog> {
-    interface Driver extends SimpleBeanEditorDriver<TimeBean, TimeEditor> {
+    interface Driver extends SimpleBeanEditorDriver<TimeBean, TimeBeanEditor> {
     }
 
     private Driver driver = GWT.create(Driver.class);    
 
     @Override
     protected Dialog createWidget() {
-        TimeEditor editor;
+        TimeBeanEditor editor;
         Dialog d = new DialogBuilder()
                 .height(100)
                 .width(200)
                 .modal(true)
                 .predefinedButtons()
-                .add(editor = new TimeEditor())
+                .add(editor = new TimeBeanEditor())
                 .dialog;
         driver.initialize(editor);
         ConfirmBeforeHideHandler.setup(driver, d);
