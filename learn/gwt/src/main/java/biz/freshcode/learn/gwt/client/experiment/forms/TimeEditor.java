@@ -18,6 +18,8 @@ public class TimeEditor extends AbstractIsWidget implements Editor<TimeBean> {
                 .add(new FieldLabelBuilder()
                         .text("Start")
                         .widget(new NumberFieldBuilder(start = new NumberField<Long>(new NumberPropertyEditor.LongPropertyEditor()))
+                                .allowBlank(false)
+                                .allowDecimals(false)
                                 .numberField)
                         .fieldLabel)
                 .flowLayoutContainer;
