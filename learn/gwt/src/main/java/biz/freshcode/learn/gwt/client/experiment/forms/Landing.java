@@ -22,15 +22,15 @@ import java.util.List;
 
 public class Landing extends AbstractIsWidget {
     FormBean.Factory factFormBean = GWT.create(FormBean.Factory.class);
-    FormBeanSub.Factory factFormBeanSub = GWT.create(FormBeanSub.Factory.class);
+    FormBeanChild.Factory factFormBeanSub = GWT.create(FormBeanChild.Factory.class);
     // Keep this around so that changes can be accumulated.
     private AutoBean<FormBean> formBeanAuto = factFormBean.create();
 
     {
         // Populate some default sub beans
         FormBean bean = formBeanAuto.as();
-        List<FormBeanSub> subs = Util.createList();
-        FormBeanSub sub = factFormBeanSub.create().as();
+        List<FormBeanChild> subs = Util.createList();
+        FormBeanChild sub = factFormBeanSub.create().as();
         sub.setKey(1);
         sub.setDt(new Date(0L));
         sub.setName("Epoch");
@@ -42,7 +42,7 @@ public class Landing extends AbstractIsWidget {
         sub.setName("Xmas");
         subs.add(sub);
 
-        bean.setSubs(subs);
+        bean.setChildren(subs);
     }
 
     @Override

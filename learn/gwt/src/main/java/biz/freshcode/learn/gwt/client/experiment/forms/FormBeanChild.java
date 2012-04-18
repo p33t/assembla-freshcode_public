@@ -5,7 +5,7 @@ import com.google.web.bindery.autobean.shared.AutoBeanFactory;
 
 import java.util.Date;
 
-public interface FormBeanSub {
+public interface FormBeanChild {
 
     Integer getKey();
 
@@ -20,6 +20,6 @@ public interface FormBeanSub {
     void setName(String name);
 
     interface Factory extends AutoBeanFactory {
-        AutoBean<FormBeanSub> create();
+        AutoBean<FormBeanChild> create();
     }
 }

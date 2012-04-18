@@ -24,10 +24,10 @@ import com.sencha.gxt.widget.core.client.grid.editing.GridInlineEditing;
 import java.util.Date;
 
 public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean> {
-    public static final FormBeanSubProperties subProps = GWT.create(FormBeanSubProperties.class);
+    public static final Access subProps = GWT.create(Access.class);
     TextField str;
     NumberField<Integer> num;
-    ListStore<FormBeanSub> subStore = new ListStore<FormBeanSub>(subProps.key());
+    ListStore<FormBeanChild> childStore = new ListStore<FormBeanChild>(subProps.key());
     /*
     TODO: This is having problems.  It seems that if I close the dialog during a table cell edit the processing
     of the changes likely happens in response to a 'lost-focus' event which happens too late for the changes
@@ -42,13 +42,13 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
      - The changes are always committed to the object graph eventually
      */
     // NOTE: This is not used directly.  It needs to have non-private scope and same name as bean property.
-    ListStoreEditor<FormBeanSub> subs = new ListStoreEditor<FormBeanSub>(subStore);
+    ListStoreEditor<FormBeanChild> children = new ListStoreEditor<FormBeanChild>(childStore);
 
     @Override
     protected Widget createWidget() {
-        Grid<FormBeanSub> grid;
-        ColumnConfig<FormBeanSub, String> nameCol;
-        ColumnConfig<FormBeanSub, Date> dateCol;
+        Grid<FormBeanChild> grid;
+        ColumnConfig<FormBeanChild, String> nameCol;
+        ColumnConfig<FormBeanChild, Date> dateCol;
         FlowLayoutContainer w = new FlowLayoutContainerBuilder()
                 .add(new FieldLabelBuilder()
                         .text("Str")
@@ -65,11 +65,11 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
                                 .numberField)
                         .fieldLabel)
                 .add(new FieldLabelBuilder()
-                        .text("Subs")
+                        .text("Children")
                         .labelAlign(FormPanel.LabelAlign.TOP)
                         .widget(//new GridBuilder(
-                                grid = new Grid<FormBeanSub>(
-                                        subStore,
+                                grid = new Grid<FormBeanChild>(
+                                        childStore,
                                         columnModel(
                                                 nameCol = columnConfig(subProps.name(), 200, "Name"),
                                                 dateCol = columnConfig(subProps.dt(), 100, "Date")
@@ -86,8 +86,8 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
 
         // Editing in the grid
         // This seems to help a little with commits lagging flush but it doesn't fix it totally.
-        subStore.setAutoCommit(true); // Important for changes to propagate properly.
-        GridInlineEditing<FormBeanSub> inlineEditor = new GridInlineEditing<FormBeanSub>(grid);
+        childStore.setAutoCommit(true); // Important for changes to propagate properly.
+        GridInlineEditing<FormBeanChild> inlineEditor = new GridInlineEditing<FormBeanChild>(grid);
         inlineEditor.addEditor(nameCol, new TextFieldBuilder()
                 // TODO: This does not appear to be working
                 .allowBlank(false)
@@ -98,21 +98,21 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
     }
 
     // Cut down code noise
-    private ColumnModel<FormBeanSub> columnModel(ColumnConfig<FormBeanSub, ?>... cols) {
+    private ColumnModel<FormBeanChild> columnModel(ColumnConfig<FormBeanChild, ?>... cols) {
         return new ColumnModel(Util.createList(cols));
     }
 
     // Cut down code noise
-    private <T> ColumnConfig<FormBeanSub, T> columnConfig(ValueProvider<FormBeanSub, T> provider, int width, String title) {
-        return new ColumnConfig<FormBeanSub, T>(provider, width, title);
+    private <T> ColumnConfig<FormBeanChild, T> columnConfig(ValueProvider<FormBeanChild, T> provider, int width, String title) {
+        return new ColumnConfig<FormBeanChild, T>(provider, width, title);
     }
 
-    interface FormBeanSubProperties extends PropertyAccess<FormBeanSub> {
+    interface Access extends PropertyAccess<FormBeanChild> {
         // Use an immutable key value instead to rule out strange errors        @Path("name")
-        ModelKeyProvider<FormBeanSub> key();
+        ModelKeyProvider<FormBeanChild> key();
 
-        ValueProvider<FormBeanSub, String> name();
+        ValueProvider<FormBeanChild, String> name();
 
-        ValueProvider<FormBeanSub, Date> dt();
+        ValueProvider<FormBeanChild, Date> dt();
     }
 }

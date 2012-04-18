@@ -14,9 +14,9 @@ public interface FormBean {
 
     Integer getNum();
 
-    List<FormBeanSub> getSubs();
+    List<FormBeanChild> getChildren();
 
-    void setSubs(List<FormBeanSub> subs);
+    void setChildren(List<FormBeanChild> subs);
 
     public interface Factory extends AutoBeanFactory {
         AutoBean<FormBean> create();
