@@ -4,7 +4,6 @@ import biz.freshcode.learn.gwt.client.uispike.builder.DialogBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.TextButtonBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.container.FlowLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Widget;
@@ -21,23 +20,21 @@ import java.util.Date;
 import java.util.List;
 
 public class Landing extends AbstractIsWidget {
-    FormBean.Factory factFormBean = GWT.create(FormBean.Factory.class);
-    FormBeanChild.Factory factFormBeanSub = GWT.create(FormBeanChild.Factory.class);
     // Keep this around so that changes can be accumulated.
-    private AutoBean<FormBean> formBeanAuto = factFormBean.create();
+    private AutoBean<FormBean> formBeanAuto = FormBean.FACTORY.auto();
 
     {
         // Populate some default sub beans
         FormBean bean = formBeanAuto.as();
         bean.setStr("Default String");
         List<FormBeanChild> subs = Util.createList();
-        FormBeanChild sub = factFormBeanSub.create().as();
+        FormBeanChild sub = FormBeanChild.FACTORY.auto().as();
         sub.setKey(1);
         sub.setDt(new Date(0L));
         sub.setName("Epoch");
         subs.add(sub);
 
-        sub = factFormBeanSub.create().as();
+        sub = FormBeanChild.FACTORY.auto().as();
         sub.setKey(2);
         sub.setDt(new Date(1970, 12, 25));
         sub.setName("Xmas");

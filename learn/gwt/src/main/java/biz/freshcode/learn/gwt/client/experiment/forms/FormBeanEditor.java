@@ -5,15 +5,12 @@ import biz.freshcode.learn.gwt.client.uispike.builder.field.FieldLabelBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.field.NumberFieldBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.field.TextFieldBuilder;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.Editor;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.core.client.util.Util;
 import com.sencha.gxt.data.client.editor.ListStoreEditor;
 import com.sencha.gxt.data.shared.ListStore;
-import com.sencha.gxt.data.shared.ModelKeyProvider;
-import com.sencha.gxt.data.shared.PropertyAccess;
 import com.sencha.gxt.widget.core.client.container.FlowLayoutContainer;
 import com.sencha.gxt.widget.core.client.form.*;
 import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
@@ -24,10 +21,9 @@ import com.sencha.gxt.widget.core.client.grid.editing.GridInlineEditing;
 import java.util.Date;
 
 public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean> {
-    public static final Access childAccess = GWT.create(Access.class);
     TextField str;
     NumberField<Integer> num;
-    ListStore<FormBeanChild> childStore = new ListStore<FormBeanChild>(childAccess.key());
+    ListStore<FormBeanChild> childStore = new ListStore<FormBeanChild>(ChildAccess.INSTANCE.key());
     /*
     TODO: This is having problems.  It seems that if I close the dialog during a table cell edit the processing
     of the changes likely happens in response to a 'lost-focus' event which happens too late for the changes
@@ -72,8 +68,8 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
                                 grid = new Grid<FormBeanChild>(
                                         childStore,
                                         columnModel(
-                                                nameCol = columnConfig(childAccess.name(), 200, "Name"),
-                                                dateCol = columnConfig(childAccess.dt(), 100, "Date")
+                                                nameCol = columnConfig(ChildAccess.INSTANCE.name(), 200, "Name"),
+                                                dateCol = columnConfig(ChildAccess.INSTANCE.dt(), 100, "Date")
                                         )
                                 )
                         )
@@ -108,12 +104,4 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
         return new ColumnConfig<FormBeanChild, T>(provider, width, title);
     }
 
-    interface Access extends PropertyAccess<FormBeanChild> {
-        // Use an immutable key value instead to rule out strange errors        @Path("name")
-        ModelKeyProvider<FormBeanChild> key();
-
-        ValueProvider<FormBeanChild, String> name();
-
-        ValueProvider<FormBeanChild, Date> dt();
-    }
 }

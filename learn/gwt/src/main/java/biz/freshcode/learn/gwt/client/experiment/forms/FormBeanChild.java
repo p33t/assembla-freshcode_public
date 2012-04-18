@@ -1,11 +1,13 @@
 package biz.freshcode.learn.gwt.client.experiment.forms;
 
+import com.google.gwt.core.client.GWT;
 import com.google.web.bindery.autobean.shared.AutoBean;
 import com.google.web.bindery.autobean.shared.AutoBeanFactory;
 
 import java.util.Date;
 
 public interface FormBeanChild {
+    Factory FACTORY = GWT.create(Factory.class);
 
     Integer getKey();
 
@@ -20,6 +22,7 @@ public interface FormBeanChild {
     void setName(String name);
 
     interface Factory extends AutoBeanFactory {
-        AutoBean<FormBeanChild> create();
+        AutoBean<FormBeanChild> auto();
+//        FormBeanChild create();
     }
 }
