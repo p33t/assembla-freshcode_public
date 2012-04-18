@@ -1,7 +1,7 @@
 package pkg;
 
 import biz.freshcode.learn.gwt.client.uispike.builder.BeanBuilder;
-import com.sencha.gxt.widget.core.client.Popup;
+import com.sencha.gxt.widget.core.client.Dialog;
 import sun.reflect.generics.reflectiveObjects.TypeVariableImpl;
 
 import java.lang.reflect.Constructor;
@@ -31,7 +31,7 @@ import java.lang.reflect.Type;
  * </pre>
  */
 public class BeanBuilderGenerator {
-    static final Class CLASS = Popup.class;
+    static final Class CLASS = Dialog.class;
 
 
     public static void main(String[] args) {
@@ -71,9 +71,11 @@ public class BeanBuilderGenerator {
                 // Support for multi-arg setters
                 String signature = "";
                 String args = "";
-                for (int i = 0; i < m.getParameterTypes().length; i ++) {
+                int paramCount = m.getParameterTypes().length;
+                for (int i = 0; i < paramCount; i ++) {
                     Class<?> typ = m.getParameterTypes()[i];
                     String argType = typ.getCanonicalName();
+                    if (i == paramCount - 1 && m.isVarArgs()) argType = argType.replace("[]", "...");
                     String arg = "v" + i;
                     args = join(args, ", ", arg);
                     signature = join(signature, ", ", argType + " " + arg);
