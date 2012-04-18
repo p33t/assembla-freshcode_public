@@ -46,38 +46,42 @@ public class Landing extends AbstractIsWidget {
 
     @Override
     protected Widget createWidget() {
-        TextButton btnDialog;
-        TextButton btnOutput;
+        TextButton btnForm;
+        TextButton btnFormOutput;
         TextButton btnTime;
+        TextButton btnTimeOutput;
         FlowLayoutContainer ctr = new FlowLayoutContainerBuilder()
-                .add(btnDialog = new TextButtonBuilder()
+                .add(btnForm = new TextButtonBuilder()
                         .text("Object Graph Edit")
                         .textButton)
-                .add(btnOutput = new TextButtonBuilder()
+                .add(btnFormOutput = new TextButtonBuilder()
                         .text("Output Contents")
                         .textButton)
                 .add(new HTMLPanel("<br/>"))
                 .add(btnTime = new TextButtonBuilder()
                         .text("Time Edit")
                         .textButton)
+                .add(btnTimeOutput = new TextButtonBuilder()
+                        .text("Output Contents")
+                        .textButton)
                 .flowLayoutContainer;
 
-        btnDialog.addSelectHandler(new SelectEvent.SelectHandler() {
+        btnForm.addSelectHandler(new SelectEvent.SelectHandler() {
             @Override
             public void onSelect(SelectEvent event) {
                 FormDialog dialog = new FormDialog();
                 dialog.asWidget().addHideHandler(new HideEvent.HideHandler() {
                     public void onHide(HideEvent event) {
-                        outputContents();
+                        outputContents(formBeanAuto);
                     }
                 });
                 dialog.edit(formBeanAuto.as());
             }
         });
 
-        btnOutput.addSelectHandler(new SelectEvent.SelectHandler() {
+        btnFormOutput.addSelectHandler(new SelectEvent.SelectHandler() {
             public void onSelect(SelectEvent event) {
-                outputContents();
+                outputContents(formBeanAuto);
             }
         });
 
@@ -89,14 +93,21 @@ public class Landing extends AbstractIsWidget {
             }
         });
 
+        btnTimeOutput.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent event) {
+                outputContents(timeBeanAuto);
+            }
+        });
+
         return ctr;
     }
 
-    private void outputContents() {
-        String json = AutoBeanCodex.encode(formBeanAuto).getPayload();
+    private void outputContents(AutoBean<?> auto) {
+        String json = AutoBeanCodex.encode(auto).getPayload();
         Dialog result = new DialogBuilder()
                 .title("Result")
-                .widget(new HTMLPanel("<p>Finished editing...</p><p>" + SafeHtmlUtils.htmlEscape(json) + "</p>"))
+                .widget(new HTMLPanel("<p>Currently...</p><p>" + SafeHtmlUtils.htmlEscape(json) + "</p>"))
                 .hideOnButtonClick(true)
                 .dialog;
         result.show();

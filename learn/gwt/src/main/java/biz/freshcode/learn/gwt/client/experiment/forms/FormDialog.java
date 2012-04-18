@@ -3,11 +3,8 @@ package biz.freshcode.learn.gwt.client.experiment.forms;
 import biz.freshcode.learn.gwt.client.uispike.builder.DialogBuilder;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.editor.client.EditorError;
 import com.google.gwt.editor.client.SimpleBeanEditorDriver;
-import com.google.gwt.user.client.Window;
 import com.sencha.gxt.widget.core.client.Dialog;
-import com.sencha.gxt.widget.core.client.event.BeforeHideEvent;
 
 import java.util.logging.Logger;
 
@@ -38,24 +35,7 @@ public class FormDialog extends AbstractIsWidget<Dialog> {
         logger.info("Driver initializing.");
         driver.initialize(editor);
 
-        dlg.addBeforeHideHandler(new BeforeHideEvent.BeforeHideHandler() {
-            @Override
-            public void onBeforeHide(final BeforeHideEvent event) {
-                // TODO: It seem that the ListStoreEdit has outstanding changes that are applied after the flush returns.
-                // Scheduler.defer() doesn't work.
-                driver.flush();
-                if (driver.hasErrors()) {
-                    String msg = "";
-                    for (EditorError e : driver.getErrors()) {
-                        msg += "\n" + e.getMessage();
-                    }
-                    boolean ignore = Window.confirm("Ignore errors?\n" + msg);
-                    if (!ignore) event.setCancelled(true);
-                }
-
-            }
-        });
-
+        ConfirmBeforeHideHandler.setup(driver, dlg);
         return dlg;
     }
 
