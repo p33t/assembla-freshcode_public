@@ -28,6 +28,19 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
     TextField str;
     NumberField<Integer> num;
     ListStore<FormBeanSub> subStore = new ListStore<FormBeanSub>(subProps.key());
+    /*
+    TODO: This is having problems.  It seems that if I close the dialog during a table cell edit the processing
+    of the changes likely happens in response to a 'lost-focus' event which happens too late for the changes
+     to be captured during the BeforeHide event handler.  Further, the changes do eventually make their way to
+     the object graph some time later.  Here is the experiment that suggests it:
+     - During a dialog show / edit
+     - Make sure there are no errors
+     - Enter a cell and make a change
+     - Hover the mouse over the 'close' icon
+     - Hit tab, pause, and then click close
+     - Depending on how long the pause was the change may or may not be apparent in the BeforeHide handler
+     - The changes are always committed to the object graph eventually
+     */
     // NOTE: This is not used directly.  It needs to have non-private scope and same name as bean property.
     ListStoreEditor<FormBeanSub> subs = new ListStoreEditor<FormBeanSub>(subStore);
 
