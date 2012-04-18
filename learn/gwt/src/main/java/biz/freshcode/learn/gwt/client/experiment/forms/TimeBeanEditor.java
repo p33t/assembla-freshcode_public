@@ -9,7 +9,7 @@ import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.widget.core.client.form.NumberField;
 import com.sencha.gxt.widget.core.client.form.NumberPropertyEditor;
 
-public class TimeEditor extends AbstractIsWidget implements Editor<TimeBean> {
+public class TimeBeanEditor extends AbstractIsWidget implements Editor<TimeBean> {
     NumberField<Long> start;
 
     @Override
