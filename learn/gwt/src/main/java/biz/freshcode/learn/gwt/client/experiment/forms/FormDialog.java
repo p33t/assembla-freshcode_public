@@ -5,9 +5,9 @@ import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.EditorError;
 import com.google.gwt.editor.client.SimpleBeanEditorDriver;
+import com.google.gwt.user.client.Window;
 import com.sencha.gxt.widget.core.client.Dialog;
 import com.sencha.gxt.widget.core.client.event.BeforeHideEvent;
-import com.sencha.gxt.widget.core.client.info.Info;
 
 import java.util.logging.Logger;
 
@@ -29,8 +29,8 @@ public class FormDialog extends AbstractIsWidget<Dialog> {
                 .width(500)
                 .height(300)
                 .add(editor = new FormBeanEditor())
-                        // The predefined buttons are a litle useless.  You have to dig them out again to define handlers (?)
-                .predefinedButtons(new Dialog.PredefinedButton[0])
+                // The predefined buttons are a litle useless.  You have to dig them out again to define handlers (?)
+                .predefinedButtons()
                 .modal(true)
                 .dialog;
 
@@ -40,18 +40,17 @@ public class FormDialog extends AbstractIsWidget<Dialog> {
 
         dlg.addBeforeHideHandler(new BeforeHideEvent.BeforeHideHandler() {
             @Override
-            public void onBeforeHide(BeforeHideEvent event) {
+            public void onBeforeHide(final BeforeHideEvent event) {
                 // TODO: It seem that the ListStoreEdit has outstanding changes that are applied after the flush returns.
                 // Scheduler.defer() doesn't work.
                 driver.flush();
                 if (driver.hasErrors()) {
                     String msg = "";
                     for (EditorError e : driver.getErrors()) {
-                        msg += e.getMessage();
+                        msg += "\n" + e.getMessage();
                     }
-                    Info.display("Error", msg);
-                    //TODO: This is dangerous without a 'Cancel' button
-                    event.setCancelled(true);
+                    boolean ignore = Window.confirm("Ignore errors?\n" + msg);
+                    if (!ignore) event.setCancelled(true);
                 }
 
             }

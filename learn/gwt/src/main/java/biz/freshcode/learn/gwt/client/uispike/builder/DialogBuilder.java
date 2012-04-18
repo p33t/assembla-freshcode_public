@@ -25,7 +25,7 @@ public class DialogBuilder {
         return this;
     }
 
-    public DialogBuilder predefinedButtons(com.sencha.gxt.widget.core.client.Dialog.PredefinedButton[] v0) {
+    public DialogBuilder predefinedButtons(com.sencha.gxt.widget.core.client.Dialog.PredefinedButton... v0) {
         dialog.setPredefinedButtons(v0);
         return this;
     }
