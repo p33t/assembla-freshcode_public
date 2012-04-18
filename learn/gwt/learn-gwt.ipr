@@ -395,15 +395,15 @@
         <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-user/2.4.0/gwt-user-2.4.0-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: com.sencha.gxt:gxt:3.0.0-rc">
+    <library name="Maven: com.sencha.gxt:gxt:3.0.0-rc2">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt/3.0.0-rc/gxt-3.0.0-rc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt/3.0.0-rc2/gxt-3.0.0-rc2.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt/3.0.0-rc/gxt-3.0.0-rc-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt/3.0.0-rc2/gxt-3.0.0-rc2-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt/3.0.0-rc/gxt-3.0.0-rc-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt/3.0.0-rc2/gxt-3.0.0-rc2-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: com.sencha.gxt:uibinder-bridge:2.4.0">
