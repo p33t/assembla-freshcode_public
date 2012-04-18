@@ -38,6 +38,7 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
      - The changes are always committed to the object graph eventually
      */
     // NOTE: This is not used directly.  It needs to have non-private scope and same name as bean property.
+    @SuppressWarnings({"UnusedDeclaration"})
     ListStoreEditor<FormBeanChild> children = new ListStoreEditor<FormBeanChild>(childStore);
 
     @Override
