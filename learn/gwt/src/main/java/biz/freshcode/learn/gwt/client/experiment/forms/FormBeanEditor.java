@@ -24,10 +24,10 @@ import com.sencha.gxt.widget.core.client.grid.editing.GridInlineEditing;
 import java.util.Date;
 
 public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean> {
-    public static final Access subProps = GWT.create(Access.class);
+    public static final Access childAccess = GWT.create(Access.class);
     TextField str;
     NumberField<Integer> num;
-    ListStore<FormBeanChild> childStore = new ListStore<FormBeanChild>(subProps.key());
+    ListStore<FormBeanChild> childStore = new ListStore<FormBeanChild>(childAccess.key());
     /*
     TODO: This is having problems.  It seems that if I close the dialog during a table cell edit the processing
     of the changes likely happens in response to a 'lost-focus' event which happens too late for the changes
@@ -71,8 +71,8 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
                                 grid = new Grid<FormBeanChild>(
                                         childStore,
                                         columnModel(
-                                                nameCol = columnConfig(subProps.name(), 200, "Name"),
-                                                dateCol = columnConfig(subProps.dt(), 100, "Date")
+                                                nameCol = columnConfig(childAccess.name(), 200, "Name"),
+                                                dateCol = columnConfig(childAccess.dt(), 100, "Date")
                                         )
                                 )
                         )
