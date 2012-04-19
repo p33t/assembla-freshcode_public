@@ -30,6 +30,8 @@
       <sourceFolder url="file://$MODULE_DIR$/target/generated-sources/gwt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/target/generated-sources/test-annotations" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/target/generated-sources/annotations" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/target/.generated" />
+      <excludeFolder url="file://$MODULE_DIR$/target/gwt-unitCache" />
       <excludeFolder url="file://$MODULE_DIR$/target/learn-gwt-1.0-SNAPSHOT" />
     </content>
     <orderEntry type="inheritedJdk" />
