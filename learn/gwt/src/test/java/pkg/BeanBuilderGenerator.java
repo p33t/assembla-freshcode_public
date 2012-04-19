@@ -29,6 +29,12 @@ import java.lang.reflect.Type;
  * .margins;
  *
  * </pre>
+ *
+ * Ideas:
+ * - Regeneration capabilities
+ * - Annotation indicating a custom method that should be retained
+ * - Protected methods for customising behaviour
+ * - Indent string (allows for tabs)
  */
 public class BeanBuilderGenerator {
     static final Class CLASS = MenuItem.class;
