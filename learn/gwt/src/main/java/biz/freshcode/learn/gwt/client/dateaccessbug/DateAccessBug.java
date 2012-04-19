@@ -65,6 +65,7 @@ public class DateAccessBug extends AbstractIsWidget<Dialog> {
         ParentBean pb = ParentBean.FACTORY.auto().as();
         DateBean epoch = DateBean.FACTORY.auto().as();
         epoch.setDt(new Date(0L));
+        epoch.setId(1);
         pb.setDates(Util.createList(epoch));
         return pb;
     }
