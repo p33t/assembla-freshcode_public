@@ -67,7 +67,7 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
         grid.getView().setForceFit(true);
 
         // Editing in the grid
-        childStore.setAutoCommit(true); // Important for changes to propagate properly.
+        childStore.setAutoCommit(true); // Prevents red tags thus making UI more consistent.
         GridInlineEditing<FormBeanChild> inlineEditor = new GridInlineEditing<FormBeanChild>(grid);
         inlineEditor.addEditor(nameCol, new TextFieldBuilder()
                 // TODO: This does not appear to be working
