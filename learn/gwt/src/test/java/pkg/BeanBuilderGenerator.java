@@ -1,7 +1,7 @@
 package pkg;
 
 import biz.freshcode.learn.gwt.client.uispike.builder.BeanBuilder;
-import com.sencha.gxt.widget.core.client.Dialog;
+import com.google.gwt.user.client.ui.MenuItem;
 import sun.reflect.generics.reflectiveObjects.TypeVariableImpl;
 
 import java.lang.reflect.Constructor;
@@ -31,7 +31,7 @@ import java.lang.reflect.Type;
  * </pre>
  */
 public class BeanBuilderGenerator {
-    static final Class CLASS = Dialog.class;
+    static final Class CLASS = MenuItem.class;
 
 
     public static void main(String[] args) {
@@ -170,7 +170,20 @@ public class BeanBuilderGenerator {
         int mods = m.getModifiers();
         return !Modifier.isPrivate(mods)
                 && !Modifier.isStatic(mods)
-                && Void.TYPE.equals(m.getReturnType());
+                && isTrivialReturnType(m);
+    }
+
+    /**
+     * Indicates the return type can be ignored.
+     * Chaining methods are considered simple enough to include in builders.  EG: GWT's MenuBar.addItem()
+     */
+    private static boolean isTrivialReturnType(Method m) {
+        Class<?> returnType = m.getReturnType();
+        boolean isVoid = Void.TYPE.equals(returnType);
+        Class<?>[] paramTypes = m.getParameterTypes();
+        // TODO: Return type that is the same as the declared class is a chained method too.
+        boolean isChained = (paramTypes.length == 1) && returnType.equals(paramTypes[0]);
+        return isVoid || isChained;
     }
 
     private static boolean isAdder(Method m) {

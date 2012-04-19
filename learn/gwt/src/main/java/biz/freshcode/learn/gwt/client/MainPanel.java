@@ -8,118 +8,109 @@ import biz.freshcode.learn.gwt.client.uibinder.Composed;
 import biz.freshcode.learn.gwt.client.uibinder.eg.BorderLayoutEg;
 import biz.freshcode.learn.gwt.client.uibinder.eg.Tutorial1;
 import biz.freshcode.learn.gwt.client.uibinder.eg.Tutorial2;
+import biz.freshcode.learn.gwt.client.uispike.builder.MenuBarBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.ViewportBuilder;
+import biz.freshcode.learn.gwt.client.uispike.builder.container.DockLayoutPanelBuilder;
 import biz.freshcode.learn.gwt.client.uispike.gxt.UiSpikePanel;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
-import com.sencha.gxt.widget.core.client.container.Viewport;
 
 public class MainPanel extends Composite {
-    DockLayoutPanel pnl = new DockLayoutPanel(Style.Unit.EM);
-    Widget content = new HTMLPanel("<p>This is the contents.  It carries on for a little bit but I don't know if it will get a scroll bar.</p>");
+    Widget content;
+    DockLayoutPanel pnl = new DockLayoutPanelBuilder(new DockLayoutPanel(Style.Unit.EM))
+            .height("100%")
+            .width("100%")
+            .addNorth(new MenuBarBuilder()
+                    .addItem(new MenuItem("Experiments", subMenu()
+                            .addItem(new MenuItem("Alert", new Command() {
+                                public void execute() {
+                                    Window.alert("Consider yourself alerted");
+                                }
+                            }))
+                            .addItem(new MenuItem("Resizer", new Command() {
+                                public void execute() {
+                                    Widget w = GWT.create(Resizer.class);
+                                    replaceContent(w);
+                                }
+                            }))
+                            .addItem(new MenuItem("Ui Binder", subMenu()
+                                    .addItem(new MenuItem("Basic", new Command() {
+                                        public void execute() {
+                                            Widget w = GWT.create(Basic.class);
+                                            replaceContent(w);
+                                        }
+                                    }))
+                                    .addItem(new MenuItem("Composed", new Command() {
+                                        public void execute() {
+                                            Widget w = GWT.create(Composed.class);
+                                            replaceContent(w);
+                                        }
+                                    }))
+                                    .menuBar))
+                            .menuBar))
+                    .addItem(new MenuItem("GXT", subMenu()
+                            .addItem(new MenuItem("Cell Table Demo", new Command() {
+                                public void execute() {
+                                    IsWidget w = GWT.create(CellTableDemo.class);
+                                    replaceRoot(w);
+                                }
+                            }))
+                            .addItem(new MenuItem("UI Spike", subMenu()
+                                    .addItem(new MenuItem("UiBuilder", new Command() {
+                                        public void execute() {
+                                            IsWidget w = GWT.create(UiSpikePanel.class);
+                                            replaceRoot(w);
+                                        }
+                                    }))
+                                    .addItem(new MenuItem("Non UiBuilder", new Command() {
+                                        public void execute() {
+                                            IsWidget w = GWT.create(biz.freshcode.learn.gwt.client.uispike.nonuibuilder.UiSpikePanel.class);
+                                            replaceRoot(w);
+                                        }
+                                    }))
+                                    .menuBar))
+                            .addItem(new MenuItem("Ui Binder", subMenu()
+                                    .addItem(new MenuItem("Border Eg", new Command() {
+                                        public void execute() {
+                                            IsWidget w = GWT.create(BorderLayoutEg.class);
+                                            replaceRoot(w);
+                                        }
+                                    }))
+                                    .addItem(new MenuItem("Tutorial 1 (simple frame)", new Command() {
+                                        public void execute() {
+                                            IsWidget w = GWT.create(Tutorial1.class);
+                                            replaceRoot(w);
+                                        }
+                                    }))
+                                    .addItem(new MenuItem("Tutorial 2 (menu + event)", new Command() {
+                                        public void execute() {
+                                            IsWidget w = GWT.create(Tutorial2.class);
+                                            replaceRoot(w);
+                                        }
+                                    }))
+                                    .menuBar))
+                            .addItem(new MenuItem("Forms", new Command() {
+                                @Override
+                                public void execute() {
+                                    IsWidget w = GWT.create(Landing.class);
+                                    replaceContent(w.asWidget());
+                                }
+                            }))
+                            .menuBar))
+                    .menuBar,
+                    2)
+            .add(content = new HTMLPanel("<p>Center Content</p>"))
+            .dockLayoutPanel;
 
     {
-        pnl.setHeight("100%");
-        pnl.setWidth("100%");
-
-        MenuBar mb = new MenuBar();
-        pnl.addNorth(mb, 2);
-
-        mb.addItem("Experiments", experiments());
-        mb.addItem("GXT", mbGxt());
-
-        pnl.add(content);
         initWidget(pnl);
     }
 
-    private MenuBar experiments() {
-        MenuBar exps = new MenuBar(true);
-        exps.addItem("Alert", new Command() {
-            public void execute() {
-                Window.alert("Consider yourself alerted");
-            }
-        });
-
-        exps.addItem("Resizer", new Command() {
-            public void execute() {
-                Widget w = GWT.create(Resizer.class);
-                replaceContent(w);
-            }
-        });
-
-        MenuBar uiBinder = uiBinder();
-        exps.addItem("Ui Binder", uiBinder);
-        return exps;
-    }
-
-    private MenuBar mbGxt() {
-        MenuBar mbGxt = new MenuBar(true);
-
-        mbGxt.addItem("Cell Table Demo", new Command() {
-            public void execute() {
-                IsWidget w = GWT.create(CellTableDemo.class);
-                replaceRoot(w);
-            }
-        });
-
-        mbGxt.addItem("UI Spike", uiSpike());
-
-        MenuBar uibGxt = uibGxt();
-        mbGxt.addItem("Ui Binder", uibGxt);
-
-        mbGxt.addItem("Forms", new Command() {
-            @Override
-            public void execute() {
-                IsWidget w = GWT.create(Landing.class);
-                replaceContent(w.asWidget());
-            }
-        });
-        return mbGxt;
-    }
-
-    private MenuBar uiSpike() {
-        MenuBar mb = new MenuBar(true);
-        mb.addItem("UiBuilder", new Command() {
-            public void execute() {
-                IsWidget w = GWT.create(UiSpikePanel.class);
-                replaceRoot(w);
-            }
-        });
-        mb.addItem("Non UiBuilder", new Command() {
-            public void execute() {
-                IsWidget w = GWT.create(biz.freshcode.learn.gwt.client.uispike.nonuibuilder.UiSpikePanel.class);
-                replaceRoot(w);
-            }
-        });
-        return mb;
-    }
-
-    private MenuBar uibGxt() {
-        MenuBar mb = new MenuBar(true);
-        mb.addItem("Border Eg", new Command() {
-            public void execute() {
-                IsWidget w = GWT.create(BorderLayoutEg.class);
-                replaceRoot(w);
-            }
-        });
-
-        mb.addItem("Tutorial 1 (simple frame)", new Command() {
-            public void execute() {
-                IsWidget w = GWT.create(Tutorial1.class);
-                replaceRoot(w);
-            }
-        });
-
-        mb.addItem("Tutorial 2 (menu + event)", new Command() {
-            public void execute() {
-                IsWidget w = GWT.create(Tutorial2.class);
-                replaceRoot(w);
-            }
-        });
-        return mb;
+    private MenuBarBuilder subMenu() {
+        return new MenuBarBuilder(new MenuBar(true));
     }
 
     private void replaceRoot(IsWidget w) {
@@ -128,24 +119,6 @@ public class MainPanel extends Composite {
         root.add(new ViewportBuilder()
                 .widget(w)
                 .viewport);
-    }
-
-    private MenuBar uiBinder() {
-        MenuBar mb = new MenuBar(true);
-        mb.addItem("Basic", new Command() {
-            public void execute() {
-                Widget w = GWT.create(Basic.class);
-                replaceContent(w);
-            }
-        });
-
-        mb.addItem("Composed", new Command() {
-            public void execute() {
-                Widget w = GWT.create(Composed.class);
-                replaceContent(w);
-            }
-        });
-        return mb;
     }
 
     private void replaceContent(Widget newContent) {
