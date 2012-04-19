@@ -1,7 +1,7 @@
 package pkg;
 
+import biz.freshcode.learn.gwt.client.experiment.forms.HrMinField;
 import biz.freshcode.learn.gwt.client.uispike.builder.BeanBuilder;
-import com.google.gwt.user.client.ui.MenuItem;
 import sun.reflect.generics.reflectiveObjects.TypeVariableImpl;
 
 import java.lang.reflect.Constructor;
@@ -38,7 +38,7 @@ import java.lang.reflect.Type;
  * - Indent string (allows for tabs)
  */
 public class BeanBuilderGenerator {
-    static final Class CLASS = MenuItem.class;
+    static final Class CLASS = HrMinField.class;
 
 
     public static void main(String[] args) {

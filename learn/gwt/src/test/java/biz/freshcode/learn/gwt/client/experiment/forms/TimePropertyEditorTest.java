@@ -8,7 +8,7 @@ import java.text.ParseException;
 import static org.junit.Assert.assertEquals;
 
 public class TimePropertyEditorTest {
-    TimePropertyEditor subject = new TimePropertyEditor();
+    HrMinPropertyEditor subject = new HrMinPropertyEditor();
     private static final int MINUTE = 60000;
 
     @Test

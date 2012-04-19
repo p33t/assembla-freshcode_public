@@ -6,7 +6,7 @@ import com.sencha.gxt.widget.core.client.form.PropertyEditor;
 
 import java.text.ParseException;
 
-public class TimePropertyEditor extends PropertyEditor<Long> {
+public class HrMinPropertyEditor extends PropertyEditor<Long> {
     private static final int MINUTE = 60 * 1000;
     private static final int HOUR = 60 * MINUTE;
     private static final RegExp RE = RegExp.compile("^(-?)(\\d+)(:([0-5]?)(\\d))?$");

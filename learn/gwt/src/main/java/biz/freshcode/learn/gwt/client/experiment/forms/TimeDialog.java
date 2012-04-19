@@ -18,7 +18,7 @@ public class TimeDialog extends AbstractIsWidget<Dialog> {
         TimeBeanEditor editor;
         Dialog d = new DialogBuilder()
                 .height(100)
-                .width(200)
+                .width(400)
                 .modal(true)
                 .predefinedButtons()
                 .add(editor = new TimeBeanEditor())
