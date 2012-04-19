@@ -31,6 +31,7 @@ import java.lang.reflect.Type;
  * </pre>
  *
  * Ideas:
+ * - User to supply annotations so that don't have runtime dependency
  * - Regeneration capabilities
  * - Annotation indicating a custom method that should be retained
  * - Protected methods for customising behaviour
