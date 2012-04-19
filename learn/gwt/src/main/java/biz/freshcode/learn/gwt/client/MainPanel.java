@@ -1,5 +1,6 @@
 package biz.freshcode.learn.gwt.client;
 
+import biz.freshcode.learn.gwt.client.dateaccessbug.DateAccessBug;
 import biz.freshcode.learn.gwt.client.experiment.Resizer;
 import biz.freshcode.learn.gwt.client.experiment.celltable.CellTableDemo;
 import biz.freshcode.learn.gwt.client.experiment.forms.Landing;
@@ -24,6 +25,11 @@ public class MainPanel extends Composite {
             .height("100%")
             .width("100%")
             .addNorth(new MenuBarBuilder()
+                    .addItem(new MenuItem("GXT: Date Edit Bug", new Command() {
+                        public void execute() {
+                            new DateAccessBug().asWidget().show();
+                        }
+                    }))
                     .addItem(new MenuItem("Experiments", subMenu()
                             .addItem(new MenuItem("Alert", new Command() {
                                 public void execute() {
