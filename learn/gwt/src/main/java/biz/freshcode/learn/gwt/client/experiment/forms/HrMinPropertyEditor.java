@@ -6,6 +6,12 @@ import com.sencha.gxt.widget.core.client.form.PropertyEditor;
 
 import java.text.ParseException;
 
+/**
+ * Translates between an h:mm string and a long millisecond value.
+ * Negatives are permitted.
+ * Hour values > 23 are permitted.
+ * The ':mm' portion is optional.
+ */
 public class HrMinPropertyEditor extends PropertyEditor<Long> {
     private static final int MINUTE = 60 * 1000;
     private static final int HOUR = 60 * MINUTE;
