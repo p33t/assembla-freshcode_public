@@ -11,6 +11,7 @@ public class HrMinField extends ValueBaseField<Long> {
     private Logger logger = Logger.getLogger(getClass().getName());
 
     public HrMinField() {
+        // TODO: Find better InputCell to use.  Number and Text ones aren't allowed.
         super(new TriggerFieldCell<Long>(), new HrMinPropertyEditor());
         // NOTE: There is already a SideErrorHandler in errorSupport field.
         addParseErrorHandler(new ParseErrorEvent.ParseErrorHandler() {
