@@ -4,14 +4,18 @@ import com.google.gwt.core.client.GWT;
 import com.google.web.bindery.autobean.shared.AutoBean;
 import com.google.web.bindery.autobean.shared.AutoBeanFactory;
 
-public interface TimeBean {
+public interface PeriodBean {
     Factory FACTORY = GWT.create(Factory.class);
 
     void setStart(Long t);
 
     Long getStart();
 
+    void setDuration(Long d);
+
+    Long getDuration();
+
     interface Factory extends AutoBeanFactory {
-        AutoBean<TimeBean> auto();
+        AutoBean<PeriodBean> auto();
     }
 }

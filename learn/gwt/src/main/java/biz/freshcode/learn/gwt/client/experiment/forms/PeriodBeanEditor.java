@@ -7,7 +7,7 @@ import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import com.google.gwt.editor.client.Editor;
 import com.google.gwt.user.client.ui.Widget;
 
-public class TimeBeanEditor extends AbstractIsWidget implements Editor<TimeBean> {
+public class PeriodBeanEditor extends AbstractIsWidget implements Editor<PeriodBean> {
     HrMinField start;
 
     @Override
