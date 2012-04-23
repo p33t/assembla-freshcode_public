@@ -7,28 +7,28 @@ import com.google.gwt.editor.client.SimpleBeanEditorDriver;
 import com.google.web.bindery.autobean.shared.AutoBean;
 import com.sencha.gxt.widget.core.client.Dialog;
 
-public class TimeDialog extends AbstractIsWidget<Dialog> {
-    interface Driver extends SimpleBeanEditorDriver<TimeBean, TimeBeanEditor> {
+public class PeriodDialog extends AbstractIsWidget<Dialog> {
+    interface Driver extends SimpleBeanEditorDriver<PeriodBean, PeriodBeanEditor> {
     }
 
     private Driver driver = GWT.create(Driver.class);    
 
     @Override
     protected Dialog createWidget() {
-        TimeBeanEditor editor;
+        PeriodBeanEditor editor;
         Dialog d = new DialogBuilder()
                 .height(100)
                 .width(400)
                 .modal(true)
                 .predefinedButtons()
-                .add(editor = new TimeBeanEditor())
+                .add(editor = new PeriodBeanEditor())
                 .dialog;
         driver.initialize(editor);
         ConfirmBeforeHideHandler.setup(driver, d);
         return d;
     }
 
-    public void edit(AutoBean<TimeBean> timeAuto) {
+    public void edit(AutoBean<PeriodBean> timeAuto) {
         Dialog w = asWidget();
         driver.edit(timeAuto.as());
         w.show();

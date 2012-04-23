@@ -22,7 +22,7 @@ import java.util.List;
 public class Landing extends AbstractIsWidget {
     // Keep this around so that changes can be accumulated.
     private AutoBean<FormBean> formBeanAuto = FormBean.FACTORY.auto();
-    private AutoBean<TimeBean> timeBeanAuto = TimeBean.FACTORY.auto();
+    private AutoBean<PeriodBean> timeBeanAuto = PeriodBean.FACTORY.auto();
 
     {
         // Populate some default sub beans
@@ -52,14 +52,14 @@ public class Landing extends AbstractIsWidget {
         TextButton btnTimeOutput;
         FlowLayoutContainer ctr = new FlowLayoutContainerBuilder()
                 .add(btnForm = new TextButtonBuilder()
-                        .text("Object Graph Edit")
+                        .text("Bean Edit")
                         .textButton)
                 .add(btnFormOutput = new TextButtonBuilder()
                         .text("Output Contents")
                         .textButton)
                 .add(new HTMLPanel("<br/>"))
                 .add(btnTime = new TextButtonBuilder()
-                        .text("Time Edit")
+                        .text("Period Edit")
                         .textButton)
                 .add(btnTimeOutput = new TextButtonBuilder()
                         .text("Output Contents")
@@ -88,7 +88,7 @@ public class Landing extends AbstractIsWidget {
         btnTime.addSelectHandler(new SelectEvent.SelectHandler() {
             @Override
             public void onSelect(SelectEvent event) {
-                TimeDialog d = new TimeDialog();
+                PeriodDialog d = new PeriodDialog();
                 d.edit(timeBeanAuto);
             }
         });
