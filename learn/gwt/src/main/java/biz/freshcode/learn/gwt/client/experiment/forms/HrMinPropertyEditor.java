@@ -13,6 +13,8 @@ import java.text.ParseException;
  * The ':mm' portion is optional.
  */
 public class HrMinPropertyEditor extends PropertyEditor<Long> {
+    public static final HrMinPropertyEditor INSTANCE = new HrMinPropertyEditor();
+
     private static final int MINUTE = 60 * 1000;
     private static final int HOUR = 60 * MINUTE;
     private static final RegExp RE = RegExp.compile("^(-?)(\\d+)(:([0-5]?)(\\d))?$");
