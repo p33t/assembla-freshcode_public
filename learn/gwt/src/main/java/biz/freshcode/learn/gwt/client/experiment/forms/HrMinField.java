@@ -12,6 +12,7 @@ public class HrMinField extends ValueBaseField<Long> {
 
     public HrMinField() {
         // TODO: Find better InputCell to use.  Number and Text ones aren't allowed.
+        // Nope...super(new HrMinInputCell(GWT.<TextInputCell.TextFieldAppearance>create(TextInputCell.TextFieldAppearance.class)));
         super(new TriggerFieldCell<Long>(), new HrMinPropertyEditor());
         // NOTE: There is already a SideErrorHandler in errorSupport field.
         addParseErrorHandler(new ParseErrorEvent.ParseErrorHandler() {
