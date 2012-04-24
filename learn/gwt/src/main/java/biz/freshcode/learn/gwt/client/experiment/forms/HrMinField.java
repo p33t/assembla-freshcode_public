@@ -6,6 +6,7 @@ import com.sencha.gxt.widget.core.client.form.NumberField;
 import java.util.logging.Logger;
 
 
+// NOTE: Can't use SpinnerField<Long> as parent class because it won't accept ':' char.
 public class HrMinField extends NumberField<Long> {
     private Logger logger = Logger.getLogger(getClass().getName());
 
