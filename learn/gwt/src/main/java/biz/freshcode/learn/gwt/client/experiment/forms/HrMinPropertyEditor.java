@@ -9,7 +9,10 @@ import java.text.ParseException;
  * @see HrMinConverter
  */
 public class HrMinPropertyEditor extends NumberPropertyEditor.LongPropertyEditor {
-    public static final HrMinPropertyEditor INSTANCE = new HrMinPropertyEditor();
+
+    public HrMinPropertyEditor() {
+        setIncrement(5L * HrMinConverter.MINUTE);
+    }
 
     @Override
     public Long parse(CharSequence text) throws ParseException {

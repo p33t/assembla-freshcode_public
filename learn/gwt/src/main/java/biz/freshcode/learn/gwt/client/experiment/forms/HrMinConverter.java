@@ -17,7 +17,7 @@ public class HrMinConverter implements Converter<Long, String> {
     public static final String RE_MSG = "Must be in the form '-h:m', '-' and ':m' are optional";
     public static final HrMinConverter INSTANCE = new HrMinConverter();
     public static final RegExValidator VALIDATOR = new RegExValidator(RE_STR, RE_MSG);
-    private static final int MINUTE = 60 * 1000;
+    static final int MINUTE = 60 * 1000;
     private static final int HOUR = 60 * MINUTE;
 
     @Override
