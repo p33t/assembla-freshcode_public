@@ -15,6 +15,10 @@ public interface PeriodBean {
 
     Long getHrMin();
 
+    void setHrMin2(Long t);
+
+    Long getHrMin2();
+
     void setStart(Long t);
 
     Long getStart();

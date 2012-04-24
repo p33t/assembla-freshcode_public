@@ -16,6 +16,46 @@ public class HrMinFieldBuilder {
         hrMinField = v;
     }
 
+    public HrMinFieldBuilder allowDecimals(boolean v0) {
+        hrMinField.setAllowDecimals(v0);
+        return this;
+    }
+
+    public HrMinFieldBuilder allowNegative(boolean v0) {
+        hrMinField.setAllowNegative(v0);
+        return this;
+    }
+
+    public HrMinFieldBuilder baseChars(java.lang.String v0) {
+        hrMinField.setBaseChars(v0);
+        return this;
+    }
+
+    public HrMinFieldBuilder decimalSeparator(java.lang.String v0) {
+        hrMinField.setDecimalSeparator(v0);
+        return this;
+    }
+
+    public HrMinFieldBuilder format(com.google.gwt.i18n.client.NumberFormat v0) {
+        hrMinField.setFormat(v0);
+        return this;
+    }
+
+    public HrMinFieldBuilder hideTrigger(boolean v0) {
+        hrMinField.setHideTrigger(v0);
+        return this;
+    }
+
+    public HrMinFieldBuilder editable(boolean v0) {
+        hrMinField.setEditable(v0);
+        return this;
+    }
+
+    public HrMinFieldBuilder monitorTab(boolean v0) {
+        hrMinField.setMonitorTab(v0);
+        return this;
+    }
+
     public HrMinFieldBuilder readOnly(boolean v0) {
         hrMinField.setReadOnly(v0);
         return this;
@@ -27,6 +67,11 @@ public class HrMinFieldBuilder {
     return this;
   }
 */
+
+    public HrMinFieldBuilder propertyEditor(com.sencha.gxt.widget.core.client.form.PropertyEditor v0) {
+        hrMinField.setPropertyEditor(v0);
+        return this;
+    }
 
     public HrMinFieldBuilder allowBlank(boolean v0) {
         hrMinField.setAllowBlank(v0);
@@ -60,11 +105,6 @@ public class HrMinFieldBuilder {
 
     public HrMinFieldBuilder id(java.lang.String v0) {
         hrMinField.setId(v0);
-        return this;
-    }
-
-    public HrMinFieldBuilder propertyEditor(com.sencha.gxt.widget.core.client.form.PropertyEditor v0) {
-        hrMinField.setPropertyEditor(v0);
         return this;
     }
 
