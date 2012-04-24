@@ -3,6 +3,7 @@ package biz.freshcode.learn.gwt.client.experiment.forms;
 import com.google.gwt.regexp.shared.MatchResult;
 import com.google.gwt.regexp.shared.RegExp;
 import com.sencha.gxt.data.shared.Converter;
+import com.sencha.gxt.widget.core.client.form.validator.RegExValidator;
 
 /**
  * Converts between an h:mm string and a long millisecond value.
@@ -11,9 +12,11 @@ import com.sencha.gxt.data.shared.Converter;
  * The ':mm' portion is optional.
  */
 public class HrMinConverter implements Converter<Long, String> {
-    public static final RegExp RE = RegExp.compile("^(-?)(\\d+)(:([0-5]?)(\\d))?$");
+    private static final String RE_STR = "^(-?)(\\d+)(:([0-5]?)(\\d))?$";
+    public static final RegExp RE = RegExp.compile(RE_STR);
     public static final String RE_MSG = "Must be in the form '-h:m', '-' and ':m' are optional";
     public static final HrMinConverter INSTANCE = new HrMinConverter();
+    public static final RegExValidator VALIDATOR = new RegExValidator(RE_STR, RE_MSG);
     private static final int MINUTE = 60 * 1000;
     private static final int HOUR = 60 * MINUTE;
 
