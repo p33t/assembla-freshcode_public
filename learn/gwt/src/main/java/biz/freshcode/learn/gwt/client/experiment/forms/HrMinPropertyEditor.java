@@ -19,7 +19,7 @@ public class HrMinPropertyEditor extends NumberPropertyEditor.LongPropertyEditor
         if (text == null) return null;
         String str = text.toString();
         if (str.trim().isEmpty()) return null;
-        if (!HrMinConverter.RE.test(str)) throw new ParseException(HrMinConverter.RE_MSG, 0);
+        if (!HrMinConverter.RE.test(str)) throw new ParseException(str, 0);
         return HrMinConverter.INSTANCE.convertFieldValue(str);
     }
 

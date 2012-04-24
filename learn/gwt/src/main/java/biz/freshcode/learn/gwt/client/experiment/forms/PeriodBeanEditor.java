@@ -28,6 +28,7 @@ public class PeriodBeanEditor extends AbstractIsWidget implements Editor<PeriodB
                         .widget(hrMinField = new TextFieldBuilder()
                                 .allowBlank(false)
                                 .addValidator(HrMinConverter.VALIDATOR)
+                                // TODO: Put in some logging / blur formatting?
                                 .textField)
                         .fieldLabel)
                 .add(new FieldLabelBuilder()

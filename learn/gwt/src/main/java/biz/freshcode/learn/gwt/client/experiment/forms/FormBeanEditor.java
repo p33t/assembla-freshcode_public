@@ -23,7 +23,7 @@ import java.util.Date;
 public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean> {
     TextField str;
     NumberField<Integer> num;
-    ListStore<FormBeanChild> childStore = new ListStore<FormBeanChild>(ChildAccess.INSTANCE.key());
+    ListStore<FormBeanChild> childStore = new ListStore<FormBeanChild>(ChildAccess.INSTANCE.id());
     // NOTE: This is not used directly.  It needs to have non-private scope and same name as bean property.
     @SuppressWarnings({"UnusedDeclaration"})
     ListStoreEditor<FormBeanChild> children = new ListStoreEditor<FormBeanChild>(childStore);
@@ -55,6 +55,7 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
                         .widget(grid = new Grid<FormBeanChild>(
                                 childStore,
                                 columnModel(
+                                        columnConfig(ChildAccess.INSTANCE.key(), 50, "ID"),
                                         nameCol = columnConfig(ChildAccess.INSTANCE.name(), 200, "Name"),
                                         dateCol = columnConfig(ChildAccess.INSTANCE.dt(), 100, "Date")
                                 )
