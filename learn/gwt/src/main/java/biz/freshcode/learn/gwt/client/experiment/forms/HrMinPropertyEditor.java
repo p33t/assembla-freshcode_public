@@ -1,6 +1,6 @@
 package biz.freshcode.learn.gwt.client.experiment.forms;
 
-import com.sencha.gxt.widget.core.client.form.PropertyEditor;
+import com.sencha.gxt.widget.core.client.form.NumberPropertyEditor;
 
 import java.text.ParseException;
 
@@ -8,7 +8,7 @@ import java.text.ParseException;
  * Converts string to / from a long.
  * @see HrMinConverter
  */
-public class HrMinPropertyEditor extends PropertyEditor<Long> {
+public class HrMinPropertyEditor extends NumberPropertyEditor.LongPropertyEditor {
     public static final HrMinPropertyEditor INSTANCE = new HrMinPropertyEditor();
 
     @Override
@@ -21,7 +21,8 @@ public class HrMinPropertyEditor extends PropertyEditor<Long> {
     }
 
     @Override
-    public String render(Long time) {
+    public String render(Number num) {
+        Long time = returnTypedValue(num);
         return HrMinConverter.INSTANCE.convertModelValue(time);
     }
 }
