@@ -13,6 +13,8 @@ public class HrMinField extends NumberField<Long> {
         super(new HrMinPropertyEditor());
         setDecimalSeparator(":"); // permit the separator
         setAllowDecimals(true);
+//        This shows the single / drop-down trigger
+//        setHideTrigger(false);
 
         // NOTE: There is already a SideErrorHandler in errorSupport field.
         addParseErrorHandler(new ParseErrorEvent.ParseErrorHandler() {
