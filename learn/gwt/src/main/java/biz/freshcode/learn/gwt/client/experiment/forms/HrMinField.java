@@ -1,7 +1,12 @@
 package biz.freshcode.learn.gwt.client.experiment.forms;
 
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
+import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.sencha.gxt.cell.core.client.form.SpinnerFieldCell;
+import com.sencha.gxt.widget.core.client.event.BlurEvent;
+import com.sencha.gxt.widget.core.client.event.InvalidEvent;
 import com.sencha.gxt.widget.core.client.event.ParseErrorEvent;
+import com.sencha.gxt.widget.core.client.event.ValidEvent;
 import com.sencha.gxt.widget.core.client.form.NumberField;
 
 import java.util.logging.Logger;
@@ -25,6 +30,34 @@ public class HrMinField extends NumberField<Long> {
             @Override
             public void onParseError(ParseErrorEvent event) {
                 logger.info("Parse error: " + event.getErrorValue() + "\n" + event);
+            }
+        });
+
+        addBlurHandler(new BlurEvent.BlurHandler() {
+            @Override
+            public void onBlur(BlurEvent event) {
+                logger.info("Blur while value is " + getValue());
+            }
+        });
+
+        addInvalidHandler(new InvalidEvent.InvalidHandler() {
+            @Override
+            public void onInvalid(InvalidEvent event) {
+                logger.info("Invalid with event errors " + event.getErrors());
+            }
+        });
+
+        addValidHandler(new ValidEvent.ValidHandler() {
+            @Override
+            public void onValid(ValidEvent event) {
+                logger.info("Valid with value " + getValue());
+            }
+        });
+
+        addValueChangeHandler(new ValueChangeHandler<Long>() {
+            @Override
+            public void onValueChange(ValueChangeEvent<Long> evt) {
+                logger.info("Value changed to " + evt.getValue());
             }
         });
     }
