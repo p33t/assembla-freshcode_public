@@ -12,22 +12,22 @@ import com.sencha.gxt.widget.core.client.form.TextField;
 
 public class PeriodBeanEditor extends AbstractIsWidget implements Editor<PeriodBean> {
     @Ignore
-    TextField startField;
+    TextField hrMinField;
 
-    ConverterEditorAdapter<Long, String, TextField> start;
+    ConverterEditorAdapter<Long, String, TextField> hrMin;
 
     @Override
     protected Widget createWidget() {
         FlowLayoutContainer c = new FlowLayoutContainerBuilder()
                 .add(new FieldLabelBuilder()
-                        .text("Start")
-                        .widget(startField = new TextFieldBuilder()
+                        .text("Hr Min")
+                        .widget(hrMinField = new TextFieldBuilder()
                                 .allowBlank(false)
                                 .addValidator(HrMinConverter.VALIDATOR)
                                 .textField)
                         .fieldLabel)
                 .flowLayoutContainer;
-        start = new ConverterEditorAdapter(startField, HrMinConverter.INSTANCE);
+        hrMin = new ConverterEditorAdapter(hrMinField, HrMinConverter.INSTANCE);
         return c;
     }
 }
