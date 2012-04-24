@@ -16,7 +16,7 @@ public class HrMinField extends NumberField<Long> {
 
     private HrMinField(SpinnerFieldCell<Long> cell) {
         super(cell, cell.getPropertyEditor());
-        cell.setHideTrigger(false);
+        cell.setHideTrigger(false); // show the spin buttons
         setDecimalSeparator(":"); // permit the separator
         setAllowDecimals(true);
 
