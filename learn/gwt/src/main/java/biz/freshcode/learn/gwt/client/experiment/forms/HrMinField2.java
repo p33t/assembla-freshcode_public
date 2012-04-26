@@ -8,6 +8,7 @@ import com.sencha.gxt.widget.core.client.event.BlurEvent;
 import com.sencha.gxt.widget.core.client.form.ConverterEditorAdapter;
 import com.sencha.gxt.widget.core.client.form.TextField;
 
+// NOTE: Trying to use a TwinTriggerField (or subclass of) seems to be a dead end... only a single button is shown!
 public class HrMinField2 extends ConverterEditorAdapter<Long, String, TextField> implements IsWidget {
     private TextField textField;
     public HrMinField2() {
