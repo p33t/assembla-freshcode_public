@@ -22,13 +22,12 @@ public class PeriodBeanEditor extends AbstractIsWidget implements Editor<PeriodB
     HrMinField hrMin1;
 
     // TODO: Convert to another HrMinField
-    // This doesn't reformat the text on blur
-    @Ignore
-    TextField hrMinField;
     ConverterEditorAdapter<Long, String, TextField> hrMin2;
 
     @Override
     protected Widget createWidget() {
+        // This doesn't reformat the text on blur
+        TextField textField;
         FlowLayoutContainer c = new FlowLayoutContainerBuilder()
                 .add(new FieldLabelBuilder()
                         .text("Hr Min 2 (Field)")
@@ -38,16 +37,18 @@ public class PeriodBeanEditor extends AbstractIsWidget implements Editor<PeriodB
                         .fieldLabel)
                 .add(new FieldLabelBuilder()
                         .text("Hr Min (Converter)")
-                        .widget(hrMinField = new TextFieldBuilder()
+                        .widget(textField = new TextFieldBuilder()
                                 .allowBlank(false)
                                 .addValidator(HrMinConverter.VALIDATOR)
                                 // TODO: Put in some logging / blur formatting?
                                 .textField)
                         .fieldLabel)
                 .flowLayoutContainer;
-        hrMin2 = new ConverterEditorAdapter(hrMinField, HrMinConverter.INSTANCE);
+        hrMin2 = new ConverterEditorAdapter(textField, HrMinConverter.INSTANCE);
 
-        hrMinField.addBlurHandler(new BlurEvent.BlurHandler() {
+        final TextField tf = textField;
+
+        tf.addBlurHandler(new BlurEvent.BlurHandler() {
             @Override
             public void onBlur(BlurEvent event) {
                 // format the text if possible
@@ -57,7 +58,7 @@ public class PeriodBeanEditor extends AbstractIsWidget implements Editor<PeriodB
                     @Override
                     public void execute() {
                         logger.info("Scheduled hrMinField blur");
-                        String text = hrMinField.getText();
+                        String text = tf.getText();
 //                        Doesn't work... l is aways null
 //                        Long l = hrMin2.getValue();
                         Long l = HrMinConverter.INSTANCE.convertFieldValue(text);
@@ -65,9 +66,8 @@ public class PeriodBeanEditor extends AbstractIsWidget implements Editor<PeriodB
                             // no errors
                             logger.info("No errors");
                             String s = HrMinConverter.INSTANCE.convertModelValue(l);
-                            if (!text.equals(s)) hrMinField.setText(s);
-                        }
-                        else {
+                            if (!text.equals(s)) tf.setText(s);
+                        } else {
                             logger.info("No long value available.  Text is " + text);
                         }
 
