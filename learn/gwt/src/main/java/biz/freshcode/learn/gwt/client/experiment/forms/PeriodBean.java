@@ -11,9 +11,9 @@ import com.google.web.bindery.autobean.shared.AutoBeanFactory;
 public interface PeriodBean {
     Factory FACTORY = GWT.create(Factory.class);
 
-    void setHrMin(Long t);
+    void setHrMin1(Long t);
 
-    Long getHrMin();
+    Long getHrMin1();
 
     void setHrMin2(Long t);
 
