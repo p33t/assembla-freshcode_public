@@ -5,13 +5,20 @@ import biz.freshcode.learn.gwt.client.uispike.builder.field.FieldLabelBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.field.HrMinFieldBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.field.TextFieldBuilder;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
+import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.editor.client.Editor;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.widget.core.client.container.FlowLayoutContainer;
+import com.sencha.gxt.widget.core.client.event.BlurEvent;
 import com.sencha.gxt.widget.core.client.form.ConverterEditorAdapter;
 import com.sencha.gxt.widget.core.client.form.TextField;
 
+import java.util.logging.Logger;
+
 public class PeriodBeanEditor extends AbstractIsWidget implements Editor<PeriodBean> {
+    private Logger logger = Logger.getLogger(getClass().getName());
+
+    // TODO: Convert to another HrMinField
     // This doesn't reformat the text on blur
     @Ignore
     TextField hrMinField;
@@ -39,6 +46,36 @@ public class PeriodBeanEditor extends AbstractIsWidget implements Editor<PeriodB
                         .fieldLabel)
                 .flowLayoutContainer;
         hrMin = new ConverterEditorAdapter(hrMinField, HrMinConverter.INSTANCE);
+
+        hrMinField.addBlurHandler(new BlurEvent.BlurHandler() {
+            @Override
+            public void onBlur(BlurEvent event) {
+                // format the text if possible
+                logger.info("Blur hrMinField");
+                Scheduler.get().scheduleDeferred(new Scheduler.ScheduledCommand() {
+
+                    @Override
+                    public void execute() {
+                        logger.info("Scheduled hrMinField blur");
+                        String text = hrMinField.getText();
+//                        Doesn't work... l is aways null
+//                        Long l = hrMin.getValue();
+                        Long l = HrMinConverter.INSTANCE.convertFieldValue(text);
+                        if (l != null) {
+                            // no errors
+                            logger.info("No errors");
+                            String s = HrMinConverter.INSTANCE.convertModelValue(l);
+                            if (!text.equals(s)) hrMinField.setText(s);
+                        }
+                        else {
+                            logger.info("No long value available.  Text is " + text);
+                        }
+
+                    }
+                });
+            }
+        });
+
         return c;
     }
 }
