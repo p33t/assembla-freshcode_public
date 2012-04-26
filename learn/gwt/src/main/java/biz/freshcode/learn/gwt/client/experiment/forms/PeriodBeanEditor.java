@@ -18,18 +18,24 @@ import java.util.logging.Logger;
 public class PeriodBeanEditor extends AbstractIsWidget implements Editor<PeriodBean> {
     private Logger logger = Logger.getLogger(getClass().getName());
 
+    // This clears the value if it doesn't parse (?!)
+    HrMinField hrMin1;
+
     // TODO: Convert to another HrMinField
     // This doesn't reformat the text on blur
     @Ignore
     TextField hrMinField;
-    ConverterEditorAdapter<Long, String, TextField> hrMin;
-
-    // This clears the value if it doesn't parse (?!)
-    HrMinField hrMin2;
+    ConverterEditorAdapter<Long, String, TextField> hrMin2;
 
     @Override
     protected Widget createWidget() {
         FlowLayoutContainer c = new FlowLayoutContainerBuilder()
+                .add(new FieldLabelBuilder()
+                        .text("Hr Min 2 (Field)")
+                        .widget(hrMin1 = new HrMinFieldBuilder()
+                                .allowBlank(false)
+                                .hrMinField)
+                        .fieldLabel)
                 .add(new FieldLabelBuilder()
                         .text("Hr Min (Converter)")
                         .widget(hrMinField = new TextFieldBuilder()
@@ -38,14 +44,8 @@ public class PeriodBeanEditor extends AbstractIsWidget implements Editor<PeriodB
                                 // TODO: Put in some logging / blur formatting?
                                 .textField)
                         .fieldLabel)
-                .add(new FieldLabelBuilder()
-                        .text("Hr Min 2 (Field)")
-                        .widget(hrMin2 = new HrMinFieldBuilder()
-                                .allowBlank(false)
-                                .hrMinField)
-                        .fieldLabel)
                 .flowLayoutContainer;
-        hrMin = new ConverterEditorAdapter(hrMinField, HrMinConverter.INSTANCE);
+        hrMin2 = new ConverterEditorAdapter(hrMinField, HrMinConverter.INSTANCE);
 
         hrMinField.addBlurHandler(new BlurEvent.BlurHandler() {
             @Override
@@ -59,7 +59,7 @@ public class PeriodBeanEditor extends AbstractIsWidget implements Editor<PeriodB
                         logger.info("Scheduled hrMinField blur");
                         String text = hrMinField.getText();
 //                        Doesn't work... l is aways null
-//                        Long l = hrMin.getValue();
+//                        Long l = hrMin2.getValue();
                         Long l = HrMinConverter.INSTANCE.convertFieldValue(text);
                         if (l != null) {
                             // no errors
