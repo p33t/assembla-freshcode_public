@@ -99,7 +99,7 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
         childStore.setAutoCommit(true); // Prevents red tags thus making UI more consistent.
         GridEditing<FormBeanChild> editing = new GridRowEditing<FormBeanChild>(grid);
         editing.addEditor(nameCol, new TextFieldBuilder()
-                // TODO: This does not appear to be working
+                // TODO: This only works for GridRowEditing (Inline editor doesn't show errors ?!)
                 .allowBlank(false)
                 .textField);
         editing.addEditor(dateCol, new DateField(new DateTimePropertyEditor()));
