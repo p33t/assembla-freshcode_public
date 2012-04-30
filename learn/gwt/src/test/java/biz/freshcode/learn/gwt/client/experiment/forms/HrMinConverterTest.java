@@ -7,8 +7,8 @@ import java.text.ParseException;
 
 import static org.junit.Assert.assertEquals;
 
-public class HrMinPropertyEditorTest {
-    HrMinPropertyEditor subject = new HrMinPropertyEditor();
+public class HrMinConverterTest {
+    HrMinConverter subject = new HrMinConverter();
     private static final int MINUTE = 60000;
 
     @Test
@@ -37,23 +37,25 @@ public class HrMinPropertyEditorTest {
     }
 
     private void checkBadParse(String str) {
-        try {
-            subject.parse(str);
-            Assert.fail("Did not fail: " + str);
-        } catch (ParseException e) {
-            // nothing
-        }
+        Assert.assertNull(subject.convertFieldValue(str));
+//         Not really sure how non-parsable strings are handled
+//        try {
+//            subject.convertFieldValue(str);
+//            Assert.fail("Did not fail: " + str);
+//        } catch (ParseException e) {
+//            nothing
+//        }
     }
 
     private void checkParse(String str, Long expectedMins) throws ParseException {
         Long expected = mins(expectedMins);
-        Long actual = subject.parse(str);
+        Long actual = subject.convertFieldValue(str);
         assertEquals(expected, actual);
     }
 
     private void checkRender(Long mins, String expected) {
         Long time = mins(mins);
-        String actual = subject.render(time);
+        String actual = subject.convertModelValue(time);
         assertEquals(expected, actual);
     }
 
