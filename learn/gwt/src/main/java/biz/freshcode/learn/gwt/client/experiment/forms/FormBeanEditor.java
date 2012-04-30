@@ -55,16 +55,35 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
                         .labelAlign(FormPanel.LabelAlign.TOP)
                         .widget(grid = new Grid<FormBeanChild>(
                                 childStore,
-                                columnModel(
-                                        columnConfig(ChildAccess.INSTANCE.key(), 50, "ID"),
-                                        nameCol = columnConfig(ChildAccess.INSTANCE.name(), 200, "Name"),
-                                        dateCol = columnConfig(ChildAccess.INSTANCE.dt(), 100, "Date"),
-                                        columnConfig(ChildAccess.INSTANCE.start(), 100, "Start"),
-                                        columnConfig(ChildAccess.INSTANCE.duration(), 100, "Duration"),
-                                        new ColumnConfigBuilder(columnConfig(ChildAccess.INSTANCE.finish(), 100, "Finish"))
+                                new ColumnModel(Util.createList(
+                                        colConfigBuilder(ChildAccess.INSTANCE.key())
+                                                .width(50)
+                                                .header("ID")
+                                                .columnConfig,
+                                        nameCol = colConfigBuilder(ChildAccess.INSTANCE.name())
+                                                .width(200)
+                                                .header("Name")
+                                                .columnConfig,
+                                        dateCol = colConfigBuilder(ChildAccess.INSTANCE.dt())
+                                                .width(100)
+                                                .header("Date")
+                                                .columnConfig,
+                                        colConfigBuilder(ChildAccess.INSTANCE.start())
+                                                .header("Start")
+                                                .width(100)
+                                                .cell(new HrMinCell())
+                                                .columnConfig,
+                                        colConfigBuilder(ChildAccess.INSTANCE.duration())
+                                                .header("Duration")
+                                                .width(100)
+                                                .cell(new HrMinCell())
+                                                .columnConfig,
+                                        colConfigBuilder(ChildAccess.INSTANCE.finish())
+                                                .header("Finish")
+                                                .width(100)
                                                 .cell(new FinishCell())
                                                 .columnConfig
-                                )
+                                ))
                         ))
                         .fieldLabel)
                 .flowLayoutContainer;
@@ -86,13 +105,8 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
     }
 
     // Cut down code noise
-    private ColumnModel<FormBeanChild> columnModel(ColumnConfig<FormBeanChild, ?>... cols) {
-        return new ColumnModel(Util.createList(cols));
+    private <T> ColumnConfigBuilder colConfigBuilder(ValueProvider<FormBeanChild, T> provider) {
+        ColumnConfig<FormBeanChild, T> cc = new ColumnConfig<FormBeanChild, T>(provider);
+        return new ColumnConfigBuilder(cc);
     }
-
-    // Cut down code noise
-    private <T> ColumnConfig<FormBeanChild, T> columnConfig(ValueProvider<FormBeanChild, T> provider, int width, String title) {
-        return new ColumnConfig<FormBeanChild, T>(provider, width, title);
-    }
-
 }
