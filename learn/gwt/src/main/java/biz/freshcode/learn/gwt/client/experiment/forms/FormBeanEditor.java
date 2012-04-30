@@ -90,7 +90,7 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
                         .fieldLabel)
                 .flowLayoutContainer;
 
-        grid.setHeight(200); // Is this working?
+        grid.setHeight(200);
         // column sizing
         // TODO: This does not auto resize
         grid.getView().setForceFit(true);
@@ -99,7 +99,7 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
         childStore.setAutoCommit(true); // Prevents red tags thus making UI more consistent.
         GridEditing<FormBeanChild> editing = new GridRowEditing<FormBeanChild>(grid);
         editing.addEditor(nameCol, new TextFieldBuilder()
-                // TODO: This only works for GridRowEditing (Inline editor doesn't show errors ?!)
+                // NOTE: This only works for GridRowEditing (Inline editor doesn't show errors ?!)
                 .allowBlank(false)
                 .textField);
         editing.addEditor(dateCol, new DateField(new DateTimePropertyEditor()));
