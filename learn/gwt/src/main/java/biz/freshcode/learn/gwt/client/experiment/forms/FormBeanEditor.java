@@ -17,7 +17,8 @@ import com.sencha.gxt.widget.core.client.form.*;
 import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
 import com.sencha.gxt.widget.core.client.grid.ColumnModel;
 import com.sencha.gxt.widget.core.client.grid.Grid;
-import com.sencha.gxt.widget.core.client.grid.editing.GridInlineEditing;
+import com.sencha.gxt.widget.core.client.grid.editing.GridEditing;
+import com.sencha.gxt.widget.core.client.grid.editing.GridRowEditing;
 
 import java.util.Date;
 
@@ -96,20 +97,19 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
 
         // Editing in the grid
         childStore.setAutoCommit(true); // Prevents red tags thus making UI more consistent.
-        GridInlineEditing<FormBeanChild> inlineEditor = new GridInlineEditing<FormBeanChild>(grid);
-        inlineEditor.addEditor(nameCol, new TextFieldBuilder()
+        GridEditing<FormBeanChild> editing = new GridRowEditing<FormBeanChild>(grid);
+        editing.addEditor(nameCol, new TextFieldBuilder()
                 // TODO: This does not appear to be working
                 .allowBlank(false)
                 .textField);
-        inlineEditor.addEditor(dateCol, new DateField(new DateTimePropertyEditor()));
-        hrMinEditor(inlineEditor, startCol);
-        hrMinEditor(inlineEditor, durationCol);
-
+        editing.addEditor(dateCol, new DateField(new DateTimePropertyEditor()));
+        hrMinEditor(editing, startCol);
+        hrMinEditor(editing, durationCol);
         return w;
     }
 
     // Setup grid inline editing for the given HrMin column.
-    private void hrMinEditor(GridInlineEditing<FormBeanChild> inlineEditor, ColumnConfig<FormBeanChild, Long> col) {
+    private void hrMinEditor(GridEditing<FormBeanChild> inlineEditor, ColumnConfig<FormBeanChild, Long> col) {
         TextField tf = new TextFieldBuilder()
                 .allowBlank(false)
                 .addValidator(HrMinConverter.VALIDATOR)
