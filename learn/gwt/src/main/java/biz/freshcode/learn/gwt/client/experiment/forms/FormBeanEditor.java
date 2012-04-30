@@ -34,6 +34,8 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
         Grid<FormBeanChild> grid;
         ColumnConfig<FormBeanChild, String> nameCol;
         ColumnConfig<FormBeanChild, Date> dateCol;
+        ColumnConfig<FormBeanChild, Long> startCol;
+        ColumnConfig<FormBeanChild, Long> durationCol;
         FlowLayoutContainer w = new FlowLayoutContainerBuilder()
                 .add(new FieldLabelBuilder()
                         .text("Str")
@@ -68,12 +70,12 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
                                                 .width(100)
                                                 .header("Date")
                                                 .columnConfig,
-                                        colConfigBuilder(ChildAccess.INSTANCE.start())
+                                        startCol = colConfigBuilder(ChildAccess.INSTANCE.start())
                                                 .header("Start")
                                                 .width(100)
                                                 .cell(new HrMinCell())
                                                 .columnConfig,
-                                        colConfigBuilder(ChildAccess.INSTANCE.duration())
+                                        durationCol = colConfigBuilder(ChildAccess.INSTANCE.duration())
                                                 .header("Duration")
                                                 .width(100)
                                                 .cell(new HrMinCell())
@@ -100,8 +102,19 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
                 .allowBlank(false)
                 .textField);
         inlineEditor.addEditor(dateCol, new DateField(new DateTimePropertyEditor()));
+        hrMinEditor(inlineEditor, startCol);
+        hrMinEditor(inlineEditor, durationCol);
 
         return w;
+    }
+
+    // Setup grid inline editing for the given HrMin column.
+    private void hrMinEditor(GridInlineEditing<FormBeanChild> inlineEditor, ColumnConfig<FormBeanChild, Long> col) {
+        TextField tf = new TextFieldBuilder()
+                .allowBlank(false)
+                .addValidator(HrMinConverter.VALIDATOR)
+                .textField;
+        inlineEditor.addEditor(col, HrMinConverter.INSTANCE, tf);
     }
 
     // Cut down code noise
