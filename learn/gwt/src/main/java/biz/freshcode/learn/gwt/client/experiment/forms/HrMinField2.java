@@ -8,6 +8,9 @@ import com.sencha.gxt.widget.core.client.event.BlurEvent;
 import com.sencha.gxt.widget.core.client.form.ConverterEditorAdapter;
 import com.sencha.gxt.widget.core.client.form.TextField;
 
+/**
+ * Combines a Converter and a Validator to that an HrMin 'Long' typed field can be edited with a TextField.
+ */
 // NOTE: Trying to use a TwinTriggerField (or subclass of) seems to be a dead end... only a single button is shown!
 public class HrMinField2 extends ConverterEditorAdapter<Long, String, TextField> implements IsWidget {
     private TextField textField;
