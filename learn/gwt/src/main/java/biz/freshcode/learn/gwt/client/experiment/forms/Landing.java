@@ -33,12 +33,16 @@ public class Landing extends AbstractIsWidget {
         sub.setKey(1);
         sub.setDt(new Date(0L));
         sub.setName("Epoch");
+        sub.setStart(3600000L);
+        sub.setDuration(60000L);
         subs.add(sub);
 
         sub = FormBeanChild.FACTORY.auto().as();
         sub.setKey(2);
         sub.setDt(new Date(1970, 12, 25));
         sub.setName("Xmas");
+        sub.setStart(60000L);
+        sub.setDuration(3600000L);
         subs.add(sub);
 
         bean.setChildren(subs);
