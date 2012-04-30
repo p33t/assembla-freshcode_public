@@ -1,7 +1,5 @@
 package pkg.b_generation;
 
-import sun.reflect.generics.reflectiveObjects.TypeVariableImpl;
-
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
@@ -124,8 +122,9 @@ public class DefaultBeanBuilderGenerator {
     }
 
     private static boolean hasGenerics(Method m) {
+        Class genericParam = Probe.GENERIC_METHOD.getGenericParameterTypes()[0].getClass();
         for (Type t : m.getGenericParameterTypes()) {
-            if (t instanceof TypeVariableImpl) return true;
+            if (genericParam.equals(t.getClass())) return true;
         }
         return false;
     }
