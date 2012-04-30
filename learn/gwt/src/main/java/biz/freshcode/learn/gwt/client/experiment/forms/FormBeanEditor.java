@@ -81,16 +81,16 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
                                                 .width(100)
                                                 .cell(new HrMinCell())
                                                 .columnConfig,
-                                        colConfigBuilder(ChildAccess.INSTANCE.finish())
+                                        colConfigBuilder(new FinishProvider<FormBeanChild>())
                                                 .header("Finish")
                                                 .width(100)
-                                                .cell(new FinishCell())
                                                 .columnConfig
                                 ))
                         ))
                         .fieldLabel)
                 .flowLayoutContainer;
 
+        grid.setHeight(200); // Is this working?
         // column sizing
         // TODO: This does not auto resize
         grid.getView().setForceFit(true);
