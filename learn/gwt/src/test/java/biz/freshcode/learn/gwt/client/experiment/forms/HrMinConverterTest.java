@@ -9,7 +9,6 @@ import static org.junit.Assert.assertEquals;
 
 public class HrMinConverterTest {
     HrMinConverter subject = new HrMinConverter();
-    private static final int MINUTE = 60000;
 
     @Test
     public void testParse() throws Exception {
