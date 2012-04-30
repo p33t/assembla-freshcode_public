@@ -6,7 +6,7 @@ import com.google.web.bindery.autobean.shared.AutoBeanFactory;
 
 import java.util.Date;
 
-public interface FormBeanChild {
+public interface FormBeanChild extends StartDuration {
     Factory FACTORY = GWT.create(Factory.class);
 
     Integer getKey();
@@ -20,6 +20,10 @@ public interface FormBeanChild {
     String getName();
 
     void setName(String name);
+
+    void setStart(Long t);
+
+    void setDuration(Long d);
 
     interface Factory extends AutoBeanFactory {
         AutoBean<FormBeanChild> auto();

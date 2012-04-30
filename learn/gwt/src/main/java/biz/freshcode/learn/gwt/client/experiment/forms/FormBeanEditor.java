@@ -4,6 +4,7 @@ import biz.freshcode.learn.gwt.client.uispike.builder.container.FlowLayoutContai
 import biz.freshcode.learn.gwt.client.uispike.builder.field.FieldLabelBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.field.NumberFieldBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.field.TextFieldBuilder;
+import biz.freshcode.learn.gwt.client.uispike.builder.table.ColumnConfigBuilder;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import com.google.gwt.editor.client.Editor;
 import com.google.gwt.user.client.ui.Widget;
@@ -57,7 +58,12 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
                                 columnModel(
                                         columnConfig(ChildAccess.INSTANCE.key(), 50, "ID"),
                                         nameCol = columnConfig(ChildAccess.INSTANCE.name(), 200, "Name"),
-                                        dateCol = columnConfig(ChildAccess.INSTANCE.dt(), 100, "Date")
+                                        dateCol = columnConfig(ChildAccess.INSTANCE.dt(), 100, "Date"),
+                                        columnConfig(ChildAccess.INSTANCE.start(), 100, "Start"),
+                                        columnConfig(ChildAccess.INSTANCE.duration(), 100, "Duration"),
+                                        new ColumnConfigBuilder(columnConfig(ChildAccess.INSTANCE.finish(), 100, "Finish"))
+                                                .cell(new FinishCell())
+                                                .columnConfig
                                 )
                         ))
                         .fieldLabel)
