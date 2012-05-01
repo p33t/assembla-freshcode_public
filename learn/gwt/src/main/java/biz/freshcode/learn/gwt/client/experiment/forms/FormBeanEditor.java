@@ -1,6 +1,6 @@
 package biz.freshcode.learn.gwt.client.experiment.forms;
 
-import biz.freshcode.learn.gwt.client.uispike.builder.container.FlowLayoutContainerBuilder;
+import biz.freshcode.learn.gwt.client.uispike.builder.VerticalLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.field.FieldLabelBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.field.NumberFieldBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.field.TextFieldBuilder;
@@ -12,7 +12,7 @@ import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.core.client.util.Util;
 import com.sencha.gxt.data.client.editor.ListStoreEditor;
 import com.sencha.gxt.data.shared.ListStore;
-import com.sencha.gxt.widget.core.client.container.FlowLayoutContainer;
+import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
 import com.sencha.gxt.widget.core.client.form.*;
 import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
 import com.sencha.gxt.widget.core.client.grid.ColumnModel;
@@ -37,7 +37,7 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
         ColumnConfig<FormBeanChild, Date> dateCol;
         ColumnConfig<FormBeanChild, Long> startCol;
         ColumnConfig<FormBeanChild, Long> durationCol;
-        FlowLayoutContainer w = new FlowLayoutContainerBuilder()
+        VerticalLayoutContainer w = new VerticalLayoutContainerBuilder()
                 .add(new FieldLabelBuilder()
                         .text("Str")
                         .widget(str = new TextFieldBuilder()
@@ -56,6 +56,14 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
                 .add(new FieldLabelBuilder()
                         .text("Children")
                         .labelAlign(FormPanel.LabelAlign.TOP)
+                                // Borders true, width 1* makes the width auto-resize...and maybe Grid.getView().setForceFit()
+                        .borders(true)
+                        .width("1*")
+
+                        .height(300)
+//                       Causes height to gradually increase with window resizing
+//                        .height(-100)
+//                        .height("1*")
                         .widget(grid = new Grid<FormBeanChild>(
                                 childStore,
                                 new ColumnModel(Util.createList(
@@ -88,11 +96,10 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
                                 ))
                         ))
                         .fieldLabel)
-                .flowLayoutContainer;
+                .verticalLayoutContainer;
 
-        grid.setHeight(200);
         // column sizing
-        // TODO: This does not auto resize
+        // This does auto-resize of width when FieldLabel width is "1*".
         grid.getView().setForceFit(true);
 
         // Editing in the grid

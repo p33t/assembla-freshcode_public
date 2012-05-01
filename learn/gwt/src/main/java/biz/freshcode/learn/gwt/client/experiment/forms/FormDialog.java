@@ -24,7 +24,7 @@ public class FormDialog extends AbstractIsWidget<Dialog> {
         final Dialog dlg = new DialogBuilder()
                 .headingText("Forms Demo")
                 .width(500)
-                .height(300)
+//                .height(300)
                 .add(editor = new FormBeanEditor())
                 // The predefined buttons are a litle useless.  You have to dig them out again to define handlers (?)
                 .predefinedButtons()
