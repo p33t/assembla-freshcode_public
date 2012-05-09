@@ -69,6 +69,7 @@
         <dependency>
             <groupId>com.sencha.gxt</groupId>
             <artifactId>gxt</artifactId>
+            <!--  TODO: Upgrade to 3.0.0 GPL release.  Figure out how to link to it. -->
             <version>3.0.0-rc2</version>
             <scope>provided</scope>
         </dependency>
