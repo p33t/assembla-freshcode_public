@@ -1,3 +1,6 @@
+/*
+    Copyright (c) 2012 Peter W Leong.
+*/
 package pkg.b_generation;
 
 import java.lang.reflect.Constructor;
