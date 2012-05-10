@@ -80,6 +80,13 @@
             <version>${gwtVersion}</version>
             <scope>provided</scope>
         </dependency>
+
+        <dependency>
+            <groupId>biz.freshcode.b-generation</groupId>
+            <artifactId>b-generation</artifactId>
+            <version>0.1.1</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
