@@ -48,6 +48,7 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.sencha.gxt:gxt:3.0.0-rc2" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.json:json:20090211" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.sencha.gxt:uibinder-bridge:2.4.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: biz.freshcode.b-generation:b-generation:0.1.1" level="project" />
   </component>
 </module>
 
