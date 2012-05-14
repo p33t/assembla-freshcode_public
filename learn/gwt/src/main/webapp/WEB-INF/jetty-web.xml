@@ -9,9 +9,11 @@ org.mortbay.jetty.servlet.WebApplicationContext objet
 -->
 
 <Configure class="org.mortbay.jetty.webapp.WebAppContext">
+    <!--  This doen't log anything in GWT dev mode.  Logging config perhaps? -->
     <Call class="org.mortbay.log.Log" name="warn">
         <Arg>!!!!!!!!!!!!!!!!! executing jetty-web.xml</Arg>
     </Call>
+
     <!-- TODO: Move this out of the src/main tree.  Ideally into the gwt-maven-plugin config -->
     <Get name="securityHandler">
         <Set name="userRealm">
