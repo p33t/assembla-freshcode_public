@@ -203,12 +203,13 @@
                             <keyPassword>jetty6</keyPassword>
                         </connector>
                     </connectors>
-                    <userRealms>
-                        <userRealm implementation="org.mortbay.jetty.security.HashUserRealm">
-                            <name>Login with bruce x2</name>
-                            <config>src/test/config/jetty-realm.properties</config>
-                        </userRealm>
-                    </userRealms>
+                    <!-- Disabled for the moment.  Trying to get GWT dev mode working -->
+                    <!--<userRealms>-->
+                        <!--<userRealm implementation="org.mortbay.jetty.security.HashUserRealm">-->
+                            <!--<name>Login with bruce x2</name>-->
+                            <!--<config>src/test/config/jetty-realm.properties</config>-->
+                        <!--</userRealm>-->
+                    <!--</userRealms>-->
                 </configuration>
                 <dependencies>
                     <dependency>
