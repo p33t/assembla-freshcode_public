@@ -17,9 +17,10 @@
 <%!
     String examineConnection() throws NamingException, SQLException {
         InitialContext cxt = new InitialContext();
-        if (cxt == null) {
-            return "No initial context.";
-        }
+        // Tomcat doco seem dodgy... this is not possible
+//        if (cxt == null) {
+//            return "No initial context.";
+//        }
 
         DataSource ds = (DataSource) cxt.lookup("java:/comp/env/jdbc/appDb");
 
