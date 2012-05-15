@@ -6,8 +6,13 @@
 
     <groupId>biz.freshcode.learn.db-connect</groupId>
     <artifactId>db-connect</artifactId>
-    <!-- NOTE: Omit context.xml for release -->
-    <version>1.0</version>
+    <!--
+    Release history:
+    - 1.0 svn rev 1083 on 15 May, 2012
+    -->
+    <!-- Release process: Omit container specific descriptor for release.
+    See packageExcludes below -->
+    <version>2.0-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>db-connect</name>
 
@@ -66,7 +71,7 @@
                 <configuration>
                     <!-- Exclude dev config from packaging -->
                     <!-- Omit context.xml for release for release -->
-                    <packagingExcludes>WEB-INF/jetty-web.xml,META-INF/context.xml</packagingExcludes>
+                    <!--<packagingExcludes>WEB-INF/jetty-web.xml,META-INF/context.xml</packagingExcludes>-->
                 </configuration>
             </plugin>
             <plugin>
