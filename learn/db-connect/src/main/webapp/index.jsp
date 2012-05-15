@@ -5,7 +5,12 @@
 </head>
 <body>
 <p>
-    Hello
+    Welcome:
+<ul>
+    <li>
+        <a href="test-connection.jsp">Test Connection</a>
+    </li>
+</ul>
 </p>
 </body>
 </html>

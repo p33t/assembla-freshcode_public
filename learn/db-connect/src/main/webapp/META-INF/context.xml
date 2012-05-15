@@ -1,0 +1,22 @@
+
+<!-- Web app specific context info put here for convenience.
+    See http://subversion.assembla.com/svn/freshcode_public/learn/platform-probe/src/main/config/platform-probe.xml
+    for an example of using an independent context file.
+-->
+<Context>
+    <!-- This is the debian-server vm (last time I checked) -->
+    <!-- NOTES:
+    - prob'ly don't need ssl if postgres is on same machine as tomcat... ?ssl=true
+    - - TODO: Will need to sort out ssl connection in future
+    -->
+    <Resource name="jdbc/appDb"
+              auth="Container"
+              type="javax.sql.DataSource"
+              driverClassName="org.postgresql.Driver"
+              url="jdbc:postgresql://192.168.0.50:5432/testdb"
+              username="testuser"
+              password="testuser"
+              maxActive="20"
+              maxIdle="10"
+              maxWait="-1"/>
+</Context>
