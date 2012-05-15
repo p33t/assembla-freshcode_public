@@ -1,9 +1,6 @@
-<%@ page import="javax.naming.InitialContext" %>
-<%@ page import="javax.naming.NamingException" %>
-<%@ page import="javax.sql.DataSource" %>
+<%@ page import="pkg.ConnectionOp" %>
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.DatabaseMetaData" %>
-<%@ page import="java.sql.SQLException" %>
 <%@include file="/WEB-INF/includes/header.jsp" %>
 <html>
 <head><title>Connection Test</title></head>
@@ -15,28 +12,16 @@
 </html>
 
 <%!
-    String examineConnection() throws NamingException, SQLException {
-        InitialContext cxt = new InitialContext();
-        // Tomcat doco seem dodgy... this is not possible
-//        if (cxt == null) {
-//            return "No initial context.";
-//        }
+    String examineConnection() {
+        final String[] arr = {null};
+        pkg.Util.withConnection(new ConnectionOp() {
+            @Override
+            public void run(Connection conn) throws Exception {
+                DatabaseMetaData meta = conn.getMetaData();
+                arr[0] = "url=" + meta.getURL() + " - conn=" + conn + " - conn class=" + conn.getClass();
 
-        DataSource ds = (DataSource) cxt.lookup("java:/comp/env/jdbc/appDb");
-
-        if (ds == null) {
-            return "No datasource found.";
-        }
-
-        Connection conn = null;
-        try {
-            conn = ds.getConnection();
-            DatabaseMetaData meta = conn.getMetaData();
-            return "url=" + meta.getURL();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } finally {
-            if (conn != null) conn.close();
-        }
+            }
+        });
+        return arr[0];
     }
 %>

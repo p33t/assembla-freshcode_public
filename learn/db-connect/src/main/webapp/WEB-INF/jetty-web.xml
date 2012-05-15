@@ -1,0 +1,20 @@
+<?xml version="1.0"  encoding="ISO-8859-1"?>
+<!DOCTYPE Configure PUBLIC "-//Mort Bay Consulting//DTD Configure//EN" "http://jetty.mortbay.org/configure.dtd">
+
+<!-- A development only file.  This is excluded from the resulting war. -->
+
+<Configure class="org.mortbay.jetty.webapp.WebAppContext">
+    <!-- Can't get this working... -->
+    <New id="appDb" class="org.mortbay.jetty.plus.naming.Resource">
+        <Arg></Arg>
+        <Arg>jdbc/appDb</Arg>
+        <Arg>
+            <New class="javax.sql.DataSource">
+                <Set name="driverClass">org.postgresql.Driver</Set>
+                <Set name="jdbcUrl">jdbc:postgresql://192.168.0.50:5432/testdb</Set>
+                <Set name="user">testuser</Set>
+                <Set name="password">testuser</Set>
+            </New>
+        </Arg>
+    </New>
+</Configure>
