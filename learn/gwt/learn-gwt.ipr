@@ -415,6 +415,7 @@
       </JAVADOC>
       <SOURCES>
         <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt/3.0.0/gxt-3.0.0-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt/3.0.0/gxt-3.0.0.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: com.sencha.gxt:uibinder-bridge:2.4.0">

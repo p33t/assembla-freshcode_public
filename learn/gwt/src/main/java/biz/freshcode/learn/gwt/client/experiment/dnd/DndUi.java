@@ -12,6 +12,7 @@ public class DndUi extends AbstractIsWidget<Container> {
     @Override
     protected Container createWidget() {
         return new BorderLayoutContainerBuilder()
+                .westWidget(new StudentMasterPanel())
                 .widget(new HTMLPanel("<p>Center hopefully</p>"))
                 .borderLayoutContainer;
     }
