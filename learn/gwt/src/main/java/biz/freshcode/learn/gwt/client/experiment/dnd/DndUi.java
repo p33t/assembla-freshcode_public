@@ -2,7 +2,6 @@ package biz.freshcode.learn.gwt.client.experiment.dnd;
 
 import biz.freshcode.learn.gwt.client.uispike.builder.BorderLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
-import com.google.gwt.user.client.ui.HTMLPanel;
 import com.sencha.gxt.widget.core.client.container.Container;
 
 /**
@@ -14,7 +13,7 @@ public class DndUi extends AbstractIsWidget<Container> {
         return new BorderLayoutContainerBuilder()
                 .styleName(Bundle.INSTANCE.style().whiteBgnd(), true)
                 .westWidget(new StudentMasterPanel())
-                .widget(new HTMLPanel("<p>Center hopefully</p>"))
+                .widget(new DropTargetPanel())
                 .borderLayoutContainer;
     }
 }
