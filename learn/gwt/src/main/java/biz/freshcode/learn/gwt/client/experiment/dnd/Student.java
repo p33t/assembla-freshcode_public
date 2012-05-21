@@ -1,13 +1,22 @@
 package biz.freshcode.learn.gwt.client.experiment.dnd;
 
+import com.google.gwt.core.client.GWT;
+import com.google.web.bindery.autobean.shared.AutoBean;
+import com.google.web.bindery.autobean.shared.AutoBeanFactory;
+import com.sencha.gxt.data.shared.PropertyAccess;
+
 /**
  *
  */
-public class Student {
-    public final String name;
+public interface Student extends Named, IdAble {
+    Factory FACTORY = GWT.create(Factory.class);
+    Access ACCESS = GWT.create(Access.class);
 
-    public Student(String name) {
+    interface Factory extends AutoBeanFactory {
+        AutoBean<Student> auto();
+    }
 
-        this.name = name;
+     interface Access extends PropertyAccess<Student>, Named.Access<Student> {
+
     }
 }
