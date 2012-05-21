@@ -13,14 +13,13 @@
     <name>Learn GWT</name>
 
     <repositories>
-        <!-- Needed for GXT 3.0.0-beta4 -->
+        <!-- TODO: Temporary use commercial until GPL repo issues sorted
+            See: http://www.sencha.com/forum/showthread.php?200920-Problems-to-setup-GXT-3.0.0-with-Maven
+         -->
         <repository>
-            <id>sonatype-snapshots</id>
-            <name>Sonatype Snapshots</name>
-            <url>https://oss.sonatype.org/content/repositories/releases/</url>
-            <!--<snapshots>-->
-            <!--<enabled>true</enabled>-->
-            <!--</snapshots>-->
+            <id>sencha-commercial-release</id>
+            <name>Sencha commercial releases</name>
+            <url>https://maven.sencha.com/repo/commercial-release/</url>
         </repository>
     </repositories>
 
@@ -69,8 +68,7 @@
         <dependency>
             <groupId>com.sencha.gxt</groupId>
             <artifactId>gxt</artifactId>
-            <!--  TODO: Upgrade to 3.0.0 GPL release.  Figure out how to link to it. -->
-            <version>3.0.0-rc2</version>
+            <version>3.0.0</version>
             <scope>provided</scope>
         </dependency>
         <!-- Trying to debug Border layout -->
