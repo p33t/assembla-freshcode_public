@@ -7,5 +7,5 @@ import java.util.List;
  */
 public interface Attended<T> {
     List<T> getAttendees();
-    void setAttendeed(List<T> l);
+    void setAttendees(List<T> l);
 }
