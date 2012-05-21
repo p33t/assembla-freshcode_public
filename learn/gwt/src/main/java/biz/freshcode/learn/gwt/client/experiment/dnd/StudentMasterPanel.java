@@ -13,7 +13,7 @@ import java.util.List;
 public class StudentMasterPanel extends AbstractIsWidget {
     @Override
     protected Widget createWidget() {
-        // Facilitates adding the same object multiles times in a tree.  We use a wrapper ref object.
+        // Facilitates adding the same object multiple times in a tree.  We use a wrapper ref object.
         ModelKeyProvider<Ref<Named>> instanceUniqueId = new ModelKeyProvider<Ref<Named>>() {
             @Override
             public String getKey(Ref<Named> item) {
