@@ -1,3 +1,10 @@
 .whiteBgnd {
     background-color: inherit;
 }
+
+.dropElem {
+    background-color: #fafad2;
+    border: #deb887 thin solid;
+    margin: 4px;
+    padding: 4px;
+}

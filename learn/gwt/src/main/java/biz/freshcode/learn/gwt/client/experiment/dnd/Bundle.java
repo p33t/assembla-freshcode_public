@@ -14,5 +14,7 @@ public interface Bundle extends ClientBundle {
 
     interface Style extends CssResource {
         String whiteBgnd();
+
+        String dropElem();
     }
 }
