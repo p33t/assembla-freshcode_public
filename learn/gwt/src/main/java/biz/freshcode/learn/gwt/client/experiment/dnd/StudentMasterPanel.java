@@ -2,7 +2,6 @@ package biz.freshcode.learn.gwt.client.experiment.dnd;
 
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import com.google.gwt.user.client.ui.Widget;
-import com.sencha.gxt.core.client.util.Util;
 import com.sencha.gxt.data.shared.TreeStore;
 import com.sencha.gxt.widget.core.client.tree.Tree;
 
@@ -15,34 +14,20 @@ public class StudentMasterPanel extends AbstractIsWidget {
     protected Widget createWidget() {
         TreeStore<Named> ts = new TreeStore<Named>(Named.ACCESS.id());
 
-        List<Course> courses = Util.createList(
-                course("Business", "Tom", "Dick", "Harry"),
-                course("Engineering", "Betty", "Selma", "Pebbles")
-        );
+        List<Course> courses = DndUtil.COURSES;
+        List<Student> students = DndUtil.STUDENTS;
 
         List<CourseAdapter> ads = new ArrayList<CourseAdapter>();
         for (Course c: courses) ads.add(new CourseAdapter(c));
+        ads.add(new CourseAdapter(course("All Courses", students)));
 
         ts.addSubTree(0, ads);
 
         return new Tree(ts, Named.ACCESS.name());
     }
 
-    private Course course(String name, String... students) {
-        Course c = Course.FACTORY.auto().as();
-        c.setName(name);
-        c.setId("Course " + System.identityHashCode(c));
-        List<Student> ss = new ArrayList<Student>();
-        for (String s : students) ss.add(student(s));
-        c.setAttendees(ss);
-        return c;
-    }
-
-    private Student student(String name) {
-        Student s = Student.FACTORY.auto().as();
-        s.setName(name);
-        s.setId("Student " + System.identityHashCode(s));
-        return s;
+    private Course course(String name, List<Student> ss) {
+        return DndUtil.course(name, ss);
     }
 
     public static class CourseAdapter implements TreeStore.TreeNode<Named> {
