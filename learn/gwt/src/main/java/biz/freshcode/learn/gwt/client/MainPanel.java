@@ -3,6 +3,7 @@ package biz.freshcode.learn.gwt.client;
 import biz.freshcode.learn.gwt.client.dateaccessbug.DateAccessBug;
 import biz.freshcode.learn.gwt.client.experiment.Resizer;
 import biz.freshcode.learn.gwt.client.experiment.celltable.CellTableDemo;
+import biz.freshcode.learn.gwt.client.experiment.dnd.DndUi;
 import biz.freshcode.learn.gwt.client.experiment.forms.Landing;
 import biz.freshcode.learn.gwt.client.uibinder.Basic;
 import biz.freshcode.learn.gwt.client.uibinder.Composed;
@@ -102,6 +103,13 @@ public class MainPanel extends Composite {
                                 @Override
                                 public void execute() {
                                     IsWidget w = GWT.create(Landing.class);
+                                    replaceContent(w.asWidget());
+                                }
+                            }))
+                            .addItem(new MenuItem("Drag 'n Drop", new Command() {
+                                @Override
+                                public void execute() {
+                                    IsWidget w = GWT.create(DndUi.class);
                                     replaceContent(w.asWidget());
                                 }
                             }))
