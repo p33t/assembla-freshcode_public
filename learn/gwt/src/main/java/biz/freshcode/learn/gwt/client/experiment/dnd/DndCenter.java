@@ -11,8 +11,8 @@ import com.sencha.gxt.widget.core.client.box.PromptMessageBox;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
 import com.sencha.gxt.widget.core.client.event.HideEvent;
 
-import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.logging.Logger;
@@ -28,7 +28,7 @@ public class DndCenter extends AbstractIsWidget<VerticalLayoutContainer> {
         VerticalLayoutContainer container = new VerticalLayoutContainerBuilder()
                 .add(new HTMLPanel("<h2>Exams</h2><p>Drag one or more tree elements to this outer panel or to one of the exam panels.</p>"))
                 .add(elem("Prog'g 101", DndUtil.STUDENTS))
-                .add(elem("History 202", Util.createList(DndUtil.STUDENTS.get(0))))
+                .add(elem("History 202", Util.createList(DndUtil.STUDENTS.iterator().next())))
                 .styleName(Bundle.INSTANCE.style().blackBorder(), true)
                 .verticalLayoutContainer;
         DropTarget target = new DropTarget(container);
@@ -43,12 +43,11 @@ public class DndCenter extends AbstractIsWidget<VerticalLayoutContainer> {
     }
 
     private void processDrop(Object data) {
-        Set<Student> students = DndUtil.droppedStudents(data);
-        if (students.isEmpty()) {
+        final Set<Student> attendees = DndUtil.droppedStudents(data);
+        if (attendees.isEmpty()) {
             log.warning("No students in " + data);
             return;
         }
-        final List<Student> attendees = new ArrayList<Student>(students);
         final PromptMessageBox box = new PromptMessageBox("New Exam", "Exam name:");
         box.addHideHandler(new HideEvent.HideHandler() {
             @Override
@@ -56,7 +55,7 @@ public class DndCenter extends AbstractIsWidget<VerticalLayoutContainer> {
                 String name = box.getValue();
                 // null when 'cancelled'
                 if (name == null || name.isEmpty()) return;
-                IsWidget examWidget = elem(name, Collections.unmodifiableList(attendees));
+                IsWidget examWidget = elem(name, Collections.unmodifiableSet(attendees));
                 asWidget().add(examWidget);
             }
         });
@@ -64,6 +63,10 @@ public class DndCenter extends AbstractIsWidget<VerticalLayoutContainer> {
     }
 
     private IsWidget elem(String name, List<Student> attendees) {
+         Set<Student> s = new HashSet<Student>(attendees);
+        return elem(name, Collections.unmodifiableSet(s));
+    }
+    private IsWidget elem(String name, Set<Student> attendees) {
         Exam e = Exam.FACTORY.auto().as();
         e.setName(name);
         e.setId("Exam " + System.identityHashCode(e));

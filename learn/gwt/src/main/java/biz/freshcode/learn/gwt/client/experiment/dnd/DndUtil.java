@@ -17,7 +17,7 @@ public class DndUtil {
             course("Business", "Tom", "Dick", "Harry"),
             course("Engineering", "Betty", "Selma", "Pebbles")
     ));
-    public static final List<Student> STUDENTS = new ArrayList<Student>();
+    public static final Set<Student> STUDENTS = new HashSet<Student>();
 
     static {
         for (Course c: COURSES) STUDENTS.addAll(c.getAttendees());
@@ -51,7 +51,7 @@ public class DndUtil {
         return r;
     }
 
-    public static Course course(String name, List<Student> ss) {
+    public static Course course(String name, Set<Student> ss) {
         Course c = Course.FACTORY.auto().as();
         c.setAttendees(ss);
         c.setName(name);
@@ -78,7 +78,7 @@ public class DndUtil {
     }
 
     private static Course course(String name, String... students) {
-        List<Student> ss = new ArrayList<Student>();
+        Set<Student> ss = new HashSet<Student>();
         for (String s : students) ss.add(student(s));
         return course(name, ss);
     }

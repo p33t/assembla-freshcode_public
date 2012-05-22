@@ -1,11 +1,12 @@
 package biz.freshcode.learn.gwt.client.experiment.dnd;
 
-import java.util.List;
+import java.util.Set;
 
 /**
  *
  */
 public interface Attended<T> {
-    List<T> getAttendees();
-    void setAttendees(List<T> l);
+    Set<T> getAttendees();
+
+    void setAttendees(Set<T> l);
 }
