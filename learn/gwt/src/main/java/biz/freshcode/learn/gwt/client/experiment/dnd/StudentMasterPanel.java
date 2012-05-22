@@ -42,6 +42,8 @@ public class StudentMasterPanel extends AbstractIsWidget {
             @Override
             protected void onDragDrop(DndDropEvent event) {
                 // don't do anything (like remove elements)
+                // NOTE: Can possibly control this with setOperation on target.
+                // EG: target.setOperation(DND.Operation.COPY);
                 log.info("onDragDrop " + event.getData() + " " + event.getTarget().getClass().getName());
             }
 
@@ -53,7 +55,8 @@ public class StudentMasterPanel extends AbstractIsWidget {
                     // customise it
                     Set<Student> students = DndUtil.droppedStudents(event.getData());
                     event.setData(students);
-                    event.getStatusProxy().update(students.size() + " Students");
+                    String msg = students.size() == 1 ? "1 Student": students.size() + " Students";
+                    event.getStatusProxy().update(msg);
                 }
             }
         };
