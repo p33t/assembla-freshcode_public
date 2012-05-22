@@ -60,6 +60,7 @@ public class DndUtil {
     }
 
     public static Set<Student> droppedStudents(Object data) {
+        if (data instanceof Set) return (Set<Student>) data;
         Set<Student> students = new HashSet<Student>();
         if (data instanceof List) {
             List l = (List) data;
