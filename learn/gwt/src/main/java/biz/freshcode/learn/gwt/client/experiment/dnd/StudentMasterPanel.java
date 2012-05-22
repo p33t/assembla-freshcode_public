@@ -4,6 +4,7 @@ import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.data.shared.ModelKeyProvider;
 import com.sencha.gxt.data.shared.TreeStore;
+import com.sencha.gxt.dnd.core.client.DndDragStartEvent;
 import com.sencha.gxt.dnd.core.client.DndDropEvent;
 import com.sencha.gxt.dnd.core.client.TreeDragSource;
 import com.sencha.gxt.widget.core.client.tree.Tree;
@@ -42,6 +43,18 @@ public class StudentMasterPanel extends AbstractIsWidget {
             protected void onDragDrop(DndDropEvent event) {
                 // don't do anything (like remove elements)
                 log.info("onDragDrop " + event.getData() + " " + event.getTarget().getClass().getName());
+            }
+
+            @Override
+            protected void onDragStart(DndDragStartEvent event) {
+                super.onDragStart(event);
+                if (!event.isCancelled()) {
+                    // dragging something
+                    // customise it
+                    Set<Student> students = DndUtil.droppedStudents(event.getData());
+                    event.setData(students);
+                    event.getStatusProxy().update(students.size() + " Students");
+                }
             }
         };
 
