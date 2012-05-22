@@ -56,6 +56,12 @@ public class StudentMasterPanel extends AbstractIsWidget {
      * Adapts a course for display in a tree.
      */
     public static class CourseAdapter implements TreeStore.TreeNode<Ref<Named>> {
+        public static final Comparator<Student> NAME_SORT = new Comparator<Student>() {
+            @Override
+            public int compare(Student o1, Student o2) {
+                return o1.getName().compareTo(o2.getName());
+            }
+        };
         private final Course course;
         private final Ref<Named> ref;
 
@@ -67,16 +73,9 @@ public class StudentMasterPanel extends AbstractIsWidget {
         @Override
         public List<? extends TreeStore.TreeNode<Ref<Named>>> getChildren() {
             List<TreeStore.TreeNode<Ref<Named>>> l = new ArrayList<TreeStore.TreeNode<Ref<Named>>>();
-            List<Student> list = new ArrayList<Student>(course.getAttendees());
-            Collections.sort(list, new Comparator<Student>() {
-                @Override
-                public int compare(Student o1, Student o2) {
-                    return o1.getName().compareTo(o2.getName());
-                }
-            });
-            for (Student s : list) {
-                l.add(new StudentAdapter(s));
-            }
+            List<Student> attendees = new ArrayList<Student>(course.getAttendees());
+            Collections.sort(attendees, NAME_SORT);
+            for (Student s : attendees) l.add(new StudentAdapter(s));
             return l;
         }
 
