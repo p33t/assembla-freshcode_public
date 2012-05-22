@@ -8,9 +8,7 @@ import com.sencha.gxt.dnd.core.client.DndDropEvent;
 import com.sencha.gxt.dnd.core.client.TreeDragSource;
 import com.sencha.gxt.widget.core.client.tree.Tree;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.logging.Logger;
 
 public class StudentMasterPanel extends AbstractIsWidget {
@@ -29,7 +27,7 @@ public class StudentMasterPanel extends AbstractIsWidget {
         TreeStore<Ref<Named>> ts = new TreeStore<Ref<Named>>(instanceUniqueId);
 
         List<Course> courses = DndUtil.COURSES;
-        List<Student> students = DndUtil.STUDENTS;
+        Set<Student> students = DndUtil.STUDENTS;
 
         List<CourseAdapter> ads = new ArrayList<CourseAdapter>();
         for (Course c: courses) ads.add(new CourseAdapter(c));
@@ -50,7 +48,7 @@ public class StudentMasterPanel extends AbstractIsWidget {
         return tree;
     }
 
-    private Course course(String name, List<Student> ss) {
+    private Course course(String name, Set<Student> ss) {
         return DndUtil.course(name, ss);
     }
 
@@ -69,7 +67,14 @@ public class StudentMasterPanel extends AbstractIsWidget {
         @Override
         public List<? extends TreeStore.TreeNode<Ref<Named>>> getChildren() {
             List<TreeStore.TreeNode<Ref<Named>>> l = new ArrayList<TreeStore.TreeNode<Ref<Named>>>();
-            for (Student s : course.getAttendees()) {
+            List<Student> list = new ArrayList<Student>(course.getAttendees());
+            Collections.sort(list, new Comparator<Student>() {
+                @Override
+                public int compare(Student o1, Student o2) {
+                    return o1.getName().compareTo(o2.getName());
+                }
+            });
+            for (Student s : list) {
                 l.add(new StudentAdapter(s));
             }
             return l;

@@ -6,8 +6,8 @@ import com.sencha.gxt.dnd.core.client.DndDropEvent;
 import com.sencha.gxt.dnd.core.client.DropTarget;
 import com.sencha.gxt.widget.core.client.container.SimpleContainer;
 
-import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.logging.Logger;
 
@@ -44,8 +44,8 @@ public class ExamWidget extends AbstractIsWidget<SimpleContainer> {
         if (students.isEmpty()) log.warning("Nothing to process from data " + data);
         else {
             students.addAll(exam.getAttendees());
-            ArrayList<Student> attendees = new ArrayList<Student>(students);
-            exam.setAttendees(Collections.unmodifiableList(attendees));
+            Set<Student> attendees = new HashSet<Student>(students);
+            exam.setAttendees(Collections.unmodifiableSet(attendees));
             asWidget().setWidget(renderPanel());
         }
     }
