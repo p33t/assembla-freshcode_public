@@ -44,7 +44,7 @@ public class StudentMasterPanel extends AbstractIsWidget {
                 // don't do anything (like remove elements)
                 // NOTE: Can possibly control this with setOperation on target.
                 // EG: target.setOperation(DND.Operation.COPY);
-                log.info("onDragDrop " + event.getData() + " " + event.getTarget().getClass().getName());
+//                log.info("onDragDrop " + event.getData() + " " + event.getTarget().getClass().getName());
             }
 
             @Override
