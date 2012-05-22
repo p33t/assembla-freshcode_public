@@ -1,17 +1,18 @@
 package biz.freshcode.learn.gwt.client.experiment.dnd;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import com.google.gwt.core.client.GWT;
+import com.google.web.bindery.autobean.shared.AutoBean;
+import com.google.web.bindery.autobean.shared.AutoBeanFactory;
 
 /**
  *
  */
-public class Exam {
-    public final List<Student> attendees;
-    public Exam(Iterable<Student> attendees) {
-        ArrayList<Student> l = new ArrayList<Student>();
-        for (Student s: attendees) l.add(s);
-        this.attendees = Collections.unmodifiableList(l);
+public interface Exam extends Attended<Student>, Named {
+    Factory FACTORY = GWT.create(Factory.class);
+
+    //    String getRoom();
+//    void setRoom(String r);
+    interface Factory extends AutoBeanFactory {
+        AutoBean<Exam> auto();
     }
 }
