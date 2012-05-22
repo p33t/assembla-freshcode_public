@@ -7,6 +7,7 @@ import com.google.gwt.user.client.ui.IsWidget;
 import com.sencha.gxt.core.client.util.Util;
 import com.sencha.gxt.dnd.core.client.DndDropEvent;
 import com.sencha.gxt.dnd.core.client.DropTarget;
+import com.sencha.gxt.fx.client.FxElement;
 import com.sencha.gxt.widget.core.client.box.PromptMessageBox;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
 import com.sencha.gxt.widget.core.client.event.HideEvent;
@@ -57,6 +58,7 @@ public class DndCenter extends AbstractIsWidget<VerticalLayoutContainer> {
                 if (name == null || name.isEmpty()) return;
                 IsWidget examWidget = elem(name, Collections.unmodifiableSet(attendees));
                 asWidget().add(examWidget);
+                examWidget.asWidget().getElement().<FxElement>cast().blink();
             }
         });
         box.show();

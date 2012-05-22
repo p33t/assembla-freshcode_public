@@ -5,6 +5,7 @@ import com.google.gwt.user.client.ui.HTMLPanel;
 import com.sencha.gxt.dnd.core.client.DndDragEnterEvent;
 import com.sencha.gxt.dnd.core.client.DndDropEvent;
 import com.sencha.gxt.dnd.core.client.DropTarget;
+import com.sencha.gxt.fx.client.FxElement;
 import com.sencha.gxt.widget.core.client.container.SimpleContainer;
 
 import java.util.Collections;
@@ -56,7 +57,9 @@ public class ExamWidget extends AbstractIsWidget<SimpleContainer> {
             students.addAll(exam.getAttendees());
             Set<Student> attendees = new HashSet<Student>(students);
             exam.setAttendees(Collections.unmodifiableSet(attendees));
-            asWidget().setWidget(renderPanel());
+            SimpleContainer sc = asWidget();
+            sc.setWidget(renderPanel());
+            sc.getElement().<FxElement>cast().blink();
         }
     }
 
