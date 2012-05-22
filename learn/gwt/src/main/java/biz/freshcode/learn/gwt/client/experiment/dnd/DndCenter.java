@@ -33,6 +33,6 @@ public class DndCenter extends AbstractIsWidget {
         e.setName(name);
         e.setId("Exam " + System.identityHashCode(e));
         e.setAttendees(attendees);
-        return new ExamWidget(this, e);
+        return new ExamWidget(e);
     }
 }

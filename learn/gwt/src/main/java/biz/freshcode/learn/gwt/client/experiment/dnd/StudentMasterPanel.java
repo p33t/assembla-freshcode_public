@@ -85,11 +85,9 @@ public class StudentMasterPanel extends AbstractIsWidget {
      * Adapts a Student for display in a tree.
      */
     public static class StudentAdapter implements TreeStore.TreeNode<Ref<Named>> {
-        private final Student student;
         private final Ref<Named> ref;
 
         public StudentAdapter(Student student) {
-            this.student = student;
             ref = DndUtil.ref((Named) student);
         }
 
