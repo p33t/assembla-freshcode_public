@@ -2,9 +2,12 @@ package biz.freshcode.learn.gwt.client.experiment.dnd;
 
 import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.core.client.util.Util;
+import com.sencha.gxt.data.shared.TreeStore;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  *
@@ -54,6 +57,24 @@ public class DndUtil {
         c.setName(name);
         c.setId("Course " + System.identityHashCode(c));
         return c;
+    }
+
+    public static Set<Student> droppedStudents(Object data) {
+        Set<Student> students = new HashSet<Student>();
+        if (data instanceof List) {
+            List l = (List) data;
+            for (Object elem : l) {
+                if (elem instanceof TreeStore.TreeNode) {
+                    Object nodeData = ((TreeStore.TreeNode) elem).getData();
+                    if (nodeData instanceof Ref) {
+                        Object payload = ((Ref) nodeData).getObj();
+                        if (payload instanceof Student) students.add((Student) payload);
+                        else if (payload instanceof Course) students.addAll(((Course) payload).getAttendees());
+                    }
+                }
+            }
+        }
+        return students;
     }
 
     private static Course course(String name, String... students) {
