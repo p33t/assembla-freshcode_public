@@ -2,6 +2,7 @@ package biz.freshcode.learn.gwt.client.experiment.dnd;
 
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import com.google.gwt.user.client.ui.HTMLPanel;
+import com.sencha.gxt.dnd.core.client.DndDragEnterEvent;
 import com.sencha.gxt.dnd.core.client.DndDropEvent;
 import com.sencha.gxt.dnd.core.client.DropTarget;
 import com.sencha.gxt.widget.core.client.container.SimpleContainer;
@@ -34,6 +35,15 @@ public class ExamWidget extends AbstractIsWidget<SimpleContainer> {
             public void onDrop(DndDropEvent event) {
                 Object data = event.getData();
                 processDrop(data);
+            }
+        });
+        target.addDragEnterHandler(new DndDragEnterEvent.DndDragEnterHandler() {
+            @Override
+            public void onDragEnter(DndDragEnterEvent event) {
+                // NOTE: Changing status text is permanent for the entire drag operation.
+                // Do not allow if all students are already present.
+                Set<Student> students = DndUtil.droppedStudents(event.getDragSource().getData());
+                if (exam.getAttendees().containsAll(students)) event.getStatusProxy().setStatus(false);
             }
         });
         return container;
