@@ -16,5 +16,9 @@ public interface Bundle extends ClientBundle {
         String whiteBgnd();
 
         String dropElem();
+
+        String dragOver();
+
+        String blackBorder();
     }
 }

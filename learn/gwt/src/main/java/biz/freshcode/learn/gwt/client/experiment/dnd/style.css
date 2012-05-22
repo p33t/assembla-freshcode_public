@@ -2,9 +2,17 @@
     background-color: inherit;
 }
 
+.blackBorder {
+    border: black thin solid;
+}
+
 .dropElem {
     background-color: #fafad2;
     border: #deb887 thin solid;
     margin: 4px;
     padding: 4px;
+}
+
+.dragOver {
+    border: #7fff00 thin solid;
 }
