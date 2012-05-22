@@ -13,7 +13,7 @@ public class DndUi extends AbstractIsWidget<Container> {
         return new BorderLayoutContainerBuilder()
                 .styleName(Bundle.INSTANCE.style().whiteBgnd(), true)
                 .westWidget(new StudentMasterPanel())
-                .widget(new DropTargetPanel())
+                .widget(new DndCenter())
                 .borderLayoutContainer;
     }
 }
