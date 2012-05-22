@@ -4,13 +4,18 @@ import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.data.shared.ModelKeyProvider;
 import com.sencha.gxt.data.shared.TreeStore;
+import com.sencha.gxt.dnd.core.client.DndDropEvent;
+import com.sencha.gxt.dnd.core.client.TreeDragSource;
 import com.sencha.gxt.widget.core.client.tree.Tree;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class StudentMasterPanel extends AbstractIsWidget {
+    private Logger log = Logger.getLogger(getClass().getName());
+
     @Override
     protected Widget createWidget() {
         // Facilitates adding the same object multiple times in a tree.  We use a wrapper ref object.
@@ -32,7 +37,17 @@ public class StudentMasterPanel extends AbstractIsWidget {
 
         ts.addSubTree(0, ads);
 
-        return new Tree(ts, DndUtil.valueProvider(Named.ACCESS.name()));
+        Tree tree = new Tree(ts, DndUtil.valueProvider(Named.ACCESS.name()));
+
+        new TreeDragSource(tree) {
+            @Override
+            protected void onDragDrop(DndDropEvent event) {
+                // don't do anything (like remove elements)
+                log.info("onDragDrop " + event.getData() + " " + event.getTarget().getClass().getName());
+            }
+        };
+
+        return tree;
     }
 
     private Course course(String name, List<Student> ss) {

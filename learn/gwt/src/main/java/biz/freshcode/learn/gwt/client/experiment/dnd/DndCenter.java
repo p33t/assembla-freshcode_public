@@ -6,6 +6,8 @@ import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.core.client.util.Util;
+import com.sencha.gxt.dnd.core.client.DropTarget;
+import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
 
 import java.util.List;
 
@@ -15,11 +17,15 @@ import java.util.List;
 public class DndCenter extends AbstractIsWidget {
     @Override
     protected Widget createWidget() {
-        return new VerticalLayoutContainerBuilder()
+        VerticalLayoutContainer container = new VerticalLayoutContainerBuilder()
                 .add(new HTMLPanel("<h2>Exams</h2>"))
                 .add(elem("Prog'g 101", DndUtil.STUDENTS))
                 .add(elem("History 202", Util.createList(DndUtil.STUDENTS.get(0))))
+                .styleName(Bundle.INSTANCE.style().blackBorder(), true)
                 .verticalLayoutContainer;
+        DropTarget target = new DropTarget(container);
+        target.setOverStyle(Bundle.INSTANCE.style().dragOver());
+        return container;
     }
 
     private IsWidget elem(String name, List<Student> attendees) {
