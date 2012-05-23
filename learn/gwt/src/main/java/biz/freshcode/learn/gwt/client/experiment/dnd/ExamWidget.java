@@ -44,6 +44,7 @@ public class ExamWidget extends AbstractIsWidget<SimpleContainer> {
                 // NOTE: Changing status text is permanent for the entire drag operation.
                 // Do not allow if all students are already present.
                 Set<Student> students = DndUtil.droppedStudents(event.getDragSource().getData());
+                // NOTE: setStatus(false) seems to cause a bug when the item is dropped.  The dragOver style is not cleared.
                 if (exam.getAttendees().containsAll(students)) event.getStatusProxy().setStatus(false);
             }
         });
@@ -51,6 +52,7 @@ public class ExamWidget extends AbstractIsWidget<SimpleContainer> {
     }
 
     private void processDrop(Object data) {
+        log.info("Dropped " + data + " on " + exam.getName());
         Set<Student> students = DndUtil.droppedStudents(data);
         if (students.isEmpty()) log.warning("Nothing to process from data " + data);
         else {
