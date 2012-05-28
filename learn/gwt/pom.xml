@@ -219,6 +219,16 @@
                     </dependency>
                 </dependencies>
             </plugin>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.12</version>
+                <configuration>
+                    <excludes>
+                        <!-- GWTTestCase is an integration test.  Run mvn integration-test -->
+                        <exclude>**/*GwtTest.java</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
