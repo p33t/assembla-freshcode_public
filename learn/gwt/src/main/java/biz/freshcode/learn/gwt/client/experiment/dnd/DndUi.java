@@ -11,7 +11,7 @@ public class DndUi extends AbstractIsWidget<Container> {
     @Override
     protected Container createWidget() {
         return new BorderLayoutContainerBuilder()
-                .styleName(Bundle.INSTANCE.style().whiteBgnd(), true)
+                .styleName(Bundle.INSTANCE.style().inheritBgnd(), true)
                 .westWidget(new StudentMasterPanel())
                 .widget(new DndCenter())
                 .borderLayoutContainer;

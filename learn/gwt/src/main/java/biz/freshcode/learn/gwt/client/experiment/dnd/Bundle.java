@@ -13,7 +13,7 @@ public interface Bundle extends ClientBundle {
     Style style();
 
     interface Style extends CssResource {
-        String whiteBgnd();
+        String inheritBgnd();
 
         String dropElem();
 
