@@ -34,6 +34,7 @@ public class StudentMasterPanel extends AbstractIsWidget {
         for (Course c: courses) ads.add(new CourseAdapter(c));
         ads.add(new CourseAdapter(course("All Courses", students)));
 
+        // NOTE: ts.add(M, List<M>) gets error "The given model does not appear to already be in the TreeStore"
         ts.addSubTree(0, ads);
 
         Tree tree = new Tree(ts, DndUtil.valueProvider(Named.ACCESS.name()));
@@ -70,6 +71,7 @@ public class StudentMasterPanel extends AbstractIsWidget {
 
     /**
      * Adapts a course for display in a tree.
+     * TODO: Change "Adapters" to use a 'DefaultTreeNode'.
      */
     public static class CourseAdapter implements TreeStore.TreeNode<Ref<Named>> {
         public static final Comparator<Student> NAME_SORT = new Comparator<Student>() {
