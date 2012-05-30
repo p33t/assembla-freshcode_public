@@ -8,8 +8,11 @@ import java.util.*;
 /**
  * A rich data type for drag and drop.  It stores sets of objects in a map.  It also facilitates restoration of
  * the original status message which GXT does not do natively.
+ *
+ * Note that finishSetup() needs to be called to complete initialisation.
+ * @see #finishSetup(com.sencha.gxt.dnd.core.client.DndDragStartEvent)
  */
-public class DragData<T> {
+public class DragData {
     private String statusMessage;
     protected final Map<Key, Set> payload = new HashMap<Key, Set>();
 
