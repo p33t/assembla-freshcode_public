@@ -14,5 +14,6 @@
 }
 
 .dragOver {
+    /* NOTE: IE8 needs compatiblility mode OFF for 'outline' */
     outline: #dc143c 2px solid;
 }
