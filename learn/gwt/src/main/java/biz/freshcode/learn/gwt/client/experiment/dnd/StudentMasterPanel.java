@@ -5,7 +5,6 @@ import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.data.shared.ModelKeyProvider;
 import com.sencha.gxt.data.shared.TreeStore;
 import com.sencha.gxt.dnd.core.client.DndDragStartEvent;
-import com.sencha.gxt.dnd.core.client.DndDropEvent;
 import com.sencha.gxt.dnd.core.client.TreeDragSource;
 import com.sencha.gxt.widget.core.client.tree.Tree;
 
@@ -31,7 +30,7 @@ public class StudentMasterPanel extends AbstractIsWidget {
         Set<Student> students = DndUtil.STUDENTS;
 
         List<CourseAdapter> ads = new ArrayList<CourseAdapter>();
-        for (Course c: courses) ads.add(new CourseAdapter(c));
+        for (Course c : courses) ads.add(new CourseAdapter(c));
         ads.add(new CourseAdapter(course("All Courses", students)));
 
         // NOTE: ts.add(M, List<M>) gets error "The given model does not appear to already be in the TreeStore"
@@ -39,28 +38,21 @@ public class StudentMasterPanel extends AbstractIsWidget {
 
         Tree tree = new Tree(ts, DndUtil.valueProvider(Named.ACCESS.name()));
 
-        new TreeDragSource(tree) {
+        new TreeDragSource(tree).addDragStartHandler(new DndDragStartEvent.DndDragStartHandler() {
             @Override
-            protected void onDragDrop(DndDropEvent event) {
-                // don't do anything (like remove elements)
-                // NOTE: Can possibly control this with setOperation on target.
-                // EG: target.setOperation(DND.Operation.COPY);
-//                log.info("onDragDrop " + event.getData() + " " + event.getTarget().getClass().getName());
-            }
-
-            @Override
-            protected void onDragStart(DndDragStartEvent event) {
-                super.onDragStart(event);
+            public void onDragStart(DndDragStartEvent event) {
                 if (!event.isCancelled()) {
                     // dragging something
                     // customise it
                     Set<Student> students = DndUtil.droppedStudents(event.getData());
-                    event.setData(students);
-                    String msg = students.size() == 1 ? "1 Student": students.size() + " Students";
-                    event.getStatusProxy().update(msg);
+                    DragData dd = new DragData();
+                    dd.simplePayload(Student.class, students);
+                    dd.finishSetup(event);
                 }
             }
-        };
+        }
+
+        );
 
         return tree;
     }
