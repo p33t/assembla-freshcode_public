@@ -14,6 +14,10 @@
 }
 
 .dragOver {
-    /* NOTE: IE8 needs compatiblility mode OFF for 'outline' */
+    /* NOTE: IE8 needs compatiblility mode OFF for 'outline'
+     Also, if there is no margin then the outline is not visible */
     outline: #dc143c 2px solid;
+    /* Background doesn't always work because of components on the element.
+    But in combo with 'outline' there is a good chance there is visual feedback */
+    background-color: #e0ffff;
 }
