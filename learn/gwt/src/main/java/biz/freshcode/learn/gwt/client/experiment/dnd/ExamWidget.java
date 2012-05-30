@@ -8,13 +8,8 @@ import com.sencha.gxt.widget.core.client.container.SimpleContainer;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.logging.Logger;
 
-/**
- *
- */
 public class ExamWidget extends AbstractIsWidget<SimpleContainer> {
-    private Logger log = Logger.getLogger(getClass().getName());
     private final Exam exam;
 
     public ExamWidget(Exam exam) {
