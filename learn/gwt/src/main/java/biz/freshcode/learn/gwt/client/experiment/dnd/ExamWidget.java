@@ -2,9 +2,6 @@ package biz.freshcode.learn.gwt.client.experiment.dnd;
 
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import com.google.gwt.user.client.ui.HTMLPanel;
-import com.sencha.gxt.dnd.core.client.DndDragEnterEvent;
-import com.sencha.gxt.dnd.core.client.DndDropEvent;
-import com.sencha.gxt.dnd.core.client.DropTarget;
 import com.sencha.gxt.fx.client.FxElement;
 import com.sencha.gxt.widget.core.client.container.SimpleContainer;
 
@@ -29,40 +26,39 @@ public class ExamWidget extends AbstractIsWidget<SimpleContainer> {
         final SimpleContainer container = new SimpleContainer();
         container.add(renderPanel());
         container.setStyleName(Bundle.INSTANCE.style().dropElem(), true);
-        DropTarget target = new DropTarget(container);
-        target.setOverStyle(Bundle.INSTANCE.style().dragOver());
-        target.addDropHandler(new DndDropEvent.DndDropHandler() {
+
+        new DropSupport(container) {
+
             @Override
-            public void onDrop(DndDropEvent event) {
-                Object data = event.getData();
-                processDrop(data);
+            protected DragData.DropOp dropOpOrNull(DragData data) {
+                final Set<Student> students = data.getPayload(Student.class);
+                if (exam.getAttendees().containsAll(students)) return null;
+                return new DragData.DropOp() {
+                    @Override
+                    public String getHoverMessage() {
+                        HashSet<Student> toAdd = new HashSet<Student>();
+                        toAdd.addAll(students);
+                        toAdd.removeAll(exam.getAttendees());
+                        return "Add " + toAdd.size() + " Student(s)";
+                    }
+
+                    @Override
+                    public void run() {
+                        processDropStudents(students);
+                    }
+                };
             }
-        });
-        target.addDragEnterHandler(new DndDragEnterEvent.DndDragEnterHandler() {
-            @Override
-            public void onDragEnter(DndDragEnterEvent event) {
-                // NOTE: Changing status text is permanent for the entire drag operation.
-                // Do not allow if all students are already present.
-                Set<Student> students = DndUtil.droppedStudents(event.getDragSource().getData());
-                // NOTE: setStatus(false) seems to cause a bug when the item is dropped.  The dragOver style is not cleared.
-                if (exam.getAttendees().containsAll(students)) event.getStatusProxy().setStatus(false);
-            }
-        });
+        };
         return container;
     }
 
-    private void processDrop(Object data) {
-        log.info("Dropped " + data + " on " + exam.getName());
-        Set<Student> students = DndUtil.droppedStudents(data);
-        if (students.isEmpty()) log.warning("Nothing to process from data " + data);
-        else {
-            students.addAll(exam.getAttendees());
-            Set<Student> attendees = new HashSet<Student>(students);
-            exam.setAttendees(Collections.unmodifiableSet(attendees));
-            SimpleContainer sc = asWidget();
-            sc.setWidget(renderPanel());
-            sc.getElement().<FxElement>cast().blink();
-        }
+    private void processDropStudents(Set<Student> students) {
+        students.addAll(exam.getAttendees());
+        Set<Student> attendees = new HashSet<Student>(students);
+        exam.setAttendees(Collections.unmodifiableSet(attendees));
+        SimpleContainer sc = asWidget();
+        sc.setWidget(renderPanel());
+        sc.getElement().<FxElement>cast().blink();
     }
 
     private HTMLPanel renderPanel() {

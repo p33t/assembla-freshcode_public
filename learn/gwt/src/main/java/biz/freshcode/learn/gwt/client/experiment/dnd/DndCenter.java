@@ -5,8 +5,6 @@ import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.sencha.gxt.core.client.util.Util;
-import com.sencha.gxt.dnd.core.client.DndDropEvent;
-import com.sencha.gxt.dnd.core.client.DropTarget;
 import com.sencha.gxt.fx.client.FxElement;
 import com.sencha.gxt.widget.core.client.box.PromptMessageBox;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
@@ -32,21 +30,29 @@ public class DndCenter extends AbstractIsWidget<VerticalLayoutContainer> {
                 .add(elem("History 202", Util.createList(DndUtil.STUDENTS.iterator().next())))
                 .styleName(Bundle.INSTANCE.style().blackBorder(), true)
                 .verticalLayoutContainer;
-        DropTarget target = new DropTarget(container);
-        target.addDropHandler(new DndDropEvent.DndDropHandler() {
+        new DropSupport(container) {
             @Override
-            public void onDrop(DndDropEvent event) {
-                processDrop(event.getData());
+            protected DragData.DropOp dropOpOrNull(DragData data) {
+                final Set<Student> students = data.getPayload(Student.class);
+                return new DragData.DropOp() {
+                    @Override
+                    public String getHoverMessage() {
+                        return "Create exam with " + students.size() + " Student(s)";
+                    }
+
+                    @Override
+                    public void run() {
+                        processDrop(students);
+                    }
+                };
             }
-        });
-        target.setOverStyle(Bundle.INSTANCE.style().dragOver());
+        };
         return container;
     }
 
-    private void processDrop(Object data) {
-        final Set<Student> attendees = DndUtil.droppedStudents(data);
+    private void processDrop(final Set<Student> attendees) {
         if (attendees.isEmpty()) {
-            log.warning("No students in " + data);
+            log.warning("No students");
             return;
         }
         final PromptMessageBox box = new PromptMessageBox("New Exam", "Exam name:");
