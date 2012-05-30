@@ -14,5 +14,5 @@
 }
 
 .dragOver {
-    border: #dc143c thin solid;
+    outline: #dc143c 2px solid;
 }
