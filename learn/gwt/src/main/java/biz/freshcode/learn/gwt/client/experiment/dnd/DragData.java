@@ -99,15 +99,4 @@ public class DragData<T> {
             return cls.hashCode();
         }
     }
-
-    public interface DropOp extends Runnable {
-        public String getHoverMessage();
-    }
-
-    private class Restorer implements DndDragLeaveEvent.DndDragLeaveHandler {
-        @Override
-        public void onDragLeave(DndDragLeaveEvent event) {
-            restoreOriginalMessage(event);
-        }
-    }
 }

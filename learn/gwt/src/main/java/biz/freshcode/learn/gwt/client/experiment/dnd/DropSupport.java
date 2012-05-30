@@ -1,11 +1,10 @@
 package biz.freshcode.learn.gwt.client.experiment.dnd;
 
-import biz.freshcode.learn.gwt.client.experiment.dnd.DragData.DropOp;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.dnd.core.client.*;
 
 public abstract class DropSupport extends DropTarget {
-    private DropOp currentOpOrNull;
+    private DropAssessment currentAssessment = DropAssessment.BLANK;
 
     public DropSupport(Widget target) {
         super(target);
@@ -14,45 +13,91 @@ public abstract class DropSupport extends DropTarget {
         addDragEnterHandler(new DndDragEnterEvent.DndDragEnterHandler() {
             @Override
             public void onDragEnter(DndDragEnterEvent event) {
-                DragData data = (DragData) event.getDragSource().getData();
-                DropOp opOrNull = dropOpOrNull(data);
-                if (opOrNull == null) {
+                Object raw = event.getDragSource().getData();
+                if (!(raw instanceof DragData)) return; // only handling known data
+                DragData data = (DragData) raw;
+                currentAssessment = dropQuery(data);
+                StatusProxy statusProxy = event.getStatusProxy();
+                if (currentAssessment.isDroppable()) statusProxy.update(currentAssessment.getDescription());
+                else {
                     // cannot drop
-                    // TODO: Maybe get message too?
                     // NOTE: setStatus(false) seems to cause a bug when the item is dropped.  The dragOver style is not cleared.
 //                    event.getStatusProxy().setStatus(false);
                     // just put 'not allowed' icon up and ignore the 'drop' event
-                    event.getStatusProxy().setStatus(true, Bundle.INSTANCE.dropNotAllowed());
-                } else {
-                    // can drop
-                    currentOpOrNull = opOrNull;
-                    event.getStatusProxy().update(opOrNull.getHoverMessage());
+                    statusProxy.setStatus(true, Bundle.INSTANCE.dropNotAllowed());
+                    statusProxy.update(currentAssessment.getReason());
                 }
             }
         });
         addDropHandler(new DndDropEvent.DndDropHandler() {
             @Override
             public void onDrop(DndDropEvent event) {
-                if (currentOpOrNull != null) {
-                    DropOp op = currentOpOrNull;
-                    currentOpOrNull = null;
-                    op.run();
-                }
+                DropAssessment da = currentAssessment;
+                currentAssessment = DropAssessment.BLANK;
+                if (da.isDroppable()) da.getRunnable().run();
             }
         });
         addDragLeaveHandler(new DndDragLeaveEvent.DndDragLeaveHandler() {
             @Override
             public void onDragLeave(DndDragLeaveEvent event) {
-//                Logger.getLogger("x").info("Drag Leave");
-                if (currentOpOrNull != null) {
-                    currentOpOrNull = null;
-                    DragData data = (DragData) event.getDragSource().getData();
-                    // NOTE: Changing status text is permanent for the entire drag operation.
-                    data.restoreOriginalMessage(event);
-                }
+                currentAssessment = DropAssessment.BLANK;
+                DragData data = (DragData) event.getDragSource().getData();
+                // NOTE: Changing status text is permanent for the entire drag operation.
+                data.restoreOriginalMessage(event);
             }
         });
     }
 
-    protected abstract DropOp dropOpOrNull(DragData data);
+    /**
+     * Assess whether or not the given DragData can be dropped onto the target.
+     */
+    protected abstract DropAssessment dropQuery(DragData dd);
+
+    /**
+     * The result of querying whether or not something can be dropped onto a target.
+     */
+    public static final class DropAssessment {
+        public static final DropAssessment BLANK = new DropAssessment("Not Ready");
+
+        private String reason;
+        private String description;
+        private Runnable runnable;
+
+        public DropAssessment(String reason) {
+            this.reason = reason;
+        }
+
+        public DropAssessment(String description, Runnable runnable) {
+            this.description = description;
+            this.runnable = runnable;
+        }
+
+        /**
+         * Returns 'true' if the data can be dropped.
+         */
+        public boolean isDroppable() {
+            return runnable != null;
+        }
+
+        /**
+         * The reason the data cannot be dropped.
+         */
+        public String getReason() {
+            return reason;
+        }
+
+        /**
+         * The description of the would-be drop operation.
+         */
+        public String getDescription() {
+            return description;
+        }
+
+        /**
+         * The operation to run when the drop is performed.
+         */
+        public Runnable getRunnable() {
+            return runnable;
+        }
+    }
 }
