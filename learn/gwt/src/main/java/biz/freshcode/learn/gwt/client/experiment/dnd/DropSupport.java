@@ -18,9 +18,11 @@ public abstract class DropSupport extends DropTarget {
                 DropOp opOrNull = dropOpOrNull(data);
                 if (opOrNull == null) {
                     // cannot drop
-                    // TODO: Work around style problem.... Maybe get message too?
+                    // TODO: Maybe get message too?
                     // NOTE: setStatus(false) seems to cause a bug when the item is dropped.  The dragOver style is not cleared.
-                    event.getStatusProxy().setStatus(false);
+//                    event.getStatusProxy().setStatus(false);
+                    // just put 'not allowed' icon up and ignore the 'drop' event
+                    event.getStatusProxy().setStatus(true, Bundle.INSTANCE.dropNotAllowed());
                 } else {
                     // can drop
                     currentOpOrNull = opOrNull;
@@ -41,6 +43,7 @@ public abstract class DropSupport extends DropTarget {
         addDragLeaveHandler(new DndDragLeaveEvent.DndDragLeaveHandler() {
             @Override
             public void onDragLeave(DndDragLeaveEvent event) {
+//                Logger.getLogger("x").info("Drag Leave");
                 if (currentOpOrNull != null) {
                     currentOpOrNull = null;
                     DragData data = (DragData) event.getDragSource().getData();
@@ -50,8 +53,6 @@ public abstract class DropSupport extends DropTarget {
             }
         });
     }
-
-
 
     protected abstract DropOp dropOpOrNull(DragData data);
 }
