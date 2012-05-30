@@ -28,33 +28,27 @@ public class ExamWidget extends AbstractIsWidget<SimpleContainer> {
         container.setStyleName(Bundle.INSTANCE.style().dropElem(), true);
 
         new DropSupport(container) {
-
             @Override
-            protected DragData.DropOp dropOpOrNull(DragData data) {
-                final Set<Student> students = data.getPayload(Student.class);
-                if (exam.getAttendees().containsAll(students)) return null;
-                return new DragData.DropOp() {
-                    @Override
-                    public String getHoverMessage() {
-                        HashSet<Student> toAdd = new HashSet<Student>();
-                        toAdd.addAll(students);
-                        toAdd.removeAll(exam.getAttendees());
-                        return "Add " + toAdd.size() + " Student(s)";
-                    }
-
+            protected DropAssessment dropQuery(DragData data) {
+                Set<Student> students = data.getPayload(Student.class);
+                if (exam.getAttendees().containsAll(students)) return new DropAssessment("All students already present");
+                final HashSet<Student> toAdd = new HashSet<Student>();
+                toAdd.addAll(students);
+                toAdd.removeAll(exam.getAttendees());
+                return new DropAssessment("Add " + toAdd.size() + " Student(s)", new Runnable() {
                     @Override
                     public void run() {
-                        processDropStudents(students);
+                        processDropStudents(toAdd);
                     }
-                };
+                });
             }
         };
         return container;
     }
 
-    private void processDropStudents(Set<Student> students) {
-        students.addAll(exam.getAttendees());
-        Set<Student> attendees = new HashSet<Student>(students);
+    private void processDropStudents(Set<Student> toAdd) {
+        Set<Student> attendees = new HashSet<Student>(toAdd);
+        attendees.addAll(exam.getAttendees());
         exam.setAttendees(Collections.unmodifiableSet(attendees));
         SimpleContainer sc = asWidget();
         sc.setWidget(renderPanel());

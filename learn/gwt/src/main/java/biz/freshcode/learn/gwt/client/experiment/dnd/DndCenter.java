@@ -17,7 +17,7 @@ import java.util.Set;
 import java.util.logging.Logger;
 
 /**
- *
+ * The center of the Drag and Drop example.
  */
 public class DndCenter extends AbstractIsWidget<VerticalLayoutContainer> {
     private Logger log = Logger.getLogger(getClass().getName());
@@ -30,21 +30,17 @@ public class DndCenter extends AbstractIsWidget<VerticalLayoutContainer> {
                 .add(elem("History 202", Util.createList(DndUtil.STUDENTS.iterator().next())))
                 .styleName(Bundle.INSTANCE.style().blackBorder(), true)
                 .verticalLayoutContainer;
+
         new DropSupport(container) {
             @Override
-            protected DragData.DropOp dropOpOrNull(DragData data) {
+            protected DropAssessment dropQuery(DragData data) {
                 final Set<Student> students = data.getPayload(Student.class);
-                return new DragData.DropOp() {
-                    @Override
-                    public String getHoverMessage() {
-                        return "Create exam with " + students.size() + " Student(s)";
-                    }
-
+                return new DropAssessment("Create exam with " + students.size() + " Student(s)", new Runnable() {
                     @Override
                     public void run() {
                         processDrop(students);
                     }
-                };
+                });
             }
         };
         return container;
@@ -71,9 +67,10 @@ public class DndCenter extends AbstractIsWidget<VerticalLayoutContainer> {
     }
 
     private IsWidget elem(String name, List<Student> attendees) {
-         Set<Student> s = new HashSet<Student>(attendees);
+        Set<Student> s = new HashSet<Student>(attendees);
         return elem(name, Collections.unmodifiableSet(s));
     }
+
     private IsWidget elem(String name, Set<Student> attendees) {
         Exam e = Exam.FACTORY.auto().as();
         e.setName(name);
