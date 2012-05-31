@@ -1,4 +1,4 @@
-package biz.freshcode.learn.gwt.client.dateaccessbug;
+package biz.freshcode.learn.gwt.client.bug.dateaccessbug;
 
 import com.google.gwt.core.client.GWT;
 import com.google.web.bindery.autobean.shared.AutoBean;

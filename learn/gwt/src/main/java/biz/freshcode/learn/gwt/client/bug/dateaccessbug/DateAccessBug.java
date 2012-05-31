@@ -1,4 +1,4 @@
-package biz.freshcode.learn.gwt.client.dateaccessbug;
+package biz.freshcode.learn.gwt.client.bug.dateaccessbug;
 
 import biz.freshcode.learn.gwt.client.uispike.builder.DialogBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.container.FlowLayoutContainerBuilder;
