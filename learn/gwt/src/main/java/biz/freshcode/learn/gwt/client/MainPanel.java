@@ -6,6 +6,7 @@ import biz.freshcode.learn.gwt.client.experiment.Resizer;
 import biz.freshcode.learn.gwt.client.experiment.celltable.CellTableDemo;
 import biz.freshcode.learn.gwt.client.experiment.dnd.DndUi;
 import biz.freshcode.learn.gwt.client.experiment.forms.Landing;
+import biz.freshcode.learn.gwt.client.experiment.mouseover.MouseOverWidget;
 import biz.freshcode.learn.gwt.client.uibinder.Basic;
 import biz.freshcode.learn.gwt.client.uibinder.Composed;
 import biz.freshcode.learn.gwt.client.uibinder.eg.BorderLayoutEg;
@@ -36,16 +37,7 @@ public class MainPanel extends Composite {
                             }))
                             .addItem(new MenuItem("ContentPanel Resize", new Command() {
                                 public void execute() {
-                                    new DialogBuilder()
-                                            .headingText("Bug")
-                                            .height(400)
-                                            .width(600)
-                                            .resizable(true)
-                                            .modal(false)
-                                            .add(new ContentPanelSizeBug())
-                                            .autoHide(true)
-                                            .dialog
-                                            .show();
+                                    dialog("Bug", new ContentPanelSizeBug());
                                 }
                             }))
                             .menuBar))
@@ -53,6 +45,11 @@ public class MainPanel extends Composite {
                             .addItem(new MenuItem("Alert", new Command() {
                                 public void execute() {
                                     Window.alert("Consider yourself alerted");
+                                }
+                            }))
+                            .addItem(new MenuItem("Mouse Over", new Command() {
+                                public void execute() {
+                                    dialog("Mouse Over", new MouseOverWidget());
                                 }
                             }))
                             .addItem(new MenuItem("Resizer", new Command() {
@@ -136,6 +133,19 @@ public class MainPanel extends Composite {
                     2)
             .add(content = new HTMLPanel("<p>Center Content</p>"))
             .dockLayoutPanel;
+
+    private void dialog(String heading, IsWidget w) {
+        new DialogBuilder()
+                .headingText(heading)
+                .height(400)
+                .width(600)
+                .resizable(true)
+                .modal(false)
+                .add(w)
+                .autoHide(true)
+                .dialog
+                .show();
+    }
 
     {
         initWidget(pnl);
