@@ -1,6 +1,7 @@
 package biz.freshcode.learn.gwt.client;
 
-import biz.freshcode.learn.gwt.client.dateaccessbug.DateAccessBug;
+import biz.freshcode.learn.gwt.client.bug.contentpanelsize.ContentPanelSizeBug;
+import biz.freshcode.learn.gwt.client.bug.dateaccessbug.DateAccessBug;
 import biz.freshcode.learn.gwt.client.experiment.Resizer;
 import biz.freshcode.learn.gwt.client.experiment.celltable.CellTableDemo;
 import biz.freshcode.learn.gwt.client.experiment.dnd.DndUi;
@@ -10,6 +11,7 @@ import biz.freshcode.learn.gwt.client.uibinder.Composed;
 import biz.freshcode.learn.gwt.client.uibinder.eg.BorderLayoutEg;
 import biz.freshcode.learn.gwt.client.uibinder.eg.Tutorial1;
 import biz.freshcode.learn.gwt.client.uibinder.eg.Tutorial2;
+import biz.freshcode.learn.gwt.client.uispike.builder.DialogBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.MenuBarBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.ViewportBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.container.DockLayoutPanelBuilder;
@@ -21,16 +23,32 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
 
 public class MainPanel extends Composite {
-    Widget content;
+    IsWidget content;
     DockLayoutPanel pnl = new DockLayoutPanelBuilder(new DockLayoutPanel(Style.Unit.EM))
             .height("100%")
             .width("100%")
             .addNorth(new MenuBarBuilder()
-                    .addItem(new MenuItem("GXT: Date Edit Bug", new Command() {
-                        public void execute() {
-                            new DateAccessBug().asWidget().show();
-                        }
-                    }))
+                    .addItem(new MenuItem("Bugs", subMenu()
+                            .addItem(new MenuItem("GXT: Date Edit", new Command() {
+                                public void execute() {
+                                    new DateAccessBug().asWidget().show();
+                                }
+                            }))
+                            .addItem(new MenuItem("ContentPanel Resize", new Command() {
+                                public void execute() {
+                                    new DialogBuilder()
+                                            .headingText("Bug")
+                                            .height(400)
+                                            .width(600)
+                                            .resizable(true)
+                                            .modal(false)
+                                            .add(new ContentPanelSizeBug())
+                                            .autoHide(true)
+                                            .dialog
+                                            .show();
+                                }
+                            }))
+                            .menuBar))
                     .addItem(new MenuItem("Experiments", subMenu()
                             .addItem(new MenuItem("Alert", new Command() {
                                 public void execute() {
@@ -135,7 +153,7 @@ public class MainPanel extends Composite {
                 .viewport);
     }
 
-    private void replaceContent(Widget newContent) {
+    private void replaceContent(IsWidget newContent) {
         pnl.remove(content);
         content = newContent;
         pnl.add(content);
