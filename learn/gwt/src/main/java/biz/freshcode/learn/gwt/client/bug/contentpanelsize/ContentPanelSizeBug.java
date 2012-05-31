@@ -22,6 +22,8 @@ public class ContentPanelSizeBug extends AbstractIsWidget {
         int margin;
         return new HBoxLayoutContainerBuilder()
                 .hBoxLayoutAlign(STRETCH)
+                // NOTE: Removing the contentpanel and using HtmlLayoutContainer directly fixes issue.
+                // Maybe ContentPanel is an outer construct only.
                 .add(new ContentPanelBuilder()
                         .headingText("Resize bug test")
                         .widget(new HtmlLayoutContainerBuilder(new HtmlLayoutContainer("<p>" + ten + "</p>"))
