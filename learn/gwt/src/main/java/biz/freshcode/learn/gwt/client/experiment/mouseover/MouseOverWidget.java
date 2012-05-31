@@ -1,5 +1,6 @@
 package biz.freshcode.learn.gwt.client.experiment.mouseover;
 
+import biz.freshcode.learn.gwt.client.uispike.builder.HTMLPanelBuilder;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.MouseOutEvent;
@@ -12,7 +13,9 @@ import com.google.gwt.user.client.ui.Widget;
 public class MouseOverWidget extends AbstractIsWidget {
     @Override
     protected Widget createWidget() {
-        HTMLPanel p = new HTMLPanel("<p>Mouse over me!</p>");
+        HTMLPanel p = new HTMLPanelBuilder(new HTMLPanel("<p>Mouse over me!</p>"))
+                .styleName(Bundle.INSTANCE.style().blackBorder(), true)
+                .hTMLPanel;
         p.addDomHandler(new MouseOverHandler() {
             @Override
             public void onMouseOver(MouseOverEvent event) {
