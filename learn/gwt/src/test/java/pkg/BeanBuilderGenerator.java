@@ -1,11 +1,11 @@
 package pkg;
 
 import biz.freshcode.b_generation.DefaultBeanBuilderGenerator;
-import biz.freshcode.learn.gwt.client.experiment.forms.HrMinField;
 import biz.freshcode.learn.gwt.client.uispike.builder.BeanBuilder;
+import com.sencha.gxt.widget.core.client.container.CssFloatLayoutContainer;
 
 public class BeanBuilderGenerator extends DefaultBeanBuilderGenerator {
-    static final Class CLASS = HrMinField.class;
+    static final Class CLASS = CssFloatLayoutContainer.class;
 
 
     public static void main(String[] args) {
