@@ -4,10 +4,10 @@ import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.core.client.util.Util;
 import com.sencha.gxt.data.shared.TreeStore;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+
+import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newMap;
+import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newSet;
 
 /**
  *
@@ -20,7 +20,7 @@ public class DndUtil {
     public static final Set<Student> STUDENTS = new HashSet<Student>();
 
     static {
-        for (Course c: COURSES) STUDENTS.addAll(c.getAttendees());
+        for (Course c : COURSES) STUDENTS.addAll(c.getAttendees());
     }
 
     /**
@@ -59,9 +59,9 @@ public class DndUtil {
         return c;
     }
 
-    public static Set<Student> droppedStudents(Object data) {
-        if (data instanceof Set) return (Set<Student>) data;
-        Set<Student> students = new HashSet<Student>();
+    public static Map<DragData.Key, Set> droppedStudents(Object data) {
+        Set<Student> students = newSet();
+        Set<Course> courses = newSet();
         if (data instanceof List) {
             List l = (List) data;
             for (Object elem : l) {
@@ -70,12 +70,19 @@ public class DndUtil {
                     if (nodeData instanceof Ref) {
                         Object payload = ((Ref) nodeData).getObj();
                         if (payload instanceof Student) students.add((Student) payload);
-                        else if (payload instanceof Course) students.addAll(((Course) payload).getAttendees());
+                        else if (payload instanceof Course) {
+                            Course course = (Course) payload;
+                            students.addAll(course.getAttendees());
+                            courses.add(course);
+                        }
                     }
                 }
             }
         }
-        return students;
+        Map<DragData.Key, Set> map = newMap();
+        map.put(DragData.key(Student.class), students);
+        map.put(DragData.key(Course.class), courses);
+        return map;
     }
 
     private static Course course(String name, String... students) {

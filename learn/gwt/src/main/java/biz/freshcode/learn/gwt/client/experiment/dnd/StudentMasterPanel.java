@@ -44,15 +44,11 @@ public class StudentMasterPanel extends AbstractIsWidget {
                 if (!event.isCancelled()) {
                     // dragging something
                     // customise it
-                    Set<Student> students = DndUtil.droppedStudents(event.getData());
-                    OldDragData dd = new OldDragData();
-                    dd.simplePayload(Student.class, students);
-                    dd.finishSetup(event);
+                    Map<DragData.Key, Set> payload = DndUtil.droppedStudents(event.getData());
+                    DragData.setup(event, payload);
                 }
             }
-        }
-
-        );
+        });
 
         return tree;
     }

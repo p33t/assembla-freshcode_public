@@ -6,7 +6,7 @@ import com.sencha.gxt.dnd.core.client.*;
 /**
  * Subclass of DropTarget that specifically handles 'DropData'.  Client code must subclass and implement dropQuery().
  *
- * @see #dropQuery(OldDragData)
+ * @see #dropQuery(DragData)
  */
 public abstract class DropSupport extends DropTarget {
     private DropAssessment currentAssessment = DropAssessment.BLANK;
@@ -23,7 +23,7 @@ public abstract class DropSupport extends DropTarget {
     /**
      * Assess whether or not the given OldDragData can be dropped onto the target.
      */
-    protected abstract DropAssessment dropQuery(OldDragData dd);
+    protected abstract DropAssessment dropQuery(DragData dd);
 
     /**
      * The result of querying whether or not something can be dropped onto a target.
@@ -77,8 +77,8 @@ public abstract class DropSupport extends DropTarget {
         @Override
         public void onDragEnter(DndDragEnterEvent event) {
             Object raw = event.getDragSource().getData();
-            if (!(raw instanceof OldDragData)) return; // only handling known data
-            OldDragData data = (OldDragData) raw;
+            if (!(raw instanceof DragData)) return; // only handling known data
+            DragData data = (DragData) raw;
             currentAssessment = dropQuery(data);
             StatusProxy statusProxy = event.getStatusProxy();
             if (currentAssessment.isDroppable()) statusProxy.update(currentAssessment.getDescription());
@@ -107,8 +107,8 @@ public abstract class DropSupport extends DropTarget {
         public void onDragLeave(DndDragLeaveEvent event) {
             currentAssessment = DropAssessment.BLANK;
             Object raw = event.getDragSource().getData();
-            if (raw instanceof OldDragData) {
-                OldDragData data = (OldDragData) raw;
+            if (raw instanceof DragData) {
+                DragData data = (DragData) raw;
                 // NOTE: Changing status text is permanent for the entire drag operation.
                 data.restoreOriginalMessage(event);
             }
