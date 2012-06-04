@@ -24,7 +24,7 @@ public class ExamWidget extends AbstractIsWidget<SimpleContainer> {
 
         new DropSupport(container) {
             @Override
-            protected DropAssessment dropQuery(DragData data) {
+            protected DropAssessment dropQuery(OldDragData data) {
                 Set<Student> students = data.getPayload(Student.class);
                 if (exam.getAttendees().containsAll(students)) return new DropAssessment("All students already present");
                 final HashSet<Student> toAdd = new HashSet<Student>();

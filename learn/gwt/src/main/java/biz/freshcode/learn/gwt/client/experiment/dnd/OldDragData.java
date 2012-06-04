@@ -8,22 +8,28 @@ import java.util.*;
 /**
  * A rich data type for drag and drop.  It stores sets of objects in a map.  It also facilitates restoration of
  * the original status message which GXT does not do natively.
- *
+ * <p/>
  * Note that finishSetup() needs to be called to complete initialisation.
+ *
  * @see #finishSetup(com.sencha.gxt.dnd.core.client.DndDragStartEvent)
  */
-public class DragData {
-    private String statusMessage;
+public class OldDragData {
+    private String originalMessage;
+
     protected final Map<Key, Set> payload = new HashMap<Key, Set>();
 
     public void finishSetup(DndDragStartEvent evt) {
-        statusMessage = generateStatusMessage();
+        originalMessage = generateStatusMessage();
         evt.setData(this);
-        evt.getStatusProxy().update(statusMessage);
+        evt.getStatusProxy().update(originalMessage);
+    }
+
+    public String getOriginalMessage() {
+        return originalMessage;
     }
 
     public void restoreOriginalMessage(DndDragLeaveEvent evt) {
-        evt.getStatusProxy().update(statusMessage);
+        evt.getStatusProxy().update(originalMessage);
     }
 
     public <T> void addPayload(Key<T> key, T t) {
@@ -31,11 +37,11 @@ public class DragData {
     }
 
     public <T> void simplePayload(Class<T> clsKey, Collection<T> coll) {
-        getPayload(new DefaultKey(clsKey)).addAll(coll);
+        getPayload(key(clsKey)).addAll(coll);
     }
 
     public <T> Set<T> getPayload(Class<T> clsKey) {
-        return getPayload(new DefaultKey(clsKey));
+        return getPayload(key(clsKey));
     }
 
     /**
@@ -48,6 +54,10 @@ public class DragData {
             payload.put(key, set);
         }
         return set;
+    }
+
+    private <T> DefaultKey key(Class<T> clsKey) {
+        return new DefaultKey(clsKey);
     }
 
     /**

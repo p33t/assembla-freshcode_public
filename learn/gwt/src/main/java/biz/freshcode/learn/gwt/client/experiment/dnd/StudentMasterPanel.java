@@ -45,7 +45,7 @@ public class StudentMasterPanel extends AbstractIsWidget {
                     // dragging something
                     // customise it
                     Set<Student> students = DndUtil.droppedStudents(event.getData());
-                    DragData dd = new DragData();
+                    OldDragData dd = new OldDragData();
                     dd.simplePayload(Student.class, students);
                     dd.finishSetup(event);
                 }
