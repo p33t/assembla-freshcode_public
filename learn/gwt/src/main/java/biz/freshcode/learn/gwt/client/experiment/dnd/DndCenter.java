@@ -33,7 +33,7 @@ public class DndCenter extends AbstractIsWidget<VerticalLayoutContainer> {
 
         new DropSupport(container) {
             @Override
-            protected DropAssessment dropQuery(OldDragData data) {
+            protected DropAssessment dropQuery(DragData data) {
                 final Set<Student> students = data.getPayload(Student.class);
                 return new DropAssessment("Create exam with " + students.size() + " Student(s)", new Runnable() {
                     @Override
