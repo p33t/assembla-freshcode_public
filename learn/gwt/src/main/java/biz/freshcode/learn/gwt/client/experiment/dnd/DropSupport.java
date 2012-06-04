@@ -106,9 +106,12 @@ public abstract class DropSupport extends DropTarget {
         @Override
         public void onDragLeave(DndDragLeaveEvent event) {
             currentAssessment = DropAssessment.BLANK;
-            DragData data = (DragData) event.getDragSource().getData();
-            // NOTE: Changing status text is permanent for the entire drag operation.
-            data.restoreOriginalMessage(event);
+            Object raw = event.getDragSource().getData();
+            if (raw instanceof DragData) {
+                DragData data = (DragData) raw;
+                // NOTE: Changing status text is permanent for the entire drag operation.
+                data.restoreOriginalMessage(event);
+            }
         }
     }
 }
