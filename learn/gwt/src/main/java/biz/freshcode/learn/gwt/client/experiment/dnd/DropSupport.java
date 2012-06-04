@@ -9,7 +9,7 @@ import com.sencha.gxt.dnd.core.client.*;
  * @see #dropQuery(DragData)
  */
 public abstract class DropSupport extends DropTarget {
-    private DropAssessment currentAssessment = DropAssessment.BLANK;
+    private DropAssessment currentAssessment = DropAssessment.NOT_HANDLED;
 
     public DropSupport(Widget target) {
         super(target);
@@ -29,7 +29,7 @@ public abstract class DropSupport extends DropTarget {
      * The result of querying whether or not something can be dropped onto a target.
      */
     public static final class DropAssessment {
-        public static final DropAssessment BLANK = new DropAssessment("Not Ready");
+        public static final DropAssessment NOT_HANDLED = new DropAssessment("Not Handled");
 
         private String reason;
         private String description;
@@ -88,7 +88,10 @@ public abstract class DropSupport extends DropTarget {
 //                    event.getStatusProxy().setStatus(false);
                 // just put 'not allowed' icon up and ignore the 'drop' event
                 statusProxy.setStatus(true, Bundle.INSTANCE.dropNotAllowed());
-                statusProxy.update(currentAssessment.getReason());
+                String reason = currentAssessment.getReason();
+                // Use original message if data not handled
+                if (currentAssessment.equals(DropAssessment.NOT_HANDLED)) reason = data.getOriginalMessage();
+                statusProxy.update(reason);
             }
         }
     }
@@ -97,7 +100,7 @@ public abstract class DropSupport extends DropTarget {
         @Override
         public void onDrop(DndDropEvent event) {
             DropAssessment da = currentAssessment;
-            currentAssessment = DropAssessment.BLANK;
+            currentAssessment = DropAssessment.NOT_HANDLED;
             if (da.isDroppable()) da.getRunnable().run();
         }
     }
@@ -105,7 +108,7 @@ public abstract class DropSupport extends DropTarget {
     private class LeaveHandler implements DndDragLeaveEvent.DndDragLeaveHandler {
         @Override
         public void onDragLeave(DndDragLeaveEvent event) {
-            currentAssessment = DropAssessment.BLANK;
+            currentAssessment = DropAssessment.NOT_HANDLED;
             Object raw = event.getDragSource().getData();
             if (raw instanceof DragData) {
                 DragData data = (DragData) raw;
