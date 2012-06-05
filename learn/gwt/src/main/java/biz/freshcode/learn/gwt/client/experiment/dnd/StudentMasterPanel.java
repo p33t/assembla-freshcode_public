@@ -46,7 +46,7 @@ public class StudentMasterPanel extends AbstractIsWidget {
                 if (!event.isCancelled()) {
                     // dragging something
                     // customise it
-                    Map<DragData.Key, Set> payload = DndUtil.droppedStudents(event.getData());
+                    Map<DragData.Key, Set> payload = DndUtil.parseDragged(event.getData());
                     DragData.setup(event, payload);
                 }
             }

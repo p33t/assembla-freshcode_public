@@ -60,7 +60,7 @@ public class DndUtil {
         return c;
     }
 
-    public static Map<DragData.Key, Set> droppedStudents(Object data) {
+    public static Map<DragData.Key, Set> parseDragged(Object data) {
         Set<Student> students = newSet();
         Set<Course> courses = newSet();
         if (data instanceof List) {
