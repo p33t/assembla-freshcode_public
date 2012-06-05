@@ -11,6 +11,8 @@ import com.sencha.gxt.widget.core.client.tree.Tree;
 import java.util.*;
 import java.util.logging.Logger;
 
+import static biz.freshcode.learn.gwt.client.experiment.dnd.DndUtil.ALL_COURSES;
+
 public class StudentMasterPanel extends AbstractIsWidget {
     private Logger log = Logger.getLogger(getClass().getName());
 
@@ -31,7 +33,7 @@ public class StudentMasterPanel extends AbstractIsWidget {
 
         List<CourseAdapter> ads = new ArrayList<CourseAdapter>();
         for (Course c : courses) ads.add(new CourseAdapter(c));
-        ads.add(new CourseAdapter(course("All Courses", students)));
+        ads.add(new CourseAdapter(course(ALL_COURSES, students)));
 
         // NOTE: ts.add(M, List<M>) gets error "The given model does not appear to already be in the TreeStore"
         ts.addSubTree(0, ads);
