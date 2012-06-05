@@ -13,6 +13,7 @@ import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newSet;
  *
  */
 public class DndUtil {
+    public static final String ALL_COURSES = "All Courses";
     public static final List<Course> COURSES = new ArrayList<Course>(Util.createList(
             course("Business", "Tom", "Dick", "Harry"),
             course("Engineering", "Betty", "Selma", "Pebbles")
@@ -73,7 +74,8 @@ public class DndUtil {
                         else if (payload instanceof Course) {
                             Course course = (Course) payload;
                             students.addAll(course.getAttendees());
-                            courses.add(course);
+                            // Dodgy hack to prevent ficticous course
+                            if (!ALL_COURSES.equals(course.getName())) courses.add(course);
                         }
                     }
                 }

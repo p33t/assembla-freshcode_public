@@ -9,6 +9,8 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newSetFrom;
+
 public class ExamWidget extends AbstractIsWidget<SimpleContainer> {
     private final Exam exam;
 
@@ -25,17 +27,18 @@ public class ExamWidget extends AbstractIsWidget<SimpleContainer> {
         new DropSupport(container) {
             @Override
             protected DropAssessment dropQuery(DragData data) {
-                Set<Student> students = data.getPayload(Student.class);
-                if (exam.getAttendees().containsAll(students)) return new DropAssessment("All students already present");
-                final HashSet<Student> toAdd = new HashSet<Student>();
-                toAdd.addAll(students);
-                toAdd.removeAll(exam.getAttendees());
-                return new DropAssessment("Add " + toAdd.size() + " Student(s)", new Runnable() {
-                    @Override
-                    public void run() {
-                        processDropStudents(toAdd);
+                if (data.hasPayload(Student.class)) {
+                    Set<Student> toAdd = newSetFrom(data.getPayload(Student.class));
+                    toAdd.removeAll(exam.getAttendees());
+                    if (!toAdd.isEmpty()) {
+                        // In reality, just add this to the list of possible actions to take.
+                        return new DropAssessment("Add " + toAdd.size() + " Student(s)", new AddStudents(toAdd));
+                    } else if (data.hasExclusivePayload(Student.class)) {
+                        return new DropAssessment("All students already present");
                     }
-                });
+                }
+                // To illustrate this option, drag a course who's members are all already present on an exam
+                return DropAssessment.NOT_HANDLED;
             }
         };
         return container;
@@ -55,4 +58,16 @@ public class ExamWidget extends AbstractIsWidget<SimpleContainer> {
         return new HTMLPanel(html);
     }
 
+    private class AddStudents implements Runnable {
+        private final Set<Student> toAdd;
+
+        public AddStudents(Set<Student> toAdd) {
+            this.toAdd = toAdd;
+        }
+
+        @Override
+        public void run() {
+            processDropStudents(toAdd);
+        }
+    }
 }
