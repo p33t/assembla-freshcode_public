@@ -1,4 +1,4 @@
-package biz.freshcode.learn.gwt.client.experiment.dnd;
+package biz.freshcode.learn.gwt.client.experiment.dnd.dragdata;
 
 import com.sencha.gxt.dnd.core.client.DndDragLeaveEvent;
 import com.sencha.gxt.dnd.core.client.DndDragStartEvent;
@@ -30,7 +30,7 @@ public class DragData {
         return dd;
     }
 
-    public static <T> DefaultKey key(Class<T> clsKey) {
+    public static <T> Key key(Class<T> clsKey) {
         return new DefaultKey(clsKey);
     }
 
@@ -48,7 +48,7 @@ public class DragData {
     }
 
     /**
-     * @see #hasExclusivePayload(biz.freshcode.learn.gwt.client.experiment.dnd.DragData.Key[])
+     * @see #hasExclusivePayload(DragData.Key[])
      */
     public boolean hasExclusivePayload(Class... clsKeys) {
         return this.payload.size() == clsKeys.length && hasPayload(clsKeys);
@@ -62,14 +62,14 @@ public class DragData {
     }
 
     /**
-     * @see #hasExclusivePayload(biz.freshcode.learn.gwt.client.experiment.dnd.DragData.Key[])
+     * @see #hasExclusivePayload(DragData.Key[])
      */
     public boolean hasExclusivePayload(Collection<Key> keys) {
         return this.payload.size() == keys.size() && hasPayload(keys);
     }
 
     /**
-     * @see #hasPayload(biz.freshcode.learn.gwt.client.experiment.dnd.DragData.Key[])
+     * @see #hasPayload(DragData.Key[])
      */
     public boolean hasPayload(Class... clsKeys) {
         List<Key> l = newList();
@@ -86,14 +86,14 @@ public class DragData {
 
 
     /**
-     * @see #hasPayload(biz.freshcode.learn.gwt.client.experiment.dnd.DragData.Key[])
+     * @see #hasPayload(DragData.Key[])
      */
     public boolean hasPayload(Collection<Key> keys) {
         return this.payload.keySet().containsAll(keys);
     }
 
     /**
-     * @see #getPayload(biz.freshcode.learn.gwt.client.experiment.dnd.DragData.Key)
+     * @see #getPayload(DragData.Key)
      */
     public <T> Set<T> getPayload(Class<T> clsKey) {
         return getPayload(key(clsKey));
@@ -145,67 +145,4 @@ public class DragData {
         String describe(Set<T> s);
     }
 
-    public static class DefaultKey<T> implements Key<T> {
-        private final Class<T> cls;
-
-        public DefaultKey(Class<T> cls) {
-            this.cls = cls;
-        }
-
-        @Override
-        public String describe(Set<T> s) {
-            String name = cls.getName();
-            // NOTE: getSimpleName does not work in GWT 2.4.0
-            int ix = name.lastIndexOf('.');
-            if (ix >= 0) name = name.substring(ix + 1);
-            return s.size() + "x" + name;
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-
-            DefaultKey that = (DefaultKey) o;
-
-            //noinspection RedundantIfStatement
-            if (!cls.equals(that.cls)) return false;
-
-            return true;
-        }
-
-        @Override
-        public int hashCode() {
-            return cls.hashCode();
-        }
-    }
-
-    /**
-     * Helper class for constructing the payload map.
-     */
-    public static class PayloadBuilder {
-        public final Map<Key, Set> map = newMap();
-
-        public <T> Set<T> getSet(Class<T> cls) {
-            Key key = key(cls);
-            return getSet(key);
-        }
-
-        public <T> Set<T> getSet(Key<T> key) {
-            Set<T> set = map.get(key);
-            if (set == null) {
-                set = newSet();
-                map.put(key, set);
-            }
-            return set;
-        }
-
-        /**
-         * Convenience adder that is chainable.
-         */
-        public <T> PayloadBuilder add(Class<T> cls, T t) {
-            getSet(cls).add(t);
-            return this;
-        }
-    }
 }

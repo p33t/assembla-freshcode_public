@@ -1,5 +1,6 @@
 package biz.freshcode.learn.gwt.client.experiment.dnd;
 
+import biz.freshcode.learn.gwt.client.experiment.dnd.dragdata.DragData;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.dnd.core.client.*;
 
