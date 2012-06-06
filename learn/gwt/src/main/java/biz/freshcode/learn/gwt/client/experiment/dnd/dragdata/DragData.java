@@ -8,6 +8,10 @@ import java.util.*;
 import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.*;
 import static java.util.Collections.unmodifiableSet;
 
+/**
+ * A rich data type for drag and drop.  It stores sets of objects in a map.  It also facilitates restoration of
+ * the original status message which GXT does not do natively.
+ */
 public class DragData {
     private final String originalMessage;
     private final Map<Key, Set> payload;
