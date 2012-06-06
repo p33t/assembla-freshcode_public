@@ -30,6 +30,9 @@ public class DragData {
         return dd;
     }
 
+    /**
+     * Returns a commonly used "Class" based implementation of a Key.
+     */
     public static <T> Key key(Class<T> clsKey) {
         return new DefaultKey(clsKey);
     }
