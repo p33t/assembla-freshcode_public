@@ -6,9 +6,6 @@ import com.sencha.gxt.data.shared.TreeStore;
 
 import java.util.*;
 
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newMap;
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newSet;
-
 /**
  *
  */
@@ -61,8 +58,9 @@ public class DndUtil {
     }
 
     public static Map<DragData.Key, Set> parseDragged(Object data) {
-        Set<Student> students = newSet();
-        Set<Course> courses = newSet();
+        DragData.PayloadBuilder b = new DragData.PayloadBuilder();
+        Set<Student> students = b.getSet(Student.class);
+        Set<Course> courses = b.getSet(Course.class);
         if (data instanceof List) {
             List l = (List) data;
             for (Object elem : l) {
@@ -81,10 +79,7 @@ public class DndUtil {
                 }
             }
         }
-        Map<DragData.Key, Set> map = newMap();
-        map.put(DragData.key(Student.class), students);
-        map.put(DragData.key(Course.class), courses);
-        return map;
+        return b.map;
     }
 
     private static Course course(String name, String... students) {
