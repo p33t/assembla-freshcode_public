@@ -179,4 +179,33 @@ public class DragData {
             return cls.hashCode();
         }
     }
+
+    /**
+     * Helper class for constructing the payload map.
+     */
+    public static class PayloadBuilder {
+        public final Map<Key, Set> map = newMap();
+
+        public <T> Set<T> getSet(Class<T> cls) {
+            Key key = key(cls);
+            return getSet(key);
+        }
+
+        public <T> Set<T> getSet(Key<T> key) {
+            Set<T> set = map.get(key);
+            if (set == null) {
+                set = newSet();
+                map.put(key, set);
+            }
+            return set;
+        }
+
+        /**
+         * Convenience adder that is chainable.
+         */
+        public <T> PayloadBuilder add(Class<T> cls, T t) {
+            getSet(cls).add(t);
+            return this;
+        }
+    }
 }
