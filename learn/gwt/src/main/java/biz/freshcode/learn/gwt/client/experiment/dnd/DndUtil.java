@@ -1,5 +1,7 @@
 package biz.freshcode.learn.gwt.client.experiment.dnd;
 
+import biz.freshcode.learn.gwt.client.experiment.dnd.dragdata.DragData;
+import biz.freshcode.learn.gwt.client.experiment.dnd.dragdata.PayloadBuilder;
 import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.core.client.util.Util;
 import com.sencha.gxt.data.shared.TreeStore;
@@ -58,7 +60,7 @@ public class DndUtil {
     }
 
     public static Map<DragData.Key, Set> parseDragged(Object data) {
-        DragData.PayloadBuilder b = new DragData.PayloadBuilder();
+        PayloadBuilder b = new PayloadBuilder();
         Set<Student> students = b.getSet(Student.class);
         Set<Course> courses = b.getSet(Course.class);
         if (data instanceof List) {
