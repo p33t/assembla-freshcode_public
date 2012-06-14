@@ -15,7 +15,6 @@ import com.sencha.gxt.dnd.core.client.DropTarget;
 
 import static biz.freshcode.learn.gwt.client.experiment.mouseover.Bundle.STYLE;
 import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newSetFrom;
-import static com.google.gwt.dom.client.NativeEvent.BUTTON_LEFT;
 
 public class MouseOverWidget extends AbstractIsWidget {
     @Override
@@ -37,11 +36,9 @@ public class MouseOverWidget extends AbstractIsWidget {
         targetWidget.addDomHandler(new MouseOverHandler() {
             @Override
             public void onMouseOver(MouseOverEvent event) {
-                GWT.log("Mouse over");
-                // This does not work
-                if ((event.getNativeButton() & BUTTON_LEFT) == 0) {
-                    // left button is NOT down
-                }
+                // NOTE: Buttons don't seem to work.  Always '1'.
+                // Known issue: http://code.google.com/p/google-web-toolkit/issues/detail?id=3983
+                GWT.log("Mouse over.  Buttons: " + event.getNativeButton());
                 targetWidget.addStyleName(STYLE.mouseOver());
             }
         }, MouseOverEvent.getType());
@@ -49,7 +46,7 @@ public class MouseOverWidget extends AbstractIsWidget {
             @Override
             public void onMouseOut(MouseOutEvent event) {
                 GWT.log("Mouse out");
-                targetWidget.removeStyleName(STYLE.mouseOver());
+                unMouseOver(targetWidget);
             }
         }, MouseOutEvent.getType());
 
@@ -59,6 +56,8 @@ public class MouseOverWidget extends AbstractIsWidget {
             @Override
             public void onDragEnter(DndDragEnterEvent event) {
                 GWT.log("GXT Drag over");
+                // don't want mouse-over effects.  Would prefer to avoid up front but not possible.
+                unMouseOver(targetWidget);
                 event.getStatusProxy().setStatus(false);
             }
         });
@@ -75,5 +74,9 @@ public class MouseOverWidget extends AbstractIsWidget {
                 .add(new HTMLPanel("<p>&nbsp;</p>"))
                 .add(targetWidget)
                 .verticalLayoutContainer;
+    }
+
+    private void unMouseOver(HTMLPanel targetWidget) {
+        targetWidget.removeStyleName(STYLE.mouseOver());
     }
 }
