@@ -2,26 +2,73 @@ package biz.freshcode.learn.gwt.client.experiment.mouseover;
 
 import biz.freshcode.learn.gwt.client.experiment.dnd.dragdata.DragData;
 import biz.freshcode.learn.gwt.client.uispike.builder.HTMLPanelBuilder;
+import biz.freshcode.learn.gwt.client.uispike.builder.TextButtonBuilder;
+import biz.freshcode.learn.gwt.client.uispike.builder.ToolButtonBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.VerticalLayoutContainerBuilder;
+import biz.freshcode.learn.gwt.client.uispike.builder.container.AbsolutePanelBuilder;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.dom.client.*;
+import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Widget;
-import com.sencha.gxt.dnd.core.client.DndDragEnterEvent;
 import com.sencha.gxt.dnd.core.client.DndDragStartEvent;
 import com.sencha.gxt.dnd.core.client.DragSource;
 import com.sencha.gxt.dnd.core.client.DropTarget;
+import com.sencha.gxt.widget.core.client.button.TextButton;
+import com.sencha.gxt.widget.core.client.button.ToolButton;
+import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
+import com.sencha.gxt.widget.core.client.event.SelectEvent;
+import com.sencha.gxt.widget.core.client.info.Info;
 
 import static biz.freshcode.learn.gwt.client.experiment.mouseover.Bundle.STYLE;
 import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newSetFrom;
 
 public class MouseOverWidget extends AbstractIsWidget {
+    private static final SelectEvent.SelectHandler GO_HANDLER = new SelectEvent.SelectHandler() {
+        public void onSelect(SelectEvent event) {
+            Info.display("Event", "Go pushed");
+        }
+    };
+    private ToolButton btnGo;
+    private MouseOverState mosGo;
+    private HTMLPanel targetWidget;
+    private MouseOverState mosTarget;
+    private UpdateState updateState = new UpdateState();
+    // Update the state after events in queue are processed
+    private Runnable updateStateDeferred = new Runnable() {
+        @Override
+        public void run() {
+            Scheduler.get().scheduleDeferred(updateState);
+        }
+    };
+
     @Override
     protected Widget createWidget() {
-        HTMLPanel draggable = new HTMLPanelBuilder("<p>Drag this</p>")
-                .addStyleName(STYLE.blackBorder())
-                .hTMLPanel;
+        HTMLPanel draggable;
+
+
+        TextButton btnTestGo;
+        VerticalLayoutContainer vlc = new VerticalLayoutContainerBuilder()
+                .add(draggable = new HTMLPanelBuilder("<p>Drag this</p>")
+                        .addStyleName(STYLE.blackBorder())
+                        .hTMLPanel)
+                .add(new HTMLPanel("<p>&nbsp;</p>"))
+                .add(btnTestGo = new TextButtonBuilder()
+                        .text("Test Go")
+                        .textButton)
+                .add(new AbsolutePanelBuilder()
+                        .add(targetWidget = new HTMLPanelBuilder("<p>Mouse over me!</p>")
+                                .addStyleName(STYLE.blackBorder())
+                                .hTMLPanel, 0, 0)
+                        .add(btnGo = new ToolButtonBuilder(new ToolButton(ToolButton.SEARCH, GO_HANDLER))
+                                .visible(false)
+                                .toolButton, 0, 0)
+                        // Hmmm.... sizing dramas.... ignoring container size :(
+                        .width("100%")
+                        .height("2em")
+                        .absolutePanel)
+                .verticalLayoutContainer;
+
+        // setup dragging
         new DragSource(draggable).addDragStartHandler(new DndDragStartEvent.DndDragStartHandler() {
             @Override
             public void onDragStart(DndDragStartEvent event) {
@@ -29,54 +76,39 @@ public class MouseOverWidget extends AbstractIsWidget {
             }
         });
 
-        final HTMLPanel targetWidget = new HTMLPanelBuilder("<p>Mouse over me!</p>")
-                .addStyleName(STYLE.blackBorder())
-                .hTMLPanel;
+        // NOTE: Dnd for GWT is separate to Dnd for GXT.
 
-        targetWidget.addDomHandler(new MouseOverHandler() {
-            @Override
-            public void onMouseOver(MouseOverEvent event) {
-                // NOTE: Buttons don't seem to work.  Always '1'.
-                // Known issue: http://code.google.com/p/google-web-toolkit/issues/detail?id=3983
-                GWT.log("Mouse over.  Buttons: " + event.getNativeButton());
-                targetWidget.addStyleName(STYLE.mouseOver());
-            }
-        }, MouseOverEvent.getType());
-        targetWidget.addDomHandler(new MouseOutHandler() {
-            @Override
-            public void onMouseOut(MouseOutEvent event) {
-                GWT.log("Mouse out");
-                unMouseOver(targetWidget);
-            }
-        }, MouseOutEvent.getType());
+        // TODO: Why the double event?
+        btnGo.addSelectHandler(GO_HANDLER);
+        btnTestGo.addSelectHandler(GO_HANDLER);
+        mosGo = new MouseOverState(btnGo, updateStateDeferred);
+        DropTarget dropTarget = new DropTarget(targetWidget);
+        dropTarget.setOverStyle(STYLE.dragOver());
+        mosTarget = new MouseOverState(dropTarget, updateStateDeferred);
 
-        DropTarget target = new DropTarget(targetWidget);
-        target.setOverStyle(STYLE.dragOver());
-        target.addDragEnterHandler(new DndDragEnterEvent.DndDragEnterHandler() {
-            @Override
-            public void onDragEnter(DndDragEnterEvent event) {
-                GWT.log("GXT Drag over");
-                // don't want mouse-over effects.  Would prefer to avoid up front but not possible.
-                unMouseOver(targetWidget);
-                event.getStatusProxy().setStatus(false);
-            }
-        });
-        targetWidget.addDomHandler(new DragOverHandler() {
-            @Override
-            public void onDragOver(DragOverEvent event) {
-                // NOTE: This isn't showing.  GXT must not use native drag-drop.
-                GWT.log("Native Drag over");
-            }
-        }, DragOverEvent.getType());
-
-        return new VerticalLayoutContainerBuilder()
-                .add(draggable)
-                .add(new HTMLPanel("<p>&nbsp;</p>"))
-                .add(targetWidget)
-                .verticalLayoutContainer;
+        return vlc;
     }
 
-    private void unMouseOver(HTMLPanel targetWidget) {
+    private void mouseOver() {
+        targetWidget.addStyleName(STYLE.mouseOver());
+        btnGo.setVisible(true);
+    }
+
+
+    private void unMouseOver() {
         targetWidget.removeStyleName(STYLE.mouseOver());
+        btnGo.setVisible(false);
+    }
+
+    class UpdateState implements Scheduler.ScheduledCommand {
+        @Override
+        public void execute() {
+            if (mosTarget.isOver() && !mosTarget.isDraggingOver() ||
+                    mosGo.isOver() && !mosGo.isDraggingOver()) {
+                if (!btnGo.isVisible()) mouseOver();
+            } else {
+                if (btnGo.isVisible()) unMouseOver();
+            }
+        }
     }
 }
