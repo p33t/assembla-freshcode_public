@@ -71,8 +71,6 @@ public class MouseOverWidget extends AbstractIsWidget {
             }
         });
 
-        // NOTE: Dnd for GWT is separate to Dnd for GXT.
-
         mosGo = new MouseOverState(btnGo, updateStateDeferred);
         DropTarget dropTarget = new DropTarget(targetWidget);
         dropTarget.setOverStyle(STYLE.dragOver());
