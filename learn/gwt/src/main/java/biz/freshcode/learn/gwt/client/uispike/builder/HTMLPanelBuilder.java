@@ -7,37 +7,66 @@ import com.google.gwt.user.client.ui.HTMLPanel;
 public class HTMLPanelBuilder {
     public final HTMLPanel hTMLPanel;
 
+    public HTMLPanelBuilder(String safeHtml) {
+        hTMLPanel = new HTMLPanel(safeHtml);
+    }
+
     public HTMLPanelBuilder(HTMLPanel v) {
         hTMLPanel = v;
     }
 
-    public HTMLPanelBuilder layoutData(java.lang.Object v0) {
-        hTMLPanel.setLayoutData(v0);
+    public HTMLPanelBuilder add(com.google.gwt.user.client.ui.Widget v0) {
+        hTMLPanel.add(v0);
         return this;
     }
 
-    public HTMLPanelBuilder size(java.lang.String v0, java.lang.String v1) {
-        hTMLPanel.setSize(v0, v1);
+    public HTMLPanelBuilder add(com.google.gwt.user.client.ui.IsWidget v0) {
+        hTMLPanel.add(v0);
         return this;
     }
 
-    public HTMLPanelBuilder visible(boolean v0) {
-        hTMLPanel.setVisible(v0);
+    public HTMLPanelBuilder add(com.google.gwt.user.client.ui.Widget v0, java.lang.String v1) {
+        hTMLPanel.add(v0, v1);
         return this;
     }
 
-    public HTMLPanelBuilder styleName(java.lang.String v0, boolean v1) {
-        hTMLPanel.setStyleName(v0, v1);
+    public HTMLPanelBuilder add(com.google.gwt.user.client.ui.Widget v0, com.google.gwt.dom.client.Element v1) {
+        hTMLPanel.add(v0, v1);
         return this;
     }
 
-    public HTMLPanelBuilder styleName(java.lang.String v0) {
-        hTMLPanel.setStyleName(v0);
+    public HTMLPanelBuilder addAndReplaceElement(com.google.gwt.user.client.ui.Widget v0, com.google.gwt.dom.client.Element v1) {
+        hTMLPanel.addAndReplaceElement(v0, v1);
         return this;
     }
 
-    public HTMLPanelBuilder stylePrimaryName(java.lang.String v0) {
-        hTMLPanel.setStylePrimaryName(v0);
+    public HTMLPanelBuilder addAndReplaceElement(com.google.gwt.user.client.ui.Widget v0, com.google.gwt.user.client.Element v1) {
+        hTMLPanel.addAndReplaceElement(v0, v1);
+        return this;
+    }
+
+    public HTMLPanelBuilder addAndReplaceElement(com.google.gwt.user.client.ui.IsWidget v0, com.google.gwt.user.client.Element v1) {
+        hTMLPanel.addAndReplaceElement(v0, v1);
+        return this;
+    }
+
+    public HTMLPanelBuilder addAndReplaceElement(com.google.gwt.user.client.ui.Widget v0, java.lang.String v1) {
+        hTMLPanel.addAndReplaceElement(v0, v1);
+        return this;
+    }
+
+    public HTMLPanelBuilder addAndReplaceElement(com.google.gwt.user.client.ui.IsWidget v0, java.lang.String v1) {
+        hTMLPanel.addAndReplaceElement(v0, v1);
+        return this;
+    }
+
+    public HTMLPanelBuilder addStyleDependentName(java.lang.String v0) {
+        hTMLPanel.addStyleDependentName(v0);
+        return this;
+    }
+
+    public HTMLPanelBuilder addStyleName(java.lang.String v0) {
+        hTMLPanel.addStyleName(v0);
         return this;
     }
 
@@ -46,8 +75,18 @@ public class HTMLPanelBuilder {
         return this;
     }
 
+    public HTMLPanelBuilder layoutData(java.lang.Object v0) {
+        hTMLPanel.setLayoutData(v0);
+        return this;
+    }
+
     public HTMLPanelBuilder pixelSize(int v0, int v1) {
         hTMLPanel.setPixelSize(v0, v1);
+        return this;
+    }
+
+    public HTMLPanelBuilder size(java.lang.String v0, java.lang.String v1) {
+        hTMLPanel.setSize(v0, v1);
         return this;
     }
 
@@ -56,21 +95,33 @@ public class HTMLPanelBuilder {
         return this;
     }
 
+    public HTMLPanelBuilder styleName(java.lang.String v0) {
+        hTMLPanel.setStyleName(v0);
+        return this;
+    }
+
+    public HTMLPanelBuilder styleName(java.lang.String v0, boolean v1) {
+        hTMLPanel.setStyleName(v0, v1);
+        return this;
+    }
+
+    public HTMLPanelBuilder stylePrimaryName(java.lang.String v0) {
+        hTMLPanel.setStylePrimaryName(v0);
+        return this;
+    }
+
     public HTMLPanelBuilder title(java.lang.String v0) {
         hTMLPanel.setTitle(v0);
+        return this;
+    }
+
+    public HTMLPanelBuilder visible(boolean v0) {
+        hTMLPanel.setVisible(v0);
         return this;
     }
 
     public HTMLPanelBuilder width(java.lang.String v0) {
         hTMLPanel.setWidth(v0);
         return this;
-    }
-
-    public HTMLPanelBuilder initFrom(HTMLPanel v) {
-        return this
-                .layoutData(v.getLayoutData())
-                .styleName(v.getStyleName())
-                .stylePrimaryName(v.getStylePrimaryName())
-                .title(v.getTitle());
     }
 }

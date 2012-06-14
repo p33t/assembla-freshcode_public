@@ -1,3 +1,13 @@
 .blackBorder {
     border: black thin solid;
+    margin: 2px;
+}
+
+.mouseOver {
+    background: #7fffd4;
+    border: red thin solid;
+}
+
+.dragOver {
+    outline: #8a2be2 solid 1px;
 }

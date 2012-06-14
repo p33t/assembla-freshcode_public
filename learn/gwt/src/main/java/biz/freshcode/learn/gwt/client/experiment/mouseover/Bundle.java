@@ -6,8 +6,9 @@ import com.google.gwt.resources.client.CssResource;
 
 public interface Bundle extends ClientBundle {
     Bundle INSTANCE = GWT.create(Bundle.class);
+    Style STYLE = INSTANCE.style();
     // Needed
-    boolean DOM_MUTATED = INSTANCE.style().ensureInjected();
+    boolean DOM_MUTATED = STYLE.ensureInjected();
 
 //    @Source("dropNotAllowed.gif")
 //    ImageResource dropNotAllowed();
@@ -17,5 +18,9 @@ public interface Bundle extends ClientBundle {
 
     interface Style extends CssResource {
         String blackBorder();
+
+        String mouseOver();
+
+        String dragOver();
     }
 }
