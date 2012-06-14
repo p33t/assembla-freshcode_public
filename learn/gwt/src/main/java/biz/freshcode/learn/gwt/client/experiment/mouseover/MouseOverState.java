@@ -14,7 +14,7 @@ import com.sencha.gxt.dnd.core.client.DropTarget;
 
 /**
  * Retains state about the mouse location with regards to a given control.
- * Notification of a potential state change is registered using the 'callback' arg.
+ * Notification of a potential state change is achieved using the 'callback' arg.
  */
 public class MouseOverState {
     private boolean over = false;
@@ -29,6 +29,7 @@ public class MouseOverState {
         w.addDomHandler(mh, MouseOverEvent.getType());
         w.addDomHandler(mh, MouseOutEvent.getType());
 
+        // NOTE: Dnd for GWT is separate to Dnd for GXT.
         DndHandler dh = new DndHandler();
         dropTarget.addDragEnterHandler(dh);
         dropTarget.addDragLeaveHandler(dh);
