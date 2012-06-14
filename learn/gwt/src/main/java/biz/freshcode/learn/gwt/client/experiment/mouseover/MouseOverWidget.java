@@ -2,7 +2,6 @@ package biz.freshcode.learn.gwt.client.experiment.mouseover;
 
 import biz.freshcode.learn.gwt.client.experiment.dnd.dragdata.DragData;
 import biz.freshcode.learn.gwt.client.uispike.builder.HTMLPanelBuilder;
-import biz.freshcode.learn.gwt.client.uispike.builder.TextButtonBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.ToolButtonBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.VerticalLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.container.AbsolutePanelBuilder;
@@ -52,9 +51,7 @@ public class MouseOverWidget extends AbstractIsWidget {
                         .addStyleName(STYLE.blackBorder())
                         .hTMLPanel)
                 .add(new HTMLPanel("<p>&nbsp;</p>"))
-                .add(btnTestGo = new TextButtonBuilder()
-                        .text("Test Go")
-                        .textButton)
+                .add(btnTestGo = new TextButton("Test Go", GO_HANDLER))
                 .add(new AbsolutePanelBuilder()
                         .add(targetWidget = new HTMLPanelBuilder("<p>Mouse over me!</p>")
                                 .addStyleName(STYLE.blackBorder())
@@ -78,9 +75,6 @@ public class MouseOverWidget extends AbstractIsWidget {
 
         // NOTE: Dnd for GWT is separate to Dnd for GXT.
 
-        // TODO: Why the double event?
-        btnGo.addSelectHandler(GO_HANDLER);
-        btnTestGo.addSelectHandler(GO_HANDLER);
         mosGo = new MouseOverState(btnGo, updateStateDeferred);
         DropTarget dropTarget = new DropTarget(targetWidget);
         dropTarget.setOverStyle(STYLE.dragOver());
