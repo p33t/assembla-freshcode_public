@@ -44,14 +44,12 @@ public class MouseOverWidget extends AbstractIsWidget {
     protected Widget createWidget() {
         HTMLPanel draggable;
 
-
-        TextButton btnTestGo;
         VerticalLayoutContainer vlc = new VerticalLayoutContainerBuilder()
                 .add(draggable = new HTMLPanelBuilder("<p>Drag this</p>")
                         .addStyleName(STYLE.blackBorder())
                         .hTMLPanel)
                 .add(new HTMLPanel("<p>&nbsp;</p>"))
-                .add(btnTestGo = new TextButton("Test Go", GO_HANDLER))
+                .add(new TextButton("Test Go", GO_HANDLER))
                 .add(new AbsolutePanelBuilder()
                         .add(targetWidget = new HTMLPanelBuilder("<p>Mouse over me!</p>")
                                 .addStyleName(STYLE.blackBorder())
