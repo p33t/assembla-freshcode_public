@@ -13,6 +13,12 @@ public class AppCollectionUtil {
         return s;
     }
 
+    public static <T> Set<T> newSetFrom(T... ts) {
+        Set<T> s = newSet();
+        Collections.addAll(s, ts);
+        return s;
+    }
+
     public static <T> List<T> newList() {
         return new ArrayList<T>();
     }
