@@ -35,10 +35,13 @@
             Tomcat will need the following line added to .../conf/tomcat-users.xml:
               <user username="bruce" password="bruce" roles="superuser"/>
             jetty:run-war config is woven into plugin (see .../src/test/config/jetty-realm.properties)
-            GWT Dev mode: Don't know yet????????????????????
+            GWT Dev mode: Uses same config file as jetty:run-war
             -->
             <role-name>superuser</role-name>
         </auth-constraint>
+        <!-- NOTE: key generation is currently manual. (See keytool-maven-plugin in pom.xml)
+                    Need to call keytool:genkey
+         -->
         <user-data-constraint>
             <transport-guarantee>CONFIDENTIAL</transport-guarantee>
         </user-data-constraint>
