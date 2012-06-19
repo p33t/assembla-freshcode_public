@@ -7,6 +7,7 @@ import biz.freshcode.learn.gwt.client.experiment.celltable.CellTableDemo;
 import biz.freshcode.learn.gwt.client.experiment.dnd.DndUi;
 import biz.freshcode.learn.gwt.client.experiment.forms.Landing;
 import biz.freshcode.learn.gwt.client.experiment.mouseover.MouseOverWidget;
+import biz.freshcode.learn.gwt.client.experiment.requestfactory.RequestFactoryDemo;
 import biz.freshcode.learn.gwt.client.uibinder.Basic;
 import biz.freshcode.learn.gwt.client.uibinder.Composed;
 import biz.freshcode.learn.gwt.client.uibinder.eg.BorderLayoutEg;
@@ -42,6 +43,12 @@ public class MainPanel extends Composite {
                             }))
                             .menuBar))
                     .addItem(new MenuItem("Experiments", subMenu()
+                            .addItem(new MenuItem("Request Factory", new Command() {
+                                public void execute() {
+                                    IsWidget w = GWT.create(RequestFactoryDemo.class);
+                                    replaceContent(w);
+                                }
+                            }))
                             .addItem(new MenuItem("Alert", new Command() {
                                 public void execute() {
                                     Window.alert("Consider yourself alerted");
