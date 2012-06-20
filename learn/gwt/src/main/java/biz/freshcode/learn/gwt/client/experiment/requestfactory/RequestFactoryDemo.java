@@ -42,7 +42,7 @@ public class RequestFactoryDemo extends AbstractIsWidget {
 
     private void x() {
         msg("About to create factory");
-        ExperimentRequestFactory f = GWT.create(ExperimentRequestFactory.class);
+        final ExperimentRequestFactory f = GWT.create(ExperimentRequestFactory.class);
         f.initialize(new SimpleEventBus());
 
         msg("Invoking findAll()");
@@ -50,6 +50,23 @@ public class RequestFactoryDemo extends AbstractIsWidget {
             @Override
             public void onSuccess(List<LightbulbProxy> response) {
                 msg("Successfully retrieved " + response.size() + " lightbulbs");
+                LightbulbProxy lb0 = response.get(0);
+                callFind(f, lb0);
+            }
+        });
+
+    }
+
+    private void callFind(ExperimentRequestFactory f, final LightbulbProxy lb0) {
+        msg("Invoking find()");
+        f.lightbulbRequest().find(lb0.getId()).fire(new Receiver<LightbulbProxy>() {
+            @Override
+            public void onSuccess(LightbulbProxy response) {
+                msg("Result was " + response);
+                if (response == lb0) msg("Same object instance");
+                else if (response == null) msg("Not found");
+                else if (lb0.equals(response)) msg("Equals objects");
+                else msg("?! Not equal");
             }
         });
     }

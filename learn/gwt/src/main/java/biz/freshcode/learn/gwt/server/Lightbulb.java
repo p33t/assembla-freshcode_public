@@ -35,6 +35,11 @@ public class Lightbulb {
         return l;
     }
 
+    // TODO: Why?  How can I just call implicitly needed one.
+    public static Lightbulb find(String id) {
+        return findLightbulb(id);
+    }
+
     private static void newBulb(Boolean isOn) {
         String id = UUID.randomUUID().toString();
         db.put(id, isOn);

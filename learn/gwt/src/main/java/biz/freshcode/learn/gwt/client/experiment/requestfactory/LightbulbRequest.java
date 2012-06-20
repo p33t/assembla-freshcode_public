@@ -12,4 +12,6 @@ public interface LightbulbRequest extends RequestContext {
     // TODO: Service methods.  1 for each type (= 3)
 
     Request<List<LightbulbProxy>> findAll();
+
+    Request<LightbulbProxy> find(String id);
 }
