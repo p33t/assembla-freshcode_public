@@ -23,6 +23,13 @@ public class AppCollectionUtil {
         return new ArrayList<T>();
     }
 
+
+    public static <T> List<T> newListFrom(T... ts) {
+        List<T> l = newList();
+        Collections.addAll(l, ts);
+        return l;
+    }
+
     public static <K,V> Map<K, V> newMap() {
         return new HashMap<K, V>();
     }

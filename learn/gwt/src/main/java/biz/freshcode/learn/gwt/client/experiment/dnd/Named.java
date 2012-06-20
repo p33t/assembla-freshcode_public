@@ -7,14 +7,14 @@ import com.sencha.gxt.data.shared.PropertyAccess;
 /**
  *
  */
-public interface Named extends IdAble {
+public interface Named extends HasId {
     Access ACCESS = GWT.create(Access.class);
 
     String getName();
 
     void setName(String s);
 
-    interface Access<T extends Named> extends PropertyAccess<T>, IdAble.Access<T> {
+    interface Access<T extends Named> extends PropertyAccess<T>, HasId.Access<T> {
         ValueProvider<Named, String> name();
     }
 }
