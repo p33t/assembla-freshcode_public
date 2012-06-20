@@ -38,10 +38,18 @@
             <artifactId>gwt-servlet</artifactId>
             <version>${gwtVersion}</version>
             <scope>runtime</scope>
+            <!--  TODO: Does this need to be 'provided'?-->
         </dependency>
         <dependency>
             <groupId>com.google.gwt</groupId>
             <artifactId>gwt-user</artifactId>
+            <version>${gwtVersion}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- Facilitates annotation processing to achieve RequestFactory instrumentation -->
+        <dependency>
+            <groupId>com.google.web.bindery</groupId>
+            <artifactId>requestfactory-apt</artifactId>
             <version>${gwtVersion}</version>
             <scope>provided</scope>
         </dependency>
@@ -55,7 +63,6 @@
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
             <version>1.0.0.GA</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>javax.validation</groupId>
@@ -150,6 +157,15 @@
                     <source>1.6</source>
                     <target>1.6</target>
                 </configuration>
+                <dependencies>
+                    <!-- Needed for GWT Request Factory.
+                     See http://code.google.com/p/google-web-toolkit/wiki/RequestFactoryInterfaceValidation#Maven_builds -->
+                    <dependency>
+                        <groupId>com.google.web.bindery</groupId>
+                        <artifactId>requestfactory-apt</artifactId>
+                        <version>${gwtVersion}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -157,20 +173,20 @@
                 <version>1.1</version>
                 <!-- Manual generation for convenience... no need for a new key every time we run -->
                 <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<phase>generate-resources</phase>-->
-                        <!--<id>clean</id>-->
-                        <!--<goals>-->
-                            <!--<goal>clean</goal>-->
-                        <!--</goals>-->
-                    <!--</execution>-->
-                    <!--<execution>-->
-                        <!--<phase>generate-resources</phase>-->
-                        <!--<id>genkey</id>-->
-                        <!--<goals>-->
-                            <!--<goal>genkey</goal>-->
-                        <!--</goals>-->
-                    <!--</execution>-->
+                <!--<execution>-->
+                <!--<phase>generate-resources</phase>-->
+                <!--<id>clean</id>-->
+                <!--<goals>-->
+                <!--<goal>clean</goal>-->
+                <!--</goals>-->
+                <!--</execution>-->
+                <!--<execution>-->
+                <!--<phase>generate-resources</phase>-->
+                <!--<id>genkey</id>-->
+                <!--<goals>-->
+                <!--<goal>genkey</goal>-->
+                <!--</goals>-->
+                <!--</execution>-->
                 <!--</executions>-->
                 <configuration>
                     <keystore>${project.build.directory}/jetty-ssl.keystore</keystore>

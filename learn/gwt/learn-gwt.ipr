@@ -20,6 +20,7 @@
           </element>
           <element id="directory" name="lib">
             <element id="library" level="project" name="Maven: com.google.gwt:gwt-servlet:2.4.0" />
+            <element id="library" level="project" name="Maven: javax.validation:validation-api:1.0.0.GA" />
           </element>
         </element>
         <element id="gwt-compiler-output" facet="learn-gwt/gwt/GWT" />
@@ -82,7 +83,10 @@
       <entry name="?*.tld" />
       <entry name="?*.ftl" />
     </wildcardResourcePatterns>
-    <annotationProcessing enabled="false" useClasspath="true" />
+    <annotationProcessing enabled="true" useClasspath="true">
+      <processor name="com.google.web.bindery.requestfactory.apt.RfValidator" options="verbose=false" />
+      <processModule name="learn-gwt" />
+    </annotationProcessing>
   </component>
   <component name="CopyrightManager" default="">
     <module2copyright />
@@ -404,6 +408,17 @@
       </JAVADOC>
       <SOURCES>
         <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-user/2.4.0/gwt-user-2.4.0-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: com.google.web.bindery:requestfactory-apt:2.4.0">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/web/bindery/requestfactory-apt/2.4.0/requestfactory-apt-2.4.0.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/web/bindery/requestfactory-apt/2.4.0/requestfactory-apt-2.4.0-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/web/bindery/requestfactory-apt/2.4.0/requestfactory-apt-2.4.0-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: com.sencha.gxt:gxt:3.0.0">

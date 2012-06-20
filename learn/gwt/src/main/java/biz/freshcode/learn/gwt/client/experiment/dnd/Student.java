@@ -7,7 +7,7 @@ import com.sencha.gxt.data.shared.PropertyAccess;
 /**
  *
  */
-public interface Student extends Named, IdAble {
+public interface Student extends Named, HasId {
     Factory FACTORY = GWT.create(Factory.class);
     Access ACCESS = GWT.create(Access.class);
 

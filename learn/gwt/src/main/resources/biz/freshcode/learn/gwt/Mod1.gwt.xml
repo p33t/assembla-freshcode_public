@@ -28,6 +28,8 @@
     <!--Don't want the logging on the pop in top-left of screen -->
     <set-property name="gwt.logging.popupHandler" value="DISABLED"/>
 
+    <inherits name='com.google.web.bindery.requestfactory.RequestFactory'/>
+
     <!-- Specify the app entry point class.                         -->
     <entry-point class='biz.freshcode.learn.gwt.client.EntryPoint'/>
 
