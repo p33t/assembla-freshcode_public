@@ -156,15 +156,6 @@
                     <source>1.6</source>
                     <target>1.6</target>
                 </configuration>
-                <dependencies>
-                    <!-- Needed for GWT Request Factory.
-                     See http://code.google.com/p/google-web-toolkit/wiki/RequestFactoryInterfaceValidation#Maven_builds -->
-                    <dependency>
-                        <groupId>com.google.web.bindery</groupId>
-                        <artifactId>requestfactory-apt</artifactId>
-                        <version>${gwtVersion}</version>
-                    </dependency>
-                </dependencies>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
