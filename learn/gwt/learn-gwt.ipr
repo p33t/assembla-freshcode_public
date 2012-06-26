@@ -85,7 +85,7 @@
     </wildcardResourcePatterns>
     <annotationProcessing enabled="true" useClasspath="true">
       <processor name="com.google.web.bindery.requestfactory.apt.RfValidator" options="verbose=false" />
-      <processModule name="learn-gwt" />
+      <processModule name="learn-gwt" generatedDirName="target/generated-sources/annotations" />
     </annotationProcessing>
   </component>
   <component name="CopyrightManager" default="">
