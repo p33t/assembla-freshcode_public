@@ -1,7 +1,7 @@
 package biz.freshcode.learn.gwt.client.autobean;
 
+import biz.freshcode.learn.gwt.client.util.GenericAutoBeanFactory;
 import com.google.web.bindery.autobean.shared.AutoBean;
-import com.google.web.bindery.autobean.shared.AutoBeanFactory;
 
 import java.util.Date;
 
@@ -23,8 +23,7 @@ public interface TestBean {
 
     void setNested(NestedBean nb);
 
-    // NOTE: Extending GenericAutoBeanFactory breaks AutoBeanFactorySource (and any unit testing)
-    public interface Factory extends AutoBeanFactory {
+    public interface Factory extends GenericAutoBeanFactory<TestBean> {
         AutoBean<TestBean> auto();
     }
 }
