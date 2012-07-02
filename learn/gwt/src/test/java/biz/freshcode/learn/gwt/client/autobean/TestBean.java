@@ -18,6 +18,11 @@ public interface TestBean {
 
     void setDt(Date dt);
 
+
+    NestedBean getNested();
+
+    void setNested(NestedBean nb);
+
     // NOTE: Extending GenericAutoBeanFactory breaks AutoBeanFactorySource (and any unit testing)
     public interface Factory extends AutoBeanFactory {
         AutoBean<TestBean> auto();
