@@ -15,7 +15,7 @@ public class GwtTestBean extends GWTTestCase {
 //        AutoBeanFactory f = GWT.create(AutoBeanFactory.class);
 //        AutoBean<TestBean> ab = f.create(TestBean.class);
         TestBean.Factory f = GWT.create(TestBean.Factory.class);
-        AutoBean<TestBean> ab = f.testBean();
+        AutoBean<TestBean> ab = f.auto();
         assertNotNull(ab);
         TestBean b = ab.as();
         assertNotNull(b);
