@@ -5,6 +5,7 @@ import com.google.web.bindery.autobean.shared.AutoBeanUtils;
 import com.google.web.bindery.autobean.vm.AutoBeanFactorySource;
 import org.junit.Test;
 
+import static com.google.web.bindery.autobean.shared.AutoBeanUtils.getAutoBean;
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertTrue;
 
@@ -40,6 +41,15 @@ public class AutoBeanTest {
         assertFalse(deepEquals(t1, t2));
     }
 
+    @Test
+    public void confirmTagsAreBenign() {
+        TestBean t1 = testBean("s1");
+        TestBean t2 = testBean("s1");
+        getAutoBean(t1).setTag("x", 99);
+        getAutoBean(t2).setTag("x", 1);
+        assertTrue(deepEquals(t1, t2));
+    }
+
     private TestBean testBean(String str) {
         TestBean tb2 = testBean();
         tb2.setStr(str);
@@ -53,8 +63,8 @@ public class AutoBeanTest {
     }
 
     private boolean deepEquals(TestBean t1, TestBean t2) {
-        AutoBean<TestBean> a1 = AutoBeanUtils.getAutoBean(t1);
-        AutoBean<TestBean> a2 = AutoBeanUtils.getAutoBean(t2);
+        AutoBean<TestBean> a1 = getAutoBean(t1);
+        AutoBean<TestBean> a2 = getAutoBean(t2);
         return AutoBeanUtils.deepEquals(a1, a2);
     }
 
