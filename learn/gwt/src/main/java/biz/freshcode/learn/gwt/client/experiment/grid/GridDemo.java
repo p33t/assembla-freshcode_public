@@ -56,15 +56,32 @@ public class GridDemo extends AbstractIsWidget {
                                 return newSetFrom(
                                         MouseOutEvent.getType().getName(),
                                         MouseOverEvent.getType().getName()
+
+                                        // Not received... might need more plumbing
+//                                        DragStartEvent.getType().getName(),
+//                                        DragOverEvent.getType().getName(),
+//                                        DragEndEvent.getType().getName()
                                 );
                             }
 
                             @Override
-                            public void onBrowserEvent(Context context, Element parent, String value, NativeEvent event, ValueUpdater<String> stringValueUpdater) {
+                            public void onBrowserEvent(final Context context, Element parent, String value, NativeEvent event, ValueUpdater<String> stringValueUpdater) {
                                 String msg = event.getType() + " on " + value;
                                 GWT.log(msg);
-//
-//                                if (event.getType().equals(MouseOverEvent.getType().getName())) {
+
+                                if (event.getType().equals(MouseOverEvent.getType().getName())) {
+
+//                                    Causes: AssertionError: A widget that has an existing parent widget may not be added to the detach list
+//                                    HTML html = HTML.wrap(parent);
+//                                    new DragSource(html) {
+//                                        @Override
+//                                        protected void onDragStart(DndDragStartEvent event) {
+//                                            GWT.log("Drag started for " + context.getKey() + " col " + context.getColumn());
+//                                            super.onDragStart(event);
+//                                        }
+//                                    };
+
+//                                    Don't know how to make panel appear...
 //                                    AbsolutePanel pnl = new AbsolutePanelBuilder()
 //                                            .add(new ToolButtonBuilder(new ToolButton(ToolButton.SEARCH,
 //                                                    new SelectEvent.SelectHandler() {
@@ -77,8 +94,7 @@ public class GridDemo extends AbstractIsWidget {
 ////                                            .size("100%", "100%")
 //                                            .pixelSize(parent.getClientWidth(), parent.getClientHeight())
 //                                            .absolutePanel;
-//                                }
-
+                                }
                             }
                         })
                         .columnConfig,
