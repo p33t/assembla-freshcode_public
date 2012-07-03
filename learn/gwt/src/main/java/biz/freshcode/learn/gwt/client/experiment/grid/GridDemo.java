@@ -13,6 +13,7 @@ import com.google.gwt.safecss.shared.SafeStylesUtils;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.core.client.ToStringValueProvider;
+import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.data.shared.ListStore;
 import com.sencha.gxt.data.shared.ModelKeyProvider;
 import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
@@ -29,7 +30,7 @@ public class GridDemo extends AbstractIsWidget {
     private ListStore<RowEntity> store = new ListStore<RowEntity>(new ModelKeyProvider<RowEntity>() {
         @Override
         public String getKey(RowEntity item) {
-            return item.id;
+            return "" + item.id;
         }
     });
 
@@ -60,23 +61,65 @@ public class GridDemo extends AbstractIsWidget {
                             public void onBrowserEvent(Context context, Element parent, String value, NativeEvent event, ValueUpdater<String> stringValueUpdater) {
                                 String msg = event.getType() + " on " + value;
                                 GWT.log(msg);
+//
+//                                if (event.getType().equals(MouseOverEvent.getType().getName())) {
+//                                    AbsolutePanel pnl = new AbsolutePanelBuilder()
+//                                            .add(new ToolButtonBuilder(new ToolButton(ToolButton.SEARCH,
+//                                                    new SelectEvent.SelectHandler() {
+//                                                        @Override
+//                                                        public void onSelect(SelectEvent event) {
+//                                                            Info.display("Event", "Go");
+//                                                        }
+//                                                    }))
+//                                                    .toolButton, 0, 0)
+////                                            .size("100%", "100%")
+//                                            .pixelSize(parent.getClientWidth(), parent.getClientHeight())
+//                                            .absolutePanel;
+//                                }
+
+                            }
+                        })
+                        .columnConfig,
+                new ColumnConfigBuilder(new ColumnConfig(
+                        new ValueProvider<RowEntity, Integer>() {
+                            @Override
+                            public Integer getValue(RowEntity object) {
+                                return object.id;
+                            }
+
+                            @Override
+                            public void setValue(RowEntity object, Integer value) {
+                                GWT.log("Ignoring 'setValue' on custom value provider.");
+                            }
+
+                            @Override
+                            public String getPath() {
+                                return null;
+                            }
+                        }))
+                        .header("Dots")
+                        .cell(new AbstractCell<Integer>() {
+                            @Override
+                            public void render(Context context, Integer value, SafeHtmlBuilder sb) {
+                                for (int i = 0; i < value; i++) {
+                                    sb.appendEscaped(".");
+                                }
                             }
                         })
                         .columnConfig
         );
         ColumnModel colModel = new ColumnModel(configs);
-        store.add(new RowEntity());
-        store.add(new RowEntity());
+        for (int i = 0; i < 16; i++) store.add(new RowEntity());
         return new Grid(store, colModel);
     }
 
     static class RowEntity {
         static int counter = 1;
-        final String id = "#" + counter++;
+        final int id = counter++;
 
         @Override
         public String toString() {
-            return id;
+            return "#" + id;
         }
     }
 }
