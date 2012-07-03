@@ -32,7 +32,7 @@ import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newSetFrom;
  * It seems we cannot achieve widget effects for a cell like drag-drop and mouse-over buttons.
  * Tapping into Dom native events is difficult and probably not that portable.
  */
-public class GridDemo extends AbstractIsWidget {
+public class GxtGridDemo extends AbstractIsWidget {
     private ListStore<RowEntity> store = new ListStore<RowEntity>(new ModelKeyProvider<RowEntity>() {
         @Override
         public String getKey(RowEntity item) {
