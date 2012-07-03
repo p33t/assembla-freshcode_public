@@ -11,6 +11,8 @@ import com.google.gwt.event.dom.client.MouseOutEvent;
 import com.google.gwt.event.dom.client.MouseOverEvent;
 import com.google.gwt.safecss.shared.SafeStylesUtils;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
+import com.google.gwt.safehtml.shared.SafeHtmlUtils;
+import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.core.client.ToStringValueProvider;
 import com.sencha.gxt.core.client.ValueProvider;
@@ -106,6 +108,11 @@ public class GridDemo extends AbstractIsWidget {
                                 }
                             }
                         })
+                        .columnConfig,
+                // Fancy widget in column header
+                new ColumnConfigBuilder(new ColumnConfig(new ToStringValueProvider()))
+                        .header("Widget")
+                        .widget(new HTMLPanel("<p style='color:purple;'>WidgetX</p>"), SafeHtmlUtils.fromString("WidgetXX"))
                         .columnConfig
         );
         ColumnModel colModel = new ColumnModel(configs);
