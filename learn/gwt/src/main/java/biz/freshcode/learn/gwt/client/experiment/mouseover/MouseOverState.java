@@ -42,7 +42,7 @@ public class MouseOverState {
     }
 
     /**
-     * Returns 'true' if the mouse is currently 'over' the associated widget.
+     * Returns 'true' if the mouse is currently 'over' the associated widget (including drag-over).
      */
     public boolean isOver() {
         return over;
