@@ -1,5 +1,6 @@
 package biz.freshcode.learn.gwt.client.experiment.grid;
 
+import biz.freshcode.learn.gwt.client.experiment.dnd.DropSupport;
 import biz.freshcode.learn.gwt.client.experiment.dnd.dragdata.DragData;
 import biz.freshcode.learn.gwt.client.experiment.mouseover.MouseOverState;
 import biz.freshcode.learn.gwt.client.uispike.builder.GridBuilder;
@@ -72,6 +73,7 @@ public class GxtGridDemo extends AbstractIsWidget {
     });
 
     int[] popupCoord = null;
+    private MouseOverState mosGrid;
 
     private void showPopup(int left, int top) {
         if (popup.getPopupLeft() == left && popup.getPopupTop() == top) {
@@ -170,8 +172,10 @@ public class GxtGridDemo extends AbstractIsWidget {
                                     checkPopup();
                                 } else if (isType(event, MouseOverEvent.getType())) {
                                     // show the popup
-                                    enablePopup(parent.getAbsoluteLeft(), parent.getAbsoluteTop());
-                                    checkPopup();
+                                    if (!mosGrid.isDraggingOver()) {
+                                        enablePopup(parent.getAbsoluteLeft(), parent.getAbsoluteTop());
+                                        checkPopup();
+                                    }
 
 //                                    Causes: AssertionError: A widget that has an existing parent widget may not be added to the detach list
 //                                    HTML html = HTML.wrap(parent);
@@ -214,9 +218,25 @@ public class GxtGridDemo extends AbstractIsWidget {
         );
         ColumnModel colModel = new ColumnModel(configs);
         for (int i = 0; i < 24; i++) store.add(new RowEntity());
-        return new GridBuilder(new Grid(store, colModel))
+        Grid grid = new GridBuilder(new Grid(store, colModel))
                 .selectionModel(null) // no select
                 .grid;
+
+        final DropSupport dropper = new DropSupport(grid) {
+            @Override
+            protected DropAssessment dropQuery(DragData dd) {
+                return DropAssessment.NOT_HANDLED;
+            }
+        };
+
+        mosGrid = new MouseOverState(dropper, new MouseOverState.Callback() {
+            @Override
+            public void stateChange(MouseOverState mos) {
+                if (mos.isDraggingOver()) disablePopup();
+                checkPopup();
+            }
+        });
+        return grid;
     }
 
     private boolean isType(NativeEvent event, DomEvent.Type type) {
