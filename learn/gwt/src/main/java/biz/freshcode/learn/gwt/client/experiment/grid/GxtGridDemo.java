@@ -7,8 +7,10 @@ import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import com.google.gwt.cell.client.AbstractCell;
 import com.google.gwt.cell.client.ValueUpdater;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.NativeEvent;
+import com.google.gwt.event.dom.client.DomEvent;
 import com.google.gwt.event.dom.client.MouseOutEvent;
 import com.google.gwt.event.dom.client.MouseOverEvent;
 import com.google.gwt.safecss.shared.SafeStylesUtils;
@@ -21,9 +23,12 @@ import com.sencha.gxt.core.client.ToStringValueProvider;
 import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.data.shared.ListStore;
 import com.sencha.gxt.data.shared.ModelKeyProvider;
+import com.sencha.gxt.widget.core.client.button.ToolButton;
+import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
 import com.sencha.gxt.widget.core.client.grid.ColumnModel;
 import com.sencha.gxt.widget.core.client.grid.Grid;
+import com.sencha.gxt.widget.core.client.info.Info;
 
 import java.util.List;
 import java.util.Set;
@@ -36,6 +41,12 @@ import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newSetFrom;
  * Tapping into Dom native events is difficult and probably not that portable.
  */
 public class GxtGridDemo extends AbstractIsWidget {
+    private static final SelectEvent.SelectHandler GO_HANDLER = new SelectEvent.SelectHandler() {
+        public void onSelect(SelectEvent event) {
+            Info.display("Event", "Go pushed");
+        }
+    };
+
     private ListStore<RowEntity> store = new ListStore<RowEntity>(new ModelKeyProvider<RowEntity>() {
         @Override
         public String getKey(RowEntity item) {
@@ -46,7 +57,7 @@ public class GxtGridDemo extends AbstractIsWidget {
     @Override
     protected Widget createWidget() {
         final PopupPanel popup = new PopupPanelBuilder()
-                .widget(new HTMLPanel("<p>:)</p>"))
+                .widget(new ToolButton(ToolButton.SEARCH, GO_HANDLER))
                 .popupPanel;
 
         List<ColumnConfig> configs = newListFrom(
@@ -80,14 +91,21 @@ public class GxtGridDemo extends AbstractIsWidget {
                                 String msg = event.getType() + " on " + value;
                                 GWT.log(msg);
 
-                                if (event.getType().equals(MouseOverEvent.getType().getName())) {
-
+                                final int contextHash = context.hashCode();
+                                if (isType(event, MouseOutEvent.getType())) {
+                                    // hide popup if necessary
+                                    Scheduler.get().scheduleDeferred(new Scheduler.ScheduledCommand() {
+                                        @Override
+                                        public void execute() {
+                                            // TODO Integrate hiding of popup
+                                        }
+                                    });
+                                } else if (isType(event, MouseOverEvent.getType())) {
+                                    // show the popup
                                     if (popup.isShowing()) popup.hide();
                                     popup.setPopupPosition(parent.getAbsoluteLeft(), parent.getAbsoluteTop());
                                     popup.show();
-
-
-
+                                    
 //                                    Causes: AssertionError: A widget that has an existing parent widget may not be added to the detach list
 //                                    HTML html = HTML.wrap(parent);
 //                                    new DragSource(html) {
@@ -153,6 +171,10 @@ public class GxtGridDemo extends AbstractIsWidget {
         return new GridBuilder(new Grid(store, colModel))
                 .selectionModel(null) // no select
                 .grid;
+    }
+
+    private boolean isType(NativeEvent event, DomEvent.Type type) {
+        return event.getType().equals(type.getName());
     }
 
     static class RowEntity {
