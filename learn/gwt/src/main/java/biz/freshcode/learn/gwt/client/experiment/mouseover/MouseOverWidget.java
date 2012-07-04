@@ -33,9 +33,9 @@ public class MouseOverWidget extends AbstractIsWidget {
     private MouseOverState mosTarget;
     private UpdateState updateState = new UpdateState();
     // Update the state after events in queue are processed
-    private Runnable updateStateDeferred = new Runnable() {
+    private MouseOverState.Callback updateStateDeferred = new MouseOverState.Callback() {
         @Override
-        public void run() {
+        public void stateChange(MouseOverState mos) {
             Scheduler.get().scheduleDeferred(updateState);
         }
     };
