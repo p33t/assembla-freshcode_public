@@ -91,7 +91,6 @@ public class GxtGridDemo extends AbstractIsWidget {
                                 String msg = event.getType() + " on " + value;
                                 GWT.log(msg);
 
-                                final int contextHash = context.hashCode();
                                 if (isType(event, MouseOutEvent.getType())) {
                                     // hide popup if necessary
                                     Scheduler.get().scheduleDeferred(new Scheduler.ScheduledCommand() {
