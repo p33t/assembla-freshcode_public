@@ -6,6 +6,7 @@ import biz.freshcode.learn.gwt.client.experiment.Resizer;
 import biz.freshcode.learn.gwt.client.experiment.celltable.CellTableDemo;
 import biz.freshcode.learn.gwt.client.experiment.dnd.DndUi;
 import biz.freshcode.learn.gwt.client.experiment.forms.Landing;
+import biz.freshcode.learn.gwt.client.experiment.grid.GwtGridDemo;
 import biz.freshcode.learn.gwt.client.experiment.grid.GxtGridDemo;
 import biz.freshcode.learn.gwt.client.experiment.mouseover.MouseOverWidget;
 import biz.freshcode.learn.gwt.client.experiment.requestfactory.RequestFactoryDemo;
@@ -44,6 +45,12 @@ public class MainPanel extends Composite {
                             }))
                             .menuBar))
                     .addItem(new MenuItem("Experiments", subMenu()
+                            .addItem(new MenuItem("Grid Demo", new Command() {
+                                public void execute() {
+                                    IsWidget w = GWT.create(GwtGridDemo.class);
+                                    replaceContent(w);
+                                }
+                            }))
                             .addItem(new MenuItem("Request Factory", new Command() {
                                 public void execute() {
                                     IsWidget w = GWT.create(RequestFactoryDemo.class);
