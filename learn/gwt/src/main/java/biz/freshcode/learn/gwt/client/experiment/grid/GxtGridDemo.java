@@ -219,7 +219,7 @@ public class GxtGridDemo extends AbstractIsWidget {
                         .columnConfig
         );
         ColumnModel colModel = new ColumnModel(configs);
-        for (int i = 0; i < 16; i++) store.add(new RowEntity());
+        for (int i = 0; i < 24; i++) store.add(new RowEntity());
         return new GridBuilder(new Grid(store, colModel))
                 .selectionModel(null) // no select
                 .grid;

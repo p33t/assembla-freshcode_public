@@ -98,7 +98,7 @@ public class MainPanel extends Composite {
                             .addItem(new MenuItem("Grid Demo", new Command() {
                                 public void execute() {
                                     IsWidget w = GWT.create(GxtGridDemo.class);
-                                    replaceContent(w);
+                                    replaceRoot(w);
                                 }
                             }))
                             .addItem(new MenuItem("UI Spike", subMenu()
