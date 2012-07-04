@@ -1,7 +1,9 @@
 package biz.freshcode.learn.gwt.client.experiment.grid;
 
+import biz.freshcode.learn.gwt.client.experiment.dnd.dragdata.DragData;
 import biz.freshcode.learn.gwt.client.experiment.mouseover.MouseOverState;
 import biz.freshcode.learn.gwt.client.uispike.builder.GridBuilder;
+import biz.freshcode.learn.gwt.client.uispike.builder.container.HorizontalLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.container.PopupPanelBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.table.ColumnConfigBuilder;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
@@ -18,12 +20,15 @@ import com.google.gwt.safecss.shared.SafeStylesUtils;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 import com.google.gwt.user.client.ui.HTMLPanel;
+import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.core.client.ToStringValueProvider;
 import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.data.shared.ListStore;
 import com.sencha.gxt.data.shared.ModelKeyProvider;
+import com.sencha.gxt.dnd.core.client.DndDragStartEvent;
+import com.sencha.gxt.dnd.core.client.DragSource;
 import com.sencha.gxt.widget.core.client.button.ToolButton;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
@@ -49,8 +54,12 @@ public class GxtGridDemo extends AbstractIsWidget {
         }
     };
 
+    private Image drag;
     final PopupPanel popup = new PopupPanelBuilder()
-            .widget(new ToolButton(ToolButton.SEARCH, GO_HANDLER))
+            .widget(new HorizontalLayoutContainerBuilder()
+                    .add(new ToolButton(ToolButton.SEARCH, GO_HANDLER))
+                    .add(drag = new Image(Bundle2.INSTANCE.drag()))
+                    .horizontalLayoutContainer)
             .addStyleName(STYLE.hoverWidgets())
             .popupPanel;
 
@@ -67,8 +76,7 @@ public class GxtGridDemo extends AbstractIsWidget {
     private void showPopup(int left, int top) {
         if (popup.getPopupLeft() == left && popup.getPopupTop() == top) {
             if (!popup.isShowing()) popup.show();
-        }
-        else {
+        } else {
             if (popup.isShowing()) popup.hide();
             popup.setPopupPosition(left, top);
             popup.show();
@@ -98,7 +106,7 @@ public class GxtGridDemo extends AbstractIsWidget {
     }
 
     void enablePopup(int left, int top) {
-        popupCoord = new int[] {left, top};
+        popupCoord = new int[]{left, top};
     }
 
     void disablePopup() {
@@ -118,6 +126,13 @@ public class GxtGridDemo extends AbstractIsWidget {
 
     @Override
     protected Widget createWidget() {
+        new DragSource(drag).addDragStartHandler(new DndDragStartEvent.DndDragStartHandler() {
+            @Override
+            public void onDragStart(DndDragStartEvent event) {
+                DragData.setup(event, String.class, newSetFrom("A String"));
+            }
+        });
+
         List<ColumnConfig> configs = newListFrom(
                 new ColumnConfigBuilder(new ColumnConfig(new ToStringValueProvider<RowEntity>()))
                         .header("To String")
@@ -160,27 +175,6 @@ public class GxtGridDemo extends AbstractIsWidget {
 
 //                                    Causes: AssertionError: A widget that has an existing parent widget may not be added to the detach list
 //                                    HTML html = HTML.wrap(parent);
-//                                    new DragSource(html) {
-//                                        @Override
-//                                        protected void onDragStart(DndDragStartEvent event) {
-//                                            GWT.log("Drag started for " + context.getKey() + " col " + context.getColumn());
-//                                            super.onDragStart(event);
-//                                        }
-//                                    };
-
-//                                    Don't know how to make panel appear...
-//                                    AbsolutePanel pnl = new AbsolutePanelBuilder()
-//                                            .add(new ToolButtonBuilder(new ToolButton(ToolButton.SEARCH,
-//                                                    new SelectEvent.SelectHandler() {
-//                                                        @Override
-//                                                        public void onSelect(SelectEvent event) {
-//                                                            Info.display("Event", "Go");
-//                                                        }
-//                                                    }))
-//                                                    .toolButton, 0, 0)
-////                                            .size("100%", "100%")
-//                                            .pixelSize(parent.getClientWidth(), parent.getClientHeight())
-//                                            .absolutePanel;
                                 }
                             }
                         })
