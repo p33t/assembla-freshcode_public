@@ -20,9 +20,9 @@ public class MouseOverState {
     private boolean over = false;
     private boolean draggingOver = false;
     private boolean disableStatus = false;
-    private final Runnable callback;
+    private final Callback callback;
 
-    public MouseOverState(DropTarget dropTarget, Runnable callback) {
+    public MouseOverState(DropTarget dropTarget, Callback callback) {
         this.callback = callback;
         Widget w = dropTarget.getWidget();
         MouseHandler mh = new MouseHandler();
@@ -36,7 +36,7 @@ public class MouseOverState {
         dropTarget.addDropHandler(dh);
     }
 
-    public MouseOverState(IsWidget iw, Runnable callback) {
+    public MouseOverState(IsWidget iw, Callback callback) {
         this(new DropTarget(iw.asWidget()), callback);
         disableStatus = true;
     }
@@ -56,7 +56,7 @@ public class MouseOverState {
     }
 
     private void callback() {
-        callback.run();
+        callback.stateChange(this);
     }
 
     class MouseHandler implements MouseOverHandler, MouseOutHandler {
@@ -93,5 +93,9 @@ public class MouseOverState {
             draggingOver = false;
             callback();
         }
+    }
+
+    public interface Callback {
+        void stateChange(MouseOverState mos);
     }
 }

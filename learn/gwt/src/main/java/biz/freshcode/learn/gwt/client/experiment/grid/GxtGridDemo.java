@@ -1,5 +1,6 @@
 package biz.freshcode.learn.gwt.client.experiment.grid;
 
+import biz.freshcode.learn.gwt.client.experiment.mouseover.MouseOverState;
 import biz.freshcode.learn.gwt.client.uispike.builder.GridBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.container.PopupPanelBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.table.ColumnConfigBuilder;
@@ -47,6 +48,65 @@ public class GxtGridDemo extends AbstractIsWidget {
         }
     };
 
+    final PopupPanel popup = new PopupPanelBuilder()
+            .widget(new ToolButton(ToolButton.SEARCH, GO_HANDLER))
+            .popupPanel;
+
+    MouseOverState mosPopup = new MouseOverState(popup, new MouseOverState.Callback() {
+        @Override
+        public void stateChange(MouseOverState mos) {
+            GWT.log("Mouse is" + (mos.isOver() ? "" : " NOT") + " over");
+            checkPopup();
+        }
+    });
+
+    int[] popupCoord = null;
+
+    private void showPopup(int left, int top) {
+        if (popup.getPopupLeft() == left && popup.getPopupTop() == top) {
+            if (!popup.isShowing()) popup.show();
+        }
+        else {
+            if (popup.isShowing()) popup.hide();
+            popup.setPopupPosition(left, top);
+            popup.show();
+        }
+    }
+
+    private void hidePopup() {
+        if (popup.isShowing()) popup.hide();
+    }
+
+    private void checkPopup() {
+        Scheduler.get().scheduleDeferred(new Scheduler.ScheduledCommand() {
+            @Override
+            public void execute() {
+                if (!popupEnabled() && !mosPopup.isOver()) hidePopup();
+                if (popupEnabled()) showPopup(popupLeft(), popupTop());
+            }
+        });
+    }
+
+    private int popupTop() {
+        return popupCoord[1];
+    }
+
+    private int popupLeft() {
+        return popupCoord[0];
+    }
+
+    void enablePopup(int left, int top) {
+        popupCoord = new int[] {left, top};
+    }
+
+    void disablePopup() {
+        popupCoord = null;
+    }
+
+    private boolean popupEnabled() {
+        return popupCoord != null;
+    }
+
     private ListStore<RowEntity> store = new ListStore<RowEntity>(new ModelKeyProvider<RowEntity>() {
         @Override
         public String getKey(RowEntity item) {
@@ -56,10 +116,6 @@ public class GxtGridDemo extends AbstractIsWidget {
 
     @Override
     protected Widget createWidget() {
-        final PopupPanel popup = new PopupPanelBuilder()
-                .widget(new ToolButton(ToolButton.SEARCH, GO_HANDLER))
-                .popupPanel;
-
         List<ColumnConfig> configs = newListFrom(
                 new ColumnConfigBuilder(new ColumnConfig(new ToStringValueProvider<RowEntity>()))
                         .header("To String")
@@ -93,18 +149,13 @@ public class GxtGridDemo extends AbstractIsWidget {
 
                                 if (isType(event, MouseOutEvent.getType())) {
                                     // hide popup if necessary
-                                    Scheduler.get().scheduleDeferred(new Scheduler.ScheduledCommand() {
-                                        @Override
-                                        public void execute() {
-                                            // TODO Integrate hiding of popup
-                                        }
-                                    });
+                                    disablePopup();
+                                    checkPopup();
                                 } else if (isType(event, MouseOverEvent.getType())) {
                                     // show the popup
-                                    if (popup.isShowing()) popup.hide();
-                                    popup.setPopupPosition(parent.getAbsoluteLeft(), parent.getAbsoluteTop());
-                                    popup.show();
-                                    
+                                    enablePopup(parent.getAbsoluteLeft(), parent.getAbsoluteTop());
+                                    checkPopup();
+
 //                                    Causes: AssertionError: A widget that has an existing parent widget may not be added to the detach list
 //                                    HTML html = HTML.wrap(parent);
 //                                    new DragSource(html) {
