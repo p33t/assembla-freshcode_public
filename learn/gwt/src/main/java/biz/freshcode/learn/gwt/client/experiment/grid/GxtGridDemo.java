@@ -34,7 +34,7 @@ import com.sencha.gxt.widget.core.client.info.Info;
 import java.util.List;
 import java.util.Set;
 
-import static biz.freshcode.learn.gwt.client.experiment.grid.Bundle.STYLE;
+import static biz.freshcode.learn.gwt.client.experiment.grid.Bundle2.STYLE;
 import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newListFrom;
 import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newSetFrom;
 
