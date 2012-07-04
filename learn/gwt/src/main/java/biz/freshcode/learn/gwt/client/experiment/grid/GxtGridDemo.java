@@ -1,5 +1,6 @@
 package biz.freshcode.learn.gwt.client.experiment.grid;
 
+import biz.freshcode.learn.gwt.client.uispike.builder.GridBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.table.ColumnConfigBuilder;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import com.google.gwt.cell.client.AbstractCell;
@@ -137,7 +138,9 @@ public class GxtGridDemo extends AbstractIsWidget {
         );
         ColumnModel colModel = new ColumnModel(configs);
         for (int i = 0; i < 16; i++) store.add(new RowEntity());
-        return new Grid(store, colModel);
+        return new GridBuilder(new Grid(store, colModel))
+                .selectionModel(null) // no select
+                .grid;
     }
 
     static class RowEntity {
