@@ -1,6 +1,7 @@
 package biz.freshcode.learn.gwt.client.experiment.grid;
 
 import biz.freshcode.learn.gwt.client.uispike.builder.GridBuilder;
+import biz.freshcode.learn.gwt.client.uispike.builder.container.PopupPanelBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.table.ColumnConfigBuilder;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import com.google.gwt.cell.client.AbstractCell;
@@ -14,6 +15,7 @@ import com.google.gwt.safecss.shared.SafeStylesUtils;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 import com.google.gwt.user.client.ui.HTMLPanel;
+import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.core.client.ToStringValueProvider;
 import com.sencha.gxt.core.client.ValueProvider;
@@ -43,6 +45,10 @@ public class GxtGridDemo extends AbstractIsWidget {
 
     @Override
     protected Widget createWidget() {
+        final PopupPanel popup = new PopupPanelBuilder()
+                .widget(new HTMLPanel("<p>:)</p>"))
+                .popupPanel;
+
         List<ColumnConfig> configs = newListFrom(
                 new ColumnConfigBuilder(new ColumnConfig(new ToStringValueProvider<RowEntity>()))
                         .header("To String")
@@ -75,6 +81,12 @@ public class GxtGridDemo extends AbstractIsWidget {
                                 GWT.log(msg);
 
                                 if (event.getType().equals(MouseOverEvent.getType().getName())) {
+
+                                    if (popup.isShowing()) popup.hide();
+                                    popup.setPopupPosition(parent.getAbsoluteLeft(), parent.getAbsoluteTop());
+                                    popup.show();
+
+
 
 //                                    Causes: AssertionError: A widget that has an existing parent widget may not be added to the detach list
 //                                    HTML html = HTML.wrap(parent);
