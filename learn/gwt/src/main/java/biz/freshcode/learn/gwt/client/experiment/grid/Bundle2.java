@@ -15,5 +15,7 @@ public interface Bundle2 extends ClientBundle {
 
     interface Style extends CssResource {
         String hoverWidgets();
+
+        String debug();
     }
 }
