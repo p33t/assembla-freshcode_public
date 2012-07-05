@@ -1,6 +1,7 @@
 package biz.freshcode.learn.gwt.client.experiment.dnd;
 
 import biz.freshcode.learn.gwt.client.experiment.dnd.dragdata.DragData;
+import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.dnd.core.client.*;
 
@@ -37,7 +38,10 @@ public abstract class DropSupport extends DropTarget {
 
     private void updateAssessment(DragData data, StatusProxy statusProxy) {
         currentAssessment = dropQuery(data);
-        if (currentAssessment.isDroppable()) statusProxy.update(currentAssessment.getDescription());
+        if (currentAssessment.isDroppable()) {
+            statusProxy.update(currentAssessment.getDescription());
+            statusProxy.setStatus(true);
+        }
         else {
             // cannot drop
             // NOTE: setStatus(false) seems to cause a bug when the item is dropped.  The dragOver style is not cleared.
@@ -138,8 +142,16 @@ public abstract class DropSupport extends DropTarget {
             if (!(raw instanceof DragData)) return; // only handling known data
             if (hasExpired(currentAssessment)) {
                 // need to reassess
-                DragData data = (DragData) raw;
-                updateAssessment(data, event.getStatusProxy());
+                final DragData data = (DragData) raw;
+                final StatusProxy statusProxy = event.getStatusProxy();
+                // TODO: Is this deferral necessary?
+                Scheduler.get().scheduleDeferred(new Scheduler.ScheduledCommand() {
+                    @Override
+                    public void execute() {
+                        // TODO: Remember co-ordinate so that don't query too often?
+                        updateAssessment(data, statusProxy);
+                    }
+                });
             }
         }
     }

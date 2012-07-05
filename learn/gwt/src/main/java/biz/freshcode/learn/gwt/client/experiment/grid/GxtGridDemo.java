@@ -120,7 +120,6 @@ public class GxtGridDemo extends AbstractIsWidget {
                 } else {
                     hidePopupIfNecessary();
                     popupCell = null;
-                    GWT.log("popupCell cleared.");
                 }
             }
         });
@@ -155,9 +154,14 @@ public class GxtGridDemo extends AbstractIsWidget {
         }
     });
 
+    {
+        // initializer
+        for (int i = 0; i < 24; i++) store.add(new RowEntity());
+    }
+
     private Cell.Context getCurrentCell() {
-        if (popupCell != null) return popupCell;
-        return lastMouseOverCell;
+        if (lastMouseOverCell != null) return lastMouseOverCell;
+        return popupCell;
     }
 
     @Override
@@ -189,10 +193,11 @@ public class GxtGridDemo extends AbstractIsWidget {
                 GWT.log(event.getType() + " on " + value);
 
                 if (isType(event, MouseOutEvent.getType())) {
-                    // manage 'currenCell'
-                    if (isSameContext(context, lastMouseOverCell)) {
+                    // manage 'currentCell'
+                    if (isCurrentCell(context)) {
                         // exiting current cell
                         lastMouseOverCell = null;
+//                        GWT.log("lastMouseOverCell cleared.");
                     }
 
                     // hide popup if necessary
@@ -209,18 +214,12 @@ public class GxtGridDemo extends AbstractIsWidget {
                         checkPopup();
                     }
 
-//                                    Scheduler.get().scheduleDeferred(new Scheduler.ScheduledCommand() {
-//                                        @Override
-//                                        public void execute() {
-//                                        }
-//                                    });
-
-//                                    Causes: AssertionError: A widget that has an existing parent widget may not be added to the detach list
-//                                    HTML html = HTML.wrap(parent);
+//                    Causes: AssertionError: A widget that has an existing parent widget may not be added to the detach list
+//                    HTML html = HTML.wrap(parent);
                 }
             }
         };
-        for (int i = 0; i < 24; i++) store.add(new RowEntity());
+
         Grid grid = new Grid(store, new ColumnModel(newListFrom(
                 new ColumnConfigBuilder(new ColumnConfig(new ToStringValueProvider<RowEntity>()))
                         .header("To String")
@@ -247,7 +246,6 @@ public class GxtGridDemo extends AbstractIsWidget {
 
             @Override
             protected DropAssessment dropQuery(DragData dd) {
-                // XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX This isn't working properly.  Always getting 'cant drop on same cell'.
                 Cell.Context cc = getCurrentCell();
                 if (cc == null) return new DropAssessment(NOT_RELEVANT);
                 Set<Cell.Context> payload = dd.getPayload(Cell.Context.class);
@@ -255,29 +253,23 @@ public class GxtGridDemo extends AbstractIsWidget {
                 Cell.Context origin = payload.iterator().next();
                 if (isSameContext(cc, origin)) {
                     // same cell
-                    return new DropAssessment("Cannot drop on same cell");
+                    return new DropAssessment("Cannot drop on same cell " + cc.getIndex());
                 } else {
                     // a different cell
                     final String msg = "Transfer from " + origin.getKey() + " to " + cc.getKey();
-                    return new DropAssessment(msg, new Runnable() {
-                        @Override
-                        public void run() {
-                            throw new RuntimeException("run not implemented");
-                        }
-                    });
+                    return new DropAssessment(msg, new CellTransfer(origin, cc));
                 }
             }
 
             @Override
             protected boolean hasExpired(DropAssessment assessment) {
-                GWT.log("Called hasExpired()");
                 if (assessment.isDroppable()) {
                     if (assessment.getRunnable() instanceof CellTransfer) {
                         CellTransfer ct = (CellTransfer) assessment.getRunnable();
-                        return !isSameContext(ct.target, lastMouseOverCell);
+                        return !isCurrentCell(ct.target);
                     } else {
                         // safe fallback
-                        return false;
+                        return true;
                     }
                 } else {
                     // TODO: Cannot reproduce reasons why assessment failed.
@@ -306,11 +298,13 @@ public class GxtGridDemo extends AbstractIsWidget {
                     return;
                 }
                 DragData.setup(event, Cell.Context.class, newSetFrom(origin));
-                disablePopup();
-                checkPopup();
             }
         });
         return grid;
+    }
+
+    private boolean isCurrentCell(Cell.Context cell) {
+        return isSameContext(cell, getCurrentCell());
     }
 
     private class CellTransfer implements Runnable {
@@ -331,7 +325,8 @@ public class GxtGridDemo extends AbstractIsWidget {
     private boolean isSameContext(Cell.Context c1, Cell.Context c2) {
         if (c1 == null) return false;
         if (c2 == null) return false;
-        return c2.getColumn() == c1.getColumn() && lastMouseOverCell.getIndex() == c1.getIndex();
+        return c2.getColumn() == c1.getColumn() &&
+                c2.getIndex() == c1.getIndex();
     }
 
     private boolean isType(NativeEvent event, DomEvent.Type type) {
