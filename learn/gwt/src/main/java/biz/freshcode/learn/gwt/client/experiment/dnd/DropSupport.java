@@ -18,6 +18,7 @@ public abstract class DropSupport extends DropTarget {
         setOverStyle(Bundle.INSTANCE.style().dragOver()); // visual feedback
         addDragEnterHandler(new EnterHandler());
         addDropHandler(new DropHandler());
+        addDragMoveHandler(new MoveHandler());
         addDragLeaveHandler(new LeaveHandler());
     }
 
@@ -25,6 +26,30 @@ public abstract class DropSupport extends DropTarget {
      * Assess whether or not the given OldDragData can be dropped onto the target.
      */
     protected abstract DropAssessment dropQuery(DragData dd);
+
+    /**
+     * Gives subclass an opportunity to invalidate the previous drop assessment.
+     * This is called as the mouse moves.
+     */
+    protected boolean hasExpired(DropAssessment assessment) {
+        return false;
+    }
+
+    private void updateAssessment(DragData data, StatusProxy statusProxy) {
+        currentAssessment = dropQuery(data);
+        if (currentAssessment.isDroppable()) statusProxy.update(currentAssessment.getDescription());
+        else {
+            // cannot drop
+            // NOTE: setStatus(false) seems to cause a bug when the item is dropped.  The dragOver style is not cleared.
+//                    event.getStatusProxy().setStatus(false);
+            // just put 'not allowed' icon up and ignore the 'drop' event
+            statusProxy.setStatus(true, Bundle.INSTANCE.dropNotAllowed());
+            String reason = currentAssessment.getReason();
+            // Use original message if data not handled
+            if (currentAssessment.equals(DropAssessment.NOT_HANDLED)) reason = data.getOriginalMessage();
+            statusProxy.update(reason);
+        }
+    }
 
     /**
      * The result of querying whether or not something can be dropped onto a target.
@@ -80,20 +105,7 @@ public abstract class DropSupport extends DropTarget {
             Object raw = event.getDragSource().getData();
             if (!(raw instanceof DragData)) return; // only handling known data
             DragData data = (DragData) raw;
-            currentAssessment = dropQuery(data);
-            StatusProxy statusProxy = event.getStatusProxy();
-            if (currentAssessment.isDroppable()) statusProxy.update(currentAssessment.getDescription());
-            else {
-                // cannot drop
-                // NOTE: setStatus(false) seems to cause a bug when the item is dropped.  The dragOver style is not cleared.
-//                    event.getStatusProxy().setStatus(false);
-                // just put 'not allowed' icon up and ignore the 'drop' event
-                statusProxy.setStatus(true, Bundle.INSTANCE.dropNotAllowed());
-                String reason = currentAssessment.getReason();
-                // Use original message if data not handled
-                if (currentAssessment.equals(DropAssessment.NOT_HANDLED)) reason = data.getOriginalMessage();
-                statusProxy.update(reason);
-            }
+            updateAssessment(data, event.getStatusProxy());
         }
     }
 
@@ -115,6 +127,19 @@ public abstract class DropSupport extends DropTarget {
                 DragData data = (DragData) raw;
                 // NOTE: Changing status text is permanent for the entire drag operation.
                 data.restoreOriginalMessage(event);
+            }
+        }
+    }
+
+    private class MoveHandler implements DndDragMoveEvent.DndDragMoveHandler {
+        @Override
+        public void onDragMove(DndDragMoveEvent event) {
+            Object raw = event.getDragSource().getData();
+            if (!(raw instanceof DragData)) return; // only handling known data
+            if (hasExpired(currentAssessment)) {
+                // need to reassess
+                DragData data = (DragData) raw;
+                updateAssessment(data, event.getStatusProxy());
             }
         }
     }
