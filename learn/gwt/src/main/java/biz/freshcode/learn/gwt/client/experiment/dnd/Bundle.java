@@ -7,6 +7,7 @@ import com.google.gwt.resources.client.ImageResource;
 
 public interface Bundle extends ClientBundle {
     Bundle INSTANCE = GWT.create(Bundle.class);
+    Style STYLE = INSTANCE.style();
     // Needed
     boolean DOM_MUTATED = INSTANCE.style().ensureInjected();
 
