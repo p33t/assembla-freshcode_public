@@ -19,6 +19,7 @@ public interface Bundle extends ClientBundle {
 
     @Source("dirty.gif")
 // No effect because cannot ImageResource...@ImageResource.ImageOptions(repeatStyle = Horizontal)
+//  NOTE: Used in style.css via gwt-extensions
     DataResource dirtyGif2();
 
     @Source("style.css")
