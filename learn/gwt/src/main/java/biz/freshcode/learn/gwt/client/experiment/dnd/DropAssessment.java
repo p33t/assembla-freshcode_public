@@ -4,7 +4,8 @@ package biz.freshcode.learn.gwt.client.experiment.dnd;
  * Indicates whether or not a given dragged data can be dropped on a widget.
  */
 public final class DropAssessment {
-    public static final DropAssessment NOT_HANDLED = new DropAssessment("Not Handled");
+    public static final String NOT_HANDLED_MSG = "Not Handled";
+    public static final DropAssessment NOT_HANDLED = new DropAssessment(NOT_HANDLED_MSG);
 
     private Runnable runnable;
     private Object description;
