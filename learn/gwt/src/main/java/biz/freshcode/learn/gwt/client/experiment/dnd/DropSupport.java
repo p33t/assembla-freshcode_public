@@ -98,7 +98,6 @@ public abstract class DropSupport extends DropTarget {
                 // need to reassess
                 DragData data = (DragData) raw;
                 StatusProxy statusProxy = event.getStatusProxy();
-                // TODO: Remember co-ordinate so that don't query too often?
                 updateAssessment(data, statusProxy);
             }
         }
