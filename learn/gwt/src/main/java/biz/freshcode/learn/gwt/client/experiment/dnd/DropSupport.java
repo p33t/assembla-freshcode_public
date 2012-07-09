@@ -41,7 +41,7 @@ public abstract class DropSupport extends DropTarget {
     private void updateAssessment(DragData data, StatusProxy statusProxy) {
         currentAssessment = dropQuery(data);
         if (currentAssessment.isDroppable()) {
-            statusProxy.update(currentAssessment.getDescription());
+            statusProxy.update(currentAssessment.getDescriptionString());
             statusProxy.setStatus(true);
         } else {
             // cannot drop
@@ -49,7 +49,7 @@ public abstract class DropSupport extends DropTarget {
 //                    event.getStatusProxy().setStatus(false);
             // just put 'not allowed' icon up and ignore the 'drop' event
             statusProxy.setStatus(true, Bundle.INSTANCE.dropNotAllowed());
-            String reason = currentAssessment.getReason().toString();
+            String reason = currentAssessment.getDescriptionString();
             // Use original message if data not handled
             if (NOT_HANDLED.equals(reason)) reason = data.getOriginalMessage();
             statusProxy.update(reason);

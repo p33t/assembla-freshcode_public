@@ -6,16 +6,15 @@ package biz.freshcode.learn.gwt.client.experiment.dnd;
 public final class DropAssessment {
     public static final DropAssessment NOT_HANDLED = new DropAssessment("Not Handled");
 
-    private String description;
     private Runnable runnable;
-    private Object reason;
+    private Object description;
 
-    public DropAssessment(Object reason) {
-        this.reason = reason;
+    public DropAssessment(Object descriptionOfRejection) {
+        this.description = descriptionOfRejection;
     }
 
-    public DropAssessment(String description, Runnable runnable) {
-        this.description = description;
+    public DropAssessment(Object descriptionOfOperation, Runnable runnable) {
+        this.description = descriptionOfOperation;
         this.runnable = runnable;
     }
 
@@ -34,16 +33,6 @@ public final class DropAssessment {
     }
 
     /**
-     * The reason the data cannot be dropped is supplied via 'toString()' on this result.
-     * This facilitates efficient use of 'DropSupport.hasExpired()' to determine if drop can now be allowed.
-     *
-     * @see DropSupport#isStillAccurate(DropAssessment)
-     */
-    public Object getReason() {
-        return reason;
-    }
-
-    /**
      * The operation to run when the drop is performed.
      */
     public void drop() {
@@ -51,10 +40,16 @@ public final class DropAssessment {
     }
 
     /**
-     * A description of the would-be drop operation.
+     * A description of the would-be drop operation OR a reason for the drop rejection.
+     * 'toString()' is called on this result to show to the user.
+     *
+     * @see DropSupport#isStillAccurate(DropAssessment)
      */
-    public String getDescription() {
+    public Object getDescription() {
         return description;
     }
 
+    public String getDescriptionString() {
+        return description.toString();
+    }
 }
