@@ -10,6 +10,7 @@ import static biz.freshcode.learn.gwt.client.experiment.resources.Bundle.STYLE;
 public class ResourcesDemo extends AbstractIsWidget {
     @Override
     protected Widget createWidget() {
+        final String dirtyGifUrl = Bundle.INSTANCE.dirtyGif().getSafeUri().asString();
         return new VerticalLayoutContainerBuilder()
                 .add(new HTMLPanelBuilder("<p>Style Example</p>")
                         .addStyleName(STYLE.highlight())
@@ -17,6 +18,8 @@ public class ResourcesDemo extends AbstractIsWidget {
                 .add(new HTMLPanelBuilder("<p>Background Image</p>")
                         .addStyleName(STYLE.invalidBgnd())
                         .hTMLPanel)
-                .verticalLayoutContainer;
+                .add(new HTMLPanelBuilder("<p>Image: <img src='" + dirtyGifUrl + "'/> </p>")
+                        .hTMLPanel)
+                        .verticalLayoutContainer;
     }
 }

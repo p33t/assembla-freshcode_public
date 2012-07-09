@@ -3,6 +3,7 @@ package biz.freshcode.learn.gwt.client.experiment.resources;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.CssResource;
+import com.google.gwt.resources.client.DataResource;
 
 public interface Bundle extends ClientBundle {
     Bundle INSTANCE = GWT.create(Bundle.class);
@@ -11,6 +12,9 @@ public interface Bundle extends ClientBundle {
     // Need to make sure style is injected into module
     boolean DOM_MUTATED = INSTANCE.style().ensureInjected();
 
+    @Source("dirty.gif")
+    DataResource dirtyGif();
+
     @Source("style.css")
     Style style();
 
@@ -18,5 +22,7 @@ public interface Bundle extends ClientBundle {
         String highlight();
 
         String invalidBgnd();
+
+        String dirtyBgnd();
     }
 }

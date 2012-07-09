@@ -7,3 +7,7 @@
     /* Looks invalid but is really being resolved from 'webapp' */
     background-image: url('images/invalid_line.gif');
 }
+
+.dirtyBgnd {
+    /*background-image: */
+}
