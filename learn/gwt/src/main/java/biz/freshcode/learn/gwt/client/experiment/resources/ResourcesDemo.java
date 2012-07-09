@@ -30,8 +30,11 @@ public class ResourcesDemo extends AbstractIsWidget {
                         .hTMLPanel)
                 .add(new HTMLPanelBuilder("<p>Image: <img src='" + dirtyGifUri() + "'/> </p>")
                         .hTMLPanel)
-                .add(new HTMLPanelBuilder("<p>Background Image Alternative</p>")
+                .add(new HTMLPanelBuilder("<p>Background Image Alternative 1</p>")
                         .addStyleName(STYLE.dirtyBgnd())
+                        .hTMLPanel)
+                .add(new HTMLPanelBuilder("<p>Background Image Alternative 2</p>")
+                        .addStyleName(STYLE.dirtyBgnd2())
                         .hTMLPanel)
                         .verticalLayoutContainer;
     }
