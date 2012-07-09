@@ -27,19 +27,19 @@ public class ExamWidget extends AbstractIsWidget<SimpleContainer> {
 
         new DropSupport(container) {
             @Override
-            protected DefaultDropAssessment dropQuery(DragData data) {
+            protected DropAssessment dropQuery(DragData data) {
                 if (data.hasPayload(Student.class)) {
                     Set<Student> toAdd = newSetFrom(data.getPayload(Student.class));
                     toAdd.removeAll(exam.getAttendees());
                     if (!toAdd.isEmpty()) {
                         // In reality, just add this to the list of possible actions to take.
-                        return new DefaultDropAssessment("Add " + toAdd.size() + " Student(s)", new AddStudents(toAdd));
+                        return new DropAssessment("Add " + toAdd.size() + " Student(s)", new AddStudents(toAdd));
                     } else if (data.hasExclusivePayload(Student.class)) {
-                        return new DefaultDropAssessment("All students already present");
+                        return new DropAssessment("All students already present");
                     }
                 }
                 // To illustrate this option, drag a course who's members are all already present on an exam
-                return DefaultDropAssessment.NOT_HANDLED;
+                return DropAssessment.NOT_HANDLED;
             }
         };
         return container;
