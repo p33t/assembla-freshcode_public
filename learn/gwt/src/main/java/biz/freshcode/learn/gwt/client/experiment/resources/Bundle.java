@@ -4,6 +4,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.resources.client.DataResource;
+import com.google.gwt.resources.client.ImageResource;
 
 public interface Bundle extends ClientBundle {
     Bundle INSTANCE = GWT.create(Bundle.class);
@@ -13,7 +14,12 @@ public interface Bundle extends ClientBundle {
     boolean DOM_MUTATED = INSTANCE.style().ensureInjected();
 
     @Source("dirty.gif")
-    DataResource dirtyGif();
+//No effect because usage converts to an uri string...@ImageResource.ImageOptions(repeatStyle = Vertical)
+    ImageResource dirtyGif();
+
+    @Source("dirty.gif")
+// No effect because cannot ImageResource...@ImageResource.ImageOptions(repeatStyle = Horizontal)
+    DataResource dirtyGif2();
 
     @Source("style.css")
     Style style();
@@ -24,5 +30,7 @@ public interface Bundle extends ClientBundle {
         String invalidBgnd();
 
         String dirtyBgnd();
+
+        String dirtyBgnd2();
     }
 }

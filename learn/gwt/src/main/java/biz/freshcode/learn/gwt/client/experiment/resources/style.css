@@ -8,8 +8,14 @@
     background-image: url('images/invalid_line.gif');
 }
 
+/* More primitive way.  More general */
 @eval dirtyBgndUrl biz.freshcode.learn.gwt.client.experiment.resources.ResourcesDemo.dirtyGifCssUrl();
-
 .dirtyBgnd {
     background-image: dirtyBgndUrl;
+}
+
+/* Cleaner URL integration */
+@url dirtyBgndUrl2 dirtyGif2;
+.dirtyBgnd2 {
+    background-image: dirtyBgndUrl2;
 }
