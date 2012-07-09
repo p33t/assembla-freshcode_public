@@ -5,15 +5,14 @@ import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.dnd.core.client.*;
 
 import static biz.freshcode.learn.gwt.client.experiment.dnd.Bundle.STYLE;
-import static biz.freshcode.learn.gwt.client.experiment.dnd.DefaultDropAssessment.NOT_HANDLED;
-import static biz.freshcode.learn.gwt.client.experiment.dnd.DropAssessment.NOT_HANDLED_MSG;
+import static biz.freshcode.learn.gwt.client.experiment.dnd.DropAssessment.NOT_HANDLED;
 
 /**
  * Subclass of DropTarget that specifically handles 'DropData'.  Client code must subclass and implement dropQuery().
  *
  * @see #dropQuery(DragData)
  */
-public abstract class DropSupport<T extends DropAssessment> extends DropTarget {
+public abstract class DropSupport<T extends Runnable, R> extends DropTarget {
     private DropAssessment currentAssessment = NOT_HANDLED;
 
     public DropSupport(Widget target) {
@@ -29,20 +28,20 @@ public abstract class DropSupport<T extends DropAssessment> extends DropTarget {
     /**
      * Assess whether or not the given OldDragData can be dropped onto the target.
      */
-    protected abstract T dropQuery(DragData dd);
+    protected abstract DropAssessment<T, R> dropQuery(DragData dd);
 
     /**
      * Gives subclass an opportunity to invalidate the previous drop assessment.
      * This is called as the mouse moves.
      */
-    protected boolean hasExpired(T assessment) {
+    protected boolean hasExpired(DropAssessment<T, R> assessment) {
         return false;
     }
 
     private void updateAssessment(DragData data, StatusProxy statusProxy) {
         currentAssessment = dropQuery(data);
         if (currentAssessment.isDroppable()) {
-            statusProxy.update(currentAssessment.getSummary());
+            statusProxy.update(currentAssessment.getDescription());
             statusProxy.setStatus(true);
         } else {
             // cannot drop
@@ -50,9 +49,9 @@ public abstract class DropSupport<T extends DropAssessment> extends DropTarget {
 //                    event.getStatusProxy().setStatus(false);
             // just put 'not allowed' icon up and ignore the 'drop' event
             statusProxy.setStatus(true, Bundle.INSTANCE.dropNotAllowed());
-            String reason = currentAssessment.getSummary();
+            String reason = currentAssessment.getReason().toString();
             // Use original message if data not handled
-            if (NOT_HANDLED_MSG.equals(reason)) reason = data.getOriginalMessage();
+            if (NOT_HANDLED.equals(reason)) reason = data.getOriginalMessage();
             statusProxy.update(reason);
         }
     }
@@ -94,7 +93,7 @@ public abstract class DropSupport<T extends DropAssessment> extends DropTarget {
         public void onDragMove(DndDragMoveEvent event) {
             Object raw = event.getDragSource().getData();
             if (!(raw instanceof DragData)) return; // only handling known data
-            if (hasExpired((T) currentAssessment)) {
+            if (hasExpired(currentAssessment)) {
                 // need to reassess
                 DragData data = (DragData) raw;
                 StatusProxy statusProxy = event.getStatusProxy();

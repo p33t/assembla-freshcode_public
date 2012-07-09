@@ -1,6 +1,6 @@
 package biz.freshcode.learn.gwt.client.experiment.grid;
 
-import biz.freshcode.learn.gwt.client.experiment.dnd.DefaultDropAssessment;
+import biz.freshcode.learn.gwt.client.experiment.dnd.DropAssessment;
 import biz.freshcode.learn.gwt.client.experiment.dnd.DropSupport;
 import biz.freshcode.learn.gwt.client.experiment.dnd.dragdata.DragData;
 import biz.freshcode.learn.gwt.client.experiment.mouseover.MouseOverState;
@@ -40,7 +40,7 @@ import com.sencha.gxt.widget.core.client.info.Info;
 
 import java.util.Set;
 
-import static biz.freshcode.learn.gwt.client.experiment.dnd.DefaultDropAssessment.NOT_HANDLED;
+import static biz.freshcode.learn.gwt.client.experiment.dnd.DropAssessment.NOT_HANDLED;
 import static biz.freshcode.learn.gwt.client.experiment.grid.Bundle2.STYLE;
 import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newListFrom;
 import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newSetFrom;
@@ -240,31 +240,31 @@ public class GxtGridDemo extends AbstractIsWidget {
         grid.setSelectionModel(null); // no select
 
         // DROP ===========================================
-        final DropSupport<DefaultDropAssessment<CellTransfer>> dropper = new DropSupport<DefaultDropAssessment<CellTransfer>>(grid) {
+        final DropSupport<CellTransfer, String> dropper = new DropSupport<CellTransfer, String>(grid) {
             {
                 // initializer
                 setAllowSelfAsSource(true); // to facilitate cell to cell
             }
 
             @Override
-            protected DefaultDropAssessment<CellTransfer> dropQuery(DragData dd) {
+            protected DropAssessment<CellTransfer, String> dropQuery(DragData dd) {
                 Cell.Context cc = getCurrentCell();
-                if (cc == null) return new DefaultDropAssessment(NOT_RELEVANT);
+                if (cc == null) return new DropAssessment(NOT_RELEVANT);
                 Set<Cell.Context> payload = dd.getPayload(Cell.Context.class);
                 if (payload.isEmpty()) return NOT_HANDLED; // no cell context in payload
                 Cell.Context origin = payload.iterator().next();
                 if (isSameContext(cc, origin)) {
                     // same cell
-                    return new DefaultDropAssessment("Cannot drop on same cell " + cc.getIndex());
+                    return new DropAssessment("Cannot drop on same cell " + cc.getIndex());
                 } else {
                     // a different cell
                     final String msg = "Transfer from " + origin.getKey() + " to " + cc.getKey();
-                    return new DefaultDropAssessment(msg, new CellTransfer(origin, cc));
+                    return new DropAssessment(msg, new CellTransfer(origin, cc));
                 }
             }
 
             @Override
-            protected boolean hasExpired(DefaultDropAssessment<CellTransfer> assessment) {
+            protected boolean hasExpired(DropAssessment<CellTransfer, String> assessment) {
                 if (assessment.isDroppable()) {
                     final Cell.Context target = assessment.getRunnable().target;
                     return !isCurrentCell(target);
