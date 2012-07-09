@@ -14,6 +14,7 @@ public class ResourcesDemo extends AbstractIsWidget {
         return Bundle.INSTANCE.dirtyGif().getSafeUri().asString();
     }
 
+    // NOTE: Used in style.css which uses gwt extensions
     public static String dirtyGifCssUrl() {
         return  "URL('" + dirtyGifUri() + "')";
     }
