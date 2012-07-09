@@ -14,6 +14,9 @@ public class ResourcesDemo extends AbstractIsWidget {
                 .add(new HTMLPanelBuilder("<p>Style Example</p>")
                         .addStyleName(STYLE.highlight())
                         .hTMLPanel)
+                .add(new HTMLPanelBuilder("<p>Background Image</p>")
+                        .addStyleName(STYLE.invalidBgnd())
+                        .hTMLPanel)
                 .verticalLayoutContainer;
     }
 }
