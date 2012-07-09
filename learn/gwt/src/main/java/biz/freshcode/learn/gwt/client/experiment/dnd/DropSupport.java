@@ -12,7 +12,7 @@ import static biz.freshcode.learn.gwt.client.experiment.dnd.DropAssessment.NOT_H
  *
  * @see #dropQuery(DragData)
  */
-public abstract class DropSupport<T extends Runnable, R> extends DropTarget {
+public abstract class DropSupport extends DropTarget {
     private DropAssessment currentAssessment = NOT_HANDLED;
 
     public DropSupport(Widget target) {
@@ -28,14 +28,14 @@ public abstract class DropSupport<T extends Runnable, R> extends DropTarget {
     /**
      * Assess whether or not the given OldDragData can be dropped onto the target.
      */
-    protected abstract DropAssessment<T, R> dropQuery(DragData dd);
+    protected abstract DropAssessment dropQuery(DragData dd);
 
     /**
      * Gives subclass an opportunity to invalidate the previous drop assessment.
      * This is called as the mouse moves.
      */
-    protected boolean hasExpired(DropAssessment<T, R> assessment) {
-        return false;
+    protected boolean isStillAccurate(DropAssessment assessment) {
+        return true;
     }
 
     private void updateAssessment(DragData data, StatusProxy statusProxy) {
@@ -93,7 +93,7 @@ public abstract class DropSupport<T extends Runnable, R> extends DropTarget {
         public void onDragMove(DndDragMoveEvent event) {
             Object raw = event.getDragSource().getData();
             if (!(raw instanceof DragData)) return; // only handling known data
-            if (hasExpired(currentAssessment)) {
+            if (!isStillAccurate(currentAssessment)) {
                 // need to reassess
                 DragData data = (DragData) raw;
                 StatusProxy statusProxy = event.getStatusProxy();

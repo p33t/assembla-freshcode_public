@@ -240,22 +240,24 @@ public class GxtGridDemo extends AbstractIsWidget {
         grid.setSelectionModel(null); // no select
 
         // DROP ===========================================
-        final DropSupport<CellTransfer, String> dropper = new DropSupport<CellTransfer, String>(grid) {
+        final DropSupport dropper = new DropSupport(grid) {
             {
                 // initializer
                 setAllowSelfAsSource(true); // to facilitate cell to cell
             }
 
             @Override
-            protected DropAssessment<CellTransfer, String> dropQuery(DragData dd) {
+            protected DropAssessment dropQuery(DragData dd) {
                 Cell.Context cc = getCurrentCell();
-                if (cc == null) return new DropAssessment(NOT_RELEVANT);
+                if (cc == null) {
+                    return cellDropRejected(null, NOT_RELEVANT);
+                }
                 Set<Cell.Context> payload = dd.getPayload(Cell.Context.class);
                 if (payload.isEmpty()) return NOT_HANDLED; // no cell context in payload
                 Cell.Context origin = payload.iterator().next();
                 if (isSameContext(cc, origin)) {
                     // same cell
-                    return new DropAssessment("Cannot drop on same cell " + cc.getIndex());
+                    return cellDropRejected(cc, "Cannot drop on same cell " + cc.getIndex());
                 } else {
                     // a different cell
                     final String msg = "Transfer from " + origin.getKey() + " to " + cc.getKey();
@@ -264,16 +266,20 @@ public class GxtGridDemo extends AbstractIsWidget {
             }
 
             @Override
-            protected boolean hasExpired(DropAssessment<CellTransfer, String> assessment) {
+            protected boolean isStillAccurate(DropAssessment assessment) {
                 if (assessment.isDroppable()) {
-                    final Cell.Context target = assessment.getRunnable().target;
-                    return !isCurrentCell(target);
-
+                    if (assessment.getRunnable() instanceof CellTransfer) {
+                        CellTransfer ct = (CellTransfer) assessment.getRunnable();
+                        return ct.isStillAccurate();
+                    }
                 } else {
-                    // TODO: Cannot reproduce reasons why assessment failed.
-                    // assume we're hovering over another cell (?!)
-                    return true; // expensive
+                    if (assessment.getReason() instanceof CellDropRejected) {
+                        CellDropRejected r = (CellDropRejected) assessment.getReason();
+                        return r.isStillAccurate();
+                    }
                 }
+                // force reassessment
+                return false;
             }
         };
 
@@ -301,8 +307,32 @@ public class GxtGridDemo extends AbstractIsWidget {
         return grid;
     }
 
+    private DropAssessment cellDropRejected(Cell.Context cc, String msg) {
+        CellDropRejected reason = new CellDropRejected(msg, cc);
+        return new DropAssessment(reason);
+    }
+
     private boolean isCurrentCell(Cell.Context cell) {
         return isSameContext(cell, getCurrentCell());
+    }
+
+    private class CellDropRejected {
+        final String reason;
+        final Cell.Context targetOrNull;
+
+        CellDropRejected(String reason, Cell.Context targetOrNull) {
+            this.reason = reason;
+            this.targetOrNull = targetOrNull;
+        }
+
+        @Override
+        public String toString() {
+            return reason;
+        }
+
+        public boolean isStillAccurate() {
+            return isCurrentCell(targetOrNull);
+        }
     }
 
     private class CellTransfer implements Runnable {
@@ -317,6 +347,10 @@ public class GxtGridDemo extends AbstractIsWidget {
         @Override
         public void run() {
             Info.display("Transfer", "From " + origin.getKey() + " to " + target.getKey());
+        }
+
+        public boolean isStillAccurate() {
+            return isCurrentCell(target);
         }
     }
 
