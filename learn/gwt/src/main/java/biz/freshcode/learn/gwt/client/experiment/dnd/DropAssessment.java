@@ -36,6 +36,7 @@ public final class DropAssessment {
     /**
      * The reason the data cannot be dropped is supplied via 'toString()' on this result.
      * This facilitates efficient use of 'DropSupport.hasExpired()' to determine if drop can now be allowed.
+     *
      * @see DropSupport#isStillAccurate(DropAssessment)
      */
     public Object getReason() {
