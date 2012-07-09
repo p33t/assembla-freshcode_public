@@ -307,8 +307,8 @@ public class GxtGridDemo extends AbstractIsWidget {
         return grid;
     }
 
-    private DropAssessment cellDropRejected(Cell.Context cc, String msg) {
-        CellDropRejected reason = new CellDropRejected(msg, cc);
+    private DropAssessment cellDropRejected(Cell.Context targetOrNull, String msg) {
+        CellDropRejected reason = new CellDropRejected(msg, targetOrNull);
         return new DropAssessment(reason);
     }
 
