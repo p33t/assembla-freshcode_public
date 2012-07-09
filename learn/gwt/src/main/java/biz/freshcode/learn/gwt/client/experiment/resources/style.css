@@ -8,6 +8,8 @@
     background-image: url('images/invalid_line.gif');
 }
 
+@eval dirtyBgndUrl biz.freshcode.learn.gwt.client.experiment.resources.ResourcesDemo.dirtyGifCssUrl();
+
 .dirtyBgnd {
-    /*background-image: */
+    background-image: dirtyBgndUrl;
 }

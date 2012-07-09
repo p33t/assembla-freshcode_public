@@ -8,9 +8,18 @@ import com.google.gwt.user.client.ui.Widget;
 import static biz.freshcode.learn.gwt.client.experiment.resources.Bundle.STYLE;
 
 public class ResourcesDemo extends AbstractIsWidget {
+
+    private static String dirtyGifUri() {
+        // NOTE: Need to serve this up in a method.  Constants aren't resolved yet.
+        return Bundle.INSTANCE.dirtyGif().getSafeUri().asString();
+    }
+
+    public static String dirtyGifCssUrl() {
+        return  "URL('" + dirtyGifUri() + "')";
+    }
+
     @Override
     protected Widget createWidget() {
-        final String dirtyGifUrl = Bundle.INSTANCE.dirtyGif().getSafeUri().asString();
         return new VerticalLayoutContainerBuilder()
                 .add(new HTMLPanelBuilder("<p>Style Example</p>")
                         .addStyleName(STYLE.highlight())
@@ -18,7 +27,10 @@ public class ResourcesDemo extends AbstractIsWidget {
                 .add(new HTMLPanelBuilder("<p>Background Image</p>")
                         .addStyleName(STYLE.invalidBgnd())
                         .hTMLPanel)
-                .add(new HTMLPanelBuilder("<p>Image: <img src='" + dirtyGifUrl + "'/> </p>")
+                .add(new HTMLPanelBuilder("<p>Image: <img src='" + dirtyGifUri() + "'/> </p>")
+                        .hTMLPanel)
+                .add(new HTMLPanelBuilder("<p>Background Image Alternative</p>")
+                        .addStyleName(STYLE.dirtyBgnd())
                         .hTMLPanel)
                         .verticalLayoutContainer;
     }
