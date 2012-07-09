@@ -257,7 +257,7 @@ public class GxtGridDemo extends AbstractIsWidget {
                 Cell.Context origin = payload.iterator().next();
                 if (isSameContext(cc, origin)) {
                     // same cell
-                    return cellDropRejected(cc, "Cannot drop on same cell " + cc.getIndex());
+                    return cellDropRejected(cc, "Cannot drop on same cell " + cc.getKey());
                 } else {
                     // a different cell
                     final String msg = "Transfer from " + origin.getKey() + " to " + cc.getKey();
@@ -267,16 +267,9 @@ public class GxtGridDemo extends AbstractIsWidget {
 
             @Override
             protected boolean isStillAccurate(DropAssessment assessment) {
-                if (assessment.isDroppable()) {
-                    if (assessment.getRunnable() instanceof CellTransfer) {
-                        CellTransfer ct = (CellTransfer) assessment.getRunnable();
-                        return ct.isStillAccurate();
-                    }
-                } else {
-                    if (assessment.getReason() instanceof CellDropRejected) {
-                        CellDropRejected r = (CellDropRejected) assessment.getReason();
-                        return r.isStillAccurate();
-                    }
+                Object desc = assessment.getDescription();
+                if (desc instanceof TargetBased) {
+                    return isCurrentCell(((TargetBased) desc).target);
                 }
                 // force reassessment
                 return false;
@@ -316,28 +309,26 @@ public class GxtGridDemo extends AbstractIsWidget {
         return isSameContext(cell, getCurrentCell());
     }
 
-    private class CellDropRejected {
+    private class CellDropRejected extends TargetBased {
         final String reason;
-        final Cell.Context targetOrNull;
 
         CellDropRejected(String reason, Cell.Context targetOrNull) {
             this.reason = reason;
-            this.targetOrNull = targetOrNull;
+            this.target = targetOrNull;
         }
 
         @Override
         public String toString() {
             return reason;
         }
-
-        public boolean isStillAccurate() {
-            return isCurrentCell(targetOrNull);
-        }
     }
 
-    private class CellTransfer implements Runnable {
+    static class TargetBased {
+        Cell.Context target;
+    }
+
+    private class CellTransfer extends TargetBased implements Runnable {
         final Cell.Context origin;
-        final Cell.Context target;
 
         CellTransfer(Cell.Context origin, Cell.Context target) {
             this.origin = origin;
@@ -347,10 +338,6 @@ public class GxtGridDemo extends AbstractIsWidget {
         @Override
         public void run() {
             Info.display("Transfer", "From " + origin.getKey() + " to " + target.getKey());
-        }
-
-        public boolean isStillAccurate() {
-            return isCurrentCell(target);
         }
     }
 
