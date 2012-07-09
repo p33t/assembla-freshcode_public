@@ -6,6 +6,7 @@ import com.sencha.gxt.dnd.core.client.*;
 
 import static biz.freshcode.learn.gwt.client.experiment.dnd.Bundle.STYLE;
 import static biz.freshcode.learn.gwt.client.experiment.dnd.DropAssessment.NOT_HANDLED;
+import static biz.freshcode.learn.gwt.client.experiment.dnd.DropAssessment.NOT_HANDLED_MSG;
 
 /**
  * Subclass of DropTarget that specifically handles 'DropData'.  Client code must subclass and implement dropQuery().
@@ -51,7 +52,7 @@ public abstract class DropSupport extends DropTarget {
             statusProxy.setStatus(true, Bundle.INSTANCE.dropNotAllowed());
             String reason = currentAssessment.getDescriptionString();
             // Use original message if data not handled
-            if (NOT_HANDLED.equals(reason)) reason = data.getOriginalMessage();
+            if (NOT_HANDLED_MSG.equals(reason)) reason = data.getOriginalMessage();
             statusProxy.update(reason);
         }
     }
