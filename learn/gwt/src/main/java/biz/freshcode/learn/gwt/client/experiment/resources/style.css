@@ -2,3 +2,8 @@
     background-color: #ffe4c4;
     border: #8a2be2 solid medium;
 }
+
+.invalidBgnd {
+    /* Looks invalid but is really being resolved from 'webapp' */
+    background-image: url('images/invalid_line.gif');
+}

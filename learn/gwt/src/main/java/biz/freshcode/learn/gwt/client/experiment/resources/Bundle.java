@@ -16,5 +16,7 @@ public interface Bundle extends ClientBundle {
 
     interface Style extends CssResource {
         String highlight();
+
+        String invalidBgnd();
     }
 }
