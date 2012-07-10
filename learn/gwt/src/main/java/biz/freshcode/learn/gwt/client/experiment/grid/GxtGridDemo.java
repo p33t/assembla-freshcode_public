@@ -31,6 +31,7 @@ import com.sencha.gxt.data.shared.ListStore;
 import com.sencha.gxt.data.shared.ModelKeyProvider;
 import com.sencha.gxt.dnd.core.client.DndDragStartEvent;
 import com.sencha.gxt.dnd.core.client.DragSource;
+import com.sencha.gxt.widget.core.client.button.IconButton;
 import com.sencha.gxt.widget.core.client.button.ToolButton;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
@@ -79,6 +80,12 @@ public class GxtGridDemo extends AbstractIsWidget {
     final PopupPanel popup = new PopupPanelBuilder()
             .widget(new HorizontalLayoutContainerBuilder()
                     .add(new ToolButton(ToolButton.SEARCH, GO_HANDLER))
+                    .add(new ToolButton(new IconButton.IconConfig(STYLE.dirtyBgnd()), new SelectEvent.SelectHandler() {
+                        @Override
+                        public void onSelect(SelectEvent event) {
+                            Info.display("Blah", "Blah x2");
+                        }
+                    }))
                     .add(dragImg = new Image(Bundle2.INSTANCE.drag()))
                     .horizontalLayoutContainer)
             .addStyleName(STYLE.hoverWidgets())

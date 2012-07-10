@@ -6,3 +6,8 @@
 .debug {
     border: 1px red !important;
 }
+
+@url dirtyGif dirtyGif;
+.dirtyBgnd {
+    background-image: dirtyGif;
+}
