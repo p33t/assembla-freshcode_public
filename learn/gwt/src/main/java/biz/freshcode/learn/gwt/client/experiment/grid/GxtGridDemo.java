@@ -81,7 +81,7 @@ public class GxtGridDemo extends AbstractIsWidget {
             .widget(new HorizontalLayoutContainerBuilder()
                     .add(new ToolButton(ToolButton.SEARCH, GO_HANDLER))
                     .add(new ToolButtonBuilder(new ToolButton(
-                            new IconButton.IconConfig(STYLE.dirtyBgnd()), ALT_HANDLER))
+                            new IconButton.IconConfig(STYLE.dirtyBgnd()), new ToggleFlag()))
                             .addStyleName(STYLE.centerBgnd())
                             .toolButton)
                     .add(dragImg = new Image(Bundle2.INSTANCE.drag()))
@@ -178,7 +178,11 @@ public class GxtGridDemo extends AbstractIsWidget {
             public void render(Context context, String value, SafeHtmlBuilder sb) {
                 // Div causes events to echo
 //                                sb.appendHtmlConstant("<div style='color:blue; text-align:center;'>");
+                RowEntity rowEntity = store.get(context.getIndex());
+                String cls = rowEntity.flag? " class='" + STYLE.dirtyCell() + "'": "";
+                sb.appendHtmlConstant("<p" + cls + ">");
                 sb.appendEscaped(value);
+                sb.appendHtmlConstant("</p>");
 //                                sb.appendHtmlConstant("</div>");
             }
 
@@ -357,9 +361,21 @@ public class GxtGridDemo extends AbstractIsWidget {
         return event.getType().equals(type.getName());
     }
 
+    class ToggleFlag implements SelectEvent.SelectHandler {
+        @Override
+        public void onSelect(SelectEvent event) {
+            Cell.Context cc = getCurrentCell();
+            if (cc == null) return;
+            RowEntity rowEntity = store.get(cc.getIndex());
+            rowEntity.flag = !rowEntity.flag;
+            store.update(rowEntity);
+        }
+    }
+
     static class RowEntity {
         static int counter = 1;
         final int id = counter++;
+        boolean flag = false;
 
         @Override
         public String toString() {
