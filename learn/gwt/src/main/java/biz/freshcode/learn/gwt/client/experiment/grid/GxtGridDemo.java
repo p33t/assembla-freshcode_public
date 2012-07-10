@@ -81,7 +81,7 @@ public class GxtGridDemo extends AbstractIsWidget {
             .widget(new HorizontalLayoutContainerBuilder()
                     .add(new ToolButton(ToolButton.SEARCH, GO_HANDLER))
                     .add(new ToolButtonBuilder(new ToolButton(
-                            new IconButton.IconConfig(STYLE.dirtyBgnd()), new ToggleFlag()))
+                            new IconButton.IconConfig(STYLE.dirtyFlag()), new ToggleFlag()))
                             .addStyleName(STYLE.centerBgnd())
                             .toolButton)
                     .add(dragImg = new Image(Bundle2.INSTANCE.drag()))
@@ -179,7 +179,7 @@ public class GxtGridDemo extends AbstractIsWidget {
                 // Div causes events to echo
 //                                sb.appendHtmlConstant("<div style='color:blue; text-align:center;'>");
                 RowEntity rowEntity = store.get(context.getIndex());
-                String cls = rowEntity.flag? " class='" + STYLE.dirtyCell() + "'": "";
+                String cls = rowEntity.flag? " class='" + STYLE.dirtyFlag() + "'": "";
                 sb.appendHtmlConstant("<p" + cls + ">");
                 sb.appendEscaped(value);
                 sb.appendHtmlConstant("</p>");

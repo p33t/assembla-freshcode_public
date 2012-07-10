@@ -8,16 +8,13 @@
 }
 
 @url dirtyGif dirtyGif;
-.dirtyBgnd {
-    background-image: dirtyGif;
-}
 
 .centerBgnd {
     background-position: center;
 }
 
-.dirtyCell {
+.dirtyFlag {
     background-image: dirtyGif;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; /* Needed by cells and, for IE tool buttons */
     /*Breaks the effect when applied to a <p>... background-attachment: fixed;*/
 }
