@@ -80,10 +80,8 @@ public class GxtGridDemo extends AbstractIsWidget {
     final PopupPanel popup = new PopupPanelBuilder()
             .widget(new HorizontalLayoutContainerBuilder()
                     .add(new ToolButton(ToolButton.SEARCH, GO_HANDLER))
-                    .add(new ToolButtonBuilder(new ToolButton(
-                            new IconButton.IconConfig(STYLE.dirtyFlag()), new ToggleFlag()))
-                            .addStyleName(STYLE.centerBgnd())
-                            .toolButton)
+                    .add(toggleButton(STYLE.redOnlyBnd(), FlagEnum.RED))
+                    .add(toggleButton(STYLE.greenOnlyBgnd(), FlagEnum.GREEN))
                     .add(dragImg = new Image(Bundle2.INSTANCE.drag()))
                     .horizontalLayoutContainer)
             .addStyleName(STYLE.hoverWidgets())
@@ -179,7 +177,18 @@ public class GxtGridDemo extends AbstractIsWidget {
                 // Div causes events to echo
 //                                sb.appendHtmlConstant("<div style='color:blue; text-align:center;'>");
                 RowEntity rowEntity = store.get(context.getIndex());
-                String cls = rowEntity.flag? " class='" + STYLE.dirtyFlag() + "'": "";
+                String cls;
+                boolean isRed = FlagEnum.RED.isSet(rowEntity.flags);
+                boolean isGreen = FlagEnum.GREEN.isSet(rowEntity.flags);
+                if (isRed) {
+                    if (isGreen) cls = STYLE.redGreenBgnd();
+                    else cls = STYLE.redOnlyBnd();
+                }
+                else {
+                    if (isGreen) cls = STYLE.greenOnlyBgnd();
+                    else cls = "";
+                }
+                if (!cls.isEmpty()) cls = " class='" + cls + "'";
                 sb.appendHtmlConstant("<p" + cls + ">");
                 sb.appendEscaped(value);
                 sb.appendHtmlConstant("</p>");
@@ -309,6 +318,13 @@ public class GxtGridDemo extends AbstractIsWidget {
         return grid;
     }
 
+    private ToolButton toggleButton(String icon, FlagEnum flag) {
+        return new ToolButtonBuilder(new ToolButton(
+                new IconButton.IconConfig(icon), new ToggleFlag(flag)))
+                .addStyleName(STYLE.centerBgnd())
+                .toolButton;
+    }
+
     private DropAssessment cellDropRejected(Cell.Context targetOrNull, String msg) {
         CellDropRejected reason = new CellDropRejected(msg, targetOrNull);
         return new DropAssessment(reason);
@@ -362,20 +378,40 @@ public class GxtGridDemo extends AbstractIsWidget {
     }
 
     class ToggleFlag implements SelectEvent.SelectHandler {
+        final FlagEnum key;
+
+        public ToggleFlag(FlagEnum key) {
+            this.key = key;
+        }
+
         @Override
         public void onSelect(SelectEvent event) {
             Cell.Context cc = getCurrentCell();
             if (cc == null) return;
             RowEntity rowEntity = store.get(cc.getIndex());
-            rowEntity.flag = !rowEntity.flag;
+            rowEntity.flags ^= key.mask;
             store.update(rowEntity);
+        }
+    }
+
+    enum FlagEnum {
+        RED(1), GREEN(2);
+
+        final int mask;
+
+        private FlagEnum(int mask) {
+            this.mask = mask;
+        }
+
+        boolean isSet(int flags) {
+            return (flags & mask) > 0;
         }
     }
 
     static class RowEntity {
         static int counter = 1;
         final int id = counter++;
-        boolean flag = false;
+        int flags = 0;
 
         @Override
         public String toString() {

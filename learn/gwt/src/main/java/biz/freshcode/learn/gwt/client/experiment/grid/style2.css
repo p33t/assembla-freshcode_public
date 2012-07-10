@@ -7,13 +7,27 @@
     border: 1px red !important;
 }
 
+.centerBgnd {
+    background-position: center;
+}
+
 @url dirtyGif dirtyGif;
-.dirtyFlag {
+@url greenSashGif greenSashGif;
+
+.redGreenBgnd {
+    background-image: dirtyGif, greenSashGif;
+    background-repeat: no-repeat; /* Needed by cells and, for IE tool buttons */
+    /*Breaks the effect when applied to a <p>... background-attachment: fixed;*/
+}
+
+.redOnlyBnd {
     background-image: dirtyGif;
     background-repeat: no-repeat; /* Needed by cells and, for IE tool buttons */
     /*Breaks the effect when applied to a <p>... background-attachment: fixed;*/
 }
 
-.centerBgnd {
-    background-position: center;
+.greenOnlyBgnd {
+    background-image: greenSashGif;
+    background-repeat: no-repeat; /* Needed by cells and, for IE tool buttons */
+    /*Breaks the effect when applied to a <p>... background-attachment: fixed;*/
 }
