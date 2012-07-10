@@ -27,10 +27,8 @@ public interface Bundle2 extends ClientBundle {
 
         String debug();
 
-        String dirtyBgnd();
-
         String centerBgnd();
 
-        String dirtyCell();
+        String dirtyFlag();
     }
 }
