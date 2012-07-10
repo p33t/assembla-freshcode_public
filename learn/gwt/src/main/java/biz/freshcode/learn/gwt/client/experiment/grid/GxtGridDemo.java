@@ -3,29 +3,18 @@ package biz.freshcode.learn.gwt.client.experiment.grid;
 import biz.freshcode.learn.gwt.client.experiment.dnd.DropAssessment;
 import biz.freshcode.learn.gwt.client.experiment.dnd.DropSupport;
 import biz.freshcode.learn.gwt.client.experiment.dnd.dragdata.DragData;
-import biz.freshcode.learn.gwt.client.experiment.mouseover.MouseOverState;
 import biz.freshcode.learn.gwt.client.uispike.builder.ToolButtonBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.container.HorizontalLayoutContainerBuilder;
-import biz.freshcode.learn.gwt.client.uispike.builder.container.PopupPanelBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.table.ColumnConfigBuilder;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import biz.freshcode.learn.gwt.client.util.DummySelectHandler;
-import com.google.gwt.cell.client.AbstractCell;
 import com.google.gwt.cell.client.Cell;
-import com.google.gwt.cell.client.ValueUpdater;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.core.client.Scheduler;
-import com.google.gwt.dom.client.Element;
-import com.google.gwt.dom.client.NativeEvent;
-import com.google.gwt.event.dom.client.DomEvent;
-import com.google.gwt.event.dom.client.MouseOutEvent;
-import com.google.gwt.event.dom.client.MouseOverEvent;
 import com.google.gwt.safecss.shared.SafeStylesUtils;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Image;
-import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.core.client.ToStringValueProvider;
 import com.sencha.gxt.core.client.ValueProvider;
@@ -45,18 +34,15 @@ import java.util.Set;
 
 import static biz.freshcode.learn.gwt.client.experiment.dnd.DropAssessment.NOT_HANDLED;
 import static biz.freshcode.learn.gwt.client.experiment.grid.Bundle2.STYLE;
+import static biz.freshcode.learn.gwt.client.experiment.grid.PopOverCell.isSameContext;
 import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newListFrom;
 import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newSetFrom;
 
 /**
- * It seems we cannot achieve widget effects for a cell like drag-drop and mouse-over buttons.
- * Tapping into Dom native events is difficult and probably not that portable.
+ * Hover widgets, background images for cells, cell-to-cell drag-drop.
  */
 public class GxtGridDemo extends AbstractIsWidget {
     private static final SelectEvent.SelectHandler GO_HANDLER = new DummySelectHandler("Go pushed");
-    private static final SelectEvent.SelectHandler ALT_HANDLER = new DummySelectHandler("Alt pushed");
-
-    private static final String NOT_RELEVANT = "Not a relevant cell";
     private static final ValueProvider DOTS_PROVIDER = new ValueProvider<RowEntity, String>() {
         @Override
         public String getValue(RowEntity object) {
@@ -76,175 +62,29 @@ public class GxtGridDemo extends AbstractIsWidget {
         }
     };
 
-    final Image dragImg;
-    final PopupPanel popup = new PopupPanelBuilder()
-            .widget(new HorizontalLayoutContainerBuilder()
-                    .add(new ToolButton(ToolButton.SEARCH, GO_HANDLER))
-                    .add(toggleButton(STYLE.redOnlyBnd(), FlagEnum.RED))
-                    .add(toggleButton(STYLE.greenOnlyBgnd(), FlagEnum.GREEN))
-                    .add(dragImg = new Image(Bundle2.INSTANCE.drag()))
-                    .horizontalLayoutContainer)
-            .addStyleName(STYLE.hoverWidgets())
-            .popupPanel;
-
-    MouseOverState mosPopup = new MouseOverState(popup, new MouseOverState.Callback() {
-        @Override
-        public void stateChange(MouseOverState mos) {
-            checkPopup();
-        }
-    });
-
-    int[] popupCoord = null;
-    Cell.Context lastMouseOverCell = null;
-    Cell.Context popupCell = null;
-    private MouseOverState mosGrid;
-
-    private void hidePopupIfNecessary() {
-        if (popup.isShowing()) popup.hide();
-    }
-
-    private void checkPopup() {
-        Scheduler.get().scheduleDeferred(new Scheduler.ScheduledCommand() {
-            @Override
-            public void execute() {
-//  Seems solid...    GWT.log("Mouse is" + (mosPopup.isOver() ? "" : " NOT") + " over the popup.");
-                if (mosPopup.isOver()) {
-                    // nothing
-                } else if (popupEnabled()) {
-                    int left = popupLeft();
-                    int top = popupTop();
-                    if (popup.getPopupLeft() == left && popup.getPopupTop() == top) {
-                        // location is accurate
-                        if (!popup.isShowing()) popup.show();
-                    } else {
-                        // different location
-                        hidePopupIfNecessary();
-                        popup.setPopupPosition(left, top);
-                        popup.show();
-                    }
-                } else {
-                    hidePopupIfNecessary();
-                    popupCell = null;
-                }
-            }
-        });
-    }
-
-    private int popupTop() {
-        return popupCoord[1];
-    }
-
-    private int popupLeft() {
-        return popupCoord[0];
-    }
-
-    void enablePopup(int left, int top, Cell.Context cell) {
-        popupCoord = new int[]{left, top};
-        popupCell = cell;
-    }
-
-    void disablePopup() {
-        popupCoord = null;
-        // NOTE: Don't clear popupCell here.  It is still needed.
-    }
-
-    private boolean popupEnabled() {
-        return popupCoord != null;
-    }
-
     private ListStore<RowEntity> store = new ListStore<RowEntity>(new ModelKeyProvider<RowEntity>() {
         @Override
         public String getKey(RowEntity item) {
             return "" + item.id;
         }
     });
+    private Image dragImg;
+    private MegaPopOverCell megaCell;
+    private Grid grid;
+    private DropSupport dropper;
 
-    {
-        // initializer
+    public GxtGridDemo() {
         for (int i = 0; i < 24; i++) store.add(new RowEntity());
-    }
-
-    private Cell.Context getCurrentCell() {
-        if (lastMouseOverCell != null) return lastMouseOverCell;
-        return popupCell;
+        dragImg = new Image(Bundle2.INSTANCE.drag());
     }
 
     @Override
     protected Widget createWidget() {
-        final AbstractCell<String> mega = new AbstractCell<String>() {
-            @Override
-            public void render(Context context, String value, SafeHtmlBuilder sb) {
-                // Div causes events to echo
-//                                sb.appendHtmlConstant("<div style='color:blue; text-align:center;'>");
-                RowEntity rowEntity = store.get(context.getIndex());
-                String cls;
-                boolean isRed = FlagEnum.RED.isSet(rowEntity.flags);
-                boolean isGreen = FlagEnum.GREEN.isSet(rowEntity.flags);
-                if (isRed) {
-                    if (isGreen) cls = STYLE.redGreenBgnd();
-                    else cls = STYLE.redOnlyBnd();
-                }
-                else {
-                    if (isGreen) cls = STYLE.greenOnlyBgnd();
-                    else cls = "";
-                }
-                if (!cls.isEmpty()) cls = " class='" + cls + "'";
-                sb.appendHtmlConstant("<p" + cls + ">");
-                sb.appendEscaped(value);
-                sb.appendHtmlConstant("</p>");
-//                                sb.appendHtmlConstant("</div>");
-            }
-
-            @Override
-            public Set<String> getConsumedEvents() {
-                return newSetFrom(
-                        MouseOutEvent.getType().getName(),
-                        MouseOverEvent.getType().getName()
-
-                        // Not received... might need more plumbing
-//                                        DragStartEvent.getType().getName(),
-//                                        DragOverEvent.getType().getName(),
-//                                        DragEndEvent.getType().getName()
-                );
-            }
-
-            @Override
-            public void onBrowserEvent(final Context context, final Element parent, String value, NativeEvent event, ValueUpdater<String> stringValueUpdater) {
-                GWT.log(event.getType() + " on " + value);
-
-                if (isType(event, MouseOutEvent.getType())) {
-                    // manage 'currentCell'
-                    if (isCurrentCell(context)) {
-                        // exiting current cell
-                        lastMouseOverCell = null;
-//                        GWT.log("lastMouseOverCell cleared.");
-                    }
-
-                    // hide popup if necessary
-                    disablePopup();
-                    checkPopup();
-
-                } else if (isType(event, MouseOverEvent.getType())) {
-                    // track current cell
-                    lastMouseOverCell = context;
-
-                    // show the popup
-                    if (!mosGrid.isDraggingOver()) {
-                        enablePopup(parent.getAbsoluteLeft(), parent.getAbsoluteTop(), context);
-                        checkPopup();
-                    }
-
-//                    Causes: AssertionError: A widget that has an existing parent widget may not be added to the detach list
-//                    HTML html = HTML.wrap(parent);
-                }
-            }
-        };
-
-        Grid grid = new Grid(store, new ColumnModel(newListFrom(
-                new ColumnConfigBuilder(new ColumnConfig(new ToStringValueProvider<RowEntity>()))
+        ColumnConfig megaCol;
+        grid = new Grid(store, new ColumnModel(newListFrom(
+                new ColumnConfigBuilder(megaCol = new ColumnConfig(new ToStringValueProvider<RowEntity>()))
                         .header("To String")
                         .columnTextStyle(SafeStylesUtils.fromTrustedString("color:blue; text-align:center;"))
-                        .cell(mega)
                         .columnConfig,
                 new ColumnConfigBuilder(new ColumnConfig(DOTS_PROVIDER))
                         .header("Dots")
@@ -256,63 +96,17 @@ public class GxtGridDemo extends AbstractIsWidget {
                         .columnConfig
         )));
         grid.setSelectionModel(null); // no select
-
-        // DROP ===========================================
-        final DropSupport dropper = new DropSupport(grid) {
-            {
-                // initializer
-                setAllowSelfAsSource(true); // to facilitate cell to cell
-            }
-
-            @Override
-            protected DropAssessment dropQuery(DragData dd) {
-                Cell.Context cc = getCurrentCell();
-                if (cc == null) {
-                    return cellDropRejected(null, NOT_RELEVANT);
-                }
-                Set<Cell.Context> payload = dd.getPayload(Cell.Context.class);
-                if (payload.isEmpty()) return NOT_HANDLED; // no cell context in payload
-                Cell.Context origin = payload.iterator().next();
-                if (isSameContext(cc, origin)) {
-                    // same cell
-                    return cellDropRejected(cc, "Cannot drop on same cell " + cc.getKey());
-                } else {
-                    // a different cell
-                    final String msg = "Transfer from " + origin.getKey() + " to " + cc.getKey();
-                    return new DropAssessment(msg, new CellTransfer(origin, cc));
-                }
-            }
-
-            @Override
-            protected boolean isStillAccurate(DropAssessment assessment) {
-                Object desc = assessment.getDescription();
-                if (desc instanceof TargetBased) {
-                    return isCurrentCell(((TargetBased) desc).target);
-                }
-                // force reassessment
-                return false;
-            }
-        };
-
-        mosGrid = new MouseOverState(dropper, new MouseOverState.Callback() {
-            @Override
-            public void stateChange(MouseOverState mos) {
-                if (mos.isDraggingOver()) disablePopup();
-                checkPopup();
-            }
-        });
-
-        // DRAG ===========================================
+        // This must come after grid is initialized
+        dropper = new Dropper();
+        // MegaCell must construct after dropper and dragImg
+        megaCol.setCell(megaCell = new MegaPopOverCell());
         new DragSource(dragImg).addDragStartHandler(new DndDragStartEvent.DndDragStartHandler() {
             @Override
             public void onDragStart(DndDragStartEvent event) {
                 // Note that hover widgets are not shown when dragging.
-                Cell.Context origin = getCurrentCell();
-                if (origin == null) {
-                    GWT.log("Nothing to drag.");
-                    return;
-                }
-                DragData.setup(event, Cell.Context.class, newSetFrom(origin));
+                Cell.Context origin = megaCell.getCurrentCell();
+                if (origin == null) GWT.log("Nothing to drag.");
+                else DragData.setup(event, Cell.Context.class, newSetFrom(origin));
             }
         });
         return grid;
@@ -325,13 +119,18 @@ public class GxtGridDemo extends AbstractIsWidget {
                 .toolButton;
     }
 
-    private DropAssessment cellDropRejected(Cell.Context targetOrNull, String msg) {
-        CellDropRejected reason = new CellDropRejected(msg, targetOrNull);
-        return new DropAssessment(reason);
-    }
+    enum FlagEnum {
+        RED(1), GREEN(2);
 
-    private boolean isCurrentCell(Cell.Context cell) {
-        return isSameContext(cell, getCurrentCell());
+        final int mask;
+
+        private FlagEnum(int mask) {
+            this.mask = mask;
+        }
+
+        boolean isSet(int flags) {
+            return (flags & mask) > 0;
+        }
     }
 
     private class CellDropRejected extends TargetBased {
@@ -352,7 +151,7 @@ public class GxtGridDemo extends AbstractIsWidget {
         Cell.Context target;
     }
 
-    private class CellTransfer extends TargetBased implements Runnable {
+    static class CellTransfer extends TargetBased implements Runnable {
         final Cell.Context origin;
 
         CellTransfer(Cell.Context origin, Cell.Context target) {
@@ -366,17 +165,6 @@ public class GxtGridDemo extends AbstractIsWidget {
         }
     }
 
-    private boolean isSameContext(Cell.Context c1, Cell.Context c2) {
-        if (c1 == null) return false;
-        if (c2 == null) return false;
-        return c2.getColumn() == c1.getColumn() &&
-                c2.getIndex() == c1.getIndex();
-    }
-
-    private boolean isType(NativeEvent event, DomEvent.Type type) {
-        return event.getType().equals(type.getName());
-    }
-
     class ToggleFlag implements SelectEvent.SelectHandler {
         final FlagEnum key;
 
@@ -386,25 +174,11 @@ public class GxtGridDemo extends AbstractIsWidget {
 
         @Override
         public void onSelect(SelectEvent event) {
-            Cell.Context cc = getCurrentCell();
+            Cell.Context cc = megaCell.getCurrentCell();
             if (cc == null) return;
             RowEntity rowEntity = store.get(cc.getIndex());
             rowEntity.flags ^= key.mask;
             store.update(rowEntity);
-        }
-    }
-
-    enum FlagEnum {
-        RED(1), GREEN(2);
-
-        final int mask;
-
-        private FlagEnum(int mask) {
-            this.mask = mask;
-        }
-
-        boolean isSet(int flags) {
-            return (flags & mask) > 0;
         }
     }
 
@@ -416,6 +190,77 @@ public class GxtGridDemo extends AbstractIsWidget {
         @Override
         public String toString() {
             return "#" + id;
+        }
+    }
+
+    private class MegaPopOverCell extends PopOverCell<String> {
+        public MegaPopOverCell() {
+            super(dropper, new HorizontalLayoutContainerBuilder()
+                    .add(new ToolButton(ToolButton.SEARCH, GO_HANDLER))
+                    .add(toggleButton(STYLE.redOnlyBnd(), FlagEnum.RED))
+                    .add(toggleButton(STYLE.greenOnlyBgnd(), FlagEnum.GREEN))
+                    .add(dragImg)
+                    .horizontalLayoutContainer);
+        }
+
+        @Override
+        public void render(Context context, String value, SafeHtmlBuilder sb) {
+            // Div causes events to echo...sb.appendHtmlConstant("<div style='color:blue; text-align:center;'>");
+            RowEntity rowEntity = store.get(context.getIndex());
+            String cls;
+            boolean isRed = FlagEnum.RED.isSet(rowEntity.flags);
+            boolean isGreen = FlagEnum.GREEN.isSet(rowEntity.flags);
+            if (isRed) {
+                if (isGreen) cls = STYLE.redGreenBgnd();
+                else cls = STYLE.redOnlyBnd();
+            } else {
+                if (isGreen) cls = STYLE.greenOnlyBgnd();
+                else cls = "";
+            }
+            if (!cls.isEmpty()) cls = " class='" + cls + "'";
+            sb.appendHtmlConstant("<p" + cls + ">");
+            sb.appendEscaped(value);
+            sb.appendHtmlConstant("</p>");
+        }
+    }
+
+    private class Dropper extends DropSupport {
+        public Dropper() {
+            super(grid);
+            setAllowSelfAsSource(true); // to facilitate cell to cell
+        }
+
+        @Override
+        protected DropAssessment dropQuery(DragData dd) {
+            Cell.Context cc = megaCell.getCurrentCell();
+            if (cc == null) {
+                return cellDropRejected(null, "Not a relevant cell");
+            }
+            Set<Cell.Context> payload = dd.getPayload(Cell.Context.class);
+            if (payload.isEmpty()) return NOT_HANDLED; // no cell context in payload
+            Cell.Context origin = payload.iterator().next();
+            if (isSameContext(cc, origin)) {
+                return cellDropRejected(cc, "Cannot drop on same cell " + cc.getKey());
+            } else {
+                final String msg = "Transfer from " + origin.getKey() + " to " + cc.getKey();
+                return new DropAssessment(msg, new CellTransfer(origin, cc));
+            }
+        }
+
+        private DropAssessment cellDropRejected(Cell.Context targetOrNull, String msg) {
+            CellDropRejected reason = new CellDropRejected(msg, targetOrNull);
+            return new DropAssessment(reason);
+        }
+
+        @Override
+        protected boolean isStillAccurate(DropAssessment assessment) {
+            Object desc = assessment.getDescription();
+            if (desc instanceof TargetBased) {
+                Cell.Context target = ((TargetBased) desc).target;
+                return megaCell.isCurrentCell(target);
+            }
+            // force reassessment
+            return false;
         }
     }
 }
