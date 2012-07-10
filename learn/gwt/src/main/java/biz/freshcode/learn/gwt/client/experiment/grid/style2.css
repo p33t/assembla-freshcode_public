@@ -15,3 +15,9 @@
 .centerBgnd {
     background-position: center;
 }
+
+.dirtyCell {
+    background-image: dirtyGif;
+    background-repeat: no-repeat;
+    /*Breaks the effect when applied to a <p>... background-attachment: fixed;*/
+}

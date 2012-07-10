@@ -30,5 +30,7 @@ public interface Bundle2 extends ClientBundle {
         String dirtyBgnd();
 
         String centerBgnd();
+
+        String dirtyCell();
     }
 }
