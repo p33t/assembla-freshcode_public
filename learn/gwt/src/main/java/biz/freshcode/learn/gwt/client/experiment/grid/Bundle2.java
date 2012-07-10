@@ -19,6 +19,9 @@ public interface Bundle2 extends ClientBundle {
     @Source("dirty.gif")
     DataResource dirtyGif();
 
+    @Source("green-sash.gif")
+    DataResource greenSashGif();
+
     @Source("style2.css")
     Style style();
 
@@ -29,6 +32,10 @@ public interface Bundle2 extends ClientBundle {
 
         String centerBgnd();
 
-        String dirtyFlag();
+        String redGreenBgnd();
+
+        String redOnlyBnd();
+
+        String greenOnlyBgnd();
     }
 }
