@@ -4,10 +4,12 @@ import biz.freshcode.learn.gwt.client.experiment.dnd.DropAssessment;
 import biz.freshcode.learn.gwt.client.experiment.dnd.DropSupport;
 import biz.freshcode.learn.gwt.client.experiment.dnd.dragdata.DragData;
 import biz.freshcode.learn.gwt.client.experiment.mouseover.MouseOverState;
+import biz.freshcode.learn.gwt.client.uispike.builder.ToolButtonBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.container.HorizontalLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.container.PopupPanelBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.table.ColumnConfigBuilder;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
+import biz.freshcode.learn.gwt.client.util.DummySelectHandler;
 import com.google.gwt.cell.client.AbstractCell;
 import com.google.gwt.cell.client.Cell;
 import com.google.gwt.cell.client.ValueUpdater;
@@ -51,11 +53,9 @@ import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newSetFrom;
  * Tapping into Dom native events is difficult and probably not that portable.
  */
 public class GxtGridDemo extends AbstractIsWidget {
-    private static final SelectEvent.SelectHandler GO_HANDLER = new SelectEvent.SelectHandler() {
-        public void onSelect(SelectEvent event) {
-            Info.display("Event", "Go pushed");
-        }
-    };
+    private static final SelectEvent.SelectHandler GO_HANDLER = new DummySelectHandler("Go pushed");
+    private static final SelectEvent.SelectHandler ALT_HANDLER = new DummySelectHandler("Alt pushed");
+
     private static final String NOT_RELEVANT = "Not a relevant cell";
     private static final ValueProvider DOTS_PROVIDER = new ValueProvider<RowEntity, String>() {
         @Override
@@ -80,12 +80,10 @@ public class GxtGridDemo extends AbstractIsWidget {
     final PopupPanel popup = new PopupPanelBuilder()
             .widget(new HorizontalLayoutContainerBuilder()
                     .add(new ToolButton(ToolButton.SEARCH, GO_HANDLER))
-                    .add(new ToolButton(new IconButton.IconConfig(STYLE.dirtyBgnd()), new SelectEvent.SelectHandler() {
-                        @Override
-                        public void onSelect(SelectEvent event) {
-                            Info.display("Blah", "Blah x2");
-                        }
-                    }))
+                    .add(new ToolButtonBuilder(new ToolButton(
+                            new IconButton.IconConfig(STYLE.dirtyBgnd()), ALT_HANDLER))
+                            .addStyleName(STYLE.centerBgnd())
+                            .toolButton)
                     .add(dragImg = new Image(Bundle2.INSTANCE.drag()))
                     .horizontalLayoutContainer)
             .addStyleName(STYLE.hoverWidgets())
