@@ -33,4 +33,8 @@ public class AppCollectionUtil {
     public static <K,V> Map<K, V> newMap() {
         return new HashMap<K, V>();
     }
+
+    public static <T> T firstElem(Iterable<T> es) {
+        return es.iterator().next();
+    }
 }
