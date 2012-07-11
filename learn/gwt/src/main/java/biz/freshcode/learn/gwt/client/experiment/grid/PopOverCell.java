@@ -52,10 +52,10 @@ public abstract class PopOverCell<T> extends AbstractCell<T> {
     }
 
     public static boolean isSameContext(Context c1, Context c2) {
-        if (c1 == null) return false;
-        if (c2 == null) return false;
-        return c2.getColumn() == c1.getColumn() &&
-                c2.getIndex() == c1.getIndex();
+        return c1 != null &&
+                c2 != null &&
+                c1.getColumn() == c2.getColumn() &&
+                c1.getIndex() == c2.getIndex();
     }
 
     @Override
