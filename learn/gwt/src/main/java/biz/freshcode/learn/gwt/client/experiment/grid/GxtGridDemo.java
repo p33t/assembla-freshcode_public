@@ -234,6 +234,7 @@ public class GxtGridDemo extends AbstractIsWidget {
         protected DropAssessment dropQuery(DragData dd) {
             Cell.Context cc = megaCell.getCurrentCell();
             if (cc == null) {
+                //noinspection NullableProblems
                 return cellDropRejected(null, "Not a relevant cell");
             }
             Set<Cell.Context> payload = dd.getPayload(Cell.Context.class);
