@@ -38,6 +38,8 @@ import java.util.Set;
 
 import static biz.freshcode.learn.gwt.client.experiment.dnd.DropAssessment.NOT_HANDLED;
 import static biz.freshcode.learn.gwt.client.experiment.grid.Bundle2.STYLE;
+import static biz.freshcode.learn.gwt.client.experiment.grid.RowEntity.Flag.GREEN;
+import static biz.freshcode.learn.gwt.client.experiment.grid.RowEntity.Flag.RED;
 import static biz.freshcode.learn.gwt.client.experiment.grid.reuse.PopOverCell.isSameContext;
 import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.*;
 
@@ -119,8 +121,8 @@ public class GxtGridDemo extends AbstractIsWidget {
             Widget dragImg;
             new HorizontalLayoutContainerBuilder(hoverWidget)
                     .add(new ToolButton(ToolButton.SEARCH, new DummySelectHandler("Go pushed")))
-                    .add(toggleButton(STYLE.redOnlyBnd(), RowEntity.Flag.RED))
-                    .add(toggleButton(STYLE.greenOnlyBgnd(), RowEntity.Flag.GREEN))
+                    .add(toggleButton(STYLE.redOnlyBnd(), RED))
+                    .add(toggleButton(STYLE.greenOnlyBgnd(), GREEN))
                     .add(dragImg = new Image(Bundle2.INSTANCE.drag()));
 
             // DRAGGING ====================================================================
@@ -128,7 +130,7 @@ public class GxtGridDemo extends AbstractIsWidget {
                 @Override
                 public void onDragStart(DndDragStartEvent event) {
                     // Note that hover widgets are not shown when dragging.
-                    Cell.Context origin = megaCell.getCurrentCell();
+                    Cell.Context origin = getCurrentCell();
                     if (origin == null) GWT.log("Nothing to drag.");
                     else DragData.setup(event, Cell.Context.class, newSetFrom(origin));
                 }
@@ -140,8 +142,8 @@ public class GxtGridDemo extends AbstractIsWidget {
             // Div causes events to echo...sb.appendHtmlConstant("<div style='color:blue; text-align:center;'>");
             RowEntity rowEntity = store.get(context.getIndex());
             String cls;
-            boolean isRed = RowEntity.Flag.RED.isSet(rowEntity.flags);
-            boolean isGreen = RowEntity.Flag.GREEN.isSet(rowEntity.flags);
+            boolean isRed = RED.isSet(rowEntity.flags);
+            boolean isGreen = GREEN.isSet(rowEntity.flags);
             if (isRed) {
                 if (isGreen) cls = STYLE.redGreenBgnd();
                 else cls = STYLE.redOnlyBnd();
