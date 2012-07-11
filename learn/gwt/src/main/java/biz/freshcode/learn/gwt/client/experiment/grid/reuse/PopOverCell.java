@@ -1,4 +1,4 @@
-package biz.freshcode.learn.gwt.client.experiment.grid;
+package biz.freshcode.learn.gwt.client.experiment.grid.reuse;
 
 import biz.freshcode.learn.gwt.client.experiment.mouseover.MouseOverState;
 import biz.freshcode.learn.gwt.client.uispike.builder.container.PopupPanelBuilder;
@@ -30,7 +30,7 @@ public abstract class PopOverCell<T> extends AbstractCell<T> {
     private Context popupCell = null;
     private MouseOverState mosGrid;
 
-    PopOverCell(DropTarget dropper, Widget hoverWidget) {
+    public PopOverCell(DropTarget dropper, Widget hoverWidget) {
         mosGrid = new MouseOverState(dropper, new MouseOverState.Callback() {
             @Override
             public void stateChange(MouseOverState mos) {
@@ -51,11 +51,51 @@ public abstract class PopOverCell<T> extends AbstractCell<T> {
         });
     }
 
-    public static boolean isSameContext(Context c1, Context c2) {
-        return c1 != null &&
-                c2 != null &&
-                c1.getColumn() == c2.getColumn() &&
-                c1.getIndex() == c2.getIndex();
+    void disablePopup() {
+        popupCoord = null;
+        // NOTE: Don't clear popupCell here.  It is still needed.
+    }
+
+    private void checkPopup() {
+        Scheduler.get().scheduleDeferred(new Scheduler.ScheduledCommand() {
+            @Override
+            public void execute() {
+                if (mosPopup.isOver()) {
+                    // nothing
+                } else if (popupEnabled()) {
+                    int left = popupLeft();
+                    int top = popupTop();
+                    if (popup.getPopupLeft() == left && popup.getPopupTop() == top) {
+                        // location is accurate
+                        if (!popup.isShowing()) popup.show();
+                    } else {
+                        // different location
+                        hidePopupIfNecessary();
+                        popup.setPopupPosition(left, top);
+                        popup.show();
+                    }
+                } else {
+                    hidePopupIfNecessary();
+                    popupCell = null;
+                }
+            }
+        });
+    }
+
+    private boolean popupEnabled() {
+        return popupCoord != null;
+    }
+
+    private int popupLeft() {
+        return popupCoord[0];
+    }
+
+    private int popupTop() {
+        return popupCoord[1];
+    }
+
+    private void hidePopupIfNecessary() {
+        if (popup.isShowing()) popup.hide();
     }
 
     @Override
@@ -87,7 +127,6 @@ public abstract class PopOverCell<T> extends AbstractCell<T> {
             // hide popup if necessary
             disablePopup();
             checkPopup();
-
         } else if (isType(event, MouseOverEvent.getType())) {
             // track current cell
             lastMouseOverCell = context;
@@ -103,69 +142,28 @@ public abstract class PopOverCell<T> extends AbstractCell<T> {
         }
     }
 
-    boolean isCurrentCell(Context cell) {
+    public boolean isCurrentCell(Context cell) {
         return isSameContext(cell, getCurrentCell());
     }
 
+    public static boolean isSameContext(Context c1, Context c2) {
+        return c1 != null &&
+                c2 != null &&
+                c1.getColumn() == c2.getColumn() &&
+                c1.getIndex() == c2.getIndex();
+    }
+
+    public Context getCurrentCell() {
+        if (lastMouseOverCell != null) return lastMouseOverCell;
+        return popupCell;
+    }
 
     private boolean isType(NativeEvent event, DomEvent.Type type) {
         return event.getType().equals(type.getName());
     }
 
-    private void hidePopupIfNecessary() {
-        if (popup.isShowing()) popup.hide();
-    }
-
-    Context getCurrentCell() {
-        if (lastMouseOverCell != null) return lastMouseOverCell;
-        return popupCell;
-    }
-
-    private int popupTop() {
-        return popupCoord[1];
-    }
-
-    private int popupLeft() {
-        return popupCoord[0];
-    }
-
-    void enablePopup(int left, int top, Context cell) {
+    private void enablePopup(int left, int top, Context cell) {
         popupCoord = new int[]{left, top};
         popupCell = cell;
-    }
-
-    void disablePopup() {
-        popupCoord = null;
-        // NOTE: Don't clear popupCell here.  It is still needed.
-    }
-
-    private boolean popupEnabled() {
-        return popupCoord != null;
-    }
-
-    private void checkPopup() {
-        Scheduler.get().scheduleDeferred(new Scheduler.ScheduledCommand() {
-            @Override
-            public void execute() {
-                if (mosPopup.isOver()) {
-                    // nothing
-                } else if (popupEnabled()) {
-                    int left = popupLeft();
-                    int top = popupTop();
-                    if (popup.getPopupLeft() == left && popup.getPopupTop() == top) {
-                        // location is accurate
-                        if (!popup.isShowing()) popup.show();
-                    } else {
-                        // different location
-                        hidePopupIfNecessary();
-                        popup.setPopupPosition(left, top);
-                        popup.show();
-                    }
-                } else {
-                    hidePopupIfNecessary();
-                    popupCell = null;
-                }
-            }
-        });
     }
 }
