@@ -12,6 +12,7 @@ import com.google.gwt.event.dom.client.MouseOutEvent;
 import com.google.gwt.event.dom.client.MouseOverEvent;
 import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.Widget;
+import com.sencha.gxt.core.client.util.Point;
 import com.sencha.gxt.dnd.core.client.DropTarget;
 
 import java.util.Set;
@@ -25,7 +26,7 @@ import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newSetFrom;
 public abstract class PopOverCell<T> extends AbstractCell<T> {
     private PopupPanel popup;
     private MouseOverState mosPopup;
-    private int[] popupCoord = null;
+    private Point popupCoord = null;
     private Context lastMouseOverCell = null;
     private Context popupCell = null;
     private MouseOverState mosGrid;
@@ -63,8 +64,8 @@ public abstract class PopOverCell<T> extends AbstractCell<T> {
                 if (mosPopup.isOver()) {
                     // nothing
                 } else if (popupEnabled()) {
-                    int left = popupLeft();
-                    int top = popupTop();
+                    int left = popupCoord.getX();
+                    int top = popupCoord.getY();
                     if (popup.getPopupLeft() == left && popup.getPopupTop() == top) {
                         // location is accurate
                         if (!popup.isShowing()) popup.show();
@@ -84,14 +85,6 @@ public abstract class PopOverCell<T> extends AbstractCell<T> {
 
     private boolean popupEnabled() {
         return popupCoord != null;
-    }
-
-    private int popupLeft() {
-        return popupCoord[0];
-    }
-
-    private int popupTop() {
-        return popupCoord[1];
     }
 
     private void hidePopupIfNecessary() {
@@ -163,7 +156,7 @@ public abstract class PopOverCell<T> extends AbstractCell<T> {
     }
 
     private void enablePopup(int left, int top, Context cell) {
-        popupCoord = new int[]{left, top};
+        popupCoord = new Point(left, top);
         popupCell = cell;
     }
 }

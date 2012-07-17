@@ -18,7 +18,7 @@ public interface EqualityBean {
 /* Nope... java.lang.Error: Unresolved compilation problems:
 	Duplicate method equals(Object) in type new EqualityBean(){}
 	Duplicate method hashCode() in type new EqualityBean(){}
-	
+
 public void testCategoryEquality() {
         EqualityBean e1 = EqualityBean.FACTORY.auto().as();
         EqualityBean e2 = EqualityBean.FACTORY.auto().as();
