@@ -57,6 +57,10 @@ public abstract class PopOverCell<T> extends AbstractCell<T> {
         // NOTE: Don't clear popupCell here.  It is still needed.
     }
 
+    /**
+     * Checks and updates the state of the popup.  This is designed to not repeat echo'd operations.
+     * So the popup state can be jittery but will still display cleanly.
+     */
     private void checkPopup() {
         Scheduler.get().scheduleDeferred(new Scheduler.ScheduledCommand() {
             @Override
