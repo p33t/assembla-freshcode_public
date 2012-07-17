@@ -24,13 +24,13 @@ import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newSetFrom;
  * Handles popup of a widget when mouse-over a cell (excluding drag gestures).
  */
 public abstract class PopOverCell<T, U extends Widget> extends AbstractCell<T> {
-    private PopupPanel popup;
-    private MouseOverState mosPopup;
+    protected final U hoverWidget;
+    private final PopupPanel popup;
+    private final MouseOverState mosPopup;
+    private final MouseOverState mosGrid;
     private Point popupCoord = null;
     private Context lastMouseOverCell = null;
     private Context popupCell = null;
-    private MouseOverState mosGrid;
-    private final U hoverWidget;
 
     public PopOverCell(DropTarget dropper, U hoverWidget) {
         this.hoverWidget = hoverWidget;
