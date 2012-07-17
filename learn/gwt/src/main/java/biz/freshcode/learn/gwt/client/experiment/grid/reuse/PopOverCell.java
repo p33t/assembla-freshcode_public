@@ -55,8 +55,6 @@ public abstract class PopOverCell<T, U extends Widget> extends AbstractCell<T> {
 
     /**
      * Subclasses can customise the hoverWidget just before it is shown.
-     * @param hoverWidget
-     * @param cell
      */
     protected void customizeHoverWidget(U hoverWidget, Context cell) {
         // do nothing by default
