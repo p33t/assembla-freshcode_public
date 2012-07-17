@@ -23,15 +23,17 @@ import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newSetFrom;
 /**
  * Handles popup of a widget when mouse-over a cell (excluding drag gestures).
  */
-public abstract class PopOverCell<T> extends AbstractCell<T> {
+public abstract class PopOverCell<T, U extends Widget> extends AbstractCell<T> {
     private PopupPanel popup;
     private MouseOverState mosPopup;
     private Point popupCoord = null;
     private Context lastMouseOverCell = null;
     private Context popupCell = null;
     private MouseOverState mosGrid;
+    private final U hoverWidget;
 
-    public PopOverCell(DropTarget dropper, Widget hoverWidget) {
+    public PopOverCell(DropTarget dropper, U hoverWidget) {
+        this.hoverWidget = hoverWidget;
         mosGrid = new MouseOverState(dropper, new MouseOverState.Callback() {
             @Override
             public void stateChange(MouseOverState mos) {
@@ -40,7 +42,6 @@ public abstract class PopOverCell<T> extends AbstractCell<T> {
             }
         });
         popup = new PopupPanelBuilder()
-                .widget(hoverWidget)
                 .addStyleName(STYLE.hoverWidgets())
                 .popupPanel;
 
@@ -52,7 +53,16 @@ public abstract class PopOverCell<T> extends AbstractCell<T> {
         });
     }
 
-    void disablePopup() {
+    /**
+     * Subclasses can customise the hoverWidget just before it is shown.
+     * @param hoverWidget
+     * @param cell
+     */
+    protected void customizeHoverWidget(U hoverWidget, Context cell) {
+        // do nothing by default
+    }
+
+    private void disablePopup() {
         popupCoord = null;
         // NOTE: Don't clear popupCell here.  It is still needed.
     }
@@ -72,12 +82,12 @@ public abstract class PopOverCell<T> extends AbstractCell<T> {
                     int top = popupCoord.getY();
                     if (popup.getPopupLeft() == left && popup.getPopupTop() == top) {
                         // location is accurate
-                        if (!popup.isShowing()) popup.show();
+                        if (!popup.isShowing()) showPopup();
                     } else {
                         // different location
                         hidePopupIfNecessary();
                         popup.setPopupPosition(left, top);
-                        popup.show();
+                        showPopup();
                     }
                 } else {
                     hidePopupIfNecessary();
@@ -85,6 +95,12 @@ public abstract class PopOverCell<T> extends AbstractCell<T> {
                 }
             }
         });
+    }
+
+    private void showPopup() {
+        customizeHoverWidget(hoverWidget, popupCell);
+        popup.setWidget(hoverWidget);
+        popup.show();
     }
 
     private boolean popupEnabled() {
