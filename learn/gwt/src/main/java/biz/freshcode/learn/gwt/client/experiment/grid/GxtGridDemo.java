@@ -106,11 +106,18 @@ public class GxtGridDemo extends AbstractIsWidget {
     }
 
 
-    private class MegaPopOverCell extends PopOverCell<String> {
+    private class MegaPopOverCell extends PopOverCell<String, HorizontalLayoutContainer> {
         Dropper dropper;
 
         public MegaPopOverCell(Grid grid) {
             this(new Dropper(grid), new HorizontalLayoutContainer());
+        }
+
+        @Override
+        protected void customizeHoverWidget(HorizontalLayoutContainer hoverWidget, Context cell) {
+            // demo of custom hover widget.  Enabled only for every second row.
+            if (cell.getIndex() % 2 == 0) hoverWidget.enable();
+            else hoverWidget.disable();
         }
 
         private MegaPopOverCell(Dropper dropper, HorizontalLayoutContainer hoverWidget) {
