@@ -377,15 +377,15 @@
     <mapping directory="" vcs="svn" />
   </component>
   <component name="libraryTable">
-    <library name="Maven: biz.freshcode.b-generation:b-generation:0.1.1">
+    <library name="Maven: biz.freshcode.b-generation:b-generation:0.2">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/biz/freshcode/b-generation/b-generation/0.1.1/b-generation-0.1.1.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/biz/freshcode/b-generation/b-generation/0.2/b-generation-0.2.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/biz/freshcode/b-generation/b-generation/0.1.1/b-generation-0.1.1-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/biz/freshcode/b-generation/b-generation/0.2/b-generation-0.2-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/biz/freshcode/b-generation/b-generation/0.1.1/b-generation-0.1.1-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/biz/freshcode/b-generation/b-generation/0.2/b-generation-0.2-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: com.google.gwt:gwt-servlet:2.4.0">
