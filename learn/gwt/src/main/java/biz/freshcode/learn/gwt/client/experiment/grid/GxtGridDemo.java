@@ -77,6 +77,7 @@ public class GxtGridDemo extends AbstractIsWidget {
                         .columnConfig
         )));
         grid.setSelectionModel(null); // no select
+        // Set up cell last otherwise a chicken and egg problem
         megaCol.setCell(megaCell = new MegaPopOverCell(grid));
         return grid;
     }
