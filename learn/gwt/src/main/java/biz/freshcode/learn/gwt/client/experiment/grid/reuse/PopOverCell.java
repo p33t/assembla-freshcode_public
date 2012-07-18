@@ -22,7 +22,7 @@ import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newSetFrom;
  */
 public abstract class PopOverCell<T, U extends Widget> extends AbstractCell<T> {
     private final MouseOverState mosGrid;
-    private final HoverWidgetSupport<U> hoverSupp; // TODO: Subclass locally to access protected methods.
+    private final Hoverer hoverSupp;
     private Context lastMouseOverCell = null;
     private Context popupCell = null;
     private Point popupCoord = null;
@@ -70,9 +70,9 @@ public abstract class PopOverCell<T, U extends Widget> extends AbstractCell<T> {
                 // exiting current cell
                 lastMouseOverCell = null;
             }
-
             // hide popup if necessary
             hoverSupp.disablePopup();
+
         } else if (isType(event, MouseOverEvent.getType())) {
             // track current cell
             lastMouseOverCell = context;
@@ -82,7 +82,6 @@ public abstract class PopOverCell<T, U extends Widget> extends AbstractCell<T> {
                 Point popupCoord = new Point(parent.getAbsoluteLeft(), parent.getAbsoluteTop());
                 enablePopup(popupCoord, context);
             }
-
 //                    Causes: AssertionError: A widget that has an existing parent widget may not be added to the detach list
 //                    HTML html = HTML.wrap(parent);
         }
