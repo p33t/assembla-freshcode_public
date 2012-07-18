@@ -69,8 +69,6 @@ public class HoverWidgetSupport<W extends Widget> {
 
     /**
      * Optional notification to subclasses.
-     *
-     * @param coord
      */
     protected void popupHidden(Point coord) {
         // nothing

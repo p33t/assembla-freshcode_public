@@ -38,11 +38,11 @@ public abstract class PopOverCell<T, U extends Widget> extends AbstractCell<T> {
         });
     }
 
-    /**
-     * Subclasses can customise the hoverWidget just before it is shown.
-     */
-    protected void customizeHoverWidget(U hoverWidget, Context cell) {
-        // do nothing by default
+    public static boolean isSameContext(Context c1, Context c2) {
+        return c1 != null &&
+                c2 != null &&
+                c1.getColumn() == c2.getColumn() &&
+                c1.getIndex() == c2.getIndex();
     }
 
     @Override
@@ -72,7 +72,6 @@ public abstract class PopOverCell<T, U extends Widget> extends AbstractCell<T> {
             }
             // hide popup if necessary
             hoverSupp.disablePopup();
-
         } else if (isType(event, MouseOverEvent.getType())) {
             // track current cell
             lastMouseOverCell = context;
@@ -87,27 +86,26 @@ public abstract class PopOverCell<T, U extends Widget> extends AbstractCell<T> {
         }
     }
 
-    private void enablePopup(Point popupCoord, Context cell) {
-        this.popupCoord = popupCoord;
-        popupCell = cell;
-        hoverSupp.enablePopup(popupCoord);
-
-    }
-
     public boolean isCurrentCell(Context cell) {
         return isSameContext(cell, getCurrentCell());
-    }
-
-    public static boolean isSameContext(Context c1, Context c2) {
-        return c1 != null &&
-                c2 != null &&
-                c1.getColumn() == c2.getColumn() &&
-                c1.getIndex() == c2.getIndex();
     }
 
     public Context getCurrentCell() {
         if (lastMouseOverCell != null) return lastMouseOverCell;
         return popupCell;
+    }
+
+    /**
+     * Subclasses can customise the hoverWidget just before it is shown.
+     */
+    protected void customizeHoverWidget(U hoverWidget, Context cell) {
+        // do nothing by default
+    }
+
+    private void enablePopup(Point popupCoord, Context cell) {
+        this.popupCoord = popupCoord;
+        popupCell = cell;
+        hoverSupp.enablePopup(popupCoord);
     }
 
     private boolean isType(NativeEvent event, DomEvent.Type type) {
