@@ -150,6 +150,8 @@ public class GxtGridDemo extends AbstractIsWidget {
             // Div causes events to echo...sb.appendHtmlConstant("<div style='color:blue; text-align:center;'>");
             RowEntity rowEntity = store.get(context.getIndex());
             String cls;
+            // NOTE: IE Does not like multiple background urls OR does not do transparent layers properly.
+            //       Green shows only if red is not selected.
             boolean isRed = RED.isSet(rowEntity.flags);
             boolean isGreen = GREEN.isSet(rowEntity.flags);
             if (isRed) {
