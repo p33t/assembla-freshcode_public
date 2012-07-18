@@ -9,6 +9,9 @@ import com.sencha.gxt.core.client.util.Point;
 
 import static biz.freshcode.learn.gwt.client.experiment.hoverwidget.reuse.Bundle.STYLE;
 
+/**
+ * Manages popping up a widget at a particular screen position.
+ */
 public class HoverWidgetSupport<W extends Widget> {
     protected final W hoverWidget;
     private final MouseOverState mosPopup;
