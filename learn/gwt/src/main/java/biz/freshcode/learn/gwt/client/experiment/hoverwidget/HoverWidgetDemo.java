@@ -6,6 +6,7 @@ import biz.freshcode.learn.gwt.client.uispike.builder.VerticalLayoutContainerBui
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import biz.freshcode.learn.gwt.client.util.DummySelectHandler;
 import com.google.gwt.user.client.ui.Widget;
+import com.sencha.gxt.core.client.util.Point;
 import com.sencha.gxt.widget.core.client.button.ToolButton;
 import com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer;
 
@@ -23,7 +24,10 @@ public class HoverWidgetDemo extends AbstractIsWidget {
             @Override
             public void stateChange(MouseOverState mos) {
                 if (mos.isDraggingOver()) hoverSupp.disablePopup();
-                else if (mos.isOver()) hoverSupp.enablePopup(host.getAbsoluteLeft(), host.getAbsoluteTop());
+                else if (mos.isOver()) {
+                    Point coord = new Point(host.getAbsoluteLeft(), host.getAbsoluteTop());
+                    hoverSupp.enablePopup(coord);
+                }
                 else hoverSupp.disablePopup();
             }
         });

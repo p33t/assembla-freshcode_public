@@ -10,6 +10,7 @@ import com.google.gwt.event.dom.client.DomEvent;
 import com.google.gwt.event.dom.client.MouseOutEvent;
 import com.google.gwt.event.dom.client.MouseOverEvent;
 import com.google.gwt.user.client.ui.Widget;
+import com.sencha.gxt.core.client.util.Point;
 import com.sencha.gxt.dnd.core.client.DropTarget;
 
 import java.util.Set;
@@ -24,9 +25,10 @@ public abstract class PopOverCell<T, U extends Widget> extends AbstractCell<T> {
     private final HoverWidgetSupport<U> hoverSupp; // TODO: Subclass locally to access protected methods.
     private Context lastMouseOverCell = null;
     private Context popupCell = null;
+    private Point popupCoord = null;
 
     public PopOverCell(DropTarget dropper, U hoverWidget) {
-        hoverSupp = new HoverWidgetSupport(hoverWidget);
+        hoverSupp = new Hoverer(hoverWidget);
         mosGrid = new MouseOverState(dropper, new MouseOverState.Callback() {
             @Override
             public void stateChange(MouseOverState mos) {
@@ -77,12 +79,20 @@ public abstract class PopOverCell<T, U extends Widget> extends AbstractCell<T> {
 
             // show the popup
             if (!mosGrid.isDraggingOver()) {
-                enablePopup(parent.getAbsoluteLeft(), parent.getAbsoluteTop(), context);
+                Point popupCoord = new Point(parent.getAbsoluteLeft(), parent.getAbsoluteTop());
+                enablePopup(popupCoord, context);
             }
 
 //                    Causes: AssertionError: A widget that has an existing parent widget may not be added to the detach list
 //                    HTML html = HTML.wrap(parent);
         }
+    }
+
+    private void enablePopup(Point popupCoord, Context cell) {
+        this.popupCoord = popupCoord;
+        popupCell = cell;
+        hoverSupp.enablePopup(popupCoord);
+
     }
 
     public boolean isCurrentCell(Context cell) {
@@ -105,8 +115,24 @@ public abstract class PopOverCell<T, U extends Widget> extends AbstractCell<T> {
         return event.getType().equals(type.getName());
     }
 
-    private void enablePopup(int left, int top, Context cell) {
-        hoverSupp.enablePopup(left, top);
-        popupCell = cell;
+    private class Hoverer extends HoverWidgetSupport<U> {
+        public Hoverer(U hoverWidget) {
+            super(hoverWidget);
+        }
+
+        @Override
+        protected void customizeHoverWidget(U hoverWidget) {
+            popupCell = getCurrentCell();
+            PopOverCell.this.customizeHoverWidget(hoverWidget, popupCell);
+        }
+
+        @Override
+        protected void popupHidden(Point coord) {
+            if (coord.equals(popupCoord)) {
+                // event not echoing.  So popupCell is not stale.
+                popupCell = null;
+                popupCoord = null;
+            }
+        }
     }
 }

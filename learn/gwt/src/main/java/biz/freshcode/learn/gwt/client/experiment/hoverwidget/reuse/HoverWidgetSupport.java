@@ -55,8 +55,8 @@ public class HoverWidgetSupport<W extends Widget> {
         checkPopup();
     }
 
-    public void enablePopup(int left, int top) {
-        popupCoord = new Point(left, top);
+    public void enablePopup(Point coord) {
+        popupCoord = coord;
         checkPopup();
     }
 
