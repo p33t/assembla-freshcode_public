@@ -1,54 +1,37 @@
 package biz.freshcode.learn.gwt.client.experiment.grid.reuse;
 
+import biz.freshcode.learn.gwt.client.experiment.hoverwidget.reuse.HoverWidgetSupport;
 import biz.freshcode.learn.gwt.client.experiment.mouseover.MouseOverState;
-import biz.freshcode.learn.gwt.client.uispike.builder.container.PopupPanelBuilder;
 import com.google.gwt.cell.client.AbstractCell;
 import com.google.gwt.cell.client.ValueUpdater;
-import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.NativeEvent;
 import com.google.gwt.event.dom.client.DomEvent;
 import com.google.gwt.event.dom.client.MouseOutEvent;
 import com.google.gwt.event.dom.client.MouseOverEvent;
-import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.Widget;
-import com.sencha.gxt.core.client.util.Point;
 import com.sencha.gxt.dnd.core.client.DropTarget;
 
 import java.util.Set;
 
-import static biz.freshcode.learn.gwt.client.experiment.grid.Bundle2.STYLE;
 import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newSetFrom;
 
 /**
  * Handles popup of a widget when mouse-over a cell (excluding drag gestures).
  */
 public abstract class PopOverCell<T, U extends Widget> extends AbstractCell<T> {
-    protected final U hoverWidget;
-    private final PopupPanel popup;
-    private final MouseOverState mosPopup;
     private final MouseOverState mosGrid;
-    private Point popupCoord = null;
+    private final HoverWidgetSupport<U> hoverSupp; // TODO: Subclass locally to access protected methods.
     private Context lastMouseOverCell = null;
     private Context popupCell = null;
 
     public PopOverCell(DropTarget dropper, U hoverWidget) {
-        this.hoverWidget = hoverWidget;
+        hoverSupp = new HoverWidgetSupport(hoverWidget);
         mosGrid = new MouseOverState(dropper, new MouseOverState.Callback() {
             @Override
             public void stateChange(MouseOverState mos) {
-                if (mos.isDraggingOver()) disablePopup();
-                checkPopup();
-            }
-        });
-        popup = new PopupPanelBuilder()
-                .addStyleName(STYLE.hoverWidgets())
-                .popupPanel;
-
-        mosPopup = new MouseOverState(popup, new MouseOverState.Callback() {
-            @Override
-            public void stateChange(MouseOverState mos) {
-                checkPopup();
+                if (mos.isDraggingOver()) hoverSupp.disablePopup();
+                else hoverSupp.checkPopup(); // not sure this is necessary but doesn't hurt
             }
         });
     }
@@ -58,55 +41,6 @@ public abstract class PopOverCell<T, U extends Widget> extends AbstractCell<T> {
      */
     protected void customizeHoverWidget(U hoverWidget, Context cell) {
         // do nothing by default
-    }
-
-    private void disablePopup() {
-        popupCoord = null;
-        // NOTE: Don't clear popupCell here.  It is still needed.
-    }
-
-    /**
-     * Checks and updates the state of the popup.  This is designed to not repeat echo'd operations.
-     * So the popup state can be jittery but will still display cleanly.
-     */
-    private void checkPopup() {
-        Scheduler.get().scheduleDeferred(new Scheduler.ScheduledCommand() {
-            @Override
-            public void execute() {
-                if (mosPopup.isOver()) {
-                    // nothing
-                } else if (popupEnabled()) {
-                    int left = popupCoord.getX();
-                    int top = popupCoord.getY();
-                    if (popup.getPopupLeft() == left && popup.getPopupTop() == top) {
-                        // location is accurate
-                        if (!popup.isShowing()) showPopup();
-                    } else {
-                        // different location
-                        hidePopupIfNecessary();
-                        popup.setPopupPosition(left, top);
-                        showPopup();
-                    }
-                } else {
-                    hidePopupIfNecessary();
-                    popupCell = null;
-                }
-            }
-        });
-    }
-
-    private void showPopup() {
-        customizeHoverWidget(hoverWidget, popupCell);
-        popup.setWidget(hoverWidget);
-        popup.show();
-    }
-
-    private boolean popupEnabled() {
-        return popupCoord != null;
-    }
-
-    private void hidePopupIfNecessary() {
-        if (popup.isShowing()) popup.hide();
     }
 
     @Override
@@ -136,8 +70,7 @@ public abstract class PopOverCell<T, U extends Widget> extends AbstractCell<T> {
             }
 
             // hide popup if necessary
-            disablePopup();
-            checkPopup();
+            hoverSupp.disablePopup();
         } else if (isType(event, MouseOverEvent.getType())) {
             // track current cell
             lastMouseOverCell = context;
@@ -145,7 +78,6 @@ public abstract class PopOverCell<T, U extends Widget> extends AbstractCell<T> {
             // show the popup
             if (!mosGrid.isDraggingOver()) {
                 enablePopup(parent.getAbsoluteLeft(), parent.getAbsoluteTop(), context);
-                checkPopup();
             }
 
 //                    Causes: AssertionError: A widget that has an existing parent widget may not be added to the detach list
@@ -174,7 +106,7 @@ public abstract class PopOverCell<T, U extends Widget> extends AbstractCell<T> {
     }
 
     private void enablePopup(int left, int top, Context cell) {
-        popupCoord = new Point(left, top);
+        hoverSupp.enablePopup(left, top);
         popupCell = cell;
     }
 }
