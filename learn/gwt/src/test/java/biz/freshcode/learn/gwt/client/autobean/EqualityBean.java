@@ -3,6 +3,7 @@ package biz.freshcode.learn.gwt.client.autobean;
 import biz.freshcode.learn.gwt.client.util.GenericAutoBeanFactory;
 import com.google.gwt.core.client.GWT;
 import com.google.web.bindery.autobean.shared.AutoBean;
+import com.google.web.bindery.autobean.shared.AutoBeanCodex;
 import com.google.web.bindery.autobean.shared.AutoBeanFactory;
 
 import static com.google.web.bindery.autobean.shared.AutoBeanUtils.deepEquals;
@@ -34,6 +35,7 @@ public void testCategoryEquality() {
     int hashCode();
 */
 
+    String bonusOp();
 
     @AutoBeanFactory.Category(Ops.class)
     interface Factory extends GenericAutoBeanFactory<EqualityBean> {
@@ -42,6 +44,11 @@ public void testCategoryEquality() {
     }
 
     static class Ops {
+
+        public static String bonusOp(AutoBean<EqualityBean> subject) {
+            return AutoBeanCodex.encode(subject).getPayload();
+        }
+
         public static boolean equals(AutoBean<EqualityBean> subject, Object obj) {
             if (!(obj instanceof EqualityBean)) return false;
 

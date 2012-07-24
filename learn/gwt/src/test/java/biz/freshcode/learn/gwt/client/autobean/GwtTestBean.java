@@ -41,6 +41,13 @@ public class GwtTestBean extends GWTTestCase {
         assertTrue(deepEquals(a1, a2));
     }
 
+    public void testBonusOp() {
+        EqualityBean e = EqualityBean.FACTORY.auto().as();
+        e.setStr("the string");
+        String actual = e.bonusOp();
+        assertEquals("{\"str\":\"the string\"}", actual);
+    }
+
     @Override
     public String getModuleName() {
         return "biz.freshcode.learn.gwt.Mod1JUnit";
