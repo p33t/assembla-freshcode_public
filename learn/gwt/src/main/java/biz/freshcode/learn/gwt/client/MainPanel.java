@@ -10,6 +10,7 @@ import biz.freshcode.learn.gwt.client.experiment.grid.GwtGridDemo;
 import biz.freshcode.learn.gwt.client.experiment.grid.GxtGridDemo;
 import biz.freshcode.learn.gwt.client.experiment.hoverwidget.HoverWidgetDemo;
 import biz.freshcode.learn.gwt.client.experiment.mouseover.MouseOverWidget;
+import biz.freshcode.learn.gwt.client.experiment.mvp.gwtmvp.GwtMvp;
 import biz.freshcode.learn.gwt.client.experiment.mvp.homebake.HbParent;
 import biz.freshcode.learn.gwt.client.experiment.requestfactory.RequestFactoryDemo;
 import biz.freshcode.learn.gwt.client.experiment.resources.ResourcesDemo;
@@ -23,14 +24,18 @@ import biz.freshcode.learn.gwt.client.uispike.builder.MenuBarBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.ViewportBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.container.DockLayoutPanelBuilder;
 import biz.freshcode.learn.gwt.client.uispike.gxt.UiSpikePanel;
+import com.google.gwt.activity.shared.Activity;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style;
+import com.google.gwt.event.shared.EventBus;
+import com.google.gwt.event.shared.SimpleEventBus;
 import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
 
 public class MainPanel extends Composite {
     IsWidget content;
+    EventBus eventBus = new SimpleEventBus();
     DockLayoutPanel pnl = new DockLayoutPanelBuilder(new DockLayoutPanel(Style.Unit.EM))
             .height("100%")
             .width("100%")
@@ -52,6 +57,12 @@ public class MainPanel extends Composite {
                                     .addItem(new MenuItem("Home Bake", new Command() {
                                         public void execute() {
                                             IsWidget w = GWT.create(HbParent.class);
+                                            replaceContent(w);
+                                        }
+                                    }))
+                                    .addItem(new MenuItem("GWT MVP", new Command() {
+                                        public void execute() {
+                                            Activity w = GWT.create(GwtMvp.class);
                                             replaceContent(w);
                                         }
                                     }))
@@ -205,6 +216,13 @@ public class MainPanel extends Composite {
         root.add(new ViewportBuilder()
                 .widget(w)
                 .viewport);
+    }
+
+    private void replaceContent(Activity a) {
+        // manually display the activity until we have some infrastructure set up.
+        SimplePanel sp = new SimplePanel();
+        a.start(sp, eventBus);
+        replaceContent(sp);
     }
 
     private void replaceContent(IsWidget newContent) {
