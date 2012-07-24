@@ -29,6 +29,7 @@
     <set-property name="gwt.logging.popupHandler" value="DISABLED"/>
 
     <inherits name='com.google.web.bindery.requestfactory.RequestFactory'/>
+    <inherits name="com.google.gwt.activity.Activity"/>
 
     <!-- Specify the app entry point class.                         -->
     <entry-point class='biz.freshcode.learn.gwt.client.EntryPoint'/>

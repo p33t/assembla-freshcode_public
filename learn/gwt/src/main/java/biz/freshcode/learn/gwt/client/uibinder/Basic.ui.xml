@@ -9,7 +9,7 @@
 
     <!--Bind var name to a client bundle-->
     <ui:with field="bundle" type="biz.freshcode.learn.gwt.client.uibinder.Bundle"/>
-    <!--Doesn't work...<ui:with field="bundleStyle" type="biz.freshcode.learn.gwt.client.uibinder.Bundle.Style"/>-->
+    <!--Doesn't work...<ui:with field="bundleStyle" type="biz.freshcode.learn.gwtmvp.client.uibinder.Bundle.Style"/>-->
 
     <!-- NOTE: We could use HTML directly if we weren't using widgets -->
     <g:HTMLPanel>
