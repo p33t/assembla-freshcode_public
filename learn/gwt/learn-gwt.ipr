@@ -21,6 +21,11 @@
           <element id="directory" name="lib">
             <element id="library" level="project" name="Maven: com.google.gwt:gwt-servlet:2.4.0" />
             <element id="library" level="project" name="Maven: javax.validation:validation-api:1.0.0.GA" />
+            <element id="library" level="project" name="Maven: com.google.gwt.inject:gin:1.5.0" />
+            <element id="library" level="project" name="Maven: com.google.inject:guice:3.0-rc2" />
+            <element id="library" level="project" name="Maven: javax.inject:javax.inject:1" />
+            <element id="library" level="project" name="Maven: aopalliance:aopalliance:1.0" />
+            <element id="library" level="project" name="Maven: com.google.inject.extensions:guice-assistedinject:3.0-rc2" />
           </element>
         </element>
         <element id="gwt-compiler-output" facet="learn-gwt/gwt/GWT" />
@@ -377,6 +382,17 @@
     <mapping directory="" vcs="svn" />
   </component>
   <component name="libraryTable">
+    <library name="Maven: aopalliance:aopalliance:1.0">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/aopalliance/aopalliance/1.0/aopalliance-1.0.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/aopalliance/aopalliance/1.0/aopalliance-1.0-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/aopalliance/aopalliance/1.0/aopalliance-1.0-sources.jar!/" />
+      </SOURCES>
+    </library>
     <library name="Maven: biz.freshcode.b-generation:b-generation:0.2">
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/biz/freshcode/b-generation/b-generation/0.2/b-generation-0.2.jar!/" />
@@ -386,6 +402,17 @@
       </JAVADOC>
       <SOURCES>
         <root url="jar://$MAVEN_REPOSITORY$/biz/freshcode/b-generation/b-generation/0.2/b-generation-0.2-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: com.google.gwt.inject:gin:1.5.0">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/inject/gin/1.5.0/gin-1.5.0.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/inject/gin/1.5.0/gin-1.5.0-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/inject/gin/1.5.0/gin-1.5.0-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: com.google.gwt:gwt-servlet:2.4.0">
@@ -408,6 +435,28 @@
       </JAVADOC>
       <SOURCES>
         <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-user/2.4.0/gwt-user-2.4.0-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: com.google.inject.extensions:guice-assistedinject:3.0-rc2">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/inject/extensions/guice-assistedinject/3.0-rc2/guice-assistedinject-3.0-rc2.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/inject/extensions/guice-assistedinject/3.0-rc2/guice-assistedinject-3.0-rc2-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/inject/extensions/guice-assistedinject/3.0-rc2/guice-assistedinject-3.0-rc2-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: com.google.inject:guice:3.0-rc2">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/inject/guice/3.0-rc2/guice-3.0-rc2.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/inject/guice/3.0-rc2/guice-3.0-rc2-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/inject/guice/3.0-rc2/guice-3.0-rc2-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: com.google.web.bindery:requestfactory-apt:2.4.0">
@@ -442,6 +491,17 @@
       </JAVADOC>
       <SOURCES>
         <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/uibinder-bridge/2.4.0/uibinder-bridge-2.4.0-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: javax.inject:javax.inject:1">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/javax/inject/javax.inject/1/javax.inject-1.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/javax/inject/javax.inject/1/javax.inject-1-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/javax/inject/javax.inject/1/javax.inject-1-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: javax.validation:validation-api:1.0.0.GA">

@@ -3,13 +3,16 @@ package biz.freshcode.learn.gwt.client.experiment.mvp.gwtmvp;
 import biz.freshcode.learn.gwt.client.uispike.builder.BorderLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.container.HorizontalLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
+import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.inject.Singleton;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 
 import static com.google.gwt.safehtml.shared.SafeHtmlUtils.htmlEscape;
 
+@Singleton
 public class GmViewImpl extends AbstractIsWidget implements GmView {
     // NOTE: No state!... this should be instance reusable.
     private Presenter presenter;
@@ -26,6 +29,7 @@ public class GmViewImpl extends AbstractIsWidget implements GmView {
                                 presenter.notifyButtonPressed();
                             }
                         }))
+                        .add(new CheckBox("Display State (remains when Back button used)"))
                         .horizontalLayoutContainer)
                 .centerWidget(hlc = new HtmlLayoutContainer("<p>Nothing</p>"))
                 .borderLayoutContainer;
