@@ -20,7 +20,7 @@ public class AppModule extends AbstractGinModule {
     protected void configure() {
         bind(GmView.class).to(GmViewImpl.class);
         bind(EventBus.class).to(SimpleEventBus.class).in(Singleton.class);
-        bind(ActivityMapper.class).to(AppActivityMapper.class).in(Singleton.class);
+        bind(ActivityMapper.class).to(AppActivityMapper.class);
         bind(PlaceHistoryMapper.class).to(AppPlaceHistoryMapper.class).in(Singleton.class);
     }
 

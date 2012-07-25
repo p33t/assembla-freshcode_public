@@ -3,22 +3,13 @@ package biz.freshcode.learn.gwt.client.experiment.mvp.gwtmvp;
 import com.google.gwt.activity.shared.AbstractActivity;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
+import com.google.inject.Inject;
 
 public class GwtMvp extends AbstractActivity implements GmView.Presenter {
-    GmView view = new GmViewImpl(); // NOTE: This is manually instantiated but typically supplied with DI.
+    @Inject
+    GmView view;
+
     int num = 0;
-
-    public GwtMvp(GmPlace place) {
-        this(place.getNum());
-    }
-
-    public GwtMvp() {
-        this(0);
-    }
-
-    public GwtMvp(int num) {
-        this.num = num;
-    }
 
     @Override
     public void notifyButtonPressed() {
@@ -31,6 +22,11 @@ public class GwtMvp extends AbstractActivity implements GmView.Presenter {
         panel.setWidget(view);
         view.setPresenter(this);
         refresh();
+    }
+
+    public GwtMvp goTo(GmPlace place) {
+        num = place.getNum();
+        return this;
     }
 
     private void refresh() {
