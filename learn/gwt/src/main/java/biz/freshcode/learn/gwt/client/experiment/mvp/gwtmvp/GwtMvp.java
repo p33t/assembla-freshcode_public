@@ -2,19 +2,23 @@ package biz.freshcode.learn.gwt.client.experiment.mvp.gwtmvp;
 
 import com.google.gwt.activity.shared.AbstractActivity;
 import com.google.gwt.event.shared.EventBus;
+import com.google.gwt.place.shared.PlaceController;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.google.inject.Inject;
 
 public class GwtMvp extends AbstractActivity implements GmView.Presenter {
     @Inject
-    GmView view;
+    GmView view; // this is singleton so fast AND display config remains after navigation.
+
+    @Inject
+    PlaceController placeController;
 
     int num = 0;
 
     @Override
     public void notifyButtonPressed() {
-        num++;
-        refresh();
+        // This will cause history to be produced and back button to be enabled.
+        placeController.goTo(new GmPlace(num + 1));
     }
 
     @Override
