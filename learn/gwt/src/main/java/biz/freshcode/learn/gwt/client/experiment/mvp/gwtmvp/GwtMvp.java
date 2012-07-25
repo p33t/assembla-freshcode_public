@@ -8,6 +8,18 @@ public class GwtMvp extends AbstractActivity implements GmView.Presenter {
     GmView view = new GmViewImpl(); // NOTE: This is manually instantiated but typically supplied with DI.
     int num = 0;
 
+    public GwtMvp(GmPlace place) {
+        this(place.getNum());
+    }
+
+    public GwtMvp() {
+        this(0);
+    }
+
+    public GwtMvp(int num) {
+        this.num = num;
+    }
+
     @Override
     public void notifyButtonPressed() {
         num++;
