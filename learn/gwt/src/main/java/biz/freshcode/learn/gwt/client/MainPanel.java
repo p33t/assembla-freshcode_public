@@ -26,15 +26,20 @@ import biz.freshcode.learn.gwt.client.uispike.builder.container.DockLayoutPanelB
 import biz.freshcode.learn.gwt.client.uispike.gxt.UiSpikePanel;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style;
+import com.google.gwt.place.shared.PlaceController;
 import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
 
+@Singleton
 public class MainPanel extends Composite implements AcceptsOneWidget {
     IsWidget content;
     DockLayoutPanel pnl;
 
-    public MainPanel() {
+    @Inject
+    public MainPanel(final PlaceController placeController) {
         pnl = new DockLayoutPanelBuilder(new DockLayoutPanel(Style.Unit.EM))
                 .height("100%")
                 .width("100%")
@@ -61,7 +66,7 @@ public class MainPanel extends Composite implements AcceptsOneWidget {
                                         }))
                                         .addItem(new MenuItem("GWT MVP", new Command() {
                                             public void execute() {
-                                                EntryPoint.INJECTOR.placeController().goTo(new GmPlace(0));
+                                                placeController.goTo(new GmPlace(0));
                                             }
                                         }))
                                         .menuBar))
