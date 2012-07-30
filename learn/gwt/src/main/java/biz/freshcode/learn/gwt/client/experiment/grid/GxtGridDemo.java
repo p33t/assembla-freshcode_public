@@ -73,7 +73,7 @@ public class GxtGridDemo extends AbstractIsWidget {
                 // Fancy widget in column header
                 new ColumnConfigBuilder(new ColumnConfig(new ToStringValueProvider()))
                         .header("Widget")
-                        .widget(new HTMLPanel("<p style='color:purple;'>WidgetX</p>"), SafeHtmlUtils.fromString("WidgetXX"))
+                        .widget(new HTMLPanel("<p style='color:purple;'>WidgetX<br/>Two Lines</p>"), SafeHtmlUtils.fromString("WidgetXX"))
                         .columnConfig
         )));
         grid.setSelectionModel(null); // no select
