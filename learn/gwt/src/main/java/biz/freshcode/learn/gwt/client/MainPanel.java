@@ -14,6 +14,7 @@ import biz.freshcode.learn.gwt.client.experiment.mvp.gwtmvp.GmPlace;
 import biz.freshcode.learn.gwt.client.experiment.mvp.homebake.HbParent;
 import biz.freshcode.learn.gwt.client.experiment.requestfactory.RequestFactoryDemo;
 import biz.freshcode.learn.gwt.client.experiment.resources.ResourcesDemo;
+import biz.freshcode.learn.gwt.client.experiment.toolbar.ToolBarDemo;
 import biz.freshcode.learn.gwt.client.uibinder.Basic;
 import biz.freshcode.learn.gwt.client.uibinder.Composed;
 import biz.freshcode.learn.gwt.client.uibinder.eg.BorderLayoutEg;
@@ -120,6 +121,12 @@ public class MainPanel extends Composite implements AcceptsOneWidget {
                                         .menuBar))
                                 .menuBar))
                         .addItem(new MenuItem("GXT", subMenu()
+                                .addItem(new MenuItem("Tool Bar", new Command() {
+                                    public void execute() {
+                                        IsWidget w = GWT.create(ToolBarDemo.class);
+                                        replaceContent(w);
+                                    }
+                                }))
                                 .addItem(new MenuItem("Hover Widgets", new Command() {
                                     public void execute() {
                                         IsWidget w = GWT.create(HoverWidgetDemo.class);
@@ -225,6 +232,11 @@ public class MainPanel extends Composite implements AcceptsOneWidget {
     }
 
     private void replaceContent(IsWidget newContent) {
+        // smart way to decide if is root.  Migrate to this gradually.
+        if (newContent instanceof IsRootContent) {
+            replaceRoot(newContent);
+            return;
+        }
         if (newContent == null) newContent = new HTMLPanel("<p>NULL Content :(</p>");
         pnl.remove(content);
         content = newContent;
