@@ -224,6 +224,7 @@ public class MainPanel extends Composite implements AcceptsOneWidget {
     }
 
     private void replaceRoot(IsWidget w) {
+        // NOTE: There is a GXT RootLayoutPanel which might be better for GXT apps.
         RootPanel root = RootPanel.get();
         root.clear();
         root.add(new ViewportBuilder()
