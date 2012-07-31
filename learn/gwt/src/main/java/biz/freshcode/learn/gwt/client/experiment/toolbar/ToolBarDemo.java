@@ -1,6 +1,8 @@
 package biz.freshcode.learn.gwt.client.experiment.toolbar;
 
 import biz.freshcode.learn.gwt.client.IsRootContent;
+import biz.freshcode.learn.gwt.client.builder.gxt.button.ToolButtonBuilder;
+import biz.freshcode.learn.gwt.client.builder.gxt.tips.ToolTipConfigBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.BorderLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.PopupBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.ToolBarBuilder;
@@ -47,6 +49,13 @@ public class ToolBarDemo extends AbstractIsWidget implements IsRootContent {
                         }))
                         .add(new SeparatorToolItem())
                         .add(dater = new ToolButton(ToolButton.MAXIMIZE, new DaterHandler()))
+                        .add(new SeparatorToolItem())
+                        .add(new ToolButtonBuilder(ToolButton.GEAR)
+                                .toolTipConfig(new ToolTipConfigBuilder()
+                                        .bodyHtml("<p>Welcome to the tool tip<br/>New Line!</p>")
+                                        .dismissDelay(0) // not sure what this does.
+                                        .toolTipConfig)
+                                .toolButton)
                         .add(new FillToolItem())
                         .toolBar)
                 .borderLayoutContainer;

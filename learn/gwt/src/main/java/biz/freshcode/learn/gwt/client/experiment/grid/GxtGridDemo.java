@@ -1,5 +1,6 @@
 package biz.freshcode.learn.gwt.client.experiment.grid;
 
+import biz.freshcode.learn.gwt.client.builder.gxt.button.ToolButtonBuilder;
 import biz.freshcode.learn.gwt.client.experiment.dnd.DropAssessment;
 import biz.freshcode.learn.gwt.client.experiment.dnd.DropSupport;
 import biz.freshcode.learn.gwt.client.experiment.dnd.dragdata.DragData;
@@ -7,7 +8,6 @@ import biz.freshcode.learn.gwt.client.experiment.grid.reuse.CellDropRejected;
 import biz.freshcode.learn.gwt.client.experiment.grid.reuse.CellTransfer;
 import biz.freshcode.learn.gwt.client.experiment.grid.reuse.HasTarget;
 import biz.freshcode.learn.gwt.client.experiment.grid.reuse.PopOverCell;
-import biz.freshcode.learn.gwt.client.uispike.builder.ToolButtonBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.container.HorizontalLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.table.ColumnConfigBuilder;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
