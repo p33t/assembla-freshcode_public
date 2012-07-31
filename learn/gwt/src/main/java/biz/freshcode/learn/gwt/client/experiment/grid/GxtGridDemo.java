@@ -104,7 +104,7 @@ public class GxtGridDemo extends AbstractIsWidget {
     }
 
     private void cellPopup(int row, int col) {
-        Element cell0 = getCell(row, col);
+        Element cell0 = grid.getView().getCell(row, col);
         int left = cell0.getAbsoluteLeft();
         int top = cell0.getAbsoluteTop();
 
@@ -120,10 +120,6 @@ public class GxtGridDemo extends AbstractIsWidget {
         } else {
             popup.showAt(left, top);
         }
-    }
-
-    private Element getCell(int row, int col) {
-        return grid.getView().getCell(row, col);
     }
 
     private ToolButton toggleButton(String icon, RowEntity.Flag flag) {
