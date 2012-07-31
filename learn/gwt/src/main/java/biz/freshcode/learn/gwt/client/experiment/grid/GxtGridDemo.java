@@ -1,5 +1,6 @@
 package biz.freshcode.learn.gwt.client.experiment.grid;
 
+import biz.freshcode.learn.gwt.client.builder.gxt.PopupBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.button.ToolButtonBuilder;
 import biz.freshcode.learn.gwt.client.experiment.dnd.DropAssessment;
 import biz.freshcode.learn.gwt.client.experiment.dnd.DropSupport;
@@ -14,6 +15,8 @@ import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import biz.freshcode.learn.gwt.client.util.DummySelectHandler;
 import com.google.gwt.cell.client.Cell;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.safecss.shared.SafeStylesUtils;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
@@ -25,15 +28,21 @@ import com.sencha.gxt.data.shared.ListStore;
 import com.sencha.gxt.data.shared.ModelKeyProvider;
 import com.sencha.gxt.dnd.core.client.DndDragStartEvent;
 import com.sencha.gxt.dnd.core.client.DragSource;
+import com.sencha.gxt.widget.core.client.Popup;
 import com.sencha.gxt.widget.core.client.button.IconButton;
 import com.sencha.gxt.widget.core.client.button.ToolButton;
 import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
+import com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
+import com.sencha.gxt.widget.core.client.grid.CellSelectionModel;
 import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
 import com.sencha.gxt.widget.core.client.grid.ColumnModel;
 import com.sencha.gxt.widget.core.client.grid.Grid;
 import com.sencha.gxt.widget.core.client.info.Info;
+import com.sencha.gxt.widget.core.client.selection.CellSelection;
+import com.sencha.gxt.widget.core.client.selection.CellSelectionChangedEvent;
 
+import java.util.List;
 import java.util.Set;
 
 import static biz.freshcode.learn.gwt.client.experiment.dnd.DropAssessment.NOT_HANDLED;
@@ -54,6 +63,7 @@ public class GxtGridDemo extends AbstractIsWidget {
             return "" + item.id;
         }
     });
+    private CellSelectionModel cellSelect = new CellSelectionModel();
 
     public GxtGridDemo() {
         for (int i = 0; i < 24; i++) store.add(new RowEntity());
@@ -76,7 +86,9 @@ public class GxtGridDemo extends AbstractIsWidget {
                         .widget(new HTMLPanel("<p style='color:purple;'>WidgetX<br/>Two Lines</p>"), SafeHtmlUtils.fromString("WidgetXX"))
                         .columnConfig
         )));
-        grid.setSelectionModel(null); // no select
+        grid.setSelectionModel(cellSelect); // cell select
+        cellSelect.addCellSelectionChangedHandler(new MyCellSelectionChangedHandler(grid));
+
         // Set up cell last otherwise a chicken and egg problem
         megaCol.setCell(megaCell = new MegaPopOverCell(grid));
 
@@ -89,6 +101,51 @@ public class GxtGridDemo extends AbstractIsWidget {
                 new IconButton.IconConfig(icon), new ToggleFlag(flag)))
                 .addStyleName(STYLE.centerBgnd())
                 .toolButton;
+    }
+
+    private static class MyCellSelectionChangedHandler implements CellSelectionChangedEvent.CellSelectionChangedHandler {
+        private final Grid grid;
+        private Popup popup = new PopupBuilder()
+                .borders(true)
+                .add(hlc = new HtmlLayoutContainer("<p>x</p>"))
+                .popup;
+        private HtmlLayoutContainer hlc;
+
+        public MyCellSelectionChangedHandler(Grid grid) {
+            this.grid = grid;
+        }
+
+        @Override
+        public void onCellSelectionChanged(CellSelectionChangedEvent evt) {
+            List<CellSelection> selection = evt.getSelection();
+            if (selection.isEmpty()) {
+                // nothing selected or precursor to a real selection
+                // do nothing
+                return;
+            }
+            if (popup.isVisible()) popup.hide();
+
+            CellSelection sel0 = selection.get(0);
+            int row = sel0.getRow();
+            final int col = sel0.getCell();
+            final Element cell0 = getCell(row, col);
+            hlc.setHTML(SafeHtmlUtils.fromTrustedString("<p style='background: yellow;'>Row: " + row + "<br/> Cell:" + col + "<p>"));
+
+            // need to let remaining events get processed otherwise popup doesn't stay.
+            // This doesn't work completely.  Intermitent results.
+            Scheduler.get().scheduleDeferred(new Scheduler.ScheduledCommand() {
+                @Override
+                public void execute() {
+                    int left = cell0.getAbsoluteLeft();
+                    int top = cell0.getAbsoluteTop();
+                    popup.showAt(left, top);
+                }
+            });
+        }
+
+        private Element getCell(int row, int col) {
+            return grid.getView().getCell(row, col);
+        }
     }
 
     class ToggleFlag implements SelectEvent.SelectHandler {

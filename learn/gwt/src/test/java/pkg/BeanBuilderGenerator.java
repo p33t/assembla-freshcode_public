@@ -3,10 +3,10 @@ package pkg;
 import biz.freshcode.b_generation.BeanBuilderWriter;
 import biz.freshcode.b_generation.DefaultBeanBuilderGenerator;
 import biz.freshcode.learn.gwt.client.uispike.builder.BeanBuilder;
-import com.sencha.gxt.widget.core.client.button.ToolButton;
+import com.sencha.gxt.widget.core.client.Popup;
 
 public class BeanBuilderGenerator extends DefaultBeanBuilderGenerator {
-    static final Class CLASS = ToolButton.class; //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    static final Class CLASS = Popup.class; //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     public static final String BASE_PKG = "biz.freshcode.learn.gwt.client.builder";
 
 
