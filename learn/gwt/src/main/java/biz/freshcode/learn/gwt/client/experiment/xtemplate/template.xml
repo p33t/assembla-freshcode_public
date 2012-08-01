@@ -5,4 +5,11 @@
     <p>
         This is another paragraph
     </p>
+    <p>
+        Str: {bean.str}<br/>
+        Strings:<br/>
+        <tpl for='bean.strings'>
+            {#}) {.}<br/>
+        </tpl>
+    </p>
 </div>
