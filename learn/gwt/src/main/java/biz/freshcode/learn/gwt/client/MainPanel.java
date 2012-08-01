@@ -15,6 +15,7 @@ import biz.freshcode.learn.gwt.client.experiment.mvp.homebake.HbParent;
 import biz.freshcode.learn.gwt.client.experiment.requestfactory.RequestFactoryDemo;
 import biz.freshcode.learn.gwt.client.experiment.resources.ResourcesDemo;
 import biz.freshcode.learn.gwt.client.experiment.toolbar.ToolBarDemo;
+import biz.freshcode.learn.gwt.client.experiment.xtemplate.XTemplateDemo;
 import biz.freshcode.learn.gwt.client.uibinder.Basic;
 import biz.freshcode.learn.gwt.client.uibinder.Composed;
 import biz.freshcode.learn.gwt.client.uibinder.eg.BorderLayoutEg;
@@ -121,6 +122,12 @@ public class MainPanel extends Composite implements AcceptsOneWidget {
                                         .menuBar))
                                 .menuBar))
                         .addItem(new MenuItem("GXT", subMenu()
+                                .addItem(new MenuItem("XTemplate", new Command() {
+                                    public void execute() {
+                                        IsWidget w = GWT.create(XTemplateDemo.class);
+                                        replaceContent(w);
+                                    }
+                                }))
                                 .addItem(new MenuItem("Tool Bar", new Command() {
                                     public void execute() {
                                         IsWidget w = GWT.create(ToolBarDemo.class);
