@@ -18,11 +18,13 @@ public class XTemplateDemo extends AbstractIsWidget {
     protected Widget createWidget() {
         Bean b = new Bean();
         b.setStr("3 Numbers");
+        //b.field = "Fields Work!";
         b.setStrings(newListFrom("One", "Two", "Three"));
         return new HTMLPanel(renderer.templateXml(b));
     }
 
     public static class Bean {
+        // Doesn't work...public String field;
         private String str;
         private List<String> strings;
 
