@@ -1,0 +1,16 @@
+/*
+  A modified copy of Sencha BlueToolBar.css for learning purposes.
+*/
+@external x-toolbar-mark ;
+
+.toolBar { 
+  width: auto;
+  height: auto;
+  border: none;
+}
+
+.x-toolbar-mark {
+  border-width: 0 0 1px 0;
+  border-bottom: 1px solid #7fffd4;
+  background-color: #ffe4c4;
+}
