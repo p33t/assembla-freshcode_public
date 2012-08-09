@@ -3,6 +3,7 @@ package biz.freshcode.learn.gwt.client;
 import biz.freshcode.learn.gwt.client.bug.contentpanelsize.ContentPanelSizeBug;
 import biz.freshcode.learn.gwt.client.bug.dateaccessbug.DateAccessBug;
 import biz.freshcode.learn.gwt.client.experiment.Resizer;
+import biz.freshcode.learn.gwt.client.experiment.appearance.AppearanceDemo;
 import biz.freshcode.learn.gwt.client.experiment.celltable.CellTableDemo;
 import biz.freshcode.learn.gwt.client.experiment.dnd.DndUi;
 import biz.freshcode.learn.gwt.client.experiment.forms.Landing;
@@ -122,6 +123,12 @@ public class MainPanel extends Composite implements AcceptsOneWidget {
                                         .menuBar))
                                 .menuBar))
                         .addItem(new MenuItem("GXT", subMenu()
+                                .addItem(new MenuItem("Appearance", new Command() {
+                                    public void execute() {
+                                        IsWidget w = GWT.create(AppearanceDemo.class);
+                                        replaceContent(w);
+                                    }
+                                }))
                                 .addItem(new MenuItem("XTemplate", new Command() {
                                     public void execute() {
                                         IsWidget w = GWT.create(XTemplateDemo.class);
