@@ -8,6 +8,6 @@ public class AppearanceDemo extends AbstractIsWidget {
 
     @Override
     protected Widget createWidget() {
-        return new HTMLPanel("<p>Paragraph</p>");
+        return new HTMLPanel("<p>See Toolbar demo</p>");
     }
 }
