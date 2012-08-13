@@ -22,6 +22,10 @@ public interface Bundle extends ClientBundle {
 //  NOTE: Used in style.css via gwtmvp-extensions
     DataResource dirtyGif2();
 
+    @Source("dirty.gif")
+//  Used by @sprite
+    ImageResource dirtyGif3();
+
     @Source("style.css")
     Style style();
 
@@ -33,5 +37,7 @@ public interface Bundle extends ClientBundle {
         String dirtyBgnd();
 
         String dirtyBgnd2();
+
+        String dirtyBgnd3();
     }
 }

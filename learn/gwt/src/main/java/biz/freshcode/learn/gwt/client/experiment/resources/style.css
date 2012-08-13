@@ -19,3 +19,7 @@
 .dirtyBgnd2 {
     background-image: dirtyBgndUrl2;
 }
+
+@sprite .dirtyBgnd3 {
+    gwt-image: "dirtyGif3";
+}
