@@ -24,6 +24,7 @@ public interface Bundle extends ClientBundle {
 
     @Source("dirty.gif")
 //  Used by @sprite
+//    @ImageResource.ImageOptions(repeatStyle = ImageResource.RepeatStyle.None)
     ImageResource dirtyGif3();
 
     @Source("style.css")
