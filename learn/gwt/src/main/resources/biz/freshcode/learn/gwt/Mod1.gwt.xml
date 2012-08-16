@@ -3,6 +3,8 @@
     <!-- Inherit the core Web Toolkit stuff.                        -->
     <inherits name='com.google.gwt.user.User'/>
 
+    <inherits name='com.sencha.gxt.ui.GXT'/>
+
     <!-- We need the JUnit module in the main module,               -->
     <!-- otherwise eclipse complains (Google plugin bug?)           -->
     <inherits name='com.google.gwt.junit.JUnit'/>
@@ -10,13 +12,13 @@
     <!-- Inherit the default GWT style sheet.  You can change       -->
     <!-- the theme of your GWT application by uncommenting          -->
     <!-- any one of the following lines.                            -->
-    <!--Breaks menu bar...<inherits name='com.sencha.gxt.theme.blue.Blue'/>-->
+
+    <!-- Must come after GXT module -->
+    <inherits name='com.sencha.gxt.theme.gray.Gray'/>
+    <!-- Must come after specific theme -->
     <inherits name='com.google.gwt.user.theme.standard.Standard'/>
-    <!-- <inherits name='com.google.gwt.user.theme.chrome.Chrome'/> -->
-    <!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/>     -->
 
     <!-- Other module inherits                                      -->
-    <inherits name='com.sencha.gxt.ui.GXT'/>
     <inherits name="com.sencha.gwt.uibinder.UiBinder"/>
 
     <!--Trying to debug client bundles... not sure if this is necessary-->
