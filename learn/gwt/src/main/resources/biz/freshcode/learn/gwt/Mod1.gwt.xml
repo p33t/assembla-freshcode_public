@@ -2,6 +2,7 @@
 <module rename-to='Mod1'>
     <!-- Inherit the core Web Toolkit stuff.                        -->
     <inherits name='com.google.gwt.user.User'/>
+    <inherits name='com.google.gwt.user.theme.standard.Standard'/>
 
     <inherits name='com.sencha.gxt.ui.GXT'/>
 
@@ -15,8 +16,6 @@
 
     <!-- Must come after GXT module -->
     <inherits name='com.sencha.gxt.theme.gray.Gray'/>
-    <!-- Must come after specific theme -->
-    <inherits name='com.google.gwt.user.theme.standard.Standard'/>
 
     <!-- Other module inherits                                      -->
     <inherits name="com.sencha.gwt.uibinder.UiBinder"/>
