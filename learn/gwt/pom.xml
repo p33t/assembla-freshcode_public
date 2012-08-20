@@ -25,7 +25,7 @@
 
     <properties>
         <!-- Convenience property to set the GWT version -->
-        <gwtVersion>2.4.0</gwtVersion>
+        <gwtVersion>2.5.0-rc1</gwtVersion>
         <!-- GWT needs at least java 1.5 -->
         <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -52,6 +52,13 @@
             <version>${gwtVersion}</version>
             <scope>provided</scope>
         </dependency>
+        <!-- GWT 2.5 RC1 bug #7527, moved com/google/gwt/core/client/GWTBridge to com/google/gwt/core/shared/GWTBridge -->
+        <dependency>
+            <groupId>com.google.web.bindery</groupId>
+            <artifactId>requestfactory-server</artifactId>
+            <version>${gwtVersion}</version>
+            <scope>runtime</scope>
+        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -62,13 +69,14 @@
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
             <version>1.0.0.GA</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
             <version>1.0.0.GA</version>
             <classifier>sources</classifier>
-            <scope>test</scope>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
@@ -78,12 +86,13 @@
             <scope>provided</scope>
         </dependency>
         <!-- Trying to debug Border layout -->
-        <dependency>
-            <groupId>com.sencha.gxt</groupId>
-            <artifactId>uibinder-bridge</artifactId>
-            <version>${gwtVersion}</version>
-            <scope>provided</scope>
-        </dependency>
+        <!-- Not needed in GWT 2.5.0 -->
+        <!--<dependency>-->
+            <!--<groupId>com.sencha.gxt</groupId>-->
+            <!--<artifactId>uibinder-bridge</artifactId>-->
+            <!--<version>2.4.0</version>-->
+            <!--<scope>provided</scope>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>biz.freshcode.b-generation</groupId>
@@ -109,7 +118,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>gwt-maven-plugin</artifactId>
-                <version>2.4.0</version>
+                <version>${gwtVersion}</version>
                 <executions>
                     <execution>
                         <goals>
