@@ -23,6 +23,7 @@ public class HoverWidgetSupport<W extends Widget> {
         this.hoverWidget = hoverWidget;
         popup = new PopupPanelBuilder()
                 .addStyleName(STYLE.hoverWidgetPopup())
+                .widget(hoverWidget)
                 .popupPanel;
         mosPopup = new MouseOverState(popup, new MouseOverState.Callback() {
             @Override
@@ -92,7 +93,6 @@ public class HoverWidgetSupport<W extends Widget> {
 
     private void showPopup() {
         customizeHoverWidget(hoverWidget);
-        popup.setWidget(hoverWidget); // TODO: Move his to constructor?
         popup.show();
     }
 
