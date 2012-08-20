@@ -18,7 +18,8 @@
     <inherits name='com.sencha.gxt.theme.gray.Gray'/>
 
     <!-- Other module inherits                                      -->
-    <inherits name="com.sencha.gwt.uibinder.UiBinder"/>
+    <!-- Not necessary -->
+    <!--<inherits name="com.google.gwt.uibinder.UiBinder"/>-->
 
     <!--Trying to debug client bundles... not sure if this is necessary-->
     <inherits name="com.google.gwt.resources.Resources"/>
