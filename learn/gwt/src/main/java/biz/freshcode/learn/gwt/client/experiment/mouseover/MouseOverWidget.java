@@ -1,10 +1,10 @@
 package biz.freshcode.learn.gwt.client.experiment.mouseover;
 
 import biz.freshcode.learn.gwt.client.builder.gxt.button.ToolButtonBuilder;
+import biz.freshcode.learn.gwt.client.builder.gxt.container.VerticalLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.experiment.dnd.dragdata.DragData;
 import biz.freshcode.learn.gwt.client.experiment.mouseover.reuse.MouseOverState;
 import biz.freshcode.learn.gwt.client.uispike.builder.HTMLPanelBuilder;
-import biz.freshcode.learn.gwt.client.uispike.builder.VerticalLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.container.AbsolutePanelBuilder;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import com.google.gwt.core.client.Scheduler;

@@ -1,6 +1,6 @@
 package biz.freshcode.learn.gwt.client.experiment.forms;
 
-import biz.freshcode.learn.gwt.client.uispike.builder.VerticalLayoutContainerBuilder;
+import biz.freshcode.learn.gwt.client.builder.gxt.container.VerticalLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.field.FieldLabelBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.field.NumberFieldBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.field.TextFieldBuilder;
