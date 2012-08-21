@@ -3,8 +3,8 @@ package biz.freshcode.learn.gwt.client.experiment.hoverwidget.reuse;
 import biz.freshcode.learn.gwt.client.experiment.mouseover.reuse.MouseOverState;
 import biz.freshcode.learn.gwt.client.uispike.builder.container.PopupPanelBuilder;
 import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.PopupPanel;
-import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.core.client.util.Point;
 
 import static biz.freshcode.learn.gwt.client.experiment.hoverwidget.reuse.Bundle.STYLE;
@@ -13,7 +13,7 @@ import static biz.freshcode.learn.gwt.client.experiment.hoverwidget.reuse.Bundle
  * Manages popping up a widget at a particular screen position.
  * The same widget can be used for different screen elements.
  */
-public class HoverWidgetSupport<W extends Widget> {
+public class HoverWidgetSupport<W extends IsWidget> {
     protected final W hoverWidget;
     private final MouseOverState mosPopup;
     private final PopupPanel popup;
@@ -31,6 +31,13 @@ public class HoverWidgetSupport<W extends Widget> {
                 checkPopup();
             }
         });
+    }
+
+    /**
+     * Convenience method to tidy up code.
+     */
+    public static <W extends IsWidget> HoverWidgetSupport<W> hoverWidgetSupport(W hoverWidget) {
+        return new HoverWidgetSupport<W>(hoverWidget);
     }
 
     /**

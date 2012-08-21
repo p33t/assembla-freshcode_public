@@ -17,6 +17,8 @@ import com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.info.Info;
 
+import static biz.freshcode.learn.gwt.client.experiment.hoverwidget.reuse.HoverWidgetSupport.hoverWidgetSupport;
+
 public class HoverWidgetDemo extends AbstractIsWidget {
     private HoverWidgetSupport<ToolButton> hoverSupp;
     private HoverWidgetSupport<ToolButton> multiHover;
@@ -46,7 +48,7 @@ public class HoverWidgetDemo extends AbstractIsWidget {
                 .horizontalLayoutContainer;
 
 
-        multiHover = new HoverWidgetSupport<ToolButton>(new ToolButton(ToolButton.MAXIMIZE,
+        multiHover = hoverWidgetSupport(new ToolButton(ToolButton.MAXIMIZE,
                 new SelectEvent.SelectHandler() {
                     @Override
                     public void onSelect(SelectEvent event) {
