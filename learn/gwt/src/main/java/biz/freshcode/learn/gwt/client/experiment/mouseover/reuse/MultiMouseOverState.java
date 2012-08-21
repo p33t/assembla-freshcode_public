@@ -2,7 +2,7 @@ package biz.freshcode.learn.gwt.client.experiment.mouseover.reuse;
 
 import com.google.gwt.user.client.ui.Widget;
 
-import java.util.List;
+import java.util.Iterator;
 
 /**
  * Initialises multiple MouseOverState instances and funnels callback invocations into a
@@ -12,11 +12,16 @@ import java.util.List;
 public class MultiMouseOverState {
     private final Callback callback;
 
-    public MultiMouseOverState(List<? extends Widget> widgets, Callback callback) {
+    public MultiMouseOverState(Iterable<? extends Widget> widgets, Callback callback) {
+        this(widgets.iterator(), callback);
+    }
+    public MultiMouseOverState(Iterator<? extends Widget> widgets, Callback callback) {
         this.callback = callback;
-        for (int i = 0; i < widgets.size(); i++) {
-            Widget w = widgets.get(i);
+        int i = 0;
+        while (widgets.hasNext()) {
+            Widget w = widgets.next();
             new MouseOverState(w, new Funnel(i));
+            i++;
         }
     }
 

@@ -17,10 +17,6 @@ import com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.info.Info;
 
-import java.util.List;
-
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newList;
-
 public class HoverWidgetDemo extends AbstractIsWidget {
     private HoverWidgetSupport<ToolButton> hoverSupp;
     private HoverWidgetSupport<HorizontalLayoutContainer> multiHover;
@@ -44,16 +40,13 @@ public class HoverWidgetDemo extends AbstractIsWidget {
             }
         });
 
-        final List<Widget> ws = newList();
         HorizontalLayoutContainer multi = new HorizontalLayoutContainerBuilder()
                 .construct(new Construct<HorizontalLayoutContainerBuilder>() {
                     @Override
                     public void run() {
                         for (int i = 0; i < 5; i++) {
-                            HTMLPanel hp = new HTMLPanel("<p>&lt;&lt;" + i + "&gt;&gt;</p>");
+                            HTMLPanel hp = new HTMLPanel("<p>&lt;&lt;" + i + "&gt;&gt;&nbsp;&nbsp;</p>");
                             builder.add(hp);
-                            builder.add(new HTMLPanel("&nbsp;&nbsp;"));
-                            ws.add(hp);
                         }
                     }
                 })
@@ -68,7 +61,7 @@ public class HoverWidgetDemo extends AbstractIsWidget {
                 }))
                 .horizontalLayoutContainer);
 
-        new MultiMouseOverState(ws, new MultiMouseOverState.Callback() {
+        new MultiMouseOverState(multi.iterator(), new MultiMouseOverState.Callback() {
             @Override
             public void stateChange(MouseOverState mos, int widgetIndex) {
                 if (mos.isOver() && !mos.isDraggingOver()) {
