@@ -1,7 +1,7 @@
 package biz.freshcode.learn.gwt.client.experiment.grid.reuse;
 
 import biz.freshcode.learn.gwt.client.experiment.hoverwidget.reuse.HoverWidgetSupport;
-import biz.freshcode.learn.gwt.client.experiment.mouseover.MouseOverState;
+import biz.freshcode.learn.gwt.client.experiment.mouseover.reuse.MouseOverState;
 import com.google.gwt.cell.client.AbstractCell;
 import com.google.gwt.cell.client.ValueUpdater;
 import com.google.gwt.dom.client.Element;

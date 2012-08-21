@@ -1,7 +1,7 @@
 package biz.freshcode.learn.gwt.client.experiment.mvp.gwtmvp;
 
+import biz.freshcode.learn.gwt.client.builder.gxt.container.HorizontalLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.BorderLayoutContainerBuilder;
-import biz.freshcode.learn.gwt.client.uispike.builder.container.HorizontalLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.Widget;

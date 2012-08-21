@@ -1,8 +1,8 @@
 package biz.freshcode.learn.gwt.client.experiment.requestfactory;
 
+import biz.freshcode.learn.gwt.client.builder.gxt.container.HorizontalLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.BorderLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.TextButtonBuilder;
-import biz.freshcode.learn.gwt.client.uispike.builder.container.HorizontalLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.SimpleEventBus;
