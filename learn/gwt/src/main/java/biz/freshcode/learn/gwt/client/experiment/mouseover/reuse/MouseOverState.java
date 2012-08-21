@@ -1,5 +1,6 @@
-package biz.freshcode.learn.gwt.client.experiment.mouseover;
+package biz.freshcode.learn.gwt.client.experiment.mouseover.reuse;
 
+import biz.freshcode.learn.gwt.client.util.AsIsWidget;
 import com.google.gwt.event.dom.client.MouseOutEvent;
 import com.google.gwt.event.dom.client.MouseOutHandler;
 import com.google.gwt.event.dom.client.MouseOverEvent;
@@ -21,6 +22,7 @@ public class MouseOverState {
     private boolean draggingOver = false;
     private boolean disableStatus = false;
     private final Callback callback;
+    private IsWidget isWidget;
 
     public MouseOverState(DropTarget dropTarget, Callback callback) {
         this.callback = callback;
@@ -34,11 +36,27 @@ public class MouseOverState {
         dropTarget.addDragEnterHandler(dh);
         dropTarget.addDragLeaveHandler(dh);
         dropTarget.addDropHandler(dh);
+        isWidget = new AsIsWidget(w); // default
     }
 
     public MouseOverState(IsWidget iw, Callback callback) {
         this(new DropTarget(iw.asWidget()), callback);
+        isWidget = iw;
         disableStatus = true;
+    }
+
+    /**
+     * The widget being monitored.
+     */
+    public Widget getWidget() {
+        return isWidget.asWidget();
+    }
+
+    /**
+     * Returns the original IsWidget passed to the constructor or an instance of AsIsWidget.
+     */
+    public IsWidget getIsWidget() {
+        return isWidget;
     }
 
     /**

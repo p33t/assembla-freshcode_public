@@ -2,6 +2,7 @@ package biz.freshcode.learn.gwt.client.experiment.mouseover;
 
 import biz.freshcode.learn.gwt.client.builder.gxt.button.ToolButtonBuilder;
 import biz.freshcode.learn.gwt.client.experiment.dnd.dragdata.DragData;
+import biz.freshcode.learn.gwt.client.experiment.mouseover.reuse.MouseOverState;
 import biz.freshcode.learn.gwt.client.uispike.builder.HTMLPanelBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.VerticalLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.container.AbsolutePanelBuilder;
@@ -57,7 +58,7 @@ public class MouseOverWidget extends AbstractIsWidget {
                         .add(btnGo = new ToolButtonBuilder(new ToolButton(ToolButton.SEARCH, GO_HANDLER))
                                 .visible(false)
                                 .toolButton, 0, 0)
-                        // Hmmm.... sizing dramas.... ignoring container size :(
+                                // Hmmm.... sizing dramas.... ignoring container size :(
                         .width("100%")
                         .height("2em")
                         .absolutePanel)

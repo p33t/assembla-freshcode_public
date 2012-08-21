@@ -1,6 +1,6 @@
 package biz.freshcode.learn.gwt.client.experiment.hoverwidget.reuse;
 
-import biz.freshcode.learn.gwt.client.experiment.mouseover.MouseOverState;
+import biz.freshcode.learn.gwt.client.experiment.mouseover.reuse.MouseOverState;
 import biz.freshcode.learn.gwt.client.uispike.builder.container.PopupPanelBuilder;
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.user.client.ui.PopupPanel;
