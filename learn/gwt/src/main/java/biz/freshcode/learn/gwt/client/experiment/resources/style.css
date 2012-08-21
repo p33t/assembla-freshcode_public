@@ -20,6 +20,7 @@
     background-image: dirtyBgndUrl2;
 }
 
+/* Actually this look like the correct way */
 @sprite .dirtyBgnd3 {
     gwt-image: "dirtyGif3";
     background-repeat: no-repeat;
