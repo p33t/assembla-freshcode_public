@@ -59,11 +59,9 @@ public class HoverWidgetDemo extends AbstractIsWidget {
         new MultiMouseOverState(multi.iterator(), new MultiMouseOverState.Callback() {
             @Override
             public void stateChange(MouseOverState mos, int widgetIndex) {
-                if (mos.isOver() && !mos.isDraggingOver()) {
-                    Widget w = mos.getWidget();
-                    Point p = new Point(w.getAbsoluteLeft(), w.getAbsoluteTop());
+                if (mos.isHover()) {
                     ixMulti = widgetIndex;
-                    multiHover.enablePopup(p);
+                    multiHover.enablePopup(mos.getWidget());
                 } else {
                     // this could upset things if events not processed in correct order
                     multiHover.disablePopup();
@@ -82,11 +80,12 @@ public class HoverWidgetDemo extends AbstractIsWidget {
         new MouseOverState(simple, new MouseOverState.Callback() {
             @Override
             public void stateChange(MouseOverState mos) {
-                if (mos.isDraggingOver()) hoverSupp.disablePopup();
-                else if (mos.isOver()) {
+                if (mos.isHover()) {
                     Point coord = new Point(simple.getAbsoluteLeft(), simple.getAbsoluteTop());
                     hoverSupp.enablePopup(coord);
-                } else hoverSupp.disablePopup();
+                } else {
+                    hoverSupp.disablePopup();
+                }
             }
         });
         return simple;

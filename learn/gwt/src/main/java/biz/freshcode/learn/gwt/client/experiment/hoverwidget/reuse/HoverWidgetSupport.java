@@ -5,6 +5,7 @@ import biz.freshcode.learn.gwt.client.uispike.builder.container.PopupPanelBuilde
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.PopupPanel;
+import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.core.client.util.Point;
 
 import static biz.freshcode.learn.gwt.client.experiment.hoverwidget.reuse.Bundle.STYLE;
@@ -65,6 +66,11 @@ public class HoverWidgetSupport<W extends IsWidget> {
     public void disablePopup() {
         popupCoord = null;
         checkPopup();
+    }
+
+    public void enablePopup(IsWidget w) {
+        Widget widget = w.asWidget();
+        enablePopup(new Point(widget.getAbsoluteLeft(), widget.getAbsoluteTop()));
     }
 
     public void enablePopup(Point coord) {
