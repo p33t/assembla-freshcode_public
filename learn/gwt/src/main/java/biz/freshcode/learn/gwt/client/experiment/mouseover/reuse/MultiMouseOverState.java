@@ -4,6 +4,8 @@ import com.google.gwt.user.client.ui.Widget;
 
 import java.util.Iterator;
 
+import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newListFrom;
+
 /**
  * Initialises multiple MouseOverState instances and funnels callback invocations into a
  * single specialised callback method.
@@ -15,6 +17,11 @@ public class MultiMouseOverState {
     public MultiMouseOverState(Iterable<? extends Widget> widgets, Callback callback) {
         this(widgets.iterator(), callback);
     }
+    
+    public MultiMouseOverState(Widget[] widgets, Callback callback) {
+        this(newListFrom(widgets), callback);
+    }
+    
     public MultiMouseOverState(Iterator<? extends Widget> widgets, Callback callback) {
         this.callback = callback;
         int i = 0;
