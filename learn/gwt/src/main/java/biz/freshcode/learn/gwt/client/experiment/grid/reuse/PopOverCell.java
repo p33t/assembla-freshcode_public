@@ -16,9 +16,9 @@ public abstract class PopOverCell<T, U extends IsWidget> extends MouseOverCell<T
     private Context popupCell = null;
     private Point popupCoord = null;
 
-    public PopOverCell(DropTarget dropper, U hoverWidget) {
+    public PopOverCell(DropTarget dtGrid, U hoverWidget) {
         hoverSupp = new Hoverer(hoverWidget);
-        mosGrid = new MouseOverState(dropper, new MouseOverState.Callback() {
+        mosGrid = new MouseOverState(dtGrid, new MouseOverState.Callback() {
             @Override
             public void stateChange(MouseOverState mos) {
                 if (mos.isHover()) hoverSupp.checkPopup(); // not sure this is necessary but doesn't hurt
