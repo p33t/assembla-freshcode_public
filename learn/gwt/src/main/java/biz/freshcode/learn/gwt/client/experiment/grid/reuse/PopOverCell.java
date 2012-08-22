@@ -29,10 +29,10 @@ public abstract class PopOverCell<T, U extends IsWidget> extends MouseOverCell<T
 
     @Override
     protected void cellChange(Context cell, Element element) {
-        // show the popup
         if (mosGrid.isDraggingOver()) {
             hoverSupp.disablePopup();
         } else {
+            // show the popup
             Point popupCoord = new Point(element.getAbsoluteLeft(), element.getAbsoluteTop());
             enablePopup(popupCoord, cell);
         }
