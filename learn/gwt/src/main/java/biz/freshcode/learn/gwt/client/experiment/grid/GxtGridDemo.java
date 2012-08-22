@@ -46,7 +46,7 @@ import static biz.freshcode.learn.gwt.client.experiment.dnd.DropAssessment.NOT_H
 import static biz.freshcode.learn.gwt.client.experiment.grid.Bundle2.STYLE;
 import static biz.freshcode.learn.gwt.client.experiment.grid.RowEntity.Flag.GREEN;
 import static biz.freshcode.learn.gwt.client.experiment.grid.RowEntity.Flag.RED;
-import static biz.freshcode.learn.gwt.client.experiment.grid.reuse.PopOverCell.isSameContext;
+import static biz.freshcode.learn.gwt.client.experiment.grid.reuse.MouseOverCell.isSameContext;
 import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.*;
 
 /**

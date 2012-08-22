@@ -2,28 +2,17 @@ package biz.freshcode.learn.gwt.client.experiment.grid.reuse;
 
 import biz.freshcode.learn.gwt.client.experiment.hoverwidget.reuse.HoverWidgetSupport;
 import biz.freshcode.learn.gwt.client.experiment.mouseover.reuse.MouseOverState;
-import com.google.gwt.cell.client.AbstractCell;
-import com.google.gwt.cell.client.ValueUpdater;
 import com.google.gwt.dom.client.Element;
-import com.google.gwt.dom.client.NativeEvent;
-import com.google.gwt.event.dom.client.DomEvent;
-import com.google.gwt.event.dom.client.MouseOutEvent;
-import com.google.gwt.event.dom.client.MouseOverEvent;
-import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.user.client.ui.IsWidget;
 import com.sencha.gxt.core.client.util.Point;
 import com.sencha.gxt.dnd.core.client.DropTarget;
-
-import java.util.Set;
-
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newSetFrom;
 
 /**
  * Handles popup of a widget when mouse-over a cell (excluding drag gestures).
  */
-public abstract class PopOverCell<T, U extends Widget> extends AbstractCell<T> {
+public abstract class PopOverCell<T, U extends IsWidget> extends MouseOverCell<T> {
     private final MouseOverState mosGrid;
     private final Hoverer hoverSupp;
-    private Context lastMouseOverCell = null;
     private Context popupCell = null;
     private Point popupCoord = null;
 
@@ -38,55 +27,27 @@ public abstract class PopOverCell<T, U extends Widget> extends AbstractCell<T> {
         });
     }
 
-    public static boolean isSameContext(Context c1, Context c2) {
-        return c1 != null &&
-                c2 != null &&
-                c1.getColumn() == c2.getColumn() &&
-                c1.getIndex() == c2.getIndex();
-    }
-
     @Override
-    public Set<String> getConsumedEvents() {
-        return newSetFrom(
-                MouseOutEvent.getType().getName(),
-                MouseOverEvent.getType().getName()
-        );
-    }
-
-    @Override
-    public void onBrowserEvent(final Context context,
-                               final Element parent,
-                               T value,
-                               NativeEvent event,
-                               ValueUpdater<T> updater) {
-        if (isType(event, MouseOutEvent.getType())) {
-            // manage 'currentCell'
-            if (isCurrentCell(context)) {
-                // exiting current cell
-                lastMouseOverCell = null;
-            }
-            // hide popup if necessary
-            hoverSupp.disablePopup();
-        } else if (isType(event, MouseOverEvent.getType())) {
-            // track current cell
-            lastMouseOverCell = context;
-
-            // show the popup
-            if (!mosGrid.isDraggingOver()) {
-                Point popupCoord = new Point(parent.getAbsoluteLeft(), parent.getAbsoluteTop());
-                enablePopup(popupCoord, context);
-            }
-//                    Causes: AssertionError: A widget that has an existing parent widget may not be added to the detach list
-//                    HTML html = HTML.wrap(parent);
+    protected void cellChange(Context cell, Element element) {
+        // show the popup
+        if (!mosGrid.isDraggingOver()) {
+            Point popupCoord = new Point(element.getAbsoluteLeft(), element.getAbsoluteTop());
+            enablePopup(popupCoord, cell);
         }
     }
 
+    @Override
+    protected void noCell() {
+        hoverSupp.disablePopup();
+    }
+
     public boolean isCurrentCell(Context cell) {
-        return isSameContext(cell, getCurrentCell());
+        return MouseOverCell.isSameContext(cell, getCurrentCell());
     }
 
     public Context getCurrentCell() {
-        if (lastMouseOverCell != null) return lastMouseOverCell;
+        Context superCell = super.getCurrentCell();
+        if (superCell != null) return superCell;
         return popupCell;
     }
 
@@ -101,10 +62,6 @@ public abstract class PopOverCell<T, U extends Widget> extends AbstractCell<T> {
         this.popupCoord = popupCoord;
         popupCell = cell;
         hoverSupp.enablePopup(popupCoord);
-    }
-
-    private boolean isType(NativeEvent event, DomEvent.Type type) {
-        return event.getType().equals(type.getName());
     }
 
     private class Hoverer extends HoverWidgetSupport<U> {
