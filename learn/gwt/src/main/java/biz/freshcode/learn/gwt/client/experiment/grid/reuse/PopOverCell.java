@@ -32,8 +32,8 @@ public abstract class PopOverCell<T, U extends Widget> extends AbstractCell<T> {
         mosGrid = new MouseOverState(dropper, new MouseOverState.Callback() {
             @Override
             public void stateChange(MouseOverState mos) {
-                if (mos.isDraggingOver()) hoverSupp.disablePopup();
-                else hoverSupp.checkPopup(); // not sure this is necessary but doesn't hurt
+                if (mos.isHover()) hoverSupp.checkPopup(); // not sure this is necessary but doesn't hurt
+                else hoverSupp.disablePopup();
             }
         });
     }
@@ -50,11 +50,6 @@ public abstract class PopOverCell<T, U extends Widget> extends AbstractCell<T> {
         return newSetFrom(
                 MouseOutEvent.getType().getName(),
                 MouseOverEvent.getType().getName()
-
-                // Not received... might need more plumbing
-//                                        DragStartEvent.getType().getName(),
-//                                        DragOverEvent.getType().getName(),
-//                                        DragEndEvent.getType().getName()
         );
     }
 
