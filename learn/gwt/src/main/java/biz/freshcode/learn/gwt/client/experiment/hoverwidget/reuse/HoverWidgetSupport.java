@@ -15,6 +15,7 @@ import static biz.freshcode.learn.gwt.client.experiment.hoverwidget.reuse.Bundle
  * The same widget can be used for different screen elements.
  */
 public class HoverWidgetSupport<W extends IsWidget> {
+    private static final int POSITION_OFFSET = 1;
     protected final W hoverWidget;
     private final MouseOverState mosPopup;
     private final PopupPanel popup;
@@ -93,13 +94,13 @@ public class HoverWidgetSupport<W extends IsWidget> {
     }
 
     private void showPopupIfNecessary(Point coord) {
-        if (coord.equals(currentCoord())) {
+        if (coord.equals(getPosition())) {
             // location is accurate (event may have been echoed)
             if (!popup.isShowing()) showPopup();
         } else {
             // different location
             hidePopupIfNecessary();
-            popup.setPopupPosition(coord.getX(), coord.getY());
+            setPosition(coord);
             showPopup();
         }
     }
@@ -111,13 +112,25 @@ public class HoverWidgetSupport<W extends IsWidget> {
 
     private void hidePopupIfNecessary() {
         if (popup.isShowing()) {
-            Point coord = currentCoord();
+            Point coord = getPosition();
             popup.hide();
             popupHidden(coord);
         }
     }
 
-    private Point currentCoord() {
-        return new Point(popup.getPopupLeft(), popup.getPopupTop());
+    private void setPosition(Point coord) {
+        int x = coord.getX() + POSITION_OFFSET;
+        int y = coord.getY() + POSITION_OFFSET;
+        popup.setPopupPosition(x, y);
+    }
+
+    private Point getPosition() {
+        int x = popup.getPopupLeft() - POSITION_OFFSET;
+        int y = popup.getPopupTop() - POSITION_OFFSET;
+        return new Point(x, y);
+    }
+
+    public W getHoverWidget() {
+        return hoverWidget;
     }
 }
