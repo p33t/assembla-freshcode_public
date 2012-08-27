@@ -2,6 +2,7 @@ package biz.freshcode.learn.gwt.client;
 
 import biz.freshcode.learn.gwt.client.bug.contentpanelsize.ContentPanelSizeBug;
 import biz.freshcode.learn.gwt.client.bug.dateaccessbug.DateAccessBug;
+import biz.freshcode.learn.gwt.client.builder.gxt.DialogBuilder;
 import biz.freshcode.learn.gwt.client.experiment.Resizer;
 import biz.freshcode.learn.gwt.client.experiment.appearance.AppearanceDemo;
 import biz.freshcode.learn.gwt.client.experiment.celltable.CellTableDemo;
@@ -16,13 +17,13 @@ import biz.freshcode.learn.gwt.client.experiment.mvp.homebake.HbParent;
 import biz.freshcode.learn.gwt.client.experiment.requestfactory.RequestFactoryDemo;
 import biz.freshcode.learn.gwt.client.experiment.resources.ResourcesDemo;
 import biz.freshcode.learn.gwt.client.experiment.toolbar.ToolBarDemo;
+import biz.freshcode.learn.gwt.client.experiment.window.WindowDemo;
 import biz.freshcode.learn.gwt.client.experiment.xtemplate.XTemplateDemo;
 import biz.freshcode.learn.gwt.client.uibinder.Basic;
 import biz.freshcode.learn.gwt.client.uibinder.Composed;
 import biz.freshcode.learn.gwt.client.uibinder.eg.BorderLayoutEg;
 import biz.freshcode.learn.gwt.client.uibinder.eg.Tutorial1;
 import biz.freshcode.learn.gwt.client.uibinder.eg.Tutorial2;
-import biz.freshcode.learn.gwt.client.uispike.builder.DialogBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.MenuBarBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.ViewportBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.container.DockLayoutPanelBuilder;
@@ -123,6 +124,12 @@ public class MainPanel extends Composite implements AcceptsOneWidget {
                                         .menuBar))
                                 .menuBar))
                         .addItem(new MenuItem("GXT", subMenu()
+                                .addItem(new MenuItem("Windows (Popup)", new Command() {
+                                    public void execute() {
+                                        IsWidget w = GWT.create(WindowDemo.class);
+                                        replaceContent(w);
+                                    }
+                                }))
                                 .addItem(new MenuItem("Appearance", new Command() {
                                     public void execute() {
                                         IsWidget w = GWT.create(AppearanceDemo.class);
