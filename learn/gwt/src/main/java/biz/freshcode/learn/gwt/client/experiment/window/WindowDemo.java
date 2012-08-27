@@ -1,8 +1,11 @@
 package biz.freshcode.learn.gwt.client.experiment.window;
 
+import biz.freshcode.learn.gwt.client.IsRootContent;
+import biz.freshcode.learn.gwt.client.builder.gwt.HTMLPanelBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.DialogBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.PopupBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.WindowBuilder;
+import biz.freshcode.learn.gwt.client.builder.gxt.container.BorderLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.container.HorizontalLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import com.google.gwt.user.client.ui.HTMLPanel;
@@ -11,11 +14,12 @@ import com.sencha.gxt.widget.core.client.Dialog;
 import com.sencha.gxt.widget.core.client.Popup;
 import com.sencha.gxt.widget.core.client.Window;
 import com.sencha.gxt.widget.core.client.button.TextButton;
+import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 
 import static biz.freshcode.learn.gwt.client.experiment.window.Bundle.STYLE;
 
-public class WindowDemo extends AbstractIsWidget {
+public class WindowDemo extends AbstractIsWidget implements IsRootContent {
     private TextButton btnDialog;
     private Dialog dialog = new DialogBuilder()
             .headingHtml("<p>Heading</p>")
@@ -28,6 +32,7 @@ public class WindowDemo extends AbstractIsWidget {
             .headingHtml("<p>Heading</p>")
             .widget(new HTMLPanel("<p>Window Contents</p>"))
             .autoHide(true)
+            .constrain(true)
 //            .deferHeight(true) ... does nothing
             .window;
     private TextButton btnWindow;
@@ -43,28 +48,33 @@ public class WindowDemo extends AbstractIsWidget {
 
     @Override
     protected Widget createWidget() {
-        return new HorizontalLayoutContainerBuilder()
-                .add(btnDialog = new TextButton("Show Dialog", new SelectEvent.SelectHandler() {
-                    @Override
-                    public void onSelect(SelectEvent event) {
-                        dialog.setPosition(btnDialog.getAbsoluteLeft(), btnDialog.getAbsoluteTop());
-                        dialog.show();
-                    }
-                }))
-                .add(btnWindow = new TextButton("Show Window", new SelectEvent.SelectHandler() {
-                    @Override
-                    public void onSelect(SelectEvent event) {
-                        window.setPosition(btnWindow.getAbsoluteLeft(), btnWindow.getAbsoluteTop());
-                        window.show();
-                    }
-                }))
-                .add(btnPopup = new TextButton("Show Popup", new SelectEvent.SelectHandler() {
-                    @Override
-                    public void onSelect(SelectEvent event) {
-                        popup.showAt(btnPopup.getAbsoluteLeft(), btnPopup.getAbsoluteTop());
-                    }
-                }))
-                .horizontalLayoutContainer;
+        return new BorderLayoutContainerBuilder()
+                .centerWidget(new HTMLPanelBuilder("<div style='width:100%; height:100%;'>&nbsp</div>")
+                        .addStyleName(STYLE.bgndTile())
+                        .hTMLPanel)
+                .southWidget(new HorizontalLayoutContainerBuilder()
+                        .add(btnDialog = new TextButton("Show Dialog", new SelectEvent.SelectHandler() {
+                            @Override
+                            public void onSelect(SelectEvent event) {
+                                dialog.setPosition(btnDialog.getAbsoluteLeft(), btnDialog.getAbsoluteTop());
+                                dialog.show();
+                            }
+                        }))
+                        .add(btnWindow = new TextButton("Show Window", new SelectEvent.SelectHandler() {
+                            @Override
+                            public void onSelect(SelectEvent event) {
+                                window.setPosition(btnWindow.getAbsoluteLeft(), btnWindow.getAbsoluteTop());
+                                window.show();
+                            }
+                        }))
+                        .add(btnPopup = new TextButton("Show Popup", new SelectEvent.SelectHandler() {
+                            @Override
+                            public void onSelect(SelectEvent event) {
+                                popup.showAt(btnPopup.getAbsoluteLeft(), btnPopup.getAbsoluteTop());
+                            }
+                        }))
+                        .horizontalLayoutContainer, new BorderLayoutContainer.BorderLayoutData(30))
+                .borderLayoutContainer;
     }
 
 }

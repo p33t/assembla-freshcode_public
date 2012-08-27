@@ -1,6 +1,6 @@
 package biz.freshcode.learn.gwt.client.experiment.dnd;
 
-import biz.freshcode.learn.gwt.client.uispike.builder.BorderLayoutContainerBuilder;
+import biz.freshcode.learn.gwt.client.builder.gxt.container.BorderLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import com.sencha.gxt.widget.core.client.container.Container;
 
