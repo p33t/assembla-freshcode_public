@@ -5,10 +5,10 @@ import biz.freshcode.b_generation.BgenUtil;
 import biz.freshcode.b_generation.DefaultBeanBuilderGenerator;
 import biz.freshcode.learn.gwt.client.uispike.builder.BeanBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.Construct;
-import com.sencha.gxt.widget.core.client.Window;
+import com.google.gwt.user.client.ui.HTMLPanel;
 
 public class BeanBuilderGenerator extends DefaultBeanBuilderGenerator {
-    static final Class CLASS = Window.class; //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    static final Class CLASS = HTMLPanel.class; //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     public static final String BASE_PKG = "biz.freshcode.learn.gwt.client.builder";
 
 

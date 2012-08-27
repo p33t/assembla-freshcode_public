@@ -1,8 +1,8 @@
 package biz.freshcode.learn.gwt.client.uispike.nonuibuilder;
 
+import biz.freshcode.learn.gwt.client.builder.gxt.container.BorderLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.container.VerticalLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.uispike.Row;
-import biz.freshcode.learn.gwt.client.uispike.builder.BorderLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.BorderLayoutDataBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.ToolBarBuilder;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
