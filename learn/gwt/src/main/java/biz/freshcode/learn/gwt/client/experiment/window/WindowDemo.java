@@ -36,6 +36,8 @@ public class WindowDemo extends AbstractIsWidget {
             .widget(new HTMLPanel("<p>Popup has no heading</p>"))
             .borders(true)
 //            .animate(true) // causes auto hiding problems for this and 'dialog' (?!)
+            .title("The Title")
+            .toolTip("The Tooltip")
             .addStyleName(STYLE.whiteBgnd())
             .popup;
 
