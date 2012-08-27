@@ -32,7 +32,7 @@ public class WindowDemo extends AbstractIsWidget implements IsRootContent {
             .headingHtml("<p>Heading</p>")
             .widget(new HTMLPanel("<p>Window Contents</p>"))
             .autoHide(true)
-            .constrain(true)
+//            .constrain(false)  ... does nothing
 //            .deferHeight(true) ... does nothing
             .window;
     private TextButton btnWindow;
