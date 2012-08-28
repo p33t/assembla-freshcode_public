@@ -245,8 +245,8 @@ public class MainPanel extends Composite implements AcceptsOneWidget {
     }
 
     private void replaceRoot(IsWidget w) {
-        // NOTE: There is a RootLayoutPanel too.
-        RootPanel root = RootPanel.get();
+        // NOTE: If using entire display area use RootLayoutPanel (not RootPanel)
+        RootLayoutPanel root = EntryPoint.getRoot();
         root.clear();
         root.add(new ViewportBuilder()
                 .widget(w)

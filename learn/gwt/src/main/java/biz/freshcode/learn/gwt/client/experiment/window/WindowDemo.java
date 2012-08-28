@@ -57,15 +57,15 @@ public class WindowDemo extends AbstractIsWidget implements IsRootContent {
                         .add(btnWindow = new TextButton("Show Window", new SelectEvent.SelectHandler() {
                             @Override
                             public void onSelect(SelectEvent event) {
-                                position(window, btnWindow);
                                 window.show();
+                                position(window, btnWindow);
                             }
                         }))
                         .add(btnDialog = new TextButton("Show Dialog", new SelectEvent.SelectHandler() {
                             @Override
                             public void onSelect(SelectEvent event) {
-                                position(dialog, btnDialog);
                                 dialog.show();
+                                position(dialog, btnDialog);
                             }
                         }))
                         .add(btnPopup = new TextButton("Show Popup", new SelectEvent.SelectHandler() {
@@ -79,12 +79,21 @@ public class WindowDemo extends AbstractIsWidget implements IsRootContent {
     }
 
     private void position(Window w, Widget orient) {
-        GWT.log("Showing at " + orient.getAbsoluteLeft() + "," + orient.getAbsoluteTop());
-        // This appears to only work the first time ?!
-        w.setPagePosition(orient.getAbsoluteLeft(), orient.getAbsoluteTop());
+        int left = orient.getAbsoluteLeft();
+        int top = orient.getAbsoluteTop();
+        GWT.log("Showing at " + left + "," + top +
+        "\n Visible:" + w.isVisible() + ", attached:" + w.isAttached());
+
 //        Always 0,0 ?!
 //        XElement elem = w.getElement();
 //        GWT.log("Resulting position: " + elem.getAbsoluteLeft() + "," + elem.getAbsoluteTop());
+
+        // This appears to only work the first time ?! (same for setPosition) !!!!!!!!!!!!!!!!!!!!!!!!!!
+        // Unless it happens while the window is visible ?!
+        w.setPagePosition(left, top);
+
+// Always 0,0!!    GWT.log("Resulting position " + w.getAbsoluteLeft() + ", " + w.getAbsoluteTop());
+// No help...      w.forceLayout();
     }
 
 }
