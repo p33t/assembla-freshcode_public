@@ -16,13 +16,17 @@ import javax.inject.Inject;
 import static biz.freshcode.learn.gwt.client.AppActivityMapper.DEFAULT_PLACE;
 
 public class EntryPoint implements com.google.gwt.core.client.EntryPoint {
+    // The root layout panel being used.
+    public static RootLayoutPanel getRoot() {
+        return RootLayoutPanel.get();
+    }
 
     @Override
     public void onModuleLoad() {
         AppInjector injector = GWT.create(AppInjector.class);
         injector.bootstrap();
     }
-
+    
     @Singleton
     public static class Bootstrap {
         @Inject
@@ -38,7 +42,7 @@ public class EntryPoint implements com.google.gwt.core.client.EntryPoint {
             // Remove 'loading' spinner.
             DOM.removeChild(RootPanel.getBodyElement(), DOM.getElementById("loading"));
 
-            RootLayoutPanel.get().add(pnl);
+            getRoot().add(pnl);
             // Goes to the place represented on URL else default place
             handler.handleCurrentHistory();
         }
