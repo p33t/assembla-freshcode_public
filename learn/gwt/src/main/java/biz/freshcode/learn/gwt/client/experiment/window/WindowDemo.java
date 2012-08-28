@@ -1,5 +1,6 @@
 package biz.freshcode.learn.gwt.client.experiment.window;
 
+import biz.freshcode.learn.gwt.client.EntryPoint;
 import biz.freshcode.learn.gwt.client.IsRootContent;
 import biz.freshcode.learn.gwt.client.builder.gwt.HTMLPanelBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.DialogBuilder;
@@ -10,6 +11,7 @@ import biz.freshcode.learn.gwt.client.builder.gxt.container.HorizontalLayoutCont
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.user.client.ui.HTMLPanel;
+import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.widget.core.client.Dialog;
 import com.sencha.gxt.widget.core.client.Popup;
@@ -19,6 +21,8 @@ import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 
 import static biz.freshcode.learn.gwt.client.experiment.window.Bundle.STYLE;
+import static java.lang.Math.max;
+import static java.lang.Math.min;
 
 public class WindowDemo extends AbstractIsWidget implements IsRootContent {
     private TextButton btnDialog;
@@ -53,36 +57,45 @@ public class WindowDemo extends AbstractIsWidget implements IsRootContent {
                 .centerWidget(new HTMLPanelBuilder("<div style='width:100%; height:100%;'>&nbsp</div>")
                         .addStyleName(STYLE.bgndTile())
                         .hTMLPanel)
-                .southWidget(new HorizontalLayoutContainerBuilder()
-                        .add(btnWindow = new TextButton("Show Window", new SelectEvent.SelectHandler() {
-                            @Override
-                            public void onSelect(SelectEvent event) {
-                                window.show();
-                                position(window, btnWindow);
-                            }
-                        }))
-                        .add(btnDialog = new TextButton("Show Dialog", new SelectEvent.SelectHandler() {
-                            @Override
-                            public void onSelect(SelectEvent event) {
-                                dialog.show();
-                                position(dialog, btnDialog);
-                            }
-                        }))
-                        .add(btnPopup = new TextButton("Show Popup", new SelectEvent.SelectHandler() {
-                            @Override
-                            public void onSelect(SelectEvent event) {
-                                popup.showAt(btnPopup.getAbsoluteLeft(), btnPopup.getAbsoluteTop());
-                            }
-                        }))
-                        .horizontalLayoutContainer, new BorderLayoutContainer.BorderLayoutData(30))
+                .southWidget(new BorderLayoutContainerBuilder()
+                        .eastWidget(new HorizontalLayoutContainerBuilder()
+                                .add(btnWindow = new TextButton("Show Window", new SelectEvent.SelectHandler() {
+                                    @Override
+                                    public void onSelect(SelectEvent event) {
+                                        window.show();
+                                        position(window, btnWindow);
+                                    }
+                                }))
+                                .add(btnDialog = new TextButton("Show Dialog", new SelectEvent.SelectHandler() {
+                                    @Override
+                                    public void onSelect(SelectEvent event) {
+                                        dialog.show();
+                                        position(dialog, btnDialog);
+                                    }
+                                }))
+                                .add(btnPopup = new TextButton("Show Popup", new SelectEvent.SelectHandler() {
+                                    @Override
+                                    public void onSelect(SelectEvent event) {
+                                        popup.showAt(btnPopup.getAbsoluteLeft(), btnPopup.getAbsoluteTop());
+                                    }
+                                }))
+                                .horizontalLayoutContainer, new BorderLayoutContainer.BorderLayoutData(220))
+                        .borderLayoutContainer, new BorderLayoutContainer.BorderLayoutData(30))
                 .borderLayoutContainer;
     }
 
     private void position(Window w, Widget orient) {
         int left = orient.getAbsoluteLeft();
         int top = orient.getAbsoluteTop();
+
+        GWT.log("Orientation position: " + left + ", " + top);
+
+        RootLayoutPanel root = EntryPoint.getRoot();
+        left = adjustPosition(left, w.getOffsetWidth(), root.getOffsetWidth());
+        top = adjustPosition(top, w.getOffsetHeight(), root.getOffsetHeight());
+
         GWT.log("Showing at " + left + "," + top +
-        "\n Visible:" + w.isVisible() + ", attached:" + w.isAttached());
+                "\n Visible:" + w.isVisible() + ", attached:" + w.isAttached());
 
 //        Always 0,0 ?!
 //        XElement elem = w.getElement();
@@ -96,4 +109,7 @@ public class WindowDemo extends AbstractIsWidget implements IsRootContent {
 // No help...      w.forceLayout();
     }
 
+    private int adjustPosition(int desired, int windowSize, int displaySize) {
+        return min(desired, max(0, displaySize - windowSize));
+    }
 }
