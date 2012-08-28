@@ -57,6 +57,7 @@ public class WindowDemo extends AbstractIsWidget implements IsRootContent {
                 .centerWidget(new HTMLPanelBuilder("<div style='width:100%; height:100%;'>&nbsp</div>")
                         .addStyleName(STYLE.bgndTile())
                         .hTMLPanel)
+                // Easiest way to put buttons at bottom right of screen
                 .southWidget(new BorderLayoutContainerBuilder()
                         .eastWidget(new HorizontalLayoutContainerBuilder()
                                 .add(btnWindow = new TextButton("Show Window", new SelectEvent.SelectHandler() {
