@@ -24,8 +24,16 @@ import static biz.freshcode.learn.gwt.client.experiment.window.Bundle.STYLE;
 import static java.lang.Math.max;
 import static java.lang.Math.min;
 
+/**
+ * It seems that the combination of the following will have an adequate result:
+ * - New instance of Window or Dialog each time
+ * - FlowLayoutContainer as first widget to get scrolling
+ * - Show before position
+ */
 public class WindowDemo extends AbstractIsWidget implements IsRootContent {
     private TextButton btnDialog;
+
+    // Where is 'onEsc'?... seems to work without it here but not in other apps?
     private Dialog dialog = new DialogBuilder()
             .headingHtml("<p>Heading</p>")
             .widget(new HTMLPanel("<p>This guy has buttons support... otherwise same as 'Window'and<br/>some<br/>extra<br/>lines<br/>thanks</p>"))
