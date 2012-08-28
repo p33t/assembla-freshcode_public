@@ -63,15 +63,13 @@ public class WindowDemo extends AbstractIsWidget implements IsRootContent {
                                 .add(btnWindow = new TextButton("Show Window", new SelectEvent.SelectHandler() {
                                     @Override
                                     public void onSelect(SelectEvent event) {
-                                        window.show();
-                                        position(window, btnWindow);
+                                        positionAndShow(window, btnWindow);
                                     }
                                 }))
                                 .add(btnDialog = new TextButton("Show Dialog", new SelectEvent.SelectHandler() {
                                     @Override
                                     public void onSelect(SelectEvent event) {
-                                        dialog.show();
-                                        position(dialog, btnDialog);
+                                        positionAndShow(dialog, btnDialog);
                                     }
                                 }))
                                 .add(btnPopup = new TextButton("Show Popup", new SelectEvent.SelectHandler() {
@@ -83,6 +81,13 @@ public class WindowDemo extends AbstractIsWidget implements IsRootContent {
                                 .horizontalLayoutContainer, new BorderLayoutContainer.BorderLayoutData(220))
                         .borderLayoutContainer, new BorderLayoutContainer.BorderLayoutData(30))
                 .borderLayoutContainer;
+    }
+
+    private void positionAndShow(Window window, TextButton orient) {
+        // NOTE: Need to show before position
+        // Otherwise positioning doesn't work after the first time
+        window.show();
+        position(window, orient);
     }
 
     private void position(Window w, Widget orient) {
