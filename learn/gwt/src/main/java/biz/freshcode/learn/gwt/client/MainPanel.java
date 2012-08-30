@@ -1,5 +1,6 @@
 package biz.freshcode.learn.gwt.client;
 
+import biz.freshcode.learn.gwt.client.bug.WindowMoveBug;
 import biz.freshcode.learn.gwt.client.bug.contentpanelsize.ContentPanelSizeBug;
 import biz.freshcode.learn.gwt.client.bug.dateaccessbug.DateAccessBug;
 import biz.freshcode.learn.gwt.client.builder.gxt.DialogBuilder;
@@ -49,6 +50,12 @@ public class MainPanel extends Composite implements AcceptsOneWidget {
                 .width("100%")
                 .addNorth(new MenuBarBuilder()
                         .addItem(new MenuItem("Bugs", subMenu()
+                                .addItem(new MenuItem("Window Move Affects Width", new Command() {
+                                    public void execute() {
+                                        IsWidget w = new WindowMoveBug();
+                                        replaceContent(w);
+                                    }
+                                }))
                                 .addItem(new MenuItem("GXT: Date Edit", new Command() {
                                     public void execute() {
                                         new DateAccessBug().asWidget().show();
