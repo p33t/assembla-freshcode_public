@@ -26,7 +26,7 @@ import static java.lang.Math.min;
 
 /**
  * It seems that the combination of the following will have an adequate result:
- * - New instance of Window or Dialog each time
+ * - New instance of Window or Dialog each time (Don't forget a 'removeFromParent()' on old refs.
  * - FlowLayoutContainer as first widget to get scrolling
  * - Show before position
  */
