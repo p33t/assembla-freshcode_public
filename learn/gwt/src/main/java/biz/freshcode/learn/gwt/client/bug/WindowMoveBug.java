@@ -38,7 +38,8 @@ public class WindowMoveBug extends AbstractIsWidget {
                     Window w = new Window();
                     w.setHeadingHtml("A Window");
                     w.add(new HTMLPanel("<p>Move this window down and to the right.<br/>" +
-                            "You should see an abnormal resize with the shadow remaining the original size.</p>"));
+                            "You should see an abnormal resize with the shadow remaining the original size.<br/>" +
+                            "Resizing it fixes it up again.</p>"));
                     w.setMinHeight(10);
                     w.setMinWidth(20);
                     w.setOnEsc(true);
