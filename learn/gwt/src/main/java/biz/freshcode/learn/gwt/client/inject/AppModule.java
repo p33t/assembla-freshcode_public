@@ -15,6 +15,11 @@ import com.google.inject.Singleton;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.event.shared.SimpleEventBus;
 
+/**
+ * Bindings for DI.
+ * Notes:
+ * - Don't need bindings for remote 'async' services.  They are automatically bound to their non-async counterparts.
+ */
 public class AppModule extends AbstractGinModule {
     @Override
     protected void configure() {
