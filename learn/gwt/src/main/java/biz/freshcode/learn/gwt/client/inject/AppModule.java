@@ -37,6 +37,12 @@ public class AppModule extends AbstractGinModule {
         );
     }
 
+    ///////////////////////////////////////////////////////////////
+    // These specialized provider methods are needed
+    // for when we don't have control over source code
+    ///////////////////////////////////////////////////////////////
+
+
     @Provides
     @Singleton
     public PlaceHistoryHandler getHistoryHandler(PlaceHistoryMapper historyMapper) {
