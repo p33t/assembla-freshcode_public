@@ -29,10 +29,8 @@ public class AppModule extends AbstractGinModule {
         bind(EventBus.class).to(SimpleEventBus.class).in(Singleton.class);
         bind(ActivityMapper.class).to(AppActivityMapper.class);
         bind(PlaceHistoryMapper.class).to(AppPlaceHistoryMapper.class).in(Singleton.class);
-//        bind(GwtMvp.class).toProvider(FactoryProvider.newFactory(GwtMvpFactory.class, GwtMvp.class));
-//        install(new FactoryModuleBuilder().build(GwtMvpFactory.class));
         install(new GinFactoryModuleBuilder()
-// Doesn't help...                .implement(GwtMvp.class, GwtMvp.class)
+// Normally used for mapping interface to impl... .implement(GwtMvp.class, GwtMvp.class)
                 .build(GwtMvp.Factory.class)
         );
     }
