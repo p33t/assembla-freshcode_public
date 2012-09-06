@@ -47,6 +47,7 @@ public class GmViewImpl extends AbstractIsWidget implements GmView {
 
     @Override
     public void setPresenter(Presenter p) {
+        // NOTE: To get view instance re-use all references to an old presenter must be updated here.
         presenter = p;
     }
 }

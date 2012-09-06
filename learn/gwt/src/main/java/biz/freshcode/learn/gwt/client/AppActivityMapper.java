@@ -6,7 +6,6 @@ import com.google.gwt.activity.shared.Activity;
 import com.google.gwt.activity.shared.ActivityMapper;
 import com.google.gwt.place.shared.Place;
 import com.google.inject.Inject;
-import com.google.inject.Provider;
 import com.google.inject.Singleton;
 
 /**
@@ -18,12 +17,14 @@ public class AppActivityMapper implements ActivityMapper {
     };
 
     @Inject
-    Provider<GwtMvp> gmProvider;
+    GwtMvp.Factory gmFactory;
 
     @Override
     public Activity getActivity(Place place) {
         if (place instanceof GmPlace) {
-            return gmProvider.get().goTo((GmPlace) place);
+            return gmFactory.create((GmPlace) place);
+//            Non-constructor alternative.  It has less code but is not elegant.
+//            return gmProvider.get().startAt((GmPlace) place);
         }
         if (DEFAULT_PLACE.equals(place)) {
             return new MainActivity();
