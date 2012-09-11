@@ -4,6 +4,7 @@ import biz.freshcode.learn.gwt.client.builder.gxt.container.BorderLayoutContaine
 import biz.freshcode.learn.gwt.client.builder.gxt.container.HorizontalLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import com.google.gwt.user.client.ui.CheckBox;
+import com.google.gwt.user.client.ui.Hyperlink;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Singleton;
 import com.sencha.gxt.widget.core.client.button.TextButton;
@@ -18,6 +19,7 @@ public class GmViewImpl extends AbstractIsWidget implements GmView {
     private Presenter presenter;
     private TextButton btn;
     private HtmlLayoutContainer hlc;
+    private Hyperlink link;
 
     @Override
     protected Widget createWidget() {
@@ -30,6 +32,7 @@ public class GmViewImpl extends AbstractIsWidget implements GmView {
                             }
                         }))
                         .add(new CheckBox("Display State (remains when Back button used)"))
+                        .add(link = new Hyperlink("Smaller", ""))
                         .horizontalLayoutContainer)
                 .centerWidget(hlc = new HtmlLayoutContainer("<p>Nothing</p>"))
                 .borderLayoutContainer;
@@ -40,6 +43,8 @@ public class GmViewImpl extends AbstractIsWidget implements GmView {
         btn.setHTML(htmlEscape(s));
     }
 
+
+
     @Override
     public void setHtml(String s) {
         hlc.setHTML(htmlEscape(s));
@@ -49,5 +54,10 @@ public class GmViewImpl extends AbstractIsWidget implements GmView {
     public void setPresenter(Presenter p) {
         // NOTE: To get view instance re-use all references to an old presenter must be updated here.
         presenter = p;
+    }
+
+    @Override
+    public void setLinkTargetToken(String token) {
+        link.setTargetHistoryToken(token);
     }
 }
