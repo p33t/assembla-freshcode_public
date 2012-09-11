@@ -7,6 +7,8 @@ public interface GmView extends IsWidget {
     void setHtml(String s);
     void setPresenter(Presenter p);
 
+    void setLinkTargetToken(String s);
+
     interface Presenter {
         void notifyButtonPressed();
     }

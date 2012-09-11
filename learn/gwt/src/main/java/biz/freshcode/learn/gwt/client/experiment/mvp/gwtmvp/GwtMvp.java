@@ -1,5 +1,6 @@
 package biz.freshcode.learn.gwt.client.experiment.mvp.gwtmvp;
 
+import biz.freshcode.learn.gwt.client.AppPlaceHistoryMapper;
 import com.google.gwt.activity.shared.AbstractActivity;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.place.shared.PlaceController;
@@ -13,6 +14,9 @@ public class GwtMvp extends AbstractActivity implements GmView.Presenter {
 
     @Inject
     PlaceController placeController;
+
+    @Inject
+    AppPlaceHistoryMapper placeMapper;
 
     int num = 0;
 
@@ -51,6 +55,7 @@ public class GwtMvp extends AbstractActivity implements GmView.Presenter {
         s += ">";
         view.setHtml(s);
         view.setButtonText("Advance to " + (num + 1));
+        view.setLinkTargetToken(linkFor(num - 1));
     }
 
     /**
@@ -58,5 +63,10 @@ public class GwtMvp extends AbstractActivity implements GmView.Presenter {
      */
     public static interface Factory {
         GwtMvp create(GmPlace place);
+    }
+
+    private String linkFor(int num) {
+        if (num == 0) return ""; // can't get smaller
+        return placeMapper.getToken(new GmPlace(num));
     }
 }
