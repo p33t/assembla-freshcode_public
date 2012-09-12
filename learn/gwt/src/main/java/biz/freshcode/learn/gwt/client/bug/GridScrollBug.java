@@ -5,7 +5,7 @@ import biz.freshcode.learn.gwt.client.builder.gxt.container.HorizontalLayoutCont
 import biz.freshcode.learn.gwt.client.builder.gxt.grid.ColumnConfigBuilder;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import com.google.gwt.user.client.ui.Widget;
-import com.sencha.gxt.core.client.IdentityValueProvider;
+import com.sencha.gxt.core.client.ToStringValueProvider;
 import com.sencha.gxt.data.shared.ListStore;
 import com.sencha.gxt.data.shared.ModelKeyProvider;
 import com.sencha.gxt.widget.core.client.button.TextButton;
@@ -13,14 +13,14 @@ import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
 import com.sencha.gxt.widget.core.client.grid.ColumnModel;
 import com.sencha.gxt.widget.core.client.grid.Grid;
-import com.sencha.gxt.widget.core.client.info.Info;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class GridScrollBug extends AbstractIsWidget {
-    private Grid<String> grid;
+    private static final int LIST_SIZE = 100;
+    private Grid<Integer> grid;
 
     @Override
     protected Widget createWidget() {
@@ -28,28 +28,29 @@ public class GridScrollBug extends AbstractIsWidget {
                 .add(new TextButton("Launch", new SelectEvent.SelectHandler() {
                     @Override
                     public void onSelect(SelectEvent event) {
-                        ColumnConfig col = new ColumnConfigBuilder<String, String>(new IdentityValueProvider<String>())
+                        ColumnConfig col = new ColumnConfigBuilder<Integer, String>(new ToStringValueProvider<Integer>())
                                 .header("Col")
                                 .columnConfig;
 
-                        ColumnModel<String> cols = new ColumnModel<String>(Arrays.<ColumnConfig<String, ?>>asList(
+                        ColumnModel<Integer> cols = new ColumnModel<Integer>(Arrays.<ColumnConfig<Integer, ?>>asList(
                                 col
                         ));
-                        ListStore<String> store = new ListStore<String>(new ModelKeyProvider<String>() {
+                        ListStore<Integer> store = new ListStore<Integer>(new ModelKeyProvider<Integer>() {
                             @Override
-                            public String getKey(String item) {
-                                return item;
+                            public String getKey(Integer item) {
+                                return item.toString();
                             }
                         });
 
-                        List<String> l = generateList(0, 100);
+                        List<Integer> l = generateList(1);
                         store.addAll(l);
 
-                        grid = new Grid<String>(store, cols);
+                        grid = new Grid<Integer>(store, cols);
 
                         new DialogBuilder()
                                 .widget(grid)
                                 .resizable(true)
+                                .height(300)
                                 .predefinedButtons()
                                 .addButton(new TextButton("Next", new SelectEvent.SelectHandler() {
                                     @Override
@@ -64,13 +65,15 @@ public class GridScrollBug extends AbstractIsWidget {
     }
 
     private void onNext() {
-        Info.display("On", "Next");
+        ListStore<Integer> store = grid.getStore();
+        Integer last = store.get(store.size() - 1);
+        store.replaceAll(generateList(last + 1));
     }
 
-    private List<String> generateList(int base, int size) {
-        List<String> l = new ArrayList<String>(size);
-        for (int i = 0; i < size; i++) {
-            l.add("" + (base + i));
+    private List<Integer> generateList(int base) {
+        List<Integer> l = new ArrayList<Integer>(LIST_SIZE);
+        for (int i = 0; i < LIST_SIZE; i++) {
+            l.add(base + i);
         }
         return l;
     }
