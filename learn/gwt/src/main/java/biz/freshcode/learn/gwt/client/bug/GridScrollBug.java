@@ -1,6 +1,7 @@
 package biz.freshcode.learn.gwt.client.bug;
 
 import biz.freshcode.learn.gwt.client.builder.gxt.DialogBuilder;
+import biz.freshcode.learn.gwt.client.builder.gxt.container.BorderLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.container.HorizontalLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.grid.ColumnConfigBuilder;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
@@ -10,6 +11,7 @@ import com.sencha.gxt.data.shared.ListStore;
 import com.sencha.gxt.data.shared.ModelKeyProvider;
 import com.sencha.gxt.widget.core.client.Dialog;
 import com.sencha.gxt.widget.core.client.button.TextButton;
+import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
@@ -53,7 +55,9 @@ public class GridScrollBug extends AbstractIsWidget {
                         Grid<Integer> grid = new Grid<Integer>(store, cols);
 
                         dialog = new DialogBuilder()
-                                .widget(grid)
+                                .widget(new BorderLayoutContainerBuilder()
+                                        .centerWidget(grid)
+                                        .borderLayoutContainer)
                                 .resizable(true)
                                 .height(300)
                                 .predefinedButtons()
@@ -83,7 +87,8 @@ public class GridScrollBug extends AbstractIsWidget {
     }
 
     private Grid<Integer> getGrid() {
-        return (Grid<Integer>) dialog.getWidget();
+        BorderLayoutContainer blc = (BorderLayoutContainer) dialog.getWidget();
+        return (Grid<Integer>) blc.getCenterWidget();
     }
 
     private List<Integer> generateList(int base) {
