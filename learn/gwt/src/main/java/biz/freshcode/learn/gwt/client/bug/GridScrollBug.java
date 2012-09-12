@@ -8,11 +8,14 @@ import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.core.client.ToStringValueProvider;
 import com.sencha.gxt.data.shared.ListStore;
 import com.sencha.gxt.data.shared.ModelKeyProvider;
+import com.sencha.gxt.widget.core.client.Dialog;
 import com.sencha.gxt.widget.core.client.button.TextButton;
+import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
 import com.sencha.gxt.widget.core.client.grid.ColumnModel;
 import com.sencha.gxt.widget.core.client.grid.Grid;
+import com.sencha.gxt.widget.core.client.tree.Tree;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,7 +23,7 @@ import java.util.List;
 
 public class GridScrollBug extends AbstractIsWidget {
     private static final int LIST_SIZE = 100;
-    private Grid<Integer> grid;
+    private Dialog dialog;
 
     @Override
     protected Widget createWidget() {
@@ -28,6 +31,8 @@ public class GridScrollBug extends AbstractIsWidget {
                 .add(new TextButton("Launch", new SelectEvent.SelectHandler() {
                     @Override
                     public void onSelect(SelectEvent event) {
+                        if (dialog != null) dialog.hide();
+
                         ColumnConfig col = new ColumnConfigBuilder<Integer, String>(new ToStringValueProvider<Integer>())
                                 .header("Col")
                                 .columnConfig;
@@ -45,9 +50,9 @@ public class GridScrollBug extends AbstractIsWidget {
                         List<Integer> l = generateList(1);
                         store.addAll(l);
 
-                        grid = new Grid<Integer>(store, cols);
+                        Grid<Integer> grid = new Grid<Integer>(store, cols);
 
-                        new DialogBuilder()
+                        dialog = new DialogBuilder()
                                 .widget(grid)
                                 .resizable(true)
                                 .height(300)
@@ -58,13 +63,15 @@ public class GridScrollBug extends AbstractIsWidget {
                                         onNext();
                                     }
                                 }))
-                                .dialog.show();
+                                .dialog;
+                        dialog.show();
                     }
                 }))
                 .horizontalLayoutContainer;
     }
 
     private void onNext() {
+        Grid<Integer> grid = getGrid();
         ListStore<Integer> store = grid.getStore();
         Integer last = store.get(store.size() - 1);
 
@@ -73,6 +80,10 @@ public class GridScrollBug extends AbstractIsWidget {
         if (scrollTop != 0) {
             grid.getView().getScroller().setScrollTop(scrollTop);
         }
+    }
+
+    private Grid<Integer> getGrid() {
+        return (Grid<Integer>) dialog.getWidget();
     }
 
     private List<Integer> generateList(int base) {
