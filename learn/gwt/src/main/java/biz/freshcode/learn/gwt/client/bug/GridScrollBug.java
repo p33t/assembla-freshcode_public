@@ -67,7 +67,12 @@ public class GridScrollBug extends AbstractIsWidget {
     private void onNext() {
         ListStore<Integer> store = grid.getStore();
         Integer last = store.get(store.size() - 1);
+
+        int scrollTop = grid.getView().getScroller().getScrollTop();
         store.replaceAll(generateList(last + 1));
+        if (scrollTop != 0) {
+            grid.getView().getScroller().setScrollTop(scrollTop);
+        }
     }
 
     private List<Integer> generateList(int base) {
