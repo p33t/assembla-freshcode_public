@@ -9,12 +9,6 @@
         <webroots>
           <root url="file://$MODULE_DIR$/src/main/webapp" relative="/" />
         </webroots>
-        <sourceRoots>
-          <root url="file://$MODULE_DIR$/target/generated-sources/gwt" />
-          <root url="file://$MODULE_DIR$/src/main/java" />
-          <root url="file://$MODULE_DIR$/src/main/resources" />
-          <root url="file://$MODULE_DIR$/target/generated-sources/annotations" />
-        </sourceRoots>
       </configuration>
     </facet>
     <facet type="gwt" name="GWT">
@@ -54,7 +48,7 @@
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.google.web.bindery:requestfactory-server:2.5.0-rc1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.7" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.sencha.gxt:gxt:3.0.1" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: biz.freshcode.b-generation:b-generation:0.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: biz.freshcode.b-generation:b-generation:0.2.1" level="project" />
     <orderEntry type="library" name="Maven: com.google.gwt.inject:gin:1.5.0" level="project" />
     <orderEntry type="library" name="Maven: com.google.inject:guice:3.0-rc2" level="project" />
     <orderEntry type="library" name="Maven: javax.inject:javax.inject:1" level="project" />
