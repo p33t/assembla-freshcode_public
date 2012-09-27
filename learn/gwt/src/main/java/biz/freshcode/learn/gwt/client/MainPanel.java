@@ -12,6 +12,7 @@ import biz.freshcode.learn.gwt.client.experiment.dnd.DndUi;
 import biz.freshcode.learn.gwt.client.experiment.forms.Landing;
 import biz.freshcode.learn.gwt.client.experiment.grid.GwtGridDemo;
 import biz.freshcode.learn.gwt.client.experiment.grid.GxtGridDemo;
+import biz.freshcode.learn.gwt.client.experiment.grid.window.GridWindowDemo;
 import biz.freshcode.learn.gwt.client.experiment.hoverwidget.HoverWidgetDemo;
 import biz.freshcode.learn.gwt.client.experiment.mouseover.MouseOverWidget;
 import biz.freshcode.learn.gwt.client.experiment.mvp.gwtmvp.GmPlace;
@@ -98,6 +99,11 @@ public class MainPanel extends Composite implements AcceptsOneWidget {
                                     public void execute() {
                                         IsWidget w = GWT.create(GwtGridDemo.class);
                                         replaceContent(w);
+                                    }
+                                }))
+                                .addItem(new MenuItem("Grid Window", new Command() {
+                                    public void execute() {
+                                        new GridWindowDemo().launch();
                                     }
                                 }))
                                 .addItem(new MenuItem("Request Factory", new Command() {
