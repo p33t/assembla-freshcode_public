@@ -229,15 +229,15 @@
         <root url="jar://$MAVEN_REPOSITORY$/aopalliance/aopalliance/1.0/aopalliance-1.0-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: biz.freshcode.b-generation:b-generation:0.2">
+    <library name="Maven: biz.freshcode.b-generation:b-generation:0.2.1">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/biz/freshcode/b-generation/b-generation/0.2/b-generation-0.2.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/biz/freshcode/b-generation/b-generation/0.2.1/b-generation-0.2.1.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/biz/freshcode/b-generation/b-generation/0.2/b-generation-0.2-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/biz/freshcode/b-generation/b-generation/0.2.1/b-generation-0.2.1-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/biz/freshcode/b-generation/b-generation/0.2/b-generation-0.2-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/biz/freshcode/b-generation/b-generation/0.2.1/b-generation-0.2.1-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: com.google.gwt.inject:gin:1.5.0">
