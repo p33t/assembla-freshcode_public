@@ -1,7 +1,7 @@
 package pkg.db
 
-import org.testng.annotations.Test
 import org.squeryl.PrimitiveTypeMode._
+import org.junit.Test
 
 class AppSchemaTest {
 

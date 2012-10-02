@@ -1,10 +1,14 @@
 package pkg.db
 
-import org.scalatest.FlatSpec
-import org.scalatest.matchers.ShouldMatchers
+import org.junit.Test
 
-class DbTest extends FlatSpec with ShouldMatchers {
-  "The Db" should "not explode" in {
-    pkg.db.Db.withConnection {_ => ()}
+
+class DbTest {
+
+  @Test
+  def testConnect() {
+    pkg.db.Db.withConnection {
+      _ => ()
+    }
   }
 }
