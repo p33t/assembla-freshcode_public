@@ -1,11 +1,11 @@
 package pkg
 
-import org.scalatest.FlatSpec
-import org.scalatest.matchers.ShouldMatchers
+import org.junit.Test
 
-class FirstTest extends FlatSpec with ShouldMatchers {
-  "void subject" should "operate just fine" in {
-    // nothing
+
+class FirstTest {
+  @Test
+  def testSmoke() {
+    println("No Probs")
   }
-
 }
