@@ -89,7 +89,7 @@
     <output url="file://$PROJECT_DIR$/out" />
   </component>
   <component name="ScalacSettings">
-    <option name="COMPILER_LIBRARY_NAME" value="scala-2.9.1" />
+    <option name="COMPILER_LIBRARY_NAME" value="Scala" />
     <option name="COMPILER_LIBRARY_LEVEL" value="Global" />
   </component>
   <component name="SvnBranchConfigurationManager">
@@ -108,6 +108,19 @@
   </component>
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="svn" />
+  </component>
+  <component name="libraryTable">
+    <library name="scala-2.9.1">
+      <CLASSES>
+        <root url="jar://$USER_HOME$/devsw/scala-2.9.1.final/lib/scala-library.jar!/" />
+        <root url="jar://$USER_HOME$/devsw/scala-2.9.1.final/lib/scala-compiler.jar!/" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES>
+        <root url="jar://$USER_HOME$/devsw/scala-2.9.1.final/src/scala-library-src.jar!/" />
+        <root url="jar://$USER_HOME$/devsw/scala-2.9.1.final/src/scala-compiler-src.jar!/" />
+      </SOURCES>
+    </library>
   </component>
 </project>
 
