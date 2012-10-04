@@ -2,7 +2,7 @@ package pkg
 
 
 object Regexpr {
-  def simple {
+  def simple() {
     val bruceLeeRegex = """[B|b]ruce [L|l]ee""".r
     val first = bruceLeeRegex.findFirstIn("bruce willis bruce Lee bruce springsteen")
     first match {
@@ -10,7 +10,7 @@ object Regexpr {
     }
   }
 
-  def strangeChars {
+  def strangeChars() {
     val parens = """\(""".r
     val str = "mary had a (little) lamb"
     val first = parens.findFirstMatchIn(str)
@@ -19,7 +19,7 @@ object Regexpr {
     }
   }
 
-  def numbers {
+  def numbers() {
     val matchStr = """\d+(\.\d+)?"""
     require("1234".matches(matchStr))
     require("1.12".matches(matchStr))
@@ -30,7 +30,7 @@ object Regexpr {
     println("Numbers is fine")
   }
 
-  def strange {
+  def strange() {
     val reg = """\d+( ?- ?\d+)?"""
     println("Matches: " + "1 - 2".matches(reg))
     println("Matches: " + "1-2".matches(reg))
@@ -40,10 +40,16 @@ object Regexpr {
     println("1: " + s(1).toInt)
   }
 
+  def slash() {
+    val reg = "/"
+    println("a/b/c".replaceAll(reg, "."))
+  }
+
   def main(args: Array[String]) {
-    simple
-    strangeChars
-    numbers
-    strange
+    simple()
+    strangeChars()
+    numbers()
+    strange()
+    slash()
   }
 }
