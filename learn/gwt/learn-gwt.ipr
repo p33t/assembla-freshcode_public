@@ -22,11 +22,11 @@
             <element id="library" level="project" name="Maven: com.google.gwt:gwt-servlet:2.5.0-rc1" />
             <element id="library" level="project" name="Maven: org.json:json:20090211" />
             <element id="library" level="project" name="Maven: com.google.web.bindery:requestfactory-server:2.5.0-rc1" />
-            <element id="library" level="project" name="Maven: com.google.gwt.inject:gin:1.5.0" />
-            <element id="library" level="project" name="Maven: com.google.inject:guice:3.0-rc2" />
+            <element id="library" level="project" name="Maven: com.google.gwt.inject:gin:2.0.0" />
+            <element id="library" level="project" name="Maven: com.google.inject:guice:3.0" />
             <element id="library" level="project" name="Maven: javax.inject:javax.inject:1" />
             <element id="library" level="project" name="Maven: aopalliance:aopalliance:1.0" />
-            <element id="library" level="project" name="Maven: com.google.inject.extensions:guice-assistedinject:3.0-rc2" />
+            <element id="library" level="project" name="Maven: com.google.inject.extensions:guice-assistedinject:3.0" />
           </element>
         </element>
         <element id="gwt-compiler-output" facet="learn-gwt/gwt/GWT" />
@@ -240,15 +240,15 @@
         <root url="jar://$MAVEN_REPOSITORY$/biz/freshcode/b-generation/b-generation/0.2.1/b-generation-0.2.1-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: com.google.gwt.inject:gin:1.5.0">
+    <library name="Maven: com.google.gwt.inject:gin:2.0.0">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/inject/gin/1.5.0/gin-1.5.0.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/inject/gin/2.0.0/gin-2.0.0.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/inject/gin/1.5.0/gin-1.5.0-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/inject/gin/2.0.0/gin-2.0.0-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/inject/gin/1.5.0/gin-1.5.0-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/inject/gin/2.0.0/gin-2.0.0-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: com.google.gwt:gwt-servlet:2.5.0-rc1">
@@ -273,26 +273,26 @@
         <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-user/2.5.0-rc1/gwt-user-2.5.0-rc1-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: com.google.inject.extensions:guice-assistedinject:3.0-rc2">
+    <library name="Maven: com.google.inject.extensions:guice-assistedinject:3.0">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/google/inject/extensions/guice-assistedinject/3.0-rc2/guice-assistedinject-3.0-rc2.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/inject/extensions/guice-assistedinject/3.0/guice-assistedinject-3.0.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/com/google/inject/extensions/guice-assistedinject/3.0-rc2/guice-assistedinject-3.0-rc2-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/inject/extensions/guice-assistedinject/3.0/guice-assistedinject-3.0-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/google/inject/extensions/guice-assistedinject/3.0-rc2/guice-assistedinject-3.0-rc2-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/inject/extensions/guice-assistedinject/3.0/guice-assistedinject-3.0-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: com.google.inject:guice:3.0-rc2">
+    <library name="Maven: com.google.inject:guice:3.0">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/google/inject/guice/3.0-rc2/guice-3.0-rc2.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/inject/guice/3.0/guice-3.0.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/com/google/inject/guice/3.0-rc2/guice-3.0-rc2-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/inject/guice/3.0/guice-3.0-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/google/inject/guice/3.0-rc2/guice-3.0-rc2-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/inject/guice/3.0/guice-3.0-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: com.google.web.bindery:requestfactory-apt:2.5.0-rc1">
