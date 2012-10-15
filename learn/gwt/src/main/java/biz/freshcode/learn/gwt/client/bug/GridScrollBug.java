@@ -5,6 +5,7 @@ import biz.freshcode.learn.gwt.client.builder.gxt.container.BorderLayoutContaine
 import biz.freshcode.learn.gwt.client.builder.gxt.container.HorizontalLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.grid.ColumnConfigBuilder;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
+import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.core.client.ToStringValueProvider;
 import com.sencha.gxt.data.shared.ListStore;
@@ -12,12 +13,10 @@ import com.sencha.gxt.data.shared.ModelKeyProvider;
 import com.sencha.gxt.widget.core.client.Dialog;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
-import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
 import com.sencha.gxt.widget.core.client.grid.ColumnModel;
 import com.sencha.gxt.widget.core.client.grid.Grid;
-import com.sencha.gxt.widget.core.client.tree.Tree;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,7 +29,7 @@ public class GridScrollBug extends AbstractIsWidget {
     @Override
     protected Widget createWidget() {
         return new HorizontalLayoutContainerBuilder()
-                .add(new TextButton("Launch", new SelectEvent.SelectHandler() {
+                .add(new TextButton("Launch (Solved)", new SelectEvent.SelectHandler() {
                     @Override
                     public void onSelect(SelectEvent event) {
                         if (dialog != null) dialog.hide();
@@ -75,15 +74,24 @@ public class GridScrollBug extends AbstractIsWidget {
     }
 
     private void onNext() {
-        Grid<Integer> grid = getGrid();
+        final Grid<Integer> grid = getGrid();
         ListStore<Integer> store = grid.getStore();
         Integer last = store.get(store.size() - 1);
+        List<Integer> newList = generateList(last + 1);
 
-        int scrollTop = grid.getView().getScroller().getScrollTop();
-        store.replaceAll(generateList(last + 1));
-        if (scrollTop != 0) {
-            grid.getView().getScroller().setScrollTop(scrollTop);
-        }
+        final int scrollTop = grid.getView().getScroller().getScrollTop();
+        store.replaceAll(newList);
+
+        // This scheduler triggers the scroll jitter issue //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< NOTE
+        // Also, IE needs to have the 'preventScrollToTopAfterRefresh' flag set for GridView.
+        Scheduler.get().scheduleDeferred(new Scheduler.ScheduledCommand() {
+            @Override
+            public void execute() {
+                if (scrollTop != 0) {
+                    grid.getView().getScroller().setScrollTop(scrollTop);
+                }
+            }
+        });
     }
 
     private Grid<Integer> getGrid() {
