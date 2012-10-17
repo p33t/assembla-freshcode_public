@@ -24,6 +24,8 @@ object PatternMatching {
       case Elem(h, _) if (h.isInstanceOf[String]) => "Found string " + h
       // type matching
       case _: Terminator => "-x"
+      // multi match
+//      case "a" | "b" => "Multiple!"
       // default case
       case _ => "Very boring"
     }
