@@ -1,9 +1,13 @@
 package biz.freshcode.learn.gwt.client.experiment.grid;
 
+import com.sencha.gxt.core.client.ValueProvider;
+import com.sencha.gxt.data.shared.ModelKeyProvider;
+
 class RowEntity {
     static int counter = 1;
     final int id = counter++;
     int flags = 0;
+    String str; // editable field
 
     @Override
     public String toString() {
@@ -24,6 +28,30 @@ class RowEntity {
 
         boolean isSet(int flags) {
             return (flags & mask) > 0;
+        }
+    }
+
+    static class IdProvider implements ModelKeyProvider<RowEntity> {
+        @Override
+        public String getKey(RowEntity item) {
+            return "" + item.id;
+        }
+    }
+
+    static class StrProvider implements ValueProvider<RowEntity, String> {
+        @Override
+        public String getValue(RowEntity object) {
+            return object.str;
+        }
+
+        @Override
+        public void setValue(RowEntity object, String value) {
+            object.str = value;
+        }
+
+        @Override
+        public String getPath() {
+            return "";
         }
     }
 }
