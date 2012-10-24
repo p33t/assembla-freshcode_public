@@ -126,10 +126,10 @@ public class GxtGridDemo extends AbstractIsWidget {
             public void onCompleteEdit(CompleteEditEvent<RowEntity> evt) {
                 ListStore<RowEntity> store = grid.getStore();
                 int rowIx = evt.getEditCell().getRow();
-//                RowEntity before = store.get(rowIx); new values already present
+                String before = store.get(rowIx).str;
                 store.commitChanges(); // alternatively use store.setAutoCommit(true)
                 RowEntity after = store.get(rowIx);
-                Info.display("Result", "Str changed to " + after.str);
+                Info.display("Result", "Str changed from " + before + " to " + after.str);
             }
         });
     }
