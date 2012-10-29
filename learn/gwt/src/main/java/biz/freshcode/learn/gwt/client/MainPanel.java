@@ -14,6 +14,7 @@ import biz.freshcode.learn.gwt.client.experiment.grid.GwtGridDemo;
 import biz.freshcode.learn.gwt.client.experiment.grid.GxtGridDemo;
 import biz.freshcode.learn.gwt.client.experiment.grid.window.GridWindowDemo;
 import biz.freshcode.learn.gwt.client.experiment.hoverwidget.HoverWidgetDemo;
+import biz.freshcode.learn.gwt.client.experiment.iswidget.IsWidgetDemo;
 import biz.freshcode.learn.gwt.client.experiment.mouseover.MouseOverWidget;
 import biz.freshcode.learn.gwt.client.experiment.mvp.gwtmvp.GmPlace;
 import biz.freshcode.learn.gwt.client.experiment.mvp.homebake.HbParent;
@@ -76,6 +77,12 @@ public class MainPanel extends Composite implements AcceptsOneWidget {
                                 }))
                                 .menuBar))
                         .addItem(new MenuItem("Experiments", subMenu()
+                                .addItem(new MenuItem("IsWidget", new Command() {
+                                    public void execute() {
+                                        IsWidget w = GWT.create(IsWidgetDemo.class);
+                                        replaceContent(w);
+                                    }
+                                }))
                                 .addItem(new MenuItem("MVP", subMenu()
                                         .addItem(new MenuItem("Home Bake", new Command() {
                                             public void execute() {
