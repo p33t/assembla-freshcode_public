@@ -1,10 +1,10 @@
 package biz.freshcode.learn.gwt.client.experiment.forms;
 
 import biz.freshcode.learn.gwt.client.builder.gxt.container.VerticalLayoutContainerBuilder;
+import biz.freshcode.learn.gwt.client.builder.gxt.form.TextFieldBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.grid.ColumnConfigBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.field.FieldLabelBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.field.NumberFieldBuilder;
-import biz.freshcode.learn.gwt.client.uispike.builder.field.TextFieldBuilder;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import com.google.gwt.editor.client.Editor;
 import com.google.gwt.user.client.ui.Widget;

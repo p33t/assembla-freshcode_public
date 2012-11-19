@@ -1,6 +1,6 @@
 package biz.freshcode.learn.gwt.client.experiment.forms;
 
-import biz.freshcode.learn.gwt.client.uispike.builder.field.TextFieldBuilder;
+import biz.freshcode.learn.gwt.client.builder.gxt.form.TextFieldBuilder;
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
