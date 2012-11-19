@@ -9,7 +9,7 @@ import com.sencha.gxt.data.shared.PropertyAccess;
 public class TwoBean {
     public static final Access ACCESS = GWT.create(Access.class);
     
-    private String revStr;
+    private String lowerStr;
 
     public String getId() {
         return "#" + System.identityHashCode(this);
@@ -17,17 +17,17 @@ public class TwoBean {
     
     static interface Access extends PropertyAccess<TwoBean> {
         ModelKeyProvider<TwoBean> id();
-        ValueProvider<TwoBean, String> revStr();
+        ValueProvider<TwoBean, String> lowerStr();
         @Editor.Path("id")
         ValueProvider<TwoBean, String> idValue();
     }
     
-    public String getRevStr() {
-        return revStr;
+    public String getLowerStr() {
+        return lowerStr;
     }
 
-    public void setRevStr(String revStr) {
-        System.out.println("Changing " + getId() + " from " + this.revStr + " to " + revStr);
-        this.revStr = revStr;
+    public void setLowerStr(String lowerStr) {
+        System.out.println("Changing " + getId() + " from " + this.lowerStr + " to " + lowerStr);
+        this.lowerStr = lowerStr;
     }
 }

@@ -32,15 +32,15 @@ public class Forms2Demo extends AbstractIsWidget {
                 new ColumnConfigBuilder<TwoBean, String>(TwoBean.ACCESS.idValue())
                         .header("Id")
                         .columnConfig,
-                editCol = new ColumnConfigBuilder<TwoBean, String>(TwoBean.ACCESS.revStr())
-                        .header("Rev Str")
+                editCol = new ColumnConfigBuilder<TwoBean, String>(TwoBean.ACCESS.lowerStr())
+                        .header("Lower Str")
                         .columnConfig
                 )));
 
         nums.initPlugin(grid); // needed according to doco
 
         // editing
-        new GridInlineEditing<TwoBean>(grid).addEditor(editCol, new TextField());
+        new GridInlineEditing<TwoBean>(grid).addEditor(editCol, new LowerConverter(), new TextField());
 
         return grid;
 
