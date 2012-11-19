@@ -10,6 +10,7 @@ import biz.freshcode.learn.gwt.client.experiment.appearance.AppearanceDemo;
 import biz.freshcode.learn.gwt.client.experiment.celltable.CellTableDemo;
 import biz.freshcode.learn.gwt.client.experiment.dnd.DndUi;
 import biz.freshcode.learn.gwt.client.experiment.forms.Landing;
+import biz.freshcode.learn.gwt.client.experiment.forms2.Forms2Demo;
 import biz.freshcode.learn.gwt.client.experiment.grid.GwtGridDemo;
 import biz.freshcode.learn.gwt.client.experiment.grid.GxtGridDemo;
 import biz.freshcode.learn.gwt.client.experiment.grid.window.GridWindowDemo;
@@ -231,6 +232,13 @@ public class MainPanel extends Composite implements AcceptsOneWidget {
                                     @Override
                                     public void execute() {
                                         IsWidget w = GWT.create(Landing.class);
+                                        replaceContent(w.asWidget());
+                                    }
+                                }))
+                                .addItem(new MenuItem("Forms 2nd Attempt", new Command() {
+                                    @Override
+                                    public void execute() {
+                                        IsWidget w = GWT.create(Forms2Demo.class);
                                         replaceContent(w.asWidget());
                                     }
                                 }))
