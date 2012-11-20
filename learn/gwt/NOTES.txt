@@ -42,3 +42,6 @@ Tips:
  -- 'Category' used to implement additional non-property methods
  - GWTTestCase doesn't work with Maven.  GwtTest* naming convention will prevent them running.  See GwtTestGreet.java
  - CssResource.ensureInjected() ... ouch!
+ - Use jetty:run-exploded so that extra 'war' triggered release packaging is avoided
+ -- keytool:genkey does not get called automatically for speed
+ ---... Call it manually after a 'clean' or as necessary
