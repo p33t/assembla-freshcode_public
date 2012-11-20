@@ -20,7 +20,10 @@ public class LineItem implements IsWidget {
     private static final Binder binder = GWT.create(Binder.class);
     private static final RowRenderer renderer = GWT.create(RowRenderer.class);
 
-    @UiField(provided = true)
+    // GWT Bug: 'provided=true' being ignored for HTMLPanel.
+    // See https://groups.google.com/d/topic/google-web-toolkit/nJOtMYAVo8U/discussion
+//    @UiField(provided = true)
+    @UiField
     HTMLPanel pnlContent;
     @UiField
     TextButton btnEdit;
@@ -41,8 +44,10 @@ public class LineItem implements IsWidget {
     @Override
     public Widget asWidget() {
         lblName = new LabelToolItem(row.getStr());
-        pnlContent = new HTMLPanel(renderer.render(row));
-        return binder.createAndBindUi(this);
+//Not working...        pnlContent = new HTMLPanel(renderer.render(row));
+        Component w = binder.createAndBindUi(this);
+        pnlContent.add(new HTMLPanel(renderer.render(row)));
+        return w;
     }
 
     @UiHandler("btnEdit")
