@@ -2,25 +2,21 @@ package biz.freshcode.learn.gwt.client.experiment.forms2;
 
 import biz.freshcode.learn.gwt.client.builder.gxt.form.TextFieldBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.grid.ColumnConfigBuilder;
-import biz.freshcode.learn.gwt.client.uispike.builder.Construct;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.core.client.IdentityValueProvider;
 import com.sencha.gxt.data.shared.ListStore;
 import com.sencha.gxt.widget.core.client.form.DateField;
-import com.sencha.gxt.widget.core.client.form.PropertyEditor;
 import com.sencha.gxt.widget.core.client.form.TextField;
-import com.sencha.gxt.widget.core.client.form.error.ToolTipErrorHandler;
 import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
 import com.sencha.gxt.widget.core.client.grid.ColumnModel;
 import com.sencha.gxt.widget.core.client.grid.Grid;
 import com.sencha.gxt.widget.core.client.grid.RowNumberer;
 import com.sencha.gxt.widget.core.client.grid.editing.GridInlineEditing;
+import com.sencha.gxt.widget.core.client.info.Info;
 
-import java.text.ParseException;
 import java.util.Date;
 
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.firstElem;
 import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newListFrom;
 
 public class Forms2Demo extends AbstractIsWidget {
@@ -33,7 +29,7 @@ public class Forms2Demo extends AbstractIsWidget {
         store.add(new TwoBean());
         store.add(new TwoBean());
 
-        ColumnConfig<TwoBean, String> raw, converted, edited;
+        ColumnConfig<TwoBean, String> raw, converted, edited, hacked;
         ColumnConfig<TwoBean, Date> date;
 
         RowNumberer<TwoBean> nums;
@@ -53,6 +49,9 @@ public class Forms2Demo extends AbstractIsWidget {
                         .columnConfig,
                 edited = new ColumnConfigBuilder<TwoBean, String>(TwoBean.ACCESS.lowerStr())
                         .header("Edited")
+                        .columnConfig,
+                hacked = new ColumnConfigBuilder<TwoBean, String>(TwoBean.ACCESS.lowerStr())
+                        .header("Hacked")
                         .columnConfig
         )));
 
@@ -61,35 +60,63 @@ public class Forms2Demo extends AbstractIsWidget {
         // editing
         GridInlineEditing<TwoBean> edits = new GridInlineEditing<TwoBean>(grid);
         edits.addEditor(raw, new TextField());
-        edits.addEditor(converted, new LowerConverter(), new TextField());
+        edits.addEditor(converted, new LowerConverter(), new TextFieldBuilder()
+//                .autoValidate(true) // does nothing
+                .propertyEditor(LowerPropertyEditor.INSTANCE) // prevents the bad value from sticking
+//                Does nothing
+//                .errorSupport(new ErrorHandler() {
+//                    @Override
+//                    public void clearInvalid() {
+//                        // nothing
+//                    }
+//
+//                    @Override
+//                    public void markInvalid(List<EditorError> errors) {
+//                        String msg = "";
+//                        for (EditorError error: errors) {
+//                            if (!msg.isEmpty()) msg += "\n";
+//                            msg += error.getMessage();
+//                        }
+//                        Info.display("Error", msg);
+//                    }
+//                })
+                .textField);
         edits.addEditor(edited, new TextFieldBuilder()
                 .clearValueOnParseError(false)
                 .autoValidate(true)
 //              Does nothing
-                .construct(new Construct<TextFieldBuilder>() {
-                    @Override
-                    public void run() {
-                        builder.errorSupport(new ToolTipErrorHandler(builder.textField));
-                    }
-                })
-                .propertyEditor(new PropertyEditor<String>() {
-                    @Override
-                    public String parse(CharSequence text) throws ParseException {
-                        String parsed = text.toString().toLowerCase();
-                        if (parsed.equals("error")) throw new ParseException("Error value", 0);
-                        if (parsed.isEmpty()) return null;
-                        return parsed;
-                    }
-
-                    @Override
-                    public String render(String object) {
-                        if (object == null) return "";
-                        return object.toUpperCase(); // THIS ISN'T BEING CALLED!
-                    }
-                })
+//                .construct(new Construct<TextFieldBuilder>() {
+//                    @Override
+//                    public void run() {
+//                        builder.errorSupport(new ToolTipErrorHandler(builder.textField));
+//                    }
+//                })
+//              Does nothing
+//                .construct(new Construct<TextFieldBuilder>() {
+//                    @Override
+//                    public void run() {
+//                        builder.errorSupport(new SideErrorHandler(builder.textField));
+//                    }
+//                })
+//                This causes display to briefly show red when 'error' is entered via a different means
+//                .addValidator(new LowerValidator())
+                .propertyEditor(new LowerPropertyEditor())
                 .textField);
+        edits.addEditor(hacked, new LowerConverter() {
+            @Override
+            public String convertFieldValue(String fieldVal) {
+                if (fieldVal.isEmpty()) return null;
+                if ("error".equalsIgnoreCase(fieldVal)) {
+                    // cook our own feedback (sigh)
+                    Info.display("Error", "Error Value");
+                    return null;
+                }
+                return fieldVal.toLowerCase();
+            }
+        }, new TextField());
         edits.addEditor(date, new DateField());
 
         return grid;
     }
+
 }
