@@ -5,9 +5,9 @@ import biz.freshcode.learn.gwt.client.builder.gxt.grid.ColumnConfigBuilder;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.core.client.IdentityValueProvider;
+import com.sencha.gxt.core.client.ToStringValueProvider;
 import com.sencha.gxt.data.shared.ListStore;
 import com.sencha.gxt.widget.core.client.form.DateField;
-import com.sencha.gxt.widget.core.client.form.TextField;
 import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
 import com.sencha.gxt.widget.core.client.grid.ColumnModel;
 import com.sencha.gxt.widget.core.client.grid.Grid;
@@ -29,7 +29,7 @@ public class Forms2Demo extends AbstractIsWidget {
         store.add(new TwoBean());
         store.add(new TwoBean());
 
-        ColumnConfig<TwoBean, String> raw, converted, edited, hacked;
+        ColumnConfig<TwoBean, Object> raw, converted, edited, hacked;
         ColumnConfig<TwoBean, Date> date;
 
         RowNumberer<TwoBean> nums;
@@ -41,16 +41,16 @@ public class Forms2Demo extends AbstractIsWidget {
                 date = new ColumnConfigBuilder<TwoBean, Date>(TwoBean.ACCESS.date())
                         .header("Date")
                         .columnConfig,
-                raw = new ColumnConfigBuilder<TwoBean, String>(TwoBean.ACCESS.lowerStr())
+                raw = new ColumnConfigBuilder<TwoBean, Object>(new ToStringValueProvider("lowerStr"))
                         .header("Raw")
                         .columnConfig,
-                converted = new ColumnConfigBuilder<TwoBean, String>(TwoBean.ACCESS.lowerStr())
+                converted = new ColumnConfigBuilder<TwoBean, Object>(TwoBean.ACCESS.lowerStr())
                         .header("Converted")
                         .columnConfig,
-                edited = new ColumnConfigBuilder<TwoBean, String>(TwoBean.ACCESS.lowerStr())
+                edited = new ColumnConfigBuilder<TwoBean, Object>(TwoBean.ACCESS.lowerStr())
                         .header("Edited")
                         .columnConfig,
-                hacked = new ColumnConfigBuilder<TwoBean, String>(TwoBean.ACCESS.lowerStr())
+                hacked = new ColumnConfigBuilder<TwoBean, Object>(TwoBean.ACCESS.lowerStr())
                         .header("Hacked")
                         .columnConfig
         )));
@@ -59,7 +59,7 @@ public class Forms2Demo extends AbstractIsWidget {
 
         // editing
         GridInlineEditing<TwoBean> edits = new GridInlineEditing<TwoBean>(grid);
-        edits.addEditor(raw, new TextField());
+//        edits.addEditor(raw, new TextField());
         edits.addEditor(converted, new LowerConverter(), new TextFieldBuilder()
 //                .autoValidate(true) // does nothing
                 .propertyEditor(LowerPropertyEditor.INSTANCE) // prevents the bad value from sticking
@@ -81,42 +81,45 @@ public class Forms2Demo extends AbstractIsWidget {
 //                    }
 //                })
                 .textField);
-        edits.addEditor(edited, new TextFieldBuilder()
-                .clearValueOnParseError(false)
-                .autoValidate(true)
-//              Does nothing
-//                .construct(new Construct<TextFieldBuilder>() {
-//                    @Override
-//                    public void run() {
-//                        builder.errorSupport(new ToolTipErrorHandler(builder.textField));
-//                    }
-//                })
-//              Does nothing
-//                .construct(new Construct<TextFieldBuilder>() {
-//                    @Override
-//                    public void run() {
-//                        builder.errorSupport(new SideErrorHandler(builder.textField));
-//                    }
-//                })
-//                This causes display to briefly show red when 'error' is entered via a different means
-//                .addValidator(new LowerValidator())
-                .propertyEditor(new LowerPropertyEditor())
+//        edits.addEditor(edited, new TextFieldBuilder()
+//                .clearValueOnParseError(false)
+//                .autoValidate(true)
+////              Does nothing
+////                .construct(new Construct<TextFieldBuilder>() {
+////                    @Override
+////                    public void run() {
+////                        builder.errorSupport(new ToolTipErrorHandler(builder.textField));
+////                    }
+////                })
+////              Does nothing
+////                .construct(new Construct<TextFieldBuilder>() {
+////                    @Override
+////                    public void run() {
+////                        builder.errorSupport(new SideErrorHandler(builder.textField));
+////                    }
+////                })
+////                This causes display to briefly show red when 'error' is entered via a different means
+////                .addValidator(new LowerValidator())
+//                .propertyEditor(new LowerPropertyEditor())
+//                .textField);
+        edits.addEditor(hacked, new LowerConverterWithFeedback(), new TextFieldBuilder()
+                .addValidator(LowerValidator.INSTANCE) // does nothing!!!!
                 .textField);
-        edits.addEditor(hacked, new LowerConverter() {
-            @Override
-            public String convertFieldValue(String fieldVal) {
-                if (fieldVal.isEmpty()) return null;
-                if ("error".equalsIgnoreCase(fieldVal)) {
-                    // cook our own feedback (sigh)
-                    Info.display("Error", "Error Value");
-                    return null;
-                }
-                return fieldVal.toLowerCase();
-            }
-        }, new TextField());
         edits.addEditor(date, new DateField());
 
         return grid;
     }
 
+    private static class LowerConverterWithFeedback extends LowerConverter {
+        @Override
+        public String convertFieldValue(String fieldVal) {
+            if (fieldVal.isEmpty()) return null;
+            if ("error".equalsIgnoreCase(fieldVal)) {
+                // cook our own feedback (sigh)
+                Info.display("Error", "Error Value");
+                return null;
+            }
+            return fieldVal.toLowerCase();
+        }
+    }
 }

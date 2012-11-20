@@ -11,7 +11,7 @@ import java.util.Date;
 public class TwoBean {
     public static final Access ACCESS = GWT.create(Access.class);
     
-    private String lowerStr;
+    private Object lowerStr;
     private Date date;
 
     public String getId() {
@@ -20,7 +20,7 @@ public class TwoBean {
 
     static interface Access extends PropertyAccess<TwoBean> {
         ModelKeyProvider<TwoBean> id();
-        ValueProvider<TwoBean, String> lowerStr();
+        ValueProvider<TwoBean, Object> lowerStr();
         @Editor.Path("id")
         ValueProvider<TwoBean, String> idValue();
         ValueProvider<TwoBean, Date> date();
@@ -34,11 +34,11 @@ public class TwoBean {
         this.date = date;
     }
     
-    public String getLowerStr() {
+    public Object getLowerStr() {
         return lowerStr;
     }
 
-    public void setLowerStr(String lowerStr) {
+    public void setLowerStr(Object lowerStr) {
         System.out.println("Changing " + getId() + " from " + this.lowerStr + " to " + lowerStr);
         this.lowerStr = lowerStr;
     }
