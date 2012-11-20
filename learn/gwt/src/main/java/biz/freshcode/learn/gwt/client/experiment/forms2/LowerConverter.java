@@ -2,16 +2,16 @@ package biz.freshcode.learn.gwt.client.experiment.forms2;
 
 import com.sencha.gxt.data.shared.Converter;
 
-public class LowerConverter implements Converter<String, String> {
+public class LowerConverter implements Converter<Object, String> {
     @Override
-    public String convertFieldValue(String fieldVal) {
+    public Object convertFieldValue(String fieldVal) {
         if (fieldVal == null) return null;
         return fieldVal.toLowerCase();
     }
 
     @Override
-    public String convertModelValue(String modelVal) {
+    public String convertModelValue(Object modelVal) {
         if (modelVal == null) return null;
-        return modelVal.toUpperCase();
+        return ((String) modelVal).toUpperCase();
     }
 }
