@@ -13,6 +13,7 @@ public class TwoBean {
     
     private Object lowerStr;
     private Date date;
+    private Integer presetId;
 
     public String getId() {
         return "#" + System.identityHashCode(this);
@@ -24,6 +25,7 @@ public class TwoBean {
         @Editor.Path("id")
         ValueProvider<TwoBean, String> idValue();
         ValueProvider<TwoBean, Date> date();
+        ValueProvider<TwoBean, Integer> presetId();
     }
 
     public Date getDate() {
@@ -41,5 +43,13 @@ public class TwoBean {
     public void setLowerStr(Object lowerStr) {
         System.out.println("Changing " + getId() + " from " + this.lowerStr + " to " + lowerStr);
         this.lowerStr = lowerStr;
+    }
+
+    public Integer getPresetId() {
+        return presetId;
+    }
+
+    public void setPresetId(Integer presetId) {
+        this.presetId = presetId;
     }
 }
