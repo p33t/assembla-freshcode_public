@@ -1,16 +1,19 @@
 package biz.freshcode.learn.gwt.client.bug;
 
 import com.google.gwt.cell.client.AbstractCell;
+import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.IsWidget;
+import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.cell.core.client.form.ComboBoxCell;
 import com.sencha.gxt.core.client.IdentityValueProvider;
 import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.data.shared.*;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
+import com.sencha.gxt.widget.core.client.container.Viewport;
 import com.sencha.gxt.widget.core.client.form.PropertyEditor;
 import com.sencha.gxt.widget.core.client.form.SimpleComboBox;
 import com.sencha.gxt.widget.core.client.form.TextField;
@@ -25,7 +28,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class GridEditInlineComboBoxBlurBug implements IsWidget {
+public class GridEditInlineComboBoxBlurBug implements IsWidget, EntryPoint {
     static final Access ACCESS = GWT.create(Access.class);
     static final List<String> presets = Arrays.asList("one", "two", "three");
     VerticalLayoutContainer vlc = new VerticalLayoutContainer();
@@ -120,6 +123,13 @@ public class GridEditInlineComboBoxBlurBug implements IsWidget {
     private String intColRender(Integer item) {
         if (item == null || item >= presets.size()) return null;
         return presets.get(item);
+    }
+
+    @Override
+    public void onModuleLoad() {
+        Viewport v = new Viewport();
+        v.setWidget(this);
+        RootLayoutPanel.get().add(v);
     }
 
     public static class MyBean {
