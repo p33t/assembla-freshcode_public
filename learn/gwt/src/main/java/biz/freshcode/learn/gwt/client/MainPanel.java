@@ -1,5 +1,6 @@
 package biz.freshcode.learn.gwt.client;
 
+import biz.freshcode.learn.gwt.client.bug.GridEditInlineComboBoxBlurBug;
 import biz.freshcode.learn.gwt.client.bug.GridScrollBug;
 import biz.freshcode.learn.gwt.client.bug.WindowMoveBug;
 import biz.freshcode.learn.gwt.client.bug.contentpanelsize.ContentPanelSizeBug;
@@ -54,6 +55,12 @@ public class MainPanel extends Composite implements AcceptsOneWidget {
                 .width("100%")
                 .addNorth(new MenuBarBuilder()
                         .addItem(new MenuItem("Bugs", subMenu()
+                                .addItem(new MenuItem("Inline Grid Edit Combo Blur", new Command() {
+                                    public void execute() {
+                                        IsWidget w = new GridEditInlineComboBoxBlurBug();
+                                        replaceContent(w);
+                                    }
+                                }))
                                 .addItem(new MenuItem("Grid Scroll Always Zero", new Command() {
                                     public void execute() {
                                         IsWidget w = new GridScrollBug();
