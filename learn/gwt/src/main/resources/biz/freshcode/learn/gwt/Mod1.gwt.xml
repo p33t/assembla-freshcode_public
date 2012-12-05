@@ -46,8 +46,10 @@
     <source path='shared'/>
 
     <!-- Dev quick compile: for Chrome -->
+    <!--Firefox only = gecko1_8-->
     <!--Not working ?! Still compiling 6 permutations...
-    <set-property name="user.agent" value="safari"/>-->
+    -->
+    <set-property name="user.agent" value="safari"/>
 
     <!-- TODO: How about some 'servlet' elements?-->
 
