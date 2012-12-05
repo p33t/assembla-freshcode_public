@@ -88,10 +88,10 @@
         <!-- Trying to debug Border layout -->
         <!-- Not needed in GWT 2.5.0 -->
         <!--<dependency>-->
-            <!--<groupId>com.sencha.gxt</groupId>-->
-            <!--<artifactId>uibinder-bridge</artifactId>-->
-            <!--<version>2.4.0</version>-->
-            <!--<scope>provided</scope>-->
+        <!--<groupId>com.sencha.gxt</groupId>-->
+        <!--<artifactId>uibinder-bridge</artifactId>-->
+        <!--<version>2.4.0</version>-->
+        <!--<scope>provided</scope>-->
         <!--</dependency>-->
 
         <dependency>
@@ -141,6 +141,8 @@
                     <runTarget>Mod1.html</runTarget>
                     <hostedWebapp>${webappDirectory}</hostedWebapp>
                     <i18nMessagesBundle>biz.freshcode.learn.gwt.client.Messages</i18nMessagesBundle>
+                    <!-- Speed tweak -->
+                    <!--<draftCompile>true</draftCompile>-->
                 </configuration>
             </plugin>
 
