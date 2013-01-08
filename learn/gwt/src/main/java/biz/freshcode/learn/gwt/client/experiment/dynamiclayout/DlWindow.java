@@ -8,14 +8,16 @@ import biz.freshcode.learn.gwt.client.uispike.builder.container.BoxLayoutDataBui
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import com.sencha.gxt.widget.core.client.Window;
 import com.sencha.gxt.widget.core.client.button.TextButton;
+import com.sencha.gxt.widget.core.client.container.FlowLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
-import com.sencha.gxt.widget.core.client.info.Info;
 
 import static com.sencha.gxt.core.client.dom.ScrollSupport.ScrollMode.AUTOY;
 import static com.sencha.gxt.widget.core.client.container.VBoxLayoutContainer.VBoxLayoutAlign.STRETCH;
 
 class DlWindow extends AbstractIsWidget<Window> {
+    private static final HtmlLayoutContainer NO_MSG = new HtmlLayoutContainer("[None]");
+    private FlowLayoutContainer flc;
 
     @Override
     protected Window createWidget() {
@@ -23,9 +25,9 @@ class DlWindow extends AbstractIsWidget<Window> {
                 .headingText("Dynamic Layout Demo")
                 .widget(new VBoxLayoutContainerBuilder()
                         .vBoxLayoutAlign(STRETCH)
-                        .add(new FlowLayoutContainerBuilder()
+                        .add(flc = new FlowLayoutContainerBuilder()
                                 .scrollMode(AUTOY)
-                                .add(new HtmlLayoutContainer("[None]"))
+                                .add(NO_MSG)
                                 .flowLayoutContainer)
                         .add(new TextAreaBuilder()
                                 .text("Add / Remove messages and note how window behaves\nBonus line")
@@ -52,10 +54,18 @@ class DlWindow extends AbstractIsWidget<Window> {
     }
 
     private void clearMsgs() {
-        Info.display("Clear Msg", "x");
+        flc.clear();
+        flc.add(NO_MSG);
+        forceLayout();
     }
 
     private void addMsg() {
-        Info.display("Add Msg", "x");
+        if (flc.getWidgetCount() == 1 && flc.getWidget(0) == NO_MSG) flc.clear();
+        flc.add(new HtmlLayoutContainer("Message " + (flc.getWidgetCount() + 1)));
+        forceLayout();
+    }
+
+    private void forceLayout() {
+        asWidget().forceLayout(); // otherwise message is behind (why isn't scroll kicking in?)
     }
 }
