@@ -16,7 +16,6 @@ import static com.sencha.gxt.core.client.dom.ScrollSupport.ScrollMode.AUTOY;
 import static com.sencha.gxt.widget.core.client.container.VBoxLayoutContainer.VBoxLayoutAlign.STRETCH;
 
 class DlWindow extends AbstractIsWidget<Window> {
-    private static final HtmlLayoutContainer NO_MSG = new HtmlLayoutContainer("[None]");
     private FlowLayoutContainer flc;
 
     @Override
@@ -25,16 +24,16 @@ class DlWindow extends AbstractIsWidget<Window> {
                 .headingText("Dynamic Layout Demo")
                 .widget(new VBoxLayoutContainerBuilder()
                         .vBoxLayoutAlign(STRETCH)
-                        .add(flc = new FlowLayoutContainerBuilder()
-                                .scrollMode(AUTOY)
-                                .add(NO_MSG)
-                                .flowLayoutContainer)
                         .add(new TextAreaBuilder()
                                 .text("Add / Remove messages and note how window behaves\nBonus line")
                                 .textArea,
                                 new BoxLayoutDataBuilder()
                                         .flex(1)
                                         .boxLayoutData)
+                        // 'Tis better underneath because less jarring for user
+                        .add(flc = new FlowLayoutContainerBuilder()
+                                .scrollMode(AUTOY)
+                                .flowLayoutContainer)
                         .vBoxLayoutContainer)
                 .width(300)
                 .height(200)
@@ -55,12 +54,10 @@ class DlWindow extends AbstractIsWidget<Window> {
 
     private void clearMsgs() {
         flc.clear();
-        flc.add(NO_MSG);
         forceLayout();
     }
 
     private void addMsg() {
-        if (flc.getWidgetCount() == 1 && flc.getWidget(0) == NO_MSG) flc.clear();
         flc.add(new HtmlLayoutContainer("Message " + (flc.getWidgetCount() + 1)));
         forceLayout();
     }
