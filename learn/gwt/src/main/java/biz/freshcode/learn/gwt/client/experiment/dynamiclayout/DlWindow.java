@@ -30,7 +30,7 @@ class DlWindow extends AbstractIsWidget<Window> {
                                 new BoxLayoutDataBuilder()
                                         .flex(1)
                                         .boxLayoutData)
-                        // 'Tis better underneath because less jarring for user
+                                // 'Tis better underneath because less jarring for user
                         .add(flc = new FlowLayoutContainerBuilder()
                                 .scrollMode(AUTOY)
                                 .flowLayoutContainer)
@@ -49,7 +49,17 @@ class DlWindow extends AbstractIsWidget<Window> {
                         clearMsgs();
                     }
                 }))
+                .addButton(new TextButton("Toggle State", new SelectEvent.SelectHandler() {
+                    @Override
+                    public void onSelect(SelectEvent event) {
+                        toggleState();
+                    }
+                }))
                 .window;
+    }
+
+    private void toggleState() {
+        flc.setEnabled(!flc.isEnabled());
     }
 
     private void clearMsgs() {
