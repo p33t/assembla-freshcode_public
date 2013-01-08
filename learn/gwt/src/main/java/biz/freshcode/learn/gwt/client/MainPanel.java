@@ -10,6 +10,7 @@ import biz.freshcode.learn.gwt.client.experiment.Resizer;
 import biz.freshcode.learn.gwt.client.experiment.appearance.AppearanceDemo;
 import biz.freshcode.learn.gwt.client.experiment.celltable.CellTableDemo;
 import biz.freshcode.learn.gwt.client.experiment.dnd.DndUi;
+import biz.freshcode.learn.gwt.client.experiment.dynamiclayout.DynamicLayoutDemo;
 import biz.freshcode.learn.gwt.client.experiment.forms.Landing;
 import biz.freshcode.learn.gwt.client.experiment.forms2.Forms2Demo;
 import biz.freshcode.learn.gwt.client.experiment.grid.GwtGridDemo;
@@ -167,6 +168,12 @@ public class MainPanel extends Composite implements AcceptsOneWidget {
                                         .menuBar))
                                 .menuBar))
                         .addItem(new MenuItem("GXT", subMenu()
+                                .addItem(new MenuItem("Dynamic Layout", new Command() {
+                                    public void execute() {
+                                        IsWidget w = GWT.create(DynamicLayoutDemo.class);
+                                        replaceContent(w);
+                                    }
+                                }))
                                 .addItem(new MenuItem("Popup Form Field", new Command() {
                                     public void execute() {
                                         IsWidget w = GWT.create(PopFieldDemo.class);
