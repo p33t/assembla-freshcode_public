@@ -9,6 +9,7 @@ import biz.freshcode.learn.gwt.client.builder.gxt.DialogBuilder;
 import biz.freshcode.learn.gwt.client.experiment.Resizer;
 import biz.freshcode.learn.gwt.client.experiment.appearance.AppearanceDemo;
 import biz.freshcode.learn.gwt.client.experiment.celltable.CellTableDemo;
+import biz.freshcode.learn.gwt.client.experiment.contextmenu.ContextMenuDemo;
 import biz.freshcode.learn.gwt.client.experiment.dnd.DndUi;
 import biz.freshcode.learn.gwt.client.experiment.dynamiclayout.DynamicLayoutDemo;
 import biz.freshcode.learn.gwt.client.experiment.forms.Landing;
@@ -168,6 +169,12 @@ public class MainPanel extends Composite implements AcceptsOneWidget {
                                         .menuBar))
                                 .menuBar))
                         .addItem(new MenuItem("GXT", subMenu()
+                                .addItem(new MenuItem("Context Menu", new Command() {
+                                    public void execute() {
+                                        IsWidget w = GWT.create(ContextMenuDemo.class);
+                                        replaceContent(w);
+                                    }
+                                }))
                                 .addItem(new MenuItem("Dynamic Layout", new Command() {
                                     public void execute() {
                                         IsWidget w = GWT.create(DynamicLayoutDemo.class);
