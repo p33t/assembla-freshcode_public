@@ -4,6 +4,7 @@ import biz.freshcode.learn.gwt.client.builder.gxt.PopupBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.button.ToolButtonBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.container.HorizontalLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.grid.ColumnConfigBuilder;
+import biz.freshcode.learn.gwt.client.builder.gxt.menu.MenuBuilder;
 import biz.freshcode.learn.gwt.client.experiment.dnd.DropAssessment;
 import biz.freshcode.learn.gwt.client.experiment.dnd.DropSupport;
 import biz.freshcode.learn.gwt.client.experiment.dnd.dragdata.DragData;
@@ -16,6 +17,8 @@ import biz.freshcode.learn.gwt.client.util.DummySelectHandler;
 import com.google.gwt.cell.client.Cell;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.event.logical.shared.SelectionEvent;
+import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.safecss.shared.SafeStylesUtils;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
@@ -43,6 +46,9 @@ import com.sencha.gxt.widget.core.client.grid.ColumnModel;
 import com.sencha.gxt.widget.core.client.grid.Grid;
 import com.sencha.gxt.widget.core.client.grid.editing.GridInlineEditing;
 import com.sencha.gxt.widget.core.client.info.Info;
+import com.sencha.gxt.widget.core.client.menu.Item;
+import com.sencha.gxt.widget.core.client.menu.Menu;
+import com.sencha.gxt.widget.core.client.menu.MenuItem;
 
 import java.util.Set;
 
@@ -202,7 +208,15 @@ public class GxtGridDemo extends AbstractIsWidget {
                     .add(new ToolButton(ToolButton.SEARCH, new DummySelectHandler("Go pushed")))
                     .add(toggleButton(STYLE.redOnlyBnd(), RED))
                     .add(toggleButton(STYLE.greenOnlyBgnd(), GREEN))
-                    .add(dragImg = new Image(Bundle2.INSTANCE.drag()));
+                    .add(dragImg = new Image(Bundle2.INSTANCE.drag()))
+                    .add(new ToolButton(ToolButton.MAXIMIZE, new SelectEvent.SelectHandler() {
+                        @Override
+                        public void onSelect(SelectEvent event) {
+                            Widget w = (Widget) event.getSource();
+                            Menu menu = createMenu();
+                            menu.showAt(w.getAbsoluteLeft(), w.getAbsoluteTop() + w.getOffsetHeight());
+                        }
+                    }));
 
             // DRAGGING ====================================================================
             new DragSource(dragImg).addDragStartHandler(new DndDragStartEvent.DndDragStartHandler() {
@@ -214,6 +228,20 @@ public class GxtGridDemo extends AbstractIsWidget {
                     else DragData.setup(event, Cell.Context.class, newSetFrom(origin));
                 }
             });
+        }
+
+        private Menu createMenu() {
+            MenuItem mi;
+            Menu m = new MenuBuilder()
+                    .add(mi = new MenuItem("Item 1", Bundle2.INSTANCE.drag()))
+                    .menu;
+            mi.addSelectionHandler(new SelectionHandler<Item>() {
+                @Override
+                public void onSelection(SelectionEvent<Item> event) {
+                    Info.display("Event", "Item 1 clicked");
+                }
+            });
+            return m;
         }
 
         @Override
