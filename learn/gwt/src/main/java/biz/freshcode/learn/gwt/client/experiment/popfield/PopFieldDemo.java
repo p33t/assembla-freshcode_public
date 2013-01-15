@@ -23,6 +23,9 @@ import java.util.List;
 
 import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newList;
 
+/**
+ * A text field that pops up at the cursor for quick read of text from user.
+ */
 public class PopFieldDemo extends AbstractIsWidget {
     private static final Validator<String> VALIDATOR = new Validator<String>() {
         @Override
