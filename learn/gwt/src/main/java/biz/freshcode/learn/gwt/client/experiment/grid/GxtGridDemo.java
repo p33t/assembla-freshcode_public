@@ -188,6 +188,7 @@ public class GxtGridDemo extends AbstractIsWidget {
         Dropper dropper;
 
         public MegaPopOverCell(Grid grid) {
+            // TODO: Factor out a 'HoverWidget' parent which is a HorizLayCont, manages a 'getCurrentIfAny()' method and has opt-in 'More' menu.
             this(new Dropper(grid), new HorizontalLayoutContainer());
         }
 
