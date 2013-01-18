@@ -9,6 +9,7 @@ import com.sencha.gxt.dnd.core.client.DropTarget;
 
 /**
  * Handles popup of a widget when mouse-over a cell (excluding drag gestures).
+ * TODO: Introduce lazily called 'createHoverWidget()' method do subclasses don't have to supply to constructor.
  */
 public abstract class PopOverCell<T, U extends IsWidget> extends MouseOverCell<T> {
     private final MouseOverState mosGrid;
