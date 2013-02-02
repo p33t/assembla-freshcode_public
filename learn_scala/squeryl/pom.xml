@@ -10,7 +10,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <scala.version>2.9.1</scala.version>
+        <scala.version>2.9.2</scala.version>
     </properties>
 
     <repositories>
@@ -40,7 +40,7 @@
         <dependency>
             <groupId>org.squeryl</groupId>
             <artifactId>squeryl_${scala.version}</artifactId>
-            <version>0.9.5</version>
+            <version>0.9.5-2</version>
         </dependency>
 
         <!--H2 Database-->
