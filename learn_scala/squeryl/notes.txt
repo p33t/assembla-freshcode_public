@@ -1,0 +1,7 @@
+More notes on Squeryl
+=====================
+
+transaction: start new transaction
+inTransaction: create new one and commit if none is running
+using: manually handle transactions (nested 'inTransaction' will think there is one)
+
