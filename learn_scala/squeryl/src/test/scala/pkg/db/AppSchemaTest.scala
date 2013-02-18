@@ -10,6 +10,7 @@ class AppSchemaTest {
     AppSchema.init()
     inTransaction {
       AppSchema.printDdl
+      AppSchema.reset()
     }
   }
 }

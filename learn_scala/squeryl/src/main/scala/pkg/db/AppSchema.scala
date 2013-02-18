@@ -1,8 +1,9 @@
 package pkg.db
 
+import model.DirectedEntity
 import org.squeryl.PrimitiveTypeMode._
 import org.squeryl.{Session, SessionFactory, Schema}
-import org.squeryl.customtypes.{StringField, CustomTypesMode, CustomType}
+import org.squeryl.customtypes.{StringField, CustomTypesMode}
 
 //import CustomTypesMode._ ... only needed where 'statements are defined'.  Prevents compile otherwise.
 
@@ -12,7 +13,7 @@ class T1(val id: Long,
   /**
    * No arg constructor is required when there are nullable fields.
    */
-  def this() = this (0, "", Some(""))
+  def this() = this(0, "", Some(""))
 }
 
 // A Custom type.  It indirectly extends CustomType.
@@ -31,6 +32,11 @@ object AppSchema extends Schema {
       Session.create(Db.openConnection(), new H2Adapter))
   }
 
+  def reset() {
+    drop
+    create
+  }
+
   val t1 = table[T1]
 
   on(t1)(t => declare(
@@ -39,11 +45,13 @@ object AppSchema extends Schema {
   ))
 
   val custom = table[Custom]
-  
+
   {
     import CustomTypesMode._
     on(custom)(t => declare(
       t.cust is (dbType("varchar(127)"))
     ))
   }
+
+  val directedEntity = table[DirectedEntity]
 }

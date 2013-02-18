@@ -1,9 +1,8 @@
 package pkg.db
 
-import java.sql.{Connection, DriverManager}
+import java.sql.Connection
 import org.h2.jdbcx.JdbcConnectionPool
 import pkg.log.Logging
-import org.squeryl.{Session, SessionFactory}
 
 object Db extends Logging {
   log.info("Creating connection Pool.")
