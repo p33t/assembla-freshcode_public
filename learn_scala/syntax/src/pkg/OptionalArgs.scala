@@ -2,25 +2,24 @@ package pkg
 
 
 object OptionalArgs {
-  class Cell {
-    var value: Int = 0
+  var counter = 0
+
+  def next() = {
+    counter += 1
+    counter
   }
 
-  var cell: Cell = null
-
-  def setupCell(newCell: Cell = new Cell()) {
-    cell = newCell
+  def nextMaybe(arg: Int = next()) = {
+    arg
   }
 
   def main(args: Array[String]) {
-    require(cell == null)
-    setupCell()
-    val first = cell
-    println("First: " + first)
-    setupCell()
-    val second = cell
-    println("Second: " + second)
-//    Turns out the defaulting code is called every time!
-//    require(first.eq(cell))
+    assert(counter == 0)
+    val one = nextMaybe()
+    assert(one == 1)
+    val one2 = nextMaybe(one) // should not cause counter to increment
+    assert(one2 == one)
+    val two = nextMaybe()
+    assert(two == 2)
   }
 }
