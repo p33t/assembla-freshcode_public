@@ -11,7 +11,8 @@ import com.sencha.gxt.widget.core.client.toolbar.ToolBar;
 
 
 /**
- * Augh... this doesn't resize nicely.
+ * This doesn't resize nicely but that is more a problem with how our app is setup.
+ * GXT all-the-way-down works fine.
  */
 public class FlexTableDemo extends AbstractIsWidget {
     @Override
