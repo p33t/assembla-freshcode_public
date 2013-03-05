@@ -12,6 +12,7 @@ import biz.freshcode.learn.gwt.client.experiment.celltable.CellTableDemo;
 import biz.freshcode.learn.gwt.client.experiment.contextmenu.ContextMenuDemo;
 import biz.freshcode.learn.gwt.client.experiment.dnd.DndUi;
 import biz.freshcode.learn.gwt.client.experiment.dynamiclayout.DynamicLayoutDemo;
+import biz.freshcode.learn.gwt.client.experiment.flextable.FlexTableDemo;
 import biz.freshcode.learn.gwt.client.experiment.forms.Landing;
 import biz.freshcode.learn.gwt.client.experiment.forms2.Forms2Demo;
 import biz.freshcode.learn.gwt.client.experiment.grid.GwtGridDemo;
@@ -89,6 +90,12 @@ public class MainPanel extends Composite implements AcceptsOneWidget {
                                 }))
                                 .menuBar))
                         .addItem(new MenuItem("Experiments", subMenu()
+                                .addItem(new MenuItem("Flex Table", new Command() {
+                                    public void execute() {
+                                        IsWidget w = GWT.create(FlexTableDemo.class);
+                                        replaceContent(w);
+                                    }
+                                }))
                                 .addItem(new MenuItem("JSNI", new Command() {
                                     public void execute() {
                                         IsWidget w = GWT.create(JsniDemo.class);
