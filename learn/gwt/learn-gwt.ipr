@@ -19,9 +19,9 @@
             <element id="module-output" name="learn-gwt" />
           </element>
           <element id="directory" name="lib">
-            <element id="library" level="project" name="Maven: com.google.gwt:gwt-servlet:2.5.0-rc2" />
+            <element id="library" level="project" name="Maven: com.google.gwt:gwt-servlet:2.5.1" />
             <element id="library" level="project" name="Maven: org.json:json:20090211" />
-            <element id="library" level="project" name="Maven: com.google.web.bindery:requestfactory-server:2.5.0-rc2" />
+            <element id="library" level="project" name="Maven: com.google.web.bindery:requestfactory-server:2.5.1" />
             <element id="library" level="project" name="Maven: com.google.gwt.inject:gin:2.0.0" />
             <element id="library" level="project" name="Maven: com.google.inject:guice:3.0" />
             <element id="library" level="project" name="Maven: javax.inject:javax.inject:1" />
@@ -56,7 +56,17 @@
       <profile default="true" name="Default" enabled="false">
         <processorPath useClasspath="true" />
       </profile>
+      <profile default="false" name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="learn-gwt" />
+      </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="learn-gwt" target="1.6" />
+    </bytecodeTargetLevel>
   </component>
   <component name="CopyrightManager" default="">
     <module2copyright />
@@ -173,26 +183,26 @@
         <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/inject/gin/2.0.0/gin-2.0.0-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: com.google.gwt:gwt-servlet:2.5.0-rc2">
+    <library name="Maven: com.google.gwt:gwt-servlet:2.5.1">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-servlet/2.5.0-rc2/gwt-servlet-2.5.0-rc2.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-servlet/2.5.1/gwt-servlet-2.5.1.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-servlet/2.5.0-rc2/gwt-servlet-2.5.0-rc2-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-servlet/2.5.1/gwt-servlet-2.5.1-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-servlet/2.5.0-rc2/gwt-servlet-2.5.0-rc2-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-servlet/2.5.1/gwt-servlet-2.5.1-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: com.google.gwt:gwt-user:2.5.0-rc2">
+    <library name="Maven: com.google.gwt:gwt-user:2.5.1">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-user/2.5.0-rc2/gwt-user-2.5.0-rc2.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-user/2.5.1/gwt-user-2.5.1.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-user/2.5.0-rc2/gwt-user-2.5.0-rc2-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-user/2.5.1/gwt-user-2.5.1-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-user/2.5.0-rc2/gwt-user-2.5.0-rc2-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-user/2.5.1/gwt-user-2.5.1-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: com.google.inject.extensions:guice-assistedinject:3.0">
@@ -217,26 +227,26 @@
         <root url="jar://$MAVEN_REPOSITORY$/com/google/inject/guice/3.0/guice-3.0-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: com.google.web.bindery:requestfactory-apt:2.5.0-rc2">
+    <library name="Maven: com.google.web.bindery:requestfactory-apt:2.5.1">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/google/web/bindery/requestfactory-apt/2.5.0-rc2/requestfactory-apt-2.5.0-rc2.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/web/bindery/requestfactory-apt/2.5.1/requestfactory-apt-2.5.1.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/com/google/web/bindery/requestfactory-apt/2.5.0-rc2/requestfactory-apt-2.5.0-rc2-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/web/bindery/requestfactory-apt/2.5.1/requestfactory-apt-2.5.1-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/google/web/bindery/requestfactory-apt/2.5.0-rc2/requestfactory-apt-2.5.0-rc2-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/web/bindery/requestfactory-apt/2.5.1/requestfactory-apt-2.5.1-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: com.google.web.bindery:requestfactory-server:2.5.0-rc2">
+    <library name="Maven: com.google.web.bindery:requestfactory-server:2.5.1">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/google/web/bindery/requestfactory-server/2.5.0-rc2/requestfactory-server-2.5.0-rc2.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/web/bindery/requestfactory-server/2.5.1/requestfactory-server-2.5.1.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/com/google/web/bindery/requestfactory-server/2.5.0-rc2/requestfactory-server-2.5.0-rc2-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/web/bindery/requestfactory-server/2.5.1/requestfactory-server-2.5.1-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/google/web/bindery/requestfactory-server/2.5.0-rc2/requestfactory-server-2.5.0-rc2-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/web/bindery/requestfactory-server/2.5.1/requestfactory-server-2.5.1-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: com.sencha.gxt:gxt:3.0.1">
