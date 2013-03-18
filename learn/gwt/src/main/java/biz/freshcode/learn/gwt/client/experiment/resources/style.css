@@ -23,6 +23,7 @@
 /* Actually this look like the correct way */
 @sprite .dirtyBgnd3 {
     gwt-image: "dirtyGif3";
+    /* NOTE: Don't optimise these.  GWT not smart enough to mix in gwt-image */
     background-repeat: no-repeat;
     /*background-position: center 0;*/
     width: 100%;  /* Otherwise image sets width */
