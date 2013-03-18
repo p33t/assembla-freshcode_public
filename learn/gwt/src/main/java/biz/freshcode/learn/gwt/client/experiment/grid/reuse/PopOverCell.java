@@ -9,15 +9,18 @@ import com.sencha.gxt.dnd.core.client.DropTarget;
 
 /**
  * Handles popup of a widget when mouse-over a cell (excluding drag gestures).
- * TODO: Introduce lazily called 'createHoverWidget()' method do subclasses don't have to supply to constructor.
+ * TODO: Introduce lazily called 'createHoverWidget()' method so subclasses don't have to supply to constructor.
+ *
+ * @param <C> The type of the column data.
+ * @param <W> The type of widget to shown during mouse hover.
  */
-public abstract class PopOverCell<T, U extends IsWidget> extends MouseOverCell<T> {
+public abstract class PopOverCell<C, W extends IsWidget> extends MouseOverCell<C> {
     private final MouseOverState mosGrid;
     private final Hoverer hoverSupp;
     private Context popupCell = null;
     private Point popupCoord = null;
 
-    public PopOverCell(DropTarget dtGrid, U hoverWidget) {
+    public PopOverCell(DropTarget dtGrid, W hoverWidget) {
         hoverSupp = new Hoverer(hoverWidget);
         mosGrid = new MouseOverState(dtGrid, new MouseOverState.Callback() {
             @Override
@@ -57,7 +60,7 @@ public abstract class PopOverCell<T, U extends IsWidget> extends MouseOverCell<T
     /**
      * Subclasses can customise the hoverWidget just before it is shown.
      */
-    protected void customizeHoverWidget(U hoverWidget, Context cell) {
+    protected void customizeHoverWidget(W hoverWidget, Context cell) {
         // do nothing by default
     }
 
@@ -67,14 +70,16 @@ public abstract class PopOverCell<T, U extends IsWidget> extends MouseOverCell<T
         hoverSupp.enablePopup(popupCoord);
     }
 
-    private class Hoverer extends HoverWidgetSupport<U> {
-        public Hoverer(U hoverWidget) {
+    private class Hoverer extends HoverWidgetSupport<W> {
+        public Hoverer(W hoverWidget) {
             super(hoverWidget);
         }
 
         @Override
-        protected void customizeHoverWidget(U hoverWidget) {
+        protected void customizeHoverWidget(W hoverWidget) {
             popupCell = getCurrentCell();
+            // TODO: Generify type of Grid row so it can be looked up in the store and supplied to customiseHoverWidget().
+            // NOTE: Cannot automagically call 'updateCurrent()' on would-be hover widget because it may not match <G>
             PopOverCell.this.customizeHoverWidget(hoverWidget, popupCell);
         }
 
