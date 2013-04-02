@@ -26,6 +26,7 @@
     <properties>
         <!-- Convenience property to set the GWT version -->
         <gwtVersion>2.5.1</gwtVersion>
+        <gwtpVersion>1.0-RC-2</gwtpVersion>
         <!-- GWT needs at least java 1.5 -->
         <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -93,6 +94,29 @@
         <!--<version>2.4.0</version>-->
         <!--<scope>provided</scope>-->
         <!--</dependency>-->
+
+        <!--Dispatch framework (command pattern RPC)-->
+        <dependency>
+            <groupId>com.gwtplatform</groupId>
+            <artifactId>gwtp-dispatch-client</artifactId>
+            <version>${gwtpVersion}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.gwtplatform</groupId>
+            <artifactId>gwtp-dispatch-server</artifactId>
+            <version>${gwtpVersion}</version>
+        </dependency>
+        <!--  Trying to get it working with guice... but ideally remove this later-->
+        <dependency>
+            <groupId>com.gwtplatform</groupId>
+            <artifactId>gwtp-dispatch-server-guice</artifactId>
+            <version>${gwtpVersion}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.inject.extensions</groupId>
+            <artifactId>guice-servlet</artifactId>
+            <version>3.0</version>
+        </dependency>
 
         <dependency>
             <groupId>biz.freshcode.b-generation</groupId>

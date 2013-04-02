@@ -30,6 +30,7 @@ import biz.freshcode.learn.gwt.client.experiment.resources.ResourcesDemo;
 import biz.freshcode.learn.gwt.client.experiment.toolbar.ToolBarDemo;
 import biz.freshcode.learn.gwt.client.experiment.window.WindowDemo;
 import biz.freshcode.learn.gwt.client.experiment.xtemplate.XTemplateDemo;
+import biz.freshcode.learn.gwt.client.rpc.dispatch.DispatchDemo;
 import biz.freshcode.learn.gwt.client.uibinder.Basic;
 import biz.freshcode.learn.gwt.client.uibinder.Composed;
 import biz.freshcode.learn.gwt.client.uibinder.eg.BorderLayoutEg;
@@ -46,12 +47,15 @@ import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
 import com.google.inject.Inject;
+import com.google.inject.Provider;
 import com.google.inject.Singleton;
 
 @Singleton
 public class MainPanel extends Composite implements AcceptsOneWidget {
     IsWidget content;
     DockLayoutPanel pnl;
+    @Inject
+    Provider<DispatchDemo> ddProvider;
 
     @Inject
     public MainPanel(final PlaceController placeController) {
@@ -86,6 +90,14 @@ public class MainPanel extends Composite implements AcceptsOneWidget {
                                 .addItem(new MenuItem("ContentPanel Resize", new Command() {
                                     public void execute() {
                                         dialog("Bug", new ContentPanelSizeBug());
+                                    }
+                                }))
+                                .menuBar))
+                        .addItem(new MenuItem("RPC", subMenu()
+                                .addItem(new MenuItem("Dispatch", new Command() {
+                                    public void execute() {
+                                        IsWidget w = ddProvider.get();
+                                        replaceContent(w);
                                     }
                                 }))
                                 .menuBar))
