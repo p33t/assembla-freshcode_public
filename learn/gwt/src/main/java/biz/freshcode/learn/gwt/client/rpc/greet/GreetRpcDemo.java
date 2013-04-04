@@ -27,6 +27,7 @@ public class GreetRpcDemo extends AbstractIsWidget {
 
         btnGo.addSelectHandler(new SelectEvent.SelectHandler() {
             public void onSelect(SelectEvent event) {
+                // NOTE: Asking GWT to create the NON-ASYNC interface.
                 GreetingServiceAsync s = GWT.create(GreetingService.class);
                 s.greetServer("Hello", new AsyncCallback<String>() {
                     public void onFailure(Throwable caught) {
