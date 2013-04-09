@@ -4,20 +4,20 @@ import com.google.gwt.core.client.GWT;
 import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.data.shared.PropertyAccess;
 
-public class Bean2 {
+public class XyBean {
     double x, y;
 
-    public Bean2(double x, double y) {
+    public XyBean(double x, double y) {
         this.x = x;
         this.y = y;
     }
 
-    public interface Access extends PropertyAccess<Bean2> {
-        static Access ACCESS_2 = GWT.create(Access.class);
+    public interface Access extends PropertyAccess<XyBean> {
+        static Access ACCESS_XY = GWT.create(Access.class);
 
-        ValueProvider<Bean2, Double> x();
+        ValueProvider<XyBean, Double> x();
 
-        ValueProvider<Bean2, Double> y();
+        ValueProvider<XyBean, Double> y();
     }
 
     public double getX() {

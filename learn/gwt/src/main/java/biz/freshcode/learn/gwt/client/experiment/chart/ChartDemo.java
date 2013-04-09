@@ -4,8 +4,10 @@ import biz.freshcode.learn.gwt.client.builder.gxt.chart.ChartBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.chart.axis.CategoryAxisBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.chart.axis.NumericAxisBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.chart.series.BarSeriesBuilder;
+import biz.freshcode.learn.gwt.client.builder.gxt.chart.series.LineSeriesBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.container.BorderLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.container.HorizontalLayoutContainerBuilder;
+import biz.freshcode.learn.gwt.client.builder.gxt.draw.path.PathSpriteBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.Construct;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import biz.freshcode.learn.gwt.client.util.IdentityHashProvider;
@@ -13,6 +15,8 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.i18n.client.NumberFormat;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.IsWidget;
+import com.sencha.gxt.chart.client.chart.series.Primitives;
+import com.sencha.gxt.chart.client.draw.RGB;
 import com.sencha.gxt.chart.client.draw.sprite.TextSprite;
 import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.core.client.util.Point;
@@ -23,13 +27,13 @@ import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 
-import static biz.freshcode.learn.gwt.client.experiment.chart.Bean2.Access.ACCESS_2;
 import static biz.freshcode.learn.gwt.client.experiment.chart.ChartDemo.PointAccess.ACCESS;
+import static biz.freshcode.learn.gwt.client.experiment.chart.XyBean.Access.ACCESS_XY;
 import static biz.freshcode.learn.gwt.client.util.ExceptionUtil.illegalArg;
 import static com.sencha.gxt.chart.client.chart.Chart.Position;
 
 public class ChartDemo extends AbstractIsWidget<BorderLayoutContainer> {
-    private int attemptCount = 2;
+    private int attemptCount = 3;
 
     @Override
     protected BorderLayoutContainer createWidget() {
@@ -65,42 +69,88 @@ public class ChartDemo extends AbstractIsWidget<BorderLayoutContainer> {
                 return chart1();
             case 2:
                 return chart2();
+            case 3:
+                return chart3();
             default:
                 throw illegalArg("Bad button number " + buttonNum);
         }
     }
 
     /**
-     * Oriented around double typed co-ords (not integer).
+     * Lines... with gaps?
      */
-    private IsWidget chart2() {
-        ListStore<Bean2> store = new ListStore<Bean2>(new IdentityHashProvider<Bean2>());
-        store.add(new Bean2(1, 2));
-        store.add(new Bean2(2, 3));
-        store.add(new Bean2(3, 2));
-        store.add(new Bean2(4, 3));
-        store.add(new Bean2(5, 2));
-        store.add(new Bean2(6, 3));
+    private IsWidget chart3() {
+        ListStore<XyBean> store = new ListStore<XyBean>(new IdentityHashProvider<XyBean>());
+        store.add(new XyBean(1, 2));
+        store.add(new XyBean(2, 3));
+        store.add(new XyBean(3, Double.NaN)); // the gap
+        store.add(new XyBean(4, 3));
+        store.add(new XyBean(5, 2));
+        store.add(new XyBean(6, 3));
 
-        return new ChartBuilder<Bean2>()
+        return new ChartBuilder<XyBean>()
                 .store(store)
-                .addAxis(new NumericAxisBuilder<Bean2>()
+                .addAxis(new NumericAxisBuilder<XyBean>()
                         .position(Position.BOTTOM)
                         .titleConfig(new TextSprite("First Axis"))
-                        .addField(ACCESS_2.x())
+                        .addField(ACCESS_XY.x())
                         .labelProvider(new NumberLabelProvider())
                         .numericAxis)
-                .addAxis(new NumericAxisBuilder<Bean2>()
+                .addAxis(new NumericAxisBuilder<XyBean>()
                         .position(Position.LEFT)
                         .titleConfig(new TextSprite("Second Axis"))
-                        .addField(ACCESS_2.y())
+                        .addField(ACCESS_XY.y())
                         .labelProvider(new NumberLabelProvider())
                         .minimum(0)
                         .maximum(4)
                         .numericAxis)
-                .addSeries(new BarSeriesBuilder<Bean2>()
+                .addSeries(new LineSeriesBuilder<XyBean>()
                         .yAxisPosition(Position.LEFT)
-                        .addYField(ACCESS_2.y())
+                        .yField(ACCESS_XY.y())
+                        .xAxisPosition(Position.BOTTOM)
+                        .xField(ACCESS_XY.x())
+                        .stroke(new RGB("#44cc44"))
+                        .strokeWidth(2)
+                        .showMarkers(true)
+                        .markerConfig(new PathSpriteBuilder(Primitives.diamond(0, 0, 5))
+                                .fill(new RGB("#228822"))
+                                .pathSprite)
+                        .gapless(false)
+                        .lineSeries)
+                .chart;
+    }
+
+    /**
+     * Oriented around double typed co-ords (not integer).
+     */
+    private IsWidget chart2() {
+        ListStore<XyBean> store = new ListStore<XyBean>(new IdentityHashProvider<XyBean>());
+        store.add(new XyBean(1, 2));
+        store.add(new XyBean(2, 3));
+        store.add(new XyBean(3, 2));
+        store.add(new XyBean(4, 3));
+        store.add(new XyBean(5, 2));
+        store.add(new XyBean(6, 3));
+
+        return new ChartBuilder<XyBean>()
+                .store(store)
+                .addAxis(new NumericAxisBuilder<XyBean>()
+                        .position(Position.BOTTOM)
+                        .titleConfig(new TextSprite("First Axis"))
+                        .addField(ACCESS_XY.x())
+                        .labelProvider(new NumberLabelProvider())
+                        .numericAxis)
+                .addAxis(new NumericAxisBuilder<XyBean>()
+                        .position(Position.LEFT)
+                        .titleConfig(new TextSprite("Second Axis"))
+                        .addField(ACCESS_XY.y())
+                        .labelProvider(new NumberLabelProvider())
+                        .minimum(0)
+                        .maximum(4)
+                        .numericAxis)
+                .addSeries(new BarSeriesBuilder<XyBean>()
+                        .yAxisPosition(Position.LEFT)
+                        .addYField(ACCESS_XY.y())
                         .column(true)
                         .barSeries)
                 .chart;
