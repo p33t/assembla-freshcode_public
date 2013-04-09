@@ -10,11 +10,11 @@ import biz.freshcode.learn.gwt.client.uispike.builder.Construct;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import biz.freshcode.learn.gwt.client.util.IdentityHashProvider;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.i18n.client.NumberFormat;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.sencha.gxt.chart.client.draw.sprite.TextSprite;
 import com.sencha.gxt.core.client.ValueProvider;
-import com.sencha.gxt.core.client.util.Format;
 import com.sencha.gxt.core.client.util.Point;
 import com.sencha.gxt.data.shared.LabelProvider;
 import com.sencha.gxt.data.shared.ListStore;
@@ -22,7 +22,6 @@ import com.sencha.gxt.data.shared.PropertyAccess;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
-import com.google.gwt.i18n.client.NumberFormat;
 
 import static biz.freshcode.learn.gwt.client.experiment.chart.Bean2.Access.ACCESS_2;
 import static biz.freshcode.learn.gwt.client.experiment.chart.ChartDemo.PointAccess.ACCESS;
@@ -73,7 +72,6 @@ public class ChartDemo extends AbstractIsWidget<BorderLayoutContainer> {
 
     /**
      * Oriented around double typed co-ords (not integer).
-     * @return
      */
     private IsWidget chart2() {
         ListStore<Bean2> store = new ListStore<Bean2>(new IdentityHashProvider<Bean2>());
@@ -97,6 +95,8 @@ public class ChartDemo extends AbstractIsWidget<BorderLayoutContainer> {
                         .titleConfig(new TextSprite("Second Axis"))
                         .addField(ACCESS_2.y())
                         .labelProvider(new NumberLabelProvider())
+                        .minimum(0)
+                        .maximum(4)
                         .numericAxis)
                 .addSeries(new BarSeriesBuilder<Bean2>()
                         .yAxisPosition(Position.LEFT)
@@ -129,6 +129,7 @@ public class ChartDemo extends AbstractIsWidget<BorderLayoutContainer> {
                         .labelProvider(new NumberLabelProvider())
                         .numericAxis)
 //                NOTE: CategoryAxis does NOT interpolate
+                        // no minimum / maximum
                 .addAxis(new CategoryAxisBuilder<Point, Integer>()
                         .position(Position.LEFT)
                         .titleConfig(new TextSprite("Second Axis"))
