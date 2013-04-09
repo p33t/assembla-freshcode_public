@@ -5,16 +5,22 @@ import biz.freshcode.b_generation.BgenUtil;
 import biz.freshcode.b_generation.DefaultBeanBuilderGenerator;
 import biz.freshcode.learn.gwt.client.uispike.builder.BeanBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.Construct;
+import com.sencha.gxt.chart.client.chart.Chart;
+import com.sencha.gxt.chart.client.chart.axis.CategoryAxis;
+import com.sencha.gxt.chart.client.chart.axis.NumericAxis;
+import com.sencha.gxt.chart.client.chart.series.BarSeries;
+import com.sencha.gxt.chart.client.draw.sprite.TextSprite;
 import com.sencha.gxt.widget.core.client.form.SimpleComboBox;
 
 public class BeanBuilderGenerator extends DefaultBeanBuilderGenerator {
-    static final Class CLASS = SimpleComboBox.class; //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    static final Class CLASS = TextSprite.class; //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     public static final String BASE_PKG = "biz.freshcode.learn.gwt.client.builder";
 
 
     public static void main(String[] args) {
         new BeanBuilderWriter()
                 .addMapping("com.sencha.gxt.widget.core.client", BASE_PKG + ".gxt")
+                .addMapping("com.sencha.gxt.chart.client", BASE_PKG + ".gxt")
                 .addMapping("com.sencha.gxt.core.client", BASE_PKG + ".gxt")
                 .addMapping("com.google.gwt.user.client.ui", BASE_PKG + ".gwt")
                 .generator(new BeanBuilderGenerator())
