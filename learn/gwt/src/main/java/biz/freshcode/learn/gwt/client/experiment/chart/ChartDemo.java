@@ -111,6 +111,7 @@ public class ChartDemo extends AbstractIsWidget<BorderLayoutContainer> {
                         .labelProvider(new NumberLabelProvider())
                         .minimum(0)
                         .maximum(4)
+//                        .hidden(true)... might be useful on occasion
                         .numericAxis)
                 .addSeries(new LineSeriesBuilder<XyBean>()
                         .yAxisPosition(Position.LEFT)
