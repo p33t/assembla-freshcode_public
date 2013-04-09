@@ -6,6 +6,7 @@ import biz.freshcode.learn.gwt.client.builder.gxt.chart.axis.NumericAxisBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.chart.series.BarSeriesBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.container.BorderLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.container.HorizontalLayoutContainerBuilder;
+import biz.freshcode.learn.gwt.client.uispike.builder.Construct;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import biz.freshcode.learn.gwt.client.util.IdentityHashProvider;
 import com.google.gwt.core.client.GWT;
@@ -20,22 +21,46 @@ import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 
 import static biz.freshcode.learn.gwt.client.experiment.chart.ChartDemo.PointAccess.ACCESS;
+import static biz.freshcode.learn.gwt.client.util.ExceptionUtil.illegalArg;
 import static com.sencha.gxt.chart.client.chart.Chart.Position;
 
 public class ChartDemo extends AbstractIsWidget<BorderLayoutContainer> {
+    private int attemptCount = 1;
+
     @Override
     protected BorderLayoutContainer createWidget() {
         return new BorderLayoutContainerBuilder()
                 .northWidget(new HorizontalLayoutContainerBuilder()
-                        .add(new TextButton("1st", new SelectEvent.SelectHandler() {
+                        .construct(new Construct<HorizontalLayoutContainerBuilder>() {
                             @Override
-                            public void onSelect(SelectEvent event) {
-                                asWidget().setCenterWidget(chart1());
-                                asWidget().forceLayout();
+                            public void run() {
+                                for (int i = 1; i <= attemptCount; i++) {
+                                    builder.add(btn(i));
+                                }
                             }
-                        }))
+                        })
                         .horizontalLayoutContainer)
                 .borderLayoutContainer;
+    }
+
+    private TextButton btn(final int buttonNum) {
+        return new TextButton("#" + buttonNum, new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent event) {
+                BorderLayoutContainer blc = asWidget();
+                blc.setCenterWidget(chartX(buttonNum));
+                blc.forceLayout();
+            }
+        });
+    }
+
+    private IsWidget chartX(int buttonNum) {
+        switch (buttonNum) {
+            case 1:
+                return chart1();
+            default:
+                throw illegalArg("Bad button number " + buttonNum);
+        }
     }
 
     /**
