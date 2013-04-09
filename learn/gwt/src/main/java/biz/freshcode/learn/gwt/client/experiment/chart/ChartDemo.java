@@ -1,6 +1,7 @@
 package biz.freshcode.learn.gwt.client.experiment.chart;
 
 import biz.freshcode.learn.gwt.client.builder.gxt.chart.ChartBuilder;
+import biz.freshcode.learn.gwt.client.builder.gxt.chart.LegendBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.chart.axis.CategoryAxisBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.chart.axis.NumericAxisBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.chart.series.BarSeriesBuilder;
@@ -117,6 +118,11 @@ public class ChartDemo extends AbstractIsWidget<BorderLayoutContainer> {
                                 .pathSprite)
                         .gapless(false)
                         .lineSeries)
+                .legend(new LegendBuilder<XyBean>()
+                        .position(Position.RIGHT)
+                        .itemHighlighting(true)
+                        .itemHiding(true)
+                        .legend)
                 .chart;
     }
 
