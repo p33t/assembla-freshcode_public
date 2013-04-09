@@ -5,15 +5,10 @@ import biz.freshcode.b_generation.BgenUtil;
 import biz.freshcode.b_generation.DefaultBeanBuilderGenerator;
 import biz.freshcode.learn.gwt.client.uispike.builder.BeanBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.Construct;
-import com.sencha.gxt.chart.client.chart.Chart;
-import com.sencha.gxt.chart.client.chart.axis.CategoryAxis;
-import com.sencha.gxt.chart.client.chart.axis.NumericAxis;
-import com.sencha.gxt.chart.client.chart.series.BarSeries;
-import com.sencha.gxt.chart.client.draw.sprite.TextSprite;
-import com.sencha.gxt.widget.core.client.form.SimpleComboBox;
+import com.sencha.gxt.chart.client.draw.path.PathSprite;
 
 public class BeanBuilderGenerator extends DefaultBeanBuilderGenerator {
-    static final Class CLASS = TextSprite.class; //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    static final Class CLASS = PathSprite.class; //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     public static final String BASE_PKG = "biz.freshcode.learn.gwt.client.builder";
 
 
