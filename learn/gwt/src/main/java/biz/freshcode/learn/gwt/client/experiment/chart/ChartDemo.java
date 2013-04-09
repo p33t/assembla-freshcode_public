@@ -10,10 +10,12 @@ import biz.freshcode.learn.gwt.client.uispike.builder.Construct;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import biz.freshcode.learn.gwt.client.util.IdentityHashProvider;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.sencha.gxt.chart.client.draw.sprite.TextSprite;
 import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.core.client.util.Point;
+import com.sencha.gxt.data.shared.LabelProvider;
 import com.sencha.gxt.data.shared.ListStore;
 import com.sencha.gxt.data.shared.PropertyAccess;
 import com.sencha.gxt.widget.core.client.button.TextButton;
@@ -36,6 +38,7 @@ public class ChartDemo extends AbstractIsWidget<BorderLayoutContainer> {
                             public void run() {
                                 for (int i = 1; i <= attemptCount; i++) {
                                     builder.add(btn(i));
+                                    builder.add(new HTML("&nbsp;"));
                                 }
                             }
                         })
@@ -58,14 +61,19 @@ public class ChartDemo extends AbstractIsWidget<BorderLayoutContainer> {
         switch (buttonNum) {
             case 1:
                 return chart1();
+            case 2:
+                return chart2();
             default:
                 throw illegalArg("Bad button number " + buttonNum);
         }
     }
 
+    private IsWidget chart2() {
+        throw new RuntimeException("chart2 not implemented");
+    }
+
     /**
-     * Still not quite there.  Horizontal axis has duplicate values ?!
-     * Read some doco and will try custom data bean.
+     * This doco helped...
      * http://www.sencha.com/blog/ext-gwt-3-drawing-and-charting/
      */
     private IsWidget chart1() {
@@ -83,6 +91,7 @@ public class ChartDemo extends AbstractIsWidget<BorderLayoutContainer> {
                         .position(Position.BOTTOM)
                         .titleConfig(new TextSprite("First Axis"))
                         .addField(ACCESS.x())
+                        .steps(6) // prevents extra labels which get rounded: 1 2 2 3 3 4 4...
                         .numericAxis)
 //                        Nope....
 //                .addAxis(new NumericAxisBuilder<Point>()
