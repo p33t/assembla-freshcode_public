@@ -34,7 +34,7 @@ import static biz.freshcode.learn.gwt.client.util.ExceptionUtil.illegalArg;
 import static com.sencha.gxt.chart.client.chart.Chart.Position;
 
 public class ChartDemo extends AbstractIsWidget<BorderLayoutContainer> {
-    private int attemptCount = 3;
+    private int attemptCount = 4;
 
     @Override
     protected BorderLayoutContainer createWidget() {
@@ -72,13 +72,19 @@ public class ChartDemo extends AbstractIsWidget<BorderLayoutContainer> {
                 return chart2();
             case 3:
                 return chart3();
+            case 4:
+                return chart4();
             default:
                 throw illegalArg("Bad button number " + buttonNum);
         }
     }
 
+    private IsWidget chart4() {
+        throw new RuntimeException("chart4 not implemented");
+    }
+
     /**
-     * Lines... with gaps?
+     * Line with gaps
      */
     private IsWidget chart3() {
         ListStore<XyBean> store = new ListStore<XyBean>(new IdentityHashProvider<XyBean>());
@@ -91,16 +97,17 @@ public class ChartDemo extends AbstractIsWidget<BorderLayoutContainer> {
 
         return new ChartBuilder<XyBean>()
                 .store(store)
-                .addAxis(new NumericAxisBuilder<XyBean>()
-                        .position(Position.BOTTOM)
-                        .titleConfig(new TextSprite("First Axis"))
-                        .addField(ACCESS_XY.x())
-                        .labelProvider(new NumberLabelProvider())
-                        .numericAxis)
+//                This doesn't seem to be necessary
+//                .addAxis(new NumericAxisBuilder<XyBean>()
+//                        .position(Position.BOTTOM)
+//                        .titleConfig(new TextSprite("First Axis"))
+//                        .addField(ACCESS_XY.x())
+//                        .labelProvider(new NumberLabelProvider())
+//                        .numericAxis)
                 .addAxis(new NumericAxisBuilder<XyBean>()
                         .position(Position.LEFT)
                         .titleConfig(new TextSprite("Second Axis"))
-                        .addField(ACCESS_XY.y())
+                        .addField(ACCESS_XY.y()) // it appears all plotted values must be cited here
                         .labelProvider(new NumberLabelProvider())
                         .minimum(0)
                         .maximum(4)
