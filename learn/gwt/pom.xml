@@ -27,6 +27,7 @@
         <!-- Convenience property to set the GWT version -->
         <gwtVersion>2.5.1</gwtVersion>
         <gwtpVersion>1.0-RC-2</gwtpVersion>
+        <gxtVersion>3.0.1</gxtVersion>
         <!-- GWT needs at least java 1.5 -->
         <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -83,17 +84,30 @@
         <dependency>
             <groupId>com.sencha.gxt</groupId>
             <artifactId>gxt</artifactId>
-            <version>3.0.1</version>
+            <version>${gxtVersion}</version>
             <scope>provided</scope>
         </dependency>
-        <!-- Trying to debug Border layout -->
-        <!-- Not needed in GWT 2.5.0 -->
-        <!--<dependency>-->
-        <!--<groupId>com.sencha.gxt</groupId>-->
-        <!--<artifactId>uibinder-bridge</artifactId>-->
-        <!--<version>2.4.0</version>-->
-        <!--<scope>provided</scope>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>com.sencha.gxt</groupId>
+            <artifactId>gxt-chart</artifactId>
+            <version>${gxtVersion}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- Sources are needed (for CI Build).  When using an IDE these may have been automatically downloaded. -->
+        <dependency>
+            <groupId>com.sencha.gxt</groupId>
+            <artifactId>gxt</artifactId>
+            <version>${gxtVersion}</version>
+            <scope>compile</scope>
+            <classifier>sources</classifier>
+        </dependency>
+        <dependency>
+            <groupId>com.sencha.gxt</groupId>
+            <artifactId>gxt-chart</artifactId>
+            <version>${gxtVersion}</version>
+            <scope>compile</scope>
+            <classifier>sources</classifier>
+        </dependency>
 
         <!--Dispatch framework (command pattern RPC)-->
         <dependency>

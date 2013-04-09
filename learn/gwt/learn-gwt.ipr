@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AntConfiguration">
-    <defaultAnt bundledAnt="true" />
-  </component>
   <component name="ArtifactManager">
     <artifact type="war" name="learn-gwt:war">
       <output-path>$PROJECT_DIR$/target</output-path>
@@ -22,6 +19,8 @@
             <element id="library" level="project" name="Maven: com.google.gwt:gwt-servlet:2.5.1" />
             <element id="library" level="project" name="Maven: org.json:json:20090211" />
             <element id="library" level="project" name="Maven: com.google.web.bindery:requestfactory-server:2.5.1" />
+            <element id="library" level="project" name="Maven: com.sencha.gxt:gxt:sources:3.0.1" />
+            <element id="library" level="project" name="Maven: com.sencha.gxt:gxt-chart:sources:3.0.1" />
             <element id="library" level="project" name="Maven: com.gwtplatform:gwtp-dispatch-client:1.0-RC-2" />
             <element id="library" level="project" name="Maven: com.gwtplatform:gwtp-clients-common:1.0-RC-2" />
             <element id="library" level="project" name="Maven: com.google.inject:guice:3.0" />
@@ -135,7 +134,7 @@
       <module fileurl="file://$PROJECT_DIR$/learn-gwt.iml" filepath="$PROJECT_DIR$/learn-gwt.iml" />
     </modules>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_5" assert-keyword="true" jdk-15="true" project-jdk-name="1.6" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true" project-jdk-name="1.6" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
   <component name="SvnBranchConfigurationManager">
@@ -321,9 +320,42 @@
         <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-dispatch-shared/1.0-RC-2/gwtp-dispatch-shared-1.0-RC-2-sources.jar!/" />
       </SOURCES>
     </library>
+    <library name="Maven: com.sencha.gxt:gxt-chart:3.0.1">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt-chart/3.0.1/gxt-chart-3.0.1.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt-chart/3.0.1/gxt-chart-3.0.1-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt-chart/3.0.1/gxt-chart-3.0.1-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: com.sencha.gxt:gxt-chart:sources:3.0.1">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt-chart/3.0.1/gxt-chart-3.0.1-sources.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt-chart/3.0.1/gxt-chart-3.0.1-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt-chart/3.0.1/gxt-chart-3.0.1-sources.jar!/" />
+      </SOURCES>
+    </library>
     <library name="Maven: com.sencha.gxt:gxt:3.0.1">
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt/3.0.1/gxt-3.0.1.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt/3.0.1/gxt-3.0.1-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt/3.0.1/gxt-3.0.1-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: com.sencha.gxt:gxt:sources:3.0.1">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt/3.0.1/gxt-3.0.1-sources.jar!/" />
       </CLASSES>
       <JAVADOC>
         <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt/3.0.1/gxt-3.0.1-javadoc.jar!/" />
