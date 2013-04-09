@@ -12,23 +12,21 @@ import biz.freshcode.learn.gwt.client.builder.gxt.draw.path.PathSpriteBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.Construct;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import biz.freshcode.learn.gwt.client.util.IdentityHashProvider;
-import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.i18n.client.NumberFormat;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.sencha.gxt.chart.client.chart.series.Primitives;
 import com.sencha.gxt.chart.client.draw.RGB;
 import com.sencha.gxt.chart.client.draw.sprite.TextSprite;
-import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.core.client.util.Point;
 import com.sencha.gxt.data.shared.LabelProvider;
 import com.sencha.gxt.data.shared.ListStore;
-import com.sencha.gxt.data.shared.PropertyAccess;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 
-import static biz.freshcode.learn.gwt.client.experiment.chart.ChartDemo.PointAccess.ACCESS;
+import static biz.freshcode.learn.gwt.client.experiment.chart.PointAccess.ACCESS;
 import static biz.freshcode.learn.gwt.client.experiment.chart.XyBean.Access.ACCESS_XY;
 import static biz.freshcode.learn.gwt.client.util.ExceptionUtil.illegalArg;
 import static com.sencha.gxt.chart.client.chart.Chart.Position;
@@ -80,7 +78,15 @@ public class ChartDemo extends AbstractIsWidget<BorderLayoutContainer> {
     }
 
     private IsWidget chart4() {
-        throw new RuntimeException("chart4 not implemented");
+        // This doesn't work because can't work out where to draw sprites WRT axes.  Maybe more research?
+        final DirectDrawChart c = new DirectDrawChart();
+        Scheduler.get().scheduleDeferred(new Scheduler.ScheduledCommand() {
+            @Override
+            public void execute() {
+                c.display(new Point(20, 20), new Point(30, 20));
+            }
+        });
+        return c;
     }
 
     /**
@@ -206,14 +212,6 @@ public class ChartDemo extends AbstractIsWidget<BorderLayoutContainer> {
                         .column(true)
                         .barSeries)
                 .chart;
-    }
-
-    public interface PointAccess extends PropertyAccess<Point> {
-        PointAccess ACCESS = GWT.create(PointAccess.class);
-
-        ValueProvider<Point, Integer> x();
-
-        ValueProvider<Point, Integer> y();
     }
 
     private static class NumberLabelProvider implements LabelProvider<Number> {
