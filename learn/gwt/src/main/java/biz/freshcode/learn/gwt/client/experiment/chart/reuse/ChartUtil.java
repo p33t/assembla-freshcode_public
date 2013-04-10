@@ -62,6 +62,9 @@ public class ChartUtil {
         return -1;
     }
 
+    /**
+     * Interpolates a y value for the specified straight line at position x.
+     */
     private static double interpolateY(PrecisePoint a, PrecisePoint b, Double x) {
         if (a.getX() >= b.getX()) throw illegalArg("a & b must be in order and not the same. a:" + a + ", b:" + b);
         if (!(a.getX() < x && x < b.getX()))
@@ -72,6 +75,9 @@ public class ChartUtil {
         return a.getY() + (ratio * (b.getY() - a.getY()));
     }
 
+    /**
+     * Returns the set of all x values in the given series'.
+     */
     private static Set<Double> buildXs(Map<String, List<PrecisePoint>> lines) {
         Set<Double> xs = newSet();
         for (List<PrecisePoint> line : lines.values()) {
@@ -82,6 +88,9 @@ public class ChartUtil {
         return xs;
     }
 
+    /**
+     * Converts the map of ChartElems into an ordered list.
+     */
     private static List<ChartElem> orderedList(Map<Double, ChartElem> m) {
         List<Double> keys = newListFrom(m.keySet());
         Collections.sort(keys);
@@ -90,6 +99,9 @@ public class ChartUtil {
         return l;
     }
 
+    /**
+     * Lazily puts a CharElem in the given map and sets the specified 'y' value.
+     */
     private static void setY(Map<Double, ChartElem> m, Double x, String key, Double y) {
         ChartElem target = m.get(x);
         if (target == null) {
