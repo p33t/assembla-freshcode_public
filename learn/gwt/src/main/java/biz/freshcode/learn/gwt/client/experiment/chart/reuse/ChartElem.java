@@ -1,5 +1,11 @@
 package biz.freshcode.learn.gwt.client.experiment.chart.reuse;
 
+import com.google.gwt.core.shared.GWT;
+import com.google.gwt.editor.client.Editor;
+import com.sencha.gxt.core.client.ValueProvider;
+import com.sencha.gxt.data.shared.ModelKeyProvider;
+import com.sencha.gxt.data.shared.PropertyAccess;
+
 import java.util.Map;
 
 import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newMap;
@@ -13,16 +19,16 @@ public class ChartElem {
     private final Double x;
     private final Map<String, Double> ys = newMap();
 
-    @Override
-    public String toString() {
-        return x + ":" + ys;
-    }
-
     /**
      * NOTE: Primitive means int cast works
      */
     public ChartElem(double x) {
         this.x = x;
+    }
+
+    @Override
+    public String toString() {
+        return x + ":" + ys;
     }
 
     @Override
@@ -70,6 +76,39 @@ public class ChartElem {
         Double y = ys.get(key);
         if (y == null) y = Double.NaN;
         return y;
+    }
+
+    public static interface Access extends PropertyAccess<ChartElem> {
+        Access ACCESS = GWT.create(Access.class);
+
+        @Editor.Path("x")
+        ModelKeyProvider<ChartElem> xKey();
+
+        ValueProvider<ChartElem, Double> x();
+
+    }
+
+    public static class AccessY implements ValueProvider<ChartElem, Double> {
+        private final String key;
+
+        public AccessY(String key) {
+            this.key = key;
+        }
+
+        @Override
+        public Double getValue(ChartElem e) {
+            return e.getY(key);
+        }
+
+        @Override
+        public void setValue(ChartElem object, Double value) {
+            // nothing
+        }
+
+        @Override
+        public String getPath() {
+            return key;
+        }
     }
 
     public Double getX() {
