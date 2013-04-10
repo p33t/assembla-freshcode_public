@@ -20,18 +20,19 @@ import com.sencha.gxt.chart.client.chart.series.Primitives;
 import com.sencha.gxt.chart.client.draw.RGB;
 import com.sencha.gxt.chart.client.draw.sprite.TextSprite;
 import com.sencha.gxt.core.client.util.Point;
+import com.sencha.gxt.core.client.util.PrecisePoint;
 import com.sencha.gxt.data.shared.LabelProvider;
 import com.sencha.gxt.data.shared.ListStore;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 
-import static biz.freshcode.learn.gwt.client.experiment.chart.PointAccess.ACCESS;
-import static biz.freshcode.learn.gwt.client.experiment.chart.XyBean.Access.ACCESS_XY;
 import static biz.freshcode.learn.gwt.client.util.ExceptionUtil.illegalArg;
 import static com.sencha.gxt.chart.client.chart.Chart.Position;
 
 public class ChartDemo extends AbstractIsWidget<BorderLayoutContainer> {
+    public static final PointAccess P_ACCESS = PointAccess.ACCESS;
+    private static final PrecisePointAccess ACCESS_XY = PrecisePointAccess.ACCESS;
     private int attemptCount = 4;
 
     @Override
@@ -93,24 +94,24 @@ public class ChartDemo extends AbstractIsWidget<BorderLayoutContainer> {
      * Line with gaps
      */
     private IsWidget chart3() {
-        ListStore<XyBean> store = new ListStore<XyBean>(new IdentityHashProvider<XyBean>());
-        store.add(new XyBean(1, 2));
-        store.add(new XyBean(2, 3));
-        store.add(new XyBean(3, Double.NaN)); // the gap
-        store.add(new XyBean(4, 3));
-        store.add(new XyBean(5, 2));
-        store.add(new XyBean(6, 3));
+        ListStore<PrecisePoint> store = new ListStore<PrecisePoint>(new IdentityHashProvider<PrecisePoint>());
+        store.add(new PrecisePoint(1, 2));
+        store.add(new PrecisePoint(2, 3));
+        store.add(new PrecisePoint(3, Double.NaN)); // the gap
+        store.add(new PrecisePoint(4, 3));
+        store.add(new PrecisePoint(5, 2));
+        store.add(new PrecisePoint(6, 3));
 
-        return new ChartBuilder<XyBean>()
+        return new ChartBuilder<PrecisePoint>()
                 .store(store)
 //                This doesn't seem to be necessary
-//                .addAxis(new NumericAxisBuilder<XyBean>()
+//                .addAxis(new NumericAxisBuilder<PrecisePoint>()
 //                        .position(Position.BOTTOM)
 //                        .titleConfig(new TextSprite("First Axis"))
 //                        .addField(ACCESS_XY.x())
 //                        .labelProvider(new NumberLabelProvider())
 //                        .numericAxis)
-                .addAxis(new NumericAxisBuilder<XyBean>()
+                .addAxis(new NumericAxisBuilder<PrecisePoint>()
                         .position(Position.LEFT)
                         .titleConfig(new TextSprite("Second Axis"))
                         .addField(ACCESS_XY.y()) // it appears all plotted values must be cited here
@@ -119,7 +120,7 @@ public class ChartDemo extends AbstractIsWidget<BorderLayoutContainer> {
                         .maximum(4)
 //                        .hidden(true)... might be useful on occasion
                         .numericAxis)
-                .addSeries(new LineSeriesBuilder<XyBean>()
+                .addSeries(new LineSeriesBuilder<PrecisePoint>()
                         .yAxisPosition(Position.LEFT)
                         .yField(ACCESS_XY.y())
                         .xAxisPosition(Position.BOTTOM)
@@ -132,7 +133,7 @@ public class ChartDemo extends AbstractIsWidget<BorderLayoutContainer> {
                                 .pathSprite)
                         .gapless(false)
                         .lineSeries)
-                .legend(new LegendBuilder<XyBean>()
+                .legend(new LegendBuilder<PrecisePoint>()
                         .position(Position.RIGHT)
                         .itemHighlighting(true)
                         .itemHiding(true)
@@ -144,23 +145,23 @@ public class ChartDemo extends AbstractIsWidget<BorderLayoutContainer> {
      * Oriented around double typed co-ords (not integer).
      */
     private IsWidget chart2() {
-        ListStore<XyBean> store = new ListStore<XyBean>(new IdentityHashProvider<XyBean>());
-        store.add(new XyBean(1, 2));
-        store.add(new XyBean(2, 3));
-        store.add(new XyBean(3, 2));
-        store.add(new XyBean(4, 3));
-        store.add(new XyBean(5, 2));
-        store.add(new XyBean(6, 3));
+        ListStore<PrecisePoint> store = new ListStore<PrecisePoint>(new IdentityHashProvider<PrecisePoint>());
+        store.add(new PrecisePoint(1, 2));
+        store.add(new PrecisePoint(2, 3));
+        store.add(new PrecisePoint(3, 2));
+        store.add(new PrecisePoint(4, 3));
+        store.add(new PrecisePoint(5, 2));
+        store.add(new PrecisePoint(6, 3));
 
-        return new ChartBuilder<XyBean>()
+        return new ChartBuilder<PrecisePoint>()
                 .store(store)
-                .addAxis(new NumericAxisBuilder<XyBean>()
+                .addAxis(new NumericAxisBuilder<PrecisePoint>()
                         .position(Position.BOTTOM)
                         .titleConfig(new TextSprite("First Axis"))
                         .addField(ACCESS_XY.x())
                         .labelProvider(new NumberLabelProvider())
                         .numericAxis)
-                .addAxis(new NumericAxisBuilder<XyBean>()
+                .addAxis(new NumericAxisBuilder<PrecisePoint>()
                         .position(Position.LEFT)
                         .titleConfig(new TextSprite("Second Axis"))
                         .addField(ACCESS_XY.y())
@@ -168,7 +169,7 @@ public class ChartDemo extends AbstractIsWidget<BorderLayoutContainer> {
                         .minimum(0)
                         .maximum(4)
                         .numericAxis)
-                .addSeries(new BarSeriesBuilder<XyBean>()
+                .addSeries(new BarSeriesBuilder<PrecisePoint>()
                         .yAxisPosition(Position.LEFT)
                         .addYField(ACCESS_XY.y())
                         .column(true)
@@ -194,7 +195,7 @@ public class ChartDemo extends AbstractIsWidget<BorderLayoutContainer> {
                 .addAxis(new NumericAxisBuilder<Point>()
                         .position(Position.BOTTOM)
                         .titleConfig(new TextSprite("First Axis"))
-                        .addField(ACCESS.x())
+                        .addField(P_ACCESS.x())
 //                        .steps(6) // prevents extra labels which get rounded: 1 2 2 3 3 4 4...
                         .labelProvider(new NumberLabelProvider())
                         .numericAxis)
@@ -203,12 +204,12 @@ public class ChartDemo extends AbstractIsWidget<BorderLayoutContainer> {
                 .addAxis(new CategoryAxisBuilder<Point, Integer>()
                         .position(Position.LEFT)
                         .titleConfig(new TextSprite("Second Axis"))
-                        .field(ACCESS.x()) // x() just happens to work here.  Need a reference to 'y'.
+                        .field(P_ACCESS.x()) // x() just happens to work here.  Need a reference to 'y'.
                         .labelProvider(new NumberLabelProvider())
                         .categoryAxis)
                 .addSeries(new BarSeriesBuilder<Point>()
                         .yAxisPosition(Position.LEFT)
-                        .addYField(ACCESS.y())
+                        .addYField(P_ACCESS.y())
                         .column(true)
                         .barSeries)
                 .chart;
