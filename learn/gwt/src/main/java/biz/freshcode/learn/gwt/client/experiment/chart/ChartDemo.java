@@ -128,6 +128,7 @@ public class ChartDemo extends AbstractIsWidget<BorderLayoutContainer> {
                         .yAxisPosition(Position.LEFT)
                         .yField(acsStraight)
                         .xAxisPosition(Position.BOTTOM)
+                        // needed to orient lines
                         .xField(ChartElem.Access.ACCESS.x())
                         .stroke(new RGB("#44cc44"))
                         .strokeWidth(2)
@@ -141,6 +142,7 @@ public class ChartDemo extends AbstractIsWidget<BorderLayoutContainer> {
                         .yAxisPosition(Position.LEFT)
                         .yField(acsAngled)
                         .xAxisPosition(Position.BOTTOM)
+                        // needed to orient lines
                         .xField(ChartElem.Access.ACCESS.x())
                         .stroke(new RGB("#cc4444"))
                         .strokeWidth(2)
