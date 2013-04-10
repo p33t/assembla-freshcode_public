@@ -13,14 +13,53 @@ public class ChartElem {
     private final Double x;
     private final Map<String, Double> ys = newMap();
 
-    public ChartElem(Double x) {
+    @Override
+    public String toString() {
+        return x + ":" + ys;
+    }
+
+    /**
+     * NOTE: Primitive means int cast works
+     */
+    public ChartElem(double x) {
         this.x = x;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ChartElem chartElem = (ChartElem) o;
+
+        if (!x.equals(chartElem.x)) return false;
+        //noinspection RedundantIfStatement
+        if (!ys.equals(chartElem.ys)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = x.hashCode();
+        result = 31 * result + ys.hashCode();
+        return result;
     }
 
     public void setY(String key, Double value) {
         if (value == null) throw illegalArg("y value cannot be 'null'");
         if (value.equals(Double.NaN)) ys.remove(key);
         else ys.put(key, value);
+    }
+
+    /**
+     * Convenience for chaining.
+     *
+     * @see #setY(String, Double)
+     */
+    public ChartElem addY(String key, double value) {
+        setY(key, value);
+        return this;
     }
 
     /**

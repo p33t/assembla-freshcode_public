@@ -30,6 +30,12 @@ public class AppCollectionUtil {
         return l;
     }
 
+    public static <T> List<T> newListFrom(Collection<T> ts) {
+        List<T> l = newList();
+        l.addAll(ts);
+        return l;
+    }
+
     public static <K,V> Map<K, V> newMap() {
         return new HashMap<K, V>();
     }
