@@ -19,16 +19,11 @@ public class ChartUtil {
      */
     public static List<ChartElem> interpolate(Map<String, List<PrecisePoint>> lines) {
         Map<Double, ChartElem> m = newMap();
-
-        Set<Double> xs = buildXs(lines);
-
-        for (Double x : xs) {
+        for (Double x : allXs(lines)) {
             for (String key : lines.keySet()) {
                 // for each series and x
                 List<PrecisePoint> line = lines.get(key);
-
                 int ix = findPos(line, x);
-
                 if (ix >= 0) {
                     PrecisePoint p = line.get(ix);
                     double y;
@@ -78,7 +73,7 @@ public class ChartUtil {
     /**
      * Returns the set of all x values in the given series'.
      */
-    private static Set<Double> buildXs(Map<String, List<PrecisePoint>> lines) {
+    private static Set<Double> allXs(Map<String, List<PrecisePoint>> lines) {
         Set<Double> xs = newSet();
         for (List<PrecisePoint> line : lines.values()) {
             for (PrecisePoint e : line) {
