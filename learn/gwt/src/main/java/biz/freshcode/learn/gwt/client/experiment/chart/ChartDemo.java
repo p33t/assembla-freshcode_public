@@ -96,22 +96,29 @@ public class ChartDemo extends AbstractIsWidget<BorderLayoutContainer> {
                 new PrecisePoint(2, 2),
                 new PrecisePoint(4, 2))
         );
+        series.put("angled", newListFrom(
+                new PrecisePoint(1, 2),
+                new PrecisePoint(3, 3),
+                new PrecisePoint(6, 3))
+        );
         List<ChartElem> data = interpolate(series);
         GWT.log("Data: " + data);
         store.addAll(data);
-        ChartElem.AccessY acsStraight;
+        ChartElem.AccessY acsStraight, acsAngled;
         return new ChartBuilder<ChartElem>()
                 .store(store)
                 .addAxis(new NumericAxisBuilder<ChartElem>()
                         .position(Position.BOTTOM)
-                        .titleConfig(new TextSprite("First Axis"))
+                        .titleConfig(new TextSprite("First Axis.  Note the addition of redundant points."))
                         .addField(ChartElem.Access.ACCESS.x())
                         .labelProvider(new NumberLabelProvider())
                         .numericAxis)
                 .addAxis(new NumericAxisBuilder<ChartElem>()
                         .position(Position.LEFT)
                         .titleConfig(new TextSprite("Second Axis"))
+                                // need to list them all here
                         .addField(acsStraight = new ChartElem.AccessY("straight"))
+                        .addField(acsAngled = new ChartElem.AccessY("angled"))
                         .labelProvider(new NumberLabelProvider())
                         .minimum(0)
                         .maximum(4)
@@ -127,6 +134,19 @@ public class ChartDemo extends AbstractIsWidget<BorderLayoutContainer> {
                         .showMarkers(true)
                         .markerConfig(new PathSpriteBuilder(Primitives.diamond(0, 0, 5))
                                 .fill(new RGB("#228822"))
+                                .pathSprite)
+                        .gapless(false)
+                        .lineSeries)
+                .addSeries(new LineSeriesBuilder<ChartElem>()
+                        .yAxisPosition(Position.LEFT)
+                        .yField(acsAngled)
+                        .xAxisPosition(Position.BOTTOM)
+                        .xField(ChartElem.Access.ACCESS.x())
+                        .stroke(new RGB("#cc4444"))
+                        .strokeWidth(2)
+                        .showMarkers(true)
+                        .markerConfig(new PathSpriteBuilder(Primitives.cross(0, 0, 5))
+                                .fill(new RGB("#882222"))
                                 .pathSprite)
                         .gapless(false)
                         .lineSeries)
