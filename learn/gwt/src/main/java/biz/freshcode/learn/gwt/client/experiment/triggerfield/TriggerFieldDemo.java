@@ -15,6 +15,10 @@ public class TriggerFieldDemo extends AbstractIsWidget {
                         .text("Date Field")
                         .add(new DateField())
                         .fieldLabel)
+                .add(new FieldLabelBuilder()
+                        .text("Digit")
+                        .add(new MyTriggerField())
+                        .fieldLabel)
                 .verticalLayoutContainer;
     }
 }
