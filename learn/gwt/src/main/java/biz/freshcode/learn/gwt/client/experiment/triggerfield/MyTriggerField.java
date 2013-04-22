@@ -3,10 +3,6 @@ package biz.freshcode.learn.gwt.client.experiment.triggerfield;
 import biz.freshcode.learn.gwt.client.builder.gxt.form.SpinnerFieldBuilder;
 import biz.freshcode.learn.gwt.client.experiment.triggerfield.reuse.SpinnerSupport;
 import biz.freshcode.learn.gwt.client.uispike.builder.container.PopupPanelBuilder;
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.core.client.Scheduler;
-import com.google.gwt.event.logical.shared.ValueChangeEvent;
-import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.ui.PopupPanel;
 import com.sencha.gxt.widget.core.client.event.ParseErrorEvent;
 import com.sencha.gxt.widget.core.client.event.TriggerClickEvent;
@@ -21,7 +17,6 @@ import static biz.freshcode.learn.gwt.client.experiment.hoverwidget.reuse.Bundle
  * http://www.sencha.com/forum/showthread.php?105343-FIXED-170-SpinnerField-change-event-doesn-t-fire
  */
 public class MyTriggerField extends TriggerField<Digit> {
-    private final SpinnerField<Integer> spin;
     private PopupPanel popup;
 
     public MyTriggerField() {
@@ -32,6 +27,7 @@ public class MyTriggerField extends TriggerField<Digit> {
                 triggerClick();
             }
         });
+        SpinnerField<Integer> spin;
         popup = new PopupPanelBuilder()
                 .add(spin = new SpinnerFieldBuilder<Integer>(new NumberPropertyEditor.IntegerPropertyEditor())
                         .minValue(0)
