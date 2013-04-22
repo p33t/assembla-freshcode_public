@@ -1,6 +1,7 @@
 package biz.freshcode.learn.gwt.client.experiment.triggerfield;
 
 import biz.freshcode.learn.gwt.client.builder.gxt.form.SpinnerFieldBuilder;
+import biz.freshcode.learn.gwt.client.experiment.triggerfield.reuse.SpinnerSupport;
 import biz.freshcode.learn.gwt.client.uispike.builder.container.PopupPanelBuilder;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.Scheduler;
@@ -40,43 +41,23 @@ public class MyTriggerField extends TriggerField<Digit> {
                 .autoHideEnabled(true)
                 .addStyleName(STYLE.hoverWidgetPopup())
                 .popupPanel;
-        spin.addValueChangeHandler(new ValueChangeHandler<Integer>() {
+        new SpinnerSupport<Integer>(spin, getIntValue(), new SpinnerSupport.Callback<Integer>() {
             @Override
-            public void onValueChange(ValueChangeEvent<Integer> event) {
-                GWT.log("Change event");
-                spinChange(event.getValue());
-            }
-        });
-//        Useless.
-//        spin.addTwinTriggerClickHandler(new TwinTriggerClickEvent.TwinTriggerClickHandler() {
-//            @Override
-//            public void onTwinTriggerClick(TwinTriggerClickEvent event) {
-//                deferedChange("Twin");
-//            }
-//        });
-        spin.addTriggerClickHandler(new TriggerClickEvent.TriggerClickHandler() {
-            @Override
-            public void onTriggerClick(TriggerClickEvent event) {
-                deferedChange("Default");
+            public void valueChanged(Integer integer) {
+                setIntValue(integer);
             }
         });
     }
 
-    private void deferedChange(final String source) {
-        Scheduler.get().scheduleDeferred(new Scheduler.ScheduledCommand() {
-            @Override
-            public void execute() {
-                Integer value = spin.getValue();
-                GWT.log("Defered change from " + source + " to Value:" + value + ", Text: " + spin.getText());
-                // AUGH..... value is always null!.... GXT buggy
-                if (value != null) spinChange(value);
-            }
-        });
+    private void setIntValue(Integer i) {
+        if (i == null) setValue(null);
+        else setValue(new Digit((byte) i.intValue()));
     }
 
-    private void spinChange(int value) {
-        Digit d = new Digit((byte) value);
-        setValue(d, true, true);
+    private Integer getIntValue() {
+        Digit digit = getValue();
+        if (digit == null) return null;
+        return (int) digit.getVal();
     }
 
     private void triggerClick() {
