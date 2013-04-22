@@ -3,6 +3,7 @@ package biz.freshcode.learn.gwt.client.experiment.triggerfield;
 import biz.freshcode.learn.gwt.client.builder.gxt.form.SpinnerFieldBuilder;
 import biz.freshcode.learn.gwt.client.experiment.triggerfield.reuse.SpinnerSupport;
 import biz.freshcode.learn.gwt.client.uispike.builder.container.PopupPanelBuilder;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.PopupPanel;
 import com.sencha.gxt.widget.core.client.event.ParseErrorEvent;
 import com.sencha.gxt.widget.core.client.event.TriggerClickEvent;
@@ -27,6 +28,8 @@ public class MyTriggerField extends TriggerField<Digit> {
                 triggerClick();
             }
         });
+        // this is much better..
+        setClearValueOnParseError(false);
         SpinnerField<Integer> spin;
         popup = new PopupPanelBuilder()
                 .add(spin = new SpinnerFieldBuilder<Integer>(new NumberPropertyEditor.IntegerPropertyEditor())
@@ -69,6 +72,7 @@ public class MyTriggerField extends TriggerField<Digit> {
     @Override
     protected void onCellParseError(ParseErrorEvent event) {
         super.onCellParseError(event);
+        GWT.log("Text is '" + getText() + "' after super.onCellParseError()");
         //noinspection ThrowableResultOfMethodCallIgnored
         String msg = event.getException().getMessage();
         parseError = msg;
