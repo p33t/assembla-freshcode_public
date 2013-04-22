@@ -28,7 +28,7 @@ public class MyTriggerField extends TriggerField<Digit> {
                 triggerClick();
             }
         });
-        // this is much better..
+        // NOTE: Otherwise the text is cleared... which is horrible.
         setClearValueOnParseError(false);
         SpinnerField<Integer> spin;
         popup = new PopupPanelBuilder()
