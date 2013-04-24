@@ -29,6 +29,7 @@ import biz.freshcode.learn.gwt.client.experiment.popfield.PopFieldDemo;
 import biz.freshcode.learn.gwt.client.experiment.requestfactory.RequestFactoryDemo;
 import biz.freshcode.learn.gwt.client.experiment.resources.ResourcesDemo;
 import biz.freshcode.learn.gwt.client.experiment.toolbar.ToolBarDemo;
+import biz.freshcode.learn.gwt.client.experiment.tree.TreeDemo;
 import biz.freshcode.learn.gwt.client.experiment.triggerfield.TriggerFieldDemo;
 import biz.freshcode.learn.gwt.client.experiment.window.WindowDemo;
 import biz.freshcode.learn.gwt.client.experiment.xtemplate.XTemplateDemo;
@@ -197,6 +198,12 @@ public class MainPanel extends Composite implements AcceptsOneWidget {
                                         .menuBar))
                                 .menuBar))
                         .addItem(new MenuItem("GXT", subMenu()
+                                .addItem(new MenuItem("Tree", new Command() {
+                                    public void execute() {
+                                        IsWidget w = GWT.create(TreeDemo.class);
+                                        replaceContent(w);
+                                    }
+                                }))
                                 .addItem(new MenuItem("Trigger Field", new Command() {
                                     public void execute() {
                                         IsWidget w = GWT.create(TriggerFieldDemo.class);
