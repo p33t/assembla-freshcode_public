@@ -1,5 +1,6 @@
 package biz.freshcode.learn.gwt.client;
 
+import biz.freshcode.learn.gwt.client.inject.SessionInfo;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
@@ -8,5 +9,10 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
  */
 @RemoteServiceRelativePath("greet")
 public interface GreetingService extends RemoteService {
-  String greetServer(String name) throws IllegalArgumentException;
+    String greetServer(String name) throws IllegalArgumentException;
+
+    /**
+     * Dodgy hack to experiment with session info loading.
+     */
+    SessionInfo.Bean loadSessionInfo();
 }

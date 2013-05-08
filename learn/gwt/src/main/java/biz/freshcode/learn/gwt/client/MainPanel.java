@@ -33,6 +33,7 @@ import biz.freshcode.learn.gwt.client.experiment.tree.TreeDemo;
 import biz.freshcode.learn.gwt.client.experiment.triggerfield.TriggerFieldDemo;
 import biz.freshcode.learn.gwt.client.experiment.window.WindowDemo;
 import biz.freshcode.learn.gwt.client.experiment.xtemplate.XTemplateDemo;
+import biz.freshcode.learn.gwt.client.inject.SessionInfo;
 import biz.freshcode.learn.gwt.client.rpc.dispatch.DispatchDemo;
 import biz.freshcode.learn.gwt.client.rpc.dispatch.SecureDispatchDemo;
 import biz.freshcode.learn.gwt.client.rpc.greet.GreetRpcDemo;
@@ -64,8 +65,9 @@ public class MainPanel extends Composite implements AcceptsOneWidget {
     @Inject
     Provider<SecureDispatchDemo> sdProvider;
 
+    // !!!!! Not sure why need to have SessionInfo as an argument.  Otherwise NPE :(
     @Inject
-    public MainPanel(final PlaceController placeController) {
+    public MainPanel(final PlaceController placeController, SessionInfo session) {
         pnl = new DockLayoutPanelBuilder(new DockLayoutPanel(Style.Unit.EM))
                 .height("100%")
                 .width("100%")
@@ -349,7 +351,7 @@ public class MainPanel extends Composite implements AcceptsOneWidget {
                                 .menuBar))
                         .menuBar,
                         2)
-                .add(content = new HTMLPanel("<p>Center Content</p>"))
+                .add(content = new HTMLPanel("<p>User name is: " + session.getUserName() + "</p>"))
                 .dockLayoutPanel;
         initWidget(pnl);
     }
