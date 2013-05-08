@@ -4,7 +4,7 @@ import biz.freshcode.learn.gwt.client.builder.gxt.container.VerticalLayoutContai
 import biz.freshcode.learn.gwt.client.uispike.builder.TextButtonBuilder;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import biz.freshcode.learn.gwt.shared.dispatch.DdAction;
-import biz.freshcode.learn.gwt.shared.dispatch.DdResult;
+import biz.freshcode.learn.gwt.shared.dispatch.StrResult;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HTML;
@@ -17,7 +17,7 @@ import com.sencha.gxt.widget.core.client.event.SelectEvent;
 
 public class DispatchDemo extends AbstractIsWidget {
     @Inject
-    private DispatchAsync dispatch;
+    protected DispatchAsync dispatch;
     private HTML fb;
     private TextButton btnGo;
 
@@ -33,19 +33,34 @@ public class DispatchDemo extends AbstractIsWidget {
         btnGo.addSelectHandler(new SelectEvent.SelectHandler() {
             @Override
             public void onSelect(SelectEvent event) {
-                dispatch.execute(new DdAction("Bruce"), new AsyncCallback<DdResult>() {
-                    @Override
-                    public void onFailure(Throwable caught) {
-                        GWT.log("No can do: " + caught);
-                    }
-
-                    @Override
-                    public void onSuccess(DdResult result) {
-                        fb.setHTML("<p>Sent 'Bruce'<br/>Result '" + result.getStr() + "'<br/>" + System.currentTimeMillis() + "</p>");
-                    }
-                });
+                run();
             }
         });
         return c;
+    }
+
+    /**
+     * Run the rpc call.  Post results using displayResult()
+     * @see #displayResult(String)
+     */
+    protected void run() {
+        dispatch.execute(new DdAction("Bruce"), new AsyncCallback<StrResult>() {
+            @Override
+            public void onFailure(Throwable caught) {
+                GWT.log("No can do: " + caught);
+            }
+
+            @Override
+            public void onSuccess(StrResult result) {
+                displayResult("<p>Sent 'Bruce'<br/>Result '" + result.getStr() + "'</p>");
+            }
+        });
+    }
+
+    /**
+     * Puts html message on screen.  Timestamp is appended.  Html is not escaped.
+     */
+    protected final void displayResult(String html) {
+        fb.setHTML(html + "<p>" + System.currentTimeMillis() + "</p>");
     }
 }
