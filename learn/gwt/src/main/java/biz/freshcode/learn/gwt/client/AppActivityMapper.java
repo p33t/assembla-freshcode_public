@@ -6,6 +6,7 @@ import com.google.gwt.activity.shared.Activity;
 import com.google.gwt.activity.shared.ActivityMapper;
 import com.google.gwt.place.shared.Place;
 import com.google.inject.Inject;
+import com.google.inject.Provider;
 import com.google.inject.Singleton;
 
 /**
@@ -19,6 +20,9 @@ public class AppActivityMapper implements ActivityMapper {
     @Inject
     GwtMvp.Factory gmFactory;
 
+    @Inject
+    Provider<MainActivity> maProvider;
+
     @Override
     public Activity getActivity(Place place) {
         if (place instanceof GmPlace) {
@@ -27,7 +31,7 @@ public class AppActivityMapper implements ActivityMapper {
 //            return gmProvider.get().startAt((GmPlace) place);
         }
         if (DEFAULT_PLACE.equals(place)) {
-            return new MainActivity();
+            return maProvider.get();
         }
         return null;
     }
