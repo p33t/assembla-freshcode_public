@@ -1,17 +1,17 @@
 package biz.freshcode.learn.gwt.shared.dispatch;
 
-import com.gwtplatform.dispatch.shared.UnsecuredActionImpl;
+import com.gwtplatform.dispatch.shared.ActionImpl;
 
-public class DdAction extends UnsecuredActionImpl<StrResult> {
+public class SdAction extends ActionImpl<StrResult> {
     private String str;
 
     // for ser'n
     @SuppressWarnings("UnusedDeclaration")
-    private DdAction() {
+    private SdAction() {
         // nothing
     }
 
-    public DdAction(String str) {
+    public SdAction(String str) {
         this.str = str;
     }
 

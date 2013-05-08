@@ -16,15 +16,20 @@ import com.google.inject.Provides;
 import com.google.inject.Singleton;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.event.shared.SimpleEventBus;
+import com.gwtplatform.dispatch.shared.SecurityCookie;
 
 /**
  * Bindings for DI.
  * Notes:
  * - Don't need bindings for remote 'async' services.  They are automatically bound to their non-async counterparts.
  */
+@SuppressWarnings("UnusedDeclaration")
 public class AppModule extends AbstractGinModule {
+    public static final String XSRF_COOKIE = "XSRF_SAFETY";
+
     @Override
     protected void configure() {
+        bindConstant().annotatedWith(SecurityCookie.class).to(AppModule.XSRF_COOKIE);
         bind(GmView.class).to(GmViewImpl.class);
         bind(EventBus.class).to(SimpleEventBus.class).in(Singleton.class);
         bind(ActivityMapper.class).to(AppActivityMapper.class);

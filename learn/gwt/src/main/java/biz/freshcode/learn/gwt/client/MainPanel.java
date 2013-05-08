@@ -34,6 +34,7 @@ import biz.freshcode.learn.gwt.client.experiment.triggerfield.TriggerFieldDemo;
 import biz.freshcode.learn.gwt.client.experiment.window.WindowDemo;
 import biz.freshcode.learn.gwt.client.experiment.xtemplate.XTemplateDemo;
 import biz.freshcode.learn.gwt.client.rpc.dispatch.DispatchDemo;
+import biz.freshcode.learn.gwt.client.rpc.dispatch.SecureDispatchDemo;
 import biz.freshcode.learn.gwt.client.rpc.greet.GreetRpcDemo;
 import biz.freshcode.learn.gwt.client.uibinder.Basic;
 import biz.freshcode.learn.gwt.client.uibinder.Composed;
@@ -60,6 +61,8 @@ public class MainPanel extends Composite implements AcceptsOneWidget {
     DockLayoutPanel pnl;
     @Inject
     Provider<DispatchDemo> ddProvider;
+    @Inject
+    Provider<SecureDispatchDemo> sdProvider;
 
     @Inject
     public MainPanel(final PlaceController placeController) {
@@ -98,6 +101,12 @@ public class MainPanel extends Composite implements AcceptsOneWidget {
                                 }))
                                 .menuBar))
                         .addItem(new MenuItem("RPC", subMenu()
+                                .addItem(new MenuItem("Dispatch - Secure", new Command() {
+                                    public void execute() {
+                                        IsWidget w = sdProvider.get();
+                                        replaceContent(w);
+                                    }
+                                }))
                                 .addItem(new MenuItem("Dispatch", new Command() {
                                     public void execute() {
                                         IsWidget w = ddProvider.get();
@@ -107,6 +116,12 @@ public class MainPanel extends Composite implements AcceptsOneWidget {
                                 .addItem(new MenuItem("Simple Greet", new Command() {
                                     public void execute() {
                                         GreetRpcDemo w = GWT.create(GreetRpcDemo.class);
+                                        replaceContent(w);
+                                    }
+                                }))
+                                .addItem(new MenuItem("Request Factory (again, for testing)", new Command() {
+                                    public void execute() {
+                                        IsWidget w = GWT.create(RequestFactoryDemo.class);
                                         replaceContent(w);
                                     }
                                 }))
