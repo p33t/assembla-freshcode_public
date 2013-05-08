@@ -1,6 +1,7 @@
 package biz.freshcode.learn.gwt.client;
 
 import biz.freshcode.learn.gwt.client.inject.AppInjector;
+import biz.freshcode.learn.gwt.client.inject.SessionInfoProvider;
 import com.google.gwt.activity.shared.ActivityManager;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.place.shared.PlaceController;
@@ -23,10 +24,17 @@ public class EntryPoint implements com.google.gwt.core.client.EntryPoint {
 
     @Override
     public void onModuleLoad() {
-        AppInjector injector = GWT.create(AppInjector.class);
-        injector.bootstrap();
+        SessionInfoProvider.init(new Runnable() {
+            @Override
+            public void run() {
+                // can now complete setup
+                AppInjector injector = GWT.create(AppInjector.class);
+//                SessionInfoBean bean = injector.sessionBean();
+                injector.bootstrap();
+            }
+        });
     }
-    
+
     @Singleton
     public static class Bootstrap {
         @Inject

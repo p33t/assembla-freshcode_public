@@ -1,13 +1,14 @@
 package biz.freshcode.learn.gwt.server;
 
 import biz.freshcode.learn.gwt.client.GreetingService;
+import biz.freshcode.learn.gwt.client.inject.SessionInfo;
 import biz.freshcode.learn.gwt.shared.FieldVerifier;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 /**
  * The server side implementation of the RPC service.
  */
-@SuppressWarnings("serial")
+@SuppressWarnings({"serial", "GwtServiceNotRegistered"})
 public class GreetingServiceImpl extends RemoteServiceServlet implements
     GreetingService {
 
@@ -31,7 +32,14 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
         + ".<br><br>It looks like you are using:<br>" + userAgent;
   }
 
-  /**
+    @Override
+    public SessionInfo.Bean loadSessionInfo() {
+        SessionInfo.Bean b = new SessionInfo.Bean();
+        b.setUserName(getThreadLocalRequest().getRemoteUser());
+        return b;
+    }
+
+    /**
    * Escape an html string. Escaping data received from the client helps to
    * prevent cross-site script vulnerabilities.
    *

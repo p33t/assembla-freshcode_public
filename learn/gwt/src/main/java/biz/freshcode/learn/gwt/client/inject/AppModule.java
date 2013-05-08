@@ -29,6 +29,7 @@ public class AppModule extends AbstractGinModule {
 
     @Override
     protected void configure() {
+        bind(SessionInfo.class).toProvider(SessionInfoProvider.class);
         bindConstant().annotatedWith(SecurityCookie.class).to(AppModule.XSRF_COOKIE);
         bind(GmView.class).to(GmViewImpl.class);
         bind(EventBus.class).to(SimpleEventBus.class).in(Singleton.class);
