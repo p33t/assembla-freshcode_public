@@ -26,7 +26,7 @@
     <properties>
         <!-- Convenience property to set the GWT version -->
         <gwtVersion>2.5.1</gwtVersion>
-        <gwtpVersion>1.0-RC-2</gwtpVersion>
+        <gwtpVersion>1.0-RC-3.1</gwtpVersion>
         <gxtVersion>3.0.1</gxtVersion>
         <!-- GWT needs at least java 1.5 -->
         <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
@@ -71,7 +71,7 @@
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
             <version>1.0.0.GA</version>
-            <scope>provided</scope>
+            <!-- Needed on server... <scope>provided</scope>-->
         </dependency>
         <dependency>
             <groupId>javax.validation</groupId>
@@ -114,12 +114,22 @@
             <groupId>com.gwtplatform</groupId>
             <artifactId>gwtp-dispatch-client</artifactId>
             <version>${gwtpVersion}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.gwtplatform</groupId>
             <artifactId>gwtp-dispatch-server</artifactId>
             <version>${gwtpVersion}</version>
         </dependency>
+
+        <!-- GWTP alternative to GWT Activity/Places, MVP -->
+        <dependency>
+            <groupId>com.gwtplatform</groupId>
+            <artifactId>gwtp-mvp-client</artifactId>
+            <version>${gwtpVersion}</version>
+            <scope>provided</scope>
+        </dependency>
+
         <!--  Trying to get it working with guice... but ideally remove this later-->
         <dependency>
             <groupId>com.gwtplatform</groupId>
@@ -143,6 +153,7 @@
             <groupId>com.google.gwt.inject</groupId>
             <artifactId>gin</artifactId>
             <version>2.0.0</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
