@@ -20,8 +20,6 @@
             <element id="library" level="project" name="Maven: javax.validation:validation-api:1.0.0.GA" />
             <element id="library" level="project" name="Maven: org.json:json:20090211" />
             <element id="library" level="project" name="Maven: com.google.web.bindery:requestfactory-server:2.5.1" />
-            <element id="library" level="project" name="Maven: com.sencha.gxt:gxt:sources:3.0.1" />
-            <element id="library" level="project" name="Maven: com.sencha.gxt:gxt-chart:sources:3.0.1" />
             <element id="library" level="project" name="Maven: com.google.inject:guice:3.0" />
             <element id="library" level="project" name="Maven: javax.inject:javax.inject:1" />
             <element id="library" level="project" name="Maven: aopalliance:aopalliance:1.0" />
