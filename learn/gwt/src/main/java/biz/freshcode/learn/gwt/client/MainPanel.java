@@ -164,14 +164,14 @@ public class MainPanel extends Composite implements AcceptsOneWidget {
                                                 placeController.goTo(new GmPlace(0));
                                             }
                                         }))
-                                        /*
-                                        NOTE: This is not working.  Probably because we are not exclusively GWTP MVP
-                                        and have other boostrap requirements.
-                                        It seems we need the ApplicationController.
-                                         */
                                         .addItem(new MenuItem("GWTP (not working)", new Command() {
                                             public void execute() {
+                                                //noinspection deprecation
                                                 pmProvider.get().revealPlace(new PlaceRequest(GmdModule.GMD));
+                                                replaceContent(new HTML("NOTE: This is not working.  Probably because we are not exclusively GWTP MVP<br/>" +
+                                                        "                                        and have other boostrap requirements.<br/>" +
+                                                        "                                        It seems we need the ApplicationController.<br/>" +
+                                                        "                                        I suspect we can do ApplicationController.init() to bootstrap in our own entry point."));
                                             }
                                         }))
                                         .menuBar))
