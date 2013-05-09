@@ -1,0 +1,20 @@
+package biz.freshcode.learn.gwt.client.experiment.mvp.gwtp;
+
+import com.google.inject.Inject;
+import com.google.web.bindery.event.shared.EventBus;
+import com.gwtplatform.mvp.client.proxy.PlaceManagerImpl;
+import com.gwtplatform.mvp.client.proxy.TokenFormatter;
+
+public class GmdPlaceManager extends PlaceManagerImpl {
+
+    @Inject
+    public GmdPlaceManager(EventBus eventBus, TokenFormatter tokenFormatter) {
+        super(eventBus, tokenFormatter);
+    }
+
+    @Override
+    public void revealDefaultPlace() {
+        // do nothing
+        // don't want to interfere
+    }
+}

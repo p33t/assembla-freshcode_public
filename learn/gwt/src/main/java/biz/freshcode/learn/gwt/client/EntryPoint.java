@@ -28,6 +28,11 @@ public class EntryPoint implements com.google.gwt.core.client.EntryPoint {
             @Override
             public void run() {
                 // can now complete setup
+
+//                Requires 'gin.ginjector.modules' property.
+//                ApplicationController ctlr = GWT.create(ApplicationController.class);
+//                ctlr.init();
+
                 AppInjector injector = GWT.create(AppInjector.class);
 //                SessionInfoBean bean = injector.sessionBean();
                 injector.bootstrap();

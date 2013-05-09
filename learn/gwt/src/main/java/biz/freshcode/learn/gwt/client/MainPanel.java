@@ -24,6 +24,7 @@ import biz.freshcode.learn.gwt.client.experiment.iswidget.IsWidgetDemo;
 import biz.freshcode.learn.gwt.client.experiment.jsni.JsniDemo;
 import biz.freshcode.learn.gwt.client.experiment.mouseover.MouseOverWidget;
 import biz.freshcode.learn.gwt.client.experiment.mvp.gwtmvp.GmPlace;
+import biz.freshcode.learn.gwt.client.experiment.mvp.gwtp.GmdModule;
 import biz.freshcode.learn.gwt.client.experiment.mvp.homebake.HbParent;
 import biz.freshcode.learn.gwt.client.experiment.popfield.PopFieldDemo;
 import biz.freshcode.learn.gwt.client.experiment.requestfactory.RequestFactoryDemo;
@@ -55,6 +56,8 @@ import com.google.gwt.user.client.ui.*;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.google.inject.Singleton;
+import com.gwtplatform.mvp.client.proxy.PlaceManager;
+import com.gwtplatform.mvp.client.proxy.PlaceRequest;
 
 @Singleton
 public class MainPanel extends Composite implements AcceptsOneWidget {
@@ -64,6 +67,8 @@ public class MainPanel extends Composite implements AcceptsOneWidget {
     Provider<DispatchDemo> ddProvider;
     @Inject
     Provider<SecureDispatchDemo> sdProvider;
+    @Inject
+    Provider<PlaceManager> pmProvider;
 
     // !!!!! Not sure why need to have SessionInfo as an argument.  Otherwise NPE :(
     @Inject
@@ -157,6 +162,16 @@ public class MainPanel extends Composite implements AcceptsOneWidget {
                                         .addItem(new MenuItem("GWT MVP", new Command() {
                                             public void execute() {
                                                 placeController.goTo(new GmPlace(0));
+                                            }
+                                        }))
+                                        /*
+                                        NOTE: This is not working.  Probably because we are not exclusively GWTP MVP
+                                        and have other boostrap requirements.
+                                        It seems we need the ApplicationController.
+                                         */
+                                        .addItem(new MenuItem("GWTP (not working)", new Command() {
+                                            public void execute() {
+                                                pmProvider.get().revealPlace(new PlaceRequest(GmdModule.GMD));
                                             }
                                         }))
                                         .menuBar))

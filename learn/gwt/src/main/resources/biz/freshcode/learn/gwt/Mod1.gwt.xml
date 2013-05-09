@@ -37,6 +37,7 @@
     <inherits name="com.gwtplatform.dispatch.DispatchShared"/>
     <inherits name="com.gwtplatform.dispatch.Dispatch"/>
     <inherits name="com.sencha.gxt.chart.Chart"/>
+    <inherits name="com.gwtplatform.mvp.Mvp"/>
 
     <!-- Specify the app entry point class.                         -->
     <entry-point class='biz.freshcode.learn.gwt.client.EntryPoint'/>
@@ -59,4 +60,11 @@
     <replace-with class='biz.freshcode.learn.gwt.client.experiment.appearance.MyToolBarAppearance'>
         <when-type-is class='com.sencha.gxt.widget.core.client.toolbar.ToolBar.ToolBarAppearance'/>
     </replace-with>
+
+    <set-configuration-property name="gin.ginjector"
+                                value="biz.freshcode.learn.gwt.client.experiment.mvp.gwtp.GmdInjector"/>
+    <!-- Needed by GWTP MVP
+    <set-configuration-property name="gin.ginjector.modules"
+                                value="biz.freshcode.learn.gwt.client.experiment.mvp.gwtp.GmdModule"/>
+    -->
 </module>
