@@ -5,6 +5,7 @@ import biz.freshcode.learn.gwt.client.AppPlaceHistoryMapper;
 import biz.freshcode.learn.gwt.client.experiment.mvp.gwtmvp.GmView;
 import biz.freshcode.learn.gwt.client.experiment.mvp.gwtmvp.GmViewImpl;
 import biz.freshcode.learn.gwt.client.experiment.mvp.gwtmvp.GwtMvp;
+import biz.freshcode.learn.gwt.client.experiment.mvp.gwtp.GmdPlaceManager;
 import com.google.gwt.activity.shared.ActivityManager;
 import com.google.gwt.activity.shared.ActivityMapper;
 import com.google.gwt.inject.client.AbstractGinModule;
@@ -17,6 +18,7 @@ import com.google.inject.Singleton;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.event.shared.SimpleEventBus;
 import com.gwtplatform.dispatch.shared.SecurityCookie;
+import com.gwtplatform.mvp.client.gin.DefaultModule;
 
 /**
  * Bindings for DI.
@@ -32,7 +34,8 @@ public class AppModule extends AbstractGinModule {
         bind(SessionInfo.class).toProvider(SessionInfoProvider.class);
         bindConstant().annotatedWith(SecurityCookie.class).to(AppModule.XSRF_COOKIE);
         bind(GmView.class).to(GmViewImpl.class);
-        bind(EventBus.class).to(SimpleEventBus.class).in(Singleton.class);
+//        GWTP DefaultModule does this
+//        bind(EventBus.class).to(SimpleEventBus.class).in(Singleton.class);
         bind(ActivityMapper.class).to(AppActivityMapper.class);
         bind(PlaceHistoryMapper.class).to(AppPlaceHistoryMapper.class).in(Singleton.class);
         install(new GinFactoryModuleBuilder()
