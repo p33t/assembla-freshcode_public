@@ -98,14 +98,14 @@
             <groupId>com.sencha.gxt</groupId>
             <artifactId>gxt</artifactId>
             <version>${gxtVersion}</version>
-            <scope>compile</scope>
+            <scope>provided</scope>
             <classifier>sources</classifier>
         </dependency>
         <dependency>
             <groupId>com.sencha.gxt</groupId>
             <artifactId>gxt-chart</artifactId>
             <version>${gxtVersion}</version>
-            <scope>compile</scope>
+            <scope>provided</scope>
             <classifier>sources</classifier>
         </dependency>
 
