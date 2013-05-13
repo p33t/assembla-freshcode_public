@@ -2,6 +2,8 @@ package biz.freshcode.learn.gwtp.client.boot;
 
 import biz.freshcode.learn.gwtp.client.home.Home;
 import biz.freshcode.learn.gwtp.client.home.HomeViewImpl;
+import biz.freshcode.learn.gwtp.client.parent.Parent;
+import biz.freshcode.learn.gwtp.client.parent.ParentViewImpl;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.event.shared.SimpleEventBus;
 import com.google.inject.Singleton;
@@ -29,5 +31,6 @@ public class AppModule extends AbstractPresenterModule {
         install(new DispatchAsyncModule());
 
         bindPresenter(Home.class, Home.View.class, HomeViewImpl.class, Home.Proxy.class);
+        bindPresenter(Parent.class, Parent.View.class, ParentViewImpl.class, Parent.Proxy.class);
     }
 }
