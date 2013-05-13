@@ -29,7 +29,7 @@ public class Home extends Presenter<Home.View, Home.Proxy> {
     @Override
     protected void onBind() {
         super.onBind();
-        getView().getBtnRpc().addClickHandler(new ClickHandler() {
+        getView().getBtnAction().addClickHandler(new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
                 rpc();
@@ -58,7 +58,7 @@ public class Home extends Presenter<Home.View, Home.Proxy> {
     }
 
     public static interface View extends com.gwtplatform.mvp.client.View {
-        TextButton getBtnRpc();
+        TextButton getBtnAction();
 
         void appendMsg(String msg);
     }
