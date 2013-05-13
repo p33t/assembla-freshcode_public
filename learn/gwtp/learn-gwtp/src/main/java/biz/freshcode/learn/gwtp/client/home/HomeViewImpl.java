@@ -7,21 +7,21 @@ import com.google.gwt.widget.client.TextButton;
 import com.gwtplatform.mvp.client.ViewImpl;
 
 public class HomeViewImpl extends ViewImpl implements Home.View {
-    private TextButton btnRpc;
+    private TextButton btnAction;
     private HTML fb;
 
     public HomeViewImpl() {
         GWT.log("Creating widget");
         VerticalPanel pnl = new VerticalPanel();
         pnl.add(new HTML("<p>Home</p>"));
-        pnl.add(btnRpc = new TextButton("RPC"));
+        pnl.add(btnAction = new TextButton("Action"));
         pnl.add(fb = new HTML("&nbsp;"));
         initWidget(pnl);
     }
 
     @Override
-    public TextButton getBtnRpc() {
-        return btnRpc;
+    public TextButton getBtnAction() {
+        return btnAction;
     }
 
     @Override
