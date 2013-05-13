@@ -14,16 +14,22 @@
     <inherits name="com.gwtplatform.dispatch.DispatchShared"/>
     <inherits name="com.google.gwt.inject.Inject"/>
     <inherits name="com.gwtplatform.dispatch.Dispatch"/>
+    <!--<inherits name="com.gwtplatform.mvp.Mvp"/>-->
+    <inherits name="com.gwtplatform.mvp.MvpWithEntryPoint"/>
     <!-- <inherits name='com.google.gwt.user.theme.chrome.Chrome'/> -->
     <!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/>     -->
 
     <!-- Other module inherits                                      -->
 
     <!-- Specify the app entry point class.                         -->
-    <entry-point class='biz.freshcode.learn.gwtp.client.boot.EntryPoint'/>
+    <!--<entry-point class='biz.freshcode.learn.gwtp.client.boot.EntryPoint'/>-->
 
     <!-- Specify the paths for translatable code                    -->
     <source path='client'/>
     <source path='shared'/>
 
+    <set-configuration-property name="gin.ginjector.modules"
+                                value="biz.freshcode.learn.gwtp.client.boot.AppModule"/>
+    <!--<define-configuration-property name="gin.ginjector" is-multi-valued="false"/>-->
+    <!--<set-configuration-property name="gin.ginjector" value="biz.freshcode.learn.gwtp.client.boot.AppInjector"/>-->
 </module>
