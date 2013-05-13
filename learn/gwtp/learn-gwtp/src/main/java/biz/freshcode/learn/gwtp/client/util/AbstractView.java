@@ -10,6 +10,7 @@ import com.gwtplatform.mvp.client.View;
  * the first time 'asWidget()' is called.  It is also has an optional type so a field variable is not needed.
  * This also facilitates field based injection.
  * The other methods of {@link com.gwtplatform.mvp.client.View} are also used to make sure widget is initialized.
+ * !!!!!!!!!!!!!!!!!!!! Field based injection is not really supported with GWTP.
  */
 public abstract class AbstractView<T extends Widget> extends AbstractIsWidget<T> implements View {
     @Override
