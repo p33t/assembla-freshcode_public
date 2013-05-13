@@ -1,19 +1,33 @@
 package biz.freshcode.learn.gwtp.client.boot;
 
-import com.google.gwt.inject.client.AbstractGinModule;
+import biz.freshcode.learn.gwtp.client.home.Home;
+import biz.freshcode.learn.gwtp.client.home.HomeViewImpl;
+import com.google.gwt.event.shared.EventBus;
+import com.google.gwt.event.shared.SimpleEventBus;
 import com.google.inject.Singleton;
-import com.google.web.bindery.event.shared.EventBus;
-import com.google.web.bindery.event.shared.SimpleEventBus;
 import com.gwtplatform.dispatch.client.gin.DispatchAsyncModule;
 import com.gwtplatform.dispatch.shared.SecurityCookie;
+import com.gwtplatform.mvp.client.annotations.DefaultPlace;
+import com.gwtplatform.mvp.client.annotations.ErrorPlace;
+import com.gwtplatform.mvp.client.annotations.UnauthorizedPlace;
+import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
+import com.gwtplatform.mvp.client.gin.DefaultModule;
+import com.gwtplatform.mvp.client.proxy.DefaultPlaceManager;
 
-public class AppModule extends AbstractGinModule {
+public class AppModule extends AbstractPresenterModule {
     public static final String XSRF_COOKIE = "XSRF-SAFETY";
 
     @Override
     protected void configure() {
-        bind(EventBus.class).to(SimpleEventBus.class).in(Singleton.class);
         bindConstant().annotatedWith(SecurityCookie.class).to(AppModule.XSRF_COOKIE);
+        bindConstant().annotatedWith(DefaultPlace.class).to(Home.TOKEN);
+        bindConstant().annotatedWith(ErrorPlace.class).to(Home.TOKEN);
+        bindConstant().annotatedWith(UnauthorizedPlace.class).to(Home.TOKEN);
+
+        bind(EventBus.class).to(SimpleEventBus.class).in(Singleton.class);
+        install(new DefaultModule(DefaultPlaceManager.class));
         install(new DispatchAsyncModule());
+
+        bindPresenter(Home.class, Home.View.class, HomeViewImpl.class, Home.Proxy.class);
     }
 }
