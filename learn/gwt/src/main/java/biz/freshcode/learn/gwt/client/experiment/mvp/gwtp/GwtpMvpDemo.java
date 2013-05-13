@@ -7,6 +7,10 @@ import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 
+/**
+ * Attempted demo of GWTP MVP.  But couldn't get working.  See adjacent project learn-gwtp OR
+ * Arcbees archetypes: https://github.com/ArcBees/ArcBees-tools/tree/master/archetypes
+ */
 public class GwtpMvpDemo extends Presenter<GwtpMvpDemo.View, GwtpMvpDemo.Proxy> {
     @Inject
     public GwtpMvpDemo(EventBus eventBus, View view, Proxy proxy, PlaceManager placeManager) {
@@ -15,7 +19,7 @@ public class GwtpMvpDemo extends Presenter<GwtpMvpDemo.View, GwtpMvpDemo.Proxy> 
 
     @ProxyStandard
     @NameToken(GmdModule.GMD)
-    public interface Proxy extends com.gwtplatform.mvp.client.proxy.Proxy<GwtpMvpDemo> {
+    public interface Proxy extends com.gwtplatform.mvp.client.proxy.ProxyPlace<GwtpMvpDemo> {
     }
 
     public interface View extends com.gwtplatform.mvp.client.View {
