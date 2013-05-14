@@ -30,7 +30,7 @@ public class EntryPoint implements com.google.gwt.core.client.EntryPoint {
                 // can now complete setup
 
 // For info on GWTP MVP bootstrap see:
-// https://subversion.assembla.com/svn/freshcode_public/learn/gwtp/learn-gwtp/src/main/java/biz/freshcode/learn/gwtp/client/boot/EntryPoint.java
+// https://subversion.assembla.com/svn/freshcode_public/learn/gwtp/src/main/java/biz/freshcode/learn/gwtp/client/boot/EntryPoint.java
 
 //                Requires 'gin.ginjector.modules' property.
 //                ApplicationController ctlr = GWT.create(ApplicationController.class);
