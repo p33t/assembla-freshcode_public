@@ -1,5 +1,7 @@
 package biz.freshcode.learn.gwtp.client.boot;
 
+import biz.freshcode.learn.gwtp.shared.boot.SessionInfo;
+
 import javax.inject.Provider;
 
 import static biz.freshcode.learn.gwtp.client.util.ExceptionUtil.illegalState;

@@ -1,8 +1,8 @@
 package biz.freshcode.learn.gwtp.server.dispatch;
 
-import biz.freshcode.learn.gwtp.client.AppRpcService;
-import biz.freshcode.learn.gwtp.client.boot.AppModule;
+import biz.freshcode.learn.gwtp.shared.AppRpcService;
 import biz.freshcode.learn.gwtp.server.AppRpcServiceImpl;
+import biz.freshcode.learn.gwtp.shared.AppUtil;
 import biz.freshcode.learn.gwtp.shared.dispatch.SdAction;
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
@@ -37,7 +37,7 @@ public class GuiceServletConfig extends GuiceServletContextListener {
 
         @Override
         protected void configureServlets() {
-            bindConstant().annotatedWith(SecurityCookie.class).to(AppModule.XSRF_COOKIE);
+            bindConstant().annotatedWith(SecurityCookie.class).to(AppUtil.XSRF_COOKIE);
             // populates the SecurityCookie for XSRF protection
             // this required all servlets and filters to be moved to this method
             filter("*.html").through(HttpSessionSecurityCookieFilter.class);

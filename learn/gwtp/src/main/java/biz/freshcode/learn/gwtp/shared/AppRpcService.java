@@ -1,6 +1,6 @@
-package biz.freshcode.learn.gwtp.client;
+package biz.freshcode.learn.gwtp.shared;
 
-import biz.freshcode.learn.gwtp.client.boot.SessionInfo;
+import biz.freshcode.learn.gwtp.shared.boot.SessionInfo;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 

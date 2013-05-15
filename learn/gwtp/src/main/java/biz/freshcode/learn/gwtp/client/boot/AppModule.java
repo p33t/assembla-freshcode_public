@@ -4,6 +4,8 @@ import biz.freshcode.learn.gwtp.client.home.Home;
 import biz.freshcode.learn.gwtp.client.home.HomeViewImpl;
 import biz.freshcode.learn.gwtp.client.parent.Parent;
 import biz.freshcode.learn.gwtp.client.parent.ParentViewImpl;
+import biz.freshcode.learn.gwtp.shared.AppUtil;
+import biz.freshcode.learn.gwtp.shared.boot.SessionInfo;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.event.shared.SimpleEventBus;
 import com.google.inject.Singleton;
@@ -17,7 +19,6 @@ import com.gwtplatform.mvp.client.gin.DefaultModule;
 import com.gwtplatform.mvp.client.proxy.DefaultPlaceManager;
 
 public class AppModule extends AbstractPresenterModule {
-    public static final String XSRF_COOKIE = "XSRF-SAFETY";
     private static long localBootTime;
 
     public static void init(SessionInfo info, long localBootTime) {
@@ -27,7 +28,7 @@ public class AppModule extends AbstractPresenterModule {
 
     @Override
     protected void configure() {
-        bindConstant().annotatedWith(SecurityCookie.class).to(AppModule.XSRF_COOKIE);
+        bindConstant().annotatedWith(SecurityCookie.class).to(AppUtil.XSRF_COOKIE);
         bindConstant().annotatedWith(DefaultPlace.class).to(Home.TOKEN);
         bindConstant().annotatedWith(ErrorPlace.class).to(Home.TOKEN);
         bindConstant().annotatedWith(UnauthorizedPlace.class).to(Home.TOKEN);

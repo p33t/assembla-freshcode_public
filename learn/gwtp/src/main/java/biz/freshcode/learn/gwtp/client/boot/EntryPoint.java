@@ -1,7 +1,8 @@
 package biz.freshcode.learn.gwtp.client.boot;
 
-import biz.freshcode.learn.gwtp.client.AppRpcService;
-import biz.freshcode.learn.gwtp.client.AppRpcServiceAsync;
+import biz.freshcode.learn.gwtp.shared.AppRpcService;
+import biz.freshcode.learn.gwtp.shared.AppRpcServiceAsync;
+import biz.freshcode.learn.gwtp.shared.boot.SessionInfo;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.gwtplatform.mvp.client.ApplicationController;
