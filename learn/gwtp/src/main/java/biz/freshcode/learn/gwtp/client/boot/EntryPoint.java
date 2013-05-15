@@ -21,8 +21,9 @@ public class EntryPoint implements com.google.gwt.core.client.EntryPoint {
 
             @Override
             public void onSuccess(SessionInfo info) {
+                long localBootTime = System.currentTimeMillis();
                 GWT.log("Session info loaded.  Launching app...");
-                SessionInfoProvider.init(info);
+                AppModule.init(info, localBootTime);
                 launch();
             }
         });
