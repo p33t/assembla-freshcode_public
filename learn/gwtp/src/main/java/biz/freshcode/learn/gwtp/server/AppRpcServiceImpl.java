@@ -1,8 +1,8 @@
 package biz.freshcode.learn.gwtp.server;
 
-import biz.freshcode.learn.gwtp.client.AppRpcService;
-import biz.freshcode.learn.gwtp.client.boot.SessionInfo;
-import biz.freshcode.learn.gwtp.client.boot.SessionInfoImpl;
+import biz.freshcode.learn.gwtp.shared.AppRpcService;
+import biz.freshcode.learn.gwtp.shared.boot.SessionInfo;
+import biz.freshcode.learn.gwtp.shared.boot.SessionInfoImpl;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 @SuppressWarnings("GwtServiceNotRegistered")

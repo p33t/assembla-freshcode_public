@@ -1,4 +1,4 @@
-package biz.freshcode.learn.gwtp.client.boot;
+package biz.freshcode.learn.gwtp.shared.boot;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
 

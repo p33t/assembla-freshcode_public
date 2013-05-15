@@ -141,6 +141,7 @@
                 </executions>
                 <configuration>
                     <webappDirectory>${webappDirectory}</webappDirectory>
+                    <packagingExcludes>WEB-INF/classes/biz/freshcode/learn/gwtp/client/**</packagingExcludes>
                 </configuration>
             </plugin>
             <plugin>
