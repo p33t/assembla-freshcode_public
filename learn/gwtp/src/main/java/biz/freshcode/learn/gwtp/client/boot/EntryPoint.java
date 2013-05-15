@@ -9,18 +9,20 @@ import com.gwtplatform.mvp.client.ApplicationController;
 public class EntryPoint implements com.google.gwt.core.client.EntryPoint {
     @Override
     public void onModuleLoad() {
+        // NOTE: Would hide 'Loading..' element here.
+
         GWT.log("In onModuleLoad().");
-//        launch();
         AppRpcServiceAsync rpc = GWT.create(AppRpcService.class);
-        rpc.loadSessionInfo(new AsyncCallback<String>() {
+        rpc.loadSessionInfo(new AsyncCallback<SessionInfo>() {
             @Override
             public void onFailure(Throwable caught) {
-                GWT.log("loadSessionInfo() failed.");
+                GWT.log("loadSessionInfo() failed.  Cannot start app.", caught);
             }
 
             @Override
-            public void onSuccess(String result) {
-                GWT.log("Session info: " + result + ".  Launching app...");
+            public void onSuccess(SessionInfo info) {
+                GWT.log("Session info loaded.  Launching app...");
+                SessionInfoProvider.init(info);
                 launch();
             }
         });

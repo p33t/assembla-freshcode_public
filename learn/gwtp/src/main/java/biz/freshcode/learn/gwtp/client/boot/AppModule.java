@@ -26,6 +26,7 @@ public class AppModule extends AbstractPresenterModule {
         bindConstant().annotatedWith(ErrorPlace.class).to(Home.TOKEN);
         bindConstant().annotatedWith(UnauthorizedPlace.class).to(Home.TOKEN);
 
+        bind(SessionInfo.class).toProvider(SessionInfoProvider.class);
         bind(EventBus.class).to(SimpleEventBus.class).in(Singleton.class);
         install(new DefaultModule(DefaultPlaceManager.class));
         install(new DispatchAsyncModule());
