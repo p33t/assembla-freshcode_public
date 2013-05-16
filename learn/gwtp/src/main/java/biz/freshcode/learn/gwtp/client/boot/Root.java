@@ -1,5 +1,7 @@
 package biz.freshcode.learn.gwtp.client.boot;
 
+import biz.freshcode.learn.gwtp.client.builder.gxt.container.BorderLayoutContainerBuilder;
+import biz.freshcode.learn.gwtp.client.builder.gxt.toolbar.ToolBarBuilder;
 import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.inject.Inject;
@@ -11,8 +13,11 @@ import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.gwtplatform.mvp.client.proxy.RevealContentHandler;
 import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.Viewport;
+import com.sencha.gxt.widget.core.client.toolbar.FillToolItem;
+import com.sencha.gxt.widget.core.client.toolbar.LabelToolItem;
 
 import static biz.freshcode.learn.gwtp.client.util.WidgetUtil.removeFromParent;
+import static com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData;
 
 /**
  * A surrogate 'Root' that facilitates GXT Viewport usage.
@@ -35,9 +40,14 @@ public class Root extends Presenter<Root.View, Root.Proxy> {
 
         @Inject
         public View() {
-            blc = new BorderLayoutContainer();
             Viewport v = new Viewport();
-            v.add(blc);
+            v.add(blc = new BorderLayoutContainerBuilder()
+                    .southWidget(new ToolBarBuilder()
+                            .add(new FillToolItem())
+                            .add(new LabelToolItem("The Footer Message"))
+                            .add(new FillToolItem())
+                            .toolBar, new BorderLayoutData(20))
+                    .borderLayoutContainer);
             initWidget(v);
         }
 

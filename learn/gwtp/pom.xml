@@ -119,6 +119,13 @@
             <version>4.7</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>biz.freshcode.b-generation</groupId>
+            <artifactId>b-generation</artifactId>
+            <version>0.2.1</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>

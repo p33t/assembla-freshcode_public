@@ -64,6 +64,7 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.sencha.gxt:gxt:3.0.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.sencha.gxt:gxt:sources:3.0.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.7" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: biz.freshcode.b-generation:b-generation:0.2.1" level="project" />
   </component>
 </module>
 
