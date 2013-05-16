@@ -267,6 +267,28 @@
         <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-mvp-client/1.0-RC-3.1/gwtp-mvp-client-1.0-RC-3.1-sources.jar!/" />
       </SOURCES>
     </library>
+    <library name="Maven: com.sencha.gxt:gxt:3.0.1">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt/3.0.1/gxt-3.0.1.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt/3.0.1/gxt-3.0.1-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt/3.0.1/gxt-3.0.1-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: com.sencha.gxt:gxt:sources:3.0.1">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt/3.0.1/gxt-3.0.1-sources.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt/3.0.1/gxt-3.0.1-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt/3.0.1/gxt-3.0.1-sources.jar!/" />
+      </SOURCES>
+    </library>
     <library name="Maven: commons-collections:commons-collections:3.2.1">
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar!/" />

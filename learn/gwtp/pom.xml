@@ -14,24 +14,33 @@
 
     <properties>
         <!-- Convenience property to set the GWT version -->
-        <gwtVersion>2.5.1</gwtVersion>
-        <gwtpVersion>1.0-RC-3.1</gwtpVersion>
+        <gwt.version>2.5.1</gwt.version>
+        <gwtp.version>1.0-RC-3.1</gwtp.version>
+        <gxt.version>3.0.1</gxt.version>
         <!-- GWT needs at least java 1.5 -->
         <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>sencha-gpl-release</id>
+            <name>Open source licensed Sencha artifacts</name>
+            <url>https://maven.sencha.com/repo/gpl-release/</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <dependency>
             <groupId>com.google.gwt</groupId>
             <artifactId>gwt-servlet</artifactId>
-            <version>${gwtVersion}</version>
+            <version>${gwt.version}</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>com.google.gwt</groupId>
             <artifactId>gwt-user</artifactId>
-            <version>${gwtVersion}</version>
+            <version>${gwt.version}</version>
             <scope>provided</scope>
         </dependency>
 
@@ -53,18 +62,18 @@
         <dependency>
             <groupId>com.gwtplatform</groupId>
             <artifactId>gwtp-dispatch-client</artifactId>
-            <version>${gwtpVersion}</version>
+            <version>${gwtp.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.gwtplatform</groupId>
             <artifactId>gwtp-dispatch-server</artifactId>
-            <version>${gwtpVersion}</version>
+            <version>${gwtp.version}</version>
         </dependency>
         <dependency>
             <groupId>com.gwtplatform</groupId>
             <artifactId>gwtp-dispatch-server-guice</artifactId>
-            <version>${gwtpVersion}</version>
+            <version>${gwtp.version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.inject.extensions</groupId>
@@ -76,7 +85,7 @@
         <dependency>
             <groupId>com.gwtplatform</groupId>
             <artifactId>gwtp-mvp-client</artifactId>
-            <version>${gwtpVersion}</version>
+            <version>${gwtp.version}</version>
             <scope>provided</scope>
         </dependency>
 
@@ -86,6 +95,22 @@
             <artifactId>gin</artifactId>
             <version>2.0.0</version>
             <scope>provided</scope>
+        </dependency>
+
+        <!-- GXT -->
+        <dependency>
+            <groupId>com.sencha.gxt</groupId>
+            <artifactId>gxt</artifactId>
+            <version>${gxt.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- Sources are needed (for CI Build).  When using an IDE these may have been automatically downloaded. -->
+        <dependency>
+            <groupId>com.sencha.gxt</groupId>
+            <artifactId>gxt</artifactId>
+            <version>${gxt.version}</version>
+            <scope>provided</scope>
+            <classifier>sources</classifier>
         </dependency>
 
         <dependency>
@@ -106,7 +131,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>gwt-maven-plugin</artifactId>
-                <version>${gwtVersion}</version>
+                <version>${gwt.version}</version>
                 <executions>
                     <execution>
                         <goals>
