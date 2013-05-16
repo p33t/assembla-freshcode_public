@@ -11,8 +11,6 @@
     <!-- the theme of your GWT application by uncommenting          -->
     <!-- any one of the following lines.                            -->
     <inherits name='com.google.gwt.user.theme.standard.Standard'/>
-    <inherits name="com.gwtplatform.dispatch.DispatchShared"/>
-    <inherits name="com.google.gwt.inject.Inject"/>
     <inherits name="com.gwtplatform.dispatch.Dispatch"/>
     <inherits name="com.gwtplatform.mvp.Mvp"/>
 

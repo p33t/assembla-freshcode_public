@@ -4,13 +4,15 @@ import biz.freshcode.learn.gwtp.shared.AppRpcService;
 import biz.freshcode.learn.gwtp.shared.AppRpcServiceAsync;
 import biz.freshcode.learn.gwtp.shared.boot.SessionInfo;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.RootPanel;
 import com.gwtplatform.mvp.client.ApplicationController;
 
 public class EntryPoint implements com.google.gwt.core.client.EntryPoint {
     @Override
     public void onModuleLoad() {
-        // NOTE: Would hide 'Loading..' element here.
+        DOM.removeChild(RootPanel.getBodyElement(), DOM.getElementById("loading"));
 
         GWT.log("In onModuleLoad().");
         AppRpcServiceAsync rpc = GWT.create(AppRpcService.class);
