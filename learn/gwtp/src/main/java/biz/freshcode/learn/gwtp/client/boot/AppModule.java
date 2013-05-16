@@ -1,5 +1,7 @@
 package biz.freshcode.learn.gwtp.client.boot;
 
+import biz.freshcode.learn.gwtp.client.compound.Compound;
+import biz.freshcode.learn.gwtp.client.compound.CompoundViewImpl;
 import biz.freshcode.learn.gwtp.client.home.Home;
 import biz.freshcode.learn.gwtp.client.home.HomeViewImpl;
 import biz.freshcode.learn.gwtp.client.parent.Parent;
@@ -44,5 +46,6 @@ public class AppModule extends AbstractPresenterModule {
         bindPresenter(Root.class, Root.Proxy.class);
         bindPresenter(Parent.class, Parent.View.class, ParentViewImpl.class, Parent.Proxy.class);
         bindPresenter(Home.class, Home.View.class, HomeViewImpl.class, Home.Proxy.class);
+        bindPresenter(Compound.class, Compound.View.class, CompoundViewImpl.class, Compound.Proxy.class);
     }
 }

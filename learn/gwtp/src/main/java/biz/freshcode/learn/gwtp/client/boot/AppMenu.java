@@ -1,25 +1,40 @@
 package biz.freshcode.learn.gwtp.client.boot;
 
-import biz.freshcode.learn.gwtp.client.builder.gxt.menu.MenuBarBuilder;
-import biz.freshcode.learn.gwtp.client.builder.gxt.menu.MenuBarItemBuilder;
-import biz.freshcode.learn.gwtp.client.builder.gxt.menu.MenuBuilder;
-import biz.freshcode.learn.gwtp.client.builder.gxt.menu.MenuItemBuilder;
+import biz.freshcode.learn.gwtp.client.builder.gxt.toolbar.ToolBarBuilder;
+import biz.freshcode.learn.gwtp.client.compound.Compound;
+import biz.freshcode.learn.gwtp.client.home.Home;
 import biz.freshcode.learn.gwtp.client.util.AbstractIsWidget;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import com.gwtplatform.mvp.client.proxy.PlaceManager;
+import com.gwtplatform.mvp.client.proxy.PlaceRequest;
+import com.sencha.gxt.widget.core.client.button.TextButton;
+import com.sencha.gxt.widget.core.client.event.SelectEvent;
 
 @Singleton
 public class AppMenu extends AbstractIsWidget {
+    @Inject
+    private PlaceManager placeManager;
+
     @Override
     protected Widget createWidget() {
-        return new MenuBarBuilder()
-                .add(new MenuBarItemBuilder("Shakedown")
-                        .menu(new MenuBuilder()
-                                .add(new MenuItemBuilder()
-                                        .text("Dispatch")
-                                        .menuItem)
-                                .menu)
-                        .menuBarItem)
-                .menuBar;
+        return new ToolBarBuilder()
+                .add(btn("Home", Home.TOKEN))
+                .add(btn("Compound", Compound.TOKEN))
+                .toolBar;
+    }
+
+    private TextButton btn(String label, final String token) {
+        return new TextButton(label, new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent event) {
+                placeManager.revealPlace(placeRequest(token));
+            }
+        });
+    }
+
+    private PlaceRequest placeRequest(String token) {
+        return new PlaceRequest.Builder().nameToken(token).build();
     }
 }

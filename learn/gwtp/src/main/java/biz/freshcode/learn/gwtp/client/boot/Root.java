@@ -42,7 +42,7 @@ public class Root extends Presenter<Root.View, Root.Proxy> {
         public View(AppMenu mnu) {
             Viewport v = new Viewport();
             v.add(blc = new BorderLayoutContainerBuilder()
-                    .northWidget(mnu, new BorderLayoutData(25))
+                    .northWidget(mnu, new BorderLayoutData(30))
                     .southWidget(new ToolBarBuilder()
                             .add(new FillToolItem())
                             .add(new LabelToolItem("The Footer Message"))
@@ -57,6 +57,7 @@ public class Root extends Presenter<Root.View, Root.Proxy> {
             if (slot == SLOT) {
                 removeFromParent(blc.getCenterWidget());
                 if (content != null) blc.setCenterWidget(content);
+                blc.forceLayout();
             } else super.setInSlot(slot, content);
         }
     }
