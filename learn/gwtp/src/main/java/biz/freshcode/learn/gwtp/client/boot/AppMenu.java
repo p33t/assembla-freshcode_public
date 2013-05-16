@@ -1,6 +1,8 @@
 package biz.freshcode.learn.gwtp.client.boot;
 
 import biz.freshcode.learn.gwtp.client.builder.gxt.toolbar.ToolBarBuilder;
+import biz.freshcode.learn.gwtp.client.compound.Child1;
+import biz.freshcode.learn.gwtp.client.compound.Child2;
 import biz.freshcode.learn.gwtp.client.compound.Compound;
 import biz.freshcode.learn.gwtp.client.home.Home;
 import biz.freshcode.learn.gwtp.client.util.AbstractIsWidget;
@@ -22,6 +24,8 @@ public class AppMenu extends AbstractIsWidget {
         return new ToolBarBuilder()
                 .add(btn("Home", Home.TOKEN))
                 .add(btn("Compound", Compound.TOKEN))
+                .add(btn("Child1", Child1.TOKEN))
+                .add(btn("Child2", Child2.TOKEN))
                 .toolBar;
     }
 
