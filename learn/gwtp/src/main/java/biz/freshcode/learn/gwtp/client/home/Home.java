@@ -1,6 +1,6 @@
 package biz.freshcode.learn.gwtp.client.home;
 
-import biz.freshcode.learn.gwtp.client.parent.Parent;
+import biz.freshcode.learn.gwtp.client.boot.Root;
 import biz.freshcode.learn.gwtp.shared.dispatch.SdAction;
 import biz.freshcode.learn.gwtp.shared.dispatch.StrResult;
 import com.google.gwt.core.shared.GWT;
@@ -23,7 +23,7 @@ public class Home extends Presenter<Home.View, Home.Proxy> {
 
     @Inject
     public Home(EventBus eventBus, View view, Proxy proxy) {
-        super(eventBus, view, proxy, Parent.SLOT);
+        super(eventBus, view, proxy, Root.SLOT);
     }
 
     @Override

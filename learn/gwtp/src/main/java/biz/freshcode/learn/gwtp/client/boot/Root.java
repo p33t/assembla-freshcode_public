@@ -39,9 +39,10 @@ public class Root extends Presenter<Root.View, Root.Proxy> {
         private final BorderLayoutContainer blc;
 
         @Inject
-        public View() {
+        public View(AppMenu mnu) {
             Viewport v = new Viewport();
             v.add(blc = new BorderLayoutContainerBuilder()
+                    .northWidget(mnu, new BorderLayoutData(25))
                     .southWidget(new ToolBarBuilder()
                             .add(new FillToolItem())
                             .add(new LabelToolItem("The Footer Message"))
