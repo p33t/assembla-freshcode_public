@@ -1,5 +1,6 @@
 package biz.freshcode.learn.gwtp.client.parent;
 
+import biz.freshcode.learn.gwtp.client.boot.Root;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.Presenter;
@@ -16,7 +17,7 @@ public class Parent extends Presenter<Parent.View, Parent.Proxy> {
 
     @Inject
     public Parent(EventBus eventBus, View view, Proxy proxy) {
-        super(eventBus, view, proxy, RevealType.Root);
+        super(eventBus, view, proxy, Root.SLOT);
     }
 
     // NOTE: Not a place!

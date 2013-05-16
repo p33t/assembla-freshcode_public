@@ -41,7 +41,8 @@ public class AppModule extends AbstractPresenterModule {
         install(new DefaultModule(DefaultPlaceManager.class));
         install(new DispatchAsyncModule());
 
-        bindPresenter(Home.class, Home.View.class, HomeViewImpl.class, Home.Proxy.class);
+        bindPresenter(Root.class, Root.Proxy.class);
         bindPresenter(Parent.class, Parent.View.class, ParentViewImpl.class, Parent.Proxy.class);
+        bindPresenter(Home.class, Home.View.class, HomeViewImpl.class, Home.Proxy.class);
     }
 }
