@@ -1,17 +1,20 @@
 package biz.freshcode.learn.gwtp.client.compound;
 
 import biz.freshcode.learn.gwtp.client.boot.Root;
+import com.google.gwt.event.shared.GwtEvent;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.Presenter;
+import com.gwtplatform.mvp.client.annotations.ContentSlot;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
+import com.gwtplatform.mvp.client.proxy.RevealContentHandler;
 
 public class Compound extends Presenter<Compound.View, Compound.Proxy> {
     public static final String TOKEN = "compound";
 
-//    @ContentSlot
-//    public static final GwtEvent.Type<RevealContentHandler<?>> SLOT = new GwtEvent.Type<RevealContentHandler<?>>();
+    @ContentSlot
+    public static final GwtEvent.Type<RevealContentHandler<?>> SLOT = new GwtEvent.Type<RevealContentHandler<?>>();
 
     @Inject
     public Compound(EventBus eventBus, View view, Proxy proxy) {
