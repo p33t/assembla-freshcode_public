@@ -1,6 +1,7 @@
 package biz.freshcode.learn.gwtp.client.home;
 
 import biz.freshcode.learn.gwtp.client.boot.Root;
+import biz.freshcode.learn.gwtp.client.util.HasTitle;
 import biz.freshcode.learn.gwtp.shared.dispatch.SdAction;
 import biz.freshcode.learn.gwtp.shared.dispatch.StrResult;
 import com.google.gwt.core.shared.GWT;
@@ -15,7 +16,7 @@ import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 
-public class Home extends Presenter<Home.View, Home.Proxy> {
+public class Home extends Presenter<Home.View, Home.Proxy> implements HasTitle {
     public static final String TOKEN = "home";
 
     @Inject
@@ -24,6 +25,11 @@ public class Home extends Presenter<Home.View, Home.Proxy> {
     @Inject
     public Home(EventBus eventBus, View view, Proxy proxy) {
         super(eventBus, view, proxy, Root.SLOT);
+    }
+
+    @Override
+    public String getTitle() {
+        return "Home";
     }
 
     @Override

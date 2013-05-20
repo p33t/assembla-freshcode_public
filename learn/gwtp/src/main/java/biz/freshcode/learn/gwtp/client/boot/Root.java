@@ -2,6 +2,7 @@ package biz.freshcode.learn.gwtp.client.boot;
 
 import biz.freshcode.learn.gwtp.client.builder.gxt.container.BorderLayoutContainerBuilder;
 import biz.freshcode.learn.gwtp.client.builder.gxt.toolbar.ToolBarBuilder;
+import biz.freshcode.learn.gwtp.client.util.HasTitle;
 import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.inject.Inject;
@@ -37,6 +38,8 @@ public class Root extends Presenter<Root.View, Root.Proxy> {
 
     public static class View extends ViewImpl {
         private final BorderLayoutContainer blc;
+        @Inject
+        private PageTitle titler;
 
         @Inject
         public View(AppMenu mnu) {
@@ -56,7 +59,14 @@ public class Root extends Presenter<Root.View, Root.Proxy> {
         public void setInSlot(Object slot, IsWidget content) {
             if (slot == SLOT) {
                 removeFromParent(blc.getCenterWidget());
-                if (content != null) blc.setCenterWidget(content);
+                String title = "(no title)";
+                if (content != null) {
+                    blc.setCenterWidget(content);
+                    if (content instanceof HasTitle) {
+                        title = ((HasTitle) content).getTitle();
+                    }
+                }
+                titler.setTitle(title);
                 blc.forceLayout();
             } else super.setInSlot(slot, content);
         }
