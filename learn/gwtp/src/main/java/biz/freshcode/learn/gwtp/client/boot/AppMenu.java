@@ -5,28 +5,30 @@ import biz.freshcode.learn.gwtp.client.compound.Child1;
 import biz.freshcode.learn.gwtp.client.compound.Child2;
 import biz.freshcode.learn.gwtp.client.compound.Compound;
 import biz.freshcode.learn.gwtp.client.home.Home;
-import biz.freshcode.learn.gwtp.client.util.AbstractIsWidget;
-import com.google.gwt.user.client.ui.Widget;
+import biz.freshcode.learn.gwtp.client.util.IsWidgetImpl;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.PlaceRequest;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
+import com.sencha.gxt.widget.core.client.toolbar.FillToolItem;
 
 @Singleton
-public class AppMenu extends AbstractIsWidget {
+public class AppMenu extends IsWidgetImpl {
     @Inject
     private PlaceManager placeManager;
 
-    @Override
-    protected Widget createWidget() {
-        return new ToolBarBuilder()
+    @Inject
+    public AppMenu(PageTitle titler) {
+        initWidget(new ToolBarBuilder()
                 .add(btn("Home", Home.TOKEN))
                 .add(btn("Compound", Compound.TOKEN))
                 .add(btn("Child1", Child1.TOKEN))
                 .add(btn("Child2", Child2.TOKEN))
-                .toolBar;
+                .add(new FillToolItem())
+                .add(titler)
+                .toolBar);
     }
 
     private TextButton btn(String label, final String token) {

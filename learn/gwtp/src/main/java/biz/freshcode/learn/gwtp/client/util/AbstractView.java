@@ -11,7 +11,9 @@ import com.gwtplatform.mvp.client.View;
  * This also facilitates field based injection.
  * The other methods of {@link com.gwtplatform.mvp.client.View} are also used to make sure widget is initialized.
  * !!!!!!!!!!!!!!!!!!!! Field based injection is not really supported with GWTP.
+ * Note also that an @Injected init() method is NOT called after fields are injected.  This class is a dead end.
  */
+@Deprecated
 public abstract class AbstractView<T extends Widget> extends AbstractIsWidget<T> implements View {
     @Override
     public void addToSlot(Object slot, IsWidget content) {
