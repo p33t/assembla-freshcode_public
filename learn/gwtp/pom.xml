@@ -50,12 +50,13 @@
             <version>1.0.0.GA</version>
             <scope>test</scope>
         </dependency>
+        <!-- Trying to prevent log spam (?) -->
         <dependency>
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
             <version>1.0.0.GA</version>
             <classifier>sources</classifier>
-            <scope>test</scope>
+            <scope>provided</scope>
         </dependency>
 
         <!--Dispatch framework (command pattern RPC)-->
