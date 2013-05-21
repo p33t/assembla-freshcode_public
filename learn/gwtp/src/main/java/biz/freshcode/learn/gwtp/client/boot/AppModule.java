@@ -3,6 +3,8 @@ package biz.freshcode.learn.gwtp.client.boot;
 import biz.freshcode.learn.gwtp.client.compound.*;
 import biz.freshcode.learn.gwtp.client.home.Home;
 import biz.freshcode.learn.gwtp.client.home.HomeViewImpl;
+import biz.freshcode.learn.gwtp.client.paginggrid.PagingGrid;
+import biz.freshcode.learn.gwtp.client.paginggrid.PagingGridViewImpl;
 import biz.freshcode.learn.gwtp.client.parent.Parent;
 import biz.freshcode.learn.gwtp.client.parent.ParentViewImpl;
 import biz.freshcode.learn.gwtp.shared.AppUtil;
@@ -48,5 +50,6 @@ public class AppModule extends AbstractPresenterModule {
         bindPresenter(Compound.class, Compound.View.class, CompoundViewImpl.class, Compound.Proxy.class);
         bindPresenter(Child1.class, Child1.View.class, Child1ViewImpl.class, Child1.Proxy.class);
         bindPresenter(Child2.class, Child2.View.class, Child2ViewImpl.class, Child2.Proxy.class);
+        bindPresenter(PagingGrid.class, PagingGrid.View.class, PagingGridViewImpl.class, PagingGrid.Proxy.class);
     }
 }

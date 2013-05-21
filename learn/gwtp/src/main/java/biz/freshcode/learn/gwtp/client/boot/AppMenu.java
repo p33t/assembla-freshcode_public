@@ -5,7 +5,9 @@ import biz.freshcode.learn.gwtp.client.compound.Child1;
 import biz.freshcode.learn.gwtp.client.compound.Child2;
 import biz.freshcode.learn.gwtp.client.compound.Compound;
 import biz.freshcode.learn.gwtp.client.home.Home;
+import biz.freshcode.learn.gwtp.client.paginggrid.PagingGrid;
 import biz.freshcode.learn.gwtp.client.util.IsWidgetImpl;
+import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
@@ -15,7 +17,7 @@ import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.toolbar.FillToolItem;
 
 @Singleton
-public class AppMenu extends IsWidgetImpl {
+public class AppMenu extends IsWidgetImpl<Widget> {
     @Inject
     private PlaceManager placeManager;
 
@@ -26,6 +28,7 @@ public class AppMenu extends IsWidgetImpl {
                 .add(btn("Compound", Compound.TOKEN))
                 .add(btn("Child1", Child1.TOKEN))
                 .add(btn("Child2", Child2.TOKEN))
+                .add(btn("Paging Grid", PagingGrid.TOKEN))
                 .add(new FillToolItem())
                 .add(titler)
                 .toolBar);
