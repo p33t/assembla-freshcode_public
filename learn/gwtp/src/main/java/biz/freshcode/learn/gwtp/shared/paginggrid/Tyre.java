@@ -1,14 +1,10 @@
 package biz.freshcode.learn.gwtp.shared.paginggrid;
 
-import biz.freshcode.learn.gwtp.shared.generate.MetaGen;
 import com.google.gwt.user.client.rpc.IsSerializable;
-import com.sencha.gxt.core.client.ValueProvider;
-import com.sencha.gxt.data.shared.ModelKeyProvider;
-import com.sencha.gxt.data.shared.PropertyAccess;
 
-import static biz.freshcode.learn.gwtp.client.util.ExceptionUtil.illegalState;
+import static biz.freshcode.learn.gwtp.shared.util.ExceptionUtil.illegalState;
 
-public class Tyre implements IsSerializable, MetaGen {
+public class Tyre implements IsSerializable {
     public static final String DIAMETER = "diameter";
     public static final String THICKNESS = "thickness";
 
@@ -40,14 +36,6 @@ public class Tyre implements IsSerializable, MetaGen {
         this.thickness = thickness;
     }
 
-    public static interface Access extends PropertyAccess<Tyre> {
-        ModelKeyProvider<Tyre> id();
-
-        ValueProvider<Tyre, Integer> diameter();
-
-        ValueProvider<Tyre, Integer> thickness();
-    }
-
     public static class Comparator implements java.util.Comparator<Tyre> {
         private final String field;
 
@@ -61,8 +49,8 @@ public class Tyre implements IsSerializable, MetaGen {
         }
 
         private int getVal(Tyre t) {
-            if (Tyre.DIAMETER.equals(field)) return t.getDiameter();
-            if (Tyre.THICKNESS.equals(field)) return t.getThickness();
+            if (DIAMETER.equals(field)) return t.getDiameter();
+            if (THICKNESS.equals(field)) return t.getThickness();
             throw illegalState("Unknown field: " + field);
         }
     }

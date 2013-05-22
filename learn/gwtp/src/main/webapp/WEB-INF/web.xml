@@ -19,18 +19,6 @@
         <listener-class>biz.freshcode.learn.gwtp.server.dispatch.GuiceServletConfig</listener-class>
     </listener>
 
-    <!-- Servlets
-    <servlet>
-      <servlet-name>greetServlet</servlet-name>
-      <servlet-class>biz.freshcode.learn.gwtp.server.GreetingServiceImpl</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-      <servlet-name>greetServlet</servlet-name>
-      <url-pattern>/Mod1/greet</url-pattern>
-    </servlet-mapping>
-  -->
-
     <!-- Default page to serve -->
     <welcome-file-list>
         <welcome-file>Main.html</welcome-file>
