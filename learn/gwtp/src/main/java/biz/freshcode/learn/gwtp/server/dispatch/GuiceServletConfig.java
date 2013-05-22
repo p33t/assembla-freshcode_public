@@ -4,6 +4,7 @@ import biz.freshcode.learn.gwtp.shared.AppRpcService;
 import biz.freshcode.learn.gwtp.server.AppRpcServiceImpl;
 import biz.freshcode.learn.gwtp.shared.AppUtil;
 import biz.freshcode.learn.gwtp.shared.dispatch.SdAction;
+import biz.freshcode.learn.gwtp.shared.paginggrid.PgListAction;
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -30,6 +31,7 @@ public class GuiceServletConfig extends GuiceServletContextListener {
         @Override
         protected void configureHandlers() {
             bindHandler(SdAction.class, SdHandler.class);
+            bindHandler(PgListAction.class, PgListHandler.class);
         }
     }
 

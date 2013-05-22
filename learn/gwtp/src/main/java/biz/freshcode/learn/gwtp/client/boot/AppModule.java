@@ -5,13 +5,8 @@ import biz.freshcode.learn.gwtp.client.home.Home;
 import biz.freshcode.learn.gwtp.client.home.HomeViewImpl;
 import biz.freshcode.learn.gwtp.client.paginggrid.PagingGrid;
 import biz.freshcode.learn.gwtp.client.paginggrid.PagingGridViewImpl;
-import biz.freshcode.learn.gwtp.client.parent.Parent;
-import biz.freshcode.learn.gwtp.client.parent.ParentViewImpl;
 import biz.freshcode.learn.gwtp.shared.AppUtil;
 import biz.freshcode.learn.gwtp.shared.boot.SessionInfo;
-import com.google.gwt.event.shared.EventBus;
-import com.google.gwt.event.shared.SimpleEventBus;
-import com.google.inject.Singleton;
 import com.gwtplatform.dispatch.client.gin.DispatchAsyncModule;
 import com.gwtplatform.dispatch.shared.SecurityCookie;
 import com.gwtplatform.mvp.client.annotations.DefaultPlace;
@@ -40,12 +35,11 @@ public class AppModule extends AbstractPresenterModule {
         bindConstant().annotatedWith(LocalBootTime.class).to(localBootTime);
         bind(SessionInfo.class).toProvider(SessionInfoProvider.class);
 
-        bind(EventBus.class).to(SimpleEventBus.class).in(Singleton.class);
+//Shouldn't need this...bind(EventBus.class).to(SimpleEventBus.class).in(Singleton.class);
         install(new DefaultModule(DefaultPlaceManager.class));
         install(new DispatchAsyncModule());
 
         bindPresenter(Root.class, Root.Proxy.class);
-        bindPresenter(Parent.class, Parent.View.class, ParentViewImpl.class, Parent.Proxy.class);
         bindPresenter(Home.class, Home.View.class, HomeViewImpl.class, Home.Proxy.class);
         bindPresenter(Compound.class, Compound.View.class, CompoundViewImpl.class, Compound.Proxy.class);
         bindPresenter(Child1.class, Child1.View.class, Child1ViewImpl.class, Child1.Proxy.class);
