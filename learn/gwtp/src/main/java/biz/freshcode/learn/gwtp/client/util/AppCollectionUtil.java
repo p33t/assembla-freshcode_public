@@ -43,4 +43,25 @@ public class AppCollectionUtil {
     public static <T> T firstElem(Iterable<T> es) {
         return es.iterator().next();
     }
+
+    public static <K, V> Map<K, V> newOrderedMap() {
+        return new LinkedHashMap<K, V>();
+    }
+
+    public static <K, V> MapBuilder<K, V> newMapBuilder(K k0, V v0) {
+        return new MapBuilder<K, V>()
+                .put(k0, v0);
+    }
+
+    /**
+     * Helps construction of hard-coded maps.
+     */
+    public static class MapBuilder<K, V> {
+        public final Map<K, V> map = newMap();
+
+        public MapBuilder<K, V> put(K key, V value) {
+            map.put(key, value);
+            return this;
+        }
+    }
 }
