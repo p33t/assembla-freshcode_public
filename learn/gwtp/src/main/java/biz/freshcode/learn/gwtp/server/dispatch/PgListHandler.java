@@ -50,14 +50,18 @@ public class PgListHandler implements ActionHandler<PgListAction, GdPagingLoadRe
 
         // select the desired page
         List<Tyre> page = newList();
+        int ixFrom = 0;
         if (args.getOffset() < list.size()) {
+            ixFrom = args.getOffset();
             int ixTo = Math.min(list.size(), args.getOffset() + args.getLimit());
             // NOTE: Sublists are not serializable.
-            page = newListFrom(list.subList(args.getOffset(), ixTo));
+            page = newListFrom(list.subList(ixFrom, ixTo));
         }
 
         GdPagingLoadResult<Tyre> result = new GdPagingLoadResult<Tyre>();
         result.setData(page);
+        result.setTotalLength(TYRES.size());
+        result.setOffset(ixFrom);
         return result;
     }
 
