@@ -6,6 +6,7 @@ import biz.freshcode.learn.gwtp.shared.util.gwtp.dispatch.GdPagingLoadResult;
 import com.gwtplatform.dispatch.server.ExecutionContext;
 import com.gwtplatform.dispatch.server.actionhandler.ActionHandler;
 import com.gwtplatform.dispatch.shared.ActionException;
+import com.sencha.gxt.data.shared.SortDir;
 import com.sencha.gxt.data.shared.SortInfo;
 import com.sencha.gxt.data.shared.loader.PagingLoadConfig;
 
@@ -40,11 +41,15 @@ public class PgListHandler implements ActionHandler<PgListAction, GdPagingLoadRe
         PagingLoadConfig args = pgListAction.getArgs();
         List<? extends SortInfo> sort = args.getSortInfo();
         List<Tyre> list = newListFrom(TYRES.values());
-        if (!sort.isEmpty()) {
+        if (sort.isEmpty()) {
+            System.out.println("No sorting");
+        } else {
             // need to sort
             // only sort once
             SortInfo sort0 = sort.get(0);
-            Tyre.Comparator comp = new Tyre.Comparator(sort0.getSortField());
+            System.out.println("Sorting by " + sort0.getSortField() + " " + sort0.getSortDir());
+            boolean ascending = SortDir.ASC.equals(sort0.getSortDir());
+            Tyre.Comparator comp = new Tyre.Comparator(sort0.getSortField(), ascending);
             Collections.sort(list, comp);
         }
 

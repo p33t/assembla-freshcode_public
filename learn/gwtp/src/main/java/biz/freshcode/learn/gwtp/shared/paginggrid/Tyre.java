@@ -38,14 +38,17 @@ public class Tyre implements IsSerializable {
 
     public static class Comparator implements java.util.Comparator<Tyre> {
         private final String field;
+        private final boolean ascending;
 
-        public Comparator(String field) {
+        public Comparator(String field, boolean ascending) {
             this.field = field;
+            this.ascending = ascending;
         }
 
         @Override
         public int compare(Tyre o1, Tyre o2) {
-            return getVal(o1) - getVal(o2); // dodgy b/c overflow
+            int asc = getVal(o1) - getVal(o2);
+            return ascending? asc: -asc; // dodgy b/c overflow
         }
 
         private int getVal(Tyre t) {

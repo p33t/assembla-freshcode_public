@@ -25,7 +25,12 @@ public class PagingGridViewImpl extends ViewImpl implements PagingGrid.View {
 
     @Inject
     public PagingGridViewImpl(PgDispatchProxy proxy) {
+        // setup remote loading
         ListStore<Tyre> store = new ListStore<Tyre>(TYRE_ACCESS.id());
+        loader = pagingLoader(proxy);
+        loader.setRemoteSort(true);
+        loader.addLoadHandler(listStoreBind(store));
+
         Grid<Tyre> grid;
         PagingToolBar tb;
         //noinspection unchecked
@@ -40,19 +45,22 @@ public class PagingGridViewImpl extends ViewImpl implements PagingGrid.View {
                 ))), new VerticalLayoutData(1, 1))
                 .add(tb = new PagingToolBar(5), new VerticalLayoutData(1, -1))
                 .verticalLayoutContainer);
+        // NOTE: Remote sorting doesn't work without this
+        grid.setLoader(loader);
         grid.getView().setForceFit(true);
-
-        // setup remote loading
-        loader = pagingLoader(proxy);
-        loader.setRemoteSort(true);
-        loader.addLoadHandler(listStoreBind(store));
         tb.bind(loader);
     }
 
+    /**
+     * Convenience method to cut down code noise.
+     */
     private static <T> LoadResultListStoreBinding<PagingLoadConfig, T, PagingLoadResult<T>> listStoreBind(ListStore<T> store) {
         return new LoadResultListStoreBinding<PagingLoadConfig, T, PagingLoadResult<T>>(store);
     }
 
+    /**
+     * Convenience method to cut down code noise.
+     */
     private static <T> PagingLoader<PagingLoadConfig, PagingLoadResult<T>> pagingLoader(RpcProxy<PagingLoadConfig, PagingLoadResult<T>> proxy) {
         return new PagingLoader<PagingLoadConfig, PagingLoadResult<T>>(proxy);
     }
