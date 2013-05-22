@@ -55,7 +55,8 @@
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
             <version>1.0.0.GA</version>
-            <scope>test</scope>
+            <!-- NOTE: Needs to be in classpath otherwise warnings in dev mode. -->
+            <!--<scope>test</scope>-->
         </dependency>
         <!-- Trying to prevent log spam (?) -->
         <dependency>
@@ -110,7 +111,8 @@
             <groupId>com.sencha.gxt</groupId>
             <artifactId>gxt</artifactId>
             <version>${gxt.version}</version>
-            <scope>provided</scope>
+            <!-- NOTE: Need the 'shared' part on the server -->
+            <!--<scope>provided</scope>-->
         </dependency>
         <!-- Sources are needed (for CI Build).  When using an IDE these may have been automatically downloaded. -->
         <dependency>
