@@ -3,7 +3,6 @@ package biz.freshcode.learn.gwtp.client.paginggrid;
 import biz.freshcode.learn.gwtp.client.builder.gxt.container.VerticalLayoutContainerBuilder;
 import biz.freshcode.learn.gwtp.client.builder.gxt.grid.ColumnConfigBuilder;
 import biz.freshcode.learn.gwtp.shared.paginggrid.Tyre;
-import com.google.gwt.core.shared.GWT;
 import com.google.inject.Inject;
 import com.gwtplatform.mvp.client.ViewImpl;
 import com.sencha.gxt.data.client.loader.RpcProxy;
@@ -20,13 +19,12 @@ import static biz.freshcode.learn.gwtp.shared.util.AppCollectionUtil.newListFrom
 import static com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData;
 
 public class PagingGridViewImpl extends ViewImpl implements PagingGrid.View {
-    private static final TyreAccess TYRE_ACCESS = GWT.create(TyreAccess.class);
     private final PagingLoader<PagingLoadConfig, PagingLoadResult<Tyre>> loader;
 
     @Inject
-    public PagingGridViewImpl(PgDispatchProxy proxy) {
+    public PagingGridViewImpl(PgDispatchProxy proxy, TyreAccess access) {
         // setup remote loading
-        ListStore<Tyre> store = new ListStore<Tyre>(TYRE_ACCESS.id());
+        ListStore<Tyre> store = new ListStore<Tyre>(access.id());
         loader = pagingLoader(proxy);
         loader.setRemoteSort(true);
         loader.addLoadHandler(listStoreBind(store));
@@ -36,10 +34,10 @@ public class PagingGridViewImpl extends ViewImpl implements PagingGrid.View {
         //noinspection unchecked
         initWidget(new VerticalLayoutContainerBuilder()
                 .add(grid = new Grid<Tyre>(store, new ColumnModel(newListFrom(
-                        new ColumnConfigBuilder(TYRE_ACCESS.diameter())
+                        new ColumnConfigBuilder(access.diameter())
                                 .header("Diameter")
                                 .columnConfig,
-                        new ColumnConfigBuilder(TYRE_ACCESS.thickness())
+                        new ColumnConfigBuilder(access.thickness())
                                 .header("Thickness")
                                 .columnConfig
                 ))), new VerticalLayoutData(1, 1))
