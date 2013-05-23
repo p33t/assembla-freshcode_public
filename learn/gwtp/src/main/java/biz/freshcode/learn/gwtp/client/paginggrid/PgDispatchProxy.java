@@ -13,6 +13,9 @@ import com.sencha.gxt.data.client.loader.RpcProxy;
 import com.sencha.gxt.data.shared.loader.PagingLoadConfig;
 import com.sencha.gxt.data.shared.loader.PagingLoadResult;
 
+/**
+ * A Gwtp Dispatch flavoured RpcProxy for 'Paging Grid' demo.
+ */
 @Singleton
 public class PgDispatchProxy extends RpcProxy<PagingLoadConfig, PagingLoadResult<Tyre>> {
     @Inject
