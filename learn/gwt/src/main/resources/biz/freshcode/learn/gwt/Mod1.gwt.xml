@@ -33,8 +33,6 @@
 
     <inherits name='com.google.web.bindery.requestfactory.RequestFactory'/>
     <inherits name="com.google.gwt.activity.Activity"/>
-    <inherits name="com.google.gwt.inject.Inject"/>
-    <inherits name="com.gwtplatform.dispatch.DispatchShared"/>
     <inherits name="com.gwtplatform.dispatch.Dispatch"/>
     <inherits name="com.sencha.gxt.chart.Chart"/>
     <inherits name="com.gwtplatform.mvp.Mvp"/>

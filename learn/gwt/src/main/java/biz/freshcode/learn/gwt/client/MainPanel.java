@@ -8,6 +8,7 @@ import biz.freshcode.learn.gwt.client.bug.dateaccessbug.DateAccessBug;
 import biz.freshcode.learn.gwt.client.builder.gxt.DialogBuilder;
 import biz.freshcode.learn.gwt.client.experiment.Resizer;
 import biz.freshcode.learn.gwt.client.experiment.appearance.AppearanceDemo;
+import biz.freshcode.learn.gwt.client.experiment.busy.BusyDemo;
 import biz.freshcode.learn.gwt.client.experiment.celltable.CellTableDemo;
 import biz.freshcode.learn.gwt.client.experiment.chart.ChartDemo;
 import biz.freshcode.learn.gwt.client.experiment.contextmenu.ContextMenuDemo;
@@ -230,6 +231,12 @@ public class MainPanel extends Composite implements AcceptsOneWidget {
                                         .menuBar))
                                 .menuBar))
                         .addItem(new MenuItem("GXT", subMenu()
+                                .addItem(new MenuItem("Busy", new Command() {
+                                    public void execute() {
+                                        IsWidget w = GWT.create(BusyDemo.class);
+                                        replaceContent(w);
+                                    }
+                                }))
                                 .addItem(new MenuItem("Tree", new Command() {
                                     public void execute() {
                                         IsWidget w = GWT.create(TreeDemo.class);
