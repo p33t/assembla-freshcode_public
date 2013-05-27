@@ -67,6 +67,14 @@ public class PgListHandler implements ActionHandler<PgListAction, GdPagingLoadRe
         result.setData(page);
         result.setTotalLength(TYRES.size());
         result.setOffset(ixFrom);
+
+        // pause for effect
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            // do nothing
+        }
+
         return result;
     }
 
