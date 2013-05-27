@@ -12,7 +12,6 @@ import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.button.ToolButton;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 
-import static biz.freshcode.learn.gwt.client.experiment.busy.Bundle.BUNDLE;
 import static biz.freshcode.learn.gwt.client.experiment.busy.Bundle.STYLE;
 
 public class BusyDemo extends AbstractIsWidget {
@@ -66,10 +65,8 @@ public class BusyDemo extends AbstractIsWidget {
     private void start() {
         pnlTarget.disable();
         ensureNotBusy();
-        String uri = BUNDLE.spinnerGif().getSafeUri().asString();
-        pnlTarget.getElement().insertFirst("<img src='" + uri + "'" +
-                " class='" + STYLE.busySpinner() + "'" +
-                " style='top:0px; left:20px;' />"
+        pnlTarget.getElement().insertFirst("<div" +
+                " class='" + STYLE.busySpinner() + "'/>"
         );
     }
 }
