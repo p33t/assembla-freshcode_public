@@ -13,6 +13,7 @@ import com.sencha.gxt.widget.core.client.button.ToolButton;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 
 import static biz.freshcode.learn.gwt.client.experiment.busy.Bundle.BUNDLE;
+import static biz.freshcode.learn.gwt.client.experiment.busy.Bundle.STYLE;
 
 public class BusyDemo extends AbstractIsWidget {
     private ContentPanel pnlTarget;
@@ -55,7 +56,7 @@ public class BusyDemo extends AbstractIsWidget {
 
     private boolean ensureNotBusy() {
         Element first = pnlTarget.getElement().getFirstChildElement();
-        if (first != null && first.removeClassName("busySpinner")) {
+        if (first != null && first.removeClassName(STYLE.busySpinner())) {
             first.removeFromParent();
             return true;
         }
@@ -67,7 +68,8 @@ public class BusyDemo extends AbstractIsWidget {
         ensureNotBusy();
         String uri = BUNDLE.spinnerGif().getSafeUri().asString();
         pnlTarget.getElement().insertFirst("<img src='" + uri + "'" +
-                " style='position:absolute; top:0px; left:20px;z-index:10000'" + // a really high z-index
-                " class='busySpinner' />");
+                " class='" + STYLE.busySpinner() + "'" +
+                " style='top:0px; left:20px;' />"
+        );
     }
 }

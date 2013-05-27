@@ -7,17 +7,17 @@ import com.google.gwt.resources.client.ImageResource;
 
 public interface Bundle extends ClientBundle {
     Bundle BUNDLE = GWT.create(Bundle.class);
-//    Style STYLE = INSTANCE.style();
-//
-//    // Need to make sure style is injected into module
-//    boolean DOM_MUTATED = STYLE.ensureInjected();
-//
-//    @Source("style.css")
-//    Style style();
-//
-//    interface Style extends CssResource {
-//
-//    }
+    Style STYLE = BUNDLE.style();
+
+    // Need to make sure style is injected into module
+    boolean DOM_MUTATED = STYLE.ensureInjected();
+
+    @Source("style.css")
+    Style style();
+
+    interface Style extends CssResource {
+        String busySpinner();
+    }
 
     @Source("spinner.gif")
     ImageResource spinnerGif();
