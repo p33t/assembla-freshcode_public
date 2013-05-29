@@ -4,6 +4,7 @@ import biz.freshcode.learn.gwtp.client.builder.gxt.toolbar.ToolBarBuilder;
 import biz.freshcode.learn.gwtp.client.compound.Child1;
 import biz.freshcode.learn.gwtp.client.compound.Child2;
 import biz.freshcode.learn.gwtp.client.compound.Compound;
+import biz.freshcode.learn.gwtp.client.editform.EditForm;
 import biz.freshcode.learn.gwtp.client.home.Home;
 import biz.freshcode.learn.gwtp.client.paginggrid.PagingGrid;
 import biz.freshcode.learn.gwtp.client.util.IsWidgetImpl;
@@ -29,6 +30,7 @@ public class AppMenu extends IsWidgetImpl<Widget> {
                 .add(btn("Child1", Child1.TOKEN))
                 .add(btn("Child2", Child2.TOKEN))
                 .add(btn("Paging Grid", PagingGrid.TOKEN))
+                .add(btn("Edit Form", EditForm.TOKEN))
                 .add(new FillToolItem())
                 .add(titler)
                 .toolBar);
