@@ -12,6 +12,9 @@ import com.sencha.gxt.widget.core.client.form.SpinnerField;
 
 import static com.sencha.gxt.widget.core.client.form.NumberPropertyEditor.IntegerPropertyEditor;
 
+/**
+ * SUGGEST: Given that the presenter needs intimate knowledge of view implementation it might as well skip the interface.
+ */
 public class EditFormViewImpl extends ViewImpl implements EditForm.View, Editor<NumBean> {
     // NOTE: non-private and same name as bean property
     // Hmmm.... the view getters are overriding these.  And interfering if they are not private.
