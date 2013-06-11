@@ -8,6 +8,7 @@ import biz.freshcode.learn.gwt.client.uispike.builder.field.FieldLabelBuilder;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import com.google.gwt.editor.client.Editor;
 import com.google.gwt.user.client.ui.Widget;
+import com.sencha.gxt.cell.core.client.form.CheckBoxCell;
 import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.core.client.util.Util;
 import com.sencha.gxt.data.client.editor.ListStoreEditor;
@@ -18,9 +19,14 @@ import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
 import com.sencha.gxt.widget.core.client.grid.ColumnModel;
 import com.sencha.gxt.widget.core.client.grid.Grid;
 import com.sencha.gxt.widget.core.client.grid.editing.GridEditing;
+import com.sencha.gxt.widget.core.client.grid.editing.GridInlineEditing;
 import com.sencha.gxt.widget.core.client.grid.editing.GridRowEditing;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
+
+import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.*;
 
 public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean> {
     TextField str;
@@ -29,6 +35,7 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
     // NOTE: This is not used directly.  It needs to have non-private scope and same name as bean property.
     @SuppressWarnings({"UnusedDeclaration"})
     ListStoreEditor<FormBeanChild> children = new ListStoreEditor<FormBeanChild>(childStore);
+    PreferredTimesField preferredTimes;
 
     @SuppressWarnings("unchecked")
     @Override
@@ -46,6 +53,10 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
                                         // NOTE: This does NOT prevent a blank value from being 'flushed' to the object.
                                 .allowBlank(false)
                                 .textField)
+                        .fieldLabel)
+                .add(new FieldLabelBuilder()
+                        .text("Preferred Times")
+                        .widget(preferredTimes = new PreferredTimesField(createPreferredTimes()))
                         .fieldLabel)
                 .add(new FieldLabelBuilder()
                         .text("Num")
@@ -114,6 +125,63 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
         hrMinEditor(editing, startCol);
         hrMinEditor(editing, durationCol);
         return w;
+    }
+
+    private Grid<AmPmFlag> createPreferredTimes() {
+        // no need to populate... set value will populate
+        ListStore<AmPmFlag> store = new ListStore<AmPmFlag>(AmPmFlag.ACCESS.id());
+        store.setAutoCommit(true);
+
+        ColumnConfig<AmPmFlag, Boolean> colPref;
+        @SuppressWarnings("unchecked")
+        Grid<AmPmFlag> grid = new Grid(store, new ColumnModel(newListFrom(
+                colPref = new ColumnConfigBuilder(AmPmFlag.ACCESS.flag())
+                        .header("Preferred")
+                        .width(1)
+                        .cell(new CheckBoxCell())
+                        .columnConfig,
+                new ColumnConfigBuilder(AmPmFlag.ACCESS.amPm())
+                        .header("Time")
+                        .width(3)
+                        .columnConfig
+        )));
+
+        GridInlineEditing<AmPmFlag> editing = new GridInlineEditing<AmPmFlag>(grid);
+        editing.addEditor(colPref, new CheckBox());
+        grid.getView().setForceFit(true);
+        return grid;
+    }
+
+    public static class PreferredTimesField extends AdapterField<Set<AmPm>> {
+        private final Grid<AmPmFlag> grid;
+
+        public PreferredTimesField(Grid<AmPmFlag> grid) {
+            super(grid);
+            this.grid = grid;
+        }
+
+        @Override
+        public void setValue(Set<AmPm> value) {
+            ListStore<AmPmFlag> store = grid.getStore();
+
+            List<AmPmFlag> flags = newList();
+            for (AmPm ap : AmPm.values()) {
+                AmPmFlag flag = new AmPmFlag(ap);
+                if (value.contains(ap)) flag.setFlag(true);
+                flags.add(flag);
+            }
+
+            store.replaceAll(flags);
+        }
+
+        @Override
+        public Set<AmPm> getValue() {
+            Set<AmPm> set = newSet();
+            for (AmPmFlag f : grid.getStore().getAll()) {
+                if (f.isFlag()) set.add(f.getAmPm());
+            }
+            return set;
+        }
     }
 
     // Setup grid inline editing for the given HrMin column.

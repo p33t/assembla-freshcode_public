@@ -43,7 +43,6 @@ public class HrMinField2 extends ConverterEditorAdapter<Long, String, TextField>
                             String s = HrMinConverter.INSTANCE.convertModelValue(l);
                             if (!text.equals(s)) tf.setText(s);
                         }
-
                     }
                 });
             }

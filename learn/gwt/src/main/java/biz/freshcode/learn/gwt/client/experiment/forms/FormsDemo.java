@@ -19,7 +19,9 @@ import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import java.util.Date;
 import java.util.List;
 
-public class Landing extends AbstractIsWidget {
+import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newSetFrom;
+
+public class FormsDemo extends AbstractIsWidget {
     // Keep this around so that changes can be accumulated.
     private AutoBean<FormBean> formBeanAuto = FormBean.FACTORY.auto();
     private AutoBean<PeriodBean> timeBeanAuto = PeriodBean.FACTORY.auto();
@@ -28,6 +30,7 @@ public class Landing extends AbstractIsWidget {
         // Populate some default sub beans
         FormBean bean = formBeanAuto.as();
         bean.setStr("Default String");
+        bean.setPreferredTimes(newSetFrom(AmPm.AM));
         List<FormBeanChild> subs = Util.createList();
         FormBeanChild sub = FormBeanChild.FACTORY.auto().as();
         sub.setKey(1);
