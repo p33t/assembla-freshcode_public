@@ -16,6 +16,9 @@ import java.util.List;
 import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newList;
 import static biz.freshcode.learn.gwt.client.util.AppObjectUtils.safeEquals;
 
+/**
+ * A field for editing a password, which requires user to enter the password twice.
+ */
 public class PasswordEditor extends AdapterField<String> {
     private PasswordField pwd = new PasswordField();
     private PasswordField pwdRepeat = new PasswordField();

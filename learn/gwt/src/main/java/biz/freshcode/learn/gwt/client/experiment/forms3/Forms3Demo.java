@@ -66,7 +66,7 @@ public class Forms3Demo extends AbstractIsWidget {
         dlg.hide();
         driver.flush();
         String result = "Result is: " + person;
-        result += "\n Errors: " + driver.getErrors();
+        result += "\n Errors (" + driver.getErrors().size() + "): " + driver.getErrors();
         op.setHTML(op.getHTML() + "<p>" + result + "</p>");
     }
 
