@@ -6,15 +6,28 @@ import biz.freshcode.learn.gwt.client.builder.gxt.form.TextFieldBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.grid.ColumnConfigBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.field.FieldLabelBuilder;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
+import com.google.gwt.core.shared.GWT;
 import com.google.gwt.editor.client.Editor;
+import com.google.gwt.editor.client.EditorError;
+import com.google.gwt.event.logical.shared.HasValueChangeHandlers;
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
+import com.google.gwt.event.logical.shared.ValueChangeHandler;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.cell.core.client.form.CheckBoxCell;
 import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.core.client.util.Util;
 import com.sencha.gxt.data.client.editor.ListStoreEditor;
 import com.sencha.gxt.data.shared.ListStore;
+import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
+import com.sencha.gxt.widget.core.client.event.CompleteEditEvent;
+import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.form.*;
+import com.sencha.gxt.widget.core.client.form.error.DefaultEditorError;
+import com.sencha.gxt.widget.core.client.form.validator.AbstractValidator;
+import com.sencha.gxt.widget.core.client.form.validator.MinLengthValidator;
 import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
 import com.sencha.gxt.widget.core.client.grid.ColumnModel;
 import com.sencha.gxt.widget.core.client.grid.Grid;
@@ -36,6 +49,7 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
     @SuppressWarnings({"UnusedDeclaration"})
     ListStoreEditor<FormBeanChild> children = new ListStoreEditor<FormBeanChild>(childStore);
     PreferredTimesField preferredTimes;
+    private HTML feedback;
 
     @SuppressWarnings("unchecked")
     @Override
@@ -45,18 +59,22 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
         ColumnConfig<FormBeanChild, Date> dateCol;
         ColumnConfig<FormBeanChild, Long> startCol;
         ColumnConfig<FormBeanChild, Long> durationCol;
+        TextButton btnValidate;
         VerticalLayoutContainer w = new VerticalLayoutContainerBuilder()
+                .add(feedback = new HTML("<p>&nbsp;</p>"))
                 .add(new FieldLabelBuilder()
                         .text("Str")
                         .widget(str = new TextFieldBuilder()
                                 .emptyText("<Enter a string value>")
                                         // NOTE: This does NOT prevent a blank value from being 'flushed' to the object.
                                 .allowBlank(false)
+                                .addValidator(new MinLengthValidator(2))
                                 .textField)
                         .fieldLabel)
+                .add(btnValidate  = new TextButton("Validate"))
                 .add(new FieldLabelBuilder()
                         .text("Preferred Times")
-                        .widget(preferredTimes = new PreferredTimesField(createPreferredTimes()))
+                        .widget(preferredTimes = createPrefTimesField())
                         .fieldLabel)
                 .add(new FieldLabelBuilder()
                         .text("Num")
@@ -110,6 +128,33 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
                         .fieldLabel)
                 .verticalLayoutContainer;
 
+        btnValidate.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent event) {
+                preferredTimes.validate();
+            }
+        });
+
+        preferredTimes.addValidator(new AbstractValidator<Set<AmPm>>() {
+            @Override
+            public List<EditorError> validate(Editor<Set<AmPm>> editor, Set<AmPm> value) {
+                GWT.log("Validation");
+                List<EditorError> errors = newList();
+                if (value.isEmpty()) {
+                    errors.add(new DefaultEditorError(preferredTimes, "Need at least one value", value));
+                }
+                return errors;
+            }
+        });
+
+        preferredTimes.addValueChangeHandler(new ValueChangeHandler<Set<AmPm>>() {
+            @Override
+            public void onValueChange(ValueChangeEvent<Set<AmPm>> event) {
+                GWT.log("Value changed to: " + event.getValue());
+            }
+        });
+
+
         // column sizing
         // This does auto-resize of width when FieldLabel width is "1*".
         grid.getView().setForceFit(true);
@@ -127,7 +172,7 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
         return w;
     }
 
-    private Grid<AmPmFlag> createPreferredTimes() {
+    private PreferredTimesField createPrefTimesField() {
         // no need to populate... set value will populate
         ListStore<AmPmFlag> store = new ListStore<AmPmFlag>(AmPmFlag.ACCESS.id());
         store.setAutoCommit(true);
@@ -138,7 +183,6 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
                 colPref = new ColumnConfigBuilder(AmPmFlag.ACCESS.flag())
                         .header("Preferred")
                         .width(1)
-                        .cell(new CheckBoxCell())
                         .columnConfig,
                 new ColumnConfigBuilder(AmPmFlag.ACCESS.amPm())
                         .header("Time")
@@ -148,40 +192,11 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
 
         GridInlineEditing<AmPmFlag> editing = new GridInlineEditing<AmPmFlag>(grid);
         editing.addEditor(colPref, new CheckBox());
+//        Interferes with editing process...
+//        CheckBoxCell cbc = new CheckBoxCell();
+//        colPref.setCell(cbc);
         grid.getView().setForceFit(true);
-        return grid;
-    }
-
-    public static class PreferredTimesField extends AdapterField<Set<AmPm>> {
-        private final Grid<AmPmFlag> grid;
-
-        public PreferredTimesField(Grid<AmPmFlag> grid) {
-            super(grid);
-            this.grid = grid;
-        }
-
-        @Override
-        public void setValue(Set<AmPm> value) {
-            ListStore<AmPmFlag> store = grid.getStore();
-
-            List<AmPmFlag> flags = newList();
-            for (AmPm ap : AmPm.values()) {
-                AmPmFlag flag = new AmPmFlag(ap);
-                if (value.contains(ap)) flag.setFlag(true);
-                flags.add(flag);
-            }
-
-            store.replaceAll(flags);
-        }
-
-        @Override
-        public Set<AmPm> getValue() {
-            Set<AmPm> set = newSet();
-            for (AmPmFlag f : grid.getStore().getAll()) {
-                if (f.isFlag()) set.add(f.getAmPm());
-            }
-            return set;
-        }
+        return new PreferredTimesField(editing);
     }
 
     // Setup grid inline editing for the given HrMin column.
@@ -198,5 +213,62 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
         ColumnConfig<FormBeanChild, T> cc = new ColumnConfig<FormBeanChild, T>(provider);
         //noinspection unchecked
         return new ColumnConfigBuilder(cc);
+    }
+
+    public static class PreferredTimesField extends AdapterField<Set<AmPm>> implements HasValueChangeHandlers<Set<AmPm>> {
+        private final ListStore<AmPmFlag> store;
+        private Set<AmPm> publishedValue;
+
+        public PreferredTimesField(GridEditing<AmPmFlag> ge) {
+            super(ge.getEditableGrid());
+            this.store = ge.getEditableGrid().getStore();
+            publishedValue = getValue();
+
+            ge.addCompleteEditHandler(new CompleteEditEvent.CompleteEditHandler<AmPmFlag>() {
+                @Override
+                public void onCompleteEdit(CompleteEditEvent<AmPmFlag> event) {
+                    GWT.log("Edit complete");
+                    setPublishedValue(getValue());
+                }
+            });
+        }
+
+        @Override
+        public void setValue(Set<AmPm> value) {
+            List<AmPmFlag> flags = newList();
+            for (AmPm ap : AmPm.values()) {
+                AmPmFlag flag = new AmPmFlag(ap);
+                if (value.contains(ap)) flag.setFlag(true);
+                flags.add(flag);
+            }
+
+            if (flags.equals(store.getAll())) GWT.log("No change");
+            else {
+                store.replaceAll(flags);
+                // NOTE: Ideally use ValueChangeEvent.fireIfNotEquals()
+                ValueChangeEvent.fire(this, value);
+            }
+        }
+
+        @Override
+        public Set<AmPm> getValue() {
+            Set<AmPm> set = newSet();
+            for (AmPmFlag f : store.getAll()) {
+                if (f.isFlag()) set.add(f.getAmPm());
+            }
+            return set;
+        }
+
+        @Override
+        public HandlerRegistration addValueChangeHandler(ValueChangeHandler<Set<AmPm>> handler) {
+            return addHandler(handler, ValueChangeEvent.getType());
+        }
+
+        private void setPublishedValue(Set<AmPm> value) {
+            Set<AmPm> old = publishedValue;
+            publishedValue = value;
+            validate(); // ?!
+            ValueChangeEvent.fireIfNotEqual(this, old, value);
+        }
     }
 }

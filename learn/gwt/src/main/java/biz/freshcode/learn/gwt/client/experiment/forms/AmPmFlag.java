@@ -19,6 +19,27 @@ public class AmPmFlag {
         return amPm.name();
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        AmPmFlag amPmFlag = (AmPmFlag) o;
+
+        if (flag != amPmFlag.flag) return false;
+        //noinspection RedundantIfStatement
+        if (amPm != amPmFlag.amPm) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = amPm.hashCode();
+        result = 31 * result + (flag ? 1 : 0);
+        return result;
+    }
+
     public interface Access extends PropertyAccess<AmPmFlag> {
         ModelKeyProvider<AmPmFlag> id();
         
