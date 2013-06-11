@@ -17,6 +17,7 @@ import biz.freshcode.learn.gwt.client.experiment.dynamiclayout.DynamicLayoutDemo
 import biz.freshcode.learn.gwt.client.experiment.flextable.FlexTableDemo;
 import biz.freshcode.learn.gwt.client.experiment.forms.FormsDemo;
 import biz.freshcode.learn.gwt.client.experiment.forms2.Forms2Demo;
+import biz.freshcode.learn.gwt.client.experiment.forms3.Forms3Demo;
 import biz.freshcode.learn.gwt.client.experiment.grid.GwtGridDemo;
 import biz.freshcode.learn.gwt.client.experiment.grid.GxtGridDemo;
 import biz.freshcode.learn.gwt.client.experiment.grid.window.GridWindowDemo;
@@ -360,6 +361,13 @@ public class MainPanel extends Composite implements AcceptsOneWidget {
                                     @Override
                                     public void execute() {
                                         IsWidget w = GWT.create(Forms2Demo.class);
+                                        replaceContent(w.asWidget());
+                                    }
+                                }))
+                                .addItem(new MenuItem("Forms 3rd Attempt", new Command() {
+                                    @Override
+                                    public void execute() {
+                                        IsWidget w = GWT.create(Forms3Demo.class);
                                         replaceContent(w.asWidget());
                                     }
                                 }))
