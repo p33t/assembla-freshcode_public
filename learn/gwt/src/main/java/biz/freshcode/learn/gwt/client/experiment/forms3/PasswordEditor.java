@@ -18,6 +18,9 @@ import static biz.freshcode.learn.gwt.client.util.AppObjectUtils.safeEquals;
 
 /**
  * A field for editing a password, which requires user to enter the password twice.
+ * This class suffers from a bug.
+ * See http://www.sencha.com/forum/showthread.php?265590-AdapterField-validation-errors
+ * AND bug 'EXTGWT-3066'
  */
 public class PasswordEditor extends AdapterField<String> {
     private PasswordField pwd = new PasswordField();
