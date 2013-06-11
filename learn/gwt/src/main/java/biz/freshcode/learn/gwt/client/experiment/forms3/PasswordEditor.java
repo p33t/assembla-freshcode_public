@@ -1,5 +1,6 @@
 package biz.freshcode.learn.gwt.client.experiment.forms3;
 
+import com.google.gwt.core.shared.GWT;
 import com.google.gwt.editor.client.Editor;
 import com.google.gwt.editor.client.EditorError;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
@@ -53,6 +54,7 @@ public class PasswordEditor extends AdapterField<String> {
 
     @Override
     public void setValue(String value) {
+        GWT.log("Setting value to " + value);
         pwd.setValue(value);
         pwdRepeat.setValue(value);
     }
