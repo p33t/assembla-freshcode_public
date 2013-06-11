@@ -1,14 +1,12 @@
 package biz.freshcode.learn.gwt.client.experiment.forms3;
 
-import java.util.Set;
-
 public class Person {
+    private String name;
     private String newPassword;
-    private Set<Flavour> likes;
 
     @Override
     public String toString() {
-        return "likes: " + likes + ", newPwdHash: " + hash(newPassword);
+        return "name: " + name + ", newPwdHash: " + hash(newPassword);
     }
 
     private int hash(String s) {
@@ -16,12 +14,12 @@ public class Person {
         else return s.hashCode();
     }
 
-    public Set<Flavour> getLikes() {
-        return likes;
+    public String getName() {
+        return name;
     }
 
-    public void setLikes(Set<Flavour> likes) {
-        this.likes = likes;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getNewPassword() {
