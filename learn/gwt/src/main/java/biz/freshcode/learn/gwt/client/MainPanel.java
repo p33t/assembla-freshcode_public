@@ -15,7 +15,7 @@ import biz.freshcode.learn.gwt.client.experiment.contextmenu.ContextMenuDemo;
 import biz.freshcode.learn.gwt.client.experiment.dnd.DndUi;
 import biz.freshcode.learn.gwt.client.experiment.dynamiclayout.DynamicLayoutDemo;
 import biz.freshcode.learn.gwt.client.experiment.flextable.FlexTableDemo;
-import biz.freshcode.learn.gwt.client.experiment.forms.Landing;
+import biz.freshcode.learn.gwt.client.experiment.forms.FormsDemo;
 import biz.freshcode.learn.gwt.client.experiment.forms2.Forms2Demo;
 import biz.freshcode.learn.gwt.client.experiment.grid.GwtGridDemo;
 import biz.freshcode.learn.gwt.client.experiment.grid.GxtGridDemo;
@@ -352,7 +352,7 @@ public class MainPanel extends Composite implements AcceptsOneWidget {
                                 .addItem(new MenuItem("Forms", new Command() {
                                     @Override
                                     public void execute() {
-                                        IsWidget w = GWT.create(Landing.class);
+                                        IsWidget w = GWT.create(FormsDemo.class);
                                         replaceContent(w.asWidget());
                                     }
                                 }))

@@ -5,6 +5,7 @@ import com.google.web.bindery.autobean.shared.AutoBean;
 import com.google.web.bindery.autobean.shared.AutoBeanFactory;
 
 import java.util.List;
+import java.util.Set;
 
 public interface FormBean {
     Factory FACTORY = GWT.create(Factory.class);
@@ -20,6 +21,10 @@ public interface FormBean {
     List<FormBeanChild> getChildren();
 
     void setChildren(List<FormBeanChild> subs);
+
+    Set<AmPm> getPreferredTimes();
+
+    void setPreferredTimes(Set<AmPm> s);
 
     public interface Factory extends AutoBeanFactory {
         AutoBean<FormBean> auto();
