@@ -7,6 +7,8 @@ import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.sencha.gxt.data.shared.ListStore;
+import com.sencha.gxt.data.shared.event.StoreRecordChangeEvent;
+import com.sencha.gxt.data.shared.event.StoreUpdateEvent;
 import com.sencha.gxt.widget.core.client.event.CompleteEditEvent;
 import com.sencha.gxt.widget.core.client.form.AdapterField;
 import com.sencha.gxt.widget.core.client.form.CheckBox;
@@ -47,9 +49,11 @@ public class PreferredTimesField extends AdapterField<Set<AmPm>> implements HasV
 
         GridInlineEditing<AmPmFlag> editing = new GridInlineEditing<AmPmFlag>(grid);
         editing.addEditor(colPref, new CheckBox());
+
 //        Interferes with editing process...
 //        CheckBoxCell cbc = new CheckBoxCell();
 //        colPref.setCell(cbc);
+
         grid.getView().setForceFit(true);
         return editing;
     }
@@ -68,6 +72,20 @@ public class PreferredTimesField extends AdapterField<Set<AmPm>> implements HasV
             public void onCompleteEdit(CompleteEditEvent<AmPmFlag> event) {
                 GWT.log("Edit complete");
                 setPublishedValue(getValue());
+            }
+        });
+
+        store.addStoreRecordChangeHandler(new StoreRecordChangeEvent.StoreRecordChangeHandler<AmPmFlag>() {
+            @Override
+            public void onRecordChange(StoreRecordChangeEvent<AmPmFlag> event) {
+                GWT.log("Record changed: " + event.getRecord().getModel());
+            }
+        });
+
+        store.addStoreUpdateHandler(new StoreUpdateEvent.StoreUpdateHandler<AmPmFlag>() {
+            @Override
+            public void onUpdate(StoreUpdateEvent<AmPmFlag> event) {
+                GWT.log("Store Update: " + event.getItems());
             }
         });
     }
