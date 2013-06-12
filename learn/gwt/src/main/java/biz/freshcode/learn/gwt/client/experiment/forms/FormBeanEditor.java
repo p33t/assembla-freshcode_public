@@ -132,7 +132,7 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
             public List<EditorError> validate(Editor<Set<AmPm>> editor, Set<AmPm> value) {
                 GWT.log("Validation");
                 List<EditorError> errors = newList();
-                if (value.isEmpty()) {
+                if (value == null || value.isEmpty()) {
                     errors.add(new DefaultEditorError(preferredTimes, "Need at least one value", value));
                 }
                 return errors;
