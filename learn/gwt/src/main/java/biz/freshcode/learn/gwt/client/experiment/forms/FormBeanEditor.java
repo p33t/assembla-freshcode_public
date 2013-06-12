@@ -6,13 +6,11 @@ import biz.freshcode.learn.gwt.client.builder.gxt.form.TextFieldBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.grid.ColumnConfigBuilder;
 import biz.freshcode.learn.gwt.client.uispike.builder.field.FieldLabelBuilder;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
-import com.google.gwt.cell.client.CheckboxCell;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.editor.client.Editor;
 import com.google.gwt.editor.client.EditorError;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
-import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.core.client.util.Util;
@@ -29,14 +27,13 @@ import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
 import com.sencha.gxt.widget.core.client.grid.ColumnModel;
 import com.sencha.gxt.widget.core.client.grid.Grid;
 import com.sencha.gxt.widget.core.client.grid.editing.GridEditing;
-import com.sencha.gxt.widget.core.client.grid.editing.GridInlineEditing;
 import com.sencha.gxt.widget.core.client.grid.editing.GridRowEditing;
 
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.*;
+import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newList;
 
 public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean> {
     TextField str;
@@ -46,7 +43,6 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
     @SuppressWarnings({"UnusedDeclaration"})
     ListStoreEditor<FormBeanChild> children = new ListStoreEditor<FormBeanChild>(childStore);
     PreferredTimesField preferredTimes;
-    private HTML feedback;
 
     @SuppressWarnings("unchecked")
     @Override
@@ -58,7 +54,6 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
         ColumnConfig<FormBeanChild, Long> durationCol;
         TextButton btnValidate;
         VerticalLayoutContainer w = new VerticalLayoutContainerBuilder()
-                .add(feedback = new HTML("<p>&nbsp;</p>"))
                 .add(new FieldLabelBuilder()
                         .text("Str")
                         .widget(str = new TextFieldBuilder()
@@ -71,7 +66,7 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
                 .add(btnValidate = new TextButton("Validate"))
                 .add(new FieldLabelBuilder()
                         .text("Preferred Times")
-                        .widget(preferredTimes = createPrefTimesField())
+                        .widget(preferredTimes = new PreferredTimesField())
                         .fieldLabel)
                 .add(new FieldLabelBuilder()
                         .text("Num")
@@ -167,33 +162,6 @@ public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean>
         hrMinEditor(editing, startCol);
         hrMinEditor(editing, durationCol);
         return w;
-    }
-
-    private PreferredTimesField createPrefTimesField() {
-        // no need to populate... set value will populate
-        ListStore<AmPmFlag> store = new ListStore<AmPmFlag>(AmPmFlag.ACCESS.id());
-        store.setAutoCommit(true);
-
-        ColumnConfig<AmPmFlag, Boolean> colPref;
-        @SuppressWarnings("unchecked")
-        Grid<AmPmFlag> grid = new Grid(store, new ColumnModel(newListFrom(
-                colPref = new ColumnConfigBuilder(AmPmFlag.ACCESS.flag())
-                        .header("Preferred")
-                        .width(1)
-                        .columnConfig,
-                new ColumnConfigBuilder(AmPmFlag.ACCESS.amPm())
-                        .header("Time")
-                        .width(3)
-                        .columnConfig
-        )));
-
-        GridInlineEditing<AmPmFlag> editing = new GridInlineEditing<AmPmFlag>(grid);
-        editing.addEditor(colPref, new CheckBox());
-//        Interferes with editing process...
-//        CheckBoxCell cbc = new CheckBoxCell();
-//        colPref.setCell(cbc);
-        grid.getView().setForceFit(true);
-        return new PreferredTimesField(editing);
     }
 
     // Setup grid inline editing for the given HrMin column.
