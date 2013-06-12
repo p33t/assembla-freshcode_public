@@ -12,5 +12,5 @@ public class PersonFormFields implements Editor<Person> {
     TextField name = new TextFieldBuilder()
             .addValidator(new MinLengthValidator(3))
             .textField;
-    PasswordEditor newPassword = new PasswordEditor();
+    PasswordEditorAlt newPassword = new PasswordEditorAlt();
 }
