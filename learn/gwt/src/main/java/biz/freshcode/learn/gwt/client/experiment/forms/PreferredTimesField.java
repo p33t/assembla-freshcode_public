@@ -14,12 +14,14 @@ import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
 import com.sencha.gxt.widget.core.client.grid.ColumnModel;
 import com.sencha.gxt.widget.core.client.grid.Grid;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
 import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.*;
 
 public class PreferredTimesField extends AdapterField<Set<AmPm>> implements HasValueChangeHandlers<Set<AmPm>> {
+    private static final Set<AmPm> EMPTY_FLAGS = Collections.emptySet();
     private final ListStore<AmPmFlag> store;
     private Set<AmPm> publishedValue;
 
@@ -78,19 +80,20 @@ public class PreferredTimesField extends AdapterField<Set<AmPm>> implements HasV
 
     @Override
     public void setValue(Set<AmPm> value) {
+        List<AmPmFlag> flags = asFlags(value);
+        store.replaceAll(flags);
+        setPublishedValue(value);
+    }
+
+    private List<AmPmFlag> asFlags(Set<AmPm> value) {
+        Set<AmPm> safe = value == null? EMPTY_FLAGS: value;
         List<AmPmFlag> flags = newList();
         for (AmPm ap : AmPm.values()) {
             AmPmFlag flag = new AmPmFlag(ap);
-            if (value.contains(ap)) flag.setFlag(true);
+            if (safe.contains(ap)) flag.setFlag(true);
             flags.add(flag);
         }
-
-        if (flags.equals(store.getAll())) GWT.log("No change");
-        else {
-            store.replaceAll(flags);
-            // NOTE: Ideally use ValueChangeEvent.fireIfNotEquals()
-            ValueChangeEvent.fire(this, value);
-        }
+        return flags;
     }
 
     @Override
@@ -99,6 +102,7 @@ public class PreferredTimesField extends AdapterField<Set<AmPm>> implements HasV
         for (AmPmFlag f : store.getAll()) {
             if (f.isFlag()) set.add(f.getAmPm());
         }
+        if (set.isEmpty()) return null;
         return set;
     }
 
