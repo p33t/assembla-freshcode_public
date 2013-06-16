@@ -8,6 +8,8 @@ import biz.freshcode.learn.gwtp.client.editform.EditForm;
 import biz.freshcode.learn.gwtp.client.home.Home;
 import biz.freshcode.learn.gwtp.client.paginggrid.PagingGrid;
 import biz.freshcode.learn.gwtp.client.util.IsWidgetImpl;
+import biz.freshcode.learn.gwtp.shared.generate.SomeBean;
+import com.google.gwt.core.shared.GWT;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -19,6 +21,9 @@ import com.sencha.gxt.widget.core.client.toolbar.FillToolItem;
 
 @Singleton
 public class AppMenu extends IsWidgetImpl<Widget> {
+    // Triggers invocation of MetaGenerator
+    SomeBean sb = GWT.create(SomeBean.class);
+
     @Inject
     private PlaceManager placeManager;
 

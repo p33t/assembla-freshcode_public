@@ -13,6 +13,7 @@ import java.io.PrintWriter;
 
 /**
  * TODO: Get this working at some point.  Would be nice to have constants to use.
+ * NOTE: Have a look in ./target/.generated/... for the resulting source code
  */
 public class MetaGenerator extends Generator {
 
@@ -43,6 +44,6 @@ public class MetaGenerator extends Generator {
         sourceWriter.print("}");
 
         sourceWriter.commit(logger);
-        return pkg + "." + XxxMeta;
+        return null; // null means instantiate original class... Don't return a subclass.
     }
 }

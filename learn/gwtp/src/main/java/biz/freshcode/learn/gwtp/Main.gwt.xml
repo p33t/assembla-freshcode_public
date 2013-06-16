@@ -18,6 +18,10 @@
     <!-- Must come after GXT module -->
     <inherits name='com.sencha.gxt.theme.gray.Gray'/>
 
+    <generate-with class="biz.freshcode.learn.gwtp.server.generate.MetaGenerator">
+        <when-type-assignable class="biz.freshcode.learn.gwtp.shared.generate.MetaGen"/>
+    </generate-with>
+
     <entry-point class='biz.freshcode.learn.gwtp.client.boot.EntryPoint'/>
 
     <!-- NOTE: 'client' is excluded from server -->
@@ -26,8 +30,4 @@
 
     <set-configuration-property name="gin.ginjector.modules"
                                 value="biz.freshcode.learn.gwtp.client.boot.AppModule"/>
-
-    <generate-with class="biz.freshcode.learn.gwtp.server.generate.MetaGenerator">
-        <when-type-assignable class="biz.freshcode.learn.gwtp.shared.generate.MetaGen" />
-    </generate-with>
 </module>
