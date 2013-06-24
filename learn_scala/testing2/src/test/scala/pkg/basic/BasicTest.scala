@@ -11,9 +11,10 @@ class BasicTest extends FunSuite {
   test("test infrastructure working") {
     val stack = new mutable.Stack[Int]
 
-    intercept[NoSuchElementException] {
+    val thrown = intercept[NoSuchElementException] {
       stack.pop()
     }
+    assert(thrown.getMessage === "head of empty list")
 
     stack.push(3)
     assert(stack.pop === 3)
