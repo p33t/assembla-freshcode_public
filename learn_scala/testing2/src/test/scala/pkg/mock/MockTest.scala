@@ -12,4 +12,10 @@ class MockTest extends FunSuite with MockFactory {
     (m.traitMethod _).expects("arg")
     m.traitMethod("arg")
   }
+
+  test("Basic stubbing (record then verify)") {
+    val s = stub[SomeTrait]
+    s.traitMethod("arg")
+    (s.traitMethod _).verify("arg")
+  }
 }
