@@ -35,6 +35,9 @@
   <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
   </component>
+  <component name="EntryPointsManager">
+    <entry_points version="2.0" />
+  </component>
   <component name="HighlightingAdvisor">
     <option name="SUGGEST_TYPE_AWARE_HIGHLIGHTING" value="false" />
   </component>
@@ -80,17 +83,6 @@
       </JAVADOC>
       <SOURCES>
         <root url="jar://$MAVEN_REPOSITORY$/log4j/log4j/1.2.17/log4j-1.2.17-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: org.scala-lang:scala-actors:2.10.0">
-      <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-actors/2.10.0/scala-actors-2.10.0.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-actors/2.10.0/scala-actors-2.10.0-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-actors/2.10.0/scala-actors-2.10.0-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: org.scala-lang:scala-compiler-bundle:2.10.1">
@@ -146,15 +138,15 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/scalamock/scalamock-scalatest-support_2.10/3.0.1/scalamock-scalatest-support_2.10-3.0.1-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.scalatest:scalatest_2.10:1.9.1">
+    <library name="Maven: org.scalatest:scalatest_2.10:2.0.M5b">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scalatest/scalatest_2.10/1.9.1/scalatest_2.10-1.9.1.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/scalatest/scalatest_2.10/2.0.M5b/scalatest_2.10-2.0.M5b.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scalatest/scalatest_2.10/1.9.1/scalatest_2.10-1.9.1-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/scalatest/scalatest_2.10/2.0.M5b/scalatest_2.10-2.0.M5b-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scalatest/scalatest_2.10/1.9.1/scalatest_2.10-1.9.1-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/scalatest/scalatest_2.10/2.0.M5b/scalatest_2.10-2.0.M5b-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: org.slf4j:slf4j-api:1.7.5">

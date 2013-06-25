@@ -46,12 +46,12 @@
         </dependency>
 
         <!-- Test -->
-        <dependency>
-            <groupId>org.scalatest</groupId>
-            <artifactId>scalatest_${scala.lib.version}</artifactId>
-            <version>1.9.1</version>
-            <scope>test</scope>
-        </dependency>
+        <!-- Let scalamock decide....  <dependency>-->
+            <!--<groupId>org.scalatest</groupId>-->
+            <!--<artifactId>scalatest_${scala.lib.version}</artifactId>-->
+            <!--<version>1.9.1</version>-->
+            <!--<scope>test</scope>-->
+        <!--</dependency>-->
 
         <!-- Trying to get tests working properly. -->
         <dependency>
@@ -62,12 +62,6 @@
         </dependency>
 
         <!-- Mocking with native scala -->
-        <dependency>
-            <groupId>org.scalamock</groupId>
-            <artifactId>scalamock-core_${scala.lib.version}</artifactId>
-            <version>3.0.1</version>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>org.scalamock</groupId>
             <artifactId>scalamock-scalatest-support_${scala.lib.version}</artifactId>
