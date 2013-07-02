@@ -6,9 +6,9 @@ import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.PopupViewImpl;
 
-public class ThePopupView extends PopupViewImpl {
+public class GxtPopupView extends PopupViewImpl {
     @Inject
-    public ThePopupView(EventBus eventBus) {
+    public GxtPopupView(EventBus eventBus) {
         super(eventBus);
         initWidget(new PopupPanelBuilder()
                 .autoHideEnabled(true)
