@@ -7,6 +7,7 @@ import biz.freshcode.learn.gwtp.client.compound.Compound;
 import biz.freshcode.learn.gwtp.client.editform.EditForm;
 import biz.freshcode.learn.gwtp.client.home.Home;
 import biz.freshcode.learn.gwtp.client.paginggrid.PagingGrid;
+import biz.freshcode.learn.gwtp.client.popup.PopupDemo;
 import biz.freshcode.learn.gwtp.client.util.IsWidgetImpl;
 import biz.freshcode.learn.gwtp.shared.generate.SomeBean;
 import com.google.gwt.core.shared.GWT;
@@ -22,6 +23,7 @@ import com.sencha.gxt.widget.core.client.toolbar.FillToolItem;
 @Singleton
 public class AppMenu extends IsWidgetImpl<Widget> {
     // Triggers invocation of MetaGenerator
+    @SuppressWarnings("UnusedDeclaration")
     SomeBean sb = GWT.create(SomeBean.class);
 
     @Inject
@@ -36,6 +38,7 @@ public class AppMenu extends IsWidgetImpl<Widget> {
                 .add(btn("Child2", Child2.TOKEN))
                 .add(btn("Paging Grid", PagingGrid.TOKEN))
                 .add(btn("Edit Form", EditForm.TOKEN))
+                .add(btn("Popup", PopupDemo.TOKEN))
                 .add(new FillToolItem())
                 .add(titler)
                 .toolBar);
