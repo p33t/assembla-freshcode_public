@@ -11,20 +11,23 @@ import com.gwtplatform.mvp.client.proxy.NavigationHandler;
 import com.sencha.gxt.widget.core.client.Window;
 import com.sencha.gxt.widget.core.client.event.HideEvent;
 
+/**
+ * An implementation of a PopupView that delegates (mostly) to a Gxt {@code Window}.
+ */
 public class WindowPopupImpl implements PopupView {
     private Window window;
     private HandlerRegistration hideRego;
     private final EventBus eventBus;
+    private HandlerRegistration closeRego;
+    private boolean needCenter;
     private final NavigationHandler hideOnNavigate = new NavigationHandler() {
         @Override
         public void onNavigation(NavigationEvent evt) {
             hide();
         }
     };
-    private HandlerRegistration closeRego;
-    private boolean needCenter;
 
-    public WindowPopupImpl(EventBus eventBus) {
+    protected WindowPopupImpl(EventBus eventBus) {
         this.eventBus = eventBus;
     }
 
