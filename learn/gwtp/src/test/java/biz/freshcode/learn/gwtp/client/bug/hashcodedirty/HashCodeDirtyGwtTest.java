@@ -2,10 +2,8 @@ package biz.freshcode.learn.gwtp.client.bug.hashcodedirty;
 
 import biz.freshcode.learn.gwtp.client.test.TestUtil;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.editor.client.Editor;
 import com.google.gwt.editor.client.SimpleBeanEditorDriver;
 import com.google.gwt.junit.client.GWTTestCase;
-import com.sencha.gxt.widget.core.client.form.TextField;
 
 import static biz.freshcode.learn.gwtp.shared.util.AppCollectionUtil.newSetFrom;
 
@@ -38,9 +36,20 @@ public class HashCodeDirtyGwtTest extends GWTTestCase {
         Parent p = new Parent();
         p.setAlts(newSetFrom(new AltHash("original")));
         driver.edit(p);
+
         assertFalse(driver.isDirty());
 
         editor.alts.setValue(newSetFrom(new AltHash("modified")));
+        driver.flush();
+        assertTrue(driver.isDirty());
+
+        AltHash ah = new AltHash("original");
+        editor.alts.setValue(newSetFrom(ah));
+        driver.flush();
+        assertFalse(driver.isDirty());
+
+        // change it behind the scenes
+        ah.setStr("modified");
         driver.flush();
         assertTrue(driver.isDirty());
     }
