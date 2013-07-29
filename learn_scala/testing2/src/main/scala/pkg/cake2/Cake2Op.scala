@@ -10,6 +10,7 @@ object Cake2Op {
   trait Trait {
     def outOfBand: String
 
+    // Could get away with def here but purple is nice effect in client code
     val cakeOp = Cake2Op(outOfBand) _
   }
 }
