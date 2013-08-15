@@ -2,6 +2,7 @@ package pckg_2_10
 
 import scala.collection.JavaConverters
 import JavaConverters._
+import pckg_2_10.fixture.AnIterable
 
 object JavaConvertersDemo {
   def main(args: Array[String]) {
@@ -12,6 +13,8 @@ object JavaConvertersDemo {
   def iterOp() {
     val it: java.lang.Iterable[String] = freshList()
     it.asScala.foreach(println)
+
+    new AnIterable().asScala.foreach(println)
   }
 
   def listOp() {
