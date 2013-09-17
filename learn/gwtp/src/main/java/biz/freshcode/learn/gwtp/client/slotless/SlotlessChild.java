@@ -1,5 +1,6 @@
 package biz.freshcode.learn.gwtp.client.slotless;
 
+import com.google.gwt.core.shared.GWT;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
@@ -12,6 +13,13 @@ public class SlotlessChild extends Presenter<SlotlessChild.View, SlotlessChild.P
     @Inject
     public SlotlessChild(EventBus eventBus, View view, Proxy proxy) {
         super(eventBus, view, proxy);
+    }
+
+    @Override
+    protected void onReveal() {
+        // NOTE: This is not being called when not part of a slot!!!
+        GWT.log("SlotlessChild.onReveal()");
+        super.onReveal();
     }
 
     @ProxyStandard
