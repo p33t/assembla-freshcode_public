@@ -8,6 +8,7 @@ import biz.freshcode.learn.gwtp.client.home.HomeViewImpl;
 import biz.freshcode.learn.gwtp.client.paginggrid.PagingGrid;
 import biz.freshcode.learn.gwtp.client.paginggrid.PagingGridViewImpl;
 import biz.freshcode.learn.gwtp.client.popup.PopupDemo;
+import biz.freshcode.learn.gwtp.client.slotless.SlotlessDemo;
 import biz.freshcode.learn.gwtp.shared.AppUtil;
 import biz.freshcode.learn.gwtp.shared.boot.SessionInfo;
 import com.gwtplatform.dispatch.client.gin.DispatchAsyncModule;
@@ -50,5 +51,6 @@ public class AppModule extends AbstractPresenterModule {
         bindPresenter(PagingGrid.class, PagingGrid.View.class, PagingGridViewImpl.class, PagingGrid.Proxy.class);
         bindPresenter(EditForm.class, EditForm.View.class, EditFormViewImpl.class, EditForm.Proxy.class);
         bindPresenter(PopupDemo.class, PopupDemo.Proxy.class);
+        bindPresenter(SlotlessDemo.class, SlotlessDemo.Proxy.class);
     }
 }

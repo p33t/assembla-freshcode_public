@@ -8,6 +8,7 @@ import biz.freshcode.learn.gwtp.client.editform.EditForm;
 import biz.freshcode.learn.gwtp.client.home.Home;
 import biz.freshcode.learn.gwtp.client.paginggrid.PagingGrid;
 import biz.freshcode.learn.gwtp.client.popup.PopupDemo;
+import biz.freshcode.learn.gwtp.client.slotless.SlotlessDemo;
 import biz.freshcode.learn.gwtp.client.util.IsWidgetImpl;
 import biz.freshcode.learn.gwtp.shared.generate.SomeBean;
 import com.google.gwt.core.shared.GWT;
@@ -39,6 +40,7 @@ public class AppMenu extends IsWidgetImpl<Widget> {
                 .add(btn("Paging Grid", PagingGrid.TOKEN))
                 .add(btn("Edit Form", EditForm.TOKEN))
                 .add(btn("Popup", PopupDemo.TOKEN))
+                .add(btn("Slotless", SlotlessDemo.TOKEN))
                 .add(new FillToolItem())
                 .add(titler)
                 .toolBar);
