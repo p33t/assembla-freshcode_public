@@ -78,6 +78,7 @@ public class GanttDemo extends AbstractIsWidget<BorderLayoutContainer> {
                         .addAxis(new NumericAxisBuilder<ChartElem>()
                                 .position(Chart.Position.LEFT)
                                 .titleConfig(new TextSprite("Second Axis"))
+                                .interval(1)
                                 .construct(new Construct<NumericAxisBuilder<ChartElem>>() {
                                     @Override
                                     public void run() {
