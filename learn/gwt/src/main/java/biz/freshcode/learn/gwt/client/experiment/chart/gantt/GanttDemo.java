@@ -4,6 +4,7 @@ import biz.freshcode.learn.gwt.client.builder.gxt.chart.ChartBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.chart.LegendBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.chart.axis.NumericAxisBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.chart.series.LineSeriesBuilder;
+import biz.freshcode.learn.gwt.client.builder.gxt.chart.series.SeriesToolTipConfigBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.container.BorderLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.experiment.chart.gantt.reuse.GanttBar;
 import biz.freshcode.learn.gwt.client.experiment.chart.gantt.reuse.GanttInfo;
@@ -12,8 +13,10 @@ import biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartElem;
 import biz.freshcode.learn.gwt.client.uispike.builder.Construct;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import com.sencha.gxt.chart.client.chart.Chart;
+import com.sencha.gxt.chart.client.chart.series.SeriesLabelProvider;
 import com.sencha.gxt.chart.client.draw.RGB;
 import com.sencha.gxt.chart.client.draw.sprite.TextSprite;
+import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.core.client.util.PrecisePoint;
 import com.sencha.gxt.data.shared.LabelProvider;
 import com.sencha.gxt.data.shared.ListStore;
@@ -95,12 +98,21 @@ public class GanttDemo extends AbstractIsWidget<BorderLayoutContainer> {
                             @Override
                             public void run() {
                                 for (ChartElem.AccessY field : fields) {
-                                    GanttBar bar = info.getBar(field.getPath());
+                                    final GanttBar bar = info.getBar(field.getPath());
                                     builder.addSeries(new LineSeriesBuilder<ChartElem>()
                                             .yAxisPosition(Chart.Position.LEFT)
                                             .yField(field)
                                             .xAxisPosition(Chart.Position.TOP)
-//                                            .toolTipConfig(new SeriesToolTipConfig<ChartElem>())
+                                            // Man this is painful
+                                            .toolTipConfig(new SeriesToolTipConfigBuilder<ChartElem>()
+                                                    .labelProvider(new SeriesLabelProvider<ChartElem>() {
+                                                        @Override
+                                                        public String getLabel(ChartElem item, ValueProvider<? super ChartElem, ? extends Number> valueProvider) {
+                                                            return bar.getName();
+                                                        }
+                                                    })
+                                                    .seriesToolTipConfig)
+//                                            .highlighter()
                                                     // needed to orient lines
                                             .xField(ChartElem.Access.ACCESS.x())
                                             .stroke(new RGB(bar.getColour()))
