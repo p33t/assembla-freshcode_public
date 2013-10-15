@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class GanttInfo {
     private final Iterable<GanttBar> bars;
+
     private final Date zeroTime;
     private final String title;
 
@@ -11,5 +12,17 @@ public class GanttInfo {
         this.bars = bars;
         this.zeroTime = zeroTime;
         this.title = title;
+    }
+
+    public Iterable<GanttBar> getBars() {
+        return bars;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public Date getZeroTime() {
+        return zeroTime;
     }
 }
