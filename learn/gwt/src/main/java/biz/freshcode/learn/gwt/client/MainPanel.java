@@ -11,6 +11,7 @@ import biz.freshcode.learn.gwt.client.experiment.appearance.AppearanceDemo;
 import biz.freshcode.learn.gwt.client.experiment.busy.BusyDemo;
 import biz.freshcode.learn.gwt.client.experiment.celltable.CellTableDemo;
 import biz.freshcode.learn.gwt.client.experiment.chart.ChartDemo;
+import biz.freshcode.learn.gwt.client.experiment.chart.gantt.GanttDemo;
 import biz.freshcode.learn.gwt.client.experiment.contextmenu.ContextMenuDemo;
 import biz.freshcode.learn.gwt.client.experiment.dnd.DndUi;
 import biz.freshcode.learn.gwt.client.experiment.dynamiclayout.DynamicLayoutDemo;
@@ -253,6 +254,12 @@ public class MainPanel extends Composite implements AcceptsOneWidget {
                                 .addItem(new MenuItem("Chart", new Command() {
                                     public void execute() {
                                         IsWidget w = GWT.create(ChartDemo.class);
+                                        replaceContent(w);
+                                    }
+                                }))
+                                .addItem(new MenuItem("Gantt Chart", new Command() {
+                                    public void execute() {
+                                        IsWidget w = GWT.create(GanttDemo.class);
                                         replaceContent(w);
                                     }
                                 }))
