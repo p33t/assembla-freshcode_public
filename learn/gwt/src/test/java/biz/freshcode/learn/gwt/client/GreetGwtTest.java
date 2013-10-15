@@ -22,7 +22,8 @@ public class GreetGwtTest extends GWTTestCase {
    * Must refer to a valid module that sources this class.
    */
   public String getModuleName() {
-    return "biz.freshcode.learn.gwt.Mod1JUnit";
+    return "biz.freshcode.learn.gwt.Mod1";
+//    return "biz.freshcode.learn.gwt.Mod1JUnit";
   }
 
   /**
