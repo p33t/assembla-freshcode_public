@@ -126,11 +126,11 @@ public class GanttDemo extends AbstractIsWidget<BorderLayoutContainer> {
                                 }
                             }
                         })
-                        .legend(new LegendBuilder<ChartElem>()
-                                .position(Chart.Position.RIGHT)
-                                .itemHighlighting(true)
-                                .itemHiding(true)
-                                .legend)
+//                        .legend(new LegendBuilder<ChartElem>()
+//                                .position(Chart.Position.RIGHT)
+//                                .itemHighlighting(true)
+//                                .itemHiding(true)
+//                                .legend)
                         .chart)
                 .borderLayoutContainer;
     }
@@ -154,7 +154,12 @@ public class GanttDemo extends AbstractIsWidget<BorderLayoutContainer> {
         List<GanttBar> bars = newListFrom(
                 new GanttBar("id1", "Alpha", "Maintenance", "#ff0000", new StartDurn(6 * HR, 4 * HR)),
                 new GanttBar("id2", "Bravo", "Minow Inbound", "#00ff00", new StartDurn(8 * HR, 3 * HR)),
-                new GanttBar("id3", "Bravo", "Whisky & Coke Outbound", "#0000ff", new StartDurn(12 * HR, 3 * HR))
+                new GanttBar("id3", "Bravo", "Whisky & Coke Outbound", "#0000ff", new StartDurn(12 * HR, 3 * HR)),
+                new GanttBar("id4", "Charlie", "Whisky & Coke Outbound", "#0000ff", new StartDurn(12 * HR, 3 * HR)),
+                new GanttBar("id5", "Delta", "Maintenance", "#8f0000", new StartDurn(10 * HR, 4 * HR)),
+                new GanttBar("id6", "Echo", "Dreamy Inbound", "#008f00", new StartDurn(13 * HR, 3 * HR)),
+                new GanttBar("id7", "Echo", "Rocker Outbound", "#00008f", new StartDurn(16 * HR, 4 * HR)),
+                new GanttBar("id8", "Foxtrot", "Rocker Outbound", "#00008f", new StartDurn(16 * HR, 4 * HR))
         );
         return new GanttInfo(bars, new Date(), 24 * HR, "Today");
     }
