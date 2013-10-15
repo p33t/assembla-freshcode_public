@@ -11,6 +11,10 @@ public class StartDurn {
         this.start = start;
         this.durn = durn;
     }
+    
+    public int getFinex() {
+        return start + durn;
+    }
 
     public int getDurn() {
         return durn;

@@ -2,15 +2,18 @@ package biz.freshcode.learn.gwt.client.experiment.chart.gantt.reuse;
 
 import java.util.Date;
 
+import static biz.freshcode.learn.gwt.client.util.ExceptionUtil.illegalArg;
+
 public class GanttInfo {
     private final Iterable<GanttBar> bars;
-
     private final Date zeroTime;
+    private final int windowSize;
     private final String title;
 
-    public GanttInfo(Iterable<GanttBar> bars, Date zeroTime, String title) {
+    public GanttInfo(Iterable<GanttBar> bars, Date zeroTime, int windowSize, String title) {
         this.bars = bars;
         this.zeroTime = zeroTime;
+        this.windowSize = windowSize;
         this.title = title;
     }
 
@@ -22,7 +25,18 @@ public class GanttInfo {
         return title;
     }
 
+    public int getWindowSize() {
+        return windowSize;
+    }
+
     public Date getZeroTime() {
         return zeroTime;
+    }
+
+    public GanttBar getBar(String id) {
+        for (GanttBar bar: bars) {
+            if (bar.getId().equals(id)) return bar;
+        }
+        throw illegalArg("Unknown bar.  Id: " + id);
     }
 }
