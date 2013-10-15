@@ -11,9 +11,7 @@ import biz.freshcode.learn.gwt.client.experiment.chart.gantt.reuse.StartDurn;
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartElem;
 import biz.freshcode.learn.gwt.client.uispike.builder.Construct;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
-import com.google.gwt.core.shared.GWT;
 import com.sencha.gxt.chart.client.chart.Chart;
-import com.sencha.gxt.chart.client.chart.series.SeriesToolTipConfig;
 import com.sencha.gxt.chart.client.draw.RGB;
 import com.sencha.gxt.chart.client.draw.sprite.TextSprite;
 import com.sencha.gxt.core.client.util.PrecisePoint;
@@ -28,7 +26,6 @@ import java.util.Map;
 import static biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartElem.Access.ACCESS;
 import static biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartUtil.interpolate;
 import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.*;
-import static java.lang.Math.abs;
 
 public class GanttDemo extends AbstractIsWidget<BorderLayoutContainer> {
     private static final int HR = 60;
@@ -44,15 +41,16 @@ public class GanttDemo extends AbstractIsWidget<BorderLayoutContainer> {
         }
 
         List<ChartElem> data = constructSeries(info, order);
-        GWT.log("Data: " + data);
+//        GWT.log("Data: " + data);
         store.addAll(data);
 
         final List<ChartElem.AccessY> fields = newList();
         LabelProvider<Number> yLabels = new LabelProvider<Number>() {
             @Override
             public String getLabel(Number item) {
-                int ix = abs(item.intValue() + 1);
-                if (ix < order.size()) return order.get(ix);
+                int value = item.intValue();
+                int ix = -value - 1;
+                if (ix >= 0 && ix < order.size()) return order.get(ix) + value;
                 return ""; //"Missing " + ix;
             }
         };
@@ -87,8 +85,8 @@ public class GanttDemo extends AbstractIsWidget<BorderLayoutContainer> {
                                     }
                                 })
                                 .labelProvider(yLabels)
-                                .maximum(0)
-                                .minimum(-order.size() - 1)
+                                .maximum(-0.5)
+                                .minimum(-order.size() - .5)
                                 //.hidden(true)... might be useful on occasion
                                 .numericAxis)
                         .construct(new Construct<ChartBuilder<ChartElem>>() {
