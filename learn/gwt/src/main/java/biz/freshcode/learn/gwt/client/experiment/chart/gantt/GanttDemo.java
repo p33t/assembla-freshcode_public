@@ -34,23 +34,25 @@ public class GanttDemo extends AbstractIsWidget<BorderLayoutContainer> {
     protected BorderLayoutContainer createWidget() {
         final GanttInfo info = createData();
 
-        ListStore<ChartElem> store = new ListStore<ChartElem>(ACCESS.xKey());
+        // Could potentially use a comparator here
         final List<String> order = newList();
         for (GanttBar bar : info.getBars()) {
-            if (!order.contains(bar.getResource())) order.add(bar.getResource());
+            String resource = bar.getResource();
+            if (!order.contains(resource)) order.add(resource);
         }
 
         List<ChartElem> data = constructSeries(info, order);
 //        GWT.log("Data: " + data);
+        ListStore<ChartElem> store = new ListStore<ChartElem>(ACCESS.xKey());
         store.addAll(data);
 
         final List<ChartElem.AccessY> fields = newList();
         LabelProvider<Number> yLabels = new LabelProvider<Number>() {
             @Override
             public String getLabel(Number item) {
-                int value = item.intValue();
+                int value = (int) Math.round(item.doubleValue());
                 int ix = -value - 1;
-                if (ix >= 0 && ix < order.size()) return order.get(ix) + value;
+                if (ix >= 0 && ix < order.size()) return order.get(ix);
                 return ""; //"Missing " + ix;
             }
         };
