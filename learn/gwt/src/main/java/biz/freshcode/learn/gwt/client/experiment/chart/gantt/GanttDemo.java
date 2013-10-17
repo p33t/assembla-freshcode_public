@@ -1,7 +1,6 @@
 package biz.freshcode.learn.gwt.client.experiment.chart.gantt;
 
 import biz.freshcode.learn.gwt.client.builder.gxt.chart.ChartBuilder;
-import biz.freshcode.learn.gwt.client.builder.gxt.chart.LegendBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.chart.axis.NumericAxisBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.chart.series.LineSeriesBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.chart.series.SeriesToolTipConfigBuilder;
@@ -104,7 +103,7 @@ public class GanttDemo extends AbstractIsWidget<BorderLayoutContainer> {
                                             .yAxisPosition(Chart.Position.LEFT)
                                             .yField(field)
                                             .xAxisPosition(Chart.Position.TOP)
-                                            // Man this is painful
+                                                    // Man this is painful
                                             .toolTipConfig(new SeriesToolTipConfigBuilder<ChartElem>()
                                                     .labelProvider(new SeriesLabelProvider<ChartElem>() {
                                                         @Override
