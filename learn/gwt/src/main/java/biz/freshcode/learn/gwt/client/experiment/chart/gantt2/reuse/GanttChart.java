@@ -29,6 +29,7 @@ import java.util.Map;
 import static biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartElem.Access.ACCESS;
 import static biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartUtil.interpolate;
 import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.*;
+import static biz.freshcode.learn.gwt.client.util.AppObjectUtils.safeEquals;
 import static biz.freshcode.learn.gwt.client.util.ExceptionUtil.illegalArg;
 import static com.sencha.gxt.chart.client.chart.Chart.Position;
 
@@ -40,6 +41,7 @@ public class GanttChart extends Composite implements SeriesSelectionEvent.Series
     public static final int STROKE_FOCUSED = 23;
     private final List<HasIdTitle> resources = newList();
     private Date zeroTime = new Date();
+    private String lastFocusIdOrNull;
 
     public GanttChart() {
         initWidget(new ChartBuilder<ChartElem>()
@@ -138,6 +140,13 @@ public class GanttChart extends Composite implements SeriesSelectionEvent.Series
         }
 
         ch.redrawChart();
+    }
+
+    private void setLastFocusId(String idOrNull) {
+        if (!safeEquals(lastFocusIdOrNull, idOrNull)) {
+            lastFocusIdOrNull = idOrNull;
+            // TODO: emit event... need an event bus.
+        }
     }
 
     @Override
