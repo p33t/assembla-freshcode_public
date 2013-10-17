@@ -80,7 +80,6 @@ public class GanttChart extends Composite {
         left.setMinimum(Math.min(LEFT_MIN, resourceIndexToValue(resourceCount)));
         left.setSteps(resourceCount + 1);
 
-        // necessary?
         ch.redrawChart();
     }
 
@@ -115,7 +114,6 @@ public class GanttChart extends Composite {
         List<ChartElem> interpolated = interpolate(map);
         ch.getStore().addAll(interpolated);
 
-        // necessary?
         ch.redrawChart();
     }
 
