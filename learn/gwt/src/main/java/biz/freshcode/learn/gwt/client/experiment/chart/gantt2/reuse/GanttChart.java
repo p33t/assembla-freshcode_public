@@ -6,10 +6,11 @@ import biz.freshcode.learn.gwt.client.builder.gxt.chart.series.LineSeriesBuilder
 import biz.freshcode.learn.gwt.client.builder.gxt.chart.series.SeriesToolTipConfigBuilder;
 import biz.freshcode.learn.gwt.client.experiment.chart.gantt.reuse.StartDurn;
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartElem;
-import com.google.gwt.core.client.GWT;
 import com.sencha.gxt.chart.client.chart.Chart;
 import com.sencha.gxt.chart.client.chart.axis.NumericAxis;
+import com.sencha.gxt.chart.client.chart.series.LineHighlighter;
 import com.sencha.gxt.chart.client.chart.series.LineSeries;
+import com.sencha.gxt.chart.client.chart.series.Series;
 import com.sencha.gxt.chart.client.chart.series.SeriesLabelProvider;
 import com.sencha.gxt.chart.client.draw.RGB;
 import com.sencha.gxt.chart.client.draw.sprite.TextSprite;
@@ -34,6 +35,8 @@ public class GanttChart extends Composite {
     private static final int HR = 60;
     private static final double LEFT_MIN = -1;
     private static final String PRIMER = "primer";
+    public static final int STROKE_NON_FOCUSED = 18;
+    public static final int STROKE_FOCUSED = 23;
     private final List<HasIdTitle> resources = newList();
     private Date zeroTime = new Date();
 
@@ -68,7 +71,7 @@ public class GanttChart extends Composite {
         zeroTime = info.getZeroTime();
 
         Chart<ChartElem> ch = getWidget();
-        ch.setTitle(info.getTitle());
+// Annoying tooltip        ch.setTitle(info.getTitle());
 
         NumericAxis<ChartElem> top = getNumericAxis(Position.TOP);
         top.setMaximum(info.getWindowSize());
@@ -113,6 +116,25 @@ public class GanttChart extends Composite {
 
         List<ChartElem> interpolated = interpolate(map);
         ch.getStore().addAll(interpolated);
+
+        ch.redrawChart();
+    }
+
+    public void unfocus() {
+        focusBar(null);
+    }
+
+    public void focusBar(String idOrNull) {
+        Chart<ChartElem> ch = getWidget();
+        for (Series<ChartElem> s : ch.getSeries()) {
+            LineSeries<ChartElem> ls = (LineSeries<ChartElem>) s;
+            String barId = ls.getYField().getPath();
+            boolean focused = barId.equals(idOrNull);
+            // NOTES: Fill doesn't seem to work, highlight might only be for hover over legend
+            // Markers suffer from interpolated points
+            ls.setStrokeWidth(focused ? STROKE_FOCUSED : STROKE_NON_FOCUSED);
+            ls.setShowMarkers(focused);
+        }
 
         ch.redrawChart();
     }
@@ -167,8 +189,11 @@ public class GanttChart extends Composite {
                         // needed to orient lines
                 .xField(ACCESS.x())
                 .stroke(colour)
-                .strokeWidth(20)
+                .strokeWidth(STROKE_NON_FOCUSED)
+                        // I think fill is useless (might be legend oriented)
                 .showMarkers(false)
+//                .highlighter(new LineHighlighter())
+                .lineHighlighter(new LineHighlighter())
                 .gapless(false)
                 .lineSeries;
     }
@@ -198,9 +223,7 @@ public class GanttChart extends Composite {
             HasIdTitle r = iterator.next();
             if (r.getId().equals(id)) {
                 int ix = iterator.previousIndex();
-                int value = resourceIndexToValue(ix);
-                GWT.log("Resource " + id + " has value " + value);
-                return value;
+                return resourceIndexToValue(ix);
             }
         }
         throw illegalArg("Unknown resource " + id);
