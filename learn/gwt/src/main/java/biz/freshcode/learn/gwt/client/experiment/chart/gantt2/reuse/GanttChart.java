@@ -37,15 +37,12 @@ public class GanttChart extends Composite {
 
     public GanttChart() {
         ChartElem.AccessY primer = new ChartElem.AccessY("primer");
+
+        // need priming data otherwise chart doesn't show :(
         ListStore<ChartElem> store = new ListStore<ChartElem>(ACCESS.xKey());
-
         ChartElem p1 = new ChartElem(60);
-        p1.setY("primer", 1.0);
+        p1.setY(primer.getPath(), 1.0);
         store.add(p1);
-
-        ChartElem p2 = new ChartElem(120);
-        p2.setY("primer", 1.0);
-        store.add(p2);
 
         initWidget(new ChartBuilder<ChartElem>()
                 .store(store)
