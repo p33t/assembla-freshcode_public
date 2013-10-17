@@ -6,7 +6,6 @@ import biz.freshcode.learn.gwt.client.builder.gxt.chart.series.LineSeriesBuilder
 import biz.freshcode.learn.gwt.client.builder.gxt.chart.series.SeriesToolTipConfigBuilder;
 import biz.freshcode.learn.gwt.client.experiment.chart.gantt.reuse.StartDurn;
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartElem;
-import com.google.gwt.core.client.GWT;
 import com.sencha.gxt.chart.client.chart.Chart;
 import com.sencha.gxt.chart.client.chart.axis.NumericAxis;
 import com.sencha.gxt.chart.client.chart.event.SeriesSelectionEvent;
@@ -156,11 +155,19 @@ public class GanttChart extends Composite implements SeriesSelectionEvent.Series
     private void clearChart(boolean clearResources) {
         Chart<ChartElem> ch = getWidget();
         ch.getStore().clear();
-        ch.getSeries().clear();
+        for (int i = ch.getSeries().size() - 1; i >= 0; i--) {
+            ch.removeSeries(i);
+        }
+
         if (clearResources) resources.clear();
 
         NumericAxis<ChartElem> left = getNumericAxis(Position.LEFT);
-        left.getFields().clear();
+        List<ValueProvider> l = newList();
+        l.addAll(left.getFields());
+        for (ValueProvider vp : l) {
+            //noinspection unchecked
+            left.removeField(vp);
+        }
     }
 
     // need priming data otherwise chart doesn't show :(
