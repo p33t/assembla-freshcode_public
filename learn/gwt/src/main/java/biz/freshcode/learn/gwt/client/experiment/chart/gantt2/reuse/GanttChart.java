@@ -51,7 +51,7 @@ public class GanttChart extends Composite {
                 .addAxis(new NumericAxisBuilder<ChartElem>()
                         .position(Position.LEFT)
                         .titleConfig(new TextSprite("Resources"))
-                        .interval(1)
+//                        .interval(1) doesn't seem to work.... too many steps!
                         .labelProvider(new YLabels())
                         .maximum(0)
                         .minimum(LEFT_MIN)
@@ -63,29 +63,29 @@ public class GanttChart extends Composite {
     }
 
     public void configure(ChartInfo info) {
-        Chart<ChartElem> ch = getWidget();
-        ch.setTitle(info.getTitle());
-        ch.getStore().clear();
-        ch.getSeries().clear();
-
-        resources.clear();
+        clearChart(true);
         resources.addAll(info.getResources());
         zeroTime = info.getZeroTime();
+
+        Chart<ChartElem> ch = getWidget();
+        ch.setTitle(info.getTitle());
 
         NumericAxis<ChartElem> top = getNumericAxis(Position.TOP);
         top.setMaximum(info.getWindowSize());
 
-        NumericAxis<ChartElem> left = getNumericAxis(Position.LEFT);
-        left.setMinimum(Math.min(LEFT_MIN, resourceIndexToValue(info.getResources().size())));
-        left.getFields().clear();
-
         primeChart();
+
+        NumericAxis<ChartElem> left = getNumericAxis(Position.LEFT);
+        int resourceCount = info.getResources().size();
+        left.setMinimum(Math.min(LEFT_MIN, resourceIndexToValue(resourceCount)));
+        left.setSteps(resourceCount + 1);
 
         // necessary?
         ch.redrawChart();
     }
 
     public void replaceBars(Iterable<BarInfo> bars) {
+        clearChart(false);
         Map<String, List<PrecisePoint>> map = newMap();
         for (BarInfo bar : bars) {
             Integer y = resourceToValue(bar.getResourceId());
@@ -95,23 +95,44 @@ public class GanttChart extends Composite {
                     new PrecisePoint(sd.getStart() + sd.getDurn(), y)
             ));
         }
-        List<ChartElem> interpolated = interpolate(map);
 
-        NumericAxis<ChartElem> top = getNumericAxis(Position.LEFT);
-        List<ChartElem.AccessY> fields = newList();
+        if (map.isEmpty()) {
+            primeChart();
+            return;
+        }
+
         Chart<ChartElem> ch = getWidget();
-//        List<Series<ChartElem>> series = ch.getSeries();
-//        for (BarInfo bar: bars) {
-//
-//        }
-        // reuse the fields
-        // TODO
+        NumericAxis<ChartElem> left = getNumericAxis(Position.LEFT);
+
+        for (BarInfo bar : bars) {
+            ChartElem.AccessY f = new ChartElem.AccessY(bar.getId());
+            left.addField(f);
+
+            LineSeries<ChartElem> s = createSeries(f, bar.getColour());
+            ch.addSeries(s);
+        }
+
+        List<ChartElem> interpolated = interpolate(map);
+        ch.getStore().addAll(interpolated);
+
+        // necessary?
+        ch.redrawChart();
     }
 
     @Override
     protected Chart<ChartElem> getWidget() {
         //noinspection unchecked
         return (Chart<ChartElem>) super.getWidget();
+    }
+
+    private void clearChart(boolean clearResources) {
+        Chart<ChartElem> ch = getWidget();
+        ch.getStore().clear();
+        ch.getSeries().clear();
+        if (clearResources) resources.clear();
+
+        NumericAxis<ChartElem> left = getNumericAxis(Position.LEFT);
+        left.getFields().clear();
     }
 
     // need priming data otherwise chart doesn't show :(
@@ -127,10 +148,10 @@ public class GanttChart extends Composite {
 
         // add config
         getNumericAxis(Position.LEFT).addField(primer);
-        ch.addSeries(createSeries(primer));
+        ch.addSeries(createSeries(primer, new RGB("#000000")));
     }
 
-    private LineSeries<ChartElem> createSeries(final ChartElem.AccessY access) {
+    private LineSeries<ChartElem> createSeries(final ChartElem.AccessY access, RGB colour) {
         return new LineSeriesBuilder<ChartElem>()
                 .yAxisPosition(Position.LEFT)
                 .yField(access)
@@ -147,7 +168,7 @@ public class GanttChart extends Composite {
                         //                                            .highlighter()
                         // needed to orient lines
                 .xField(ACCESS.x())
-                .stroke(new RGB("#000000"))
+                .stroke(colour)
                 .strokeWidth(20)
                 .showMarkers(false)
                 .gapless(false)
@@ -160,11 +181,11 @@ public class GanttChart extends Composite {
     }
 
     private int resourceIndexToValue(int ix) {
-        return -ix;
+        return -(ix + 1);
     }
 
     private int numberToResourceIndex(Integer num) {
-        return -num;
+        return -num - 1;
     }
 
     private HasIdTitle numberToResource(Integer num) {
@@ -195,9 +216,9 @@ public class GanttChart extends Composite {
         public String getLabel(Number item) {
             int num = item.intValue();
             try {
-                return numberToResource(num).getTitle() + num;
+                return numberToResource(num).getTitle();
             } catch (IndexOutOfBoundsException e) {
-                return "N/A" + item;
+                return "N/A";
             }
         }
     }

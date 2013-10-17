@@ -17,7 +17,7 @@ public class BarInfo {
         this.startDurn = startDurn;
         this.resourceId = resourceId;
     }
-    
+
     public RGB getColour() {
         return colour;
     }
@@ -33,7 +33,7 @@ public class BarInfo {
     public StartDurn getStartDurn() {
         return startDurn;
     }
-    
+
     public String getTitle() {
         return title;
     }
