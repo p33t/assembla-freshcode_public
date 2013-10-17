@@ -6,6 +6,7 @@ import biz.freshcode.learn.gwt.client.builder.gxt.chart.series.LineSeriesBuilder
 import biz.freshcode.learn.gwt.client.builder.gxt.chart.series.SeriesToolTipConfigBuilder;
 import biz.freshcode.learn.gwt.client.experiment.chart.gantt.reuse.StartDurn;
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartElem;
+import com.google.gwt.core.client.GWT;
 import com.sencha.gxt.chart.client.chart.Chart;
 import com.sencha.gxt.chart.client.chart.axis.NumericAxis;
 import com.sencha.gxt.chart.client.chart.series.LineSeries;
@@ -31,7 +32,7 @@ import static com.sencha.gxt.chart.client.chart.Chart.Position;
 
 public class GanttChart extends Composite {
     private static final int HR = 60;
-    private static final double LEFT_MIN = -1.5;
+    private static final double LEFT_MIN = -1;
     private static final String PRIMER = "primer";
     private final List<HasIdTitle> resources = newList();
     private Date zeroTime = new Date();
@@ -52,7 +53,7 @@ public class GanttChart extends Composite {
                         .titleConfig(new TextSprite("Resources"))
                         .interval(1)
                         .labelProvider(new YLabels())
-                        .maximum(-0.5)
+                        .maximum(0)
                         .minimum(LEFT_MIN)
                         //.hidden(true)... might be useful on occasion
                         .numericAxis)
@@ -64,20 +65,19 @@ public class GanttChart extends Composite {
     public void configure(ChartInfo info) {
         Chart<ChartElem> ch = getWidget();
         ch.setTitle(info.getTitle());
-
-        NumericAxis<ChartElem> top = getNumericAxis(Position.TOP);
-        top.setMaximum(info.getWindowSize());
-        NumericAxis<ChartElem> left = getNumericAxis(Position.LEFT);
-        left.setMinimum(Math.min(LEFT_MIN, -(resources.size() + 0.5)));
-
-        // yikes... this is the original
-        left.getFields().clear();
         ch.getStore().clear();
         ch.getSeries().clear();
 
         resources.clear();
         resources.addAll(info.getResources());
         zeroTime = info.getZeroTime();
+
+        NumericAxis<ChartElem> top = getNumericAxis(Position.TOP);
+        top.setMaximum(info.getWindowSize());
+
+        NumericAxis<ChartElem> left = getNumericAxis(Position.LEFT);
+        left.setMinimum(Math.min(LEFT_MIN, resourceIndexToValue(info.getResources().size())));
+        left.getFields().clear();
 
         primeChart();
 
@@ -129,7 +129,7 @@ public class GanttChart extends Composite {
         getNumericAxis(Position.LEFT).addField(primer);
         ch.addSeries(createSeries(primer));
     }
-    
+
     private LineSeries<ChartElem> createSeries(final ChartElem.AccessY access) {
         return new LineSeriesBuilder<ChartElem>()
                 .yAxisPosition(Position.LEFT)
@@ -160,11 +160,11 @@ public class GanttChart extends Composite {
     }
 
     private int resourceIndexToValue(int ix) {
-        return -(ix + 1);
+        return -ix;
     }
 
     private int numberToResourceIndex(Integer num) {
-        return -(num - 1);
+        return -num;
     }
 
     private HasIdTitle numberToResource(Integer num) {
@@ -174,11 +174,14 @@ public class GanttChart extends Composite {
 
     private Integer resourceToValue(String id) {
         if (PRIMER.equals(id)) return resourceIndexToValue(0);
+
         for (ListIterator<HasIdTitle> iterator = resources.listIterator(); iterator.hasNext(); ) {
             HasIdTitle r = iterator.next();
             if (r.getId().equals(id)) {
                 int ix = iterator.previousIndex();
-                return resourceIndexToValue(ix);
+                int value = resourceIndexToValue(ix);
+                GWT.log("Resource " + id + " has value " + value);
+                return value;
             }
         }
         throw illegalArg("Unknown resource " + id);
@@ -190,10 +193,11 @@ public class GanttChart extends Composite {
     private class YLabels implements LabelProvider<Number> {
         @Override
         public String getLabel(Number item) {
+            int num = item.intValue();
             try {
-                return numberToResource(item.intValue()).getTitle();
+                return numberToResource(num).getTitle() + num;
             } catch (IndexOutOfBoundsException e) {
-                return "N/A";
+                return "N/A" + item;
             }
         }
     }
