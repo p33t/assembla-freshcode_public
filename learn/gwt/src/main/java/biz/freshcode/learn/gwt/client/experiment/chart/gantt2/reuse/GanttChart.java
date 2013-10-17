@@ -32,20 +32,13 @@ import static com.sencha.gxt.chart.client.chart.Chart.Position;
 public class GanttChart extends Composite {
     private static final int HR = 60;
     private static final double LEFT_MIN = -1.5;
+    private static final String PRIMER = "primer";
     private final List<HasIdTitle> resources = newList();
     private Date zeroTime = new Date();
 
     public GanttChart() {
-        ChartElem.AccessY primer = new ChartElem.AccessY("primer");
-
-        // need priming data otherwise chart doesn't show :(
-        ListStore<ChartElem> store = new ListStore<ChartElem>(ACCESS.xKey());
-        ChartElem p1 = new ChartElem(60);
-        p1.setY(primer.getPath(), 1.0);
-        store.add(p1);
-
         initWidget(new ChartBuilder<ChartElem>()
-                .store(store)
+                .store(new ListStore<ChartElem>(ACCESS.xKey()))
                 .addAxis(new NumericAxisBuilder<ChartElem>()
                         .position(Position.TOP)
                         .titleConfig(new TextSprite("Time"))
@@ -58,52 +51,37 @@ public class GanttChart extends Composite {
                         .position(Position.LEFT)
                         .titleConfig(new TextSprite("Resources"))
                         .interval(1)
-                        .addField(primer)
                         .labelProvider(new YLabels())
                         .maximum(-0.5)
                         .minimum(LEFT_MIN)
                         //.hidden(true)... might be useful on occasion
                         .numericAxis)
-                .addSeries(createSeries(primer))
                 .chart
         );
-    }
-
-    private LineSeries<ChartElem> createSeries(final ChartElem.AccessY access) {
-        return new LineSeriesBuilder<ChartElem>()
-                .yAxisPosition(Position.LEFT)
-                .yField(access)
-                .xAxisPosition(Position.TOP)
-                        // Man this is painful
-                .toolTipConfig(new SeriesToolTipConfigBuilder<ChartElem>()
-                        .labelProvider(new SeriesLabelProvider<ChartElem>() {
-                            @Override
-                            public String getLabel(ChartElem item, ValueProvider<? super ChartElem, ? extends Number> provider) {
-                                return access.getPath();
-                            }
-                        })
-                        .seriesToolTipConfig)
-                        //                                            .highlighter()
-                        // needed to orient lines
-                .xField(ACCESS.x())
-                .stroke(new RGB("#000000"))
-                .strokeWidth(20)
-                .showMarkers(false)
-                .gapless(false)
-                .lineSeries;
+        primeChart();
     }
 
     public void configure(ChartInfo info) {
         Chart<ChartElem> ch = getWidget();
         ch.setTitle(info.getTitle());
+
         NumericAxis<ChartElem> top = getNumericAxis(Position.TOP);
         top.setMaximum(info.getWindowSize());
-        zeroTime = info.getZeroTime();
-        ch.getStore().clear();
         NumericAxis<ChartElem> left = getNumericAxis(Position.LEFT);
         left.setMinimum(Math.min(LEFT_MIN, -(resources.size() + 0.5)));
+
+        // yikes... this is the original
+        left.getFields().clear();
+        ch.getStore().clear();
+        ch.getSeries().clear();
+
         resources.clear();
         resources.addAll(info.getResources());
+        zeroTime = info.getZeroTime();
+
+        primeChart();
+
+        // necessary?
         ch.redrawChart();
     }
 
@@ -136,6 +114,46 @@ public class GanttChart extends Composite {
         return (Chart<ChartElem>) super.getWidget();
     }
 
+    // need priming data otherwise chart doesn't show :(
+    private void primeChart() {
+        ChartElem.AccessY primer = new ChartElem.AccessY(PRIMER);
+        Chart<ChartElem> ch = getWidget();
+
+        // dummy data
+        ListStore<ChartElem> store = ch.getStore();
+        ChartElem p1 = new ChartElem(60);
+        p1.setY(primer.getPath(), 1.0);
+        store.add(p1);
+
+        // add config
+        getNumericAxis(Position.LEFT).addField(primer);
+        ch.addSeries(createSeries(primer));
+    }
+    
+    private LineSeries<ChartElem> createSeries(final ChartElem.AccessY access) {
+        return new LineSeriesBuilder<ChartElem>()
+                .yAxisPosition(Position.LEFT)
+                .yField(access)
+                .xAxisPosition(Position.TOP)
+                        // Man this is painful
+                .toolTipConfig(new SeriesToolTipConfigBuilder<ChartElem>()
+                        .labelProvider(new SeriesLabelProvider<ChartElem>() {
+                            @Override
+                            public String getLabel(ChartElem item, ValueProvider<? super ChartElem, ? extends Number> provider) {
+                                return access.getPath();
+                            }
+                        })
+                        .seriesToolTipConfig)
+                        //                                            .highlighter()
+                        // needed to orient lines
+                .xField(ACCESS.x())
+                .stroke(new RGB("#000000"))
+                .strokeWidth(20)
+                .showMarkers(false)
+                .gapless(false)
+                .lineSeries;
+    }
+
     private NumericAxis<ChartElem> getNumericAxis(Position posn) {
         //noinspection unchecked
         return (NumericAxis<ChartElem>) getWidget().getAxis(posn);
@@ -155,6 +173,7 @@ public class GanttChart extends Composite {
     }
 
     private Integer resourceToValue(String id) {
+        if (PRIMER.equals(id)) return resourceIndexToValue(0);
         for (ListIterator<HasIdTitle> iterator = resources.listIterator(); iterator.hasNext(); ) {
             HasIdTitle r = iterator.next();
             if (r.getId().equals(id)) {
