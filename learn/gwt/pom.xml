@@ -23,8 +23,9 @@
     <properties>
         <!-- Convenience property to set the GWT version -->
         <gwtVersion>2.5.1</gwtVersion>
-        <gwtpVersion>1.0-RC-3.1</gwtpVersion>
-        <gxtVersion>3.0.1</gxtVersion>
+        <gwtpVersion>1.0.1</gwtpVersion>
+        <!-- NOTE: Might need to change this to 3.0.1 or x.0 for GPL access. -->
+        <gxtVersion>3.0.6</gxtVersion>
         <!-- GWT needs at least java 1.5 -->
         <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
