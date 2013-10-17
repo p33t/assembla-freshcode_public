@@ -6,8 +6,10 @@ import biz.freshcode.learn.gwt.client.builder.gxt.chart.series.LineSeriesBuilder
 import biz.freshcode.learn.gwt.client.builder.gxt.chart.series.SeriesToolTipConfigBuilder;
 import biz.freshcode.learn.gwt.client.experiment.chart.gantt.reuse.StartDurn;
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartElem;
+import com.google.gwt.core.client.GWT;
 import com.sencha.gxt.chart.client.chart.Chart;
 import com.sencha.gxt.chart.client.chart.axis.NumericAxis;
+import com.sencha.gxt.chart.client.chart.event.SeriesSelectionEvent;
 import com.sencha.gxt.chart.client.chart.series.LineHighlighter;
 import com.sencha.gxt.chart.client.chart.series.LineSeries;
 import com.sencha.gxt.chart.client.chart.series.Series;
@@ -31,7 +33,7 @@ import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.*;
 import static biz.freshcode.learn.gwt.client.util.ExceptionUtil.illegalArg;
 import static com.sencha.gxt.chart.client.chart.Chart.Position;
 
-public class GanttChart extends Composite {
+public class GanttChart extends Composite implements SeriesSelectionEvent.SeriesSelectionHandler<ChartElem> {
     private static final int HR = 60;
     private static final double LEFT_MIN = -1;
     private static final String PRIMER = "primer";
@@ -140,6 +142,12 @@ public class GanttChart extends Composite {
     }
 
     @Override
+    public void onSeriesSelection(SeriesSelectionEvent<ChartElem> event) {
+        String barId = event.getValueProvider().getPath();
+        focusBar(barId);
+    }
+
+    @Override
     protected Chart<ChartElem> getWidget() {
         //noinspection unchecked
         return (Chart<ChartElem>) super.getWidget();
@@ -172,7 +180,7 @@ public class GanttChart extends Composite {
     }
 
     private LineSeries<ChartElem> createSeries(final ChartElem.AccessY access, RGB colour) {
-        return new LineSeriesBuilder<ChartElem>()
+        LineSeries<ChartElem> s = new LineSeriesBuilder<ChartElem>()
                 .yAxisPosition(Position.LEFT)
                 .yField(access)
                 .xAxisPosition(Position.TOP)
@@ -196,6 +204,8 @@ public class GanttChart extends Composite {
                 .lineHighlighter(new LineHighlighter())
                 .gapless(false)
                 .lineSeries;
+        s.addSeriesSelectionHandler(this);
+        return s;
     }
 
     private NumericAxis<ChartElem> getNumericAxis(Position posn) {
