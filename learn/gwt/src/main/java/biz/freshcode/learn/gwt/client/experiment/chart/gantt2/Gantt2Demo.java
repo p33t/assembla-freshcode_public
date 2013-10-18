@@ -11,8 +11,7 @@ import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newList;
 import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newListFrom;
@@ -76,6 +75,15 @@ public class Gantt2Demo extends AbstractIsWidget<BorderLayoutContainer> implemen
         resources.add(new HasIdTitle.Impl("Delta"));
         resources.add(new HasIdTitle.Impl("Echo"));
         resources.add(new HasIdTitle.Impl("Foxtrot"));
+
+        int count = resources.size();
+        int ix = (int) (Math.random() * count);
+        if (ix > 0) {
+            List<HasIdTitle> cut = newListFrom(resources.subList(ix, count));
+            cut.addAll(resources.subList(0, ix));
+            resources = cut;
+        }
+
         return new ChartInfo("Today", new Date(), 24 * HR, resources);
     }
 
