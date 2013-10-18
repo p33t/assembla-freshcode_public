@@ -6,6 +6,9 @@ import biz.freshcode.learn.gwt.client.builder.gxt.chart.series.LineSeriesBuilder
 import biz.freshcode.learn.gwt.client.builder.gxt.chart.series.SeriesToolTipConfigBuilder;
 import biz.freshcode.learn.gwt.client.experiment.chart.gantt.reuse.StartDurn;
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartElem;
+import com.google.web.bindery.event.shared.EventBus;
+import com.google.web.bindery.event.shared.HandlerRegistration;
+import com.google.web.bindery.event.shared.SimpleEventBus;
 import com.sencha.gxt.chart.client.chart.Chart;
 import com.sencha.gxt.chart.client.chart.axis.NumericAxis;
 import com.sencha.gxt.chart.client.chart.event.SeriesSelectionEvent;
@@ -42,8 +45,14 @@ public class GanttChart extends Composite implements SeriesSelectionEvent.Series
     private final List<HasIdTitle> resources = newList();
     private Date zeroTime = new Date();
     private String lastFocusIdOrNull;
+    private final EventBus bus;
 
     public GanttChart() {
+        this(new SimpleEventBus());
+    }
+
+    public GanttChart(EventBus bus) {
+        this.bus = bus;
         initWidget(new ChartBuilder<ChartElem>()
                 .store(new ListStore<ChartElem>(ACCESS.xKey()))
                 .addAxis(new NumericAxisBuilder<ChartElem>()
@@ -68,6 +77,13 @@ public class GanttChart extends Composite implements SeriesSelectionEvent.Series
         primeChart();
     }
 
+    /**
+     * Tap focus change events.
+     */
+    public HandlerRegistration addFocusChangeHandler(GanttBarFocusEvent.Handler h) {
+        return bus.addHandler(GanttBarFocusEvent.getType(), h);
+    }
+
     public void configure(ChartInfo info) {
         clearChart(true);
         resources.addAll(info.getResources());
@@ -87,6 +103,7 @@ public class GanttChart extends Composite implements SeriesSelectionEvent.Series
         left.setSteps(resourceCount + 1);
 
         ch.redrawChart();
+        setLastFocusId(null);
     }
 
     public void replaceBars(Iterable<BarInfo> bars) {
@@ -109,8 +126,12 @@ public class GanttChart extends Composite implements SeriesSelectionEvent.Series
         Chart<ChartElem> ch = getWidget();
         NumericAxis<ChartElem> left = getNumericAxis(Position.LEFT);
 
+        boolean refocus = false;
         for (BarInfo bar : bars) {
-            ChartElem.AccessY f = new ChartElem.AccessY(bar.getId());
+            String barId = bar.getId();
+            if (barId.equals(lastFocusIdOrNull)) refocus = true;
+
+            ChartElem.AccessY f = new ChartElem.AccessY(barId);
             left.addField(f);
 
             LineSeries<ChartElem> s = createSeries(f, bar.getColour());
@@ -120,7 +141,8 @@ public class GanttChart extends Composite implements SeriesSelectionEvent.Series
         List<ChartElem> interpolated = interpolate(map);
         ch.getStore().addAll(interpolated);
 
-        ch.redrawChart();
+        if (refocus) focusBar(lastFocusIdOrNull);
+        else focusBar(null);
     }
 
     public void unfocus() {
@@ -138,15 +160,8 @@ public class GanttChart extends Composite implements SeriesSelectionEvent.Series
             ls.setStrokeWidth(focused ? STROKE_FOCUSED : STROKE_NON_FOCUSED);
             ls.setShowMarkers(focused);
         }
-
+        setLastFocusId(idOrNull);
         ch.redrawChart();
-    }
-
-    private void setLastFocusId(String idOrNull) {
-        if (!safeEquals(lastFocusIdOrNull, idOrNull)) {
-            lastFocusIdOrNull = idOrNull;
-            // TODO: emit event... need an event bus.
-        }
     }
 
     @Override
@@ -159,6 +174,13 @@ public class GanttChart extends Composite implements SeriesSelectionEvent.Series
     protected Chart<ChartElem> getWidget() {
         //noinspection unchecked
         return (Chart<ChartElem>) super.getWidget();
+    }
+
+    private void setLastFocusId(String idOrNull) {
+        if (!safeEquals(lastFocusIdOrNull, idOrNull)) {
+            lastFocusIdOrNull = idOrNull;
+            bus.fireEvent(new GanttBarFocusEvent(this, lastFocusIdOrNull));
+        }
     }
 
     private void clearChart(boolean clearResources) {

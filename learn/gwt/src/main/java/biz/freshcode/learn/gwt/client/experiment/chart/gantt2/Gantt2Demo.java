@@ -3,11 +3,9 @@ package biz.freshcode.learn.gwt.client.experiment.chart.gantt2;
 import biz.freshcode.learn.gwt.client.builder.gxt.container.BorderLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.container.HorizontalLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.experiment.chart.gantt.reuse.StartDurn;
-import biz.freshcode.learn.gwt.client.experiment.chart.gantt2.reuse.BarInfo;
-import biz.freshcode.learn.gwt.client.experiment.chart.gantt2.reuse.ChartInfo;
-import biz.freshcode.learn.gwt.client.experiment.chart.gantt2.reuse.GanttChart;
-import biz.freshcode.learn.gwt.client.experiment.chart.gantt2.reuse.HasIdTitle;
+import biz.freshcode.learn.gwt.client.experiment.chart.gantt2.reuse.*;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
+import com.google.gwt.core.client.GWT;
 import com.sencha.gxt.chart.client.draw.RGB;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
@@ -19,7 +17,7 @@ import java.util.List;
 import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newList;
 import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newListFrom;
 
-public class Gantt2Demo extends AbstractIsWidget<BorderLayoutContainer> {
+public class Gantt2Demo extends AbstractIsWidget<BorderLayoutContainer> implements GanttBarFocusEvent.Handler {
     private static final int HR = 60;
     private static final List<BarInfo> BARS = newListFrom(
             new BarInfo("id1", "Maintenance", "Alpha", new RGB("#ff0000"), new StartDurn(6 * HR, 4 * HR)),
@@ -35,6 +33,8 @@ public class Gantt2Demo extends AbstractIsWidget<BorderLayoutContainer> {
 
     @Override
     protected BorderLayoutContainer createWidget() {
+        chart = new GanttChart();
+        chart.addFocusChangeHandler(this);
         return new BorderLayoutContainerBuilder()
                 .northWidget(new HorizontalLayoutContainerBuilder()
                         .add(new TextButton("Config", new SelectEvent.SelectHandler() {
@@ -64,7 +64,7 @@ public class Gantt2Demo extends AbstractIsWidget<BorderLayoutContainer> {
                             }
                         }))
                         .horizontalLayoutContainer)
-                .centerWidget(chart = new GanttChart())
+                .centerWidget(chart)
                 .borderLayoutContainer;
     }
 
@@ -77,5 +77,10 @@ public class Gantt2Demo extends AbstractIsWidget<BorderLayoutContainer> {
         resources.add(new HasIdTitle.Impl("Echo"));
         resources.add(new HasIdTitle.Impl("Foxtrot"));
         return new ChartInfo("Today", new Date(), 24 * HR, resources);
+    }
+
+    @Override
+    public void focusChanged(GanttBarFocusEvent evt) {
+        GWT.log("Focus changed to " + evt.getBarIdOrNull());
     }
 }
