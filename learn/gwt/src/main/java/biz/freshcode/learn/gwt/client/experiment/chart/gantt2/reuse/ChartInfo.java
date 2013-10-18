@@ -4,13 +4,11 @@ import java.util.Date;
 import java.util.List;
 
 public class ChartInfo {
-    private final String title;
     private final Date zeroTime;
     private final int windowSize;
     private final List<HasIdTitle> resources;
-    
-    public ChartInfo(String title, Date zeroTime, int windowSize, List<HasIdTitle> resources) {
-        this.title = title;
+
+    public ChartInfo(Date zeroTime, int windowSize, List<HasIdTitle> resources) {
         this.zeroTime = zeroTime;
         this.windowSize = windowSize;
         this.resources = resources;
@@ -18,10 +16,6 @@ public class ChartInfo {
 
     public List<HasIdTitle> getResources() {
         return resources;
-    }
-
-    public String getTitle() {
-        return title;
     }
 
     public int getWindowSize() {
