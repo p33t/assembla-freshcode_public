@@ -84,7 +84,7 @@ public class Gantt2Demo extends AbstractIsWidget<BorderLayoutContainer> implemen
             resources = cut;
         }
 
-        return new ChartInfo("Today", new Date(), 24 * HR, resources);
+        return new ChartInfo(new Date(), 24 * HR, resources);
     }
 
     @Override

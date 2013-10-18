@@ -90,7 +90,6 @@ public class GanttChart extends Composite implements SeriesSelectionEvent.Series
         zeroTime = info.getZeroTime();
 
         Chart<ChartElem> ch = getWidget();
-// Annoying tooltip        ch.setTitle(info.getTitle());
 
         NumericAxis<ChartElem> top = getNumericAxis(Position.TOP);
         top.setMaximum(info.getWindowSize());
