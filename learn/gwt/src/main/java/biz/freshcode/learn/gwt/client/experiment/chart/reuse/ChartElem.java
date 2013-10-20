@@ -78,6 +78,16 @@ public class ChartElem {
         return y;
     }
 
+    public ChartElem mapY(MapFun<Double, Double> mapper) {
+        ChartElem e = new ChartElem(x);
+        for (String key: ys.keySet()) {
+            Double i = getY(key);
+            Double o = mapper.map(i);
+            e.setY(key, o);
+        }
+        return e;
+    }
+
     public static interface Access extends PropertyAccess<ChartElem> {
         Access ACCESS = GWT.create(Access.class);
 

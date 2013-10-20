@@ -6,6 +6,7 @@ import biz.freshcode.learn.gwt.client.builder.gxt.chart.series.LineSeriesBuilder
 import biz.freshcode.learn.gwt.client.builder.gxt.chart.series.SeriesToolTipConfigBuilder;
 import biz.freshcode.learn.gwt.client.experiment.chart.gantt.reuse.StartDurn;
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartElem;
+import biz.freshcode.learn.gwt.client.experiment.chart.reuse.MapFun;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.event.shared.HandlerRegistration;
 import com.google.web.bindery.event.shared.SimpleEventBus;
@@ -84,6 +85,36 @@ public class GanttChart extends Composite implements SeriesSelectionEvent.Series
         return bus.addHandler(GanttBarFocusEvent.getType(), h);
     }
 
+    public void reorder(List<HasIdTitle> newOrder) {
+        // build a cross reference from old to new index
+        final int[] newIndex = new int[resources.size()];
+        for (int i = 0; i < newIndex.length; i++) {
+            String resourceId = newOrder.get(i).getId();
+            int oldIndex = resourceToIndex(resourceId);
+            newIndex[oldIndex] = i;
+        }
+
+        MapFun<Double, Double> reorder = new MapFun<Double, Double>() {
+            @Override
+            public Double map(Double input) {
+                int ixOld = numberToResourceIndex((int) Math.round(input));
+                int ixNew = newIndex[ixOld];
+                return (double) resourceIndexToValue(ixNew);
+            }
+        };
+        ListStore<ChartElem> store = getStore();
+        List<ChartElem> updated = newList();
+        for (ChartElem e : store.getAll()) {
+            updated.add(e.mapY(reorder));
+        }
+
+        resources.clear();
+        resources.addAll(newOrder);
+        store.replaceAll(updated);
+
+        getWidget().redrawChart();
+    }
+
     public void configure(ChartInfo info) {
         clearChart(true);
         resources.addAll(info.getResources());
@@ -109,7 +140,7 @@ public class GanttChart extends Composite implements SeriesSelectionEvent.Series
         clearChart(false);
         Map<String, List<PrecisePoint>> map = newMap();
         for (BarInfo bar : bars) {
-            Integer y = resourceToValue(bar.getResourceId());
+            Integer y = resourceToNumber(bar.getResourceId());
             StartDurn sd = bar.getStartDurn();
             map.put(bar.getId(), newListFrom(
                     new PrecisePoint(sd.getStart(), y),
@@ -173,6 +204,10 @@ public class GanttChart extends Composite implements SeriesSelectionEvent.Series
     protected Chart<ChartElem> getWidget() {
         //noinspection unchecked
         return (Chart<ChartElem>) super.getWidget();
+    }
+
+    private ListStore<ChartElem> getStore() {
+        return getWidget().getStore();
     }
 
     private void setLastFocusId(String idOrNull) {
@@ -263,14 +298,18 @@ public class GanttChart extends Composite implements SeriesSelectionEvent.Series
         return resources.get(ix);
     }
 
-    private Integer resourceToValue(String id) {
-        if (PRIMER.equals(id)) return resourceIndexToValue(0);
+    private Integer resourceToNumber(String id) {
+        int index = resourceToIndex(id);
+        return resourceIndexToValue(index);
+    }
+
+    private int resourceToIndex(String id) {
+        if (PRIMER.equals(id)) return 0;
 
         for (ListIterator<HasIdTitle> iterator = resources.listIterator(); iterator.hasNext(); ) {
             HasIdTitle r = iterator.next();
             if (r.getId().equals(id)) {
-                int ix = iterator.previousIndex();
-                return resourceIndexToValue(ix);
+                return iterator.previousIndex();
             }
         }
         throw illegalArg("Unknown resource " + id);
