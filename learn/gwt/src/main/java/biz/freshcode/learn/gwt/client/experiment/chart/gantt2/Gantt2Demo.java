@@ -31,6 +31,11 @@ public class Gantt2Demo extends AbstractIsWidget<BorderLayoutContainer> implemen
     private GanttChart chart;
 
     @Override
+    public void focusChanged(GanttBarFocusEvent evt) {
+        GWT.log("Focus changed to " + evt.getBarIdOrNull());
+    }
+
+    @Override
     protected BorderLayoutContainer createWidget() {
         chart = new GanttChart();
         chart.addFocusChangeHandler(this);
@@ -62,12 +67,23 @@ public class Gantt2Demo extends AbstractIsWidget<BorderLayoutContainer> implemen
                                 chart.unfocus();
                             }
                         }))
+                        .add(new TextButton("Reorder", new SelectEvent.SelectHandler() {
+                            @Override
+                            public void onSelect(SelectEvent event) {
+                                chart.reorder(createResourceList());
+                            }
+                        }))
                         .horizontalLayoutContainer)
                 .centerWidget(chart)
                 .borderLayoutContainer;
     }
 
     private ChartInfo createData() {
+        List<HasIdTitle> resources = createResourceList();
+        return new ChartInfo(new Date(), 24 * HR, resources);
+    }
+
+    private List<HasIdTitle> createResourceList() {
         List<HasIdTitle> resources = newList();
         resources.add(new HasIdTitle.Impl("Alpha"));
         resources.add(new HasIdTitle.Impl("Bravo"));
@@ -76,6 +92,7 @@ public class Gantt2Demo extends AbstractIsWidget<BorderLayoutContainer> implemen
         resources.add(new HasIdTitle.Impl("Echo"));
         resources.add(new HasIdTitle.Impl("Foxtrot"));
 
+        // slightly random order
         int count = resources.size();
         int ix = (int) (Math.random() * count);
         if (ix > 0) {
@@ -83,12 +100,6 @@ public class Gantt2Demo extends AbstractIsWidget<BorderLayoutContainer> implemen
             cut.addAll(resources.subList(0, ix));
             resources = cut;
         }
-
-        return new ChartInfo(new Date(), 24 * HR, resources);
-    }
-
-    @Override
-    public void focusChanged(GanttBarFocusEvent evt) {
-        GWT.log("Focus changed to " + evt.getBarIdOrNull());
+        return resources;
     }
 }
