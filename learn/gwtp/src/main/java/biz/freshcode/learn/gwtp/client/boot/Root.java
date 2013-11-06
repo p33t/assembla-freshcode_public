@@ -3,6 +3,7 @@ package biz.freshcode.learn.gwtp.client.boot;
 import biz.freshcode.learn.gwtp.client.builder.gxt.container.BorderLayoutContainerBuilder;
 import biz.freshcode.learn.gwtp.client.builder.gxt.toolbar.ToolBarBuilder;
 import biz.freshcode.learn.gwtp.client.util.HasTitle;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.inject.Inject;
@@ -16,6 +17,8 @@ import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.Viewport;
 import com.sencha.gxt.widget.core.client.toolbar.FillToolItem;
 import com.sencha.gxt.widget.core.client.toolbar.LabelToolItem;
+
+import java.util.Date;
 
 import static biz.freshcode.learn.gwtp.client.util.WidgetUtil.removeFromParent;
 import static com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData;
@@ -42,8 +45,9 @@ public class Root extends Presenter<Root.View, Root.Proxy> {
         private PageTitle titler;
 
         @Inject
-        public View(AppMenu mnu) {
+        public View(AppMenu mnu, RoughServerTime serverTime) {
             Viewport v = new Viewport();
+            GWT.log("Viewport created at " + new Date(serverTime.get()));
             v.add(blc = new BorderLayoutContainerBuilder()
                     .northWidget(mnu, new BorderLayoutData(30))
                     .southWidget(new ToolBarBuilder()
