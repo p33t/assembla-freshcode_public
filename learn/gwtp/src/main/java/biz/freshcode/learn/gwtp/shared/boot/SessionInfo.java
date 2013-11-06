@@ -11,4 +11,9 @@ public interface SessionInfo extends IsSerializable {
      * Time at server when session info was sent.
      */
     long getBootTime();
+
+    /**
+     * The alternate extensions of the system.
+     */
+    Extensions getExtensions();
 }
