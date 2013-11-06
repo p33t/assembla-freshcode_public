@@ -10,6 +10,7 @@ import biz.freshcode.learn.gwtp.client.paginggrid.PagingGrid;
 import biz.freshcode.learn.gwtp.client.popup.PopupDemo;
 import biz.freshcode.learn.gwtp.client.slotless.SlotlessDemo;
 import biz.freshcode.learn.gwtp.client.util.IsWidgetImpl;
+import biz.freshcode.learn.gwtp.client.vanilla.Extensible;
 import biz.freshcode.learn.gwtp.shared.generate.SomeBean;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.user.client.ui.Widget;
@@ -34,6 +35,7 @@ public class AppMenu extends IsWidgetImpl<Widget> {
     public AppMenu(PageTitle titler) {
         initWidget(new ToolBarBuilder()
                 .add(btn("Home", Home.TOKEN))
+                .add(btn("Extensible", Extensible.TOKEN))
                 .add(btn("Compound", Compound.TOKEN))
                 .add(btn("Child1", Child1.TOKEN))
                 .add(btn("Child2", Child2.TOKEN))
