@@ -1,4 +1,4 @@
-package biz.freshcode.learn.gwtp.client.vanilla;
+package biz.freshcode.learn.gwtp.client.ext;
 
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 

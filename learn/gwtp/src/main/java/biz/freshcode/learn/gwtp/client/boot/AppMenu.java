@@ -1,16 +1,17 @@
 package biz.freshcode.learn.gwtp.client.boot;
 
+import biz.freshcode.learn.gwtp.client.builder.Construct;
 import biz.freshcode.learn.gwtp.client.builder.gxt.toolbar.ToolBarBuilder;
 import biz.freshcode.learn.gwtp.client.compound.Child1;
 import biz.freshcode.learn.gwtp.client.compound.Child2;
 import biz.freshcode.learn.gwtp.client.compound.Compound;
 import biz.freshcode.learn.gwtp.client.editform.EditForm;
+import biz.freshcode.learn.gwtp.client.ext.Extensible;
 import biz.freshcode.learn.gwtp.client.home.Home;
 import biz.freshcode.learn.gwtp.client.paginggrid.PagingGrid;
 import biz.freshcode.learn.gwtp.client.popup.PopupDemo;
 import biz.freshcode.learn.gwtp.client.slotless.SlotlessDemo;
 import biz.freshcode.learn.gwtp.client.util.IsWidgetImpl;
-import biz.freshcode.learn.gwtp.client.vanilla.Extensible;
 import biz.freshcode.learn.gwtp.shared.generate.SomeBean;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.user.client.ui.Widget;
@@ -32,10 +33,18 @@ public class AppMenu extends IsWidgetImpl<Widget> {
     private PlaceManager placeManager;
 
     @Inject
-    public AppMenu(PageTitle titler) {
+    public AppMenu(PageTitle titler, final ExtensionsProvider extProvider) {
         initWidget(new ToolBarBuilder()
                 .add(btn("Home", Home.TOKEN))
-                .add(btn("Extensible", Extensible.TOKEN))
+                .add(btn("Extensible (orig)", Extensible.TOKEN))
+                .construct(new Construct<ToolBarBuilder>() {
+                    @Override
+                    public void run() {
+                        for (AppMenuItem itm : extProvider.get().customMenuItems()) {
+                            builder.add(btn(itm.getText(), itm.getToken()));
+                        }
+                    }
+                })
                 .add(btn("Compound", Compound.TOKEN))
                 .add(btn("Child1", Child1.TOKEN))
                 .add(btn("Child2", Child2.TOKEN))
