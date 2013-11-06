@@ -23,12 +23,6 @@ import com.gwtplatform.mvp.client.gin.DefaultModule;
 import com.gwtplatform.mvp.client.proxy.DefaultPlaceManager;
 
 public class AppModule extends AbstractPresenterModule {
-    private static long localBootTime;
-
-    public static void init(SessionInfo info, long localBootTime) {
-        AppModule.localBootTime = localBootTime;
-        SessionInfoProvider.init(info);
-    }
 
     @Override
     protected void configure() {
@@ -37,8 +31,6 @@ public class AppModule extends AbstractPresenterModule {
         bindConstant().annotatedWith(ErrorPlace.class).to(Home.TOKEN);
         bindConstant().annotatedWith(UnauthorizedPlace.class).to(Home.TOKEN);
 
-        // NOTE: Local boot time and SessionInfo.bootTime indicate client clock offset.
-        bindConstant().annotatedWith(LocalBootTime.class).to(localBootTime);
         bind(SessionInfo.class).toProvider(SessionInfoProvider.class);
 
 //Shouldn't need this...bind(EventBus.class).to(SimpleEventBus.class).in(Singleton.class);
