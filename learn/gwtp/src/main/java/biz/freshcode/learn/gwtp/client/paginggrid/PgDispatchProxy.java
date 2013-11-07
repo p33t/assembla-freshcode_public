@@ -1,9 +1,9 @@
 package biz.freshcode.learn.gwtp.client.paginggrid;
 
-import biz.freshcode.learn.gwtp.client.util.gwtp.dispatch.GdCallbackAdapter;
+import biz.freshcode.learn.gwtp.util.client.gwtp.dispatch.GdCallbackAdapter;
 import biz.freshcode.learn.gwtp.shared.paginggrid.PgListAction;
 import biz.freshcode.learn.gwtp.shared.paginggrid.Tyre;
-import biz.freshcode.learn.gwtp.shared.util.gwtp.dispatch.GdPagingLoadResult;
+import biz.freshcode.learn.gwtp.util.shared.dispatch.GdPagingLoadResult;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;

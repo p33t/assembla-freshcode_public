@@ -6,7 +6,7 @@ import com.google.gwt.user.client.rpc.IsSerializable;
 
 import java.util.List;
 
-import static biz.freshcode.learn.gwtp.shared.util.AppCollectionUtil.newListFrom;
+import static biz.freshcode.learn.gwtp.util.shared.AppCollectionUtil.newListFrom;
 
 /**
  * Encapsulates the extensible aspects of the app.  This will be subclassed by special domains.

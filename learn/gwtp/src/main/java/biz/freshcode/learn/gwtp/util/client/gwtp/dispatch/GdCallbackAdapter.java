@@ -1,6 +1,6 @@
-package biz.freshcode.learn.gwtp.client.util.gwtp.dispatch;
+package biz.freshcode.learn.gwtp.util.client.gwtp.dispatch;
 
-import biz.freshcode.learn.gwtp.shared.util.gwtp.dispatch.GdPagingLoadResult;
+import biz.freshcode.learn.gwtp.util.shared.dispatch.GdPagingLoadResult;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.rpc.IsSerializable;
 import com.sencha.gxt.data.shared.loader.PagingLoadResult;

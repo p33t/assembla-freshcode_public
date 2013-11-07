@@ -15,7 +15,7 @@ import com.sencha.gxt.widget.core.client.grid.ColumnModel;
 import com.sencha.gxt.widget.core.client.grid.Grid;
 import com.sencha.gxt.widget.core.client.toolbar.PagingToolBar;
 
-import static biz.freshcode.learn.gwtp.shared.util.AppCollectionUtil.newListFrom;
+import static biz.freshcode.learn.gwtp.util.shared.AppCollectionUtil.newListFrom;
 import static com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData;
 
 public class PagingGridViewImpl extends ViewImpl implements PagingGrid.View {

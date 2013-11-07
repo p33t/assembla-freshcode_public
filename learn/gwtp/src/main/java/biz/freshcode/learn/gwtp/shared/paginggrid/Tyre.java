@@ -2,7 +2,7 @@ package biz.freshcode.learn.gwtp.shared.paginggrid;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
 
-import static biz.freshcode.learn.gwtp.shared.util.ExceptionUtil.illegalState;
+import static biz.freshcode.learn.gwtp.util.shared.ExceptionUtil.illegalState;
 
 public class Tyre implements IsSerializable {
     public static final String DIAMETER = "diameter";

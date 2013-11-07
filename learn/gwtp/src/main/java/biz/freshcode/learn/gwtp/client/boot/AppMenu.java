@@ -11,7 +11,7 @@ import biz.freshcode.learn.gwtp.client.home.Home;
 import biz.freshcode.learn.gwtp.client.paginggrid.PagingGrid;
 import biz.freshcode.learn.gwtp.client.popup.PopupDemo;
 import biz.freshcode.learn.gwtp.client.slotless.SlotlessDemo;
-import biz.freshcode.learn.gwtp.client.util.IsWidgetImpl;
+import biz.freshcode.learn.gwtp.util.client.IsWidgetImpl;
 import biz.freshcode.learn.gwtp.shared.generate.SomeBean;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.user.client.ui.Widget;

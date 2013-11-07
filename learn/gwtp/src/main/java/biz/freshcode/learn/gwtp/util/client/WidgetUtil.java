@@ -1,4 +1,4 @@
-package biz.freshcode.learn.gwtp.client.util;
+package biz.freshcode.learn.gwtp.util.client;
 
 import com.google.gwt.user.client.ui.Widget;
 

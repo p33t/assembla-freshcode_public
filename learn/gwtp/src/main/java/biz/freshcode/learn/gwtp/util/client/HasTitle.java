@@ -1,4 +1,4 @@
-package biz.freshcode.learn.gwtp.client.util;
+package biz.freshcode.learn.gwtp.util.client;
 
 /**
  * Enables supply of the title if desired.

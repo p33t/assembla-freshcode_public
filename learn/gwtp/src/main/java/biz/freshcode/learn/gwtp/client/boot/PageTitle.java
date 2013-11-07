@@ -1,6 +1,6 @@
 package biz.freshcode.learn.gwtp.client.boot;
 
-import biz.freshcode.learn.gwtp.client.util.IsWidgetImpl;
+import biz.freshcode.learn.gwtp.util.client.IsWidgetImpl;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.sencha.gxt.widget.core.client.toolbar.LabelToolItem;

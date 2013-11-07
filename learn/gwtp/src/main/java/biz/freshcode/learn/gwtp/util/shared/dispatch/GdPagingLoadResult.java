@@ -1,4 +1,4 @@
-package biz.freshcode.learn.gwtp.shared.util.gwtp.dispatch;
+package biz.freshcode.learn.gwtp.util.shared.dispatch;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
 import com.gwtplatform.dispatch.shared.Result;

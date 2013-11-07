@@ -28,6 +28,9 @@
     <source path='client'/>
     <source path='shared'/>
 
+    <source path='util/client'/>
+    <source path='util/shared'/>
+
     <set-configuration-property name="gin.ginjector.modules"
                                 value="biz.freshcode.learn.gwtp.client.boot.AppModule"/>
 </module>

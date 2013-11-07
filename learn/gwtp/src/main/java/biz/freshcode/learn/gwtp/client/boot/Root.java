@@ -2,7 +2,7 @@ package biz.freshcode.learn.gwtp.client.boot;
 
 import biz.freshcode.learn.gwtp.client.builder.gxt.container.BorderLayoutContainerBuilder;
 import biz.freshcode.learn.gwtp.client.builder.gxt.toolbar.ToolBarBuilder;
-import biz.freshcode.learn.gwtp.client.util.HasTitle;
+import biz.freshcode.learn.gwtp.util.client.HasTitle;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.user.client.ui.IsWidget;
@@ -20,7 +20,7 @@ import com.sencha.gxt.widget.core.client.toolbar.LabelToolItem;
 
 import java.util.Date;
 
-import static biz.freshcode.learn.gwtp.client.util.WidgetUtil.removeFromParent;
+import static biz.freshcode.learn.gwtp.util.client.WidgetUtil.removeFromParent;
 import static com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData;
 
 /**

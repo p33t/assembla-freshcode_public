@@ -2,7 +2,7 @@ package biz.freshcode.learn.gwtp.server.dispatch;
 
 import biz.freshcode.learn.gwtp.shared.paginggrid.PgListAction;
 import biz.freshcode.learn.gwtp.shared.paginggrid.Tyre;
-import biz.freshcode.learn.gwtp.shared.util.gwtp.dispatch.GdPagingLoadResult;
+import biz.freshcode.learn.gwtp.util.shared.dispatch.GdPagingLoadResult;
 import com.gwtplatform.dispatch.server.ExecutionContext;
 import com.gwtplatform.dispatch.server.actionhandler.ActionHandler;
 import com.gwtplatform.dispatch.shared.ActionException;
@@ -14,7 +14,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-import static biz.freshcode.learn.gwtp.shared.util.AppCollectionUtil.*;
+import static biz.freshcode.learn.gwtp.util.shared.AppCollectionUtil.*;
 
 public class PgListHandler implements ActionHandler<PgListAction, GdPagingLoadResult<Tyre>> {
     private static int counter = 0;
