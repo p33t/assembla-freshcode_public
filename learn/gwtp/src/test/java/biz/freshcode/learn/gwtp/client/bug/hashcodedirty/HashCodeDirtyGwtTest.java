@@ -5,7 +5,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.SimpleBeanEditorDriver;
 import com.google.gwt.junit.client.GWTTestCase;
 
-import static biz.freshcode.learn.gwtp.shared.util.AppCollectionUtil.newSetFrom;
+import static biz.freshcode.learn.gwtp.util.shared.AppCollectionUtil.newSetFrom;
 
 /**
  * Testing for influence of hash code on Driver.isDirty.

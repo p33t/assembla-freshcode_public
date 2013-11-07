@@ -1,9 +1,9 @@
-package biz.freshcode.learn.gwtp.client.util;
+package biz.freshcode.learn.gwtp.util.client;
 
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 
-import static biz.freshcode.learn.gwtp.shared.util.ExceptionUtil.illegalState;
+import static biz.freshcode.learn.gwtp.util.shared.ExceptionUtil.illegalState;
 
 /**
  * A typed implementation of IsWidget.

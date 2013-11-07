@@ -5,7 +5,7 @@ import com.sencha.gxt.widget.core.client.form.AdapterField;
 
 import java.util.Set;
 
-import static biz.freshcode.learn.gwtp.shared.util.AppCollectionUtil.newSet;
+import static biz.freshcode.learn.gwtp.util.shared.AppCollectionUtil.newSet;
 
 public class AltHashSetEditor extends AdapterField<Set<AltHash>> {
     private Set<AltHash> value = newSet();

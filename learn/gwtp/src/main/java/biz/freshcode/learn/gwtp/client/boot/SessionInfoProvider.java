@@ -4,7 +4,7 @@ import biz.freshcode.learn.gwtp.shared.boot.SessionInfo;
 
 import javax.inject.Provider;
 
-import static biz.freshcode.learn.gwtp.shared.util.ExceptionUtil.illegalState;
+import static biz.freshcode.learn.gwtp.util.shared.ExceptionUtil.illegalState;
 
 public class SessionInfoProvider implements Provider<SessionInfo> {
     private static SessionInfo sessionInfo;

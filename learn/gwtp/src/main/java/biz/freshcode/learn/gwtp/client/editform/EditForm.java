@@ -20,7 +20,7 @@ import com.sencha.gxt.widget.core.client.form.error.DefaultEditorError;
 import java.util.List;
 import java.util.Random;
 
-import static biz.freshcode.learn.gwtp.shared.util.AppCollectionUtil.newList;
+import static biz.freshcode.learn.gwtp.util.shared.AppCollectionUtil.newList;
 
 public class EditForm extends Presenter<EditForm.View, EditForm.Proxy> {
     public static final String TOKEN = "editForm";

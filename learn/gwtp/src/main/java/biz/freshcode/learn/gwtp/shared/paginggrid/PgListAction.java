@@ -1,6 +1,6 @@
 package biz.freshcode.learn.gwtp.shared.paginggrid;
 
-import biz.freshcode.learn.gwtp.shared.util.gwtp.dispatch.GdPagingLoadResult;
+import biz.freshcode.learn.gwtp.util.shared.dispatch.GdPagingLoadResult;
 import com.gwtplatform.dispatch.shared.ActionImpl;
 import com.sencha.gxt.data.shared.loader.PagingLoadConfig;
 

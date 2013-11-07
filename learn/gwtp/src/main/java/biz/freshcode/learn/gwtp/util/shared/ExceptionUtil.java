@@ -1,4 +1,4 @@
-package biz.freshcode.learn.gwtp.shared.util;
+package biz.freshcode.learn.gwtp.util.shared;
 
 public class ExceptionUtil {
     public static IllegalArgumentException illegalArg(String msg) {
