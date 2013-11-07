@@ -1,35 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module rename-to='Main'>
-    <!-- Inherit the core Web Toolkit stuff.                        -->
-    <inherits name='com.google.gwt.user.User'/>
+    <inherits name='biz.freshcode.learn.gwtp.util.Util'/>
 
-    <!-- We need the JUnit module in the main module,               -->
-    <!-- otherwise eclipse complains (Google plugin bug?)           -->
-    <inherits name='com.google.gwt.junit.JUnit'/>
-
-    <!-- Inherit the default GWT style sheet.  You can change       -->
-    <!-- the theme of your GWT application by uncommenting          -->
-    <!-- any one of the following lines.                            -->
-    <inherits name='com.google.gwt.user.theme.standard.Standard'/>
-    <inherits name="com.gwtplatform.dispatch.Dispatch"/>
-    <inherits name="com.gwtplatform.mvp.Mvp"/>
-
-    <inherits name='com.sencha.gxt.ui.GXT'/>
-    <!-- Must come after GXT module -->
-    <inherits name='com.sencha.gxt.theme.gray.Gray'/>
-
+    <!-- Causing problems with build... disable... not much use anyway
     <generate-with class="biz.freshcode.learn.gwtp.server.generate.MetaGenerator">
         <when-type-assignable class="biz.freshcode.learn.gwtp.shared.generate.MetaGen"/>
     </generate-with>
+    -->
 
     <entry-point class='biz.freshcode.learn.gwtp.client.boot.EntryPoint'/>
 
     <!-- NOTE: 'client' is excluded from server -->
     <source path='client'/>
     <source path='shared'/>
-
-    <source path='util/client'/>
-    <source path='util/shared'/>
 
     <set-configuration-property name="gin.ginjector.modules"
                                 value="biz.freshcode.learn.gwtp.client.boot.AppModule"/>
