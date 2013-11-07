@@ -6,6 +6,10 @@ public class AppUtil {
      * NOTE: This could possibly vary by app instance to avoid cookie collision with other apps on same server.
      * The cookie name would need to be set in the SessionInfo.
      * See http://code.google.com/p/gwt-platform/issues/detail?id=429
+     * .... hmm..actually cannot DI a SessionInfo value because dependencies of GIN are decided at compile-time.
+     *
+     * ALSO!!!!!! This doesn't seem to work in Chrome in dev mode with address 127.0.0.1.  The cookie is not stored.
+     * Using 'localhost' does work.
      */
     public static final String XSRF_COOKIE = "XSRF-SAFETY";
 }
