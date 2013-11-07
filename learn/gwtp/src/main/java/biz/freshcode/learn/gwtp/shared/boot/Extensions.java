@@ -10,6 +10,7 @@ import static biz.freshcode.learn.gwtp.util.shared.AppCollectionUtil.newListFrom
 
 /**
  * Encapsulates the extensible aspects of the app.  This will be subclassed by special domains.
+ * WARNING: This approach may be obsolete.  Using GWT modules and alternative DI modules is probably better.
  */
 public class Extensions implements IsSerializable {
     public static final Extensions VANILLA = new Extensions();
