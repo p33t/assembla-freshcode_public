@@ -8,3 +8,7 @@ Different sub package names might be a better place to start:
 - xxx.core
 - xxx.util
 - xxx.special
+
+Different GWT modules may help provide a sort of custom DI on the client because GIN binds are decided at compile-time
+there is no 'dynamic' DI bindings allowed.  Specialised modules will designate the all-important GIN module to use.
+This GIN module will be employing methods of reuse to remove duplication with alternative specialised modules.
