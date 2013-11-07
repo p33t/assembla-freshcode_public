@@ -204,7 +204,14 @@
                 </executions>
                 <configuration>
                     <webappDirectory>${webappDirectory}</webappDirectory>
-                    <packagingExcludes>WEB-INF/classes/biz/freshcode/learn/gwtp/client/**</packagingExcludes>
+                    <packagingExcludes>
+                        WEB-INF/jetty-*.xml,
+                        WEB-INF/lib/jetty*,
+                        WEB-INF/lib/postgres*,
+                        WEB-INF/lib/servlet-api*,
+                        WEB-INF/classes/biz/freshcode/learn/gwtp/client/**,
+                        WEB-INF/classes/biz/freshcode/learn/gwtp/util/client/**
+                    </packagingExcludes>
                 </configuration>
             </plugin>
             <plugin>
