@@ -10,7 +10,7 @@
 private String getGwtModule() {
     ServletConfig config = getServletConfig();
     if (config == null) throw new RuntimeException("No Servlet Config");
-    String gwtModule = getServletConfig().getServletContext().getInitParameter("gwtModule");
+    String gwtModule = config.getServletContext().getInitParameter("gwtModule");
     if (gwtModule == null) throw new RuntimeException("No gwtModule");
     return gwtModule;
 }
