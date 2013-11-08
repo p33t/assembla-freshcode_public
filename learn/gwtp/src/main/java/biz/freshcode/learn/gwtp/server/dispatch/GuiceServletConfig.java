@@ -45,9 +45,12 @@ public class GuiceServletConfig extends GuiceServletContextListener {
             filter("*.html").through(HttpSessionSecurityCookieFilter.class);
             serve("/" + ActionImpl.DEFAULT_SERVICE_NAME + "*").with(DispatchServiceImpl.class);
 
+            String gwtModule = getServletContext().getInitParameter("gwtModule");
+            System.out.println("gwtModule = " + gwtModule);
+
             // NOTE: These have been moved here from web.xml so that GuiceFilter can control everything
             //       and XSRF protection can work.  Otherwise cannot auto setup security cookie.
-            serve("/Main/" + AppRpcService.PATH).with(AppRpcServiceImpl.class); // Don't forget Singleton stuff!
+            serve("/" + gwtModule + "/" + AppRpcService.PATH).with(AppRpcServiceImpl.class); // Don't forget Singleton stuff!
         }
     }
 

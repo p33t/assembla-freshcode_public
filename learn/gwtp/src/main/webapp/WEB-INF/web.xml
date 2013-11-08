@@ -4,6 +4,12 @@
         "http://java.sun.com/dtd/web-app_2_3.dtd">
 
 <web-app>
+    <!-- Facilitates a common 'App' page for use with any module.
+     This value can be overridden in the deployment context xml file-->
+    <context-param>
+        <param-name>gwtModule</param-name>
+        <param-value>Main</param-value>
+    </context-param>
 
     <filter>
         <filter-name>guiceFilter</filter-name>
@@ -21,7 +27,7 @@
 
     <!-- Default page to serve -->
     <welcome-file-list>
-        <welcome-file>Main.html</welcome-file>
+        <welcome-file>App.jsp</welcome-file>
     </welcome-file-list>
 
 </web-app>

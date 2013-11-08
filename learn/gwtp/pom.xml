@@ -183,7 +183,7 @@
                 <!-- Plugin configuration. There are many available options, see
                   gwt-maven-plugin documentation at codehaus.org -->
                 <configuration>
-                    <runTarget>Main.html</runTarget>
+                    <runTarget>App.jsp</runTarget>
                     <hostedWebapp>${webappDirectory}</hostedWebapp>
                     <!--<i18nMessagesBundle>biz.freshcode.learn.gwtp.client.Messages</i18nMessagesBundle>-->
                 </configuration>
