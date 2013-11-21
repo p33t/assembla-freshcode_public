@@ -25,7 +25,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import static biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartElem.Access.ACCESS;
+import static biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartElem.Access.CE_ACCESS;
 import static biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartUtil.interpolate;
 import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.*;
 
@@ -45,7 +45,7 @@ public class GanttDemo extends AbstractIsWidget<BorderLayoutContainer> {
 
         List<ChartElem> data = constructSeries(info, order);
 //        GWT.log("Data: " + data);
-        ListStore<ChartElem> store = new ListStore<ChartElem>(ACCESS.xKey());
+        ListStore<ChartElem> store = new ListStore<ChartElem>(CE_ACCESS.xKey());
         store.addAll(data);
 
         final List<ChartElem.AccessY> fields = newList();
@@ -70,7 +70,7 @@ public class GanttDemo extends AbstractIsWidget<BorderLayoutContainer> {
                         .addAxis(new NumericAxisBuilder<ChartElem>()
                                 .position(Chart.Position.TOP)
                                 .titleConfig(new TextSprite("Time"))
-                                .addField(ChartElem.Access.ACCESS.x())
+                                .addField(ChartElem.Access.CE_ACCESS.x())
                                 .labelProvider(xLabels)
                                 .numericAxis)
 //                                .maximum(info.getWindowSize())
@@ -114,7 +114,7 @@ public class GanttDemo extends AbstractIsWidget<BorderLayoutContainer> {
                                                     .seriesToolTipConfig)
 //                                            .highlighter()
                                                     // needed to orient lines
-                                            .xField(ChartElem.Access.ACCESS.x())
+                                            .xField(ChartElem.Access.CE_ACCESS.x())
                                             .stroke(new RGB(bar.getColour()))
                                             .strokeWidth(20)
                                             .showMarkers(false)

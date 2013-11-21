@@ -32,7 +32,7 @@ import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import java.util.List;
 import java.util.Map;
 
-import static biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartElem.Access.ACCESS;
+import static biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartElem.Access.CE_ACCESS;
 import static biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartUtil.interpolate;
 import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newListFrom;
 import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newMap;
@@ -90,7 +90,7 @@ public class ChartDemo extends AbstractIsWidget<BorderLayoutContainer> {
     }
 
     private IsWidget chart5() {
-        ListStore<ChartElem> store = new ListStore<ChartElem>(ACCESS.xKey());
+        ListStore<ChartElem> store = new ListStore<ChartElem>(CE_ACCESS.xKey());
         Map<String, List<PrecisePoint>> series = newMap();
         series.put("straight", newListFrom(
                 new PrecisePoint(2, 2),
@@ -110,7 +110,7 @@ public class ChartDemo extends AbstractIsWidget<BorderLayoutContainer> {
                 .addAxis(new NumericAxisBuilder<ChartElem>()
                         .position(Position.BOTTOM)
                         .titleConfig(new TextSprite("First Axis.  Note the addition of redundant points."))
-                        .addField(ChartElem.Access.ACCESS.x())
+                        .addField(ChartElem.Access.CE_ACCESS.x())
                         .labelProvider(new NumberLabelProvider())
                         .numericAxis)
                 .addAxis(new NumericAxisBuilder<ChartElem>()
@@ -129,7 +129,7 @@ public class ChartDemo extends AbstractIsWidget<BorderLayoutContainer> {
                         .yField(acsStraight)
                         .xAxisPosition(Position.BOTTOM)
                         // needed to orient lines
-                        .xField(ChartElem.Access.ACCESS.x())
+                        .xField(ChartElem.Access.CE_ACCESS.x())
                         .stroke(new RGB("#44cc44"))
                         .strokeWidth(2)
                         .showMarkers(true)
@@ -143,7 +143,7 @@ public class ChartDemo extends AbstractIsWidget<BorderLayoutContainer> {
                         .yField(acsAngled)
                         .xAxisPosition(Position.BOTTOM)
                         // needed to orient lines
-                        .xField(ChartElem.Access.ACCESS.x())
+                        .xField(ChartElem.Access.CE_ACCESS.x())
                         .stroke(new RGB("#cc4444"))
                         .strokeWidth(2)
                         .showMarkers(true)
