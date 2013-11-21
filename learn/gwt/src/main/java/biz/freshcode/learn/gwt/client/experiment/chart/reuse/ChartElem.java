@@ -89,7 +89,7 @@ public class ChartElem {
     }
 
     public static interface Access extends PropertyAccess<ChartElem> {
-        Access ACCESS = GWT.create(Access.class);
+        Access CE_ACCESS = GWT.create(Access.class);
 
         @Editor.Path("x")
         ModelKeyProvider<ChartElem> xKey();

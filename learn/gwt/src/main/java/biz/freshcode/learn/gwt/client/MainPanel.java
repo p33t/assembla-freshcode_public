@@ -11,8 +11,10 @@ import biz.freshcode.learn.gwt.client.experiment.appearance.AppearanceDemo;
 import biz.freshcode.learn.gwt.client.experiment.busy.BusyDemo;
 import biz.freshcode.learn.gwt.client.experiment.celltable.CellTableDemo;
 import biz.freshcode.learn.gwt.client.experiment.chart.ChartDemo;
+import biz.freshcode.learn.gwt.client.experiment.chart.area.AreaChartDemo;
 import biz.freshcode.learn.gwt.client.experiment.chart.gantt.GanttDemo;
 import biz.freshcode.learn.gwt.client.experiment.chart.gantt2.Gantt2Demo;
+import biz.freshcode.learn.gwt.client.experiment.chart.step.StepChartDemo;
 import biz.freshcode.learn.gwt.client.experiment.contextmenu.ContextMenuDemo;
 import biz.freshcode.learn.gwt.client.experiment.dnd.DndUi;
 import biz.freshcode.learn.gwt.client.experiment.dynamiclayout.DynamicLayoutDemo;
@@ -252,24 +254,38 @@ public class MainPanel extends Composite implements AcceptsOneWidget {
                                         replaceContent(w);
                                     }
                                 }))
-                                .addItem(new MenuItem("Chart", new Command() {
-                                    public void execute() {
-                                        IsWidget w = GWT.create(ChartDemo.class);
-                                        replaceContent(w);
-                                    }
-                                }))
-                                .addItem(new MenuItem("Gantt Chart", new Command() {
-                                    public void execute() {
-                                        IsWidget w = GWT.create(GanttDemo.class);
-                                        replaceContent(w);
-                                    }
-                                }))
-                                .addItem(new MenuItem("Gantt Chart2", new Command() {
-                                    public void execute() {
-                                        IsWidget w = GWT.create(Gantt2Demo.class);
-                                        replaceContent(w);
-                                    }
-                                }))
+                                .addItem(new MenuItem("Charts", subMenu()
+                                        .addItem(new MenuItem("Basic Chart", new Command() {
+                                            public void execute() {
+                                                IsWidget w = GWT.create(ChartDemo.class);
+                                                replaceContent(w);
+                                            }
+                                        }))
+                                        .addItem(new MenuItem("Area Chart", new Command() {
+                                            public void execute() {
+                                                IsWidget w = GWT.create(AreaChartDemo.class);
+                                                replaceContent(w);
+                                            }
+                                        }))
+                                        .addItem(new MenuItem("Gantt Chart", new Command() {
+                                            public void execute() {
+                                                IsWidget w = GWT.create(GanttDemo.class);
+                                                replaceContent(w);
+                                            }
+                                        }))
+                                        .addItem(new MenuItem("Gantt Chart2", new Command() {
+                                            public void execute() {
+                                                IsWidget w = GWT.create(Gantt2Demo.class);
+                                                replaceContent(w);
+                                            }
+                                        }))
+                                        .addItem(new MenuItem("Step Chart", new Command() {
+                                            public void execute() {
+                                                IsWidget w = GWT.create(StepChartDemo.class);
+                                                replaceContent(w);
+                                            }
+                                        }))
+                                        .menuBar))
                                 .addItem(new MenuItem("Context Menu", new Command() {
                                     public void execute() {
                                         IsWidget w = GWT.create(ContextMenuDemo.class);

@@ -36,8 +36,12 @@ public class AppCollectionUtil {
         return l;
     }
 
-    public static <K,V> Map<K, V> newMap() {
+    public static <K, V> Map<K, V> newMap() {
         return new HashMap<K, V>();
+    }
+
+    public static <K, V> Map<K, V> newMapFrom(Map<K, V> src) {
+        return new HashMap<K, V>(src);
     }
 
     public static <T> T firstElem(Iterable<T> es) {

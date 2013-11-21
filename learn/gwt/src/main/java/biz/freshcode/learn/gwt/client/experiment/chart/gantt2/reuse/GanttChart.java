@@ -30,7 +30,7 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
 
-import static biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartElem.Access.ACCESS;
+import static biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartElem.Access.CE_ACCESS;
 import static biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartUtil.interpolate;
 import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.*;
 import static biz.freshcode.learn.gwt.client.util.AppObjectUtils.safeEquals;
@@ -55,11 +55,11 @@ public class GanttChart extends Composite implements SeriesSelectionEvent.Series
     public GanttChart(EventBus bus) {
         this.bus = bus;
         initWidget(new ChartBuilder<ChartElem>()
-                .store(new ListStore<ChartElem>(ACCESS.xKey()))
+                .store(new ListStore<ChartElem>(CE_ACCESS.xKey()))
                 .addAxis(new NumericAxisBuilder<ChartElem>()
                         .position(Position.TOP)
                         .titleConfig(new TextSprite("Time"))
-                        .addField(ChartElem.Access.ACCESS.x())
+                        .addField(ChartElem.Access.CE_ACCESS.x())
                         .minimum(0)
                         .interval(2 * HR)
                         .labelProvider(new XLabels())
@@ -267,7 +267,7 @@ public class GanttChart extends Composite implements SeriesSelectionEvent.Series
                         .seriesToolTipConfig)
                         //                                            .highlighter()
                         // needed to orient lines
-                .xField(ACCESS.x())
+                .xField(CE_ACCESS.x())
                 .stroke(colour)
                 .strokeWidth(STROKE_NON_FOCUSED)
                         // I think fill is useless (might be legend oriented)
