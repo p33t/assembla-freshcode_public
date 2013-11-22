@@ -57,29 +57,6 @@ public class GanttChart extends AbstractChart implements SeriesSelectionEvent.Se
         primeChart();
     }
 
-    @Override
-    protected void setupChart(ChartBuilder<ChartElem> builder) {
-        builder
-                .addAxis(new NumericAxisBuilder<ChartElem>()
-                        .position(Position.TOP)
-                        .titleConfig(new TextSprite("Time"))
-                        .addField(ChartElem.Access.CE_ACCESS.x())
-                        .minimum(0)
-                        .interval(2 * HR)
-                        .labelProvider(new XLabels())
-                        .numericAxis)
-                .addAxis(new NumericAxisBuilder<ChartElem>()
-                        .position(Position.LEFT)
-                        .titleConfig(new TextSprite("Resources"))
-                                // .interval(1) doesn't seem to work.... too many steps!
-                        .labelProvider(new YLabels())
-                        .maximum(0)
-                        .minimum(LEFT_MIN)
-                        //.hidden(true)... might be useful on occasion
-                        .numericAxis)
-        ;
-    }
-
     /**
      * Tap focus change events.
      */
@@ -110,16 +87,15 @@ public class GanttChart extends AbstractChart implements SeriesSelectionEvent.Se
             updated.add(e.mapY(reorder));
         }
 
-        resources.clear();
-        resources.addAll(newOrder);
+        replaceResources(newOrder);
         store.replaceAll(updated);
 
         chart.redrawChart();
     }
 
     public void configure(ChartInfo info) {
-        clearChart(true);
-        resources.addAll(info.getResources());
+        clearChart();
+        replaceResources(info.getResources());
         zeroTime = info.getZeroTime();
 
         NumericAxis<ChartElem> top = getNumericAxis(Position.TOP);
@@ -137,7 +113,7 @@ public class GanttChart extends AbstractChart implements SeriesSelectionEvent.Se
     }
 
     public void replaceBars(Iterable<BarInfo> bars) {
-        clearChart(false);
+        clearChart();
         Map<String, List<PrecisePoint>> map = newMap();
         for (BarInfo bar : bars) {
             Integer y = resourceToNumber(bar.getResourceId());
@@ -198,18 +174,45 @@ public class GanttChart extends AbstractChart implements SeriesSelectionEvent.Se
         focusBar(barId);
     }
 
+    @Override
+    protected void setupChart(ChartBuilder<ChartElem> builder) {
+        builder
+                .addAxis(new NumericAxisBuilder<ChartElem>()
+                        .position(Position.TOP)
+                        .titleConfig(new TextSprite("Time"))
+                        .addField(ChartElem.Access.CE_ACCESS.x())
+                        .minimum(0)
+                        .interval(2 * HR)
+                        .labelProvider(new XLabels())
+                        .numericAxis)
+                .addAxis(new NumericAxisBuilder<ChartElem>()
+                        .position(Position.LEFT)
+                        .titleConfig(new TextSprite("Resources"))
+                                // .interval(1) doesn't seem to work.... too many steps!
+                        .labelProvider(new YLabels())
+                        .maximum(0)
+                        .minimum(LEFT_MIN)
+                        //.hidden(true)... might be useful on occasion
+                        .numericAxis)
+        ;
+    }
+
+    @Override
+    protected void clearChart() {
+        super.clearChart();
+        clearNumericAxis(Position.LEFT);
+    }
+
+    private void replaceResources(List<HasIdTitle> replacements) {
+        resources.clear();
+        resources.addAll(replacements);
+    }
+
     private void setLastFocusId(String idOrNull) {
         if (!safeEquals(lastFocusIdOrNull, idOrNull)) {
             lastFocusIdOrNull = idOrNull;
             bus.fireEvent(new GanttBarFocusEvent(this, lastFocusIdOrNull));
         }
-    }
-
-    private void clearChart(boolean clearResources) {
-        chart.getStore().clear();
-        clearSeries();
-        if (clearResources) resources.clear();
-        clearNumericAxis(Position.LEFT);
     }
 
     // need priming data otherwise chart doesn't show :(
