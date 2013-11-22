@@ -43,6 +43,7 @@ public class ChartUtil {
 
     /**
      * Convert a group of PointSeries to a group of PrecisePoint list.  Most likely so that interpolate can be used.
+     *
      * @see #interpolate(java.util.Map, SeriesGap)
      */
     public static Map<String, List<PrecisePoint>> convertToPps(Map<String, PointSeries> series) {
@@ -50,7 +51,7 @@ public class ChartUtil {
         for (String key : series.keySet()) {
             List<PrecisePoint> pps = newList();
             for (Point p : series.get(key)) {
-                PrecisePoint pp = new PrecisePoint((double) p.getX(), p.getY());
+                PrecisePoint pp = new PrecisePoint(p.getX(), p.getY());
                 pps.add(pp);
             }
             m.put(key, pps);
@@ -67,14 +68,14 @@ public class ChartUtil {
     public static List<ChartElem> stepPlotPrepare(Map<String, PointSeries> series) {
         // determine max X value
         int max = Integer.MIN_VALUE;
-        for (PointSeries ps: series.values()) {
+        for (PointSeries ps : series.values()) {
             int x = ps.getMaxX();
             if (max < x) max = x;
         }
 
         // prepare series for area charting
         Map<String, PointSeries> prep = newMap();
-        for (String key: series.keySet()) {
+        for (String key : series.keySet()) {
             PointSeries orig = series.get(key);
             PointSeries alt = areaChartPrep(orig, 0, max);
             prep.put(key, alt);
@@ -161,7 +162,7 @@ public class ChartUtil {
      *
      * @param ps       The points to use
      * @param defaultY The prevailing Y value before the first point.  This is typically '0'.
-     * @param maxX The maximum value of x used in surrounding PointSeries which needs to be present.
+     * @param maxX     The maximum value of x used in surrounding PointSeries which needs to be present.
      */
     static PointSeries areaChartPrep(PointSeries ps, int defaultY, int maxX) {
         if (ps.isEmpty()) return ps;
