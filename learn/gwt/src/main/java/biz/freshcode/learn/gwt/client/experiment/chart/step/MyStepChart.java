@@ -9,7 +9,6 @@ import biz.freshcode.learn.gwt.client.experiment.chart.step.reuse.PointSeries;
 import biz.freshcode.learn.gwt.client.experiment.chart.step.reuse.StepChartUtil;
 import biz.freshcode.learn.gwt.client.uispike.builder.IterConstruct;
 import com.sencha.gxt.chart.client.chart.axis.NumericAxis;
-import com.sencha.gxt.chart.client.draw.RGB;
 import com.sencha.gxt.chart.client.draw.sprite.TextSprite;
 
 import java.util.List;
@@ -57,14 +56,15 @@ public class MyStepChart extends AbstractChart {
                         // needed for series to pull all x-values from store
                 .xField(CE_ACCESS.x())
                 .construct(new IterConstruct<AreaSeriesBuilder<ChartElem>, ChartElem.AccessY>(fields) {
+                    private int ix;
+
                     @Override
                     public void runElem(ChartElem.AccessY elem) {
                         builder.addYField(elem);
+                        builder.addColor(ix, colour(ix));
+                        ix++;
                     }
                 })
-                        // TODO: Colours
-                .addColor(0, RGB.BLUE)
-                .addColor(1, RGB.GREEN)
                 .areaSeries);
         chart.redrawChart();
     }
