@@ -24,7 +24,6 @@ import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.core.client.util.PrecisePoint;
 import com.sencha.gxt.data.shared.LabelProvider;
 import com.sencha.gxt.data.shared.ListStore;
-import com.sencha.gxt.widget.core.client.Composite;
 
 import java.util.Date;
 import java.util.List;
@@ -38,7 +37,7 @@ import static biz.freshcode.learn.gwt.client.util.AppObjectUtils.safeEquals;
 import static biz.freshcode.learn.gwt.client.util.ExceptionUtil.illegalArg;
 import static com.sencha.gxt.chart.client.chart.Chart.Position;
 
-public class GanttChart extends Composite implements SeriesSelectionEvent.SeriesSelectionHandler<ChartElem> {
+public class GanttChart extends AbstractChart implements SeriesSelectionEvent.SeriesSelectionHandler<ChartElem> {
     private static final int HR = 60;
     private static final double LEFT_MIN = -1;
     private static final String PRIMER = "primer";
@@ -55,8 +54,12 @@ public class GanttChart extends Composite implements SeriesSelectionEvent.Series
 
     public GanttChart(EventBus bus) {
         this.bus = bus;
-        initWidget(new ChartBuilder<ChartElem>()
-                .store(new ListStore<ChartElem>(CE_ACCESS.xKey()))
+        primeChart();
+    }
+
+    @Override
+    protected void setupChart(ChartBuilder<ChartElem> builder) {
+        builder
                 .addAxis(new NumericAxisBuilder<ChartElem>()
                         .position(Position.TOP)
                         .titleConfig(new TextSprite("Time"))
@@ -68,15 +71,13 @@ public class GanttChart extends Composite implements SeriesSelectionEvent.Series
                 .addAxis(new NumericAxisBuilder<ChartElem>()
                         .position(Position.LEFT)
                         .titleConfig(new TextSprite("Resources"))
-//                        .interval(1) doesn't seem to work.... too many steps!
+                                // .interval(1) doesn't seem to work.... too many steps!
                         .labelProvider(new YLabels())
                         .maximum(0)
                         .minimum(LEFT_MIN)
                         //.hidden(true)... might be useful on occasion
                         .numericAxis)
-                .chart
-        );
-        primeChart();
+        ;
     }
 
     /**
@@ -103,7 +104,7 @@ public class GanttChart extends Composite implements SeriesSelectionEvent.Series
                 return (double) resourceIndexToValue(ixNew);
             }
         };
-        ListStore<ChartElem> store = getStore();
+        ListStore<ChartElem> store = chart.getStore();
         List<ChartElem> updated = newList();
         for (ChartElem e : store.getAll()) {
             updated.add(e.mapY(reorder));
@@ -113,15 +114,13 @@ public class GanttChart extends Composite implements SeriesSelectionEvent.Series
         resources.addAll(newOrder);
         store.replaceAll(updated);
 
-        getWidget().redrawChart();
+        chart.redrawChart();
     }
 
     public void configure(ChartInfo info) {
         clearChart(true);
         resources.addAll(info.getResources());
         zeroTime = info.getZeroTime();
-
-        Chart<ChartElem> ch = getWidget();
 
         NumericAxis<ChartElem> top = getNumericAxis(Position.TOP);
         top.setMaximum(info.getWindowSize());
@@ -133,7 +132,7 @@ public class GanttChart extends Composite implements SeriesSelectionEvent.Series
         left.setMinimum(Math.min(LEFT_MIN, resourceIndexToValue(resourceCount)));
         left.setSteps(resourceCount + 1);
 
-        ch.redrawChart();
+        chart.redrawChart();
         setLastFocusId(null);
     }
 
@@ -154,9 +153,7 @@ public class GanttChart extends Composite implements SeriesSelectionEvent.Series
             return;
         }
 
-        Chart<ChartElem> ch = getWidget();
         NumericAxis<ChartElem> left = getNumericAxis(Position.LEFT);
-
         boolean refocus = false;
         for (BarInfo bar : bars) {
             String barId = bar.getId();
@@ -166,11 +163,11 @@ public class GanttChart extends Composite implements SeriesSelectionEvent.Series
             left.addField(f);
 
             LineSeries<ChartElem> s = createSeries(f, bar.getColour());
-            ch.addSeries(s);
+            chart.addSeries(s);
         }
 
         List<ChartElem> interpolated = interpolate(map, SeriesGap.GAPS);
-        ch.getStore().addAll(interpolated);
+        chart.getStore().addAll(interpolated);
 
         if (refocus) focusBar(lastFocusIdOrNull);
         else focusBar(null);
@@ -181,7 +178,7 @@ public class GanttChart extends Composite implements SeriesSelectionEvent.Series
     }
 
     public void focusBar(String idOrNull) {
-        Chart<ChartElem> ch = getWidget();
+        Chart<ChartElem> ch = chart;
         for (Series<ChartElem> s : ch.getSeries()) {
             LineSeries<ChartElem> ls = (LineSeries<ChartElem>) s;
             String barId = ls.getYField().getPath();
@@ -201,16 +198,6 @@ public class GanttChart extends Composite implements SeriesSelectionEvent.Series
         focusBar(barId);
     }
 
-    @Override
-    protected Chart<ChartElem> getWidget() {
-        //noinspection unchecked
-        return (Chart<ChartElem>) super.getWidget();
-    }
-
-    private ListStore<ChartElem> getStore() {
-        return getWidget().getStore();
-    }
-
     private void setLastFocusId(String idOrNull) {
         if (!safeEquals(lastFocusIdOrNull, idOrNull)) {
             lastFocusIdOrNull = idOrNull;
@@ -219,37 +206,24 @@ public class GanttChart extends Composite implements SeriesSelectionEvent.Series
     }
 
     private void clearChart(boolean clearResources) {
-        Chart<ChartElem> ch = getWidget();
-        ch.getStore().clear();
-        for (int i = ch.getSeries().size() - 1; i >= 0; i--) {
-            ch.removeSeries(i);
-        }
-
+        chart.getStore().clear();
+        clearSeries();
         if (clearResources) resources.clear();
-
-        NumericAxis<ChartElem> left = getNumericAxis(Position.LEFT);
-        List<ValueProvider> l = newList();
-        l.addAll(left.getFields());
-        for (ValueProvider vp : l) {
-            //noinspection unchecked
-            left.removeField(vp);
-        }
+        clearNumericAxis(Position.LEFT);
     }
 
     // need priming data otherwise chart doesn't show :(
     private void primeChart() {
         ChartElem.AccessY primer = new ChartElem.AccessY(PRIMER);
-        Chart<ChartElem> ch = getWidget();
 
         // dummy data
-        ListStore<ChartElem> store = ch.getStore();
         ChartElem p1 = new ChartElem(60, Double.NaN);
         p1.setY(primer.getPath(), 1.0);
-        store.add(p1);
+        chart.getStore().add(p1);
 
         // add config
         getNumericAxis(Position.LEFT).addField(primer);
-        ch.addSeries(createSeries(primer, new RGB("#000000")));
+        chart.addSeries(createSeries(primer, new RGB("#000000")));
     }
 
     private LineSeries<ChartElem> createSeries(final ChartElem.AccessY access, RGB colour) {
@@ -279,11 +253,6 @@ public class GanttChart extends Composite implements SeriesSelectionEvent.Series
                 .lineSeries;
         s.addSeriesSelectionHandler(this);
         return s;
-    }
-
-    private NumericAxis<ChartElem> getNumericAxis(Position posn) {
-        //noinspection unchecked
-        return (NumericAxis<ChartElem>) getWidget().getAxis(posn);
     }
 
     private int resourceIndexToValue(int ix) {
