@@ -96,7 +96,7 @@ public class StepChartDemo extends AbstractIsWidget<BorderLayoutContainer> {
         Map<String, PointSeries> pss = newMap();
         pss.put("A", PointSeries.NIL.add(new Point(100, 5), new Point(200, 7), new Point(300, 0)));
         // ends with non-zero y-val
-        pss.put("B", PointSeries.NIL.add(new Point(50, 3), new Point(200, 1)));
+        pss.put("B", PointSeries.NIL.add(new Point(50, 3), new Point(200, 1), new Point(250, 2)));
         List<ChartElem> items = StepChartUtil.prepAndInterpolate(pss);
         chart.getStore().replaceAll(items);
 
