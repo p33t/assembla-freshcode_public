@@ -53,4 +53,12 @@ public abstract class AbstractChart extends Composite {
             chart.removeSeries(i);
         }
     }
+
+    /**
+     * Clears data from the chart.  Subclasses should override and clear relevant numeric axes.
+     */
+    protected void clearChart() {
+        chart.getStore().clear();
+        clearSeries();
+    }
 }
