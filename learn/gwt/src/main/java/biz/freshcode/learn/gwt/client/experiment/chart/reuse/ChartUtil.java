@@ -163,7 +163,7 @@ public class ChartUtil {
      * @param defaultY The prevailing Y value before the first point.  This is typically '0'.
      * @param maxX The maximum value of x used in surrounding PointSeries which needs to be present.
      */
-    private static PointSeries areaChartPrep(PointSeries ps, int defaultY, int maxX) {
+    static PointSeries areaChartPrep(PointSeries ps, int defaultY, int maxX) {
         if (ps.isEmpty()) return ps;
         PointSeries result = PointSeries.NIL;
         int lastY = defaultY;
