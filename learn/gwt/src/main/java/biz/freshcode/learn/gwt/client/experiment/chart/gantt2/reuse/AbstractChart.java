@@ -5,6 +5,7 @@ import biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartElem;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.chart.client.chart.Chart;
 import com.sencha.gxt.chart.client.chart.axis.NumericAxis;
+import com.sencha.gxt.chart.client.draw.RGB;
 import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.data.shared.ListStore;
 import com.sencha.gxt.widget.core.client.Composite;
@@ -12,9 +13,21 @@ import com.sencha.gxt.widget.core.client.Composite;
 import java.util.List;
 
 import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newList;
+import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newListFrom;
 
 public abstract class AbstractChart extends Composite {
     protected final Chart<ChartElem> chart = new Chart<ChartElem>();
+    /**
+     * Colour scheme for elements.  This can be customised.
+     * 
+     * @see #colour(int)
+     */
+    protected final List<RGB> colours = newListFrom(
+            RGB.BLUE, RGB.GRAY, RGB.PURPLE,
+            RGB.RED, RGB.YELLOW, RGB.GREEN,
+            RGB.MAGENTA, RGB.PINK, RGB.ORANGE, 
+            RGB.CYAN
+    );
 
     public AbstractChart() {
         ChartBuilder<ChartElem> builder = new ChartBuilder<ChartElem>(chart)
@@ -23,6 +36,14 @@ public abstract class AbstractChart extends Composite {
         super.initWidget(chart);
     }
 
+    /**
+     * Return a colour to use for the given index.  This uses the 'colours' field and wraps when it is exhausted.
+     * @see #colours
+     */
+    protected RGB colour(int ix) {
+        return colours.get(ix % colours.size());
+    }
+    
     /**
      * Add and configure axes.
      */
