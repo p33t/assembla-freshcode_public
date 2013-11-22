@@ -5,6 +5,7 @@ import biz.freshcode.learn.gwt.client.builder.gxt.chart.axis.NumericAxisBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.chart.series.LineSeriesBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.chart.series.SeriesToolTipConfigBuilder;
 import biz.freshcode.learn.gwt.client.experiment.chart.gantt.reuse.StartDurn;
+import biz.freshcode.learn.gwt.client.experiment.chart.reuse.AbstractChart;
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartElem;
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.MapFun;
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.SeriesGap;

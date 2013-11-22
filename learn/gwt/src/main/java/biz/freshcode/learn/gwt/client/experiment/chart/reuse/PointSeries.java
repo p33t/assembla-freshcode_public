@@ -1,4 +1,4 @@
-package biz.freshcode.learn.gwt.client.experiment.chart.step.reuse;
+package biz.freshcode.learn.gwt.client.experiment.chart.reuse;
 
 import com.sencha.gxt.core.client.util.Point;
 
@@ -37,7 +37,10 @@ public class PointSeries implements Iterable<Point> {
     public boolean isEmpty() {
         return points.isEmpty();
     }
-    
+
+    /**
+     * Enables iteration of points in x-order.
+     */
     @Override
     public Iterator<Point> iterator() {
         List<Integer> xs = newListFrom(points.keySet());

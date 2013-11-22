@@ -3,10 +3,10 @@ package biz.freshcode.learn.gwt.client.experiment.chart.step;
 import biz.freshcode.learn.gwt.client.builder.gxt.chart.ChartBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.chart.axis.NumericAxisBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.chart.series.AreaSeriesBuilder;
-import biz.freshcode.learn.gwt.client.experiment.chart.gantt2.reuse.AbstractChart;
+import biz.freshcode.learn.gwt.client.experiment.chart.reuse.AbstractChart;
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartElem;
-import biz.freshcode.learn.gwt.client.experiment.chart.step.reuse.PointSeries;
-import biz.freshcode.learn.gwt.client.experiment.chart.step.reuse.StepChartUtil;
+import biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartUtil;
+import biz.freshcode.learn.gwt.client.experiment.chart.reuse.PointSeries;
 import biz.freshcode.learn.gwt.client.uispike.builder.IterConstruct;
 import com.sencha.gxt.chart.client.chart.axis.NumericAxis;
 import com.sencha.gxt.chart.client.draw.sprite.TextSprite;
@@ -42,7 +42,7 @@ public class MyStepChart extends AbstractChart {
     public void display(Map<String, PointSeries> pss) {
         clearChart();
 
-        List<ChartElem> items = StepChartUtil.prepAndInterpolate(pss);
+        List<ChartElem> items = ChartUtil.prepAndInterpolate(pss);
         chart.getStore().replaceAll(items);
 
         List<ChartElem.AccessY> fields = newList();
