@@ -1,5 +1,6 @@
 package biz.freshcode.learn.gwt.client.experiment.chart.reuse;
 
+import com.sencha.gxt.core.client.util.Point;
 import com.sencha.gxt.core.client.util.PrecisePoint;
 import junit.framework.TestCase;
 
@@ -92,5 +93,21 @@ public class ChartUtilTest extends TestCase {
         );
 
         assertEquals(expected, ChartUtil.interpolate(seriesMap, SeriesGap.GAPS));
+    }
+
+    public void testAreaChartPrep() {
+        PointSeries ps = PointSeries.NIL.add(
+                new Point(2, 2),
+                new Point(4, 4)
+        );
+        PointSeries expected = PointSeries.NIL.add(
+                new Point(1, 1), // lead-in point
+                new Point(2, 2),
+                new Point(3, 2), // extra point to make look like step
+                new Point(4, 4),
+                new Point(5, 4) // terminating point
+        );
+        PointSeries actual = ChartUtil.areaChartPrep(ps, 1, 5);
+        assertEquals(expected, actual);
     }
 }
