@@ -17,7 +17,7 @@ public class ChartUtil {
      * Specifically, all x values from any series must be populated
      * for all other series within the bounds of the desired line.
      */
-    public static List<ChartElem> interpolate(Map<String, List<PrecisePoint>> lines) {
+    public static List<ChartElem> interpolate(Map<String, List<PrecisePoint>> lines, SeriesGap gaps) {
         Map<Double, ChartElem> m = newMap();
         for (Double x : allXs(lines)) {
             for (String key : lines.keySet()) {
@@ -30,9 +30,27 @@ public class ChartUtil {
                     if (p.getX() == x) y = p.getY();
                     else if (ix == 0) continue; // x is before the line's domain
                     else y = interpolateY(line.get(ix - 1), p, x);
-                    setY(m, x, key, y);
+                    setY(m, x, key, y, gaps);
                 }
                 // else x after line domain
+            }
+        }
+
+        return orderedList(m);
+    }
+
+    /**
+     * Converts a map of lines to a List of ChartElems.
+     */
+    public static List<ChartElem> convertToElems(Map<String, List<PrecisePoint>> lines, SeriesGap gap) {
+        Map<Double, ChartElem> m = newMap();
+        for (String key : lines.keySet()) {
+            // for each series
+            List<PrecisePoint> line = lines.get(key);
+            for (PrecisePoint p : line) {
+                // for each point
+                // ensure 'Y' is set
+                setY(m, p.getX(), key, p.getY(), gap);
             }
         }
 
@@ -64,6 +82,7 @@ public class ChartUtil {
         if (a.getX() >= b.getX()) throw illegalArg("a & b must be in order and not the same. a:" + a + ", b:" + b);
         if (!(a.getX() < x && x < b.getX()))
             throw illegalArg("x must be between a & b.  x: " + x + ", a:" + a + ", b:" + b);
+        if (a.getY() == b.getY()) return a.getY();
         double ratio = (x - a.getX()) / (b.getX() - a.getX());
         if (ratio > 1.0)
             throw illegalState("Ratio should be <= 1.  x = " + x + ", ratio: " + ratio);
@@ -97,12 +116,13 @@ public class ChartUtil {
     /**
      * Lazily puts a CharElem in the given map and sets the specified 'y' value.
      */
-    private static void setY(Map<Double, ChartElem> m, Double x, String key, Double y) {
+    private static void setY(Map<Double, ChartElem> m, Double x, String key, Double y, SeriesGap gap) {
         ChartElem target = m.get(x);
         if (target == null) {
-            target = new ChartElem(x);
+            target = new ChartElem(x, gap.defVal());
             m.put(x, target);
         }
+//        GWT.log("Setting " + key + " " + x + "," + y);
         target.setY(key, y);
     }
 }

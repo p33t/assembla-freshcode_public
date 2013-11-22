@@ -42,22 +42,22 @@ public class ChartUtilTest extends TestCase {
         seriesMap.put(ANGLE, angle);
 
         List<ChartElem> expected = newListFrom(
-                new ChartElem(2)
+                new ChartElem(2, Double.NaN)
                         .addY(ANGLE, 4),
-                new ChartElem(4)
+                new ChartElem(4, Double.NaN)
                         .addY(ANGLE, 4)
                         .addY(STRAIGHT, 8),
-                new ChartElem(6)
+                new ChartElem(6, Double.NaN)
                         .addY(ANGLE, 4)
                         .addY(STRAIGHT, 8),
-                new ChartElem(8)
+                new ChartElem(8, Double.NaN)
                         .addY(ANGLE, 2)
                         .addY(STRAIGHT, 8),
-                new ChartElem(10)
+                new ChartElem(10, Double.NaN)
                         .addY(ANGLE, 0)
         );
 
-        assertEquals(expected, ChartUtil.interpolate(seriesMap));
+        assertEquals(expected, ChartUtil.interpolate(seriesMap, SeriesGap.GAPS));
     }
 
     public void testInterpolateNegative() {
@@ -76,21 +76,21 @@ public class ChartUtilTest extends TestCase {
         seriesMap.put(ANGLE, angle);
 
         List<ChartElem> expected = newListFrom(
-                new ChartElem(2)
+                new ChartElem(2, Double.NaN)
                         .addY(ANGLE, -4),
-                new ChartElem(4)
+                new ChartElem(4, Double.NaN)
                         .addY(ANGLE, -4)
                         .addY(STRAIGHT, -8),
-                new ChartElem(6)
+                new ChartElem(6, Double.NaN)
                         .addY(ANGLE, -4)
                         .addY(STRAIGHT, -8),
-                new ChartElem(8)
+                new ChartElem(8, Double.NaN)
                         .addY(ANGLE, -2)
                         .addY(STRAIGHT, -8),
-                new ChartElem(10)
+                new ChartElem(10, Double.NaN)
                         .addY(ANGLE, 0)
         );
 
-        assertEquals(expected, ChartUtil.interpolate(seriesMap));
+        assertEquals(expected, ChartUtil.interpolate(seriesMap, SeriesGap.GAPS));
     }
 }
