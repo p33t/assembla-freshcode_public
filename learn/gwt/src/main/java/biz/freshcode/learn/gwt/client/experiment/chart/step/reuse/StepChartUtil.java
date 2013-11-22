@@ -54,17 +54,37 @@ public class StepChartUtil {
      * @see ChartUtil#interpolate(java.util.Map, biz.freshcode.learn.gwt.client.experiment.chart.reuse.SeriesGap)
      */
     public static List<ChartElem> prepAndInterpolate(Map<String, PointSeries> series) {
+        double maxX = Double.MIN_VALUE;
+        Map<String, PrecisePoint> endPoints = newMap();
         Map<String, List<PrecisePoint>> m = newMap();
         for (String key : series.keySet()) {
             PointSeries ps = series.get(key);
             List<PrecisePoint> pps = newList();
             PointSeries prep = areaChartPrep(ps, 0);
             for (Point p : prep) {
-                pps.add(new PrecisePoint(p.getX(), p.getY()));
+                double x = p.getX();
+                if (maxX < x) maxX = x;
+                PrecisePoint pp = new PrecisePoint(x, p.getY());
+                pps.add(pp);
+
+                // capture the end point of each series
+                // this assume points are ordered
+                endPoints.put(key, pp);
             }
             m.put(key, pps);
         }
-//        return ChartUtil.convertToElems(m, ZERO_DEF);
+
+        // ensure end point for each series has same X value
+        // Otherwise the default 'zero' interferes
+        for (String key : endPoints.keySet()) {
+            PrecisePoint end = endPoints.get(key);
+            if (end.getX() < maxX) {
+                // need artifical end point
+                PrecisePoint pseudo = new PrecisePoint(maxX, end.getY());
+                m.get(key).add(pseudo);
+            }
+        }
+
         return ChartUtil.interpolate(m, ZERO_DEF);
     }
 }
