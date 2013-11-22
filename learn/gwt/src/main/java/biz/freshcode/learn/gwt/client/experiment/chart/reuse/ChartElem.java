@@ -18,12 +18,14 @@ import static biz.freshcode.learn.gwt.client.util.ExceptionUtil.illegalArg;
 public class ChartElem {
     private final Double x;
     private final Map<String, Double> ys = newMap();
+    private final Double defVal;
 
     /**
      * NOTE: Primitive means int cast works
      */
-    public ChartElem(double x) {
+    public ChartElem(double x, Double defVal) {
         this.x = x;
+        this.defVal = defVal;
     }
 
     @Override
@@ -34,10 +36,11 @@ public class ChartElem {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof ChartElem)) return false;
 
         ChartElem chartElem = (ChartElem) o;
 
+        if (!defVal.equals(chartElem.defVal)) return false;
         if (!x.equals(chartElem.x)) return false;
         //noinspection RedundantIfStatement
         if (!ys.equals(chartElem.ys)) return false;
@@ -47,9 +50,7 @@ public class ChartElem {
 
     @Override
     public int hashCode() {
-        int result = x.hashCode();
-        result = 31 * result + ys.hashCode();
-        return result;
+        return x.hashCode();
     }
 
     public void setY(String key, Double value) {
@@ -69,17 +70,17 @@ public class ChartElem {
     }
 
     /**
-     * Returns the y value for the specified series.  If no value is specified then NaN is returned.
+     * Returns the y value for the specified series.  If no value is specified then defValue is returned.
      * This assumes that lines have been interpolated as necessary to populate all x values between two end points.
      */
     public Double getY(String key) {
         Double y = ys.get(key);
-        if (y == null) y = Double.NaN;
+        if (y == null) y = defVal;
         return y;
     }
 
     public ChartElem mapY(MapFun<Double, Double> mapper) {
-        ChartElem e = new ChartElem(x);
+        ChartElem e = new ChartElem(x, defVal);
         for (String key: ys.keySet()) {
             Double i = getY(key);
             Double o = mapper.map(i);
@@ -95,7 +96,6 @@ public class ChartElem {
         ModelKeyProvider<ChartElem> xKey();
 
         ValueProvider<ChartElem, Double> x();
-
     }
 
     public static class AccessY implements ValueProvider<ChartElem, Double> {

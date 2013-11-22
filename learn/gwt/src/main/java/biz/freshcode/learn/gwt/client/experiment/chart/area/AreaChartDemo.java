@@ -48,6 +48,7 @@ public class AreaChartDemo extends AbstractIsWidget<BorderLayoutContainer> {
                         .addAxis(new NumericAxisBuilder<Elem>()
                                 .position(Position.LEFT)
                                 .addField(E_ACCESS.appleCount())
+                                .addField(E_ACCESS.orangeCount())
                                 .numericAxis)
                         .addAxis(new CategoryAxisBuilder<Elem, String>()
                                 .position(Position.BOTTOM)

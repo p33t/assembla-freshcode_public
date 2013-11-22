@@ -9,6 +9,7 @@ import biz.freshcode.learn.gwt.client.experiment.chart.gantt.reuse.GanttBar;
 import biz.freshcode.learn.gwt.client.experiment.chart.gantt.reuse.GanttInfo;
 import biz.freshcode.learn.gwt.client.experiment.chart.gantt.reuse.StartDurn;
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartElem;
+import biz.freshcode.learn.gwt.client.experiment.chart.reuse.SeriesGap;
 import biz.freshcode.learn.gwt.client.uispike.builder.Construct;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import com.sencha.gxt.chart.client.chart.Chart;
@@ -147,7 +148,7 @@ public class GanttDemo extends AbstractIsWidget<BorderLayoutContainer> {
                     new PrecisePoint(sd.getStart() + sd.getDurn(), y)
             ));
         }
-        return interpolate(series);
+        return interpolate(series, SeriesGap.GAPS);
     }
 
     private GanttInfo createData() {

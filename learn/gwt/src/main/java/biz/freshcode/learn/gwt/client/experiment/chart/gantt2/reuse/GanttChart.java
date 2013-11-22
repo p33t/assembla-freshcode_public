@@ -7,6 +7,7 @@ import biz.freshcode.learn.gwt.client.builder.gxt.chart.series.SeriesToolTipConf
 import biz.freshcode.learn.gwt.client.experiment.chart.gantt.reuse.StartDurn;
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartElem;
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.MapFun;
+import biz.freshcode.learn.gwt.client.experiment.chart.reuse.SeriesGap;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.event.shared.HandlerRegistration;
 import com.google.web.bindery.event.shared.SimpleEventBus;
@@ -168,7 +169,7 @@ public class GanttChart extends Composite implements SeriesSelectionEvent.Series
             ch.addSeries(s);
         }
 
-        List<ChartElem> interpolated = interpolate(map);
+        List<ChartElem> interpolated = interpolate(map, SeriesGap.GAPS);
         ch.getStore().addAll(interpolated);
 
         if (refocus) focusBar(lastFocusIdOrNull);
@@ -242,7 +243,7 @@ public class GanttChart extends Composite implements SeriesSelectionEvent.Series
 
         // dummy data
         ListStore<ChartElem> store = ch.getStore();
-        ChartElem p1 = new ChartElem(60);
+        ChartElem p1 = new ChartElem(60, Double.NaN);
         p1.setY(primer.getPath(), 1.0);
         store.add(p1);
 

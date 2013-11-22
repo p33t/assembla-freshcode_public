@@ -10,6 +10,7 @@ import biz.freshcode.learn.gwt.client.builder.gxt.container.BorderLayoutContaine
 import biz.freshcode.learn.gwt.client.builder.gxt.container.HorizontalLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.draw.path.PathSpriteBuilder;
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartElem;
+import biz.freshcode.learn.gwt.client.experiment.chart.reuse.SeriesGap;
 import biz.freshcode.learn.gwt.client.uispike.builder.Construct;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import biz.freshcode.learn.gwt.client.util.IdentityHashProvider;
@@ -101,7 +102,7 @@ public class ChartDemo extends AbstractIsWidget<BorderLayoutContainer> {
                 new PrecisePoint(3, 3),
                 new PrecisePoint(6, 3))
         );
-        List<ChartElem> data = interpolate(series);
+        List<ChartElem> data = interpolate(series, SeriesGap.GAPS);
         GWT.log("Data: " + data);
         store.addAll(data);
         ChartElem.AccessY acsStraight, acsAngled;
