@@ -111,6 +111,8 @@ public class StepChartDemo extends AbstractIsWidget<BorderLayoutContainer> {
         while (chart.getSeries().size() != 0) chart.removeSeries(0);
         chart.addSeries(new AreaSeriesBuilder<ChartElem>()
                 .yAxisPosition(Position.LEFT)
+                // needed for series to pull all x-values from store
+                .xField(CE_ACCESS.x())
                 .addYField(0, accessA)
                 .addColor(0, RGB.BLUE)
                 .addYField(accessB)
