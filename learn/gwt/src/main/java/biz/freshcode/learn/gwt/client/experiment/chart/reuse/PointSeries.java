@@ -39,6 +39,16 @@ public class PointSeries implements Iterable<Point> {
     }
 
     /**
+     * Returns the largest value of 'x' in the series.
+     * If the series is empty then Integer.MIN_VALUE is returned.
+     */
+    public int getMaxX() {
+        int max = Integer.MIN_VALUE;
+        for (Integer i: points.keySet()) if (max < i) max = i;
+        return max;
+    }
+
+    /**
      * Enables iteration of points in x-order.
      */
     @Override

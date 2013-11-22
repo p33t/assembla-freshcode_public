@@ -42,42 +42,45 @@ public class ChartUtil {
     }
 
     /**
-     * Converts the given step plots into a datastructure ready for display.
-     *
-     * @see #areaChartPrep(PointSeries, int)
+     * Convert a group of PointSeries to a group of PrecisePoint list.  Most likely so that interpolate can be used.
      * @see #interpolate(java.util.Map, SeriesGap)
      */
-    public static List<ChartElem> prepAndInterpolate(Map<String, PointSeries> series) {
-        double maxX = Double.MIN_VALUE;
-        Map<String, PrecisePoint> endPoints = newMap();
+    public static Map<String, List<PrecisePoint>> convertToPps(Map<String, PointSeries> series) {
         Map<String, List<PrecisePoint>> m = newMap();
         for (String key : series.keySet()) {
-            PointSeries ps = series.get(key);
             List<PrecisePoint> pps = newList();
-            PointSeries prep = areaChartPrep(ps, 0);
-            for (Point p : prep) {
-                double x = p.getX();
-                if (maxX < x) maxX = x;
-                PrecisePoint pp = new PrecisePoint(x, p.getY());
+            for (Point p : series.get(key)) {
+                PrecisePoint pp = new PrecisePoint((double) p.getX(), p.getY());
                 pps.add(pp);
-
-                // capture the end point of each series
-                // this assume points are ordered
-                endPoints.put(key, pp);
             }
             m.put(key, pps);
         }
+        return m;
+    }
 
-        // ensure end point for each series has same X value
-        // Otherwise the default 'zero' interferes
-        for (String key : endPoints.keySet()) {
-            PrecisePoint end = endPoints.get(key);
-            if (end.getX() < maxX) {
-                // need artifical end point
-                PrecisePoint pseudo = new PrecisePoint(maxX, end.getY());
-                m.get(key).add(pseudo);
-            }
+    /**
+     * Converts the given step plots into a datastructure ready for display.
+     *
+     * @see #areaChartPrep(PointSeries, int, int)
+     * @see #interpolate(java.util.Map, SeriesGap)
+     */
+    public static List<ChartElem> stepPlotPrepare(Map<String, PointSeries> series) {
+        // determine max X value
+        int max = Integer.MIN_VALUE;
+        for (PointSeries ps: series.values()) {
+            int x = ps.getMaxX();
+            if (max < x) max = x;
         }
+
+        // prepare series for area charting
+        Map<String, PointSeries> prep = newMap();
+        for (String key: series.keySet()) {
+            PointSeries orig = series.get(key);
+            PointSeries alt = areaChartPrep(orig, 0, max);
+            prep.put(key, alt);
+        }
+
+        Map<String, List<PrecisePoint>> m = convertToPps(prep);
 
         return interpolate(m, ZERO_DEF);
     }
@@ -158,8 +161,10 @@ public class ChartUtil {
      *
      * @param ps       The points to use
      * @param defaultY The prevailing Y value before the first point.  This is typically '0'.
+     * @param maxX The maximum value of x used in surrounding PointSeries which needs to be present.
      */
-    private static PointSeries areaChartPrep(PointSeries ps, int defaultY) {
+    private static PointSeries areaChartPrep(PointSeries ps, int defaultY, int maxX) {
+        if (ps.isEmpty()) return ps;
         PointSeries result = PointSeries.NIL;
         int lastY = defaultY;
         for (Point p : ps) {
@@ -179,6 +184,11 @@ public class ChartUtil {
                 result = result.add(pseudo, p);
             }
             lastY = p.getY();
+        }
+        if (ps.getMaxX() < maxX) {
+            // need terminating point
+            Point pseudo = new Point(maxX, lastY);
+            result = result.add(pseudo);
         }
         return result;
     }
