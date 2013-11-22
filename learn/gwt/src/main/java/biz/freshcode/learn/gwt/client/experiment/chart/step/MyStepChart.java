@@ -42,7 +42,7 @@ public class MyStepChart extends AbstractChart {
     public void display(Map<String, PointSeries> pss) {
         clearChart();
 
-        List<ChartElem> items = ChartUtil.prepAndInterpolate(pss);
+        List<ChartElem> items = ChartUtil.stepPlotPrepare(pss);
         chart.getStore().replaceAll(items);
 
         List<ChartElem.AccessY> fields = newList();
