@@ -1,7 +1,6 @@
-package biz.freshcode.learn.gwt.client.experiment.chart.gantt2.reuse;
+package biz.freshcode.learn.gwt.client.experiment.chart.reuse;
 
 import biz.freshcode.learn.gwt.client.builder.gxt.chart.ChartBuilder;
-import biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartElem;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.chart.client.chart.Chart;
 import com.sencha.gxt.chart.client.chart.axis.NumericAxis;

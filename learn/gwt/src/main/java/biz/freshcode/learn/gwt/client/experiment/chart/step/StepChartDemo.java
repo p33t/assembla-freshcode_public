@@ -2,7 +2,7 @@ package biz.freshcode.learn.gwt.client.experiment.chart.step;
 
 import biz.freshcode.learn.gwt.client.builder.gxt.container.BorderLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.container.HorizontalLayoutContainerBuilder;
-import biz.freshcode.learn.gwt.client.experiment.chart.step.reuse.PointSeries;
+import biz.freshcode.learn.gwt.client.experiment.chart.reuse.PointSeries;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import com.sencha.gxt.core.client.util.Point;
 import com.sencha.gxt.widget.core.client.button.TextButton;
