@@ -15,11 +15,9 @@ import com.google.web.bindery.event.shared.SimpleEventBus;
 import com.sencha.gxt.chart.client.chart.Chart;
 import com.sencha.gxt.chart.client.chart.axis.NumericAxis;
 import com.sencha.gxt.chart.client.chart.event.SeriesSelectionEvent;
-import com.sencha.gxt.chart.client.chart.series.LineHighlighter;
-import com.sencha.gxt.chart.client.chart.series.LineSeries;
-import com.sencha.gxt.chart.client.chart.series.Series;
-import com.sencha.gxt.chart.client.chart.series.SeriesLabelProvider;
+import com.sencha.gxt.chart.client.chart.series.*;
 import com.sencha.gxt.chart.client.draw.RGB;
+import com.sencha.gxt.chart.client.draw.sprite.Sprite;
 import com.sencha.gxt.chart.client.draw.sprite.TextSprite;
 import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.core.client.util.PrecisePoint;
@@ -48,6 +46,8 @@ public class GanttChart extends AbstractChart implements SeriesSelectionEvent.Se
     private Date zeroTime = new Date();
     private String lastFocusIdOrNull;
     private final EventBus bus;
+    public static final SeriesRenderer<ChartElem> FOCAL_RENDER = new FocalRenderer(true);
+    public static final SeriesRenderer<ChartElem> NON_FOCAL_RENDER = new FocalRenderer(false);
 
     public GanttChart() {
         this(new SimpleEventBus());
@@ -90,6 +90,9 @@ public class GanttChart extends AbstractChart implements SeriesSelectionEvent.Se
 
         replaceResources(newOrder);
         store.replaceAll(updated);
+        chart.setAnimated(true);
+        // doesn't highlight bars... does some weird
+        chart.setShadowChart(true);
 
         chart.redrawChart();
     }
@@ -164,6 +167,9 @@ public class GanttChart extends AbstractChart implements SeriesSelectionEvent.Se
             // Markers suffer from interpolated points
             ls.setStrokeWidth(focused ? STROKE_FOCUSED : STROKE_NON_FOCUSED);
             ls.setShowMarkers(focused);
+//            ls.setRenderer(focused ? FOCAL_RENDER : NON_FOCAL_RENDER);
+//            Seems to have 'sticky' effects that hang around after no longer focused.
+//            ls.setLineRenderer(focused ? FOCAL_RENDER : NON_FOCAL_RENDER);
         }
         setLastFocusId(idOrNull);
         ch.redrawChart();
@@ -248,6 +254,7 @@ public class GanttChart extends AbstractChart implements SeriesSelectionEvent.Se
                         // needed to orient lines
                 .xField(CE_ACCESS.x())
                 .stroke(colour)
+                .fill(RGB.LIGHTGRAY)
                 .strokeWidth(STROKE_NON_FOCUSED)
                         // I think fill is useless (might be legend oriented)
                 .showMarkers(false)
@@ -308,6 +315,26 @@ public class GanttChart extends AbstractChart implements SeriesSelectionEvent.Se
         @Override
         public String getLabel(Number item) {
             return "+" + item + "mins";
+        }
+    }
+
+    private static class FocalRenderer implements SeriesRenderer<ChartElem> {
+
+        private final boolean focused;
+
+        FocalRenderer(boolean focused) {
+
+            this.focused = focused;
+        }
+
+        @Override
+        public void spriteRenderer(Sprite sprite, int index, ListStore<ChartElem> store) {
+            if (focused) {
+                sprite.setStroke(RGB.MAGENTA);
+                sprite.setStrokeOpacity(.5);
+                sprite.setFill(RGB.MAGENTA);
+                sprite.setFillOpacity(.5);
+            }
         }
     }
 }
