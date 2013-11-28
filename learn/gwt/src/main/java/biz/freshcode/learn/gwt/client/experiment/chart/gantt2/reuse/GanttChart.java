@@ -4,6 +4,7 @@ import biz.freshcode.learn.gwt.client.builder.gxt.chart.ChartBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.chart.axis.NumericAxisBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.chart.series.LineSeriesBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.chart.series.SeriesToolTipConfigBuilder;
+import biz.freshcode.learn.gwt.client.builder.gxt.draw.path.PathSpriteBuilder;
 import biz.freshcode.learn.gwt.client.experiment.chart.gantt.reuse.StartDurn;
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.AbstractChart;
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartElem;
@@ -15,7 +16,10 @@ import com.google.web.bindery.event.shared.SimpleEventBus;
 import com.sencha.gxt.chart.client.chart.Chart;
 import com.sencha.gxt.chart.client.chart.axis.NumericAxis;
 import com.sencha.gxt.chart.client.chart.event.SeriesSelectionEvent;
-import com.sencha.gxt.chart.client.chart.series.*;
+import com.sencha.gxt.chart.client.chart.series.LineSeries;
+import com.sencha.gxt.chart.client.chart.series.Series;
+import com.sencha.gxt.chart.client.chart.series.SeriesLabelProvider;
+import com.sencha.gxt.chart.client.chart.series.SeriesRenderer;
 import com.sencha.gxt.chart.client.draw.RGB;
 import com.sencha.gxt.chart.client.draw.sprite.Sprite;
 import com.sencha.gxt.chart.client.draw.sprite.TextSprite;
@@ -91,8 +95,8 @@ public class GanttChart extends AbstractChart implements SeriesSelectionEvent.Se
         replaceResources(newOrder);
         store.replaceAll(updated);
         chart.setAnimated(true);
-        // doesn't highlight bars... does some weird
-        chart.setShadowChart(true);
+        // doesn't highlight bars
+//        chart.setShadowChart(true);
 
         chart.redrawChart();
     }
@@ -199,7 +203,13 @@ public class GanttChart extends AbstractChart implements SeriesSelectionEvent.Se
                         .labelProvider(new YLabels())
                         .maximum(0)
                         .minimum(LEFT_MIN)
-                        //.hidden(true)... might be useful on occasion
+                                //.hidden(true)... might be useful on occasion
+                        .gridEvenConfig(new PathSpriteBuilder()
+                                .fill(new RGB("#f8f8f8"))
+                                .stroke(new RGB("#f8f8f8"))
+                                .strokeWidth(1)
+                                .pathSprite)
+                        .displayGrid(true)
                         .numericAxis)
         ;
     }
@@ -254,12 +264,15 @@ public class GanttChart extends AbstractChart implements SeriesSelectionEvent.Se
                         // needed to orient lines
                 .xField(CE_ACCESS.x())
                 .stroke(colour)
-                .fill(RGB.LIGHTGRAY)
-                .strokeWidth(STROKE_NON_FOCUSED)
                         // I think fill is useless (might be legend oriented)
+                        // causes strange gray blocks on chart
+//                .fill(RGB.LIGHTGRAY)
+                .strokeWidth(STROKE_NON_FOCUSED)
                 .showMarkers(false)
 //                .highlighter(new LineHighlighter())
-                .lineHighlighter(new LineHighlighter())
+                // possibly linked to chart 'animation'... doesn't work
+//                .lineHighlighter(new LineHighlighter())
+//                .highlighting(true)
                 .gapless(false)
                 .lineSeries;
         s.addSeriesSelectionHandler(this);

@@ -8,6 +8,7 @@ import com.sencha.gxt.chart.client.draw.path.PathSprite;
  * @see com.sencha.gxt.chart.client.draw.path.PathSprite
  */
 @biz.freshcode.learn.gwt.client.uispike.builder.BeanBuilder(PathSprite.class)
+@SuppressWarnings("UnusedDeclaration")
 public class PathSpriteBuilder extends biz.freshcode.learn.gwt.client.uispike.builder.Construct.Parent<PathSpriteBuilder> {
     public final PathSprite pathSprite;
 
@@ -16,16 +17,9 @@ public class PathSpriteBuilder extends biz.freshcode.learn.gwt.client.uispike.bu
     }
 
     /**
-     * @see com.sencha.gxt.chart.client.draw.path.PathSprite#PathSprite()
+     * @see com.sencha.gxt.chart.client.draw.path.PathSprite#PathSprite(com.sencha.gxt.chart.client.draw.sprite.TextSprite)
      */
-    public PathSpriteBuilder() {
-        this(new PathSprite());
-    }
-
-    /**
-     * @see com.sencha.gxt.chart.client.draw.path.PathSprite#PathSprite(com.sencha.gxt.chart.client.draw.sprite.CircleSprite)
-     */
-    public PathSpriteBuilder(com.sencha.gxt.chart.client.draw.sprite.CircleSprite v0) {
+    public PathSpriteBuilder(com.sencha.gxt.chart.client.draw.sprite.TextSprite v0) {
         this(new PathSprite(v0));
     }
 
@@ -44,9 +38,16 @@ public class PathSpriteBuilder extends biz.freshcode.learn.gwt.client.uispike.bu
     }
 
     /**
-     * @see com.sencha.gxt.chart.client.draw.path.PathSprite#PathSprite(com.sencha.gxt.chart.client.draw.sprite.TextSprite)
+     * @see com.sencha.gxt.chart.client.draw.path.PathSprite#PathSprite()
      */
-    public PathSpriteBuilder(com.sencha.gxt.chart.client.draw.sprite.TextSprite v0) {
+    public PathSpriteBuilder() {
+        this(new PathSprite());
+    }
+
+    /**
+     * @see com.sencha.gxt.chart.client.draw.path.PathSprite#PathSprite(com.sencha.gxt.chart.client.draw.sprite.CircleSprite)
+     */
+    public PathSpriteBuilder(com.sencha.gxt.chart.client.draw.sprite.CircleSprite v0) {
         this(new PathSprite(v0));
     }
 
@@ -147,17 +148,17 @@ public class PathSpriteBuilder extends biz.freshcode.learn.gwt.client.uispike.bu
     }
 
     /**
-     * @see com.sencha.gxt.chart.client.draw.path.PathSprite#setRotation(double)
+     * @see com.sencha.gxt.chart.client.draw.path.PathSprite#setRotation(com.sencha.gxt.chart.client.draw.Rotation)
      */
-    public PathSpriteBuilder rotation(double v0) {
+    public PathSpriteBuilder rotation(com.sencha.gxt.chart.client.draw.Rotation v0) {
         pathSprite.setRotation(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.chart.client.draw.path.PathSprite#setRotation(com.sencha.gxt.chart.client.draw.Rotation)
+     * @see com.sencha.gxt.chart.client.draw.path.PathSprite#setRotation(double)
      */
-    public PathSpriteBuilder rotation(com.sencha.gxt.chart.client.draw.Rotation v0) {
+    public PathSpriteBuilder rotation(double v0) {
         pathSprite.setRotation(v0);
         return this;
     }
