@@ -11,23 +11,24 @@ import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newListFrom;
 import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newMap;
 
 /**
- * Holds an ordered series of points where x can only have one value.  
+ * Holds an ordered series of points where x can only have one value.
  * This is an 'immutable' data structure.
  */
 public class PointSeries implements Iterable<Point> {
     public static final PointSeries NIL = new PointSeries();
     private final Map<Integer, Point> points = newMap();
-    
+    private List<Integer> orderedPointsOrNull;
+
     private PointSeries() {
         // nothing
     }
-    
+
     public PointSeries add(Point... arr) {
         PointSeries ps = copy();
-        for (Point p: arr) ps.put(p);
+        for (Point p : arr) ps.put(p);
         return ps;
     }
-    
+
     public PointSeries add(PointSeries ps) {
         PointSeries result = copy();
         result.points.putAll(ps.points);
@@ -44,7 +45,7 @@ public class PointSeries implements Iterable<Point> {
      */
     public int getMaxX() {
         int max = Integer.MIN_VALUE;
-        for (Integer i: points.keySet()) if (max < i) max = i;
+        for (Integer i : points.keySet()) if (max < i) max = i;
         return max;
     }
 
@@ -53,8 +54,7 @@ public class PointSeries implements Iterable<Point> {
      */
     @Override
     public Iterator<Point> iterator() {
-        List<Integer> xs = newListFrom(points.keySet());
-        Collections.sort(xs);
+        List<Integer> xs = lazyGetOrderedPoints();
         final Iterator<Integer> itX = xs.iterator();
         return new Iterator<Point>() {
             @Override
@@ -77,6 +77,14 @@ public class PointSeries implements Iterable<Point> {
         };
     }
 
+    private List<Integer> lazyGetOrderedPoints() {
+        if (orderedPointsOrNull != null) return orderedPointsOrNull;
+        List<Integer> xs = newListFrom(points.keySet());
+        Collections.sort(xs);
+        orderedPointsOrNull = xs;
+        return xs;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -97,9 +105,9 @@ public class PointSeries implements Iterable<Point> {
 
     @Override
     public String toString() {
-        StringBuilder sb  = new StringBuilder().append("[");
+        StringBuilder sb = new StringBuilder().append("[");
         boolean first = true;
-        for (Point p: this) {
+        for (Point p : this) {
             if (!first) sb.append(" ");
             sb.append("(").append(p.getX()).append(",").append(p.getY()).append(")");
             first = false;
@@ -115,5 +123,31 @@ public class PointSeries implements Iterable<Point> {
 
     private Point put(Point p) {
         return this.points.put(p.getX(), p);
+    }
+
+    /**
+     * Lookup the a value for the given 'x' value.
+     * If x falls outside the domain of the series then return 'defVal'.
+     * Result will be interpolated if necessary assuming linear transitions.
+     */
+    public double resolve(int x, double defVal) {
+        Point point = points.get(x);
+        if (point != null) return point.getY();
+
+        Integer before = null;
+        Integer after = null;
+        for (Integer i : lazyGetOrderedPoints()) {
+            if (i < x) before = i;
+            else if (i > x) {
+                after = i;
+                break;
+            }
+        }
+        if (before == null || after == null) return defVal;
+
+        double ratio = (x - before) / (double) (after - before);
+        int yBefore = points.get(before).getY();
+        int yDiff = points.get(after).getY() - yBefore;
+        return ratio * yDiff + yBefore;
     }
 }
