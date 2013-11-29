@@ -43,14 +43,13 @@ import static com.sencha.gxt.chart.client.chart.Chart.Position;
 
 public class GanttChart extends AbstractChart implements SeriesSelectionEvent.SeriesSelectionHandler<ChartElem> {
     private static final int HR = 60;
-    private static final double LEFT_MIN = -1;
     private static final String PRIMER = "primer";
     public static final int STROKE_NON_FOCUSED = 3;
     public static final int STROKE_FOCUSED = 6;
-    public static final int BOUND_TOP = 0;
     public static final SeriesRenderer<ChartElem> FOCAL_RENDER = new FocalRenderer(true);
     public static final SeriesRenderer<ChartElem> NON_FOCAL_RENDER = new FocalRenderer(false);
     public static final ChartElem.AccessY FOCUSED_PERIOD_FIELD = new ChartElem.AccessY("Focused Period");
+    public static final Position X_AXIS = Position.BOTTOM;
     private final List<HasIdTitle> resources = newList();
     private Date zeroTime = new Date();
     private String lastFocusIdOrNull;
@@ -88,7 +87,7 @@ public class GanttChart extends AbstractChart implements SeriesSelectionEvent.Se
             public Double map(Double input) {
                 int yVal = (int) Math.round(input);
                 // special handling for focus period series
-                if (yVal == BOUND_TOP) return (double) BOUND_TOP;
+                if (yVal == 0) return 0.0;
                 int ixOld = numberToResourceIndex(yVal);
                 int ixNew = newIndex[ixOld];
                 return (double) resourceIndexToValue(ixNew);
@@ -114,15 +113,15 @@ public class GanttChart extends AbstractChart implements SeriesSelectionEvent.Se
         replaceResources(info.getResources());
         zeroTime = info.getZeroTime();
 
-        NumericAxis<ChartElem> top = getNumericAxis(Position.TOP);
+        NumericAxis<ChartElem> top = getNumericAxis(X_AXIS);
         top.setMaximum(info.getWindowSize());
 
         primeChart();
 
         NumericAxis<ChartElem> left = getNumericAxis(Position.LEFT);
         int resourceCount = info.getResources().size();
-        left.setMinimum(Math.min(LEFT_MIN, resourceIndexToValue(resourceCount)));
-        left.setSteps(resourceCount + 1);
+        left.setMaximum(Math.max(1, resourceIndexToValue(resourceCount - 1)));
+        left.setSteps(Math.max(1, resourceCount));
 
         chart.redrawChart();
         setLastFocusId(null);
@@ -169,11 +168,18 @@ public class GanttChart extends AbstractChart implements SeriesSelectionEvent.Se
 //                    .strokeWidth(3)
 //                    .areaSeries;
             LineSeries<ChartElem> s = createSeries(FOCUSED_PERIOD_FIELD, RGB.LIGHTGRAY);
+            s.setFill(new RGB(32, 68, 186));
+            s.setFillRenderer(new SeriesRenderer<ChartElem>() {
+                @Override
+                public void spriteRenderer(Sprite sprite, int index, ListStore<ChartElem> store) {
+                    sprite.setStroke(RGB.BLACK);
+                    sprite.setStrokeOpacity(0.5);
+                    sprite.setFill(RGB.BLACK);
+                    sprite.setFillOpacity(0.5);
+                }
+            });
             chart.addSeries(s);
-
-            // causes shadow down whole chart?
-//            s.setFill(RGB.LIGHTGRAY);
-            map.put(FOCUSED_PERIOD_FIELD.getPath(), pointSeries(focusedPeriodOrNull, BOUND_TOP));
+            map.put(FOCUSED_PERIOD_FIELD.getPath(), pointSeries(focusedPeriodOrNull, .4));
         }
 
         List<ChartElem> interpolated = interpolate(map, SeriesGap.GAPS);
@@ -226,7 +232,7 @@ public class GanttChart extends AbstractChart implements SeriesSelectionEvent.Se
     protected void setupChart(ChartBuilder<ChartElem> builder) {
         builder
                 .addAxis(new NumericAxisBuilder<ChartElem>()
-                        .position(Position.TOP)
+                        .position(X_AXIS)
                         .titleConfig(new TextSprite("Time"))
                         .addField(ChartElem.Access.CE_ACCESS.x())
                         .minimum(0)
@@ -238,8 +244,8 @@ public class GanttChart extends AbstractChart implements SeriesSelectionEvent.Se
                         .titleConfig(new TextSprite("Resources"))
                                 // .interval(1) doesn't seem to work.... too many steps!
                         .labelProvider(new YLabels())
-                        .maximum(BOUND_TOP)
-                        .minimum(LEFT_MIN)
+                        .maximum(1)
+                        .minimum(0)
                                 //.hidden(true)... might be useful on occasion
                         .gridEvenConfig(new PathSpriteBuilder()
                                 .fill(new RGB("#f8f8f8"))
@@ -295,7 +301,7 @@ public class GanttChart extends AbstractChart implements SeriesSelectionEvent.Se
         LineSeries<ChartElem> s = new LineSeriesBuilder<ChartElem>()
                 .yAxisPosition(Position.LEFT)
                 .yField(access)
-                .xAxisPosition(Position.TOP)
+                .xAxisPosition(X_AXIS)
                         // Man this is painful
                 .toolTipConfig(new SeriesToolTipConfigBuilder<ChartElem>()
                         .labelProvider(new SeriesLabelProvider<ChartElem>() {
@@ -326,11 +332,11 @@ public class GanttChart extends AbstractChart implements SeriesSelectionEvent.Se
     }
 
     private int resourceIndexToValue(int ix) {
-        return -(ix + 1);
+        return ix + 1;
     }
 
     private int numberToResourceIndex(Integer num) {
-        return -num - 1;
+        return num - 1;
     }
 
     private HasIdTitle numberToResource(Integer num) {
@@ -365,7 +371,7 @@ public class GanttChart extends AbstractChart implements SeriesSelectionEvent.Se
             try {
                 return numberToResource(num).getTitle();
             } catch (IndexOutOfBoundsException e) {
-                return "N/A";
+                return "";
             }
         }
     }
