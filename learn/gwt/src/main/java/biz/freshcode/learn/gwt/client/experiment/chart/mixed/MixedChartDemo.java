@@ -43,12 +43,14 @@ public class MixedChartDemo extends AbstractIsWidget<BorderLayoutContainer> {
     }
 
     private static class MyChart extends AbstractChart {
-        public static final String L1 = "L1";
-        public static final ChartElem.AccessY L1_ACC = new ChartElem.AccessY(L1);
+        public static final ChartElem.AccessY L1_ACC = new ChartElem.AccessY("L1");
+        public static final ChartElem.AccessY L2_ACC = new ChartElem.AccessY("L2");
 
         void go() {
             Map<String, List<PrecisePoint>> map = newMap();
-            map.put(L1, newListFrom(new PrecisePoint(1, 20), new PrecisePoint(5, 43)));
+            map.put(L1_ACC.getPath(), newListFrom(new PrecisePoint(1, 20), new PrecisePoint(5, 43)));
+            map.put(L2_ACC.getPath(), newListFrom(new PrecisePoint(4, 50), new PrecisePoint(7, 31)));
+            // NOTE: Changing this to 'GAPS' prevents 'fill'.
             chart.getStore().addAll(ChartUtil.interpolate(map, SeriesGap.ZERO_DEF));
 
             chart.addSeries(new LineSeriesBuilder<ChartElem>()
@@ -59,6 +61,15 @@ public class MixedChartDemo extends AbstractIsWidget<BorderLayoutContainer> {
                     .yAxisPosition(Position.LEFT)
                     .yField(L1_ACC)
                     .lineSeries);
+
+            chart.addSeries(new LineSeriesBuilder<ChartElem>()
+                    .stroke(RGB.BLUE)
+                    .xAxisPosition(Position.BOTTOM)
+                    .xField(CE_ACCESS.x())
+                    .yAxisPosition(Position.LEFT)
+                    .yField(L2_ACC)
+                    .lineSeries);
+
             chart.redrawChart();
         }
 
@@ -74,6 +85,7 @@ public class MixedChartDemo extends AbstractIsWidget<BorderLayoutContainer> {
             .addAxis(new NumericAxisBuilder<ChartElem>()
                     .position(Position.LEFT)
                     .addField(L1_ACC)
+                    .addField(L2_ACC)
                     .maximum(100)
                     .minimum(0)
                     .steps(10)
