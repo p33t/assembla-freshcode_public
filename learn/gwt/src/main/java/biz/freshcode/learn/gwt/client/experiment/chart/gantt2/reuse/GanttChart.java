@@ -49,7 +49,6 @@ public class GanttChart extends AbstractChart implements SeriesSelectionEvent.Se
     public static final SeriesRenderer<ChartElem> FOCAL_RENDER = new FocalRenderer(true);
     public static final SeriesRenderer<ChartElem> NON_FOCAL_RENDER = new FocalRenderer(false);
     public static final ChartElem.AccessY FOCUSED_PERIOD_FIELD = new ChartElem.AccessY("Focused Period");
-    public static final Position X_AXIS = Position.BOTTOM;
     private final List<HasIdTitle> resources = newList();
     private Date zeroTime = new Date();
     private String lastFocusIdOrNull;
@@ -102,8 +101,8 @@ public class GanttChart extends AbstractChart implements SeriesSelectionEvent.Se
         replaceResources(newOrder);
         store.replaceAll(updated);
         chart.setAnimated(true);
-        // doesn't highlight bars
-//        chart.setShadowChart(true);
+        // needed for fill?
+        chart.setShadowChart(true);
 
         chart.redrawChart();
     }
@@ -113,7 +112,7 @@ public class GanttChart extends AbstractChart implements SeriesSelectionEvent.Se
         replaceResources(info.getResources());
         zeroTime = info.getZeroTime();
 
-        NumericAxis<ChartElem> top = getNumericAxis(X_AXIS);
+        NumericAxis<ChartElem> top = getNumericAxis(Position.BOTTOM);
         top.setMaximum(info.getWindowSize());
 
         primeChart();
@@ -160,24 +159,25 @@ public class GanttChart extends AbstractChart implements SeriesSelectionEvent.Se
 //            Does not show up ?!
 //            AreaSeries<ChartElem> s = new AreaSeriesBuilder<ChartElem>()
 //                    .yAxisPosition(Position.LEFT)
-//                    .xAxisPosition(Position.TOP)
+//                    .xAxisPosition(Position.BOTTOM)
 //                    .xField(CE_ACCESS.x())
 //                    .addYField(0, FOCUSED_PERIOD_FIELD)
 //                    .addColor(0, RGB.LIGHTGRAY)
 //                    .stroke(RGB.BLACK)
 //                    .strokeWidth(3)
 //                    .areaSeries;
+
+//            Doesn't want to be filled in ?
+//            LineSeries<ChartElem> s = new LineSeriesBuilder<ChartElem>()
+//                    .yAxisPosition(Position.LEFT)
+//                    .yField(FOCUSED_PERIOD_FIELD)
+//                    .xAxisPosition(Position.BOTTOM)
+//                    .xField(CE_ACCESS.x())
+//                    .stroke(RGB.GRAY)
+//                    .fill(RGB.LIGHTGRAY)
+//                    .lineSeries;
+
             LineSeries<ChartElem> s = createSeries(FOCUSED_PERIOD_FIELD, RGB.LIGHTGRAY);
-            s.setFill(new RGB(32, 68, 186));
-            s.setFillRenderer(new SeriesRenderer<ChartElem>() {
-                @Override
-                public void spriteRenderer(Sprite sprite, int index, ListStore<ChartElem> store) {
-                    sprite.setStroke(RGB.BLACK);
-                    sprite.setStrokeOpacity(0.5);
-                    sprite.setFill(RGB.BLACK);
-                    sprite.setFillOpacity(0.5);
-                }
-            });
             chart.addSeries(s);
             map.put(FOCUSED_PERIOD_FIELD.getPath(), pointSeries(focusedPeriodOrNull, .4));
         }
@@ -232,8 +232,8 @@ public class GanttChart extends AbstractChart implements SeriesSelectionEvent.Se
     protected void setupChart(ChartBuilder<ChartElem> builder) {
         builder
                 .addAxis(new NumericAxisBuilder<ChartElem>()
-                        .position(X_AXIS)
-                        .titleConfig(new TextSprite("Time"))
+                        .position(Position.BOTTOM)
+//                        .titleConfig(new TextSprite("Time"))
                         .addField(ChartElem.Access.CE_ACCESS.x())
                         .minimum(0)
                         .interval(2 * HR)
@@ -301,7 +301,7 @@ public class GanttChart extends AbstractChart implements SeriesSelectionEvent.Se
         LineSeries<ChartElem> s = new LineSeriesBuilder<ChartElem>()
                 .yAxisPosition(Position.LEFT)
                 .yField(access)
-                .xAxisPosition(X_AXIS)
+                .xAxisPosition(Position.BOTTOM)
                         // Man this is painful
                 .toolTipConfig(new SeriesToolTipConfigBuilder<ChartElem>()
                         .labelProvider(new SeriesLabelProvider<ChartElem>() {
