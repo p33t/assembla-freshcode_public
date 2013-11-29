@@ -2,10 +2,7 @@ package biz.freshcode.learn.gwt.client.experiment.chart.reuse;
 
 import com.sencha.gxt.core.client.util.Point;
 
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newListFrom;
 import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newMap;
@@ -149,5 +146,9 @@ public class PointSeries implements Iterable<Point> {
         int yBefore = points.get(before).getY();
         int yDiff = points.get(after).getY() - yBefore;
         return ratio * yDiff + yBefore;
+    }
+
+    public void addXs(Collection<Integer> l) {
+        l.addAll(lazyGetOrderedPoints());
     }
 }
