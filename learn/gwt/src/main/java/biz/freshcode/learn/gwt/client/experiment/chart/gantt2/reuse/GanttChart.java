@@ -10,6 +10,7 @@ import biz.freshcode.learn.gwt.client.experiment.chart.reuse.AbstractChart;
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartElem;
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.MapFun;
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.SeriesGap;
+import com.google.gwt.core.shared.GWT;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.event.shared.HandlerRegistration;
 import com.google.web.bindery.event.shared.SimpleEventBus;
@@ -44,14 +45,18 @@ public class GanttChart extends AbstractChart implements SeriesSelectionEvent.Se
     private static final int HR = 60;
     private static final double LEFT_MIN = -1;
     private static final String PRIMER = "primer";
-    public static final int STROKE_NON_FOCUSED = 18;
-    public static final int STROKE_FOCUSED = 23;
+    public static final int STROKE_NON_FOCUSED = 3;
+    public static final int STROKE_FOCUSED = 6;
+    public static final int BOUND_TOP = 0;
+    public static final SeriesRenderer<ChartElem> FOCAL_RENDER = new FocalRenderer(true);
+    public static final SeriesRenderer<ChartElem> NON_FOCAL_RENDER = new FocalRenderer(false);
+    public static final ChartElem.AccessY FOCUSED_PERIOD_FIELD = new ChartElem.AccessY("Focused Period");
     private final List<HasIdTitle> resources = newList();
     private Date zeroTime = new Date();
     private String lastFocusIdOrNull;
+    private StartDurn focusedPeriodOrNull;
     private final EventBus bus;
-    public static final SeriesRenderer<ChartElem> FOCAL_RENDER = new FocalRenderer(true);
-    public static final SeriesRenderer<ChartElem> NON_FOCAL_RENDER = new FocalRenderer(false);
+    private Iterable<BarInfo> prevBarsOrNull;
 
     public GanttChart() {
         this(new SimpleEventBus());
@@ -81,7 +86,10 @@ public class GanttChart extends AbstractChart implements SeriesSelectionEvent.Se
         MapFun<Double, Double> reorder = new MapFun<Double, Double>() {
             @Override
             public Double map(Double input) {
-                int ixOld = numberToResourceIndex((int) Math.round(input));
+                int yVal = (int) Math.round(input);
+                // special handling for focus period series
+                if (yVal == BOUND_TOP) return (double) BOUND_TOP;
+                int ixOld = numberToResourceIndex(yVal);
                 int ixNew = newIndex[ixOld];
                 return (double) resourceIndexToValue(ixNew);
             }
@@ -122,14 +130,12 @@ public class GanttChart extends AbstractChart implements SeriesSelectionEvent.Se
 
     public void replaceBars(Iterable<BarInfo> bars) {
         clearChart();
+        prevBarsOrNull = bars;
         Map<String, List<PrecisePoint>> map = newMap();
         for (BarInfo bar : bars) {
             Integer y = resourceToNumber(bar.getResourceId());
             StartDurn sd = bar.getStartDurn();
-            map.put(bar.getId(), newListFrom(
-                    new PrecisePoint(sd.getStart(), y),
-                    new PrecisePoint(sd.getStart() + sd.getDurn(), y)
-            ));
+            map.put(bar.getId(), pointSeries(sd, y));
         }
 
         if (map.isEmpty()) {
@@ -150,6 +156,26 @@ public class GanttChart extends AbstractChart implements SeriesSelectionEvent.Se
             chart.addSeries(s);
         }
 
+        if (focusedPeriodOrNull != null) {
+            left.addField(FOCUSED_PERIOD_FIELD);
+//            Does not show up ?!
+//            AreaSeries<ChartElem> s = new AreaSeriesBuilder<ChartElem>()
+//                    .yAxisPosition(Position.LEFT)
+//                    .xAxisPosition(Position.TOP)
+//                    .xField(CE_ACCESS.x())
+//                    .addYField(0, FOCUSED_PERIOD_FIELD)
+//                    .addColor(0, RGB.LIGHTGRAY)
+//                    .stroke(RGB.BLACK)
+//                    .strokeWidth(3)
+//                    .areaSeries;
+            LineSeries<ChartElem> s = createSeries(FOCUSED_PERIOD_FIELD, RGB.LIGHTGRAY);
+            chart.addSeries(s);
+
+            // causes shadow down whole chart?
+//            s.setFill(RGB.LIGHTGRAY);
+            map.put(FOCUSED_PERIOD_FIELD.getPath(), pointSeries(focusedPeriodOrNull, BOUND_TOP));
+        }
+
         List<ChartElem> interpolated = interpolate(map, SeriesGap.GAPS);
         chart.getStore().addAll(interpolated);
 
@@ -164,6 +190,7 @@ public class GanttChart extends AbstractChart implements SeriesSelectionEvent.Se
     public void focusBar(String idOrNull) {
         Chart<ChartElem> ch = chart;
         for (Series<ChartElem> s : ch.getSeries()) {
+            if (!(s instanceof LineSeries)) continue;
             LineSeries<ChartElem> ls = (LineSeries<ChartElem>) s;
             String barId = ls.getYField().getPath();
             boolean focused = barId.equals(idOrNull);
@@ -185,6 +212,16 @@ public class GanttChart extends AbstractChart implements SeriesSelectionEvent.Se
         focusBar(barId);
     }
 
+    public void focusPeriod(StartDurn startDurn) {
+        this.focusedPeriodOrNull = startDurn;
+        if (prevBarsOrNull != null) replaceBars(prevBarsOrNull);
+        else GWT.log("No previous bars..... TODO!");
+    }
+
+    public void unfocusPeriod() {
+        focusPeriod(null);
+    }
+
     @Override
     protected void setupChart(ChartBuilder<ChartElem> builder) {
         builder
@@ -201,7 +238,7 @@ public class GanttChart extends AbstractChart implements SeriesSelectionEvent.Se
                         .titleConfig(new TextSprite("Resources"))
                                 // .interval(1) doesn't seem to work.... too many steps!
                         .labelProvider(new YLabels())
-                        .maximum(0)
+                        .maximum(BOUND_TOP)
                         .minimum(LEFT_MIN)
                                 //.hidden(true)... might be useful on occasion
                         .gridEvenConfig(new PathSpriteBuilder()
@@ -218,6 +255,14 @@ public class GanttChart extends AbstractChart implements SeriesSelectionEvent.Se
     protected void clearChart() {
         super.clearChart();
         clearNumericAxis(Position.LEFT);
+        prevBarsOrNull = null;
+    }
+
+    private List<PrecisePoint> pointSeries(StartDurn sd, Number y) {
+        return newListFrom(
+                new PrecisePoint(sd.getStart(), y.doubleValue()),
+                new PrecisePoint(sd.getStart() + sd.getDurn(), y.doubleValue())
+        );
     }
 
     private void replaceResources(List<HasIdTitle> replacements) {
@@ -265,15 +310,16 @@ public class GanttChart extends AbstractChart implements SeriesSelectionEvent.Se
                 .xField(CE_ACCESS.x())
                 .stroke(colour)
                         // I think fill is useless (might be legend oriented)
-                        // causes strange gray blocks on chart
+                        // causes strange gray blocks on chart... caused by primer y value '1.0'
 //                .fill(RGB.LIGHTGRAY)
                 .strokeWidth(STROKE_NON_FOCUSED)
-                .showMarkers(false)
+// not necessary                .showMarkers(false)
 //                .highlighter(new LineHighlighter())
                 // possibly linked to chart 'animation'... doesn't work
 //                .lineHighlighter(new LineHighlighter())
 //                .highlighting(true)
-                .gapless(false)
+//                Does nothing.... our series don't have gaps... we want control over colours.
+//                .gapless(false)
                 .lineSeries;
         s.addSeriesSelectionHandler(this);
         return s;
@@ -332,11 +378,9 @@ public class GanttChart extends AbstractChart implements SeriesSelectionEvent.Se
     }
 
     private static class FocalRenderer implements SeriesRenderer<ChartElem> {
-
         private final boolean focused;
 
         FocalRenderer(boolean focused) {
-
             this.focused = focused;
         }
 

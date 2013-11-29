@@ -11,7 +11,8 @@ import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 
-import java.util.*;
+import java.util.Date;
+import java.util.List;
 
 import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newList;
 import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newListFrom;
@@ -54,14 +55,14 @@ public class Gantt2Demo extends AbstractIsWidget<BorderLayoutContainer> implemen
                                 chart.replaceBars(BARS);
                             }
                         }))
-                        .add(new TextButton("Focus", new SelectEvent.SelectHandler() {
+                        .add(new TextButton("Focus Bar", new SelectEvent.SelectHandler() {
                             @Override
                             public void onSelect(SelectEvent event) {
                                 int ix = (int) (Math.random() * BARS.size());
                                 chart.focusBar(BARS.get(ix).getId());
                             }
                         }))
-                        .add(new TextButton("UnFocus", new SelectEvent.SelectHandler() {
+                        .add(new TextButton("UnFocus Bar", new SelectEvent.SelectHandler() {
                             @Override
                             public void onSelect(SelectEvent event) {
                                 chart.unfocus();
@@ -71,6 +72,18 @@ public class Gantt2Demo extends AbstractIsWidget<BorderLayoutContainer> implemen
                             @Override
                             public void onSelect(SelectEvent event) {
                                 chart.reorder(createResourceList());
+                            }
+                        }))
+                        .add(new TextButton("Focus Period", new SelectEvent.SelectHandler() {
+                            @Override
+                            public void onSelect(SelectEvent event) {
+                                chart.focusPeriod(new StartDurn(5 * HR, 90));
+                            }
+                        }))
+                        .add(new TextButton("Unfocus Period", new SelectEvent.SelectHandler() {
+                            @Override
+                            public void onSelect(SelectEvent event) {
+                                chart.unfocusPeriod();
                             }
                         }))
                         .horizontalLayoutContainer)
