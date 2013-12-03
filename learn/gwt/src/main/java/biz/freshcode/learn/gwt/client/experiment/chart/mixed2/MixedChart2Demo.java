@@ -70,26 +70,6 @@ public class MixedChart2Demo extends AbstractIsWidget<BorderLayoutContainer> {
             clearNumericAxis(Position.LEFT);
         }
 
-        private void setupChart() {
-            new ChartBuilder<Integer>(chart)
-                    .addAxis(new NumericAxisBuilder<Integer>()
-                            .position(Position.LEFT)
-                            .addField(L1_ACC)
-                            .addField(L2_ACC)
-                            .maximum(100)
-                            .minimum(0)
-                            .steps(10)
-                            .numericAxis)
-                    .addAxis(new NumericAxisBuilder<Integer>()
-                            .position(Position.BOTTOM)
-                            .addField(SeriesMap.ACCESS_X)
-                            .maximum(X_MAX)
-                            .minimum(X_MIN)
-                            .steps(10)
-                            .numericAxis)
-            ;
-        }
-
         void go() {
             SeriesMap map = SeriesMap.NIL
                     .put(L1, PointSeries.NIL.add(new Point(10, 20), new Point(50, 43)).stepify(X_MIN, X_MAX))
