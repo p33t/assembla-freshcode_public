@@ -73,6 +73,10 @@ public class SeriesMap {
         return s;
     }
 
+    public boolean isEmpty() {
+        return map.isEmpty();
+    }
+
     /**
      * Provides access to a Y value for a predefined series.
      */

@@ -11,14 +11,13 @@ import biz.freshcode.learn.gwt.client.experiment.chart.gantt2.reuse.BarInfo;
 import biz.freshcode.learn.gwt.client.experiment.chart.gantt2.reuse.ChartInfo;
 import biz.freshcode.learn.gwt.client.experiment.chart.gantt2.reuse.HasIdTitle;
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartElem;
-import biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartElemChart;
-import biz.freshcode.learn.gwt.client.experiment.chart.reuse.MapFun;
-import biz.freshcode.learn.gwt.client.experiment.chart.reuse.SeriesGap;
+import biz.freshcode.learn.gwt.client.experiment.chart.reuse.PointSeries;
+import biz.freshcode.learn.gwt.client.experiment.chart.reuse.PointSeriesChart;
+import biz.freshcode.learn.gwt.client.experiment.chart.reuse.SeriesMap;
 import com.google.gwt.core.shared.GWT;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.event.shared.HandlerRegistration;
 import com.google.web.bindery.event.shared.SimpleEventBus;
-import com.sencha.gxt.chart.client.chart.Chart;
 import com.sencha.gxt.chart.client.chart.axis.NumericAxis;
 import com.sencha.gxt.chart.client.chart.event.SeriesSelectionEvent;
 import com.sencha.gxt.chart.client.chart.series.LineSeries;
@@ -29,30 +28,27 @@ import com.sencha.gxt.chart.client.draw.RGB;
 import com.sencha.gxt.chart.client.draw.sprite.Sprite;
 import com.sencha.gxt.chart.client.draw.sprite.TextSprite;
 import com.sencha.gxt.core.client.ValueProvider;
-import com.sencha.gxt.core.client.util.PrecisePoint;
+import com.sencha.gxt.core.client.util.Point;
 import com.sencha.gxt.data.shared.LabelProvider;
 import com.sencha.gxt.data.shared.ListStore;
 
 import java.util.Date;
 import java.util.List;
 import java.util.ListIterator;
-import java.util.Map;
 
-import static biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartElem.Access.CE_ACCESS;
-import static biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartUtil.interpolate;
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.*;
+import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newList;
 import static biz.freshcode.learn.gwt.client.util.AppObjectUtils.safeEquals;
 import static biz.freshcode.learn.gwt.client.util.ExceptionUtil.illegalArg;
 import static com.sencha.gxt.chart.client.chart.Chart.Position;
 
-public class LanesChart extends ChartElemChart implements SeriesSelectionEvent.SeriesSelectionHandler<ChartElem> {
+public class LanesChart extends PointSeriesChart implements SeriesSelectionEvent.SeriesSelectionHandler<Integer> {
     private static final int HR = 60;
     private static final String PRIMER = "primer";
     public static final int STROKE_NON_FOCUSED = 3;
     public static final int STROKE_FOCUSED = 6;
     public static final SeriesRenderer<ChartElem> FOCAL_RENDER = new FocalRenderer(true);
     public static final SeriesRenderer<ChartElem> NON_FOCAL_RENDER = new FocalRenderer(false);
-    public static final ChartElem.AccessY FOCUSED_PERIOD_FIELD = new ChartElem.AccessY("Focused Period");
+    private final ValueProvider<Integer, Double> FOCUSED_PERIOD_FIELD = accessY("Focused Period");
     private final List<HasIdTitle> resources = newList();
     private Date zeroTime = new Date();
     private String lastFocusIdOrNull;
@@ -86,25 +82,7 @@ public class LanesChart extends ChartElemChart implements SeriesSelectionEvent.S
             newIndex[oldIndex] = i;
         }
 
-        MapFun<Double, Double> reorder = new MapFun<Double, Double>() {
-            @Override
-            public Double map(Double input) {
-                int yVal = (int) Math.round(input);
-                // special handling for focus period series
-                if (yVal == 0) return 0.0;
-                int ixOld = numberToResourceIndex(yVal);
-                int ixNew = newIndex[ixOld];
-                return (double) resourceIndexToValue(ixNew);
-            }
-        };
-        ListStore<ChartElem> store = chart.getStore();
-        List<ChartElem> updated = newList();
-        for (ChartElem e : store.getAll()) {
-            updated.add(e.mapY(reorder));
-        }
-
-        replaceResources(newOrder);
-        store.replaceAll(updated);
+        // TODO: Call replaceAll()
         chart.setAnimated(true);
         // needed for fill?
         chart.setShadowChart(true);
@@ -117,12 +95,12 @@ public class LanesChart extends ChartElemChart implements SeriesSelectionEvent.S
         replaceResources(info.getResources());
         zeroTime = info.getZeroTime();
 
-        NumericAxis<ChartElem> top = getNumericAxis(Position.BOTTOM);
+        NumericAxis<Integer> top = getNumericAxis(Position.BOTTOM);
         top.setMaximum(info.getWindowSize());
 
         primeChart();
 
-        NumericAxis<ChartElem> left = getNumericAxis(Position.LEFT);
+        NumericAxis<Integer> left = getNumericAxis(Position.LEFT);
         int resourceCount = info.getResources().size();
         left.setMaximum(Math.max(1, resourceIndexToValue(resourceCount - 1)));
         left.setSteps(Math.max(1, resourceCount));
@@ -134,11 +112,13 @@ public class LanesChart extends ChartElemChart implements SeriesSelectionEvent.S
     public void replaceBars(Iterable<BarInfo> bars) {
         clearChart();
         prevBarsOrNull = bars;
-        Map<String, List<PrecisePoint>> map = newMap();
+
+        // compile and display data
+        SeriesMap map = SeriesMap.NIL;
         for (BarInfo bar : bars) {
             Integer y = resourceToNumber(bar.getResourceId());
             StartDurn sd = bar.getStartDurn();
-            map.put(bar.getId(), pointSeries(sd, y));
+            map = map.put(bar.getId(), pointSeries(sd, y));
         }
 
         if (map.isEmpty()) {
@@ -146,49 +126,33 @@ public class LanesChart extends ChartElemChart implements SeriesSelectionEvent.S
             return;
         }
 
-        NumericAxis<ChartElem> left = getNumericAxis(Position.LEFT);
+        NumericAxis<Integer> left = getNumericAxis(Position.LEFT);
         boolean refocus = false;
         for (BarInfo bar : bars) {
             String barId = bar.getId();
             if (barId.equals(lastFocusIdOrNull)) refocus = true;
 
-            ChartElem.AccessY f = new ChartElem.AccessY(barId);
+            ValueProvider<Integer, Double> f = accessY(barId);
             left.addField(f);
 
-            LineSeries<ChartElem> s = createSeries(f, bar.getColour());
+            LineSeries<Integer> s = createSeries(f, bar.getColour());
             chart.addSeries(s);
         }
 
         if (focusedPeriodOrNull != null) {
             left.addField(FOCUSED_PERIOD_FIELD);
-//            Does not show up ?!
-//            AreaSeries<ChartElem> s = new AreaSeriesBuilder<ChartElem>()
-//                    .yAxisPosition(Position.LEFT)
-//                    .xAxisPosition(Position.BOTTOM)
-//                    .xField(CE_ACCESS.x())
-//                    .addYField(0, FOCUSED_PERIOD_FIELD)
-//                    .addColor(0, RGB.LIGHTGRAY)
-//                    .stroke(RGB.BLACK)
-//                    .strokeWidth(3)
-//                    .areaSeries;
-
-//            Doesn't want to be filled in ?
-//            LineSeries<ChartElem> s = new LineSeriesBuilder<ChartElem>()
-//                    .yAxisPosition(Position.LEFT)
-//                    .yField(FOCUSED_PERIOD_FIELD)
-//                    .xAxisPosition(Position.BOTTOM)
-//                    .xField(CE_ACCESS.x())
-//                    .stroke(RGB.GRAY)
-//                    .fill(RGB.LIGHTGRAY)
-//                    .lineSeries;
-
-            LineSeries<ChartElem> s = createSeries(FOCUSED_PERIOD_FIELD, RGB.LIGHTGRAY);
+            LineSeries<Integer> s = createSeries(FOCUSED_PERIOD_FIELD, RGB.LIGHTGRAY);
             chart.addSeries(s);
-            map.put(FOCUSED_PERIOD_FIELD.getPath(), pointSeries(focusedPeriodOrNull, .4));
+
+            int yMax = resourceIndexToValue(resources.size() - 1);
+            PointSeries focus = pointSeries(focusedPeriodOrNull, yMax);
+            Point preStepper = new Point(focus.getMinX() - 1, 0);
+            Point postStepper = new Point(focus.getMaxX() + 1, 0);
+            focus = PointSeries.NIL.add(preStepper).add(focus).add(postStepper);
+            map = map.put(FOCUSED_PERIOD_FIELD.getPath(), focus);
         }
 
-        List<ChartElem> interpolated = interpolate(map, SeriesGap.GAPS);
-        chart.getStore().addAll(interpolated);
+        replaceAll(map);
 
         if (refocus) focusBar(lastFocusIdOrNull);
         else focusBar(null);
@@ -199,10 +163,9 @@ public class LanesChart extends ChartElemChart implements SeriesSelectionEvent.S
     }
 
     public void focusBar(String idOrNull) {
-        Chart<ChartElem> ch = chart;
-        for (Series<ChartElem> s : ch.getSeries()) {
+        for (Series<Integer> s : chart.getSeries()) {
             if (!(s instanceof LineSeries)) continue;
-            LineSeries<ChartElem> ls = (LineSeries<ChartElem>) s;
+            LineSeries<Integer> ls = (LineSeries<Integer>) s;
             String barId = ls.getYField().getPath();
             boolean focused = barId.equals(idOrNull);
             // NOTES: Fill doesn't seem to work, highlight might only be for hover over legend
@@ -214,11 +177,11 @@ public class LanesChart extends ChartElemChart implements SeriesSelectionEvent.S
 //            ls.setLineRenderer(focused ? FOCAL_RENDER : NON_FOCAL_RENDER);
         }
         setLastFocusId(idOrNull);
-        ch.redrawChart();
+        chart.redrawChart();
     }
 
     @Override
-    public void onSeriesSelection(SeriesSelectionEvent<ChartElem> event) {
+    public void onSeriesSelection(SeriesSelectionEvent<Integer> event) {
         String barId = event.getValueProvider().getPath();
         focusBar(barId);
     }
@@ -234,16 +197,16 @@ public class LanesChart extends ChartElemChart implements SeriesSelectionEvent.S
     }
 
     protected void setupChart() {
-        new ChartBuilder<ChartElem>(chart)
-                .addAxis(new NumericAxisBuilder<ChartElem>()
+        new ChartBuilder<Integer>(chart)
+                .addAxis(new NumericAxisBuilder<Integer>()
                         .position(Position.BOTTOM)
 //                        .titleConfig(new TextSprite("Time"))
-                        .addField(ChartElem.Access.CE_ACCESS.x())
+                        .addField(ACCESS_X)
                         .minimum(0)
                         .interval(2 * HR)
                         .labelProvider(new XLabels())
                         .numericAxis)
-                .addAxis(new NumericAxisBuilder<ChartElem>()
+                .addAxis(new NumericAxisBuilder<Integer>()
                         .position(Position.LEFT)
                         .titleConfig(new TextSprite("Resources"))
                                 // .interval(1) doesn't seem to work.... too many steps!
@@ -268,10 +231,10 @@ public class LanesChart extends ChartElemChart implements SeriesSelectionEvent.S
         prevBarsOrNull = null;
     }
 
-    private List<PrecisePoint> pointSeries(StartDurn sd, Number y) {
-        return newListFrom(
-                new PrecisePoint(sd.getStart(), y.doubleValue()),
-                new PrecisePoint(sd.getStart() + sd.getDurn(), y.doubleValue())
+    private PointSeries pointSeries(StartDurn sd, int y) {
+        return PointSeries.NIL.add(
+                new Point(sd.getStart(), y),
+                new Point(sd.getStart() + sd.getDurn(), y)
         );
     }
 
@@ -289,35 +252,34 @@ public class LanesChart extends ChartElemChart implements SeriesSelectionEvent.S
 
     // need priming data otherwise chart doesn't show :(
     private void primeChart() {
-        ChartElem.AccessY primer = new ChartElem.AccessY(PRIMER);
+        ValueProvider<Integer, Double> primer = accessY(PRIMER);
 
         // dummy data
-        ChartElem p1 = new ChartElem(60, Double.NaN);
-        p1.setY(primer.getPath(), 1.0);
-        chart.getStore().add(p1);
+        PointSeries dummy = pointSeries(new StartDurn(HR, HR), resourceIndexToValue(0));
+        replaceAll(SeriesMap.NIL.put(PRIMER, dummy));
 
         // add config
         getNumericAxis(Position.LEFT).addField(primer);
         chart.addSeries(createSeries(primer, new RGB("#000000")));
     }
 
-    private LineSeries<ChartElem> createSeries(final ChartElem.AccessY access, RGB colour) {
-        LineSeries<ChartElem> s = new LineSeriesBuilder<ChartElem>()
+    private LineSeries<Integer> createSeries(final ValueProvider<Integer, Double> access, RGB colour) {
+        LineSeries<Integer> s = new LineSeriesBuilder<Integer>()
                 .yAxisPosition(Position.LEFT)
                 .yField(access)
                 .xAxisPosition(Position.BOTTOM)
                         // Man this is painful
-                .toolTipConfig(new SeriesToolTipConfigBuilder<ChartElem>()
-                        .labelProvider(new SeriesLabelProvider<ChartElem>() {
+                .toolTipConfig(new SeriesToolTipConfigBuilder<Integer>()
+                        .labelProvider(new SeriesLabelProvider<Integer>() {
                             @Override
-                            public String getLabel(ChartElem item, ValueProvider<? super ChartElem, ? extends Number> provider) {
+                            public String getLabel(Integer item, ValueProvider<? super Integer, ? extends Number> provider) {
                                 return access.getPath();
                             }
                         })
                         .seriesToolTipConfig)
                         //                                            .highlighter()
                         // needed to orient lines
-                .xField(CE_ACCESS.x())
+                .xField(ACCESS_X)
                 .stroke(colour)
                         // I think fill is useless (might be legend oriented)
                         // causes strange gray blocks on chart... caused by primer y value '1.0'
