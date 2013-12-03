@@ -5,8 +5,8 @@ import biz.freshcode.learn.gwt.client.builder.gxt.chart.axis.NumericAxisBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.chart.series.LineSeriesBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.container.BorderLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.container.HorizontalLayoutContainerBuilder;
-import biz.freshcode.learn.gwt.client.experiment.chart.reuse.AbstractChart;
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartElem;
+import biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartElemChart;
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartUtil;
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.SeriesGap;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
@@ -42,7 +42,7 @@ public class MixedChartDemo extends AbstractIsWidget<BorderLayoutContainer> {
                 .borderLayoutContainer;
     }
 
-    private static class MyChart extends AbstractChart {
+    private static class MyChart extends ChartElemChart {
         public static final ChartElem.AccessY L1_ACC = new ChartElem.AccessY("L1");
         public static final ChartElem.AccessY L2_ACC = new ChartElem.AccessY("L2");
 

@@ -3,8 +3,8 @@ package biz.freshcode.learn.gwt.client.experiment.chart.step;
 import biz.freshcode.learn.gwt.client.builder.gxt.chart.ChartBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.chart.axis.NumericAxisBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.chart.series.AreaSeriesBuilder;
-import biz.freshcode.learn.gwt.client.experiment.chart.reuse.AbstractChart;
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartElem;
+import biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartElemChart;
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartUtil;
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.PointSeries;
 import biz.freshcode.learn.gwt.client.uispike.builder.IterConstruct;
@@ -18,7 +18,7 @@ import static biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartElem.Ac
 import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newList;
 import static com.sencha.gxt.chart.client.chart.Chart.Position;
 
-public class MyStepChart extends AbstractChart {
+public class MyStepChart extends ChartElemChart {
     @Override
     protected void setupChart(ChartBuilder<ChartElem> builder) {
         builder

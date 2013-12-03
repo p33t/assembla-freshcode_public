@@ -6,8 +6,8 @@ import biz.freshcode.learn.gwt.client.builder.gxt.chart.series.LineSeriesBuilder
 import biz.freshcode.learn.gwt.client.builder.gxt.chart.series.SeriesToolTipConfigBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.draw.path.PathSpriteBuilder;
 import biz.freshcode.learn.gwt.client.experiment.chart.gantt.reuse.StartDurn;
-import biz.freshcode.learn.gwt.client.experiment.chart.reuse.AbstractChart;
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartElem;
+import biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartElemChart;
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.MapFun;
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.SeriesGap;
 import com.google.gwt.core.shared.GWT;
@@ -41,7 +41,7 @@ import static biz.freshcode.learn.gwt.client.util.AppObjectUtils.safeEquals;
 import static biz.freshcode.learn.gwt.client.util.ExceptionUtil.illegalArg;
 import static com.sencha.gxt.chart.client.chart.Chart.Position;
 
-public class GanttChart extends AbstractChart implements SeriesSelectionEvent.SeriesSelectionHandler<ChartElem> {
+public class GanttChart extends ChartElemChart implements SeriesSelectionEvent.SeriesSelectionHandler<ChartElem> {
     private static final int HR = 60;
     private static final String PRIMER = "primer";
     public static final int STROKE_NON_FOCUSED = 3;

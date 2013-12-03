@@ -14,7 +14,7 @@ import java.util.List;
 import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newList;
 import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newListFrom;
 
-public abstract class AbstractChart extends Composite {
+public abstract class ChartElemChart extends Composite {
     protected final Chart<ChartElem> chart = new Chart<ChartElem>();
     /**
      * Colour scheme for elements.  This can be customised.
@@ -28,7 +28,7 @@ public abstract class AbstractChart extends Composite {
             RGB.CYAN
     );
 
-    public AbstractChart() {
+    public ChartElemChart() {
         ChartBuilder<ChartElem> builder = new ChartBuilder<ChartElem>(chart)
                 .store(new ListStore<ChartElem>(ChartElem.Access.CE_ACCESS.xKey()));
         setupChart(builder);
