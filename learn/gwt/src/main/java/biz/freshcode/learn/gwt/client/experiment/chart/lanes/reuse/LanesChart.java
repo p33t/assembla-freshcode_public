@@ -11,8 +11,8 @@ import biz.freshcode.learn.gwt.client.experiment.chart.gantt2.reuse.BarInfo;
 import biz.freshcode.learn.gwt.client.experiment.chart.gantt2.reuse.ChartInfo;
 import biz.freshcode.learn.gwt.client.experiment.chart.gantt2.reuse.HasIdTitle;
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.PointSeries;
-import biz.freshcode.learn.gwt.client.experiment.chart.reuse.PointSeriesChart;
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.SeriesMap;
+import biz.freshcode.learn.gwt.client.experiment.chart.reuse.SeriesMapChart;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.event.shared.HandlerRegistration;
 import com.google.web.bindery.event.shared.SimpleEventBus;
@@ -36,7 +36,7 @@ import static biz.freshcode.learn.gwt.client.util.AppObjectUtils.safeEquals;
 import static biz.freshcode.learn.gwt.client.util.ExceptionUtil.illegalArg;
 import static com.sencha.gxt.chart.client.chart.Chart.Position;
 
-public class LanesChart extends PointSeriesChart implements SeriesSelectionEvent.SeriesSelectionHandler<Integer> {
+public class LanesChart extends SeriesMapChart implements SeriesSelectionEvent.SeriesSelectionHandler<Integer> {
     private static final int HR = 60;
     private static final String PRIMER = "primer";
     public static final int STROKE_NON_FOCUSED = 3;

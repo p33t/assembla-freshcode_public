@@ -6,8 +6,8 @@ import biz.freshcode.learn.gwt.client.builder.gxt.chart.series.LineSeriesBuilder
 import biz.freshcode.learn.gwt.client.builder.gxt.container.BorderLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.container.HorizontalLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.PointSeries;
-import biz.freshcode.learn.gwt.client.experiment.chart.reuse.PointSeriesChart;
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.SeriesMap;
+import biz.freshcode.learn.gwt.client.experiment.chart.reuse.SeriesMapChart;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import com.sencha.gxt.chart.client.draw.RGB;
 import com.sencha.gxt.core.client.ValueProvider;
@@ -36,7 +36,7 @@ public class MixedChart2Demo extends AbstractIsWidget<BorderLayoutContainer> {
                 .borderLayoutContainer;
     }
 
-    private static class MyChart extends PointSeriesChart {
+    private static class MyChart extends SeriesMapChart {
         public static final String L1 = "L1";
         public static final String L2 = "L2";
         public static final int X_MIN = 0;
