@@ -48,6 +48,7 @@ public class LanesChart extends PointSeriesChart implements SeriesSelectionEvent
     public static final int STROKE_FOCUSED = 6;
     public static final SeriesRenderer<ChartElem> FOCAL_RENDER = new FocalRenderer(true);
     public static final SeriesRenderer<ChartElem> NON_FOCAL_RENDER = new FocalRenderer(false);
+    public static final RGB FOCUSED_PERIOD_COL = RGB.LIGHTGRAY;
     private final ValueProvider<Integer, Double> FOCUSED_PERIOD_FIELD = accessY("Focused Period");
     private final List<HasIdTitle> resources = newList();
     private Date zeroTime = new Date();
@@ -140,15 +141,28 @@ public class LanesChart extends PointSeriesChart implements SeriesSelectionEvent
         }
 
         if (focusedPeriodOrNull != null) {
+            NumericAxis<Integer> bottom = getNumericAxis(Position.BOTTOM);
             left.addField(FOCUSED_PERIOD_FIELD);
-            LineSeries<Integer> s = createSeries(FOCUSED_PERIOD_FIELD, RGB.LIGHTGRAY);
+            LineSeries<Integer> s = createSeries(FOCUSED_PERIOD_FIELD, FOCUSED_PERIOD_COL);
+            s.setFill(FOCUSED_PERIOD_COL);
+//            Does nothing...
+//            s.setStrokeWidth(-1);
+//            s.setFillRenderer(new SeriesRenderer<Integer>() {
+//                @Override
+//                public void spriteRenderer(Sprite sprite, int index, ListStore<Integer> store) {
+//                    sprite.setStrokeOpacity(0.5);
+//                    sprite.setFillOpacity(0.5);
+//                }
+//            });
             chart.addSeries(s);
 
             int yMax = resourceIndexToValue(resources.size() - 1);
             PointSeries focus = pointSeries(focusedPeriodOrNull, yMax);
-            Point preStepper = new Point(focus.getMinX() - 1, 0);
             Point postStepper = new Point(focus.getMaxX() + 1, 0);
-            focus = PointSeries.NIL.add(preStepper).add(focus).add(postStepper);
+            // need to prevent 'NaN' effects because otherwise fill won't work
+            focus = focus
+                    .add(postStepper)
+                    .stepify((int) bottom.getMinimum(), (int) bottom.getMaximum());
             map = map.put(FOCUSED_PERIOD_FIELD.getPath(), focus);
         }
 
