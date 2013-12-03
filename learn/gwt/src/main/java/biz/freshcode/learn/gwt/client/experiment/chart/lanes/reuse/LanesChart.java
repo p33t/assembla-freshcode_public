@@ -10,11 +10,9 @@ import biz.freshcode.learn.gwt.client.experiment.chart.gantt2.reuse.BarFocusEven
 import biz.freshcode.learn.gwt.client.experiment.chart.gantt2.reuse.BarInfo;
 import biz.freshcode.learn.gwt.client.experiment.chart.gantt2.reuse.ChartInfo;
 import biz.freshcode.learn.gwt.client.experiment.chart.gantt2.reuse.HasIdTitle;
-import biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartElem;
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.PointSeries;
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.PointSeriesChart;
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.SeriesMap;
-import com.google.gwt.core.shared.GWT;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.event.shared.HandlerRegistration;
 import com.google.web.bindery.event.shared.SimpleEventBus;
@@ -23,14 +21,11 @@ import com.sencha.gxt.chart.client.chart.event.SeriesSelectionEvent;
 import com.sencha.gxt.chart.client.chart.series.LineSeries;
 import com.sencha.gxt.chart.client.chart.series.Series;
 import com.sencha.gxt.chart.client.chart.series.SeriesLabelProvider;
-import com.sencha.gxt.chart.client.chart.series.SeriesRenderer;
 import com.sencha.gxt.chart.client.draw.RGB;
-import com.sencha.gxt.chart.client.draw.sprite.Sprite;
 import com.sencha.gxt.chart.client.draw.sprite.TextSprite;
 import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.core.client.util.Point;
 import com.sencha.gxt.data.shared.LabelProvider;
-import com.sencha.gxt.data.shared.ListStore;
 
 import java.util.Date;
 import java.util.List;
@@ -46,8 +41,6 @@ public class LanesChart extends PointSeriesChart implements SeriesSelectionEvent
     private static final String PRIMER = "primer";
     public static final int STROKE_NON_FOCUSED = 3;
     public static final int STROKE_FOCUSED = 6;
-    public static final SeriesRenderer<ChartElem> FOCAL_RENDER = new FocalRenderer(true);
-    public static final SeriesRenderer<ChartElem> NON_FOCAL_RENDER = new FocalRenderer(false);
     public static final RGB FOCUSED_PERIOD_COL = RGB.LIGHTGRAY;
     private final ValueProvider<Integer, Double> FOCUSED_PERIOD_FIELD = accessY("Focused Period");
     private final List<HasIdTitle> resources = newList();
@@ -55,7 +48,7 @@ public class LanesChart extends PointSeriesChart implements SeriesSelectionEvent
     private String lastFocusIdOrNull;
     private StartDurn focusedPeriodOrNull;
     private final EventBus bus;
-    private Iterable<BarInfo> prevBarsOrNull;
+    private Iterable<BarInfo> prevBars = newList();
 
     public LanesChart() {
         this(new SimpleEventBus());
@@ -75,18 +68,8 @@ public class LanesChart extends PointSeriesChart implements SeriesSelectionEvent
     }
 
     public void reorder(List<HasIdTitle> newOrder) {
-        // build a cross reference from old to new index
-        final int[] newIndex = new int[resources.size()];
-        for (int i = 0; i < newIndex.length; i++) {
-            String resourceId = newOrder.get(i).getId();
-            int oldIndex = resourceToIndex(resourceId);
-            newIndex[oldIndex] = i;
-        }
-
-        // TODO: Call replaceAll()
-        chart.setAnimated(true);
-        // needed for fill?
-        chart.setShadowChart(true);
+        replaceResources(newOrder);
+        replaceBars(prevBars);
 
         chart.redrawChart();
     }
@@ -112,9 +95,9 @@ public class LanesChart extends PointSeriesChart implements SeriesSelectionEvent
 
     public void replaceBars(Iterable<BarInfo> bars) {
         clearChart();
-        prevBarsOrNull = bars;
+        prevBars = bars;
 
-        // compile and display data
+        // compile and post data
         SeriesMap map = SeriesMap.NIL;
         for (BarInfo bar : bars) {
             Integer y = resourceToNumber(bar.getResourceId());
@@ -124,9 +107,9 @@ public class LanesChart extends PointSeriesChart implements SeriesSelectionEvent
 
         if (map.isEmpty()) {
             primeChart();
-            return;
         }
 
+        // focused bar
         NumericAxis<Integer> left = getNumericAxis(Position.LEFT);
         boolean refocus = false;
         for (BarInfo bar : bars) {
@@ -140,24 +123,16 @@ public class LanesChart extends PointSeriesChart implements SeriesSelectionEvent
             chart.addSeries(s);
         }
 
+        // focused period
         if (focusedPeriodOrNull != null) {
             NumericAxis<Integer> bottom = getNumericAxis(Position.BOTTOM);
             left.addField(FOCUSED_PERIOD_FIELD);
             LineSeries<Integer> s = createSeries(FOCUSED_PERIOD_FIELD, FOCUSED_PERIOD_COL);
             s.setFill(FOCUSED_PERIOD_COL);
-//            Does nothing...
-//            s.setStrokeWidth(-1);
-//            s.setFillRenderer(new SeriesRenderer<Integer>() {
-//                @Override
-//                public void spriteRenderer(Sprite sprite, int index, ListStore<Integer> store) {
-//                    sprite.setStrokeOpacity(0.5);
-//                    sprite.setFillOpacity(0.5);
-//                }
-//            });
+            // Hmm... would be nice to make stroke fully transparent... but fiddling with rendered doesn't work ?!
             chart.addSeries(s);
-
             int yMax = resourceIndexToValue(resources.size() - 1);
-            PointSeries focus = pointSeries(focusedPeriodOrNull, yMax);
+            PointSeries focus = pointSeries(focusedPeriodOrNull, yMax + 1);
             Point postStepper = new Point(focus.getMaxX() + 1, 0);
             // need to prevent 'NaN' effects because otherwise fill won't work
             focus = focus
@@ -202,8 +177,7 @@ public class LanesChart extends PointSeriesChart implements SeriesSelectionEvent
 
     public void focusPeriod(StartDurn startDurn) {
         this.focusedPeriodOrNull = startDurn;
-        if (prevBarsOrNull != null) replaceBars(prevBarsOrNull);
-        else GWT.log("No previous bars..... TODO!");
+        replaceBars(prevBars);
     }
 
     public void unfocusPeriod() {
@@ -242,7 +216,7 @@ public class LanesChart extends PointSeriesChart implements SeriesSelectionEvent
     protected void clearChart() {
         super.clearChart();
         clearNumericAxis(Position.LEFT);
-        prevBarsOrNull = null;
+        prevBars = newList();
     }
 
     private PointSeries pointSeries(StartDurn sd, int y) {
@@ -274,7 +248,7 @@ public class LanesChart extends PointSeriesChart implements SeriesSelectionEvent
 
         // add config
         getNumericAxis(Position.LEFT).addField(primer);
-        chart.addSeries(createSeries(primer, new RGB("#000000")));
+        chart.addSeries(createSeries(primer, new RGB("#ffffff")));
     }
 
     private LineSeries<Integer> createSeries(final ValueProvider<Integer, Double> access, RGB colour) {
@@ -360,24 +334,6 @@ public class LanesChart extends PointSeriesChart implements SeriesSelectionEvent
         @Override
         public String getLabel(Number item) {
             return "+" + item + "mins";
-        }
-    }
-
-    private static class FocalRenderer implements SeriesRenderer<ChartElem> {
-        private final boolean focused;
-
-        FocalRenderer(boolean focused) {
-            this.focused = focused;
-        }
-
-        @Override
-        public void spriteRenderer(Sprite sprite, int index, ListStore<ChartElem> store) {
-            if (focused) {
-                sprite.setStroke(RGB.MAGENTA);
-                sprite.setStrokeOpacity(.5);
-                sprite.setFill(RGB.MAGENTA);
-                sprite.setFillOpacity(.5);
-            }
         }
     }
 }
