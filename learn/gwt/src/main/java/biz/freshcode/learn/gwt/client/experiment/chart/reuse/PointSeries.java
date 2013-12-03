@@ -106,7 +106,7 @@ public class PointSeries implements Iterable<Point> {
     }
 
     /**
-     * Lookup the a value for the given 'x' value.
+     * Lookup the 'y' value for the given 'x' value.
      * If x falls outside the domain of the series then return 'defVal'.
      * Result will be interpolated if necessary assuming linear transitions.
      */
