@@ -141,6 +141,7 @@ public class PointSeries implements Iterable<Point> {
     /**
      * Convert this series to step-like points with a zero-value lead-in and sustained trailing value (if necessary).
      * The resulting point series is guaranteed to have a point at xFrom and xTo.
+     * Step-like means having extra points just prior to a y-value change to make the plot appear to 'step'.
      */
     public PointSeries stepify(int xFrom, int xTo) {
         if (xFrom >= xTo) throw illegalArg("Need positive domain.");
