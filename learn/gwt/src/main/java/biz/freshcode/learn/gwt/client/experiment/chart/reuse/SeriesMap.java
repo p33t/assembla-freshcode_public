@@ -2,14 +2,16 @@ package biz.freshcode.learn.gwt.client.experiment.chart.reuse;
 
 import com.google.inject.Provider;
 import com.sencha.gxt.core.client.ValueProvider;
+import com.sencha.gxt.data.shared.ListStore;
 import com.sencha.gxt.data.shared.ModelKeyProvider;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import static biz.freshcode.learn.gwt.client.experiment.chart.reuse.UnityAccess.unityAccess;
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newMap;
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newSet;
+import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.*;
 
 /**
  * A collection of named and configured PointSeries.  This is an immutable structure.
@@ -53,9 +55,19 @@ public class SeriesMap {
     }
 
     /**
+     * Replace the contents of the given list store with an ordered,
+     * non-duplicating list of all x values present in the map.
+     */
+    public void replaceAll(ListStore<Integer> store) {
+        List<Integer> xs = newListFrom(allXs());
+        Collections.sort(xs);
+        store.replaceAll(xs);
+    }
+
+    /**
      * Return a complete set of x values.
      */
-    public Set<Integer> allXs() {
+    private Set<Integer> allXs() {
         Set<Integer> s = newSet();
         for (PointSeries ps : map.values()) ps.addXs(s);
         return s;
