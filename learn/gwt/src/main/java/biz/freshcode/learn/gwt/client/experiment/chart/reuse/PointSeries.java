@@ -48,6 +48,16 @@ public class PointSeries implements Iterable<Point> {
     }
 
     /**
+     * Returns the smallest value of 'x' in the series.
+     * If the series is empty then Integer.MIN_VALUE is returned.
+     */
+    public int getMinX() {
+        if (isEmpty()) return Integer.MIN_VALUE;
+        List<Integer> l = lazyGetOrderedPoints();
+        return l.get(0);
+    }
+
+    /**
      * Enables iteration of points in x-order.
      */
     @Override
