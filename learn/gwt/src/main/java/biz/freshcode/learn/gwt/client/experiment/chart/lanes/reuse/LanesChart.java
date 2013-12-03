@@ -131,8 +131,7 @@ public class LanesChart extends PointSeriesChart implements SeriesSelectionEvent
             s.setFill(FOCUSED_PERIOD_COL);
             // Hmm... would be nice to make stroke fully transparent... but fiddling with rendered doesn't work ?!
             chart.addSeries(s);
-            int yMax = resourceIndexToValue(resources.size() - 1);
-            PointSeries focus = pointSeries(focusedPeriodOrNull, yMax + 1);
+            PointSeries focus = pointSeries(focusedPeriodOrNull, (int) (left.getMaximum() + 1));
             Point postStepper = new Point(focus.getMaxX() + 1, 0);
             // need to prevent 'NaN' effects because otherwise fill won't work
             focus = focus
