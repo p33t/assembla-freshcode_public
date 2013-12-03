@@ -40,6 +40,8 @@ public class MixedChart2Demo extends AbstractIsWidget<BorderLayoutContainer> {
     private static class MyChart extends PointSeriesChart implements Provider<SeriesMap> {
         public static final String L1 = "L1";
         public static final String L2 = "L2";
+        public static final int X_MIN = 0;
+        public static final int X_MAX = 100;
         private final ValueProvider<Integer, Double> L1_ACC = SeriesMap.accessY(L1, this);
         private final ValueProvider<Integer, Double> L2_ACC = SeriesMap.accessY(L2, this);
         private SeriesMap map = null;
@@ -72,8 +74,8 @@ public class MixedChart2Demo extends AbstractIsWidget<BorderLayoutContainer> {
                     .addAxis(new NumericAxisBuilder<Integer>()
                             .position(Position.BOTTOM)
                             .addField(SeriesMap.ACCESS_X)
-                            .maximum(10)
-                            .minimum(0)
+                            .maximum(X_MAX)
+                            .minimum(X_MIN)
                             .steps(10)
                             .numericAxis)
             ;
@@ -81,10 +83,9 @@ public class MixedChart2Demo extends AbstractIsWidget<BorderLayoutContainer> {
 
         void go() {
             map = SeriesMap.NIL
-                    .put(L1, PointSeries.NIL.add(new Point(1, 20), new Point(5, 43)))
-                    .put(L2, PointSeries.NIL.add(new Point(4, 50), new Point(7, 31)));
-            chart.getStore().clear();
-            chart.getStore().addAll(map.allXs());
+                    .put(L1, PointSeries.NIL.add(new Point(10, 20), new Point(50, 43)).stepify(X_MIN, X_MAX))
+                    .put(L2, PointSeries.NIL.add(new Point(40, 50), new Point(70, 31)));
+            map.replaceAll(chart.getStore());
 
             chart.addSeries(new LineSeriesBuilder<Integer>()
                     .fill(RGB.LIGHTGRAY)
