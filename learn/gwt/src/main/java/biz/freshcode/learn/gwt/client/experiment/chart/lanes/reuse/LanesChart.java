@@ -1,4 +1,4 @@
-package biz.freshcode.learn.gwt.client.experiment.chart.gantt2.reuse;
+package biz.freshcode.learn.gwt.client.experiment.chart.lanes.reuse;
 
 import biz.freshcode.learn.gwt.client.builder.gxt.chart.ChartBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.chart.axis.NumericAxisBuilder;
@@ -6,6 +6,10 @@ import biz.freshcode.learn.gwt.client.builder.gxt.chart.series.LineSeriesBuilder
 import biz.freshcode.learn.gwt.client.builder.gxt.chart.series.SeriesToolTipConfigBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.draw.path.PathSpriteBuilder;
 import biz.freshcode.learn.gwt.client.experiment.chart.gantt.reuse.StartDurn;
+import biz.freshcode.learn.gwt.client.experiment.chart.gantt2.reuse.BarFocusEvent;
+import biz.freshcode.learn.gwt.client.experiment.chart.gantt2.reuse.BarInfo;
+import biz.freshcode.learn.gwt.client.experiment.chart.gantt2.reuse.ChartInfo;
+import biz.freshcode.learn.gwt.client.experiment.chart.gantt2.reuse.HasIdTitle;
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartElem;
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartElemChart;
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.MapFun;
@@ -41,7 +45,7 @@ import static biz.freshcode.learn.gwt.client.util.AppObjectUtils.safeEquals;
 import static biz.freshcode.learn.gwt.client.util.ExceptionUtil.illegalArg;
 import static com.sencha.gxt.chart.client.chart.Chart.Position;
 
-public class GanttChart extends ChartElemChart implements SeriesSelectionEvent.SeriesSelectionHandler<ChartElem> {
+public class LanesChart extends ChartElemChart implements SeriesSelectionEvent.SeriesSelectionHandler<ChartElem> {
     private static final int HR = 60;
     private static final String PRIMER = "primer";
     public static final int STROKE_NON_FOCUSED = 3;
@@ -56,11 +60,11 @@ public class GanttChart extends ChartElemChart implements SeriesSelectionEvent.S
     private final EventBus bus;
     private Iterable<BarInfo> prevBarsOrNull;
 
-    public GanttChart() {
+    public LanesChart() {
         this(new SimpleEventBus());
     }
 
-    public GanttChart(EventBus bus) {
+    public LanesChart(EventBus bus) {
         setupChart();
         this.bus = bus;
         primeChart();

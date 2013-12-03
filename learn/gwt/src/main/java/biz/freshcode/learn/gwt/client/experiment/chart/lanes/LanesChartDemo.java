@@ -1,9 +1,13 @@
-package biz.freshcode.learn.gwt.client.experiment.chart.gantt2;
+package biz.freshcode.learn.gwt.client.experiment.chart.lanes;
 
 import biz.freshcode.learn.gwt.client.builder.gxt.container.BorderLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.container.HorizontalLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.experiment.chart.gantt.reuse.StartDurn;
-import biz.freshcode.learn.gwt.client.experiment.chart.gantt2.reuse.*;
+import biz.freshcode.learn.gwt.client.experiment.chart.gantt2.reuse.BarFocusEvent;
+import biz.freshcode.learn.gwt.client.experiment.chart.gantt2.reuse.BarInfo;
+import biz.freshcode.learn.gwt.client.experiment.chart.gantt2.reuse.ChartInfo;
+import biz.freshcode.learn.gwt.client.experiment.chart.gantt2.reuse.HasIdTitle;
+import biz.freshcode.learn.gwt.client.experiment.chart.lanes.reuse.LanesChart;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import com.google.gwt.core.client.GWT;
 import com.sencha.gxt.chart.client.draw.RGB;
@@ -17,7 +21,7 @@ import java.util.List;
 import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newList;
 import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newListFrom;
 
-public class Gantt2Demo extends AbstractIsWidget<BorderLayoutContainer> implements BarFocusEvent.Handler {
+public class LanesChartDemo extends AbstractIsWidget<BorderLayoutContainer> implements BarFocusEvent.Handler {
     private static final int HR = 60;
     private static final List<BarInfo> BARS = newListFrom(
             new BarInfo("id1", "Maintenance", "Alpha", new RGB("#ff0000"), new StartDurn(6 * HR, 4 * HR)),
@@ -29,7 +33,7 @@ public class Gantt2Demo extends AbstractIsWidget<BorderLayoutContainer> implemen
             new BarInfo("id7", "Rocker Outbound", "Echo", new RGB("#00008f"), new StartDurn(16 * HR, 4 * HR)),
             new BarInfo("id8", "Rocker Outbound", "Foxtrot", new RGB("#00008f"), new StartDurn(16 * HR, 4 * HR))
     );
-    private GanttChart chart;
+    private LanesChart chart = new LanesChart();
 
     @Override
     public void focusChanged(BarFocusEvent evt) {
@@ -38,7 +42,6 @@ public class Gantt2Demo extends AbstractIsWidget<BorderLayoutContainer> implemen
 
     @Override
     protected BorderLayoutContainer createWidget() {
-        chart = new GanttChart();
         chart.addFocusChangeHandler(this);
         return new BorderLayoutContainerBuilder()
                 .northWidget(new HorizontalLayoutContainerBuilder()
