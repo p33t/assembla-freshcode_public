@@ -1,5 +1,6 @@
 package biz.freshcode.learn.gwt.client.experiment.chart.reuse;
 
+import com.google.inject.Provider;
 import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.data.shared.ModelKeyProvider;
 
@@ -18,8 +19,15 @@ public class SeriesMap {
     public static final ValueProvider<Integer, Integer> ACCESS_X = unityAccess();
     public static final ModelKeyProvider<Integer> KEY_X = unityAccess();
     private Map<String, PointSeries> map = newMap();
-    
+
     private SeriesMap() {
+    }
+
+    /**
+     * Creates a ValueProvider that supplies y values for the given series.
+     */
+    public static ValueProvider<Integer, Double> accessY(String seriesName, Provider<SeriesMap> mapVar) {
+        return new AccessY(seriesName, mapVar);
     }
 
     /**
@@ -45,34 +53,29 @@ public class SeriesMap {
     }
 
     /**
-     * Creates a ValueProvider that supplies y values for the given series.
-     */
-    public ValueProvider<Integer, Double> accessY(String seriesName) {
-        return new AccessY(seriesName);
-    }
-
-    /**
      * Return a complete set of x values.
      */
     public Set<Integer> allXs() {
         Set<Integer> s = newSet();
-        for (PointSeries ps: map.values()) ps.addXs(s);
+        for (PointSeries ps : map.values()) ps.addXs(s);
         return s;
     }
-    
+
     /**
      * Provides access to a Y value for a predefined series.
      */
-    private class AccessY implements ValueProvider<Integer, Double> {
+    private static class AccessY implements ValueProvider<Integer, Double> {
         private final String seriesName;
+        private final Provider<SeriesMap> mapVar;
 
-        public AccessY(String seriesName) {
+        public AccessY(String seriesName, Provider<SeriesMap> mapVar) {
             this.seriesName = seriesName;
+            this.mapVar = mapVar;
         }
 
         @Override
         public Double getValue(Integer x) {
-            return lookup(seriesName, x);
+            return mapVar.get().lookup(seriesName, x);
         }
 
         @Override

@@ -61,6 +61,7 @@ public class GanttChart extends ChartElemChart implements SeriesSelectionEvent.S
     }
 
     public GanttChart(EventBus bus) {
+        setupChart();
         this.bus = bus;
         primeChart();
     }
@@ -228,9 +229,8 @@ public class GanttChart extends ChartElemChart implements SeriesSelectionEvent.S
         focusPeriod(null);
     }
 
-    @Override
-    protected void setupChart(ChartBuilder<ChartElem> builder) {
-        builder
+    protected void setupChart() {
+        new ChartBuilder<ChartElem>(chart)
                 .addAxis(new NumericAxisBuilder<ChartElem>()
                         .position(Position.BOTTOM)
 //                        .titleConfig(new TextSprite("Time"))
