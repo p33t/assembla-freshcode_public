@@ -46,6 +46,10 @@ public class MixedChartDemo extends AbstractIsWidget<BorderLayoutContainer> {
         public static final ChartElem.AccessY L1_ACC = new ChartElem.AccessY("L1");
         public static final ChartElem.AccessY L2_ACC = new ChartElem.AccessY("L2");
 
+        private MyChart() {
+            setupChart();
+        }
+
         void go() {
             Map<String, List<PrecisePoint>> map = newMap();
             map.put(L1_ACC.getPath(), newListFrom(new PrecisePoint(1, 20), new PrecisePoint(5, 43)));
@@ -79,24 +83,23 @@ public class MixedChartDemo extends AbstractIsWidget<BorderLayoutContainer> {
             clearNumericAxis(Position.LEFT);
         }
 
-        @Override
-        protected void setupChart(ChartBuilder<ChartElem> builder) {
-            builder
-            .addAxis(new NumericAxisBuilder<ChartElem>()
-                    .position(Position.LEFT)
-                    .addField(L1_ACC)
-                    .addField(L2_ACC)
-                    .maximum(100)
-                    .minimum(0)
-                    .steps(10)
-                    .numericAxis)
-            .addAxis(new NumericAxisBuilder<ChartElem>()
-                    .position(Position.BOTTOM)
-                    .addField(CE_ACCESS.x())
-                    .maximum(10)
-                    .minimum(0)
-                    .steps(10)
-                    .numericAxis)
+        protected void setupChart() {
+            new ChartBuilder<ChartElem>(chart)
+                    .addAxis(new NumericAxisBuilder<ChartElem>()
+                            .position(Position.LEFT)
+                            .addField(L1_ACC)
+                            .addField(L2_ACC)
+                            .maximum(100)
+                            .minimum(0)
+                            .steps(10)
+                            .numericAxis)
+                    .addAxis(new NumericAxisBuilder<ChartElem>()
+                            .position(Position.BOTTOM)
+                            .addField(CE_ACCESS.x())
+                            .maximum(10)
+                            .minimum(0)
+                            .steps(10)
+                            .numericAxis)
             ;
         }
     }

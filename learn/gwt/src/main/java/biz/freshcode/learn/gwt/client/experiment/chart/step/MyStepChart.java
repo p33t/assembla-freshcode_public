@@ -19,24 +19,8 @@ import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newList;
 import static com.sencha.gxt.chart.client.chart.Chart.Position;
 
 public class MyStepChart extends ChartElemChart {
-    @Override
-    protected void setupChart(ChartBuilder<ChartElem> builder) {
-        builder
-                .addAxis(new NumericAxisBuilder<ChartElem>()
-                        .position(Position.BOTTOM)
-                        .titleConfig(new TextSprite("Time"))
-                        .addField(CE_ACCESS.x())
-                        .numericAxis)
-                .addAxis(new NumericAxisBuilder<ChartElem>()
-                        .position(Position.LEFT)
-                        .titleConfig(new TextSprite("Count"))
-                        .numericAxis);
-    }
-
-    @Override
-    protected void clearChart() {
-        super.clearChart();
-        clearNumericAxis(Position.LEFT);
+    public MyStepChart() {
+        setupChart();
     }
 
     public void display(Map<String, PointSeries> pss) {
@@ -67,5 +51,24 @@ public class MyStepChart extends ChartElemChart {
                 })
                 .areaSeries);
         chart.redrawChart();
+    }
+
+    @Override
+    protected void clearChart() {
+        super.clearChart();
+        clearNumericAxis(Position.LEFT);
+    }
+
+    private void setupChart() {
+        new ChartBuilder<ChartElem>(chart)
+                .addAxis(new NumericAxisBuilder<ChartElem>()
+                        .position(Position.BOTTOM)
+                        .titleConfig(new TextSprite("Time"))
+                        .addField(CE_ACCESS.x())
+                        .numericAxis)
+                .addAxis(new NumericAxisBuilder<ChartElem>()
+                        .position(Position.LEFT)
+                        .titleConfig(new TextSprite("Count"))
+                        .numericAxis);
     }
 }

@@ -1,6 +1,5 @@
 package biz.freshcode.learn.gwt.client.experiment.chart.reuse;
 
-import biz.freshcode.learn.gwt.client.builder.gxt.chart.ChartBuilder;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.chart.client.chart.Chart;
 import com.sencha.gxt.chart.client.chart.axis.NumericAxis;
@@ -31,9 +30,7 @@ public abstract class AbstractChart<T> extends Composite {
     );
 
     protected AbstractChart(ModelKeyProvider<T> keyProvider) {
-        ChartBuilder<T> builder = new ChartBuilder<T>(chart)
-                .store(new ListStore<T>(keyProvider));
-        setupChart(builder);
+        chart.setStore(new ListStore<T>(keyProvider));
         super.initWidget(chart);
     }
 
@@ -44,11 +41,6 @@ public abstract class AbstractChart<T> extends Composite {
     protected RGB colour(int ix) {
         return colours.get(ix % colours.size());
     }
-    
-    /**
-     * Add and configure axes.
-     */
-    protected abstract void setupChart(ChartBuilder<T> builder);
 
     @Override
     protected final void initWidget(Widget widget) {
