@@ -6,6 +6,7 @@ import java.util.*;
 
 import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newListFrom;
 import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newMap;
+import static biz.freshcode.learn.gwt.client.util.ExceptionUtil.illegalArg;
 
 /**
  * Holds an ordered series of points where x can only have one value.
@@ -41,9 +42,9 @@ public class PointSeries implements Iterable<Point> {
      * If the series is empty then Integer.MIN_VALUE is returned.
      */
     public int getMaxX() {
-        int max = Integer.MIN_VALUE;
-        for (Integer i : points.keySet()) if (max < i) max = i;
-        return max;
+        if (isEmpty()) return Integer.MIN_VALUE;
+        List<Integer> l = lazyGetOrderedPoints();
+        return l.get(l.size() - 1);
     }
 
     /**
@@ -72,14 +73,6 @@ public class PointSeries implements Iterable<Point> {
                 throw new UnsupportedOperationException("Read only iteration");
             }
         };
-    }
-
-    private List<Integer> lazyGetOrderedPoints() {
-        if (orderedPointsOrNull != null) return orderedPointsOrNull;
-        List<Integer> xs = newListFrom(points.keySet());
-        Collections.sort(xs);
-        orderedPointsOrNull = xs;
-        return xs;
     }
 
     @Override
@@ -112,16 +105,6 @@ public class PointSeries implements Iterable<Point> {
         return sb.append("]").toString();
     }
 
-    private PointSeries copy() {
-        PointSeries result = new PointSeries();
-        result.points.putAll(points);
-        return result;
-    }
-
-    private Point put(Point p) {
-        return this.points.put(p.getX(), p);
-    }
-
     /**
      * Lookup the a value for the given 'x' value.
      * If x falls outside the domain of the series then return 'defVal'.
@@ -148,7 +131,70 @@ public class PointSeries implements Iterable<Point> {
         return ratio * yDiff + yBefore;
     }
 
+    /**
+     * Add all the X values to the given collection.
+     */
     public void addXs(Collection<Integer> l) {
         l.addAll(lazyGetOrderedPoints());
+    }
+
+    /**
+     * Convert this series to step-like points with a zero-value lead-in and sustained trailing value (if necessary).
+     * The resulting point series is guaranteed to have a point at xFrom and xTo.
+     */
+    public PointSeries stepify(int xFrom, int xTo) {
+        if (xFrom >= xTo) throw illegalArg("Need positive domain.");
+        int prevY = 0;
+        PointSeries ps = PointSeries.NIL;
+        for (Integer x : lazyGetOrderedPoints()) {
+            Point p = points.get(x);
+            if (x > xTo) {
+                // beyond domain
+                // point series is effectively exhausted
+                break;
+            } else if (x == xFrom) {
+                // point has landed on desired start of domain
+                // elegant initiator point
+                ps = ps.add(p);
+            } else if (x > xFrom) {
+                Point stepper = new Point(x - 1, prevY);
+                if (ps.isEmpty() && stepper.getX() > xFrom) {
+                    // an artificial initiator point is needed
+                    ps = ps.add(new Point(xFrom, prevY));
+                }
+                ps = ps.add(stepper, p);
+            }
+//            else if (x < xFrom); // ignore prelude point
+            prevY = p.getY();
+        }
+
+        if (ps.isEmpty()) {
+            // domain of line is outside of desired domain
+            ps = ps.add(new Point(xFrom, prevY), new Point(xTo, prevY));
+        } else if (ps.getMaxX() < xTo) {
+            // need terminator point
+            ps = ps.add(new Point(xTo, prevY));
+        }
+//        else the requisite points are already present
+        return ps;
+    }
+
+    private List<Integer> lazyGetOrderedPoints() {
+        if (orderedPointsOrNull == null) {
+            List<Integer> xs = newListFrom(points.keySet());
+            Collections.sort(xs);
+            orderedPointsOrNull = xs;
+        }
+        return orderedPointsOrNull;
+    }
+
+    private PointSeries copy() {
+        PointSeries result = new PointSeries();
+        result.points.putAll(points);
+        return result;
+    }
+
+    private Point put(Point p) {
+        return this.points.put(p.getX(), p);
     }
 }
