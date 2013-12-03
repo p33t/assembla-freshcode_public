@@ -9,7 +9,6 @@ import biz.freshcode.learn.gwt.client.experiment.chart.reuse.PointSeries;
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.PointSeriesChart;
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.SeriesMap;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
-import com.google.inject.Provider;
 import com.sencha.gxt.chart.client.draw.RGB;
 import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.core.client.util.Point;
@@ -37,22 +36,32 @@ public class MixedChart2Demo extends AbstractIsWidget<BorderLayoutContainer> {
                 .borderLayoutContainer;
     }
 
-    private static class MyChart extends PointSeriesChart implements Provider<SeriesMap> {
+    private static class MyChart extends PointSeriesChart {
         public static final String L1 = "L1";
         public static final String L2 = "L2";
         public static final int X_MIN = 0;
         public static final int X_MAX = 100;
-        private final ValueProvider<Integer, Double> L1_ACC = SeriesMap.accessY(L1, this);
-        private final ValueProvider<Integer, Double> L2_ACC = SeriesMap.accessY(L2, this);
-        private SeriesMap map = null;
+        private final ValueProvider<Integer, Double> L1_ACC = accessY(L1);
+        private final ValueProvider<Integer, Double> L2_ACC = accessY(L2);
 
         private MyChart() {
-            setupChart();
-        }
-
-        @Override
-        public SeriesMap get() {
-            return map;
+            new ChartBuilder<Integer>(chart)
+                    .addAxis(new NumericAxisBuilder<Integer>()
+                            .position(Position.LEFT)
+                            .addField(L1_ACC)
+                            .addField(L2_ACC)
+                            .maximum(100)
+                            .minimum(0)
+                            .steps(10)
+                            .numericAxis)
+                    .addAxis(new NumericAxisBuilder<Integer>()
+                            .position(Position.BOTTOM)
+                            .addField(SeriesMap.ACCESS_X)
+                            .maximum(X_MAX)
+                            .minimum(X_MIN)
+                            .steps(10)
+                            .numericAxis)
+            ;
         }
 
         @Override
@@ -82,10 +91,10 @@ public class MixedChart2Demo extends AbstractIsWidget<BorderLayoutContainer> {
         }
 
         void go() {
-            map = SeriesMap.NIL
+            SeriesMap map = SeriesMap.NIL
                     .put(L1, PointSeries.NIL.add(new Point(10, 20), new Point(50, 43)).stepify(X_MIN, X_MAX))
                     .put(L2, PointSeries.NIL.add(new Point(40, 50), new Point(70, 31)));
-            map.replaceAll(chart.getStore());
+            replaceAll(map);
 
             chart.addSeries(new LineSeriesBuilder<Integer>()
                     .fill(RGB.LIGHTGRAY)
