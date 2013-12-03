@@ -38,6 +38,9 @@ public class PointSeriesTest extends TestCase {
         checkStepify(subj, 0, 1, new Point(0, 0), new Point(1, 0));
         // desired domain is after series domain
         checkStepify(subj, 5, 6, new Point(5, 3), new Point(6, 3));
+
+        // stepper point unnecessary
+        checkStepify(PointSeries.NIL.add(P2_4, S3_4, P4_3), 2, 4, P2_4, S3_4, P4_3);
     }
 
     private void checkStepify(PointSeries subj, int xFrom, int xTo, Point... ps) {
