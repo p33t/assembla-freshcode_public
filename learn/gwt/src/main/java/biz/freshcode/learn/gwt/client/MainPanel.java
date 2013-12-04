@@ -28,6 +28,7 @@ import biz.freshcode.learn.gwt.client.experiment.forms3.Forms3Demo;
 import biz.freshcode.learn.gwt.client.experiment.grid.GwtGridDemo;
 import biz.freshcode.learn.gwt.client.experiment.grid.GxtGridDemo;
 import biz.freshcode.learn.gwt.client.experiment.grid.window.GridWindowDemo;
+import biz.freshcode.learn.gwt.client.experiment.gridgroupby.GridGroupByDemo;
 import biz.freshcode.learn.gwt.client.experiment.hoverwidget.HoverWidgetDemo;
 import biz.freshcode.learn.gwt.client.experiment.iswidget.IsWidgetDemo;
 import biz.freshcode.learn.gwt.client.experiment.jsni.JsniDemo;
@@ -190,7 +191,7 @@ public class MainPanel extends Composite implements AcceptsOneWidget {
                                         replaceContent(w);
                                     }
                                 }))
-                                .addItem(new MenuItem("Grid Demo", new Command() {
+                                .addItem(new MenuItem("GWT Grid Demo", new Command() {
                                     public void execute() {
                                         IsWidget w = GWT.create(GwtGridDemo.class);
                                         replaceContent(w);
@@ -364,6 +365,12 @@ public class MainPanel extends Composite implements AcceptsOneWidget {
                                 .addItem(new MenuItem("Grid Demo", new Command() {
                                     public void execute() {
                                         IsWidget w = GWT.create(GxtGridDemo.class);
+                                        replaceRoot(w);
+                                    }
+                                }))
+                                .addItem(new MenuItem("Grid Group By Demo", new Command() {
+                                    public void execute() {
+                                        IsWidget w = GWT.create(GridGroupByDemo.class);
                                         replaceRoot(w);
                                     }
                                 }))
