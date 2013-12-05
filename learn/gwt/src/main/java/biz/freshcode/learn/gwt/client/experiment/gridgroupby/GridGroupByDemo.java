@@ -3,6 +3,7 @@ package biz.freshcode.learn.gwt.client.experiment.gridgroupby;
 import biz.freshcode.learn.gwt.client.builder.gxt.container.BorderLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.grid.ColumnConfigBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.grid.GroupingViewBuilder;
+import biz.freshcode.learn.gwt.client.experiment.grid.reuse.PopOverCell;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import biz.freshcode.learn.gwt.client.util.IdentityHashProvider;
 import com.google.gwt.cell.client.AbstractCell;
@@ -11,6 +12,8 @@ import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.data.shared.ListStore;
+import com.sencha.gxt.dnd.core.client.DropTarget;
+import com.sencha.gxt.widget.core.client.button.ToolButton;
 import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
 import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
 import com.sencha.gxt.widget.core.client.grid.ColumnModel;
@@ -50,13 +53,21 @@ public class GridGroupByDemo extends AbstractIsWidget<BorderLayoutContainer> {
 
         store.addAll(newListFrom(stringRow("Alpha", "Bravo"), stringRow("Charlie", "Bravo")));
 
+        // special hover widget cell
         Grid<StringRow> grid = new Grid<StringRow>(store, new ColumnModel<StringRow>(configs));
+        DropTarget dtGrid = new DropTarget(grid);
+        TestCell testCell = new TestCell(dtGrid);
+        ColumnConfig<StringRow, StringCell> colA = (ColumnConfig<StringRow, StringCell>) configs.get(ixA);
+        colA.setCell(testCell);
+
         GroupingView<StringRow> v = new GroupingViewBuilder<StringRow>()
                 .showGroupedColumn(false)
                 .forceFit(true)
                 .stripeRows(true)
                 .groupingView;
-        v.groupBy(configs.get(ixB));
+        ColumnConfig<StringRow, StringCell> colB = (ColumnConfig<StringRow, StringCell>) configs.get(ixB);
+//        colB.setCell(testCell); Doesn't work when grouped
+        v.groupBy(colB);
         grid.setView(v);
 
         return new BorderLayoutContainerBuilder()
@@ -149,6 +160,18 @@ public class GridGroupByDemo extends AbstractIsWidget<BorderLayoutContainer> {
         public int compareTo(StringCell o) {
             // NOTE: This really shouldn't be necessary.  The comparator for the column should be used.
             return str.compareTo(o.str);
+        }
+    }
+
+    private static class TestCell extends PopOverCell<StringCell, ToolButton> {
+
+        public TestCell(DropTarget dtGrid) {
+            super(dtGrid, new ToolButton(ToolButton.GEAR));
+        }
+
+        @Override
+        public void render(Context context, StringCell value, SafeHtmlBuilder sb) {
+            if (value != null) sb.append(value.getDisplay());
         }
     }
 }
