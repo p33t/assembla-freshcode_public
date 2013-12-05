@@ -7,6 +7,9 @@ import biz.freshcode.learn.gwt.client.experiment.grid.reuse.PopOverCell;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import biz.freshcode.learn.gwt.client.util.IdentityHashProvider;
 import com.google.gwt.cell.client.AbstractCell;
+import com.google.gwt.core.shared.GWT;
+import com.google.gwt.dom.client.Element;
+import com.google.gwt.event.dom.client.*;
 import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
@@ -19,9 +22,12 @@ import com.sencha.gxt.widget.core.client.grid.*;
 
 import java.util.*;
 
+import static biz.freshcode.learn.gwt.client.experiment.gridgroupby.GridGroupByDemo.GroupComponent.HEADER;
+import static biz.freshcode.learn.gwt.client.experiment.gridgroupby.GridGroupByDemo.GroupComponent.SUMMARY;
 import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newListFrom;
 
 public class GridGroupByDemo extends AbstractIsWidget<BorderLayoutContainer> {
+    private static final String BRAVO = "Bravo (Event enabled.  See logger)";
 
     public static final AbstractCell<StringCell> CELL = new AbstractCell<StringCell>() {
         @Override
@@ -29,33 +35,27 @@ public class GridGroupByDemo extends AbstractIsWidget<BorderLayoutContainer> {
             if (value != null) sb.append(value.getDisplay());
         }
     };
+    private String idPrefix = System.identityHashCode(this) + "-";
 
     @Override
     protected BorderLayoutContainer createWidget() {
         ListStore<StringRow> store = new ListStore<StringRow>(new IdentityHashProvider<StringRow>());
-        int ixA, ixB;
 
         int cols = 0;
+        final int ixA, ixB;
         List<ColumnConfig<StringRow, ?>> configs = Arrays.<ColumnConfig<StringRow, ?>>asList(
                 column(ixA = cols++)
-                        .header("A")
+                        .header("A (hover enabled)")
                         .summaryColumnConfig,
                 column(ixB = cols++)
                         .header("B")
                         .summaryColumnConfig,
-                new SummaryColumnConfigBuilder<StringRow, StringCell>(new ValueProviderAdapter(cols++))
+                column(cols++)
                         .header("C")
-                        .summaryType(new SummaryType.CountSummaryType<StringCell>())
-                        .summaryRenderer(new SummaryRenderer<StringRow>() {
-                            @Override
-                            public SafeHtml render(Number value, Map<ValueProvider<? super StringRow, ?>, Number> data) {
-                                return SafeHtmlUtils.fromString(value + " rows...sumhooray!");
-                            }
-                        })
                         .summaryColumnConfig
         );
 
-        store.addAll(newListFrom(stringRow("Alpha", "Bravo", "Delta"), stringRow("Charlie", "Bravo", "Echo")));
+        store.addAll(newListFrom(stringRow("Alpha", BRAVO, "Delta"), stringRow("Charlie", BRAVO, "Echo")));
 
         // special hover widget cell
         Grid<StringRow> grid = new Grid<StringRow>(store, new ColumnModel<StringRow>(configs));
@@ -64,22 +64,55 @@ public class GridGroupByDemo extends AbstractIsWidget<BorderLayoutContainer> {
         ColumnConfig<StringRow, StringCell> colA = (ColumnConfig<StringRow, StringCell>) configs.get(ixA);
         colA.setCell(testCell);
 
-        GroupSummaryView<StringRow> v = new GroupSummaryViewBuilder<StringRow>()
+        // Grouping by column named 'B' (ixB)
+        GroupSummaryView<StringRow> v = new GroupSummaryViewBuilder<StringRow>(new MyGridView<StringRow>(ixB))
                 .showGroupedColumn(false)
                 .forceFit(true)
                 .stripeRows(true)
+//                .viewConfig() Enables stylesheet customisation to cells and rows
                 .groupSummaryView;
         ColumnConfig<StringRow, StringCell> colB = (ColumnConfig<StringRow, StringCell>) configs.get(ixB);
 //        colB.setCell(testCell); Doesn't work when grouped
         v.groupBy(colB);
         grid.setView(v);
 
+        // tapping mouse events for a summary cell
+        grid.addDomHandler(new MouseOverHandler() {
+            @Override
+            public void onMouseOver(MouseOverEvent event) {
+                mouseEvent(event, GridGroupByDemo.this.hoverId(ixA, SUMMARY));
+                mouseEvent(event, GridGroupByDemo.this.hoverId(ixB, HEADER));
+            }
+        }, MouseOverEvent.getType());
+        grid.addDomHandler(new MouseOutHandler() {
+            @Override
+            public void onMouseOut(MouseOutEvent event) {
+                mouseEvent(event, GridGroupByDemo.this.hoverId(ixA, SUMMARY));
+                mouseEvent(event, GridGroupByDemo.this.hoverId(ixB, HEADER));
+            }
+        }, MouseOutEvent.getType());
+
         return new BorderLayoutContainerBuilder()
                 .centerWidget(grid)
                 .borderLayoutContainer;
     }
 
-    private SummaryColumnConfigBuilder<StringRow, StringCell> column(int ixCol) {
+    private void mouseEvent(MouseEvent event, String desiredId) {
+        if (event instanceof MouseOutEvent || event instanceof MouseOverEvent) {
+            // NOTE: This means that we can hover a widget anywhere we have rendered SafeHtml.
+            Element element = event.getNativeEvent().getEventTarget().cast();
+            String id = element.getId();
+            if (id != null && id.equals(desiredId)) {
+                GWT.log(event.getClass().getName() + " " + desiredId + " at " + element.getAbsoluteLeft() + "," + element.getAbsoluteTop());
+            }
+        }
+    }
+
+    private String hoverId(int ixCol, GroupComponent gc) {
+        return idPrefix + ixCol + "-" + gc;
+    }
+
+    private SummaryColumnConfigBuilder<StringRow, StringCell> column(final int ixCol) {
         ValueProviderAdapter vp = new ValueProviderAdapter(ixCol);
         // looks like its all or nothing.... getting a class cast exception.
         return new SummaryColumnConfigBuilder<StringRow, StringCell>(vp)
@@ -90,6 +123,17 @@ public class GridGroupByDemo extends AbstractIsWidget<BorderLayoutContainer> {
                     }
                 })
                 .cell(CELL)
+                .summaryType(new SummaryType.CountSummaryType<StringCell>())
+                .summaryRenderer(new SummaryRenderer<StringRow>() {
+                    @Override
+                    public SafeHtml render(Number value, Map<ValueProvider<? super StringRow, ?>, Number> data) {
+                        return new SafeHtmlBuilder()
+                                .appendHtmlConstant("<p id='" + hoverId(ixCol, SUMMARY) + "'>")
+                                .appendEscaped(value + " rows...sumhooray!")
+                                .appendHtmlConstant("</p>")
+                                .toSafeHtml();
+                    }
+                })
                 ;
     }
 
@@ -97,6 +141,10 @@ public class GridGroupByDemo extends AbstractIsWidget<BorderLayoutContainer> {
         StringRow r = new StringRow();
         for (String v : vals) r.add(new StringCell(v));
         return r;
+    }
+
+    public static enum GroupComponent {
+        HEADER, SUMMARY
     }
 
     private static class ValueProviderAdapter implements ValueProvider<StringRow, StringCell> {
@@ -134,14 +182,6 @@ public class GridGroupByDemo extends AbstractIsWidget<BorderLayoutContainer> {
             display = SafeHtmlUtils.fromString(str);
         }
 
-        private SafeHtml getDisplay() {
-            return display;
-        }
-
-        private String getStr() {
-            return str;
-        }
-
         @Override
         public String toString() {
             // NOTE: THis really shouldn't be necessary.  The cell from the column should be used.
@@ -166,10 +206,17 @@ public class GridGroupByDemo extends AbstractIsWidget<BorderLayoutContainer> {
             // NOTE: This really shouldn't be necessary.  The comparator for the column should be used.
             return str.compareTo(o.str);
         }
+
+        private SafeHtml getDisplay() {
+            return display;
+        }
+
+        private String getStr() {
+            return str;
+        }
     }
 
     private static class TestCell extends PopOverCell<StringCell, ToolButton> {
-
         public TestCell(DropTarget dtGrid) {
             super(dtGrid, new ToolButton(ToolButton.GEAR));
         }
@@ -177,6 +224,23 @@ public class GridGroupByDemo extends AbstractIsWidget<BorderLayoutContainer> {
         @Override
         public void render(Context context, StringCell value, SafeHtmlBuilder sb) {
             if (value != null) sb.append(value.getDisplay());
+        }
+    }
+
+    public class MyGridView<M> extends GroupSummaryView<M> {
+        private final int ixCol;
+
+        public MyGridView(int ixCol) {
+            this.ixCol = ixCol;
+        }
+
+        @Override
+        protected SafeHtml renderGroupHeader(GroupingData<M> groupInfo) {
+            return new SafeHtmlBuilder()
+                    .appendHtmlConstant("<div id='" + hoverId(ixCol, HEADER) + "'>")
+                    .append(super.renderGroupHeader(groupInfo))
+                    .appendHtmlConstant("</div>")
+                    .toSafeHtml();
         }
     }
 }
