@@ -47,10 +47,7 @@ public abstract class PopOverCell<C, W extends IsWidget> extends MouseOverCell<C
         hoverSupp.disablePopup();
     }
 
-    public boolean isCurrentCell(Context cell) {
-        return MouseOverCell.isSameContext(cell, getCurrentCell());
-    }
-
+    @Override
     public Context getCurrentCell() {
         Context superCell = super.getCurrentCell();
         if (superCell != null) return superCell;
