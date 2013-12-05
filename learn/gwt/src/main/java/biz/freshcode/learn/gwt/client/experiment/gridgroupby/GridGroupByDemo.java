@@ -4,6 +4,8 @@ import biz.freshcode.learn.gwt.client.builder.gxt.container.BorderLayoutContaine
 import biz.freshcode.learn.gwt.client.builder.gxt.grid.GroupSummaryViewBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.grid.SummaryColumnConfigBuilder;
 import biz.freshcode.learn.gwt.client.experiment.grid.reuse.PopOverCell;
+import biz.freshcode.learn.gwt.client.experiment.gridgroupby.reuse.ElementHover;
+import biz.freshcode.learn.gwt.client.experiment.hoverwidget.reuse.HoverWidgetSupport;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import biz.freshcode.learn.gwt.client.util.IdentityHashProvider;
 import com.google.gwt.cell.client.AbstractCell;
@@ -14,20 +16,22 @@ import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 import com.sencha.gxt.core.client.ValueProvider;
+import com.sencha.gxt.core.client.util.Point;
 import com.sencha.gxt.data.shared.ListStore;
 import com.sencha.gxt.dnd.core.client.DropTarget;
 import com.sencha.gxt.widget.core.client.button.ToolButton;
 import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
+import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.grid.*;
+import com.sencha.gxt.widget.core.client.info.Info;
 
 import java.util.*;
 
-import static biz.freshcode.learn.gwt.client.experiment.gridgroupby.GridGroupByDemo.GroupComponent.HEADER;
 import static biz.freshcode.learn.gwt.client.experiment.gridgroupby.GridGroupByDemo.GroupComponent.SUMMARY;
 import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newListFrom;
 
 public class GridGroupByDemo extends AbstractIsWidget<BorderLayoutContainer> {
-    private static final String BRAVO = "Bravo (Event enabled.  See logger)";
+    private static final String BRAVO = "Bravo (Hover enabled)";
 
     public static final AbstractCell<StringCell> CELL = new AbstractCell<StringCell>() {
         @Override
@@ -65,7 +69,7 @@ public class GridGroupByDemo extends AbstractIsWidget<BorderLayoutContainer> {
         colA.setCell(testCell);
 
         // Grouping by column named 'B' (ixB)
-        GroupSummaryView<StringRow> v = new GroupSummaryViewBuilder<StringRow>(new MyGridView<StringRow>(ixB))
+        GroupSummaryView<StringRow> v = new GroupSummaryViewBuilder<StringRow>(new MyGridView(grid))
                 .showGroupedColumn(false)
                 .forceFit(true)
                 .stripeRows(true)
@@ -81,14 +85,12 @@ public class GridGroupByDemo extends AbstractIsWidget<BorderLayoutContainer> {
             @Override
             public void onMouseOver(MouseOverEvent event) {
                 mouseEvent(event, GridGroupByDemo.this.hoverId(ixA, SUMMARY));
-                mouseEvent(event, GridGroupByDemo.this.hoverId(ixB, HEADER));
             }
         }, MouseOverEvent.getType());
         grid.addDomHandler(new MouseOutHandler() {
             @Override
             public void onMouseOut(MouseOutEvent event) {
                 mouseEvent(event, GridGroupByDemo.this.hoverId(ixA, SUMMARY));
-                mouseEvent(event, GridGroupByDemo.this.hoverId(ixB, HEADER));
             }
         }, MouseOutEvent.getType());
 
@@ -129,7 +131,7 @@ public class GridGroupByDemo extends AbstractIsWidget<BorderLayoutContainer> {
                     public SafeHtml render(Number value, Map<ValueProvider<? super StringRow, ?>, Number> data) {
                         return new SafeHtmlBuilder()
                                 .appendHtmlConstant("<p id='" + hoverId(ixCol, SUMMARY) + "'>")
-                                .appendEscaped(value + " rows...sumhooray!")
+                                .appendEscaped(value + " rows...sumhooray!  See log for hover info.")
                                 .appendHtmlConstant("</p>")
                                 .toSafeHtml();
                     }
@@ -227,20 +229,45 @@ public class GridGroupByDemo extends AbstractIsWidget<BorderLayoutContainer> {
         }
     }
 
-    public class MyGridView<M> extends GroupSummaryView<M> {
-        private final int ixCol;
+    public class MyGridView extends GroupSummaryView<StringRow> implements ElementHover.Callback<StringCell> {
+        private final ElementHover<StringCell> eh;
+        //        private final MouseOverState mosHover;
+        private StringCell hoverValueIfAny;
+        private ToolButton hoverWidget = new ToolButton(ToolButton.REFRESH, new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent event) {
+                Info.display("Event", "Group Hover Click: " + hoverValueIfAny);
+            }
+        });
+        private HoverWidgetSupport<ToolButton> hoverer = new HoverWidgetSupport<ToolButton>(hoverWidget);
 
-        public MyGridView(int ixCol) {
-            this.ixCol = ixCol;
+        public MyGridView(Grid<StringRow> grid) {
+            eh = new ElementHover<StringCell>(grid, this);
+//            mosHover = new MouseOverState(hoverWidget, new MouseOverState.Callback() {
+//                @Override
+//                public void stateChange(MouseOverState mos) {
+//                    checkHover();
+//                }
+//            });
         }
 
         @Override
-        protected SafeHtml renderGroupHeader(GroupingData<M> groupInfo) {
-            return new SafeHtmlBuilder()
-                    .appendHtmlConstant("<div id='" + hoverId(ixCol, HEADER) + "'>")
-                    .append(super.renderGroupHeader(groupInfo))
-                    .appendHtmlConstant("</div>")
-                    .toSafeHtml();
+        protected SafeHtml renderGroupHeader(GroupingData<StringRow> groupInfo) {
+            StringCell groupVal = (StringCell) groupInfo.getValue();
+            SafeHtml html = super.renderGroupHeader(groupInfo);
+            return eh.wrapAndRegister(html, groupVal);
+        }
+
+        @Override
+        public void stateChange(ElementHover source, Element domElem, StringCell token, boolean mouseIsOver) {
+            if (mouseIsOver) {
+                Point p = new Point(domElem.getAbsoluteRight() - 20, domElem.getAbsoluteTop());
+                hoverer.enablePopup(p);
+                hoverValueIfAny = token;
+            } else {
+                hoverer.disablePopup();
+                // NOTE: Don't clear hoverValueIfAny... it might be needed
+            }
         }
     }
 }
