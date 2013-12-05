@@ -1,8 +1,8 @@
 package biz.freshcode.learn.gwt.client.experiment.gridgroupby;
 
 import biz.freshcode.learn.gwt.client.builder.gxt.container.BorderLayoutContainerBuilder;
-import biz.freshcode.learn.gwt.client.builder.gxt.grid.ColumnConfigBuilder;
-import biz.freshcode.learn.gwt.client.builder.gxt.grid.GroupingViewBuilder;
+import biz.freshcode.learn.gwt.client.builder.gxt.grid.GroupSummaryViewBuilder;
+import biz.freshcode.learn.gwt.client.builder.gxt.grid.SummaryColumnConfigBuilder;
 import biz.freshcode.learn.gwt.client.experiment.grid.reuse.PopOverCell;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import biz.freshcode.learn.gwt.client.util.IdentityHashProvider;
@@ -15,15 +15,9 @@ import com.sencha.gxt.data.shared.ListStore;
 import com.sencha.gxt.dnd.core.client.DropTarget;
 import com.sencha.gxt.widget.core.client.button.ToolButton;
 import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
-import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
-import com.sencha.gxt.widget.core.client.grid.ColumnModel;
-import com.sencha.gxt.widget.core.client.grid.Grid;
-import com.sencha.gxt.widget.core.client.grid.GroupingView;
+import com.sencha.gxt.widget.core.client.grid.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newListFrom;
 
@@ -45,13 +39,23 @@ public class GridGroupByDemo extends AbstractIsWidget<BorderLayoutContainer> {
         List<ColumnConfig<StringRow, ?>> configs = Arrays.<ColumnConfig<StringRow, ?>>asList(
                 column(ixA = cols++)
                         .header("A")
-                        .columnConfig,
+                        .summaryColumnConfig,
                 column(ixB = cols++)
                         .header("B")
-                        .columnConfig
+                        .summaryColumnConfig,
+                new SummaryColumnConfigBuilder<StringRow, StringCell>(new ValueProviderAdapter(cols++))
+                        .header("C")
+                        .summaryType(new SummaryType.CountSummaryType<StringCell>())
+                        .summaryRenderer(new SummaryRenderer<StringRow>() {
+                            @Override
+                            public SafeHtml render(Number value, Map<ValueProvider<? super StringRow, ?>, Number> data) {
+                                return SafeHtmlUtils.fromString(value + " rows...sumhooray!");
+                            }
+                        })
+                        .summaryColumnConfig
         );
 
-        store.addAll(newListFrom(stringRow("Alpha", "Bravo"), stringRow("Charlie", "Bravo")));
+        store.addAll(newListFrom(stringRow("Alpha", "Bravo", "Delta"), stringRow("Charlie", "Bravo", "Echo")));
 
         // special hover widget cell
         Grid<StringRow> grid = new Grid<StringRow>(store, new ColumnModel<StringRow>(configs));
@@ -60,11 +64,11 @@ public class GridGroupByDemo extends AbstractIsWidget<BorderLayoutContainer> {
         ColumnConfig<StringRow, StringCell> colA = (ColumnConfig<StringRow, StringCell>) configs.get(ixA);
         colA.setCell(testCell);
 
-        GroupingView<StringRow> v = new GroupingViewBuilder<StringRow>()
+        GroupSummaryView<StringRow> v = new GroupSummaryViewBuilder<StringRow>()
                 .showGroupedColumn(false)
                 .forceFit(true)
                 .stripeRows(true)
-                .groupingView;
+                .groupSummaryView;
         ColumnConfig<StringRow, StringCell> colB = (ColumnConfig<StringRow, StringCell>) configs.get(ixB);
 //        colB.setCell(testCell); Doesn't work when grouped
         v.groupBy(colB);
@@ -75,9 +79,10 @@ public class GridGroupByDemo extends AbstractIsWidget<BorderLayoutContainer> {
                 .borderLayoutContainer;
     }
 
-    private ColumnConfigBuilder<StringRow, StringCell> column(int ixCol) {
+    private SummaryColumnConfigBuilder<StringRow, StringCell> column(int ixCol) {
         ValueProviderAdapter vp = new ValueProviderAdapter(ixCol);
-        return new ColumnConfigBuilder<StringRow, StringCell>(vp)
+        // looks like its all or nothing.... getting a class cast exception.
+        return new SummaryColumnConfigBuilder<StringRow, StringCell>(vp)
                 .comparator(new Comparator<StringCell>() {
                     @Override
                     public int compare(StringCell o1, StringCell o2) {
