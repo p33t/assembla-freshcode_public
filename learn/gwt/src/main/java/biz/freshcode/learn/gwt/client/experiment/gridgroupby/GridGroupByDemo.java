@@ -4,7 +4,7 @@ import biz.freshcode.learn.gwt.client.builder.gxt.container.BorderLayoutContaine
 import biz.freshcode.learn.gwt.client.builder.gxt.grid.GroupSummaryViewBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.grid.SummaryColumnConfigBuilder;
 import biz.freshcode.learn.gwt.client.experiment.grid.reuse.PopOverCell;
-import biz.freshcode.learn.gwt.client.experiment.gridgroupby.reuse.ElementHover;
+import biz.freshcode.learn.gwt.client.experiment.gridgroupby.reuse.ElementMouseOver;
 import biz.freshcode.learn.gwt.client.experiment.hoverwidget.reuse.HoverWidgetSupport;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import biz.freshcode.learn.gwt.client.util.IdentityHashProvider;
@@ -230,8 +230,8 @@ public class GridGroupByDemo extends AbstractIsWidget<BorderLayoutContainer> {
         }
     }
 
-    public class MyGridView extends GroupSummaryView<StringRow> implements ElementHover.Callback<StringCell> {
-        private final ElementHover<StringCell> eh;
+    public class MyGridView extends GroupSummaryView<StringRow> implements ElementMouseOver.Callback<StringCell> {
+        private final ElementMouseOver<StringCell> eh;
         private StringCell hoverValueIfAny;
         private ToolButton hoverWidget = new ToolButton(ToolButton.REFRESH, new SelectEvent.SelectHandler() {
             @Override
@@ -242,7 +242,7 @@ public class GridGroupByDemo extends AbstractIsWidget<BorderLayoutContainer> {
         private HoverWidgetSupport<ToolButton> hoverer = new HoverWidgetSupport<ToolButton>(hoverWidget);
 
         public MyGridView(Grid<StringRow> grid) {
-            eh = new ElementHover<StringCell>(grid, this);
+            eh = new ElementMouseOver<StringCell>(grid, this);
         }
 
         @Override
@@ -253,7 +253,7 @@ public class GridGroupByDemo extends AbstractIsWidget<BorderLayoutContainer> {
         }
 
         @Override
-        public void stateChange(ElementHover source, Element domElem, StringCell token, boolean mouseIsOver) {
+        public void stateChange(ElementMouseOver source, Element domElem, StringCell token, boolean mouseIsOver) {
             if (mouseIsOver) {
                 Point p = new Point(domElem.getAbsoluteRight() - 20, domElem.getAbsoluteTop());
                 hoverer.enablePopup(p);
