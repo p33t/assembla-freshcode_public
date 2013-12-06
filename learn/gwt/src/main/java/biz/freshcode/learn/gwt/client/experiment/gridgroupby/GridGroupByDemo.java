@@ -60,6 +60,7 @@ public class GridGroupByDemo extends AbstractIsWidget<BorderLayoutContainer> {
         );
 
         store.addAll(newListFrom(stringRow("Alpha", BRAVO, "Delta"), stringRow("Charlie", BRAVO, "Echo")));
+        store.addAll(newListFrom(stringRow("Alpha", "Foxtrot", "Delta"), stringRow("Charlie", "Foxtrot", "Echo")));
 
         // special hover widget cell
         Grid<StringRow> grid = new Grid<StringRow>(store, new ColumnModel<StringRow>(configs));
@@ -231,7 +232,6 @@ public class GridGroupByDemo extends AbstractIsWidget<BorderLayoutContainer> {
 
     public class MyGridView extends GroupSummaryView<StringRow> implements ElementHover.Callback<StringCell> {
         private final ElementHover<StringCell> eh;
-        //        private final MouseOverState mosHover;
         private StringCell hoverValueIfAny;
         private ToolButton hoverWidget = new ToolButton(ToolButton.REFRESH, new SelectEvent.SelectHandler() {
             @Override
@@ -243,19 +243,13 @@ public class GridGroupByDemo extends AbstractIsWidget<BorderLayoutContainer> {
 
         public MyGridView(Grid<StringRow> grid) {
             eh = new ElementHover<StringCell>(grid, this);
-//            mosHover = new MouseOverState(hoverWidget, new MouseOverState.Callback() {
-//                @Override
-//                public void stateChange(MouseOverState mos) {
-//                    checkHover();
-//                }
-//            });
         }
 
         @Override
         protected SafeHtml renderGroupHeader(GroupingData<StringRow> groupInfo) {
             StringCell groupVal = (StringCell) groupInfo.getValue();
             SafeHtml html = super.renderGroupHeader(groupInfo);
-            return eh.wrapAndRegister(html, groupVal);
+            return eh.wrapAndRegister(html, groupVal, true);
         }
 
         @Override
@@ -266,7 +260,8 @@ public class GridGroupByDemo extends AbstractIsWidget<BorderLayoutContainer> {
                 hoverValueIfAny = token;
             } else {
                 hoverer.disablePopup();
-                // NOTE: Don't clear hoverValueIfAny... it might be needed
+                // NOTE: Don't clear hoverValueIfAny... it might be needed by the currently hoverred widget
+                // this is where an AbstractHoverWidget.setCurrentValue() might be useful.
             }
         }
     }

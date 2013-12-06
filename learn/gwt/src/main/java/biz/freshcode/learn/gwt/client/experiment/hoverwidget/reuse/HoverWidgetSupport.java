@@ -13,6 +13,8 @@ import static biz.freshcode.learn.gwt.client.experiment.hoverwidget.reuse.Bundle
 /**
  * Manages popping up a widget at a particular screen position.
  * The same widget can be used for different screen elements.
+ *
+ * TODO: Need an AbstractHoverWidget to complement this utility.
  */
 public class HoverWidgetSupport<W extends IsWidget> {
     private static final int POSITION_OFFSET = 1;
