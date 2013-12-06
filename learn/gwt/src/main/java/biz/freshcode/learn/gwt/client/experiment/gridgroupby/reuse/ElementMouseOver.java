@@ -22,18 +22,17 @@ import static biz.freshcode.learn.gwt.client.util.AppObjectUtils.safeEquals;
  *
  * @param <T> The type of the token associated with an element.
  */
-public class ElementHover<T> implements MouseOverHandler, MouseOutHandler {
+public class ElementMouseOver<T> implements MouseOverHandler, MouseOutHandler {
     private static final String ID_PREFIX = "uniqueElementHoverId_";
     private static int nextId = 1;
     private final Callback<T> callback;
     private final Map<String, T> tokens = newMap();
     private final List<HandlerRegistration> hRegos = newList();
 
-    public ElementHover(IsWidget parent, Callback<T> callback) {
+    public ElementMouseOver(IsWidget parent, Callback<T> callback) {
         this.callback = callback;
         hRegos.add(parent.asWidget().addDomHandler(this, MouseOverEvent.getType()));
         hRegos.add(parent.asWidget().addDomHandler(this, MouseOutEvent.getType()));
-
     }
 
     /**
@@ -91,6 +90,6 @@ public class ElementHover<T> implements MouseOverHandler, MouseOutHandler {
          * @param token       The token supplied to this utility during registration.
          * @param mouseIsOver
          */
-        void stateChange(ElementHover source, Element domElem, T token, boolean mouseIsOver);
+        void stateChange(ElementMouseOver source, Element domElem, T token, boolean mouseIsOver);
     }
 }
