@@ -43,7 +43,8 @@ public class ElementMouseOver<T> implements MouseOverHandler, MouseOutHandler {
     }
 
     /**
-     * Remove any registrations
+     * Remove any registrations that use the given token.
+     * This helps prevent memory leaks.
      */
     public void clearToken(T token) {
         for (Iterator<Map.Entry<String, T>> it = tokens.entrySet().iterator(); it.hasNext(); ) {
