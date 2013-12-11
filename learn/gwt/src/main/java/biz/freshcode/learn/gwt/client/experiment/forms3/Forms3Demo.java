@@ -28,6 +28,10 @@ public class Forms3Demo extends AbstractIsWidget {
                             .text("New Password")
                             .widget(fields.newPassword)
                             .fieldLabel)
+                    .add(new FieldLabelBuilder()
+                            .text("Fav Flavour")
+                            .widget(fields.favourite)
+                            .fieldLabel)
                     .verticalLayoutContainer)
             .predefinedButtons()
             .addButton(new TextButton("Done", new SelectEvent.SelectHandler() {
