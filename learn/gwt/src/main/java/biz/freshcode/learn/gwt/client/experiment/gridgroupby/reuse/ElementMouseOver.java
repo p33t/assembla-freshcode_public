@@ -89,7 +89,8 @@ public class ElementMouseOver<T> implements MouseOverHandler, MouseOutHandler {
          * @param source      The invoker of the method.
          * @param domElem     The dom element that was the subject of the event
          * @param token       The token supplied to this utility during registration.
-         * @param mouseIsOver
+         * @param mouseIsOver 'true' if the mouse is currently over the element
+         *                    (Hmm..this might cause a problem with event ordering)
          */
         void stateChange(ElementMouseOver source, Element domElem, T token, boolean mouseIsOver);
     }
