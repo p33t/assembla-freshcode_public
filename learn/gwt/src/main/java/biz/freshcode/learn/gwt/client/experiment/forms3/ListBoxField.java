@@ -1,5 +1,8 @@
 package biz.freshcode.learn.gwt.client.experiment.forms3;
 
+import com.google.gwt.core.shared.GWT;
+import com.google.gwt.event.dom.client.ChangeEvent;
+import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.user.client.ui.ListBox;
 import com.sencha.gxt.data.shared.LabelProvider;
 import com.sencha.gxt.widget.core.client.form.AdapterField;
@@ -17,9 +20,15 @@ public class ListBoxField<T> extends AdapterField<T> {
         this(new ListBox());
     }
 
-    private ListBoxField(ListBox lb) {
+    private ListBoxField(final ListBox lb) {
         super(lb);
         this.listBox = lb;
+        lb.addChangeHandler(new ChangeHandler() {
+            @Override
+            public void onChange(ChangeEvent event) {
+                GWT.log("Changed " + lb.getSelectedIndex());
+            }
+        });
     }
 
     public void init(List<T> elems, LabelProvider<T> labels) {
