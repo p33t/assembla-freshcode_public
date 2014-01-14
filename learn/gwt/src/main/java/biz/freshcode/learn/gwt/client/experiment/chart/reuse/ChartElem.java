@@ -14,7 +14,11 @@ import static biz.freshcode.learn.gwt.client.util.ExceptionUtil.illegalArg;
 /**
  * An element in a GXT Chart.  This class illustrates the short-coming of GXT charting.
  * Specifically, every x coord needs a y coord for each series on the chart.
+ * <br/>
+ * DEPRECATED.
+ * @see SeriesMapChart
  */
+@Deprecated // Use the SeriesMapChart approach
 public class ChartElem {
     private final Double x;
     private final Map<String, Double> ys = newMap();
