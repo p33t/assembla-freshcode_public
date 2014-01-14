@@ -1,6 +1,7 @@
 package biz.freshcode.learn.gwt.client.experiment.chart.area;
 
 import biz.freshcode.learn.gwt.client.builder.gxt.chart.ChartBuilder;
+import biz.freshcode.learn.gwt.client.builder.gxt.chart.LegendBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.chart.axis.CategoryAxisBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.chart.axis.NumericAxisBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.chart.series.AreaSeriesBuilder;
@@ -18,6 +19,10 @@ import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 
+import java.util.List;
+import java.util.Random;
+
+import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newListFrom;
 import static com.sencha.gxt.chart.client.chart.Chart.Position;
 import static com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData;
 
@@ -25,11 +30,10 @@ public class AreaChartDemo extends AbstractIsWidget<BorderLayoutContainer> {
     private static final ElemAccess E_ACCESS = GWT.create(ElemAccess.class);
     private Chart<Elem> chart;
     private ListStore<Elem> store = new ListStore<Elem>(new IdentityHashProvider<Elem>());
+    private Random random = new Random(System.currentTimeMillis());
 
     public AreaChartDemo() {
-        store.add(new Elem("Bruce", 3, 4));
-        store.add(new Elem("Sam", 4, 3));
-        store.add(new Elem("Victor", 8, 2));
+        genData();
     }
 
     @Override
@@ -39,6 +43,13 @@ public class AreaChartDemo extends AbstractIsWidget<BorderLayoutContainer> {
                         .add(new TextButton("Redraw", new SelectEvent.SelectHandler() {
                             @Override
                             public void onSelect(SelectEvent event) {
+                                chart.redrawChart();
+                            }
+                        }))
+                        .add(new TextButton("Gen Data", new SelectEvent.SelectHandler() {
+                            @Override
+                            public void onSelect(SelectEvent event) {
+                                genData();
                                 chart.redrawChart();
                             }
                         }))
@@ -62,8 +73,27 @@ public class AreaChartDemo extends AbstractIsWidget<BorderLayoutContainer> {
                                 .addColor(1, RGB.BLUE)
                                 .addColor(2, RGB.GREEN)
                                 .areaSeries)
+                        .legend(new LegendBuilder<Elem>()
+                                .position(Position.RIGHT)
+                                .itemHiding(true)
+                                .itemHighlighting(true)
+                                .legend)
                         .chart)
                 .borderLayoutContainer;
+    }
+
+    private void genData() {
+        List<Elem> list = newListFrom(
+                new Elem("Bruce", randomInt(), randomInt()),
+                new Elem("Sam", randomInt(), randomInt()),
+                new Elem("Victor", randomInt(), randomInt())
+        );
+
+        store.replaceAll(list);
+    }
+
+    private int randomInt() {
+        return random.nextInt(6) + 1;
     }
 
     public static class Elem {
