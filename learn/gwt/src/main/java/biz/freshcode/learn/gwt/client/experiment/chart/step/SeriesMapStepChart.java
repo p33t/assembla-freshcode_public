@@ -46,7 +46,7 @@ public class SeriesMapStepChart extends SeriesMapChart {
                     public void run() {
                         int ix = 0;
                         for (String key : pss.keySet()) {
-                            ValueProvider<Integer, Double> field = accessY(key);
+                            ValueProvider<Integer, Double> field = accessY(key, 0.0);
                             left.addField(field);
                             builder.addYField(field);
                             builder.addColor(ix, colour(ix));
@@ -74,6 +74,7 @@ public class SeriesMapStepChart extends SeriesMapChart {
         new ChartBuilder<Integer>(chart)
                 .addAxis(new NumericAxisBuilder<Integer>()
                         .position(Position.BOTTOM)
+                        .minimum(0)
                         .titleConfig(new TextSprite("Time"))
                         .addField(ACCESS_X)
                         .numericAxis)

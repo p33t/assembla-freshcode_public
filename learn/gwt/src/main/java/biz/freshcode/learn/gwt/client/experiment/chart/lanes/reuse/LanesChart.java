@@ -42,7 +42,7 @@ public class LanesChart extends SeriesMapChart implements SeriesSelectionEvent.S
     public static final int STROKE_NON_FOCUSED = 3;
     public static final int STROKE_FOCUSED = 6;
     public static final RGB FOCUSED_PERIOD_COL = RGB.LIGHTGRAY;
-    private final ValueProvider<Integer, Double> FOCUSED_PERIOD_FIELD = accessY("Focused Period");
+    private final ValueProvider<Integer, Double> FOCUSED_PERIOD_FIELD = accessY("Focused Period", 0.0);
     private final List<HasIdTitle> resources = newList();
     private Date zeroTime = new Date();
     private String lastFocusIdOrNull;
@@ -116,7 +116,7 @@ public class LanesChart extends SeriesMapChart implements SeriesSelectionEvent.S
             String barId = bar.getId();
             if (barId.equals(lastFocusIdOrNull)) refocus = true;
 
-            ValueProvider<Integer, Double> f = accessY(barId);
+            ValueProvider<Integer, Double> f = accessY(barId, 0.0);
             left.addField(f);
 
             LineSeries<Integer> s = createSeries(f, bar.getColour());
@@ -239,7 +239,7 @@ public class LanesChart extends SeriesMapChart implements SeriesSelectionEvent.S
 
     // need priming data otherwise chart doesn't show :(
     private void primeChart() {
-        ValueProvider<Integer, Double> primer = accessY(PRIMER);
+        ValueProvider<Integer, Double> primer = accessY(PRIMER, 0.0);
 
         // dummy data
         PointSeries dummy = pointSeries(new StartDurn(HR, HR), resourceIndexToValue(0));

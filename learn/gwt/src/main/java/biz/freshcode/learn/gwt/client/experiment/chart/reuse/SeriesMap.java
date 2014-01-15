@@ -25,8 +25,8 @@ public class SeriesMap {
     /**
      * Creates a ValueProvider that supplies y values for the given series.
      */
-    public static ValueProvider<Integer, Double> accessY(String seriesName, Provider<SeriesMap> mapVar) {
-        return new AccessY(seriesName, mapVar);
+    public static ValueProvider<Integer, Double> accessY(String seriesName, Provider<SeriesMap> mapVar, Double defVal) {
+        return new AccessY(seriesName, mapVar, defVal);
     }
 
     /**
@@ -92,15 +92,20 @@ public class SeriesMap {
     private static class AccessY implements ValueProvider<Integer, Double> {
         private final String seriesName;
         private final Provider<SeriesMap> mapVar;
+        private final Double defVal;
 
-        public AccessY(String seriesName, Provider<SeriesMap> mapVar) {
+        public AccessY(String seriesName, Provider<SeriesMap> mapVar, Double defVal) {
             this.seriesName = seriesName;
             this.mapVar = mapVar;
+            this.defVal = defVal;
         }
+
 
         @Override
         public Double getValue(Integer x) {
-            return mapVar.get().lookup(seriesName, x);
+            double dbl = mapVar.get().lookup(seriesName, x);
+            if (Double.isNaN(dbl)) return defVal;
+            return dbl;
         }
 
         @Override
