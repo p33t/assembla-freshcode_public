@@ -13,7 +13,6 @@ import com.sencha.gxt.chart.client.draw.sprite.TextSprite;
 import com.sencha.gxt.core.client.ValueProvider;
 
 import java.util.Map;
-import java.util.Set;
 
 import static com.sencha.gxt.chart.client.chart.Chart.Position;
 
@@ -22,25 +21,21 @@ public class SeriesMapStepChart extends SeriesMapChart {
         setupChart();
     }
 
-    public void display(Map<String, PointSeries> pss) {
+    public void display(final Map<String, PointSeries> pss) {
         clearChart();
 
         int maxX = Integer.MIN_VALUE;
-        SeriesMap sm = SeriesMap.NIL;
         for (String key : pss.keySet()) {
             PointSeries ps = pss.get(key);
-            sm = sm.put(key, ps);
             maxX = Math.max(ps.getMaxX(), maxX);
         }
 
-        SeriesMap stepped = SeriesMap.NIL;
-        for (String key : sm.keySet()) {
-            PointSeries stepPlot = ChartUtil.areaChartPrep(sm.get(key), 0, maxX);
-            stepped.put(key, stepPlot);
+        SeriesMap sm = SeriesMap.NIL;
+        for (String key : pss.keySet()) {
+            PointSeries stepPlot = ChartUtil.areaChartPrep(pss.get(key), 0, maxX);
+            sm = sm.put(key, stepPlot);
         }
-        stepped.replaceAll(chart.getStore());
 
-        final Set<String> keys = stepped.keySet();
         final NumericAxis<Integer> left = getNumericAxis(Position.LEFT);
         chart.addSeries(new AreaSeriesBuilder<Integer>()
                 .yAxisPosition(Position.LEFT)
@@ -50,8 +45,8 @@ public class SeriesMapStepChart extends SeriesMapChart {
                     @Override
                     public void run() {
                         int ix = 0;
-                        for (String key : keys) {
-                            ValueProvider<Integer,Double> field = accessY(key);
+                        for (String key : pss.keySet()) {
+                            ValueProvider<Integer, Double> field = accessY(key);
                             left.addField(field);
                             builder.addYField(field);
                             builder.addColor(ix, colour(ix));
@@ -60,6 +55,12 @@ public class SeriesMapStepChart extends SeriesMapChart {
                     }
                 })
                 .areaSeries);
+
+        replaceAll(sm);
+        chart.redrawChart();
+    }
+
+    public void redraw() {
         chart.redrawChart();
     }
 
