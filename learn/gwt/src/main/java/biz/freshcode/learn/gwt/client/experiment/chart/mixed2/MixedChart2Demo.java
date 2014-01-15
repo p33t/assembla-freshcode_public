@@ -41,8 +41,8 @@ public class MixedChart2Demo extends AbstractIsWidget<BorderLayoutContainer> {
         public static final String L2 = "L2";
         public static final int X_MIN = 0;
         public static final int X_MAX = 100;
-        private final ValueProvider<Integer, Double> L1_ACC = accessY(L1, 0.0);
-        private final ValueProvider<Integer, Double> L2_ACC = accessY(L2, 0.0);
+        private final ValueProvider<Integer, Double> L1_ACC = accessY(L1, Double.NaN);
+        private final ValueProvider<Integer, Double> L2_ACC = accessY(L2, Double.NaN);
 
         private MyChart() {
             new ChartBuilder<Integer>(chart)
