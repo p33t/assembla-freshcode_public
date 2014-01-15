@@ -87,6 +87,45 @@ public class ChartUtil {
     }
 
     /**
+     * Adds extra points to the series so it can be used on an area chart, and remove any superfluous points.
+     * Specifically, an extra point is added just prior to each x value so that it appears to be a step plot.
+     * This depends on x-axis being sufficiently wide so that changes of y in a single unit of 'x' appear vertical.
+     *
+     * @param ps       The points to use
+     * @param defaultY The prevailing Y value before the first point.  This is typically '0'.
+     * @param maxX     The maximum value of x used in surrounding PointSeries which needs to be present.
+     */
+    public static PointSeries areaChartPrep(PointSeries ps, int defaultY, int maxX) {
+        if (ps.isEmpty()) return ps;
+        PointSeries result = PointSeries.NIL;
+        int lastY = defaultY;
+        for (Point p : ps) {
+            if (p.getY() == lastY) {
+                if (result.isEmpty()) {
+                    // the first point in the series has same 'Y' value
+                    // need to add it
+                    result = result.add(p);
+                }
+//                else {
+                // no Y value change
+                // do nothing
+//                }
+            } else {
+                // Y value has changed
+                Point pseudo = new Point(p.getX() - 1, lastY);
+                result = result.add(pseudo, p);
+            }
+            lastY = p.getY();
+        }
+        if (ps.getMaxX() < maxX) {
+            // need terminating point
+            Point pseudo = new Point(maxX, lastY);
+            result = result.add(pseudo);
+        }
+        return result;
+    }
+
+    /**
      * Find the first index of the first point 'p' in the line where 'px >= x'.
      * Or return -1 if no point exists.
      */
@@ -153,44 +192,5 @@ public class ChartUtil {
         }
 //        GWT.log("Setting " + key + " " + x + "," + y);
         target.setY(key, y);
-    }
-
-    /**
-     * Adds extra points to the series so it can be used on an area chart, and remove any superfluous points.
-     * Specifically, an extra point is added just prior to each x value so that it appears to be a step plot.
-     * This depends on x-axis being sufficiently wide so that changes of y in a single unit of 'x' appear vertical.
-     *
-     * @param ps       The points to use
-     * @param defaultY The prevailing Y value before the first point.  This is typically '0'.
-     * @param maxX     The maximum value of x used in surrounding PointSeries which needs to be present.
-     */
-    static PointSeries areaChartPrep(PointSeries ps, int defaultY, int maxX) {
-        if (ps.isEmpty()) return ps;
-        PointSeries result = PointSeries.NIL;
-        int lastY = defaultY;
-        for (Point p : ps) {
-            if (p.getY() == lastY) {
-                if (result.isEmpty()) {
-                    // the first point in the series has same 'Y' value
-                    // need to add it
-                    result = result.add(p);
-                }
-//                else {
-                // no Y value change
-                // do nothing
-//                }
-            } else {
-                // Y value has changed
-                Point pseudo = new Point(p.getX() - 1, lastY);
-                result = result.add(pseudo, p);
-            }
-            lastY = p.getY();
-        }
-        if (ps.getMaxX() < maxX) {
-            // need terminating point
-            Point pseudo = new Point(maxX, lastY);
-            result = result.add(pseudo);
-        }
-        return result;
     }
 }
