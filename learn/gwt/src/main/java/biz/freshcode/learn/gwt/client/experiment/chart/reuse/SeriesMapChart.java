@@ -21,8 +21,8 @@ public abstract class SeriesMapChart extends AbstractChart<Integer> implements P
      * {@code SeriesMap} associated with this chart.
      * @see SeriesMap
      */
-    protected ValueProvider<Integer, Double> accessY(String seriesName) {
-        return SeriesMap.accessY(seriesName, this);
+    protected ValueProvider<Integer, Double> accessY(String seriesName, Double defVal) {
+        return SeriesMap.accessY(seriesName, this, defVal);
     }
 
     protected void replaceAll(SeriesMap map) {
