@@ -18,8 +18,8 @@ import static biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartElem.Ac
 import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newList;
 import static com.sencha.gxt.chart.client.chart.Chart.Position;
 
-public class MyStepChart extends ChartElemChart {
-    public MyStepChart() {
+public class ChartElemStepChart extends ChartElemChart {
+    public ChartElemStepChart() {
         setupChart();
     }
 
