@@ -17,7 +17,7 @@ import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newMap;
 import static com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData;
 
 public class StepChartDemo extends AbstractIsWidget<BorderLayoutContainer> {
-    private ChartElemStepChart myStep;
+    private SeriesMapStepChart myStep;
     private Random random = new Random(System.currentTimeMillis());
 
     @Override
@@ -37,8 +37,14 @@ public class StepChartDemo extends AbstractIsWidget<BorderLayoutContainer> {
                                 myStep.display(AppCollectionUtil.<String, PointSeries>newMap());
                             }
                         }))
+                        .add(new TextButton("Redraw", new SelectEvent.SelectHandler() {
+                            @Override
+                            public void onSelect(SelectEvent event) {
+                                myStep.redraw();
+                            }
+                        }))
                         .horizontalLayoutContainer, new BorderLayoutData(40))
-                .centerWidget(myStep = new ChartElemStepChart())
+                .centerWidget(myStep = new SeriesMapStepChart())
                 .borderLayoutContainer;
     }
 
