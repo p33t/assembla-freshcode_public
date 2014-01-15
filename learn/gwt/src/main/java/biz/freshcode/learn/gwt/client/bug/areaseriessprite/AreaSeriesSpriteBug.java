@@ -81,6 +81,7 @@ public class AreaSeriesSpriteBug implements IsWidget {
 
     private void clear() {
         chart.getStore().clear();
+        // no better...chart.getStore().replaceAll(new ArrayList<Point>());
         chart.redrawChart();
     }
 
