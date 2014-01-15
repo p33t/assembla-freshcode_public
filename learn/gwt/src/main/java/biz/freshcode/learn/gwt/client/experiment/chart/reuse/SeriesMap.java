@@ -5,10 +5,7 @@ import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.data.shared.ListStore;
 import com.sencha.gxt.data.shared.ModelKeyProvider;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import static biz.freshcode.learn.gwt.client.experiment.chart.reuse.UnityAccess.unityAccess;
 import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.*;
@@ -64,6 +61,18 @@ public class SeriesMap {
         store.replaceAll(xs);
     }
 
+    public boolean isEmpty() {
+        return map.isEmpty();
+    }
+
+    public Set<String> keySet() {
+        return Collections.unmodifiableSet(map.keySet());
+    }
+
+    public Collection<PointSeries> values() {
+        return Collections.unmodifiableCollection(map.values());
+    }
+
     /**
      * Return a complete set of x values.
      */
@@ -73,8 +82,8 @@ public class SeriesMap {
         return s;
     }
 
-    public boolean isEmpty() {
-        return map.isEmpty();
+    public PointSeries get(String key) {
+        return map.get(key);
     }
 
     /**
