@@ -1,13 +1,18 @@
 package biz.freshcode.learn.gwt.client.bug.areaseriessprite;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.editor.client.Editor;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.chart.client.chart.Chart;
 import com.sencha.gxt.chart.client.chart.axis.NumericAxis;
 import com.sencha.gxt.chart.client.chart.series.AreaSeries;
 import com.sencha.gxt.chart.client.draw.RGB;
+import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.core.client.util.Point;
 import com.sencha.gxt.data.shared.ListStore;
+import com.sencha.gxt.data.shared.ModelKeyProvider;
+import com.sencha.gxt.data.shared.PropertyAccess;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
@@ -17,10 +22,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import static biz.freshcode.learn.gwt.client.bug.areaseriessprite.PointAccess.ACCESS;
 import static com.sencha.gxt.chart.client.chart.Chart.Position;
 
 public class AreaSeriesSpriteBug implements IsWidget {
+    PointAccess ACCESS = GWT.create(PointAccess.class);
     private Widget widget;
     private Chart<Point> chart;
     private Random random = new Random(System.currentTimeMillis());
@@ -109,5 +114,14 @@ public class AreaSeriesSpriteBug implements IsWidget {
         ps.add(new Point(x += 1, 0));
         ps.add(new Point(300, 0));
         return ps;
+    }
+
+    public static interface PointAccess extends PropertyAccess<Point> {
+        ValueProvider<Point, Integer> x();
+
+        ValueProvider<Point, Integer> y();
+
+        @Editor.Path("x")
+        ModelKeyProvider<Point> xKey();
     }
 }
