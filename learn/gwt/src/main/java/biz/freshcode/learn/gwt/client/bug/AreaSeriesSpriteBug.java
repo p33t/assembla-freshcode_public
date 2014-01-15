@@ -1,4 +1,4 @@
-package biz.freshcode.learn.gwt.client.bug.areaseriessprite;
+package biz.freshcode.learn.gwt.client.bug;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.Editor;
