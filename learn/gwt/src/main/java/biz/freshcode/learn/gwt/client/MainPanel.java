@@ -1,9 +1,9 @@
 package biz.freshcode.learn.gwt.client;
 
+import biz.freshcode.learn.gwt.client.bug.AreaSeriesSpriteBug;
 import biz.freshcode.learn.gwt.client.bug.GridEditInlineComboBoxBlurBug;
 import biz.freshcode.learn.gwt.client.bug.GridScrollBug;
 import biz.freshcode.learn.gwt.client.bug.WindowMoveBug;
-import biz.freshcode.learn.gwt.client.bug.areaseriessprite.AreaSeriesSpriteBug;
 import biz.freshcode.learn.gwt.client.bug.contentpanelsize.ContentPanelSizeBug;
 import biz.freshcode.learn.gwt.client.bug.dateaccessbug.DateAccessBug;
 import biz.freshcode.learn.gwt.client.builder.gxt.DialogBuilder;
