@@ -3,6 +3,7 @@ package biz.freshcode.learn.gwt.client;
 import biz.freshcode.learn.gwt.client.bug.GridEditInlineComboBoxBlurBug;
 import biz.freshcode.learn.gwt.client.bug.GridScrollBug;
 import biz.freshcode.learn.gwt.client.bug.WindowMoveBug;
+import biz.freshcode.learn.gwt.client.bug.areaseriessprite.AreaSeriesSpriteBug;
 import biz.freshcode.learn.gwt.client.bug.contentpanelsize.ContentPanelSizeBug;
 import biz.freshcode.learn.gwt.client.bug.dateaccessbug.DateAccessBug;
 import biz.freshcode.learn.gwt.client.builder.gxt.DialogBuilder;
@@ -88,6 +89,12 @@ public class MainPanel extends Composite implements AcceptsOneWidget {
                 .width("100%")
                 .addNorth(new MenuBarBuilder()
                         .addItem(new MenuItem("Bugs", subMenu()
+                                .addItem(new MenuItem("Area Series Sprite", new Command() {
+                                    public void execute() {
+                                        IsWidget w = new AreaSeriesSpriteBug();
+                                        replaceContent(w);
+                                    }
+                                }))
                                 .addItem(new MenuItem("Inline Grid Edit Combo Blur", new Command() {
                                     public void execute() {
                                         IsWidget w = new GridEditInlineComboBoxBlurBug();
