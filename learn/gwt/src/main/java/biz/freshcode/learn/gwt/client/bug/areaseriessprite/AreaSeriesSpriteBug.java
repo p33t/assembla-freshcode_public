@@ -41,7 +41,7 @@ public class AreaSeriesSpriteBug implements IsWidget {
                 populate();
             }
         }));
-        hlc.add(new TextButton("Clear", new SelectEvent.SelectHandler() {
+        hlc.add(new TextButton("Clear (is broke)", new SelectEvent.SelectHandler() {
             @Override
             public void onSelect(SelectEvent event) {
                 clear();
@@ -66,17 +66,17 @@ public class AreaSeriesSpriteBug implements IsWidget {
         bottom.setMinimum(0);
         bottom.addField(ACCESS.x());
         ch.addAxis(bottom);
+        return ch;
+    }
 
+    private void addSeries(Chart<Point> ch) {
         AreaSeries<Point> ser = new AreaSeries<Point>();
         //noinspection SuspiciousNameCombination
         ser.setYAxisPosition(Position.LEFT);
         ser.addYField(ACCESS.y());
-        ser.addYField(ACCESS.y());
         ser.addColor(0, RGB.GREEN);
-        ser.addColor(1, RGB.LIGHTGRAY);
         ser.setXField(ACCESS.x());
         ch.addSeries(ser);
-        return ch;
     }
 
     private void clear() {
@@ -85,6 +85,14 @@ public class AreaSeriesSpriteBug implements IsWidget {
     }
 
     private void populate() {
+        // NOTE: It appears clearing the store does not remove the sprites.
+        chart.getStore().clear();
+        for (int i = chart.getSeries().size(); i > 0; i--) {
+            chart.removeSeries(0);
+        }
+
+        addSeries(chart);
+
         List<Point> ps = getPoints();
         chart.getStore().replaceAll(ps);
         chart.redrawChart();
