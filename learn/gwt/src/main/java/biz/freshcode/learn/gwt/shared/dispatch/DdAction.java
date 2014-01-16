@@ -1,6 +1,6 @@
 package biz.freshcode.learn.gwt.shared.dispatch;
 
-import com.gwtplatform.dispatch.shared.UnsecuredActionImpl;
+import com.gwtplatform.dispatch.rpc.shared.UnsecuredActionImpl;
 
 public class DdAction extends UnsecuredActionImpl<StrResult> {
     private String str;

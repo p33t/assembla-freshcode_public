@@ -1,6 +1,6 @@
 package biz.freshcode.learn.gwt.client.inject;
 
-import com.gwtplatform.dispatch.shared.Result;
+import com.gwtplatform.dispatch.rpc.shared.Result;
 
 public interface SessionInfo {
     String getUserName();

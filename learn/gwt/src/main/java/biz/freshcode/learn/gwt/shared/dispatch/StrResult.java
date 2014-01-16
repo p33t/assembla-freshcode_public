@@ -1,6 +1,6 @@
 package biz.freshcode.learn.gwt.shared.dispatch;
 
-import com.gwtplatform.dispatch.shared.Result;
+import com.gwtplatform.dispatch.rpc.shared.Result;
 
 public class StrResult implements Result {
     private String str;
