@@ -44,14 +44,14 @@ object AppSchema extends Schema {
     t.nicName is (dbType("varchar(32)"))
   ))
 
-  val custom = table[Custom]
-
-  {
-    import CustomTypesMode._
-    on(custom)(t => declare(
-      t.cust is (dbType("varchar(127)"))
-    ))
-  }
+  // With 0.9.6 there is revamped mapping of types.  Date field can map cleanly to Joda time etc.
+//  val custom = table[Custom]
+//  {
+//    import CustomTypesMode._
+//    on(custom)(t => declare(
+//      t.cust is (dbType("varchar(127)"))
+//    ))
+//  }
 
   val directedEntity = table[DirectedEntity]
 }
