@@ -5,7 +5,6 @@ import biz.freshcode.learn.gwt.client.AppPlaceHistoryMapper;
 import biz.freshcode.learn.gwt.client.experiment.mvp.gwtmvp.GmView;
 import biz.freshcode.learn.gwt.client.experiment.mvp.gwtmvp.GmViewImpl;
 import biz.freshcode.learn.gwt.client.experiment.mvp.gwtmvp.GwtMvp;
-import biz.freshcode.learn.gwt.client.experiment.mvp.gwtp.GmdPlaceManager;
 import com.google.gwt.activity.shared.ActivityManager;
 import com.google.gwt.activity.shared.ActivityMapper;
 import com.google.gwt.inject.client.AbstractGinModule;
@@ -16,9 +15,7 @@ import com.google.gwt.place.shared.PlaceHistoryMapper;
 import com.google.inject.Provides;
 import com.google.inject.Singleton;
 import com.google.web.bindery.event.shared.EventBus;
-import com.google.web.bindery.event.shared.SimpleEventBus;
 import com.gwtplatform.dispatch.shared.SecurityCookie;
-import com.gwtplatform.mvp.client.gin.DefaultModule;
 
 /**
  * Bindings for DI.
