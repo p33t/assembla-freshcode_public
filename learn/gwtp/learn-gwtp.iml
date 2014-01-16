@@ -61,7 +61,7 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.velocity:velocity:1.7" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: commons-collections:commons-collections:3.2.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: commons-lang:commons-lang:2.4" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.gwt.inject:gin:2.0.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.gwt.inject:gin:2.1.2" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.inject.extensions:guice-assistedinject:3.0" level="project" />
     <orderEntry type="library" name="Maven: com.sencha.gxt:gxt:3.0.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.sencha.gxt:gxt:sources:3.0.1" level="project" />
