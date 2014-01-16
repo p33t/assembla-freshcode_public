@@ -17,7 +17,7 @@
         <gwt.version>2.5.1</gwt.version>
         <!--Nope: "The value ie6 was not previously defined" for com.sencha.gxt.core.Core
          <gwt.version>2.6.0-rc3</gwt.version>-->
-        <gwtp.version>1.0.1</gwtp.version>
+        <gwtp.version>1.1</gwtp.version>
         <gxt.version>3.0.1</gxt.version>
         <!-- GWT needs at least java 1.5 -->
         <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
@@ -72,18 +72,18 @@
         <!--Dispatch framework (command pattern RPC)-->
         <dependency>
             <groupId>com.gwtplatform</groupId>
-            <artifactId>gwtp-dispatch-client</artifactId>
+            <artifactId>gwtp-dispatch-rpc-client</artifactId>
             <version>${gwtp.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.gwtplatform</groupId>
-            <artifactId>gwtp-dispatch-server</artifactId>
+            <artifactId>gwtp-dispatch-rpc-server</artifactId>
             <version>${gwtp.version}</version>
         </dependency>
         <dependency>
             <groupId>com.gwtplatform</groupId>
-            <artifactId>gwtp-dispatch-server-guice</artifactId>
+            <artifactId>gwtp-dispatch-rpc-server-guice</artifactId>
             <version>${gwtp.version}</version>
         </dependency>
         <dependency>

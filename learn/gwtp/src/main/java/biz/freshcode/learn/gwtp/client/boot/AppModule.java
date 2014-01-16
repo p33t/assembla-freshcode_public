@@ -14,7 +14,7 @@ import biz.freshcode.learn.gwtp.client.ext.ExtModule;
 import biz.freshcode.learn.gwtp.client.special.SpecialModule;
 import biz.freshcode.learn.gwtp.shared.AppUtil;
 import biz.freshcode.learn.gwtp.shared.boot.SessionInfo;
-import com.gwtplatform.dispatch.client.gin.DispatchAsyncModule;
+import com.gwtplatform.dispatch.rpc.client.gin.RpcDispatchAsyncModule;
 import com.gwtplatform.dispatch.shared.SecurityCookie;
 import com.gwtplatform.mvp.client.annotations.DefaultPlace;
 import com.gwtplatform.mvp.client.annotations.ErrorPlace;
@@ -36,7 +36,7 @@ public class AppModule extends AbstractPresenterModule {
 
 //Shouldn't need this...bind(EventBus.class).to(SimpleEventBus.class).in(Singleton.class);
         install(new DefaultModule(DefaultPlaceManager.class));
-        install(new DispatchAsyncModule());
+        install(new RpcDispatchAsyncModule());
 
         bindPresenter(Root.class, Root.Proxy.class);
         bindPresenter(Home.class, Home.View.class, HomeViewImpl.class, Home.Proxy.class);
