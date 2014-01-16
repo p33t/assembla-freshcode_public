@@ -1,7 +1,7 @@
 package biz.freshcode.learn.gwtp.util.shared.dispatch;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
-import com.gwtplatform.dispatch.shared.Result;
+import com.gwtplatform.dispatch.rpc.shared.Result;
 import com.sencha.gxt.data.shared.loader.PagingLoadResultBean;
 
 /**

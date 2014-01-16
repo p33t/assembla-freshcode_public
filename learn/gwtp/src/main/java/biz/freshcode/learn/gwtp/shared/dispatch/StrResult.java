@@ -1,6 +1,6 @@
 package biz.freshcode.learn.gwtp.shared.dispatch;
 
-import com.gwtplatform.dispatch.shared.Result;
+import com.gwtplatform.dispatch.rpc.shared.Result;
 
 /**
  * NOTE: It might seem like we need generic wrappers to weave in 'Result'

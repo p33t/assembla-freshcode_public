@@ -1,7 +1,7 @@
 package biz.freshcode.learn.gwtp.shared.paginggrid;
 
 import biz.freshcode.learn.gwtp.util.shared.dispatch.GdPagingLoadResult;
-import com.gwtplatform.dispatch.shared.ActionImpl;
+import com.gwtplatform.dispatch.rpc.shared.ActionImpl;
 import com.sencha.gxt.data.shared.loader.PagingLoadConfig;
 
 public class PgListAction extends ActionImpl<GdPagingLoadResult<Tyre>> {

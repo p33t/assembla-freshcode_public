@@ -1,6 +1,6 @@
 package biz.freshcode.learn.gwtp.shared.dispatch;
 
-import com.gwtplatform.dispatch.shared.ActionImpl;
+import com.gwtplatform.dispatch.rpc.shared.ActionImpl;
 
 public class SdAction extends ActionImpl<StrResult> {
     private String str;

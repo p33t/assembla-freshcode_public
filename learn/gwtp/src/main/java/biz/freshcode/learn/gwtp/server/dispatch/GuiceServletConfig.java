@@ -11,10 +11,10 @@ import com.google.inject.Injector;
 import com.google.inject.Singleton;
 import com.google.inject.servlet.GuiceServletContextListener;
 import com.google.inject.servlet.ServletModule;
-import com.gwtplatform.dispatch.server.guice.DispatchServiceImpl;
-import com.gwtplatform.dispatch.server.guice.HandlerModule;
-import com.gwtplatform.dispatch.server.guice.HttpSessionSecurityCookieFilter;
-import com.gwtplatform.dispatch.shared.ActionImpl;
+import com.gwtplatform.dispatch.rpc.server.guice.DispatchServiceImpl;
+import com.gwtplatform.dispatch.rpc.server.guice.HandlerModule;
+import com.gwtplatform.dispatch.rpc.server.guice.HttpSessionSecurityCookieFilter;
+import com.gwtplatform.dispatch.rpc.shared.ActionImpl;
 import com.gwtplatform.dispatch.shared.SecurityCookie;
 
 /**

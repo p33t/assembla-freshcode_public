@@ -2,8 +2,8 @@ package biz.freshcode.learn.gwtp.server.dispatch;
 
 import biz.freshcode.learn.gwtp.shared.dispatch.SdAction;
 import biz.freshcode.learn.gwtp.shared.dispatch.StrResult;
-import com.gwtplatform.dispatch.server.ExecutionContext;
-import com.gwtplatform.dispatch.server.actionhandler.ActionHandler;
+import com.gwtplatform.dispatch.rpc.server.ExecutionContext;
+import com.gwtplatform.dispatch.rpc.server.actionhandler.ActionHandler;
 import com.gwtplatform.dispatch.shared.ActionException;
 
 /**
