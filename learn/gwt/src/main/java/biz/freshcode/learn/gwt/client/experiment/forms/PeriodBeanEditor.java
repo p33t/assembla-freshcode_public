@@ -1,5 +1,6 @@
 package biz.freshcode.learn.gwt.client.experiment.forms;
 
+import biz.freshcode.learn.gwt.client.builder.freshcode.experiment.forms.HrMinFieldBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.container.FlowLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.form.FieldLabelBuilder;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
