@@ -1,5 +1,7 @@
 package biz.freshcode.learn.gwt.client.builder.gxt.grid;
 
+import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
+import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.widget.core.client.grid.GroupingView;
 
 /**
@@ -7,9 +9,9 @@ import com.sencha.gxt.widget.core.client.grid.GroupingView;
  *
  * @see com.sencha.gxt.widget.core.client.grid.GroupingView
  */
-@biz.freshcode.learn.gwt.client.uispike.builder.BeanBuilder(GroupingView.class)
+@BeanBuilder(GroupingView.class)
 @SuppressWarnings("UnusedDeclaration")
-public class GroupingViewBuilder<M> extends biz.freshcode.learn.gwt.client.uispike.builder.Construct.Parent<GroupingViewBuilder<M>> {
+public class GroupingViewBuilder<M> extends Construct.Parent<GroupingViewBuilder<M>> {
     public final GroupingView<M> groupingView;
 
     public GroupingViewBuilder(GroupingView<M> v) {

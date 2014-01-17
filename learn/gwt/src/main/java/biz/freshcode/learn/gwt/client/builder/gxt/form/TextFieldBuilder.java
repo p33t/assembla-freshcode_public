@@ -1,5 +1,7 @@
 package biz.freshcode.learn.gwt.client.builder.gxt.form;
 
+import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
+import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.widget.core.client.form.TextField;
 
 /**
@@ -7,8 +9,9 @@ import com.sencha.gxt.widget.core.client.form.TextField;
  *
  * @see com.sencha.gxt.widget.core.client.form.TextField
  */
-@biz.freshcode.learn.gwt.client.uispike.builder.BeanBuilder(TextField.class)
-public class TextFieldBuilder extends biz.freshcode.learn.gwt.client.uispike.builder.Construct.Parent<TextFieldBuilder> {
+@BeanBuilder(TextField.class)
+@SuppressWarnings("UnusedDeclaration")
+public class TextFieldBuilder extends Construct.Parent<TextFieldBuilder> {
     public final TextField textField;
 
     public TextFieldBuilder(TextField v) {
@@ -213,17 +216,17 @@ public class TextFieldBuilder extends biz.freshcode.learn.gwt.client.uispike.bui
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.form.TextField#setHeight(int)
+     * @see com.sencha.gxt.widget.core.client.form.TextField#setHeight(java.lang.String)
      */
-    public TextFieldBuilder height(int v0) {
+    public TextFieldBuilder height(java.lang.String v0) {
         textField.setHeight(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.form.TextField#setHeight(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.form.TextField#setHeight(int)
      */
-    public TextFieldBuilder height(java.lang.String v0) {
+    public TextFieldBuilder height(int v0) {
         textField.setHeight(v0);
         return this;
     }
@@ -337,6 +340,14 @@ public class TextFieldBuilder extends biz.freshcode.learn.gwt.client.uispike.bui
      */
     public TextFieldBuilder shadow(boolean v0) {
         textField.setShadow(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.form.TextField#setShadowPosition(com.sencha.gxt.core.client.dom.Layer.ShadowPosition)
+     */
+    public TextFieldBuilder shadowPosition(com.sencha.gxt.core.client.dom.Layer.ShadowPosition v0) {
+        textField.setShadowPosition(v0);
         return this;
     }
 

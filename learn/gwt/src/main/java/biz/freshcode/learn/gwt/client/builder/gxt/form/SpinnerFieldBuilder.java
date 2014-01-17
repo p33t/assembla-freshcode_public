@@ -1,5 +1,7 @@
 package biz.freshcode.learn.gwt.client.builder.gxt.form;
 
+import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
+import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.widget.core.client.form.SpinnerField;
 
 /**
@@ -7,8 +9,9 @@ import com.sencha.gxt.widget.core.client.form.SpinnerField;
  *
  * @see com.sencha.gxt.widget.core.client.form.SpinnerField
  */
-@biz.freshcode.learn.gwt.client.uispike.builder.BeanBuilder(SpinnerField.class)
-public class SpinnerFieldBuilder<N extends Number> extends biz.freshcode.learn.gwt.client.uispike.builder.Construct.Parent<SpinnerFieldBuilder<N>> {
+@BeanBuilder(SpinnerField.class)
+@SuppressWarnings("UnusedDeclaration")
+public class SpinnerFieldBuilder<N extends Number> extends Construct.Parent<SpinnerFieldBuilder<N>> {
     public final SpinnerField<N> spinnerField;
 
     public SpinnerFieldBuilder(SpinnerField<N> v) {
@@ -230,10 +233,10 @@ public class SpinnerFieldBuilder<N extends Number> extends biz.freshcode.learn.g
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.form.SpinnerField#setHeight(int)
+     * @see com.sencha.gxt.widget.core.client.form.SpinnerField#setFinishEditOnEnter(boolean)
      */
-    public SpinnerFieldBuilder<N> height(int v0) {
-        spinnerField.setHeight(v0);
+    public SpinnerFieldBuilder<N> finishEditOnEnter(boolean v0) {
+        spinnerField.setFinishEditOnEnter(v0);
         return this;
     }
 
@@ -241,6 +244,14 @@ public class SpinnerFieldBuilder<N extends Number> extends biz.freshcode.learn.g
      * @see com.sencha.gxt.widget.core.client.form.SpinnerField#setHeight(java.lang.String)
      */
     public SpinnerFieldBuilder<N> height(java.lang.String v0) {
+        spinnerField.setHeight(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.form.SpinnerField#setHeight(int)
+     */
+    public SpinnerFieldBuilder<N> height(int v0) {
         spinnerField.setHeight(v0);
         return this;
     }
@@ -406,6 +417,14 @@ public class SpinnerFieldBuilder<N extends Number> extends biz.freshcode.learn.g
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.form.SpinnerField#setShadowPosition(com.sencha.gxt.core.client.dom.Layer.ShadowPosition)
+     */
+    public SpinnerFieldBuilder<N> shadowPosition(com.sencha.gxt.core.client.dom.Layer.ShadowPosition v0) {
+        spinnerField.setShadowPosition(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.form.SpinnerField#setSize(java.lang.String, java.lang.String)
      */
     public SpinnerFieldBuilder<N> size(java.lang.String v0, java.lang.String v1) {
@@ -550,17 +569,17 @@ public class SpinnerFieldBuilder<N extends Number> extends biz.freshcode.learn.g
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.form.SpinnerField#setWidth(int)
+     * @see com.sencha.gxt.widget.core.client.form.SpinnerField#setWidth(java.lang.String)
      */
-    public SpinnerFieldBuilder<N> width(int v0) {
+    public SpinnerFieldBuilder<N> width(java.lang.String v0) {
         spinnerField.setWidth(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.form.SpinnerField#setWidth(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.form.SpinnerField#setWidth(int)
      */
-    public SpinnerFieldBuilder<N> width(java.lang.String v0) {
+    public SpinnerFieldBuilder<N> width(int v0) {
         spinnerField.setWidth(v0);
         return this;
     }

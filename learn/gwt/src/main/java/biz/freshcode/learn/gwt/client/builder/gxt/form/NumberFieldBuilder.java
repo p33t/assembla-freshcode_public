@@ -1,5 +1,7 @@
 package biz.freshcode.learn.gwt.client.builder.gxt.form;
 
+import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
+import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.widget.core.client.form.NumberField;
 
 /**
@@ -7,8 +9,9 @@ import com.sencha.gxt.widget.core.client.form.NumberField;
  *
  * @see com.sencha.gxt.widget.core.client.form.NumberField
  */
-@biz.freshcode.learn.gwt.client.uispike.builder.BeanBuilder(NumberField.class)
-public class NumberFieldBuilder<N extends Number> extends biz.freshcode.learn.gwt.client.uispike.builder.Construct.Parent<NumberFieldBuilder<N>> {
+@BeanBuilder(NumberField.class)
+@SuppressWarnings("UnusedDeclaration")
+public class NumberFieldBuilder<N extends Number> extends Construct.Parent<NumberFieldBuilder<N>> {
     public final NumberField<N> numberField;
 
     public NumberFieldBuilder(NumberField<N> v) {
@@ -246,6 +249,14 @@ public class NumberFieldBuilder<N extends Number> extends biz.freshcode.learn.gw
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.form.NumberField#setFinishEditOnEnter(boolean)
+     */
+    public NumberFieldBuilder<N> finishEditOnEnter(boolean v0) {
+        numberField.setFinishEditOnEnter(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.form.NumberField#setFormat(com.google.gwt.i18n.client.NumberFormat)
      */
     public NumberFieldBuilder<N> format(com.google.gwt.i18n.client.NumberFormat v0) {
@@ -254,17 +265,17 @@ public class NumberFieldBuilder<N extends Number> extends biz.freshcode.learn.gw
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.form.NumberField#setHeight(int)
+     * @see com.sencha.gxt.widget.core.client.form.NumberField#setHeight(java.lang.String)
      */
-    public NumberFieldBuilder<N> height(int v0) {
+    public NumberFieldBuilder<N> height(java.lang.String v0) {
         numberField.setHeight(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.form.NumberField#setHeight(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.form.NumberField#setHeight(int)
      */
-    public NumberFieldBuilder<N> height(java.lang.String v0) {
+    public NumberFieldBuilder<N> height(int v0) {
         numberField.setHeight(v0);
         return this;
     }
@@ -394,6 +405,14 @@ public class NumberFieldBuilder<N extends Number> extends biz.freshcode.learn.gw
      */
     public NumberFieldBuilder<N> shadow(boolean v0) {
         numberField.setShadow(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.form.NumberField#setShadowPosition(com.sencha.gxt.core.client.dom.Layer.ShadowPosition)
+     */
+    public NumberFieldBuilder<N> shadowPosition(com.sencha.gxt.core.client.dom.Layer.ShadowPosition v0) {
+        numberField.setShadowPosition(v0);
         return this;
     }
 
@@ -542,17 +561,17 @@ public class NumberFieldBuilder<N extends Number> extends biz.freshcode.learn.gw
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.form.NumberField#setWidth(int)
+     * @see com.sencha.gxt.widget.core.client.form.NumberField#setWidth(java.lang.String)
      */
-    public NumberFieldBuilder<N> width(int v0) {
+    public NumberFieldBuilder<N> width(java.lang.String v0) {
         numberField.setWidth(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.form.NumberField#setWidth(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.form.NumberField#setWidth(int)
      */
-    public NumberFieldBuilder<N> width(java.lang.String v0) {
+    public NumberFieldBuilder<N> width(int v0) {
         numberField.setWidth(v0);
         return this;
     }

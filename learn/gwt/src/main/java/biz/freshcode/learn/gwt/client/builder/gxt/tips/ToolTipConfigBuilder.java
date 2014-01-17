@@ -1,5 +1,7 @@
 package biz.freshcode.learn.gwt.client.builder.gxt.tips;
 
+import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
+import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.widget.core.client.tips.ToolTipConfig;
 
 /**
@@ -7,8 +9,9 @@ import com.sencha.gxt.widget.core.client.tips.ToolTipConfig;
  *
  * @see com.sencha.gxt.widget.core.client.tips.ToolTipConfig
  */
-@biz.freshcode.learn.gwt.client.uispike.builder.BeanBuilder(ToolTipConfig.class)
-public class ToolTipConfigBuilder {
+@BeanBuilder(ToolTipConfig.class)
+@SuppressWarnings("UnusedDeclaration")
+public class ToolTipConfigBuilder extends Construct.Parent<ToolTipConfigBuilder> {
     public final ToolTipConfig toolTipConfig;
 
     public ToolTipConfigBuilder(ToolTipConfig v) {
@@ -16,10 +19,10 @@ public class ToolTipConfigBuilder {
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.tips.ToolTipConfig#ToolTipConfig()
+     * @see com.sencha.gxt.widget.core.client.tips.ToolTipConfig#ToolTipConfig(java.lang.String, java.lang.String)
      */
-    public ToolTipConfigBuilder() {
-        this(new ToolTipConfig());
+    public ToolTipConfigBuilder(java.lang.String v0, java.lang.String v1) {
+        this(new ToolTipConfig(v0, v1));
     }
 
     /**
@@ -30,10 +33,10 @@ public class ToolTipConfigBuilder {
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.tips.ToolTipConfig#ToolTipConfig(java.lang.String, java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.tips.ToolTipConfig#ToolTipConfig()
      */
-    public ToolTipConfigBuilder(java.lang.String v0, java.lang.String v1) {
-        this(new ToolTipConfig(v0, v1));
+    public ToolTipConfigBuilder() {
+        this(new ToolTipConfig());
     }
 
     /**
@@ -189,17 +192,17 @@ public class ToolTipConfigBuilder {
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.tips.ToolTipConfig#setTitleHtml(com.google.gwt.safehtml.shared.SafeHtml)
+     * @see com.sencha.gxt.widget.core.client.tips.ToolTipConfig#setTitleHtml(java.lang.String)
      */
-    public ToolTipConfigBuilder titleHtml(com.google.gwt.safehtml.shared.SafeHtml v0) {
+    public ToolTipConfigBuilder titleHtml(java.lang.String v0) {
         toolTipConfig.setTitleHtml(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.tips.ToolTipConfig#setTitleHtml(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.tips.ToolTipConfig#setTitleHtml(com.google.gwt.safehtml.shared.SafeHtml)
      */
-    public ToolTipConfigBuilder titleHtml(java.lang.String v0) {
+    public ToolTipConfigBuilder titleHtml(com.google.gwt.safehtml.shared.SafeHtml v0) {
         toolTipConfig.setTitleHtml(v0);
         return this;
     }

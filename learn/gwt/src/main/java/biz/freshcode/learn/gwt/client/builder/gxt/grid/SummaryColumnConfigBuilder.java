@@ -1,5 +1,7 @@
 package biz.freshcode.learn.gwt.client.builder.gxt.grid;
 
+import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
+import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.widget.core.client.grid.SummaryColumnConfig;
 
 /**
@@ -7,9 +9,9 @@ import com.sencha.gxt.widget.core.client.grid.SummaryColumnConfig;
  *
  * @see com.sencha.gxt.widget.core.client.grid.SummaryColumnConfig
  */
-@biz.freshcode.learn.gwt.client.uispike.builder.BeanBuilder(SummaryColumnConfig.class)
+@BeanBuilder(SummaryColumnConfig.class)
 @SuppressWarnings("UnusedDeclaration")
-public class SummaryColumnConfigBuilder<M, N> extends biz.freshcode.learn.gwt.client.uispike.builder.Construct.Parent<SummaryColumnConfigBuilder<M, N>> {
+public class SummaryColumnConfigBuilder<M, N> extends Construct.Parent<SummaryColumnConfigBuilder<M, N>> {
     public final SummaryColumnConfig<M, N> summaryColumnConfig;
 
     public SummaryColumnConfigBuilder(SummaryColumnConfig<M, N> v) {
@@ -125,17 +127,17 @@ public class SummaryColumnConfigBuilder<M, N> extends biz.freshcode.learn.gwt.cl
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.grid.SummaryColumnConfig#setHeader(com.google.gwt.safehtml.shared.SafeHtml)
+     * @see com.sencha.gxt.widget.core.client.grid.SummaryColumnConfig#setHeader(java.lang.String)
      */
-    public SummaryColumnConfigBuilder<M, N> header(com.google.gwt.safehtml.shared.SafeHtml v0) {
+    public SummaryColumnConfigBuilder<M, N> header(java.lang.String v0) {
         summaryColumnConfig.setHeader(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.grid.SummaryColumnConfig#setHeader(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.grid.SummaryColumnConfig#setHeader(com.google.gwt.safehtml.shared.SafeHtml)
      */
-    public SummaryColumnConfigBuilder<M, N> header(java.lang.String v0) {
+    public SummaryColumnConfigBuilder<M, N> header(com.google.gwt.safehtml.shared.SafeHtml v0) {
         summaryColumnConfig.setHeader(v0);
         return this;
     }

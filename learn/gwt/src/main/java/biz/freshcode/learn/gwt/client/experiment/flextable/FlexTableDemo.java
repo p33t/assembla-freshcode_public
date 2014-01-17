@@ -1,6 +1,6 @@
 package biz.freshcode.learn.gwt.client.experiment.flextable;
 
-import biz.freshcode.learn.gwt.client.uispike.builder.TextButtonBuilder;
+import biz.freshcode.learn.gwt.client.builder.gxt.button.TextButtonBuilder;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;

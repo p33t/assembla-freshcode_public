@@ -1,5 +1,7 @@
 package biz.freshcode.learn.gwt.client.builder.gxt.chart.series;
 
+import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
+import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.chart.client.chart.series.SeriesToolTipConfig;
 
 /**
@@ -7,17 +9,15 @@ import com.sencha.gxt.chart.client.chart.series.SeriesToolTipConfig;
  *
  * @see com.sencha.gxt.chart.client.chart.series.SeriesToolTipConfig
  */
-@biz.freshcode.learn.gwt.client.uispike.builder.BeanBuilder(SeriesToolTipConfig.class)
-public class SeriesToolTipConfigBuilder<M> extends biz.freshcode.learn.gwt.client.uispike.builder.Construct.Parent<SeriesToolTipConfigBuilder<M>> {
+@BeanBuilder(SeriesToolTipConfig.class)
+@SuppressWarnings("UnusedDeclaration")
+public class SeriesToolTipConfigBuilder<M> extends Construct.Parent<SeriesToolTipConfigBuilder<M>> {
     public final SeriesToolTipConfig<M> seriesToolTipConfig;
 
     public SeriesToolTipConfigBuilder(SeriesToolTipConfig<M> v) {
         seriesToolTipConfig = v;
     }
 
-    /**
-     * @see com.sencha.gxt.chart.client.chart.series.SeriesToolTipConfig#SeriesToolTipConfig()
-     */
     public SeriesToolTipConfigBuilder() {
         this(new SeriesToolTipConfig<M>());
     }

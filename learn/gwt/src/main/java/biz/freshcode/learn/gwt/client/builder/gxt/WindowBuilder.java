@@ -1,5 +1,7 @@
 package biz.freshcode.learn.gwt.client.builder.gxt;
 
+import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
+import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.widget.core.client.Window;
 
 /**
@@ -7,8 +9,9 @@ import com.sencha.gxt.widget.core.client.Window;
  *
  * @see com.sencha.gxt.widget.core.client.Window
  */
-@biz.freshcode.learn.gwt.client.uispike.builder.BeanBuilder(Window.class)
-public class WindowBuilder extends biz.freshcode.learn.gwt.client.uispike.builder.Construct.Parent<WindowBuilder> {
+@BeanBuilder(Window.class)
+@SuppressWarnings("UnusedDeclaration")
+public class WindowBuilder extends Construct.Parent<WindowBuilder> {
     public final Window window;
 
     public WindowBuilder(Window v) {
@@ -294,17 +297,17 @@ public class WindowBuilder extends biz.freshcode.learn.gwt.client.uispike.builde
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.Window#setHeadingHtml(com.google.gwt.safehtml.shared.SafeHtml)
+     * @see com.sencha.gxt.widget.core.client.Window#setHeadingHtml(java.lang.String)
      */
-    public WindowBuilder headingHtml(com.google.gwt.safehtml.shared.SafeHtml v0) {
+    public WindowBuilder headingHtml(java.lang.String v0) {
         window.setHeadingHtml(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.Window#setHeadingHtml(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.Window#setHeadingHtml(com.google.gwt.safehtml.shared.SafeHtml)
      */
-    public WindowBuilder headingHtml(java.lang.String v0) {
+    public WindowBuilder headingHtml(com.google.gwt.safehtml.shared.SafeHtml v0) {
         window.setHeadingHtml(v0);
         return this;
     }
@@ -318,17 +321,17 @@ public class WindowBuilder extends biz.freshcode.learn.gwt.client.uispike.builde
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.Window#setHeight(int)
+     * @see com.sencha.gxt.widget.core.client.Window#setHeight(java.lang.String)
      */
-    public WindowBuilder height(int v0) {
+    public WindowBuilder height(java.lang.String v0) {
         window.setHeight(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.Window#setHeight(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.Window#setHeight(int)
      */
-    public WindowBuilder height(java.lang.String v0) {
+    public WindowBuilder height(int v0) {
         window.setHeight(v0);
         return this;
     }
@@ -486,6 +489,14 @@ public class WindowBuilder extends biz.freshcode.learn.gwt.client.uispike.builde
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.Window#setShadowPosition(com.sencha.gxt.core.client.dom.Layer.ShadowPosition)
+     */
+    public WindowBuilder shadowPosition(com.sencha.gxt.core.client.dom.Layer.ShadowPosition v0) {
+        window.setShadowPosition(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.Window#setSize(java.lang.String, java.lang.String)
      */
     public WindowBuilder size(java.lang.String v0, java.lang.String v1) {
@@ -606,17 +617,17 @@ public class WindowBuilder extends biz.freshcode.learn.gwt.client.uispike.builde
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.Window#setWidth(int)
+     * @see com.sencha.gxt.widget.core.client.Window#setWidth(java.lang.String)
      */
-    public WindowBuilder width(int v0) {
+    public WindowBuilder width(java.lang.String v0) {
         window.setWidth(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.Window#setWidth(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.Window#setWidth(int)
      */
-    public WindowBuilder width(java.lang.String v0) {
+    public WindowBuilder width(int v0) {
         window.setWidth(v0);
         return this;
     }

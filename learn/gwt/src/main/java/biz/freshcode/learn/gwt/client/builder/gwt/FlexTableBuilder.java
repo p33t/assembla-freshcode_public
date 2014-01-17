@@ -1,5 +1,7 @@
 package biz.freshcode.learn.gwt.client.builder.gwt;
 
+import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
+import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.google.gwt.user.client.ui.FlexTable;
 
 /**
@@ -7,33 +9,31 @@ import com.google.gwt.user.client.ui.FlexTable;
  *
  * @see com.google.gwt.user.client.ui.FlexTable
  */
-@biz.freshcode.learn.gwt.client.uispike.builder.BeanBuilder(FlexTable.class)
-public class FlexTableBuilder extends biz.freshcode.learn.gwt.client.uispike.builder.Construct.Parent<FlexTableBuilder> {
+@BeanBuilder(FlexTable.class)
+@SuppressWarnings("UnusedDeclaration")
+public class FlexTableBuilder extends Construct.Parent<FlexTableBuilder> {
     public final FlexTable flexTable;
 
     public FlexTableBuilder(FlexTable v) {
         flexTable = v;
     }
 
-    /**
-     * @see com.google.gwt.user.client.ui.FlexTable#FlexTable()
-     */
     public FlexTableBuilder() {
         this(new FlexTable());
-    }
-
-    /**
-     * @see com.google.gwt.user.client.ui.FlexTable#add(com.google.gwt.user.client.ui.Widget)
-     */
-    public FlexTableBuilder add(com.google.gwt.user.client.ui.Widget v0) {
-        flexTable.add(v0);
-        return this;
     }
 
     /**
      * @see com.google.gwt.user.client.ui.FlexTable#add(com.google.gwt.user.client.ui.IsWidget)
      */
     public FlexTableBuilder add(com.google.gwt.user.client.ui.IsWidget v0) {
+        flexTable.add(v0);
+        return this;
+    }
+
+    /**
+     * @see com.google.gwt.user.client.ui.FlexTable#add(com.google.gwt.user.client.ui.Widget)
+     */
+    public FlexTableBuilder add(com.google.gwt.user.client.ui.Widget v0) {
         flexTable.add(v0);
         return this;
     }
@@ -95,17 +95,17 @@ public class FlexTableBuilder extends biz.freshcode.learn.gwt.client.uispike.bui
     }
 
     /**
-     * @see com.google.gwt.user.client.ui.FlexTable#setHTML(int, int, java.lang.String)
+     * @see com.google.gwt.user.client.ui.FlexTable#setHTML(int, int, com.google.gwt.safehtml.shared.SafeHtml)
      */
-    public FlexTableBuilder hTML(int v0, int v1, java.lang.String v2) {
+    public FlexTableBuilder hTML(int v0, int v1, com.google.gwt.safehtml.shared.SafeHtml v2) {
         flexTable.setHTML(v0, v1, v2);
         return this;
     }
 
     /**
-     * @see com.google.gwt.user.client.ui.FlexTable#setHTML(int, int, com.google.gwt.safehtml.shared.SafeHtml)
+     * @see com.google.gwt.user.client.ui.FlexTable#setHTML(int, int, java.lang.String)
      */
-    public FlexTableBuilder hTML(int v0, int v1, com.google.gwt.safehtml.shared.SafeHtml v2) {
+    public FlexTableBuilder hTML(int v0, int v1, java.lang.String v2) {
         flexTable.setHTML(v0, v1, v2);
         return this;
     }

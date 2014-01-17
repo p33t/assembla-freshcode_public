@@ -1,9 +1,9 @@
 package biz.freshcode.learn.gwt.client.experiment.forms2;
 
+import biz.freshcode.learn.gwt.client.builder.Construct;
 import biz.freshcode.learn.gwt.client.builder.gxt.form.SimpleComboBoxBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.form.TextFieldBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.grid.ColumnConfigBuilder;
-import biz.freshcode.learn.gwt.client.uispike.builder.Construct;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import com.google.gwt.cell.client.AbstractCell;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
@@ -11,7 +11,6 @@ import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.cell.core.client.form.ComboBoxCell;
 import com.sencha.gxt.core.client.IdentityValueProvider;
 import com.sencha.gxt.core.client.ToStringValueProvider;
-import com.sencha.gxt.data.shared.Converter;
 import com.sencha.gxt.data.shared.LabelProvider;
 import com.sencha.gxt.data.shared.ListStore;
 import com.sencha.gxt.widget.core.client.form.DateField;

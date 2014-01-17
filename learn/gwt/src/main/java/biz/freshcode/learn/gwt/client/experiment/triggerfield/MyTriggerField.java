@@ -1,8 +1,8 @@
 package biz.freshcode.learn.gwt.client.experiment.triggerfield;
 
+import biz.freshcode.learn.gwt.client.builder.gwt.PopupPanelBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.form.SpinnerFieldBuilder;
 import biz.freshcode.learn.gwt.client.experiment.triggerfield.reuse.SpinnerSupport;
-import biz.freshcode.learn.gwt.client.uispike.builder.container.PopupPanelBuilder;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.PopupPanel;
 import com.sencha.gxt.widget.core.client.event.ParseErrorEvent;

@@ -1,5 +1,7 @@
 package biz.freshcode.learn.gwt.client.builder.gxt.chart;
 
+import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
+import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.chart.client.chart.Legend;
 
 /**
@@ -7,17 +9,15 @@ import com.sencha.gxt.chart.client.chart.Legend;
  *
  * @see com.sencha.gxt.chart.client.chart.Legend
  */
-@biz.freshcode.learn.gwt.client.uispike.builder.BeanBuilder(Legend.class)
-public class LegendBuilder<M> extends biz.freshcode.learn.gwt.client.uispike.builder.Construct.Parent<LegendBuilder<M>> {
+@BeanBuilder(Legend.class)
+@SuppressWarnings("UnusedDeclaration")
+public class LegendBuilder<M> extends Construct.Parent<LegendBuilder<M>> {
     public final Legend<M> legend;
 
     public LegendBuilder(Legend<M> v) {
         legend = v;
     }
 
-    /**
-     * @see com.sencha.gxt.chart.client.chart.Legend#Legend()
-     */
     public LegendBuilder() {
         this(new Legend<M>());
     }
@@ -59,6 +59,14 @@ public class LegendBuilder<M> extends biz.freshcode.learn.gwt.client.uispike.bui
      */
     public LegendBuilder<M> labelRenderer(com.sencha.gxt.chart.client.chart.series.SeriesRenderer<M> v0) {
         legend.setLabelRenderer(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.chart.client.chart.Legend#setLegendInset(int)
+     */
+    public LegendBuilder<M> legendInset(int v0) {
+        legend.setLegendInset(v0);
         return this;
     }
 
