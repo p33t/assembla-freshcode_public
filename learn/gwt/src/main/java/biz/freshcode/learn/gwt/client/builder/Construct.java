@@ -1,4 +1,4 @@
-package biz.freshcode.learn.gwt.client.uispike.builder;
+package biz.freshcode.learn.gwt.client.builder;
 
 /**
  * Facilitates construction closures in builders.
