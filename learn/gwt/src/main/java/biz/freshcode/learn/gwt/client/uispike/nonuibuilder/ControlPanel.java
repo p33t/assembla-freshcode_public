@@ -1,10 +1,10 @@
 package biz.freshcode.learn.gwt.client.uispike.nonuibuilder;
 
 import biz.freshcode.learn.gwt.client.builder.gxt.container.BorderLayoutContainerBuilder;
+import biz.freshcode.learn.gwt.client.builder.gxt.container.BorderLayoutDataBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.container.VerticalLayoutContainerBuilder;
+import biz.freshcode.learn.gwt.client.builder.gxt.toolbar.ToolBarBuilder;
 import biz.freshcode.learn.gwt.client.uispike.Row;
-import biz.freshcode.learn.gwt.client.uispike.builder.BorderLayoutDataBuilder;
-import biz.freshcode.learn.gwt.client.uispike.builder.ToolBarBuilder;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import com.google.gwt.user.client.Random;
 import com.google.gwt.user.client.ui.Widget;

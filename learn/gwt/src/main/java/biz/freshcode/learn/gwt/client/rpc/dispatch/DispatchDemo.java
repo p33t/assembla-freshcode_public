@@ -1,7 +1,7 @@
 package biz.freshcode.learn.gwt.client.rpc.dispatch;
 
+import biz.freshcode.learn.gwt.client.builder.gxt.button.TextButtonBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.container.VerticalLayoutContainerBuilder;
-import biz.freshcode.learn.gwt.client.uispike.builder.TextButtonBuilder;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import biz.freshcode.learn.gwt.shared.dispatch.DdAction;
 import biz.freshcode.learn.gwt.shared.dispatch.StrResult;

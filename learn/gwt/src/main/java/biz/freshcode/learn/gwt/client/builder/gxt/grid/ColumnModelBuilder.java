@@ -1,5 +1,7 @@
 package biz.freshcode.learn.gwt.client.builder.gxt.grid;
 
+import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
+import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.widget.core.client.grid.ColumnModel;
 
 /**
@@ -7,8 +9,9 @@ import com.sencha.gxt.widget.core.client.grid.ColumnModel;
  *
  * @see com.sencha.gxt.widget.core.client.grid.ColumnModel
  */
-@biz.freshcode.learn.gwt.client.uispike.builder.BeanBuilder(ColumnModel.class)
-public class ColumnModelBuilder<M> extends biz.freshcode.learn.gwt.client.uispike.builder.Construct.Parent<ColumnModelBuilder<M>> {
+@BeanBuilder(ColumnModel.class)
+@SuppressWarnings("UnusedDeclaration")
+public class ColumnModelBuilder<M> extends Construct.Parent<ColumnModelBuilder<M>> {
     public final ColumnModel<M> columnModel;
 
     public ColumnModelBuilder(ColumnModel<M> v) {

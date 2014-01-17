@@ -1,5 +1,7 @@
 package biz.freshcode.learn.gwt.client.builder.gxt.chart;
 
+import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
+import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.chart.client.chart.Chart;
 
 /**
@@ -7,8 +9,9 @@ import com.sencha.gxt.chart.client.chart.Chart;
  *
  * @see com.sencha.gxt.chart.client.chart.Chart
  */
-@biz.freshcode.learn.gwt.client.uispike.builder.BeanBuilder(Chart.class)
-public class ChartBuilder<M> extends biz.freshcode.learn.gwt.client.uispike.builder.Construct.Parent<ChartBuilder<M>> {
+@BeanBuilder(Chart.class)
+@SuppressWarnings("UnusedDeclaration")
+public class ChartBuilder<M> extends Construct.Parent<ChartBuilder<M>> {
     public final Chart<M> chart;
 
     public ChartBuilder(Chart<M> v) {
@@ -190,17 +193,17 @@ public class ChartBuilder<M> extends biz.freshcode.learn.gwt.client.uispike.buil
     }
 
     /**
-     * @see com.sencha.gxt.chart.client.chart.Chart#setHeight(int)
+     * @see com.sencha.gxt.chart.client.chart.Chart#setHeight(java.lang.String)
      */
-    public ChartBuilder<M> height(int v0) {
+    public ChartBuilder<M> height(java.lang.String v0) {
         chart.setHeight(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.chart.client.chart.Chart#setHeight(java.lang.String)
+     * @see com.sencha.gxt.chart.client.chart.Chart#setHeight(int)
      */
-    public ChartBuilder<M> height(java.lang.String v0) {
+    public ChartBuilder<M> height(int v0) {
         chart.setHeight(v0);
         return this;
     }
@@ -282,6 +285,14 @@ public class ChartBuilder<M> extends biz.freshcode.learn.gwt.client.uispike.buil
      */
     public ChartBuilder<M> shadowChart(boolean v0) {
         chart.setShadowChart(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.chart.client.chart.Chart#setShadowPosition(com.sencha.gxt.core.client.dom.Layer.ShadowPosition)
+     */
+    public ChartBuilder<M> shadowPosition(com.sencha.gxt.core.client.dom.Layer.ShadowPosition v0) {
+        chart.setShadowPosition(v0);
         return this;
     }
 
@@ -406,17 +417,17 @@ public class ChartBuilder<M> extends biz.freshcode.learn.gwt.client.uispike.buil
     }
 
     /**
-     * @see com.sencha.gxt.chart.client.chart.Chart#setWidth(int)
+     * @see com.sencha.gxt.chart.client.chart.Chart#setWidth(java.lang.String)
      */
-    public ChartBuilder<M> width(int v0) {
+    public ChartBuilder<M> width(java.lang.String v0) {
         chart.setWidth(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.chart.client.chart.Chart#setWidth(java.lang.String)
+     * @see com.sencha.gxt.chart.client.chart.Chart#setWidth(int)
      */
-    public ChartBuilder<M> width(java.lang.String v0) {
+    public ChartBuilder<M> width(int v0) {
         chart.setWidth(v0);
         return this;
     }

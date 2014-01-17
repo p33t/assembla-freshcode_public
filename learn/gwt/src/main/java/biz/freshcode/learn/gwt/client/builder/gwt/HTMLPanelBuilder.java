@@ -1,5 +1,7 @@
 package biz.freshcode.learn.gwt.client.builder.gwt;
 
+import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
+import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.google.gwt.user.client.ui.HTMLPanel;
 
 /**
@@ -7,8 +9,9 @@ import com.google.gwt.user.client.ui.HTMLPanel;
  *
  * @see com.google.gwt.user.client.ui.HTMLPanel
  */
-@biz.freshcode.learn.gwt.client.uispike.builder.BeanBuilder(HTMLPanel.class)
-public class HTMLPanelBuilder extends biz.freshcode.learn.gwt.client.uispike.builder.Construct.Parent<HTMLPanelBuilder> {
+@BeanBuilder(HTMLPanel.class)
+@SuppressWarnings("UnusedDeclaration")
+public class HTMLPanelBuilder extends Construct.Parent<HTMLPanelBuilder> {
     public final HTMLPanel hTMLPanel;
 
     public HTMLPanelBuilder(HTMLPanel v) {
@@ -16,10 +19,10 @@ public class HTMLPanelBuilder extends biz.freshcode.learn.gwt.client.uispike.bui
     }
 
     /**
-     * @see com.google.gwt.user.client.ui.HTMLPanel#HTMLPanel(java.lang.String)
+     * @see com.google.gwt.user.client.ui.HTMLPanel#HTMLPanel(java.lang.String, java.lang.String)
      */
-    public HTMLPanelBuilder(java.lang.String v0) {
-        this(new HTMLPanel(v0));
+    public HTMLPanelBuilder(java.lang.String v0, java.lang.String v1) {
+        this(new HTMLPanel(v0, v1));
     }
 
     /**
@@ -30,10 +33,10 @@ public class HTMLPanelBuilder extends biz.freshcode.learn.gwt.client.uispike.bui
     }
 
     /**
-     * @see com.google.gwt.user.client.ui.HTMLPanel#HTMLPanel(java.lang.String, java.lang.String)
+     * @see com.google.gwt.user.client.ui.HTMLPanel#HTMLPanel(java.lang.String)
      */
-    public HTMLPanelBuilder(java.lang.String v0, java.lang.String v1) {
-        this(new HTMLPanel(v0, v1));
+    public HTMLPanelBuilder(java.lang.String v0) {
+        this(new HTMLPanel(v0));
     }
 
     /**
@@ -65,6 +68,14 @@ public class HTMLPanelBuilder extends biz.freshcode.learn.gwt.client.uispike.bui
      */
     public HTMLPanelBuilder add(com.google.gwt.user.client.ui.Widget v0, com.google.gwt.dom.client.Element v1) {
         hTMLPanel.add(v0, v1);
+        return this;
+    }
+
+    /**
+     * @see com.google.gwt.user.client.ui.HTMLPanel#addAndReplaceElement(com.google.gwt.user.client.ui.IsWidget, java.lang.String)
+     */
+    public HTMLPanelBuilder addAndReplaceElement(com.google.gwt.user.client.ui.IsWidget v0, java.lang.String v1) {
+        hTMLPanel.addAndReplaceElement(v0, v1);
         return this;
     }
 
@@ -104,14 +115,6 @@ public class HTMLPanelBuilder extends biz.freshcode.learn.gwt.client.uispike.bui
      * @see com.google.gwt.user.client.ui.HTMLPanel#addAndReplaceElement(com.google.gwt.user.client.ui.Widget, java.lang.String)
      */
     public HTMLPanelBuilder addAndReplaceElement(com.google.gwt.user.client.ui.Widget v0, java.lang.String v1) {
-        hTMLPanel.addAndReplaceElement(v0, v1);
-        return this;
-    }
-
-    /**
-     * @see com.google.gwt.user.client.ui.HTMLPanel#addAndReplaceElement(com.google.gwt.user.client.ui.IsWidget, java.lang.String)
-     */
-    public HTMLPanelBuilder addAndReplaceElement(com.google.gwt.user.client.ui.IsWidget v0, java.lang.String v1) {
         hTMLPanel.addAndReplaceElement(v0, v1);
         return this;
     }

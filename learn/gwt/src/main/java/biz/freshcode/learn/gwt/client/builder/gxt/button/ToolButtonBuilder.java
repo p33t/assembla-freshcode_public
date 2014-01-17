@@ -1,5 +1,7 @@
 package biz.freshcode.learn.gwt.client.builder.gxt.button;
 
+import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
+import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.widget.core.client.button.ToolButton;
 
 /**
@@ -7,8 +9,9 @@ import com.sencha.gxt.widget.core.client.button.ToolButton;
  *
  * @see com.sencha.gxt.widget.core.client.button.ToolButton
  */
-@biz.freshcode.learn.gwt.client.uispike.builder.BeanBuilder(ToolButton.class)
-public class ToolButtonBuilder {
+@BeanBuilder(ToolButton.class)
+@SuppressWarnings("UnusedDeclaration")
+public class ToolButtonBuilder extends Construct.Parent<ToolButtonBuilder> {
     public final ToolButton toolButton;
 
     public ToolButtonBuilder(ToolButton v) {
@@ -16,16 +19,9 @@ public class ToolButtonBuilder {
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.button.ToolButton#ToolButton(com.sencha.gxt.widget.core.client.button.IconButton.IconButtonAppearance, com.sencha.gxt.widget.core.client.button.IconButton.IconConfig)
+     * @see com.sencha.gxt.widget.core.client.button.ToolButton#ToolButton(java.lang.String)
      */
-    public ToolButtonBuilder(com.sencha.gxt.widget.core.client.button.IconButton.IconButtonAppearance v0, com.sencha.gxt.widget.core.client.button.IconButton.IconConfig v1) {
-        this(new ToolButton(v0, v1));
-    }
-
-    /**
-     * @see com.sencha.gxt.widget.core.client.button.ToolButton#ToolButton(com.sencha.gxt.widget.core.client.button.IconButton.IconConfig)
-     */
-    public ToolButtonBuilder(com.sencha.gxt.widget.core.client.button.IconButton.IconConfig v0) {
+    public ToolButtonBuilder(java.lang.String v0) {
         this(new ToolButton(v0));
     }
 
@@ -37,10 +33,17 @@ public class ToolButtonBuilder {
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.button.ToolButton#ToolButton(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.button.ToolButton#ToolButton(com.sencha.gxt.widget.core.client.button.IconButton.IconConfig)
      */
-    public ToolButtonBuilder(java.lang.String v0) {
+    public ToolButtonBuilder(com.sencha.gxt.widget.core.client.button.IconButton.IconConfig v0) {
         this(new ToolButton(v0));
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.button.ToolButton#ToolButton(com.sencha.gxt.widget.core.client.button.IconButton.IconButtonAppearance, com.sencha.gxt.widget.core.client.button.IconButton.IconConfig)
+     */
+    public ToolButtonBuilder(com.sencha.gxt.widget.core.client.button.IconButton.IconButtonAppearance v0, com.sencha.gxt.widget.core.client.button.IconButton.IconConfig v1) {
+        this(new ToolButton(v0, v1));
     }
 
     /**
@@ -132,17 +135,17 @@ public class ToolButtonBuilder {
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.button.ToolButton#setHeight(int)
+     * @see com.sencha.gxt.widget.core.client.button.ToolButton#setHeight(java.lang.String)
      */
-    public ToolButtonBuilder height(int v0) {
+    public ToolButtonBuilder height(java.lang.String v0) {
         toolButton.setHeight(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.button.ToolButton#setHeight(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.button.ToolButton#setHeight(int)
      */
-    public ToolButtonBuilder height(java.lang.String v0) {
+    public ToolButtonBuilder height(int v0) {
         toolButton.setHeight(v0);
         return this;
     }
@@ -208,6 +211,14 @@ public class ToolButtonBuilder {
      */
     public ToolButtonBuilder shadow(boolean v0) {
         toolButton.setShadow(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.button.ToolButton#setShadowPosition(com.sencha.gxt.core.client.dom.Layer.ShadowPosition)
+     */
+    public ToolButtonBuilder shadowPosition(com.sencha.gxt.core.client.dom.Layer.ShadowPosition v0) {
+        toolButton.setShadowPosition(v0);
         return this;
     }
 
@@ -308,17 +319,17 @@ public class ToolButtonBuilder {
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.button.ToolButton#setWidth(int)
+     * @see com.sencha.gxt.widget.core.client.button.ToolButton#setWidth(java.lang.String)
      */
-    public ToolButtonBuilder width(int v0) {
+    public ToolButtonBuilder width(java.lang.String v0) {
         toolButton.setWidth(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.button.ToolButton#setWidth(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.button.ToolButton#setWidth(int)
      */
-    public ToolButtonBuilder width(java.lang.String v0) {
+    public ToolButtonBuilder width(int v0) {
         toolButton.setWidth(v0);
         return this;
     }

@@ -1,5 +1,7 @@
 package biz.freshcode.learn.gwt.client.builder.gxt.form;
 
+import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
+import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.widget.core.client.form.TextArea;
 
 /**
@@ -7,8 +9,9 @@ import com.sencha.gxt.widget.core.client.form.TextArea;
  *
  * @see com.sencha.gxt.widget.core.client.form.TextArea
  */
-@biz.freshcode.learn.gwt.client.uispike.builder.BeanBuilder(TextArea.class)
-public class TextAreaBuilder extends biz.freshcode.learn.gwt.client.uispike.builder.Construct.Parent<TextAreaBuilder> {
+@BeanBuilder(TextArea.class)
+@SuppressWarnings("UnusedDeclaration")
+public class TextAreaBuilder extends Construct.Parent<TextAreaBuilder> {
     public final TextArea textArea;
 
     public TextAreaBuilder(TextArea v) {
@@ -206,17 +209,17 @@ public class TextAreaBuilder extends biz.freshcode.learn.gwt.client.uispike.buil
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.form.TextArea#setHeight(int)
+     * @see com.sencha.gxt.widget.core.client.form.TextArea#setHeight(java.lang.String)
      */
-    public TextAreaBuilder height(int v0) {
+    public TextAreaBuilder height(java.lang.String v0) {
         textArea.setHeight(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.form.TextArea#setHeight(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.form.TextArea#setHeight(int)
      */
-    public TextAreaBuilder height(java.lang.String v0) {
+    public TextAreaBuilder height(int v0) {
         textArea.setHeight(v0);
         return this;
     }
@@ -346,6 +349,14 @@ public class TextAreaBuilder extends biz.freshcode.learn.gwt.client.uispike.buil
      */
     public TextAreaBuilder shadow(boolean v0) {
         textArea.setShadow(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.form.TextArea#setShadowPosition(com.sencha.gxt.core.client.dom.Layer.ShadowPosition)
+     */
+    public TextAreaBuilder shadowPosition(com.sencha.gxt.core.client.dom.Layer.ShadowPosition v0) {
+        textArea.setShadowPosition(v0);
         return this;
     }
 
@@ -494,17 +505,17 @@ public class TextAreaBuilder extends biz.freshcode.learn.gwt.client.uispike.buil
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.form.TextArea#setWidth(int)
+     * @see com.sencha.gxt.widget.core.client.form.TextArea#setWidth(java.lang.String)
      */
-    public TextAreaBuilder width(int v0) {
+    public TextAreaBuilder width(java.lang.String v0) {
         textArea.setWidth(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.form.TextArea#setWidth(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.form.TextArea#setWidth(int)
      */
-    public TextAreaBuilder width(java.lang.String v0) {
+    public TextAreaBuilder width(int v0) {
         textArea.setWidth(v0);
         return this;
     }

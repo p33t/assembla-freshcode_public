@@ -5,7 +5,7 @@ import biz.freshcode.learn.gwt.client.builder.gxt.PopupBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.button.ToolButtonBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.container.BorderLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.tips.ToolTipConfigBuilder;
-import biz.freshcode.learn.gwt.client.uispike.builder.ToolBarBuilder;
+import biz.freshcode.learn.gwt.client.builder.gxt.toolbar.ToolBarBuilder;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;

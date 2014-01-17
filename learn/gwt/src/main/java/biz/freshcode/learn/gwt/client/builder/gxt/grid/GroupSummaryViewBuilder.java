@@ -1,5 +1,7 @@
 package biz.freshcode.learn.gwt.client.builder.gxt.grid;
 
+import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
+import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.widget.core.client.grid.GroupSummaryView;
 
 /**
@@ -7,9 +9,9 @@ import com.sencha.gxt.widget.core.client.grid.GroupSummaryView;
  *
  * @see com.sencha.gxt.widget.core.client.grid.GroupSummaryView
  */
-@biz.freshcode.learn.gwt.client.uispike.builder.BeanBuilder(GroupSummaryView.class)
+@BeanBuilder(GroupSummaryView.class)
 @SuppressWarnings("UnusedDeclaration")
-public class GroupSummaryViewBuilder<M> extends biz.freshcode.learn.gwt.client.uispike.builder.Construct.Parent<GroupSummaryViewBuilder<M>> {
+public class GroupSummaryViewBuilder<M> extends Construct.Parent<GroupSummaryViewBuilder<M>> {
     public final GroupSummaryView<M> groupSummaryView;
 
     public GroupSummaryViewBuilder(GroupSummaryView<M> v) {

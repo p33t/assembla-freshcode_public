@@ -1,5 +1,7 @@
 package biz.freshcode.learn.gwt.client.builder.gxt.draw.sprite;
 
+import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
+import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.chart.client.draw.sprite.TextSprite;
 
 /**
@@ -7,19 +9,13 @@ import com.sencha.gxt.chart.client.draw.sprite.TextSprite;
  *
  * @see com.sencha.gxt.chart.client.draw.sprite.TextSprite
  */
-@biz.freshcode.learn.gwt.client.uispike.builder.BeanBuilder(TextSprite.class)
-public class TextSpriteBuilder extends biz.freshcode.learn.gwt.client.uispike.builder.Construct.Parent<TextSpriteBuilder> {
+@BeanBuilder(TextSprite.class)
+@SuppressWarnings("UnusedDeclaration")
+public class TextSpriteBuilder extends Construct.Parent<TextSpriteBuilder> {
     public final TextSprite textSprite;
 
     public TextSpriteBuilder(TextSprite v) {
         textSprite = v;
-    }
-
-    /**
-     * @see com.sencha.gxt.chart.client.draw.sprite.TextSprite#TextSprite()
-     */
-    public TextSpriteBuilder() {
-        this(new TextSprite());
     }
 
     /**
@@ -29,14 +25,13 @@ public class TextSpriteBuilder extends biz.freshcode.learn.gwt.client.uispike.bu
         this(new TextSprite(v0));
     }
 
-// Signature already used...
-//    /**
-//     * @see com.sencha.gxt.chart.client.draw.sprite.TextSprite#TextSprite(com.sencha.gxt.chart.client.draw.sprite.TextSprite)
-//     */
-//    public TextSpriteBuilder(com.sencha.gxt.chart.client.draw.sprite.TextSprite v0) {
-//        this(new TextSprite(v0));
-//    }
-//
+    /**
+     * @see com.sencha.gxt.chart.client.draw.sprite.TextSprite#TextSprite()
+     */
+    public TextSpriteBuilder() {
+        this(new TextSprite());
+    }
+
     /**
      * @see com.sencha.gxt.chart.client.draw.sprite.TextSprite#setClipRectangle(com.sencha.gxt.core.client.util.PreciseRectangle)
      */
@@ -150,17 +145,17 @@ public class TextSpriteBuilder extends biz.freshcode.learn.gwt.client.uispike.bu
     }
 
     /**
-     * @see com.sencha.gxt.chart.client.draw.sprite.TextSprite#setScaling(double)
+     * @see com.sencha.gxt.chart.client.draw.sprite.TextSprite#setScaling(com.sencha.gxt.chart.client.draw.Scaling)
      */
-    public TextSpriteBuilder scaling(double v0) {
+    public TextSpriteBuilder scaling(com.sencha.gxt.chart.client.draw.Scaling v0) {
         textSprite.setScaling(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.chart.client.draw.sprite.TextSprite#setScaling(com.sencha.gxt.chart.client.draw.Scaling)
+     * @see com.sencha.gxt.chart.client.draw.sprite.TextSprite#setScaling(double)
      */
-    public TextSpriteBuilder scaling(com.sencha.gxt.chart.client.draw.Scaling v0) {
+    public TextSpriteBuilder scaling(double v0) {
         textSprite.setScaling(v0);
         return this;
     }

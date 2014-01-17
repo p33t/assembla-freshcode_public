@@ -1,5 +1,7 @@
 package biz.freshcode.learn.gwt.client.builder.gxt.form;
 
+import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
+import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.widget.core.client.form.SimpleComboBox;
 
 /**
@@ -7,8 +9,9 @@ import com.sencha.gxt.widget.core.client.form.SimpleComboBox;
  *
  * @see com.sencha.gxt.widget.core.client.form.SimpleComboBox
  */
-@biz.freshcode.learn.gwt.client.uispike.builder.BeanBuilder(SimpleComboBox.class)
-public class SimpleComboBoxBuilder<T> extends biz.freshcode.learn.gwt.client.uispike.builder.Construct.Parent<SimpleComboBoxBuilder<T>> {
+@BeanBuilder(SimpleComboBox.class)
+@SuppressWarnings("UnusedDeclaration")
+public class SimpleComboBoxBuilder<T> extends Construct.Parent<SimpleComboBoxBuilder<T>> {
     public final SimpleComboBox<T> simpleComboBox;
 
     public SimpleComboBoxBuilder(SimpleComboBox<T> v) {
@@ -23,17 +26,24 @@ public class SimpleComboBoxBuilder<T> extends biz.freshcode.learn.gwt.client.uis
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.form.SimpleComboBox#add(java.util.List)
+     * @see com.sencha.gxt.widget.core.client.form.SimpleComboBox#SimpleComboBox(com.sencha.gxt.cell.core.client.form.ComboBoxCell)
      */
-    public SimpleComboBoxBuilder<T> add(java.util.List<T> v0) {
-        simpleComboBox.add(v0);
-        return this;
+    public SimpleComboBoxBuilder(com.sencha.gxt.cell.core.client.form.ComboBoxCell<T> v0) {
+        this(new SimpleComboBox<T>(v0));
     }
 
     /**
      * @see com.sencha.gxt.widget.core.client.form.SimpleComboBox#add(T)
      */
     public SimpleComboBoxBuilder<T> add(T v0) {
+        simpleComboBox.add(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.form.SimpleComboBox#add(java.util.List)
+     */
+    public SimpleComboBoxBuilder<T> add(java.util.List<T> v0) {
         simpleComboBox.add(v0);
         return this;
     }
@@ -239,6 +249,14 @@ public class SimpleComboBoxBuilder<T> extends biz.freshcode.learn.gwt.client.uis
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.form.SimpleComboBox#setFinishEditOnEnter(boolean)
+     */
+    public SimpleComboBoxBuilder<T> finishEditOnEnter(boolean v0) {
+        simpleComboBox.setFinishEditOnEnter(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.form.SimpleComboBox#setForceSelection(boolean)
      */
     public SimpleComboBoxBuilder<T> forceSelection(boolean v0) {
@@ -247,17 +265,17 @@ public class SimpleComboBoxBuilder<T> extends biz.freshcode.learn.gwt.client.uis
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.form.SimpleComboBox#setHeight(int)
+     * @see com.sencha.gxt.widget.core.client.form.SimpleComboBox#setHeight(java.lang.String)
      */
-    public SimpleComboBoxBuilder<T> height(int v0) {
+    public SimpleComboBoxBuilder<T> height(java.lang.String v0) {
         simpleComboBox.setHeight(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.form.SimpleComboBox#setHeight(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.form.SimpleComboBox#setHeight(int)
      */
-    public SimpleComboBoxBuilder<T> height(java.lang.String v0) {
+    public SimpleComboBoxBuilder<T> height(int v0) {
         simpleComboBox.setHeight(v0);
         return this;
     }
@@ -427,6 +445,14 @@ public class SimpleComboBoxBuilder<T> extends biz.freshcode.learn.gwt.client.uis
      */
     public SimpleComboBoxBuilder<T> shadow(boolean v0) {
         simpleComboBox.setShadow(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.form.SimpleComboBox#setShadowPosition(com.sencha.gxt.core.client.dom.Layer.ShadowPosition)
+     */
+    public SimpleComboBoxBuilder<T> shadowPosition(com.sencha.gxt.core.client.dom.Layer.ShadowPosition v0) {
+        simpleComboBox.setShadowPosition(v0);
         return this;
     }
 
@@ -607,17 +633,17 @@ public class SimpleComboBoxBuilder<T> extends biz.freshcode.learn.gwt.client.uis
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.form.SimpleComboBox#setWidth(int)
+     * @see com.sencha.gxt.widget.core.client.form.SimpleComboBox#setWidth(java.lang.String)
      */
-    public SimpleComboBoxBuilder<T> width(int v0) {
+    public SimpleComboBoxBuilder<T> width(java.lang.String v0) {
         simpleComboBox.setWidth(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.form.SimpleComboBox#setWidth(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.form.SimpleComboBox#setWidth(int)
      */
-    public SimpleComboBoxBuilder<T> width(java.lang.String v0) {
+    public SimpleComboBoxBuilder<T> width(int v0) {
         simpleComboBox.setWidth(v0);
         return this;
     }

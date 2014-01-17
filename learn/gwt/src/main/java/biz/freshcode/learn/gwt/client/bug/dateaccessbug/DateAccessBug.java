@@ -1,7 +1,7 @@
 package biz.freshcode.learn.gwt.client.bug.dateaccessbug;
 
 import biz.freshcode.learn.gwt.client.builder.gxt.DialogBuilder;
-import biz.freshcode.learn.gwt.client.uispike.builder.container.FlowLayoutContainerBuilder;
+import biz.freshcode.learn.gwt.client.builder.gxt.container.FlowLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.SimpleBeanEditorDriver;

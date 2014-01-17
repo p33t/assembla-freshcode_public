@@ -23,6 +23,7 @@
     <properties>
         <!-- Convenience property to set the GWT version -->
         <gwtVersion>2.5.1</gwtVersion>
+        <!--TODO: <gwtVersion>2.6.0-rc3</gwtVersion>-->
         <gwtpVersion>1.1</gwtpVersion>
         <!-- NOTE: Might need to change this to 3.0.1 or x.0 for GPL access. -->
         <gxtVersion>3.0.6</gxtVersion>

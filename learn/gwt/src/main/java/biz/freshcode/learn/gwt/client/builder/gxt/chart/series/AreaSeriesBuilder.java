@@ -1,5 +1,7 @@
 package biz.freshcode.learn.gwt.client.builder.gxt.chart.series;
 
+import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
+import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.chart.client.chart.series.AreaSeries;
 
 /**
@@ -7,18 +9,15 @@ import com.sencha.gxt.chart.client.chart.series.AreaSeries;
  *
  * @see com.sencha.gxt.chart.client.chart.series.AreaSeries
  */
-@biz.freshcode.learn.gwt.client.uispike.builder.BeanBuilder(AreaSeries.class)
+@BeanBuilder(AreaSeries.class)
 @SuppressWarnings("UnusedDeclaration")
-public class AreaSeriesBuilder<M> extends biz.freshcode.learn.gwt.client.uispike.builder.Construct.Parent<AreaSeriesBuilder<M>> {
+public class AreaSeriesBuilder<M> extends Construct.Parent<AreaSeriesBuilder<M>> {
     public final AreaSeries<M> areaSeries;
 
     public AreaSeriesBuilder(AreaSeries<M> v) {
         areaSeries = v;
     }
 
-    /**
-     * @see com.sencha.gxt.chart.client.chart.series.AreaSeries#AreaSeries()
-     */
     public AreaSeriesBuilder() {
         this(new AreaSeries<M>());
     }

@@ -1,12 +1,11 @@
 package biz.freshcode.learn.gwt.client.uispike.nonuibuilder;
 
 import biz.freshcode.learn.gwt.client.uispike.Row;
+import biz.freshcode.learn.gwt.client.uispike.RowBuilder;
 import biz.freshcode.learn.gwt.client.uispike.RowRenderer;
-import biz.freshcode.learn.gwt.client.uispike.builder.RowBuilder;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.HTMLPanel;
-import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;

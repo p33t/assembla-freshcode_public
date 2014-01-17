@@ -1,11 +1,11 @@
 package biz.freshcode.learn.gwt.client.experiment.hoverwidget;
 
+import biz.freshcode.learn.gwt.client.builder.Construct;
 import biz.freshcode.learn.gwt.client.builder.gxt.container.HorizontalLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.builder.gxt.container.VerticalLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.experiment.hoverwidget.reuse.HoverWidgetSupport;
 import biz.freshcode.learn.gwt.client.experiment.mouseover.reuse.MouseOverState;
 import biz.freshcode.learn.gwt.client.experiment.mouseover.reuse.MultiMouseOverState;
-import biz.freshcode.learn.gwt.client.uispike.builder.Construct;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import biz.freshcode.learn.gwt.client.util.DummySelectHandler;
 import com.google.gwt.user.client.ui.HTMLPanel;
