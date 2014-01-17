@@ -1,7 +1,7 @@
 package biz.freshcode.learn.gwt.client.uispike.gxt;
 
+import biz.freshcode.learn.gwt.client.builder.freshcode.uispike.RowBuilder;
 import biz.freshcode.learn.gwt.client.uispike.Row;
-import biz.freshcode.learn.gwt.client.uispike.RowBuilder;
 import biz.freshcode.learn.gwt.client.uispike.RowRenderer;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
