@@ -1,4 +1,4 @@
-package biz.freshcode.learn.gwt.client.uispike.builder;
+package biz.freshcode.learn.gwt.client.builder;
 
 /**
  * A builder construct that iterates over a collection.
