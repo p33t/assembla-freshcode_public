@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+    <!--
+        <Resource name="jdbc/appDb"
+                      auth="Container"
+                      type="javax.sql.DataSource"
+                      driverClassName="org.postgresql.Driver"
+                      url="jdbc:postgresql://localhost:5432/peregrine"
+                      username="peregrine"
+                      password="xxxx"
+                      maxActive="20"
+                      maxIdle="10"
+                      maxWait="-1"/>
+    -->
+
+    <!-- It appears this gigantic POS needs to reference a realm declared in server.xml
+    <Realm className="org.apache.catalina.realm.DataSourceRealm"
+       dataSourceName="jdbc/appDb"
+       userTable="authuser" userNameCol="username" userCredCol="password"
+       userRoleTable="authrole" roleNameCol="rolename"/>
+     -->
+
+    <!-- Authentication config / JDBC realm -->
+    <Realm className="org.apache.catalina.realm.JDBCRealm"
+           driverName="org.postgresql.Driver"
+           connectionURL="jdbc:postgresql://localhost:5432/peregrine?user=peregrine&amp;password=xxxx"
+           userTable="authuser" userNameCol="username" userCredCol="password"
+           userRoleTable="authrole" roleNameCol="rolename"/>
+</Context>

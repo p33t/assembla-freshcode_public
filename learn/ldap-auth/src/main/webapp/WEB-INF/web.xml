@@ -6,13 +6,6 @@
     <display-name>LDAP Auth demo project</display-name>
 
 
-    <!--  Steps to get this working....
-    Add this to $CATALINA_HOME/conf/tomcat-users.xml:
-        <role rolename="manager-gui"/>
-        <role rolename="tomcat"/>
-        <user = username="tomcat" password="tomcat" roles="manager-gui,tomcat"/>
-    Enable HTTPS in $CATALINA_HOME/conf/server.xml
-    -->
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>everything</web-resource-name>
@@ -20,7 +13,7 @@
         </web-resource-collection>
 
         <auth-constraint>
-            <role-name>tomcat</role-name>
+            <role-name>SYSTEM_ADMINISTRATOR</role-name>
         </auth-constraint>
 
         <user-data-constraint>
@@ -30,11 +23,10 @@
 
     <login-config>
         <auth-method>BASIC</auth-method>
-        <!-- NOTE: This will automatically use the realm defined in server.xml -->
-        <realm-name>Login with tomcat x2</realm-name>
+        <realm-name>Configured Realm</realm-name>
     </login-config>
 
     <security-role>
-        <role-name>tomcat</role-name>
+        <role-name>SYSTEM_ADMINISTRATOR</role-name>
     </security-role>
 </web-app>
