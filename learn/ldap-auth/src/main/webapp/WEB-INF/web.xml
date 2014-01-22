@@ -13,20 +13,28 @@
         <user = username="tomcat" password="tomcat" roles="manager-gui,tomcat"/>
     Enable HTTPS in $CATALINA_HOME/conf/server.xml
     -->
-    <!-- Same as that used for default tomcat installation (see $CATALINA_HOME/conf/server.xml)
-          <Realm className="org.apache.catalina.realm.LockOutRealm">
-            <Realm className="org.apache.catalina.realm.UserDatabaseRealm"
-                   resourceName="UserDatabase"/>
-          </Realm>
-    -->
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>everything</web-resource-name>
             <url-pattern>/*</url-pattern>
         </web-resource-collection>
 
+        <auth-constraint>
+            <role-name>tomcat</role-name>
+        </auth-constraint>
+
         <user-data-constraint>
             <transport-guarantee>CONFIDENTIAL</transport-guarantee>
         </user-data-constraint>
     </security-constraint>
+
+    <login-config>
+        <auth-method>BASIC</auth-method>
+        <!-- NOTE: This will automatically use the realm defined in server.xml -->
+        <realm-name>Login with tomcat x2</realm-name>
+    </login-config>
+
+    <security-role>
+        <role-name>tomcat</role-name>
+    </security-role>
 </web-app>
