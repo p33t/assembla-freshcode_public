@@ -20,8 +20,11 @@
        userRoleTable="authrole" roleNameCol="rolename"/>
      -->
 
-    <!-- Authentication config / JDBC realm -->
+    <!-- Authentication config / JDBC realm
+     NOTE: Roles have been disabled with 'authOnly' and use of '*' role in web.xml
+    -->
     <Realm className="org.apache.catalina.realm.JDBCRealm"
+           allRolesMode="authOnly"
            driverName="org.postgresql.Driver"
            connectionURL="jdbc:postgresql://localhost:5432/peregrine?user=peregrine&amp;password=xxxx"
            userTable="authuser" userNameCol="username" userCredCol="password"

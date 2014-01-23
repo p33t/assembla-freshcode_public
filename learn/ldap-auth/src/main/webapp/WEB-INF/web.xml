@@ -12,9 +12,11 @@
             <url-pattern>/*</url-pattern>
         </web-resource-collection>
 
-        <!-- NOTE: Without any roles the container does not bother to authenticate -->
+        <!-- NOTE: Without any roles the container does not bother to authenticate
+         ... unless we play with 'allRolesMode' in the realm config and use '*'
+        -->
         <auth-constraint>
-            <role-name>SYSTEM_ADMINISTRATOR</role-name>
+            <role-name>*</role-name>
         </auth-constraint>
 
         <user-data-constraint>
@@ -26,8 +28,4 @@
         <auth-method>BASIC</auth-method>
         <realm-name>Configured Realm</realm-name>
     </login-config>
-
-    <security-role>
-        <role-name>SYSTEM_ADMINISTRATOR</role-name>
-    </security-role>
 </web-app>
