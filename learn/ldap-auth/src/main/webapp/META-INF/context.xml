@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- NOTE: This file is commonly not bundled with the WAR but kept and deployed externally so it can remain configurable.-->
 <Context>
     <!--
         <Resource name="jdbc/appDb"
@@ -22,11 +23,12 @@
 
     <!-- Authentication config / JDBC realm
      NOTE: Roles have been disabled with 'authOnly' and use of '*' role in web.xml
+     Only needed roles: userRoleTable="authrole" roleNameCol="rolename"
     -->
     <Realm className="org.apache.catalina.realm.JDBCRealm"
            allRolesMode="authOnly"
            driverName="org.postgresql.Driver"
            connectionURL="jdbc:postgresql://localhost:5432/peregrine?user=peregrine&amp;password=xxxx"
            userTable="authuser" userNameCol="username" userCredCol="password"
-           userRoleTable="authrole" roleNameCol="rolename"/>
+            />
 </Context>
