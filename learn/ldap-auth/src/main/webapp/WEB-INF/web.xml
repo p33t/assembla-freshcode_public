@@ -12,6 +12,7 @@
             <url-pattern>/*</url-pattern>
         </web-resource-collection>
 
+        <!-- NOTE: Without any roles the container does not bother to authenticate -->
         <auth-constraint>
             <role-name>SYSTEM_ADMINISTRATOR</role-name>
         </auth-constraint>
