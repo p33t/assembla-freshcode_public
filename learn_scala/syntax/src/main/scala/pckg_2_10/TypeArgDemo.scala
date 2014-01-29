@@ -2,6 +2,8 @@ package pckg_2_10
 
 import pckg_2_10.fixture.SomeClass
 
+// import scala.reflect.runtime.universe._
+
 /**
  * Implicit access to the type args
  */
@@ -10,6 +12,7 @@ object TypeArgDemo {
     classOp1[SomeClass]()
     classOp2[SomeClass]()
     classOp3[SomeClass]()
+//    classOp4[SomeClass]()
   }
 
   def classOp1[T]()(implicit manifest: Manifest[T]) {
@@ -23,4 +26,8 @@ object TypeArgDemo {
   def classOp3[T]()(implicit tag: reflect.ClassTag[T]) {
     println("Class: " + tag.runtimeClass.getName)
   }
+
+  //  def classOp4[T : TypeTag]() {
+  //    println("Class: " + typeTag[T].runtimeClass.getName)
+  //  }
 }
