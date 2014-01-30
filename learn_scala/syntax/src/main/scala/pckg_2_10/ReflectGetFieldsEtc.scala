@@ -25,11 +25,11 @@ object ReflectGetFieldsEtc {
    */
   trait FieldLister {
     def fieldList: List[String] = {
-      val lists = stack.map(_.getDeclaredFields.toList)
+      val lists = classStack.map(_.getDeclaredFields.toList)
       build(Nil, lists.map(_.map(_.getName)))
     }
 
-    protected def stack: List[Class[_]] = Nil
+    protected def classStack: List[Class[_]] = Nil
 
     private def build(soFar: List[String], remaining: List[List[String]]): List[String] = {
       remaining match {
@@ -44,28 +44,28 @@ object ReflectGetFieldsEtc {
   }
 
   trait FieldTrait extends FieldLister {
-    override protected def stack = new FieldTrait {}.getClass :: super.stack
+    override protected def classStack = new FieldTrait {}.getClass :: super.classStack
 
     val f1 = "Hello"
     val f11 = "Hello again"
   }
 
   trait FieldTrait2 extends FieldTrait {
-    override protected def stack = new FieldTrait2 {}.getClass :: super.stack
+    override protected def classStack = new FieldTrait2 {}.getClass :: super.classStack
 
     val f2 = "World"
     val f22 = "Worlds"
   }
 
   trait FieldTrait3 extends FieldTrait2 {
-    override protected def stack = new FieldTrait3 {}.getClass :: super.stack
+    override protected def classStack = new FieldTrait3 {}.getClass :: super.classStack
 
     val f3 = "World"
     val f33 = "Worlds"
   }
 
   class FieldClass extends FieldTrait3 {
-    override protected def stack = classOf[FieldClass] :: super.stack
+    override protected def classStack = classOf[FieldClass] :: super.classStack
 
     val fc = "!"
   }
