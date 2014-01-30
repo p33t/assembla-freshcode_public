@@ -8,12 +8,18 @@ import java.lang.reflect.Field
  */
 object ReflectGetFieldsEtc {
   def main(args: Array[String]) {
-    val cls = classOf[FieldClass]
+    val inst = new FieldClass
+    val cls = inst.getClass
     println(cls.getFields.toList)
     println(cls.getDeclaredFields.toList.map(_.getName))
 
-    println("custom: " + new FieldClass().fieldList.map(_.getName))
+    println("custom: " + new FieldClass().fieldList.map(fieldDesc))
 
+    def fieldDesc(f: Field) = {
+      val real = cls.getDeclaredField(f.getName)
+      real.setAccessible(true)
+      f.getName + ":" + real.get(inst)
+    }
   }
 
   /**
