@@ -16,16 +16,28 @@ object ReflectGetFieldsEtc {
 
   }
 
+  /**
+   * Facilitates listing of fields in declared order.
+   */
   trait FieldLister {
-    def fieldList: List[Field] = Nil
+    protected def stack: List[Class[_]] = Nil
 
-    protected def declared: List[Field] = Nil
-
-    protected final def calcDeclared(cls: Class[_]) = {
-      cls.getDeclaredFields.toList
+    private def build(soFar: List[Field], remaining: List[List[Field]]): List[Field] = {
+      remaining match {
+        case Nil => soFar
+        case first :: Nil => first ::: soFar
+        case first :: second :: tail => {
+          val local = subtractTail(first, second)
+          build(local ::: soFar, remaining.tail)
+        }
+      }
     }
 
-    protected final def subtractTail(master: List[Field], tail: List[Field]) = {
+    def fieldList: List[Field] = {
+      build(Nil, stack.map(_.getDeclaredFields.toList))
+    }
+
+    private final def subtractTail(master: List[Field], tail: List[Field]) = {
       tail.length match {
         case 0 => master
         case l => master.take(master.length - l)
@@ -34,47 +46,28 @@ object ReflectGetFieldsEtc {
   }
 
   trait FieldTrait extends FieldLister {
+    override protected def stack = new FieldTrait {}.getClass :: super.stack
+
     val f1 = "Hello"
     val f11 = "Hello again"
-    private lazy val myFields = calcDeclared(new FieldTrait {}.getClass)
-
-    override def fieldList = {
-      val local = subtractTail(myFields, super.declared)
-      super.fieldList ::: local
-    }
-
-    override protected def declared = myFields
   }
 
   trait FieldTrait2 extends FieldTrait {
+    override protected def stack = new FieldTrait2 {}.getClass :: super.stack
+
     val f2 = "World"
     val f22 = "Worlds"
-
-    private lazy val myFields = calcDeclared(new FieldTrait2 {}.getClass)
-
-    override def fieldList = {
-      val local = subtractTail(myFields, super.declared)
-      super.fieldList ::: local
-    }
-
-    override protected def declared = myFields
   }
 
   trait FieldTrait3 extends FieldTrait2 {
+    override protected def stack = new FieldTrait3 {}.getClass :: super.stack
+
     val f3 = "World"
     val f33 = "Worlds"
-
-    private lazy val myFields = calcDeclared(new FieldTrait3 {}.getClass)
-
-    override def fieldList = {
-      val local = subtractTail(myFields, super.declared)
-      super.fieldList ::: local
-    }
-
-    override protected def declared = myFields  }
-
-  class FieldClass extends FieldTrait3 {
-    val fc = "!"
   }
 
+  class FieldClass extends FieldTrait3 {
+    override protected def stack = classOf[FieldClass] :: super.stack
+    val fc = "!"
+  }
 }
