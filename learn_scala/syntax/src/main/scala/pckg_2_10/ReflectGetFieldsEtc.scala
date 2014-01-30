@@ -15,10 +15,10 @@ object ReflectGetFieldsEtc {
 
     println("custom: " + new FieldClass().fieldList.map(fieldDesc))
 
-    def fieldDesc(f: Field) = {
-      val real = cls.getDeclaredField(f.getName)
+    def fieldDesc(f: String) = {
+      val real = cls.getDeclaredField(f)
       real.setAccessible(true)
-      f.getName + ":" + real.get(inst)
+      f + ":" + real.get(inst)
     }
   }
 
@@ -26,8 +26,9 @@ object ReflectGetFieldsEtc {
    * Facilitates listing of fields in declared order.
    */
   trait FieldLister {
-    def fieldList: List[Field] = {
-      build(Nil, stack.map(_.getDeclaredFields.toList))
+    def fieldList: List[String] = {
+      val listList = stack.map(_.getDeclaredFields.toList)
+      build(Nil, listList).map(_.getName)
     }
 
     protected def stack: List[Class[_]] = Nil
