@@ -1,7 +1,5 @@
 package pckg_2_10
 
-import java.lang.reflect.Field
-
 
 /**
  * Trying to get the fields in declared order (which reflects dependency).
@@ -27,27 +25,20 @@ object ReflectGetFieldsEtc {
    */
   trait FieldLister {
     def fieldList: List[String] = {
-      val listList = stack.map(_.getDeclaredFields.toList)
-      build(Nil, listList).map(_.getName)
+      val lists = stack.map(_.getDeclaredFields.toList)
+      build(Nil, lists.map(_.map(_.getName)))
     }
 
     protected def stack: List[Class[_]] = Nil
 
-    private def build(soFar: List[Field], remaining: List[List[Field]]): List[Field] = {
+    private def build(soFar: List[String], remaining: List[List[String]]): List[String] = {
       remaining match {
         case Nil => soFar
         case first :: Nil => first ::: soFar
         case first :: second :: tail => {
-          val local = subtractTail(first, second)
+          val local = first.filterNot(second.contains)
           build(local ::: soFar, remaining.tail)
         }
-      }
-    }
-
-    private def subtractTail(master: List[Field], tail: List[Field]) = {
-      tail.length match {
-        case 0 => master
-        case l => master.take(master.length - l)
       }
     }
   }
@@ -75,6 +66,12 @@ object ReflectGetFieldsEtc {
 
   class FieldClass extends FieldTrait3 {
     override protected def stack = classOf[FieldClass] :: super.stack
+
     val fc = "!"
   }
+
+  class RandomParentClass {
+    val youShouldNotSeeThis = "Whoops"
+  }
+
 }
