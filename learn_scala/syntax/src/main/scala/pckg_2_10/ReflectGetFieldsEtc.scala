@@ -20,6 +20,10 @@ object ReflectGetFieldsEtc {
    * Facilitates listing of fields in declared order.
    */
   trait FieldLister {
+    def fieldList: List[Field] = {
+      build(Nil, stack.map(_.getDeclaredFields.toList))
+    }
+
     protected def stack: List[Class[_]] = Nil
 
     private def build(soFar: List[Field], remaining: List[List[Field]]): List[Field] = {
@@ -33,11 +37,7 @@ object ReflectGetFieldsEtc {
       }
     }
 
-    def fieldList: List[Field] = {
-      build(Nil, stack.map(_.getDeclaredFields.toList))
-    }
-
-    private final def subtractTail(master: List[Field], tail: List[Field]) = {
+    private def subtractTail(master: List[Field], tail: List[Field]) = {
       tail.length match {
         case 0 => master
         case l => master.take(master.length - l)
