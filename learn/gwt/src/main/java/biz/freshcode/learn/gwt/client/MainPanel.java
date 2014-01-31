@@ -25,6 +25,7 @@ import biz.freshcode.learn.gwt.client.experiment.chart.step.StepChartDemo;
 import biz.freshcode.learn.gwt.client.experiment.contextmenu.ContextMenuDemo;
 import biz.freshcode.learn.gwt.client.experiment.dnd.DndUi;
 import biz.freshcode.learn.gwt.client.experiment.dynamiclayout.DynamicLayoutDemo;
+import biz.freshcode.learn.gwt.client.experiment.fieldsync.FieldSyncDemo;
 import biz.freshcode.learn.gwt.client.experiment.flextable.FlexTableDemo;
 import biz.freshcode.learn.gwt.client.experiment.forms.FormsDemo;
 import biz.freshcode.learn.gwt.client.experiment.forms2.Forms2Demo;
@@ -151,6 +152,12 @@ public class MainPanel extends Composite implements AcceptsOneWidget {
                                 }))
                                 .menuBar))
                         .addItem(new MenuItem("Experiments", subMenu()
+                                .addItem(new MenuItem("Field Sync (agressive dirty detect)", new Command() {
+                                    public void execute() {
+                                        IsWidget w = GWT.create(FieldSyncDemo.class);
+                                        replaceContent(w);
+                                    }
+                                }))
                                 .addItem(new MenuItem("Flex Table", new Command() {
                                     public void execute() {
                                         IsWidget w = GWT.create(FlexTableDemo.class);
