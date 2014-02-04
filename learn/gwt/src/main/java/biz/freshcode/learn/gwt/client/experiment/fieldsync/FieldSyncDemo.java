@@ -14,10 +14,13 @@ import com.google.gwt.user.client.Command;
 import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
 import com.sencha.gxt.widget.core.client.event.BlurEvent;
 import com.sencha.gxt.widget.core.client.event.CollapseEvent;
+import com.sencha.gxt.widget.core.client.event.ExpandEvent;
 import com.sencha.gxt.widget.core.client.event.FocusEvent;
 import com.sencha.gxt.widget.core.client.form.DateField;
 import com.sencha.gxt.widget.core.client.form.TextArea;
 import com.sencha.gxt.widget.core.client.form.TextField;
+
+import java.util.Date;
 
 import static com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData;
 
@@ -35,19 +38,27 @@ public class FieldSyncDemo extends AbstractIsWidget<BorderLayoutContainer> {
                                 .widget(text = new TextField())
                                 .fieldLabel)
                         .add(new FieldLabelBuilder()
-                                .text("Text")
+                                .text("Date")
                                 .widget(date = new DateField())
                                 .fieldLabel)
                         .verticalLayoutContainer
                 )
-                .southWidget(fb = new TextAreaBuilder()
-                        .textArea, new BorderLayoutData(100))
+                .eastWidget(fb = new TextAreaBuilder()
+                        .textArea, new BorderLayoutData(200))
                 .borderLayoutContainer;
 
         text.addValueChangeHandler(new ValueChangeHandler<String>() {
             @Override
             public void onValueChange(ValueChangeEvent<String> event) {
                 msg("text value changed to: " + event.getValue());
+            }
+        });
+
+        date.addExpandHandler(new ExpandEvent.ExpandHandler() {
+            @Override
+            public void onExpand(ExpandEvent event) {
+                msg("---");
+                msg("date expand");
             }
         });
 
@@ -67,6 +78,12 @@ public class FieldSyncDemo extends AbstractIsWidget<BorderLayoutContainer> {
             @Override
             public void onFocus(FocusEvent event) {
                 msg("date focus");
+            }
+        });
+        date.addValueChangeHandler(new ValueChangeHandler<Date>() {
+            @Override
+            public void onValueChange(ValueChangeEvent<Date> event) {
+                msg("date changed to " + event.getValue());
             }
         });
 
@@ -113,6 +130,6 @@ public class FieldSyncDemo extends AbstractIsWidget<BorderLayoutContainer> {
     }
 
     private void msg(String msg) {
-        fb.setValue(msg + "\n" + fb.getValue());
+        fb.setValue(fb.getValue() + "\n" + msg);
     }
 }
