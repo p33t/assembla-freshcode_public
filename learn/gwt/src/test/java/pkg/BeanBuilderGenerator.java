@@ -5,10 +5,10 @@ import biz.freshcode.b_generation.BgenUtil;
 import biz.freshcode.b_generation.DefaultBeanBuilderGenerator;
 import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
 import biz.freshcode.learn.gwt.client.builder.Construct;
-import com.sencha.gxt.widget.core.client.grid.GroupSummaryView;
+import com.sencha.gxt.widget.core.client.container.NorthSouthContainer;
 
 public class BeanBuilderGenerator extends DefaultBeanBuilderGenerator {
-    static final Class CLASS = GroupSummaryView.class; //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    static final Class CLASS = NorthSouthContainer.class; //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     public static final String BASE_PKG = "biz.freshcode.learn.gwt.client.builder";
 
     public static void main(String[] args) {
