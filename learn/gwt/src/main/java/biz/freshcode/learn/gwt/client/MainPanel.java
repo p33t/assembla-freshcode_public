@@ -34,6 +34,7 @@ import biz.freshcode.learn.gwt.client.experiment.gridgroupby.GridGroupByDemo;
 import biz.freshcode.learn.gwt.client.experiment.hoverwidget.HoverWidgetDemo;
 import biz.freshcode.learn.gwt.client.experiment.iswidget.IsWidgetDemo;
 import biz.freshcode.learn.gwt.client.experiment.jsni.JsniDemo;
+import biz.freshcode.learn.gwt.client.experiment.layout.LayoutDemo;
 import biz.freshcode.learn.gwt.client.experiment.mouseover.MouseOverWidget;
 import biz.freshcode.learn.gwt.client.experiment.mvp.gwtmvp.GmPlace;
 import biz.freshcode.learn.gwt.client.experiment.mvp.gwtp.GmdModule;
@@ -257,6 +258,12 @@ public class MainPanel extends Composite implements AcceptsOneWidget {
                                         .menuBar))
                                 .menuBar))
                         .addItem(new MenuItem("GXT", subMenu()
+                                .addItem(new MenuItem("Layout", new Command() {
+                                    public void execute() {
+                                        IsWidget w = GWT.create(LayoutDemo.class);
+                                        replaceContent(w);
+                                    }
+                                }))
                                 .addItem(new MenuItem("Busy", new Command() {
                                     public void execute() {
                                         IsWidget w = GWT.create(BusyDemo.class);
