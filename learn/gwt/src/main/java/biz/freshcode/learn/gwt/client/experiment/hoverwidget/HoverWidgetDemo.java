@@ -19,6 +19,9 @@ import com.sencha.gxt.widget.core.client.info.Info;
 
 import static biz.freshcode.learn.gwt.client.experiment.hoverwidget.reuse.HoverWidgetSupport.hoverWidgetSupport;
 
+/**
+ * NOTE: It is also possible to hover over a snippet of SafeHtml by wrapping it in a div with an id.
+ */
 public class HoverWidgetDemo extends AbstractIsWidget {
     private HoverWidgetSupport<ToolButton> hoverSupp;
     private HoverWidgetSupport<ToolButton> multiHover;
