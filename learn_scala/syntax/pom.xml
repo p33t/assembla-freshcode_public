@@ -19,6 +19,12 @@
             <version>${scala.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-reflect</artifactId>
+            <version>${scala.version}</version>
+        </dependency>
+
         <!-- Old actors library (from 2.9)... replaced by Akka -->
         <dependency>
           <groupId>org.scala-lang</groupId>
