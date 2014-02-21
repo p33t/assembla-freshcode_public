@@ -27,7 +27,6 @@ import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.cell.core.client.form.ComboBoxCell;
 import com.sencha.gxt.core.client.ToStringValueProvider;
-import com.sencha.gxt.data.shared.Converter;
 import com.sencha.gxt.data.shared.ListStore;
 import com.sencha.gxt.data.shared.StringLabelProvider;
 import com.sencha.gxt.dnd.core.client.DndDragStartEvent;
@@ -127,21 +126,8 @@ public class GxtGridDemo extends AbstractIsWidget {
         GridInlineEditing<RowEntity> editing = new GridInlineEditing<RowEntity>(grid);
         // Note: String-String converter does nothing to help free-form string entry.
 
-        // trying to reproduce hover highlight issue in combo drop down area (doesn't cause it)
-        Converter converter = new Converter<String, String>() {
-            @Override
-            public String convertFieldValue(String s) {
-                if (s == null) return null;
-                return s.toUpperCase();
-            }
-
-            @Override
-            public String convertModelValue(String s) {
-                if (s == null) return null;
-                return s.toLowerCase();
-            }
-        };
-        editing.addEditor(strCol, converter, combo);
+        // NOTE: Highlight hover issue only happens when field has text in it
+        editing.addEditor(strCol, combo);
 
         editing.addCompleteEditHandler(new CompleteEditEvent.CompleteEditHandler<RowEntity>() {
             @Override
