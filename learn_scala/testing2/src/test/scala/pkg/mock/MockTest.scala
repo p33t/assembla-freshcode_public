@@ -18,4 +18,15 @@ class MockTest extends FunSuite with MockFactory {
     s.traitMethod("arg")
     (s.traitMethod _).verify("arg")
   }
+
+  test("Mocking a method") {
+    val mockProcStr = mock[String => String]
+    val subject = new ComplexTrait {
+      val procStr = mockProcStr
+    }
+
+    (mockProcStr.apply _).expects("bruce").returns("lee")
+
+    assert(subject("bruce") === "lee")
+  }
 }
