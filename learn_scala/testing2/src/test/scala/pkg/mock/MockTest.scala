@@ -24,7 +24,8 @@ class MockTest extends FunSuite with MockFactory {
     val mockProcIter = mock[List[String] => Int]
     val subject = new ComplexTrait {
       val procStr = mockProcStr
-      val procIter = mockProcIter
+      // NOTE: Can't mock 'Iterable' arg methods directly... need to adapt to 'List'.
+      val procIter = (ss: Iterable[String]) => mockProcIter(ss.toList)
     }
 
     (mockProcStr.apply _).expects("bruce").returns("lee")
