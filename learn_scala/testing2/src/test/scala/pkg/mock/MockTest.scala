@@ -21,12 +21,18 @@ class MockTest extends FunSuite with MockFactory {
 
   test("Mocking a method") {
     val mockProcStr = mock[String => String]
+    val mockProcIter = mock[List[String] => Int]
     val subject = new ComplexTrait {
       val procStr = mockProcStr
+      val procIter = mockProcIter
     }
 
     (mockProcStr.apply _).expects("bruce").returns("lee")
 
     assert(subject("bruce") === "lee")
+
+    (mockProcIter.apply _).expects(List("a", "b", "c")).returns(99)
+
+    assert(subject.alt(List("a", "b", "c")) === 99)
   }
 }
