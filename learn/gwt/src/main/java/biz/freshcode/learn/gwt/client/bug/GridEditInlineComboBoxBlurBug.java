@@ -4,23 +4,24 @@ import com.google.gwt.cell.client.AbstractCell;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
-import com.google.gwt.user.client.ui.HTMLPanel;
-import com.google.gwt.user.client.ui.IsWidget;
-import com.google.gwt.user.client.ui.RootLayoutPanel;
-import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.safehtml.shared.SafeHtmlUtils;
+import com.google.gwt.user.client.ui.*;
 import com.sencha.gxt.cell.core.client.form.ComboBoxCell;
 import com.sencha.gxt.core.client.IdentityValueProvider;
+import com.sencha.gxt.core.client.Style;
 import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.data.shared.*;
+import com.sencha.gxt.widget.core.client.button.IconButton;
+import com.sencha.gxt.widget.core.client.button.TextButton;
+import com.sencha.gxt.widget.core.client.button.ToolButton;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.Viewport;
+import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.form.PropertyEditor;
 import com.sencha.gxt.widget.core.client.form.SimpleComboBox;
 import com.sencha.gxt.widget.core.client.form.TextField;
-import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
-import com.sencha.gxt.widget.core.client.grid.ColumnModel;
+import com.sencha.gxt.widget.core.client.grid.*;
 import com.sencha.gxt.widget.core.client.grid.Grid;
-import com.sencha.gxt.widget.core.client.grid.RowNumberer;
 import com.sencha.gxt.widget.core.client.grid.editing.GridInlineEditing;
 
 import java.text.ParseException;
@@ -44,6 +45,7 @@ public class GridEditInlineComboBoxBlurBug implements IsWidget, EntryPoint {
         List<ColumnConfig<MyBean, ?>> cols = new ArrayList<ColumnConfig<MyBean, ?>>();
         RowNumberer rowNums = new RowNumberer(new IdentityValueProvider());
         cols.add(rowNums);
+        rowNums.setWidget(toolButton(ToolButton.PLUS), SafeHtmlUtils.fromString("#"));
 
         ColumnConfig<MyBean, String> strCol = new ColumnConfig<MyBean, String>(ACCESS.str());
         strCol.setHeader("Str");
@@ -67,16 +69,51 @@ public class GridEditInlineComboBoxBlurBug implements IsWidget, EntryPoint {
 
         grid = new Grid<MyBean>(store, new ColumnModel<MyBean>(cols));
         rowNums.initPlugin(grid);
+        grid.getSelectionModel().setSelectionMode(Style.SelectionMode.SINGLE);
+        GridView<MyBean> view = grid.getView();
+        view.setColumnLines(true);
+        view.setTrackMouseOver(false);
+        view.setStripeRows(true);
+
         setupEditing(strCol, intCol, dummyCol);
 
         String msg = "To reproduce the error:\n";
-        msg += "- Select a value in the 'Integer' column\n";
-        msg += "- Click another cell on the same row\n";
-        msg += "=> The value does not get saved\n";
-        msg += "Contrast this with pressing 'Tab' instead of clicking out of cell\n";
+        msg += "- Select a value from the combo in the 'Integer' column\n";
+        msg += "- Click '+'  to add a new row\n";
+        msg += "- Select a value from the combo in the 'Integer' column of the new row\n";
+        msg += "=> The combo disappears at first attempt.  It might also still have the old value.\n";
+        msg += "Contrast this with clicking 'Add Row'; using a ToolButton in a header has strange focus effects\n";
+        vlc.add(new HTMLPanel(new SafeHtmlBuilder()
+                .appendHtmlConstant("<p>")
+                .appendEscapedLines(msg)
+                .appendHtmlConstant("</p>")
+                .toSafeHtml()
+        ));
 
-        vlc.add(new HTMLPanel(new SafeHtmlBuilder().appendEscapedLines(msg).toSafeHtml()));
+        vlc.add(new TextButton("Add Row", new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent event) {
+                addNew();
+            }
+        }));
+        vlc.add(new HTML("<p>External ToolButton is fine"));
+        vlc.add(toolButton(ToolButton.DOWN));
         vlc.add(grid);
+    }
+
+    private ToolButton toolButton(IconButton.IconConfig icon) {
+        return new ToolButton(icon, new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent event) {
+                addNew();
+            }
+        });
+    }
+
+    private void addNew() {
+        MyBean bean = new MyBean();
+        store.add(bean);
+        grid.getSelectionModel().select(false, bean);
     }
 
     @Override
