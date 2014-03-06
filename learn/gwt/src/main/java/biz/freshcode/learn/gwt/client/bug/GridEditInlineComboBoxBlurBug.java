@@ -53,6 +53,7 @@ public class GridEditInlineComboBoxBlurBug implements IsWidget, EntryPoint {
 
         ColumnConfig<MyBean, Integer> intCol = new ColumnConfig<MyBean, Integer>(ACCESS.integer());
         intCol.setHeader("Integer");
+        // no help... intCol.setWidget(addRowButton("Integer"), SafeHtmlUtils.fromString("Integer"));
         intCol.setCell(new AbstractCell<Integer>() {
             @Override
             public void render(Context context, Integer value, SafeHtmlBuilder sb) {
@@ -82,7 +83,7 @@ public class GridEditInlineComboBoxBlurBug implements IsWidget, EntryPoint {
         msg += "- Click '+'  to add a new row\n";
         msg += "- Select a value from the combo in the 'Integer' column of the new row\n";
         msg += "=> The combo disappears at first attempt.  It might also still have the old value.\n";
-        msg += "Contrast this with clicking 'Add Row'; using a ToolButton in a header has strange focus effects\n";
+        msg += "Contrast this with clicking 'Add Row'; using a button in a header has strange focus effects\n";
         vlc.add(new HTMLPanel(new SafeHtmlBuilder()
                 .appendHtmlConstant("<p>")
                 .appendEscapedLines(msg)
@@ -90,15 +91,19 @@ public class GridEditInlineComboBoxBlurBug implements IsWidget, EntryPoint {
                 .toSafeHtml()
         ));
 
-        vlc.add(new TextButton("Add Row", new SelectEvent.SelectHandler() {
+        vlc.add(addRowButton("Add Row"));
+        vlc.add(new HTML("<p>External ToolButton is fine</p>"));
+        vlc.add(toolButton(ToolButton.DOWN));
+        vlc.add(grid);
+    }
+
+    private TextButton addRowButton(String text) {
+        return new TextButton(text, new SelectEvent.SelectHandler() {
             @Override
             public void onSelect(SelectEvent event) {
                 addNew();
             }
-        }));
-        vlc.add(new HTML("<p>External ToolButton is fine"));
-        vlc.add(toolButton(ToolButton.DOWN));
-        vlc.add(grid);
+        });
     }
 
     private ToolButton toolButton(IconButton.IconConfig icon) {
@@ -114,6 +119,19 @@ public class GridEditInlineComboBoxBlurBug implements IsWidget, EntryPoint {
         MyBean bean = new MyBean();
         store.add(bean);
         grid.getSelectionModel().select(false, bean);
+
+        /* Doesn't help...
+        btnAddRow.focus();
+        Scheduler.get().scheduleDeferred(new Scheduler.ScheduledCommand() {
+            @Override
+            public void execute() {
+                MyBean bean = new MyBean();
+                store.add(bean);
+                grid.getSelectionModel().select(false, bean);
+                grid.focus();
+            }
+        });
+        */
     }
 
     @Override
