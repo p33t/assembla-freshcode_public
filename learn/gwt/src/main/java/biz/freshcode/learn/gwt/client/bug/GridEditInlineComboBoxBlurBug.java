@@ -45,6 +45,7 @@ public class GridEditInlineComboBoxBlurBug implements IsWidget, EntryPoint {
         List<ColumnConfig<MyBean, ?>> cols = new ArrayList<ColumnConfig<MyBean, ?>>();
         RowNumberer<MyBean> rowNums = new RowNumberer<MyBean>(new IdentityValueProvider<MyBean>());
         cols.add(rowNums);
+        // NOTE: Premptively 'completing' the edit when mouse-over the button doesn't help.
         rowNums.setWidget(toolButton(ToolButton.PLUS), SafeHtmlUtils.fromString("#"));
         /* No better...
         HTML htmlAdd = new HTML("+");
