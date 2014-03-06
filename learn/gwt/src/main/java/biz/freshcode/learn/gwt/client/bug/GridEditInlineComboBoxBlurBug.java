@@ -46,6 +46,16 @@ public class GridEditInlineComboBoxBlurBug implements IsWidget, EntryPoint {
         RowNumberer<MyBean> rowNums = new RowNumberer<MyBean>(new IdentityValueProvider<MyBean>());
         cols.add(rowNums);
         rowNums.setWidget(toolButton(ToolButton.PLUS), SafeHtmlUtils.fromString("#"));
+        /* No better...
+        HTML htmlAdd = new HTML("+");
+        htmlAdd.addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                addNew();
+            }
+        });
+        rowNums.setWidget(htmlAdd, SafeHtmlUtils.fromString("#"));
+        */
 
         ColumnConfig<MyBean, String> strCol = new ColumnConfig<MyBean, String>(ACCESS.str());
         strCol.setHeader("Str");
