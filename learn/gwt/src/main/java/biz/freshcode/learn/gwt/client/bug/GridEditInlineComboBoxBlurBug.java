@@ -43,7 +43,7 @@ public class GridEditInlineComboBoxBlurBug implements IsWidget, EntryPoint {
 
         // construct grid
         List<ColumnConfig<MyBean, ?>> cols = new ArrayList<ColumnConfig<MyBean, ?>>();
-        RowNumberer rowNums = new RowNumberer(new IdentityValueProvider());
+        RowNumberer<MyBean> rowNums = new RowNumberer<MyBean>(new IdentityValueProvider<MyBean>());
         cols.add(rowNums);
         rowNums.setWidget(toolButton(ToolButton.PLUS), SafeHtmlUtils.fromString("#"));
 
