@@ -35,6 +35,7 @@ public class GridEditInlineComboBoxBlurBug implements IsWidget, EntryPoint {
     VerticalLayoutContainer vlc = new VerticalLayoutContainer();
     ListStore<MyBean> store = new ListStore<MyBean>(ACCESS.id());
     private Grid<MyBean> grid;
+    private GridInlineEditing<MyBean> editing;
 
     public GridEditInlineComboBoxBlurBug() {
         store.setAutoCommit(true);
@@ -127,9 +128,14 @@ public class GridEditInlineComboBoxBlurBug implements IsWidget, EntryPoint {
     }
 
     private void addNew() {
+//  Doesn't help... editing has already been cancelled at this point
+//        editing.cancelEditing();
         MyBean bean = new MyBean();
         store.add(bean);
         grid.getSelectionModel().select(false, bean);
+// Doesn't help but is handy to launch editing...
+//        int ix = store.size() - 1;
+//        editing.startEditing(new Grid.GridCell(ix, 2));
 
         /* Doesn't help...
         btnAddRow.focus();
@@ -151,12 +157,12 @@ public class GridEditInlineComboBoxBlurBug implements IsWidget, EntryPoint {
     }
 
     private void setupEditing(ColumnConfig<MyBean, String> strCol, ColumnConfig<MyBean, Integer> intCol, ColumnConfig<MyBean, String> dummyCol) {
-        GridInlineEditing<MyBean> edits = new GridInlineEditing<MyBean>(grid);
+        editing = new GridInlineEditing<MyBean>(grid);
         SimpleComboBox<String> cboStr = new SimpleComboBox<String>(new StringLabelProvider<String>());
         for (String s : presets) cboStr.add(s);
         cboStr.setTriggerAction(ComboBoxCell.TriggerAction.ALL); // needed or else unusable
         cboStr.setForceSelection(false);
-        edits.addEditor(strCol, cboStr);
+        editing.addEditor(strCol, cboStr);
 
         LabelProvider<Integer> lblrInt = new LabelProvider<Integer>() {
             @Override
@@ -182,8 +188,8 @@ public class GridEditInlineComboBoxBlurBug implements IsWidget, EntryPoint {
                 return presets.get(object);
             }
         });
-        edits.addEditor(intCol, cboInt);
-        edits.addEditor(dummyCol, new TextField());
+        editing.addEditor(intCol, cboInt);
+        editing.addEditor(dummyCol, new TextField());
     }
 
     private String intColRender(Integer item) {
