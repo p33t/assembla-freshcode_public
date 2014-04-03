@@ -49,6 +49,13 @@ object Implicits {
     val b = new Boring()
     // 'makeLessBoring' is implicitly used here
     b.veryUniqueName()
+
+    // implicit conversion operates on parent types too
+    val sb = new StillBoring()
+    sb.veryUniqueName()
+
+    val sbAlt: LessBoring = sb
+    sbAlt.veryUniqueName()
   }
 
   def typeConversion() {
@@ -113,6 +120,8 @@ object Implicits {
 class IntHandler(val increment: Int)
 
 class Boring
+
+class StillBoring extends Boring
 
 class LessBoring {
   def veryUniqueName() {
