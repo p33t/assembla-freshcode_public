@@ -14,5 +14,18 @@ class AppSchemaTest extends FunSuite {
       AppSchema.printDdl
       AppSchema.reset()
     }
+
+    val t1 = T1(1, 0, "bruce", None)
+    inTransaction {
+      AppSchema.t1.insert(t1)
+    }
+
+    val t1b = t1.copy(name = "Bruce")
+    val result = inTransaction {
+      AppSchema.t1.update(t1b)
+      AppSchema.t1.where(row => row.id === t1.id).headOption
+    }
+
+    assert(result == Some(t1b.copy(ver = t1b.ver + 1)))
   }
 }

@@ -1,10 +1,25 @@
 package pkg.db
 
-import org.squeryl.PrimitiveTypeMode
+import org.squeryl.{KeyedEntityDef, PrimitiveTypeMode}
 import org.squeryl.dsl._
 
-
 object DbTypes extends PrimitiveTypeMode {
+
+  class HasIdDef[T <: HasId] extends KeyedEntityDef[T, Long] {
+    def getId(a: T) = a.id
+
+    def idPropertyName = "id"
+
+    def isPersisted(a: T) = true
+  }
+
+  class HasIdVerDef[T <: HasIdVer] extends HasIdDef[T] {
+    override def optimisticCounterPropertyName = Some("ver")
+  }
+
+  // Type Expresion Factories ================================================================================
+  implicit val t1TEF = new HasIdVerDef[T1]
+  implicit val customTEF = new HasIdDef[Custom]
 
   // Rev String mapping ======================================================================================
 
