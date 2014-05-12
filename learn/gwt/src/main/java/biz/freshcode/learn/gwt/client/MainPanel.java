@@ -35,6 +35,7 @@ import biz.freshcode.learn.gwt.client.experiment.hoverwidget.HoverWidgetDemo;
 import biz.freshcode.learn.gwt.client.experiment.iswidget.IsWidgetDemo;
 import biz.freshcode.learn.gwt.client.experiment.jsni.JsniDemo;
 import biz.freshcode.learn.gwt.client.experiment.layout.LayoutDemo;
+import biz.freshcode.learn.gwt.client.experiment.logging.LoggingDemo;
 import biz.freshcode.learn.gwt.client.experiment.miscellaneous.HashCodeCheck;
 import biz.freshcode.learn.gwt.client.experiment.mouseover.MouseOverWidget;
 import biz.freshcode.learn.gwt.client.experiment.mvp.gwtmvp.GmPlace;
@@ -157,6 +158,12 @@ public class MainPanel extends Composite implements AcceptsOneWidget {
                                 }))
                                 .menuBar))
                         .addItem(new MenuItem("Experiments", subMenu()
+                                .addItem(new MenuItem("Logging", new Command() {
+                                    public void execute() {
+                                        IsWidget w = GWT.create(LoggingDemo.class);
+                                        replaceContent(w);
+                                    }
+                                }))
                                 .addItem(new MenuItem("Misc.", subMenu()
                                         .addItem(new MenuItem("Hash Code Check", new Command() {
                                             public void execute() {
