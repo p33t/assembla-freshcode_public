@@ -1,15 +1,14 @@
 package pkg.db
 
 import org.squeryl.PrimitiveTypeMode._
-import org.junit.Test
 import org.scalatest.junit.JUnitRunner
 import org.junit.runner.RunWith
-import org.scalatest.Suite
+import org.scalatest.FunSuite
 
 @RunWith(classOf[JUnitRunner])
-class AppSchemaTest extends Suite {
+class AppSchemaTest extends FunSuite {
 
-  def testSchema() {
+  test("init / reset") {
     AppSchema.init()
     inTransaction {
       AppSchema.printDdl
