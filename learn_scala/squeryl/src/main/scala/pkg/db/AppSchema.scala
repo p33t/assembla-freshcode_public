@@ -13,7 +13,7 @@ class T1(val id: Long,
   /**
    * No arg constructor is required when there are nullable fields.
    */
-  def this() = this(0, "", Some(""))
+// NOT.  def this() = this(0, "", Some(""))
 }
 
 // A Custom type.  It indirectly extends CustomType.
