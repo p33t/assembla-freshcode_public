@@ -1,8 +1,9 @@
 package pkg.db
 
 import model.DirectedEntity
-import org.squeryl.{Session, SessionFactory, Schema}
+import org.squeryl.{OptionalKeyedEntityDef, Session, SessionFactory, Schema}
 import DbTypes._
+import scala.reflect.Manifest
 
 object AppSchema extends Schema {
   def init() {
@@ -17,12 +18,10 @@ object AppSchema extends Schema {
     create
   }
 
-  val t1 = table[T1]
+  val t1 = verTable[T1]
 
   on(t1)(t => declare(
     t.name is dbType("varchar(256)"),
-    t.ver is uninsertable,
-    t.ver defaultsTo 1,
     t.nicName is dbType("varchar(32)")
   ))
   val custom = table[Custom]
@@ -31,4 +30,16 @@ object AppSchema extends Schema {
   ))
 
   val directedEntity = table[DirectedEntity]
+
+  /**
+   * Used for tables with a version field.
+   */
+  private def verTable[T <: HasIdVer](implicit manifestT: Manifest[T], ked: OptionalKeyedEntityDef[T, _]) = {
+    val t = table[T]
+    on(t)(t => declare(
+      t.ver is uninsertable,
+      t.ver defaultsTo 1
+    ))
+    t
+  }
 }
