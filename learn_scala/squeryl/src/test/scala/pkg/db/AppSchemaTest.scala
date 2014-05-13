@@ -15,7 +15,7 @@ class AppSchemaTest extends FunSuite {
       AppSchema.reset()
     }
 
-    val t1 = T1(1, 0, "bruce", None)
+    val t1 = T1(5, 0, "bruce", None)
     inTransaction {
       AppSchema.t1.insert(t1)
     }
