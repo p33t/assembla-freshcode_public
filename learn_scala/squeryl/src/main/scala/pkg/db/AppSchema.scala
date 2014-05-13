@@ -21,6 +21,8 @@ object AppSchema extends Schema {
 
   on(t1)(t => declare(
     t.name is dbType("varchar(256)"),
+    t.ver is uninsertable,
+    t.ver defaultsTo 1,
     t.nicName is dbType("varchar(32)")
   ))
   val custom = table[Custom]
