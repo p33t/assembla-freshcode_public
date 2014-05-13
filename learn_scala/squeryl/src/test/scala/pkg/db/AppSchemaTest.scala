@@ -20,7 +20,7 @@ class AppSchemaTest extends FunSuite {
       AppSchema.t1.insert(t1)
     }
 
-    val t1b = t1.copy(name = "Bruce")
+    val t1b = t1.copy(name = "Bruce", ver = 1)
     val result = inTransaction {
       AppSchema.t1.update(t1b)
       AppSchema.t1.where(row => row.id === t1.id).headOption
