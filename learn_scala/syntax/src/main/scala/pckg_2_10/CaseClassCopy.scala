@@ -3,8 +3,10 @@ package pckg_2_10
 import pckg_2_10.fixture.FancyCaseClass
 import java.lang.reflect.Modifier
 
-
-object CaseClassCopy2 {
+/**
+ * Copying a case class using Java reflection to avoid generics.
+ */
+object CaseClassCopy {
   def main(args: Array[String]) {
     val o = FancyCaseClass("shiney", 9)
     println(o + " ===> " + copy(o, "str2" -> "shoes", "i" -> 99))
@@ -24,7 +26,10 @@ object CaseClassCopy2 {
     copier(o, vals: _*)
   }
 
-  class Copier(cls: Class[_]) {
+  /**
+   * Utility class for providing copying of a designated case class with minimal overhead.
+   */
+  class Copier[T](cls: Class[T]) {
     private val ctor = cls.getConstructors.apply(0)
     private val getters = cls.getDeclaredFields
       .filter {
@@ -35,7 +40,10 @@ object CaseClassCopy2 {
       .take(ctor.getParameterTypes.size)
       .map(f => cls.getMethod(f.getName))
 
-    def apply(o: AnyRef, vals: (String, Any)*) = {
+    /**
+     * A reflective, non-generic version of case class copying.
+     */
+    def apply(o: AnyRef, vals: (String, Any)*): T = {
       val byIx = vals.map {
         case (name, value) =>
           val ix = getters.indexWhere(_.getName == name)
@@ -48,7 +56,7 @@ object CaseClassCopy2 {
           byIx.get(i)
             .getOrElse(getters(i).invoke(o))
       }
-      ctor.newInstance(args: _*)
+      ctor.newInstance(args: _*).asInstanceOf[T]
     }
   }
 
