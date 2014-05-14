@@ -17,9 +17,20 @@ object CaseClassCopy {
     val fcc = FancyCaseClass("bruce", 1)
     println(fcc + " ===> " + copy(fcc, "str2" -> "Springsteen", "i" -> 99))
 
-    copy(fcc, "mary" -> "had a little lamb")
+    try {
+      copy(fcc, "mary" -> "had a little lamb")
+      throw new IllegalStateException("Should never get here")
+    }
+    catch {
+      case e: AssertionError =>
+        assert(e.getMessage.contains("mary"))
+    }
+
   }
 
+  /**
+   * A reflective case class 'copy'.
+   */
   def copy[T: ru.TypeTag : ClassTag](t: T, vals: (String, Any)*): T = {
     if (vals.isEmpty) return t
 
