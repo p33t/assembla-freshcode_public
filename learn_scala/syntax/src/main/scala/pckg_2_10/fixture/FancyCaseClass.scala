@@ -6,4 +6,5 @@ case class FancyCaseClass(str: String, i: Integer, l: Long, str2: String) {
 //  def this(str: String, i: Int) {
 //    this(str, i, i, str)
 //  }
+  lazy val derived = str + " " + str2
 }

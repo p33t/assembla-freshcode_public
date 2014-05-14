@@ -29,10 +29,18 @@ object CaseClassCopy {
     val clsMir = mir.reflectClass(tpe.typeSymbol.asClass)
     val instMir = mir.reflect(t)
 
+    // constructor
+    // NOTE: This barfs when multiple contructors, however
+    //       for case classes one would overload the 'apply' method on companion anyway
+    val ctor = tpe.declaration(ru.nme.CONSTRUCTOR).asMethod
+    val ctorm = clsMir.reflectConstructor(ctor)
+
     // args
     var valMap = vals.toMap
     val args = tpe.declarations
       .filter(d => !d.isMethod)
+      // ignores extra vals
+      .take(ctor.paramss(0).size)
       .map {
       m =>
         val full = m.fullName
@@ -46,12 +54,6 @@ object CaseClassCopy {
     }
       .toSeq
     assert(valMap.isEmpty, "Unused values for: " + valMap.keys.mkString(","))
-
-    // constructor
-    // NOTE: This barfs when multiple contructors, however
-    //       for case classes one would overload the 'apply' method on companion anyway
-    val ctor = tpe.declaration(ru.nme.CONSTRUCTOR).asMethod
-    val ctorm = clsMir.reflectConstructor(ctor)
     ctorm(args: _*).asInstanceOf[T]
   }
 }
