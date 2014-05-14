@@ -1,15 +1,10 @@
 package pckg_2_10
 
 import pckg_2_10.fixture.FancyCaseClass
-import java.lang.reflect.{Modifier, Field}
+import java.lang.reflect.Modifier
 
 
 object CaseClassCopy2 {
-  val DesiredField = (f: Field) => {
-    val m = f.getModifiers
-    Modifier.isPrivate(m) && Modifier.isFinal(m) && !Modifier.isStatic(m)
-  }
-
   def main(args: Array[String]) {
     val o = FancyCaseClass("shiney", 9)
     println(o + " ===> " + copy(o, "str2" -> "shoes", "i" -> 99))
@@ -19,7 +14,7 @@ object CaseClassCopy2 {
       throw new IllegalStateException("Should have popped")
     }
     catch {
-      case e:IllegalArgumentException =>
+      case e: IllegalArgumentException =>
         assert(e.getMessage.contains("qwerty"))
     }
   }
@@ -32,7 +27,11 @@ object CaseClassCopy2 {
   class Copier(cls: Class[_]) {
     private val ctor = cls.getConstructors.apply(0)
     private val getters = cls.getDeclaredFields
-      .filter(DesiredField)
+      .filter {
+      f =>
+        val m = f.getModifiers
+        Modifier.isPrivate(m) && Modifier.isFinal(m) && !Modifier.isStatic(m)
+    }
       .take(ctor.getParameterTypes.size)
       .map(f => cls.getMethod(f.getName))
 
@@ -52,4 +51,5 @@ object CaseClassCopy2 {
       ctor.newInstance(args: _*)
     }
   }
+
 }
