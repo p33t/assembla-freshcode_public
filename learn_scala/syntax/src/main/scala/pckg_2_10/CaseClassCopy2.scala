@@ -25,26 +25,31 @@ object CaseClassCopy2 {
   }
 
   def copy(o: AnyRef, vals: (String, Any)*) = {
-    val cls = o.getClass
-    val ctor = cls.getConstructors.apply(0)
+    val copier = new Copier(o.getClass)
+    copier(o, vals: _*)
+  }
 
-    val getters = cls.getDeclaredFields
+  class Copier(cls: Class[_]) {
+    private val ctor = cls.getConstructors.apply(0)
+    private val getters = cls.getDeclaredFields
       .filter(DesiredField)
       .take(ctor.getParameterTypes.size)
       .map(f => cls.getMethod(f.getName))
 
-    val byIx = vals.map {
-      case (name, value) =>
-        val ix = getters.indexWhere(_.getName == name)
-        if (ix < 0) throw new IllegalArgumentException("Unknown field: " + name)
-        (ix, value.asInstanceOf[Object])
-    }.toMap
+    def apply(o: AnyRef, vals: (String, Any)*) = {
+      val byIx = vals.map {
+        case (name, value) =>
+          val ix = getters.indexWhere(_.getName == name)
+          if (ix < 0) throw new IllegalArgumentException("Unknown field: " + name)
+          (ix, value.asInstanceOf[Object])
+      }.toMap
 
-    val args = (0 until getters.size).map {
-      i =>
-        byIx.get(i)
-          .getOrElse(getters(i).invoke(o))
+      val args = (0 until getters.size).map {
+        i =>
+          byIx.get(i)
+            .getOrElse(getters(i).invoke(o))
+      }
+      ctor.newInstance(args: _*)
     }
-    ctor.newInstance(args: _*)
   }
 }
