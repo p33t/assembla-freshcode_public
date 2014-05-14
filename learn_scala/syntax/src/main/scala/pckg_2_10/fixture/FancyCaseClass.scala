@@ -8,3 +8,8 @@ case class FancyCaseClass(str: String, i: Integer, l: Long, str2: String) {
 //  }
   lazy val derived = str + " " + str2
 }
+
+object FancyCaseClass {
+  // alternative case class constructor
+  def apply(str: String, i: Int): FancyCaseClass = apply(str, i, i, str)
+}
