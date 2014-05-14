@@ -1,12 +1,10 @@
 package pckg_2_10
 
 import pckg_2_10.fixture.{FancyCaseClass, SomeCaseClass}
-import java.lang.reflect.Modifier
 import scala.reflect.runtime.{universe => ru}
 import scala.reflect.ClassTag
 
 object CaseClassCopy {
-  val DesiredModifier = (i: Int) => Modifier.isPrivate(i) && Modifier.isFinal(i) && !Modifier.isStatic(i)
 
   def main(args: Array[String]) {
     println()
