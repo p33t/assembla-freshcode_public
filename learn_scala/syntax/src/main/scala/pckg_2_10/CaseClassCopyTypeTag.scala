@@ -4,7 +4,11 @@ import pckg_2_10.fixture.{FancyCaseClass, SomeCaseClass}
 import scala.reflect.runtime.{universe => ru}
 import scala.reflect.ClassTag
 
-object CaseClassCopy {
+/**
+ * !!!!! The scala 'TypeTag' approach is so restrictive one might as well call the copy method directly.
+ */
+@Deprecated
+object CaseClassCopyTypeTag {
   def main(args: Array[String]) {
     println()
     val scc = SomeCaseClass("xyz")
