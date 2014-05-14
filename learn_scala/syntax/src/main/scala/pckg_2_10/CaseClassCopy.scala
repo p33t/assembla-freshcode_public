@@ -48,6 +48,8 @@ object CaseClassCopy {
     assert(valMap.isEmpty, "Unused values for: " + valMap.keys.mkString(","))
 
     // constructor
+    // NOTE: This barfs when multiple contructors, however
+    //       for case classes one would overload the 'apply' method on companion anyway
     val ctor = tpe.declaration(ru.nme.CONSTRUCTOR).asMethod
     val ctorm = clsMir.reflectConstructor(ctor)
     ctorm(args: _*).asInstanceOf[T]
