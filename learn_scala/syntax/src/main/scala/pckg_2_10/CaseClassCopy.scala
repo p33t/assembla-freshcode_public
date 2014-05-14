@@ -5,12 +5,6 @@ import scala.reflect.runtime.{universe => ru}
 import scala.reflect.ClassTag
 
 object CaseClassCopy {
-  val TermToName = (m: ru.SymbolApi) => {
-    val full = m.fullName
-    full.substring(full.lastIndexOf('.') + 1)
-  }
-
-
   def main(args: Array[String]) {
     println()
     val scc = SomeCaseClass("xyz")
@@ -61,7 +55,8 @@ object CaseClassCopy {
     private val argOrder = ixs.map {
       i =>
         val term = terms(i)
-        val name = TermToName(term)
+        val full = term.fullName
+        val name = full.substring(full.lastIndexOf('.') + 1)
         (name, i)
     }.toMap
 
