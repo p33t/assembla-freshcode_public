@@ -7,6 +7,8 @@ package pkg.style
  */
 object DepsInSameInterface {
 
+  type ImplDetail = () => Unit
+
   trait Service {
     /**
      * Client traits don't need to supply this but all client classes do.
@@ -14,7 +16,7 @@ object DepsInSameInterface {
      * Also, this impl detail has leaked into the service interface.
      * Making it protected might help though.
      */
-    val implDetail: () => Unit
+    val implDetail: ImplDetail
 
     def featureY() {
       implDetail()
@@ -27,7 +29,7 @@ object DepsInSameInterface {
   trait Client {
     val service: Service
     def launch() {
-      featureY()
+      service.featureY()
     }
   }
 
@@ -36,12 +38,12 @@ object DepsInSameInterface {
    */
   class ActualClient extends Client {
     val service = new Service {
-      val implDetail= () => Unit
+      val implDetail = () => ()
     }
   }
 
   class ConcreteService extends Service {
-    val implDetail= () => Unit
+    val implDetail = () => ()
   }
 
   /**
