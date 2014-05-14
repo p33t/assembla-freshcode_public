@@ -30,8 +30,8 @@ object CaseClassCopy {
     val instMir = mir.reflect(t)
 
     // constructor
-    // NOTE: This barfs when multiple contructors, however
-    //       for case classes one would overload the 'apply' method on companion anyway
+    // NOTE: This barfs when multiple contructors, however, for case classes
+    //       one would overload the 'apply' method on companion anyway
     val ctor = tpe.declaration(ru.nme.CONSTRUCTOR).asMethod
     val ctorm = clsMir.reflectConstructor(ctor)
 
