@@ -20,7 +20,9 @@ object CaseClassCopy {
     copy(fcc, "mary" -> "had a little lamb")
   }
 
-  def copy[T: ru.TypeTag : ClassTag](t: T, vals: (String, Any)*) = {
+  def copy[T: ru.TypeTag : ClassTag](t: T, vals: (String, Any)*): T = {
+    if (vals.isEmpty) return t
+
     // mirrors
     val tpe = ru.typeOf[T]
     val mir = ru.runtimeMirror(t.getClass.getClassLoader)
@@ -48,6 +50,6 @@ object CaseClassCopy {
     // constructor
     val ctor = tpe.declaration(ru.nme.CONSTRUCTOR).asMethod
     val ctorm = clsMir.reflectConstructor(ctor)
-    ctorm(args: _*)
+    ctorm(args: _*).asInstanceOf[T]
   }
 }
