@@ -14,7 +14,7 @@ object CaseClassCopy {
     println(scc + " ===> " + copy(scc, "str" -> "abc"))
 
     println()
-    val fcc = FancyCaseClass("bruce", 1, 2, "lee")
+    val fcc = FancyCaseClass("bruce", 1)
     println(fcc + " ===> " + copy(fcc, "str2" -> "Springsteen", "i" -> 99))
 
     copy(fcc, "mary" -> "had a little lamb")
