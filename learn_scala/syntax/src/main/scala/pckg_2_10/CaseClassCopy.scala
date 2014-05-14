@@ -29,7 +29,7 @@ object CaseClassCopy {
   /**
    * Utility class for providing copying of a designated case class with minimal overhead.
    */
-  class Copier[T](cls: Class[T]) {
+  class Copier(cls: Class[_]) {
     private val ctor = cls.getConstructors.apply(0)
     private val getters = cls.getDeclaredFields
       .filter {
@@ -43,7 +43,7 @@ object CaseClassCopy {
     /**
      * A reflective, non-generic version of case class copying.
      */
-    def apply(o: AnyRef, vals: (String, Any)*): T = {
+    def apply[T](o: T, vals: (String, Any)*): T = {
       val byIx = vals.map {
         case (name, value) =>
           val ix = getters.indexWhere(_.getName == name)
