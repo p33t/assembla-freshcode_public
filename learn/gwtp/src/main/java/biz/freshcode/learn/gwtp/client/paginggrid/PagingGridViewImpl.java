@@ -24,7 +24,7 @@ public class PagingGridViewImpl extends ViewImpl implements PagingGrid.View {
     @Inject
     public PagingGridViewImpl(PgDispatchProxy proxy, TyreAccess access) {
         // setup remote loading
-        ListStore<Tyre> store = new ListStore<Tyre>(access.id());
+        ListStore<Tyre> store = new ListStore<>(access.id());
         loader = pagingLoader(proxy);
         loader.setRemoteSort(true);
         loader.addLoadHandler(listStoreBind(store));
@@ -33,7 +33,7 @@ public class PagingGridViewImpl extends ViewImpl implements PagingGrid.View {
         PagingToolBar tb;
         //noinspection unchecked
         initWidget(new VerticalLayoutContainerBuilder()
-                .add(grid = new Grid<Tyre>(store, new ColumnModel(newListFrom(
+                .add(grid = new Grid<>(store, new ColumnModel(newListFrom(
                         new ColumnConfigBuilder(access.diameter())
                                 .header("Diameter")
                                 .columnConfig,
@@ -53,14 +53,14 @@ public class PagingGridViewImpl extends ViewImpl implements PagingGrid.View {
      * Convenience method to cut down code noise.
      */
     private static <T> LoadResultListStoreBinding<PagingLoadConfig, T, PagingLoadResult<T>> listStoreBind(ListStore<T> store) {
-        return new LoadResultListStoreBinding<PagingLoadConfig, T, PagingLoadResult<T>>(store);
+        return new LoadResultListStoreBinding<>(store);
     }
 
     /**
      * Convenience method to cut down code noise.
      */
     private static <T> PagingLoader<PagingLoadConfig, PagingLoadResult<T>> pagingLoader(RpcProxy<PagingLoadConfig, PagingLoadResult<T>> proxy) {
-        return new PagingLoader<PagingLoadConfig, PagingLoadResult<T>>(proxy);
+        return new PagingLoader<>(proxy);
     }
 
     @Override

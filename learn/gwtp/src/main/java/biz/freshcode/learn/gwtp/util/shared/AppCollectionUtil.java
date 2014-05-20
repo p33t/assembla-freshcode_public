@@ -4,7 +4,7 @@ import java.util.*;
 
 public class AppCollectionUtil {
     public static <T> Set<T> newSet() {
-        return new HashSet<T>();
+        return new HashSet<>();
     }
 
     public static <T> Set<T> newSetFrom(Collection<T> coll) {
@@ -13,6 +13,7 @@ public class AppCollectionUtil {
         return s;
     }
 
+    @SafeVarargs
     public static <T> Set<T> newSetFrom(T... ts) {
         Set<T> s = newSet();
         Collections.addAll(s, ts);
@@ -20,10 +21,11 @@ public class AppCollectionUtil {
     }
 
     public static <T> List<T> newList() {
-        return new ArrayList<T>();
+        return new ArrayList<>();
     }
 
 
+    @SafeVarargs
     public static <T> List<T> newListFrom(T... ts) {
         List<T> l = newList();
         Collections.addAll(l, ts);
@@ -37,15 +39,16 @@ public class AppCollectionUtil {
     }
 
     public static <K,V> Map<K, V> newMap() {
-        return new HashMap<K, V>();
+        return new HashMap<>();
     }
 
     public static <T> T firstElem(Iterable<T> es) {
+        if (es instanceof List) return ((List<T>) es).get(0);
         return es.iterator().next();
     }
 
     public static <K, V> Map<K, V> newOrderedMap() {
-        return new LinkedHashMap<K, V>();
+        return new LinkedHashMap<>();
     }
 
     public static <K, V> MapBuilder<K, V> newMapBuilder(K k0, V v0) {
