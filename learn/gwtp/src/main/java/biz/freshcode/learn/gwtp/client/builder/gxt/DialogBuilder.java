@@ -17,17 +17,17 @@ public class DialogBuilder extends biz.freshcode.learn.gwtp.client.builder.Const
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.Dialog#Dialog()
-     */
-    public DialogBuilder() {
-        this(new Dialog());
-    }
-
-    /**
      * @see com.sencha.gxt.widget.core.client.Dialog#Dialog(com.sencha.gxt.widget.core.client.Window.WindowAppearance)
      */
     public DialogBuilder(com.sencha.gxt.widget.core.client.Window.WindowAppearance v0) {
         this(new Dialog(v0));
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.Dialog#Dialog()
+     */
+    public DialogBuilder() {
+        this(new Dialog());
     }
 
     /**
@@ -223,9 +223,9 @@ public class DialogBuilder extends biz.freshcode.learn.gwtp.client.builder.Const
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.Dialog#setContainer(com.google.gwt.user.client.Element)
+     * @see com.sencha.gxt.widget.core.client.Dialog#setContainer(com.google.gwt.dom.client.Element)
      */
-    public DialogBuilder container(com.google.gwt.user.client.Element v0) {
+    public DialogBuilder container(com.google.gwt.dom.client.Element v0) {
         dialog.setContainer(v0);
         return this;
     }
@@ -511,6 +511,14 @@ public class DialogBuilder extends biz.freshcode.learn.gwtp.client.builder.Const
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.Dialog#setShadowPosition(com.sencha.gxt.core.client.dom.Layer.ShadowPosition)
+     */
+    public DialogBuilder shadowPosition(com.sencha.gxt.core.client.dom.Layer.ShadowPosition v0) {
+        dialog.setShadowPosition(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.Dialog#setSize(java.lang.String, java.lang.String)
      */
     public DialogBuilder size(java.lang.String v0, java.lang.String v1) {
@@ -631,17 +639,17 @@ public class DialogBuilder extends biz.freshcode.learn.gwtp.client.builder.Const
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.Dialog#setWidth(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.Dialog#setWidth(int)
      */
-    public DialogBuilder width(java.lang.String v0) {
+    public DialogBuilder width(int v0) {
         dialog.setWidth(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.Dialog#setWidth(int)
+     * @see com.sencha.gxt.widget.core.client.Dialog#setWidth(java.lang.String)
      */
-    public DialogBuilder width(int v0) {
+    public DialogBuilder width(java.lang.String v0) {
         dialog.setWidth(v0);
         return this;
     }

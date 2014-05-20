@@ -17,10 +17,10 @@ public class MenuBarItemBuilder extends biz.freshcode.learn.gwtp.client.builder.
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.menu.MenuBarItem#MenuBarItem(java.lang.String, com.sencha.gxt.widget.core.client.menu.Menu, com.sencha.gxt.widget.core.client.menu.MenuBarItem.MenuBarItemAppearance)
+     * @see com.sencha.gxt.widget.core.client.menu.MenuBarItem#MenuBarItem(java.lang.String)
      */
-    public MenuBarItemBuilder(java.lang.String v0, com.sencha.gxt.widget.core.client.menu.Menu v1, com.sencha.gxt.widget.core.client.menu.MenuBarItem.MenuBarItemAppearance v2) {
-        this(new MenuBarItem(v0, v1, v2));
+    public MenuBarItemBuilder(java.lang.String v0) {
+        this(new MenuBarItem(v0));
     }
 
     /**
@@ -31,10 +31,10 @@ public class MenuBarItemBuilder extends biz.freshcode.learn.gwtp.client.builder.
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.menu.MenuBarItem#MenuBarItem(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.menu.MenuBarItem#MenuBarItem(java.lang.String, com.sencha.gxt.widget.core.client.menu.Menu, com.sencha.gxt.widget.core.client.menu.MenuBarItem.MenuBarItemAppearance)
      */
-    public MenuBarItemBuilder(java.lang.String v0) {
-        this(new MenuBarItem(v0));
+    public MenuBarItemBuilder(java.lang.String v0, com.sencha.gxt.widget.core.client.menu.Menu v1, com.sencha.gxt.widget.core.client.menu.MenuBarItem.MenuBarItemAppearance v2) {
+        this(new MenuBarItem(v0, v1, v2));
     }
 
     /**
@@ -218,6 +218,14 @@ public class MenuBarItemBuilder extends biz.freshcode.learn.gwtp.client.builder.
      */
     public MenuBarItemBuilder shadow(boolean v0) {
         menuBarItem.setShadow(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.menu.MenuBarItem#setShadowPosition(com.sencha.gxt.core.client.dom.Layer.ShadowPosition)
+     */
+    public MenuBarItemBuilder shadowPosition(com.sencha.gxt.core.client.dom.Layer.ShadowPosition v0) {
+        menuBarItem.setShadowPosition(v0);
         return this;
     }
 

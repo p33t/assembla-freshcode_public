@@ -17,23 +17,16 @@ public class MenuItemBuilder extends biz.freshcode.learn.gwtp.client.builder.Con
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.menu.MenuItem#MenuItem(java.lang.String, com.google.gwt.event.logical.shared.SelectionHandler)
-     */
-    public MenuItemBuilder(java.lang.String v0, com.google.gwt.event.logical.shared.SelectionHandler<com.sencha.gxt.widget.core.client.menu.MenuItem> v1) {
-        this(new MenuItem(v0, v1));
-    }
-
-    /**
-     * @see com.sencha.gxt.widget.core.client.menu.MenuItem#MenuItem(java.lang.String, com.google.gwt.resources.client.ImageResource)
-     */
-    public MenuItemBuilder(java.lang.String v0, com.google.gwt.resources.client.ImageResource v1) {
-        this(new MenuItem(v0, v1));
-    }
-
-    /**
      * @see com.sencha.gxt.widget.core.client.menu.MenuItem#MenuItem(java.lang.String)
      */
     public MenuItemBuilder(java.lang.String v0) {
+        this(new MenuItem(v0));
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.menu.MenuItem#MenuItem(com.sencha.gxt.widget.core.client.menu.MenuItem.MenuItemAppearance)
+     */
+    public MenuItemBuilder(com.sencha.gxt.widget.core.client.menu.MenuItem.MenuItemAppearance v0) {
         this(new MenuItem(v0));
     }
 
@@ -45,16 +38,16 @@ public class MenuItemBuilder extends biz.freshcode.learn.gwtp.client.builder.Con
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.menu.MenuItem#MenuItem(com.sencha.gxt.widget.core.client.menu.MenuItem.MenuItemAppearance)
+     * @see com.sencha.gxt.widget.core.client.menu.MenuItem#MenuItem(java.lang.String, com.google.gwt.resources.client.ImageResource)
      */
-    public MenuItemBuilder(com.sencha.gxt.widget.core.client.menu.MenuItem.MenuItemAppearance v0) {
-        this(new MenuItem(v0));
+    public MenuItemBuilder(java.lang.String v0, com.google.gwt.resources.client.ImageResource v1) {
+        this(new MenuItem(v0, v1));
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.menu.MenuItem#MenuItem(com.sencha.gxt.widget.core.client.menu.MenuItem.MenuItemAppearance, com.sencha.gxt.widget.core.client.menu.Item.ItemAppearance)
+     * @see com.sencha.gxt.widget.core.client.menu.MenuItem#MenuItem(java.lang.String, com.google.gwt.event.logical.shared.SelectionHandler)
      */
-    public MenuItemBuilder(com.sencha.gxt.widget.core.client.menu.MenuItem.MenuItemAppearance v0, com.sencha.gxt.widget.core.client.menu.Item.ItemAppearance v1) {
+    public MenuItemBuilder(java.lang.String v0, com.google.gwt.event.logical.shared.SelectionHandler<com.sencha.gxt.widget.core.client.menu.MenuItem> v1) {
         this(new MenuItem(v0, v1));
     }
 
@@ -267,6 +260,14 @@ public class MenuItemBuilder extends biz.freshcode.learn.gwtp.client.builder.Con
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.menu.MenuItem#setShadowPosition(com.sencha.gxt.core.client.dom.Layer.ShadowPosition)
+     */
+    public MenuItemBuilder shadowPosition(com.sencha.gxt.core.client.dom.Layer.ShadowPosition v0) {
+        menuItem.setShadowPosition(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.menu.MenuItem#setSize(java.lang.String, java.lang.String)
      */
     public MenuItemBuilder size(java.lang.String v0, java.lang.String v1) {
@@ -387,17 +388,17 @@ public class MenuItemBuilder extends biz.freshcode.learn.gwtp.client.builder.Con
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.menu.MenuItem#setWidth(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.menu.MenuItem#setWidth(int)
      */
-    public MenuItemBuilder width(java.lang.String v0) {
+    public MenuItemBuilder width(int v0) {
         menuItem.setWidth(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.menu.MenuItem#setWidth(int)
+     * @see com.sencha.gxt.widget.core.client.menu.MenuItem#setWidth(java.lang.String)
      */
-    public MenuItemBuilder width(int v0) {
+    public MenuItemBuilder width(java.lang.String v0) {
         menuItem.setWidth(v0);
         return this;
     }

@@ -45,14 +45,6 @@ public class ColumnConfigBuilder<M, N> extends biz.freshcode.learn.gwtp.client.b
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.grid.ColumnConfig#setAlignment(com.google.gwt.user.client.ui.HasHorizontalAlignment.HorizontalAlignmentConstant)
-     */
-    public ColumnConfigBuilder<M, N> alignment(com.google.gwt.user.client.ui.HasHorizontalAlignment.HorizontalAlignmentConstant v0) {
-        columnConfig.setAlignment(v0);
-        return this;
-    }
-
-    /**
      * @see com.sencha.gxt.widget.core.client.grid.ColumnConfig#setCell(com.google.gwt.cell.client.Cell)
      */
     public ColumnConfigBuilder<M, N> cell(com.google.gwt.cell.client.Cell<N> v0) {
@@ -61,10 +53,18 @@ public class ColumnConfigBuilder<M, N> extends biz.freshcode.learn.gwtp.client.b
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.grid.ColumnConfig#setColumnClassSuffix(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.grid.ColumnConfig#setCellClassName(java.lang.String)
      */
-    public ColumnConfigBuilder<M, N> columnClassSuffix(java.lang.String v0) {
-        columnConfig.setColumnClassSuffix(v0);
+    public ColumnConfigBuilder<M, N> cellClassName(java.lang.String v0) {
+        columnConfig.setCellClassName(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.grid.ColumnConfig#setCellPadding(boolean)
+     */
+    public ColumnConfigBuilder<M, N> cellPadding(boolean v0) {
+        columnConfig.setCellPadding(v0);
         return this;
     }
 
@@ -125,17 +125,17 @@ public class ColumnConfigBuilder<M, N> extends biz.freshcode.learn.gwtp.client.b
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.grid.ColumnConfig#setHeader(com.google.gwt.safehtml.shared.SafeHtml)
+     * @see com.sencha.gxt.widget.core.client.grid.ColumnConfig#setHeader(java.lang.String)
      */
-    public ColumnConfigBuilder<M, N> header(com.google.gwt.safehtml.shared.SafeHtml v0) {
+    public ColumnConfigBuilder<M, N> header(java.lang.String v0) {
         columnConfig.setHeader(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.grid.ColumnConfig#setHeader(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.grid.ColumnConfig#setHeader(com.google.gwt.safehtml.shared.SafeHtml)
      */
-    public ColumnConfigBuilder<M, N> header(java.lang.String v0) {
+    public ColumnConfigBuilder<M, N> header(com.google.gwt.safehtml.shared.SafeHtml v0) {
         columnConfig.setHeader(v0);
         return this;
     }
@@ -153,6 +153,14 @@ public class ColumnConfigBuilder<M, N> extends biz.freshcode.learn.gwtp.client.b
      */
     public ColumnConfigBuilder<M, N> hideable(boolean v0) {
         columnConfig.setHideable(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.grid.ColumnConfig#setHorizontalAlignment(com.google.gwt.user.client.ui.HasHorizontalAlignment.HorizontalAlignmentConstant)
+     */
+    public ColumnConfigBuilder<M, N> horizontalAlignment(com.google.gwt.user.client.ui.HasHorizontalAlignment.HorizontalAlignmentConstant v0) {
+        columnConfig.setHorizontalAlignment(v0);
         return this;
     }
 
@@ -193,6 +201,14 @@ public class ColumnConfigBuilder<M, N> extends biz.freshcode.learn.gwtp.client.b
      */
     public ColumnConfigBuilder<M, N> toolTip(com.google.gwt.safehtml.shared.SafeHtml v0) {
         columnConfig.setToolTip(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.grid.ColumnConfig#setVerticalAlignment(com.google.gwt.user.client.ui.HasVerticalAlignment.VerticalAlignmentConstant)
+     */
+    public ColumnConfigBuilder<M, N> verticalAlignment(com.google.gwt.user.client.ui.HasVerticalAlignment.VerticalAlignmentConstant v0) {
+        columnConfig.setVerticalAlignment(v0);
         return this;
     }
 
