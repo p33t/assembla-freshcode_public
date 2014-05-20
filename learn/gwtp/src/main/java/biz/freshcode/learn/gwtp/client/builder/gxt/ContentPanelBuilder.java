@@ -255,17 +255,17 @@ public class ContentPanelBuilder extends biz.freshcode.learn.gwtp.client.builder
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.ContentPanel#setHeight(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.ContentPanel#setHeight(int)
      */
-    public ContentPanelBuilder height(java.lang.String v0) {
+    public ContentPanelBuilder height(int v0) {
         contentPanel.setHeight(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.ContentPanel#setHeight(int)
+     * @see com.sencha.gxt.widget.core.client.ContentPanel#setHeight(java.lang.String)
      */
-    public ContentPanelBuilder height(int v0) {
+    public ContentPanelBuilder height(java.lang.String v0) {
         contentPanel.setHeight(v0);
         return this;
     }
@@ -363,6 +363,14 @@ public class ContentPanelBuilder extends biz.freshcode.learn.gwtp.client.builder
      */
     public ContentPanelBuilder shadow(boolean v0) {
         contentPanel.setShadow(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.ContentPanel#setShadowPosition(com.sencha.gxt.core.client.dom.Layer.ShadowPosition)
+     */
+    public ContentPanelBuilder shadowPosition(com.sencha.gxt.core.client.dom.Layer.ShadowPosition v0) {
+        contentPanel.setShadowPosition(v0);
         return this;
     }
 

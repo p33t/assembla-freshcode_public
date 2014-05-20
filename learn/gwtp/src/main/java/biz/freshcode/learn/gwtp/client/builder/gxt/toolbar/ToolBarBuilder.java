@@ -17,13 +17,6 @@ public class ToolBarBuilder extends biz.freshcode.learn.gwtp.client.builder.Cons
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.toolbar.ToolBar#ToolBar()
-     */
-    public ToolBarBuilder() {
-        this(new ToolBar());
-    }
-
-    /**
      * @see com.sencha.gxt.widget.core.client.toolbar.ToolBar#ToolBar(com.sencha.gxt.widget.core.client.toolbar.ToolBar.ToolBarAppearance)
      */
     public ToolBarBuilder(com.sencha.gxt.widget.core.client.toolbar.ToolBar.ToolBarAppearance v0) {
@@ -31,17 +24,24 @@ public class ToolBarBuilder extends biz.freshcode.learn.gwtp.client.builder.Cons
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.toolbar.ToolBar#add(com.google.gwt.user.client.ui.Widget)
+     * @see com.sencha.gxt.widget.core.client.toolbar.ToolBar#ToolBar()
      */
-    public ToolBarBuilder add(com.google.gwt.user.client.ui.Widget v0) {
-        toolBar.add(v0);
-        return this;
+    public ToolBarBuilder() {
+        this(new ToolBar());
     }
 
     /**
      * @see com.sencha.gxt.widget.core.client.toolbar.ToolBar#add(com.google.gwt.user.client.ui.IsWidget)
      */
     public ToolBarBuilder add(com.google.gwt.user.client.ui.IsWidget v0) {
+        toolBar.add(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.toolbar.ToolBar#add(com.google.gwt.user.client.ui.Widget)
+     */
+    public ToolBarBuilder add(com.google.gwt.user.client.ui.Widget v0) {
         toolBar.add(v0);
         return this;
     }
@@ -167,17 +167,17 @@ public class ToolBarBuilder extends biz.freshcode.learn.gwtp.client.builder.Cons
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.toolbar.ToolBar#setHeight(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.toolbar.ToolBar#setHeight(int)
      */
-    public ToolBarBuilder height(java.lang.String v0) {
+    public ToolBarBuilder height(int v0) {
         toolBar.setHeight(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.toolbar.ToolBar#setHeight(int)
+     * @see com.sencha.gxt.widget.core.client.toolbar.ToolBar#setHeight(java.lang.String)
      */
-    public ToolBarBuilder height(int v0) {
+    public ToolBarBuilder height(java.lang.String v0) {
         toolBar.setHeight(v0);
         return this;
     }
@@ -283,6 +283,14 @@ public class ToolBarBuilder extends biz.freshcode.learn.gwtp.client.builder.Cons
      */
     public ToolBarBuilder shadow(boolean v0) {
         toolBar.setShadow(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.toolbar.ToolBar#setShadowPosition(com.sencha.gxt.core.client.dom.Layer.ShadowPosition)
+     */
+    public ToolBarBuilder shadowPosition(com.sencha.gxt.core.client.dom.Layer.ShadowPosition v0) {
+        toolBar.setShadowPosition(v0);
         return this;
     }
 

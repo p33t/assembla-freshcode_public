@@ -17,13 +17,6 @@ public class MenuBarBuilder extends biz.freshcode.learn.gwtp.client.builder.Cons
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.menu.MenuBar#MenuBar()
-     */
-    public MenuBarBuilder() {
-        this(new MenuBar());
-    }
-
-    /**
      * @see com.sencha.gxt.widget.core.client.menu.MenuBar#MenuBar(com.sencha.gxt.widget.core.client.menu.MenuBar.MenuBarAppearance)
      */
     public MenuBarBuilder(com.sencha.gxt.widget.core.client.menu.MenuBar.MenuBarAppearance v0) {
@@ -31,17 +24,24 @@ public class MenuBarBuilder extends biz.freshcode.learn.gwtp.client.builder.Cons
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.menu.MenuBar#add(com.google.gwt.user.client.ui.Widget)
+     * @see com.sencha.gxt.widget.core.client.menu.MenuBar#MenuBar()
      */
-    public MenuBarBuilder add(com.google.gwt.user.client.ui.Widget v0) {
-        menuBar.add(v0);
-        return this;
+    public MenuBarBuilder() {
+        this(new MenuBar());
     }
 
     /**
      * @see com.sencha.gxt.widget.core.client.menu.MenuBar#add(com.google.gwt.user.client.ui.IsWidget)
      */
     public MenuBarBuilder add(com.google.gwt.user.client.ui.IsWidget v0) {
+        menuBar.add(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.menu.MenuBar#add(com.google.gwt.user.client.ui.Widget)
+     */
+    public MenuBarBuilder add(com.google.gwt.user.client.ui.Widget v0) {
         menuBar.add(v0);
         return this;
     }
@@ -75,6 +75,14 @@ public class MenuBarBuilder extends biz.freshcode.learn.gwtp.client.builder.Cons
      */
     public MenuBarBuilder activeItem(com.sencha.gxt.widget.core.client.menu.MenuBarItem v0, boolean v1) {
         menuBar.setActiveItem(v0, v1);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.menu.MenuBar#setActiveItem(com.sencha.gxt.widget.core.client.menu.MenuBarItem, boolean, boolean)
+     */
+    public MenuBarBuilder activeItem(com.sencha.gxt.widget.core.client.menu.MenuBarItem v0, boolean v1, boolean v2) {
+        menuBar.setActiveItem(v0, v1, v2);
         return this;
     }
 
@@ -143,17 +151,17 @@ public class MenuBarBuilder extends biz.freshcode.learn.gwtp.client.builder.Cons
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.menu.MenuBar#setHeight(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.menu.MenuBar#setHeight(int)
      */
-    public MenuBarBuilder height(java.lang.String v0) {
+    public MenuBarBuilder height(int v0) {
         menuBar.setHeight(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.menu.MenuBar#setHeight(int)
+     * @see com.sencha.gxt.widget.core.client.menu.MenuBar#setHeight(java.lang.String)
      */
-    public MenuBarBuilder height(int v0) {
+    public MenuBarBuilder height(java.lang.String v0) {
         menuBar.setHeight(v0);
         return this;
     }
@@ -219,6 +227,14 @@ public class MenuBarBuilder extends biz.freshcode.learn.gwtp.client.builder.Cons
      */
     public MenuBarBuilder shadow(boolean v0) {
         menuBar.setShadow(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.menu.MenuBar#setShadowPosition(com.sencha.gxt.core.client.dom.Layer.ShadowPosition)
+     */
+    public MenuBarBuilder shadowPosition(com.sencha.gxt.core.client.dom.Layer.ShadowPosition v0) {
+        menuBar.setShadowPosition(v0);
         return this;
     }
 

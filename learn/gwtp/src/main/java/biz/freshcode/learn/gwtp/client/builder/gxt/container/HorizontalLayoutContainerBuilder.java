@@ -16,25 +16,22 @@ public class HorizontalLayoutContainerBuilder extends biz.freshcode.learn.gwtp.c
         horizontalLayoutContainer = v;
     }
 
-    /**
-     * @see com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer#HorizontalLayoutContainer()
-     */
     public HorizontalLayoutContainerBuilder() {
         this(new HorizontalLayoutContainer());
-    }
-
-    /**
-     * @see com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer#add(com.google.gwt.user.client.ui.Widget)
-     */
-    public HorizontalLayoutContainerBuilder add(com.google.gwt.user.client.ui.Widget v0) {
-        horizontalLayoutContainer.add(v0);
-        return this;
     }
 
     /**
      * @see com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer#add(com.google.gwt.user.client.ui.IsWidget)
      */
     public HorizontalLayoutContainerBuilder add(com.google.gwt.user.client.ui.IsWidget v0) {
+        horizontalLayoutContainer.add(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer#add(com.google.gwt.user.client.ui.Widget)
+     */
+    public HorizontalLayoutContainerBuilder add(com.google.gwt.user.client.ui.Widget v0) {
         horizontalLayoutContainer.add(v0);
         return this;
     }
@@ -236,6 +233,14 @@ public class HorizontalLayoutContainerBuilder extends biz.freshcode.learn.gwtp.c
      */
     public HorizontalLayoutContainerBuilder shadow(boolean v0) {
         horizontalLayoutContainer.setShadow(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer#setShadowPosition(com.sencha.gxt.core.client.dom.Layer.ShadowPosition)
+     */
+    public HorizontalLayoutContainerBuilder shadowPosition(com.sencha.gxt.core.client.dom.Layer.ShadowPosition v0) {
+        horizontalLayoutContainer.setShadowPosition(v0);
         return this;
     }
 

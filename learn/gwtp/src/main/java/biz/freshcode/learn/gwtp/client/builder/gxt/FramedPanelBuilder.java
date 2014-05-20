@@ -367,6 +367,14 @@ public class FramedPanelBuilder extends biz.freshcode.learn.gwtp.client.builder.
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.FramedPanel#setShadowPosition(com.sencha.gxt.core.client.dom.Layer.ShadowPosition)
+     */
+    public FramedPanelBuilder shadowPosition(com.sencha.gxt.core.client.dom.Layer.ShadowPosition v0) {
+        framedPanel.setShadowPosition(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.FramedPanel#setSize(java.lang.String, java.lang.String)
      */
     public FramedPanelBuilder size(java.lang.String v0, java.lang.String v1) {
@@ -487,17 +495,17 @@ public class FramedPanelBuilder extends biz.freshcode.learn.gwtp.client.builder.
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.FramedPanel#setWidth(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.FramedPanel#setWidth(int)
      */
-    public FramedPanelBuilder width(java.lang.String v0) {
+    public FramedPanelBuilder width(int v0) {
         framedPanel.setWidth(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.FramedPanel#setWidth(int)
+     * @see com.sencha.gxt.widget.core.client.FramedPanel#setWidth(java.lang.String)
      */
-    public FramedPanelBuilder width(int v0) {
+    public FramedPanelBuilder width(java.lang.String v0) {
         framedPanel.setWidth(v0);
         return this;
     }

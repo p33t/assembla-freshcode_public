@@ -16,25 +16,22 @@ public class VerticalLayoutContainerBuilder extends biz.freshcode.learn.gwtp.cli
         verticalLayoutContainer = v;
     }
 
-    /**
-     * @see com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer#VerticalLayoutContainer()
-     */
     public VerticalLayoutContainerBuilder() {
         this(new VerticalLayoutContainer());
-    }
-
-    /**
-     * @see com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer#add(com.google.gwt.user.client.ui.Widget)
-     */
-    public VerticalLayoutContainerBuilder add(com.google.gwt.user.client.ui.Widget v0) {
-        verticalLayoutContainer.add(v0);
-        return this;
     }
 
     /**
      * @see com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer#add(com.google.gwt.user.client.ui.IsWidget)
      */
     public VerticalLayoutContainerBuilder add(com.google.gwt.user.client.ui.IsWidget v0) {
+        verticalLayoutContainer.add(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer#add(com.google.gwt.user.client.ui.Widget)
+     */
+    public VerticalLayoutContainerBuilder add(com.google.gwt.user.client.ui.Widget v0) {
         verticalLayoutContainer.add(v0);
         return this;
     }
@@ -236,6 +233,14 @@ public class VerticalLayoutContainerBuilder extends biz.freshcode.learn.gwtp.cli
      */
     public VerticalLayoutContainerBuilder shadow(boolean v0) {
         verticalLayoutContainer.setShadow(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer#setShadowPosition(com.sencha.gxt.core.client.dom.Layer.ShadowPosition)
+     */
+    public VerticalLayoutContainerBuilder shadowPosition(com.sencha.gxt.core.client.dom.Layer.ShadowPosition v0) {
+        verticalLayoutContainer.setShadowPosition(v0);
         return this;
     }
 

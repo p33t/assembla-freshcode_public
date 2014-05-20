@@ -17,17 +17,17 @@ public class BorderLayoutContainerBuilder extends biz.freshcode.learn.gwtp.clien
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.BorderLayoutContainer#BorderLayoutContainer()
-     */
-    public BorderLayoutContainerBuilder() {
-        this(new BorderLayoutContainer());
-    }
-
-    /**
      * @see com.sencha.gxt.widget.core.client.container.BorderLayoutContainer#BorderLayoutContainer(com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutAppearance)
      */
     public BorderLayoutContainerBuilder(com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutAppearance v0) {
         this(new BorderLayoutContainer(v0));
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.container.BorderLayoutContainer#BorderLayoutContainer()
+     */
+    public BorderLayoutContainerBuilder() {
+        this(new BorderLayoutContainer());
     }
 
     /**
@@ -175,17 +175,17 @@ public class BorderLayoutContainerBuilder extends biz.freshcode.learn.gwtp.clien
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.BorderLayoutContainer#setHeight(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.container.BorderLayoutContainer#setHeight(int)
      */
-    public BorderLayoutContainerBuilder height(java.lang.String v0) {
+    public BorderLayoutContainerBuilder height(int v0) {
         borderLayoutContainer.setHeight(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.BorderLayoutContainer#setHeight(int)
+     * @see com.sencha.gxt.widget.core.client.container.BorderLayoutContainer#setHeight(java.lang.String)
      */
-    public BorderLayoutContainerBuilder height(int v0) {
+    public BorderLayoutContainerBuilder height(java.lang.String v0) {
         borderLayoutContainer.setHeight(v0);
         return this;
     }
@@ -275,6 +275,14 @@ public class BorderLayoutContainerBuilder extends biz.freshcode.learn.gwtp.clien
      */
     public BorderLayoutContainerBuilder shadow(boolean v0) {
         borderLayoutContainer.setShadow(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.container.BorderLayoutContainer#setShadowPosition(com.sencha.gxt.core.client.dom.Layer.ShadowPosition)
+     */
+    public BorderLayoutContainerBuilder shadowPosition(com.sencha.gxt.core.client.dom.Layer.ShadowPosition v0) {
+        borderLayoutContainer.setShadowPosition(v0);
         return this;
     }
 

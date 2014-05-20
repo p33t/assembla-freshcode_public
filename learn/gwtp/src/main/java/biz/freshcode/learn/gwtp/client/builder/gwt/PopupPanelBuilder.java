@@ -17,17 +17,17 @@ public class PopupPanelBuilder extends biz.freshcode.learn.gwtp.client.builder.C
     }
 
     /**
-     * @see com.google.gwt.user.client.ui.PopupPanel#PopupPanel(boolean, boolean)
-     */
-    public PopupPanelBuilder(boolean v0, boolean v1) {
-        this(new PopupPanel(v0, v1));
-    }
-
-    /**
      * @see com.google.gwt.user.client.ui.PopupPanel#PopupPanel(boolean)
      */
     public PopupPanelBuilder(boolean v0) {
         this(new PopupPanel(v0));
+    }
+
+    /**
+     * @see com.google.gwt.user.client.ui.PopupPanel#PopupPanel(boolean, boolean)
+     */
+    public PopupPanelBuilder(boolean v0, boolean v1) {
+        this(new PopupPanel(v0, v1));
     }
 
     /**

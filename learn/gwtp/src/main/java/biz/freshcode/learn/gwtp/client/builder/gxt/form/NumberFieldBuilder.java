@@ -17,17 +17,17 @@ public class NumberFieldBuilder<N extends Number> extends biz.freshcode.learn.gw
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.form.NumberField#NumberField(com.sencha.gxt.cell.core.client.form.NumberInputCell, com.sencha.gxt.widget.core.client.form.NumberPropertyEditor)
-     */
-    public NumberFieldBuilder(com.sencha.gxt.cell.core.client.form.NumberInputCell<N> v0, com.sencha.gxt.widget.core.client.form.NumberPropertyEditor<N> v1) {
-        this(new NumberField<N>(v0, v1));
-    }
-
-    /**
      * @see com.sencha.gxt.widget.core.client.form.NumberField#NumberField(com.sencha.gxt.widget.core.client.form.NumberPropertyEditor)
      */
     public NumberFieldBuilder(com.sencha.gxt.widget.core.client.form.NumberPropertyEditor<N> v0) {
         this(new NumberField<N>(v0));
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.form.NumberField#NumberField(com.sencha.gxt.cell.core.client.form.NumberInputCell, com.sencha.gxt.widget.core.client.form.NumberPropertyEditor)
+     */
+    public NumberFieldBuilder(com.sencha.gxt.cell.core.client.form.NumberInputCell<N> v0, com.sencha.gxt.widget.core.client.form.NumberPropertyEditor<N> v1) {
+        this(new NumberField<N>(v0, v1));
     }
 
     /**
@@ -247,6 +247,14 @@ public class NumberFieldBuilder<N extends Number> extends biz.freshcode.learn.gw
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.form.NumberField#setFinishEditOnEnter(boolean)
+     */
+    public NumberFieldBuilder<N> finishEditOnEnter(boolean v0) {
+        numberField.setFinishEditOnEnter(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.form.NumberField#setFormat(com.google.gwt.i18n.client.NumberFormat)
      */
     public NumberFieldBuilder<N> format(com.google.gwt.i18n.client.NumberFormat v0) {
@@ -255,17 +263,17 @@ public class NumberFieldBuilder<N extends Number> extends biz.freshcode.learn.gw
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.form.NumberField#setHeight(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.form.NumberField#setHeight(int)
      */
-    public NumberFieldBuilder<N> height(java.lang.String v0) {
+    public NumberFieldBuilder<N> height(int v0) {
         numberField.setHeight(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.form.NumberField#setHeight(int)
+     * @see com.sencha.gxt.widget.core.client.form.NumberField#setHeight(java.lang.String)
      */
-    public NumberFieldBuilder<N> height(int v0) {
+    public NumberFieldBuilder<N> height(java.lang.String v0) {
         numberField.setHeight(v0);
         return this;
     }
@@ -395,6 +403,14 @@ public class NumberFieldBuilder<N extends Number> extends biz.freshcode.learn.gw
      */
     public NumberFieldBuilder<N> shadow(boolean v0) {
         numberField.setShadow(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.form.NumberField#setShadowPosition(com.sencha.gxt.core.client.dom.Layer.ShadowPosition)
+     */
+    public NumberFieldBuilder<N> shadowPosition(com.sencha.gxt.core.client.dom.Layer.ShadowPosition v0) {
+        numberField.setShadowPosition(v0);
         return this;
     }
 
@@ -543,17 +559,17 @@ public class NumberFieldBuilder<N extends Number> extends biz.freshcode.learn.gw
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.form.NumberField#setWidth(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.form.NumberField#setWidth(int)
      */
-    public NumberFieldBuilder<N> width(java.lang.String v0) {
+    public NumberFieldBuilder<N> width(int v0) {
         numberField.setWidth(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.form.NumberField#setWidth(int)
+     * @see com.sencha.gxt.widget.core.client.form.NumberField#setWidth(java.lang.String)
      */
-    public NumberFieldBuilder<N> width(int v0) {
+    public NumberFieldBuilder<N> width(java.lang.String v0) {
         numberField.setWidth(v0);
         return this;
     }
