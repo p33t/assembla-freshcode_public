@@ -1,7 +1,5 @@
 package biz.freshcode.learn.gwt.client.builder.gxt.button;
 
-import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
-import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.widget.core.client.button.ToolButton;
 
 /**
@@ -9,9 +7,9 @@ import com.sencha.gxt.widget.core.client.button.ToolButton;
  *
  * @see com.sencha.gxt.widget.core.client.button.ToolButton
  */
-@BeanBuilder(ToolButton.class)
 @SuppressWarnings("UnusedDeclaration")
-public class ToolButtonBuilder extends Construct.Parent<ToolButtonBuilder> {
+@biz.freshcode.learn.gwt.client.builder.BeanBuilder(ToolButton.class)
+public class ToolButtonBuilder extends biz.freshcode.learn.gwt.client.builder.Construct.Parent<ToolButtonBuilder> {
     public final ToolButton toolButton;
 
     public ToolButtonBuilder(ToolButton v) {
@@ -135,17 +133,17 @@ public class ToolButtonBuilder extends Construct.Parent<ToolButtonBuilder> {
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.button.ToolButton#setHeight(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.button.ToolButton#setHeight(int)
      */
-    public ToolButtonBuilder height(java.lang.String v0) {
+    public ToolButtonBuilder height(int v0) {
         toolButton.setHeight(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.button.ToolButton#setHeight(int)
+     * @see com.sencha.gxt.widget.core.client.button.ToolButton#setHeight(java.lang.String)
      */
-    public ToolButtonBuilder height(int v0) {
+    public ToolButtonBuilder height(java.lang.String v0) {
         toolButton.setHeight(v0);
         return this;
     }
@@ -319,17 +317,17 @@ public class ToolButtonBuilder extends Construct.Parent<ToolButtonBuilder> {
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.button.ToolButton#setWidth(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.button.ToolButton#setWidth(int)
      */
-    public ToolButtonBuilder width(java.lang.String v0) {
+    public ToolButtonBuilder width(int v0) {
         toolButton.setWidth(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.button.ToolButton#setWidth(int)
+     * @see com.sencha.gxt.widget.core.client.button.ToolButton#setWidth(java.lang.String)
      */
-    public ToolButtonBuilder width(int v0) {
+    public ToolButtonBuilder width(java.lang.String v0) {
         toolButton.setWidth(v0);
         return this;
     }

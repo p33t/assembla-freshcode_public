@@ -1,7 +1,5 @@
 package biz.freshcode.learn.gwt.client.builder.gxt.container;
 
-import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
-import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
 
 /**
@@ -9,9 +7,9 @@ import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
  *
  * @see com.sencha.gxt.widget.core.client.container.BorderLayoutContainer
  */
-@BeanBuilder(BorderLayoutContainer.class)
 @SuppressWarnings("UnusedDeclaration")
-public class BorderLayoutContainerBuilder extends Construct.Parent<BorderLayoutContainerBuilder> {
+@biz.freshcode.learn.gwt.client.builder.BeanBuilder(BorderLayoutContainer.class)
+public class BorderLayoutContainerBuilder extends biz.freshcode.learn.gwt.client.builder.Construct.Parent<BorderLayoutContainerBuilder> {
     public final BorderLayoutContainer borderLayoutContainer;
 
     public BorderLayoutContainerBuilder(BorderLayoutContainer v) {
@@ -19,17 +17,17 @@ public class BorderLayoutContainerBuilder extends Construct.Parent<BorderLayoutC
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.BorderLayoutContainer#BorderLayoutContainer()
-     */
-    public BorderLayoutContainerBuilder() {
-        this(new BorderLayoutContainer());
-    }
-
-    /**
      * @see com.sencha.gxt.widget.core.client.container.BorderLayoutContainer#BorderLayoutContainer(com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutAppearance)
      */
     public BorderLayoutContainerBuilder(com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutAppearance v0) {
         this(new BorderLayoutContainer(v0));
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.container.BorderLayoutContainer#BorderLayoutContainer()
+     */
+    public BorderLayoutContainerBuilder() {
+        this(new BorderLayoutContainer());
     }
 
     /**
@@ -177,17 +175,17 @@ public class BorderLayoutContainerBuilder extends Construct.Parent<BorderLayoutC
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.BorderLayoutContainer#setHeight(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.container.BorderLayoutContainer#setHeight(int)
      */
-    public BorderLayoutContainerBuilder height(java.lang.String v0) {
+    public BorderLayoutContainerBuilder height(int v0) {
         borderLayoutContainer.setHeight(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.BorderLayoutContainer#setHeight(int)
+     * @see com.sencha.gxt.widget.core.client.container.BorderLayoutContainer#setHeight(java.lang.String)
      */
-    public BorderLayoutContainerBuilder height(int v0) {
+    public BorderLayoutContainerBuilder height(java.lang.String v0) {
         borderLayoutContainer.setHeight(v0);
         return this;
     }
@@ -433,17 +431,17 @@ public class BorderLayoutContainerBuilder extends Construct.Parent<BorderLayoutC
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.BorderLayoutContainer#setWidth(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.container.BorderLayoutContainer#setWidth(int)
      */
-    public BorderLayoutContainerBuilder width(java.lang.String v0) {
+    public BorderLayoutContainerBuilder width(int v0) {
         borderLayoutContainer.setWidth(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.BorderLayoutContainer#setWidth(int)
+     * @see com.sencha.gxt.widget.core.client.container.BorderLayoutContainer#setWidth(java.lang.String)
      */
-    public BorderLayoutContainerBuilder width(int v0) {
+    public BorderLayoutContainerBuilder width(java.lang.String v0) {
         borderLayoutContainer.setWidth(v0);
         return this;
     }

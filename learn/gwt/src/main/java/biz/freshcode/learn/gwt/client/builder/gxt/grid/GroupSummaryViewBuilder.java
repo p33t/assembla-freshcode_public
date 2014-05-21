@@ -1,7 +1,5 @@
 package biz.freshcode.learn.gwt.client.builder.gxt.grid;
 
-import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
-import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.widget.core.client.grid.GroupSummaryView;
 
 /**
@@ -9,17 +7,34 @@ import com.sencha.gxt.widget.core.client.grid.GroupSummaryView;
  *
  * @see com.sencha.gxt.widget.core.client.grid.GroupSummaryView
  */
-@BeanBuilder(GroupSummaryView.class)
 @SuppressWarnings("UnusedDeclaration")
-public class GroupSummaryViewBuilder<M> extends Construct.Parent<GroupSummaryViewBuilder<M>> {
+@biz.freshcode.learn.gwt.client.builder.BeanBuilder(GroupSummaryView.class)
+public class GroupSummaryViewBuilder<M> extends biz.freshcode.learn.gwt.client.builder.Construct.Parent<GroupSummaryViewBuilder<M>> {
     public final GroupSummaryView<M> groupSummaryView;
 
     public GroupSummaryViewBuilder(GroupSummaryView<M> v) {
         groupSummaryView = v;
     }
 
+    /**
+     * @see com.sencha.gxt.widget.core.client.grid.GroupSummaryView#GroupSummaryView()
+     */
     public GroupSummaryViewBuilder() {
         this(new GroupSummaryView<M>());
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.grid.GroupSummaryView#GroupSummaryView(com.sencha.gxt.widget.core.client.grid.GridView.GridAppearance, com.sencha.gxt.widget.core.client.grid.GroupSummaryView.GroupSummaryViewAppearance)
+     */
+    public GroupSummaryViewBuilder(com.sencha.gxt.widget.core.client.grid.GridView.GridAppearance v0, com.sencha.gxt.widget.core.client.grid.GroupSummaryView.GroupSummaryViewAppearance v1) {
+        this(new GroupSummaryView<M>(v0, v1));
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.grid.GroupSummaryView#GroupSummaryView(com.sencha.gxt.widget.core.client.grid.GroupSummaryView.GroupSummaryViewAppearance)
+     */
+    public GroupSummaryViewBuilder(com.sencha.gxt.widget.core.client.grid.GroupSummaryView.GroupSummaryViewAppearance v0) {
+        this(new GroupSummaryView<M>(v0));
     }
 
     /**
@@ -59,6 +74,14 @@ public class GroupSummaryViewBuilder<M> extends Construct.Parent<GroupSummaryVie
      */
     public GroupSummaryViewBuilder<M> autoFill(boolean v0) {
         groupSummaryView.setAutoFill(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.grid.GroupSummaryView#setColumnHeader(com.sencha.gxt.widget.core.client.grid.ColumnHeader)
+     */
+    public GroupSummaryViewBuilder<M> columnHeader(com.sencha.gxt.widget.core.client.grid.ColumnHeader<M> v0) {
+        groupSummaryView.setColumnHeader(v0);
         return this;
     }
 

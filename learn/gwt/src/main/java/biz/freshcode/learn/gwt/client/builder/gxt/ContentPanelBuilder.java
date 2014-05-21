@@ -1,7 +1,5 @@
 package biz.freshcode.learn.gwt.client.builder.gxt;
 
-import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
-import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.widget.core.client.ContentPanel;
 
 /**
@@ -9,9 +7,9 @@ import com.sencha.gxt.widget.core.client.ContentPanel;
  *
  * @see com.sencha.gxt.widget.core.client.ContentPanel
  */
-@BeanBuilder(ContentPanel.class)
 @SuppressWarnings("UnusedDeclaration")
-public class ContentPanelBuilder extends Construct.Parent<ContentPanelBuilder> {
+@biz.freshcode.learn.gwt.client.builder.BeanBuilder(ContentPanel.class)
+public class ContentPanelBuilder extends biz.freshcode.learn.gwt.client.builder.Construct.Parent<ContentPanelBuilder> {
     public final ContentPanel contentPanel;
 
     public ContentPanelBuilder(ContentPanel v) {
@@ -19,17 +17,17 @@ public class ContentPanelBuilder extends Construct.Parent<ContentPanelBuilder> {
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.ContentPanel#ContentPanel()
-     */
-    public ContentPanelBuilder() {
-        this(new ContentPanel());
-    }
-
-    /**
      * @see com.sencha.gxt.widget.core.client.ContentPanel#ContentPanel(com.sencha.gxt.widget.core.client.ContentPanel.ContentPanelAppearance)
      */
     public ContentPanelBuilder(com.sencha.gxt.widget.core.client.ContentPanel.ContentPanelAppearance v0) {
         this(new ContentPanel(v0));
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.ContentPanel#ContentPanel()
+     */
+    public ContentPanelBuilder() {
+        this(new ContentPanel());
     }
 
     /**
@@ -257,17 +255,17 @@ public class ContentPanelBuilder extends Construct.Parent<ContentPanelBuilder> {
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.ContentPanel#setHeight(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.ContentPanel#setHeight(int)
      */
-    public ContentPanelBuilder height(java.lang.String v0) {
+    public ContentPanelBuilder height(int v0) {
         contentPanel.setHeight(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.ContentPanel#setHeight(int)
+     * @see com.sencha.gxt.widget.core.client.ContentPanel#setHeight(java.lang.String)
      */
-    public ContentPanelBuilder height(int v0) {
+    public ContentPanelBuilder height(java.lang.String v0) {
         contentPanel.setHeight(v0);
         return this;
     }
@@ -497,17 +495,17 @@ public class ContentPanelBuilder extends Construct.Parent<ContentPanelBuilder> {
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.ContentPanel#setWidth(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.ContentPanel#setWidth(int)
      */
-    public ContentPanelBuilder width(java.lang.String v0) {
+    public ContentPanelBuilder width(int v0) {
         contentPanel.setWidth(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.ContentPanel#setWidth(int)
+     * @see com.sencha.gxt.widget.core.client.ContentPanel#setWidth(java.lang.String)
      */
-    public ContentPanelBuilder width(int v0) {
+    public ContentPanelBuilder width(java.lang.String v0) {
         contentPanel.setWidth(v0);
         return this;
     }

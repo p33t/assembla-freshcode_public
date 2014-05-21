@@ -1,7 +1,5 @@
 package biz.freshcode.learn.gwt.client.builder.gxt.container;
 
-import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
-import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.widget.core.client.container.SimpleContainer;
 
 /**
@@ -9,9 +7,9 @@ import com.sencha.gxt.widget.core.client.container.SimpleContainer;
  *
  * @see com.sencha.gxt.widget.core.client.container.SimpleContainer
  */
-@BeanBuilder(SimpleContainer.class)
 @SuppressWarnings("UnusedDeclaration")
-public class SimpleContainerBuilder extends Construct.Parent<SimpleContainerBuilder> {
+@biz.freshcode.learn.gwt.client.builder.BeanBuilder(SimpleContainer.class)
+public class SimpleContainerBuilder extends biz.freshcode.learn.gwt.client.builder.Construct.Parent<SimpleContainerBuilder> {
     public final SimpleContainer simpleContainer;
 
     public SimpleContainerBuilder(SimpleContainer v) {
@@ -138,17 +136,17 @@ public class SimpleContainerBuilder extends Construct.Parent<SimpleContainerBuil
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.SimpleContainer#setHeight(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.container.SimpleContainer#setHeight(int)
      */
-    public SimpleContainerBuilder height(java.lang.String v0) {
+    public SimpleContainerBuilder height(int v0) {
         simpleContainer.setHeight(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.SimpleContainer#setHeight(int)
+     * @see com.sencha.gxt.widget.core.client.container.SimpleContainer#setHeight(java.lang.String)
      */
-    public SimpleContainerBuilder height(int v0) {
+    public SimpleContainerBuilder height(java.lang.String v0) {
         simpleContainer.setHeight(v0);
         return this;
     }
@@ -346,17 +344,17 @@ public class SimpleContainerBuilder extends Construct.Parent<SimpleContainerBuil
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.SimpleContainer#setWidth(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.container.SimpleContainer#setWidth(int)
      */
-    public SimpleContainerBuilder width(java.lang.String v0) {
+    public SimpleContainerBuilder width(int v0) {
         simpleContainer.setWidth(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.SimpleContainer#setWidth(int)
+     * @see com.sencha.gxt.widget.core.client.container.SimpleContainer#setWidth(java.lang.String)
      */
-    public SimpleContainerBuilder width(int v0) {
+    public SimpleContainerBuilder width(java.lang.String v0) {
         simpleContainer.setWidth(v0);
         return this;
     }

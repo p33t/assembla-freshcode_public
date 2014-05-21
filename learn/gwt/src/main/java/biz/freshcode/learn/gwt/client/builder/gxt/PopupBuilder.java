@@ -1,7 +1,5 @@
 package biz.freshcode.learn.gwt.client.builder.gxt;
 
-import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
-import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.widget.core.client.Popup;
 
 /**
@@ -9,9 +7,9 @@ import com.sencha.gxt.widget.core.client.Popup;
  *
  * @see com.sencha.gxt.widget.core.client.Popup
  */
-@BeanBuilder(Popup.class)
 @SuppressWarnings("UnusedDeclaration")
-public class PopupBuilder extends Construct.Parent<PopupBuilder> {
+@biz.freshcode.learn.gwt.client.builder.BeanBuilder(Popup.class)
+public class PopupBuilder extends biz.freshcode.learn.gwt.client.builder.Construct.Parent<PopupBuilder> {
     public final Popup popup;
 
     public PopupBuilder(Popup v) {
@@ -175,17 +173,17 @@ public class PopupBuilder extends Construct.Parent<PopupBuilder> {
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.Popup#setHeight(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.Popup#setHeight(int)
      */
-    public PopupBuilder height(java.lang.String v0) {
+    public PopupBuilder height(int v0) {
         popup.setHeight(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.Popup#setHeight(int)
+     * @see com.sencha.gxt.widget.core.client.Popup#setHeight(java.lang.String)
      */
-    public PopupBuilder height(int v0) {
+    public PopupBuilder height(java.lang.String v0) {
         popup.setHeight(v0);
         return this;
     }
@@ -383,17 +381,17 @@ public class PopupBuilder extends Construct.Parent<PopupBuilder> {
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.Popup#setWidth(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.Popup#setWidth(int)
      */
-    public PopupBuilder width(java.lang.String v0) {
+    public PopupBuilder width(int v0) {
         popup.setWidth(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.Popup#setWidth(int)
+     * @see com.sencha.gxt.widget.core.client.Popup#setWidth(java.lang.String)
      */
-    public PopupBuilder width(int v0) {
+    public PopupBuilder width(java.lang.String v0) {
         popup.setWidth(v0);
         return this;
     }

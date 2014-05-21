@@ -1,7 +1,5 @@
 package biz.freshcode.learn.gwt.client.builder.gxt.tips;
 
-import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
-import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.widget.core.client.tips.ToolTipConfig;
 
 /**
@@ -9,27 +7,13 @@ import com.sencha.gxt.widget.core.client.tips.ToolTipConfig;
  *
  * @see com.sencha.gxt.widget.core.client.tips.ToolTipConfig
  */
-@BeanBuilder(ToolTipConfig.class)
 @SuppressWarnings("UnusedDeclaration")
-public class ToolTipConfigBuilder extends Construct.Parent<ToolTipConfigBuilder> {
+@biz.freshcode.learn.gwt.client.builder.BeanBuilder(ToolTipConfig.class)
+public class ToolTipConfigBuilder extends biz.freshcode.learn.gwt.client.builder.Construct.Parent<ToolTipConfigBuilder> {
     public final ToolTipConfig toolTipConfig;
 
     public ToolTipConfigBuilder(ToolTipConfig v) {
         toolTipConfig = v;
-    }
-
-    /**
-     * @see com.sencha.gxt.widget.core.client.tips.ToolTipConfig#ToolTipConfig(java.lang.String, java.lang.String)
-     */
-    public ToolTipConfigBuilder(java.lang.String v0, java.lang.String v1) {
-        this(new ToolTipConfig(v0, v1));
-    }
-
-    /**
-     * @see com.sencha.gxt.widget.core.client.tips.ToolTipConfig#ToolTipConfig(java.lang.String)
-     */
-    public ToolTipConfigBuilder(java.lang.String v0) {
-        this(new ToolTipConfig(v0));
     }
 
     /**
@@ -40,10 +24,32 @@ public class ToolTipConfigBuilder extends Construct.Parent<ToolTipConfigBuilder>
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.tips.ToolTipConfig#ToolTipConfig(java.lang.String)
+     */
+    public ToolTipConfigBuilder(java.lang.String v0) {
+        this(new ToolTipConfig(v0));
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.tips.ToolTipConfig#ToolTipConfig(java.lang.String, java.lang.String)
+     */
+    public ToolTipConfigBuilder(java.lang.String v0, java.lang.String v1) {
+        this(new ToolTipConfig(v0, v1));
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.tips.ToolTipConfig#setAnchor(com.sencha.gxt.core.client.Style.Side)
      */
     public ToolTipConfigBuilder anchor(com.sencha.gxt.core.client.Style.Side v0) {
         toolTipConfig.setAnchor(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.tips.ToolTipConfig#setAnchorArrow(boolean)
+     */
+    public ToolTipConfigBuilder anchorArrow(boolean v0) {
+        toolTipConfig.setAnchorArrow(v0);
         return this;
     }
 
@@ -152,14 +158,6 @@ public class ToolTipConfigBuilder extends Construct.Parent<ToolTipConfigBuilder>
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.tips.ToolTipConfig#setMouseOffset(int[])
-     */
-    public ToolTipConfigBuilder mouseOffset(int[] v0) {
-        toolTipConfig.setMouseOffset(v0);
-        return this;
-    }
-
-    /**
      * @see com.sencha.gxt.widget.core.client.tips.ToolTipConfig#setMouseOffsetX(int)
      */
     public ToolTipConfigBuilder mouseOffsetX(int v0) {
@@ -192,17 +190,17 @@ public class ToolTipConfigBuilder extends Construct.Parent<ToolTipConfigBuilder>
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.tips.ToolTipConfig#setTitleHtml(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.tips.ToolTipConfig#setTitleHtml(com.google.gwt.safehtml.shared.SafeHtml)
      */
-    public ToolTipConfigBuilder titleHtml(java.lang.String v0) {
+    public ToolTipConfigBuilder titleHtml(com.google.gwt.safehtml.shared.SafeHtml v0) {
         toolTipConfig.setTitleHtml(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.tips.ToolTipConfig#setTitleHtml(com.google.gwt.safehtml.shared.SafeHtml)
+     * @see com.sencha.gxt.widget.core.client.tips.ToolTipConfig#setTitleHtml(java.lang.String)
      */
-    public ToolTipConfigBuilder titleHtml(com.google.gwt.safehtml.shared.SafeHtml v0) {
+    public ToolTipConfigBuilder titleHtml(java.lang.String v0) {
         toolTipConfig.setTitleHtml(v0);
         return this;
     }

@@ -1,7 +1,5 @@
 package biz.freshcode.learn.gwt.client.builder.gxt.grid;
 
-import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
-import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.widget.core.client.grid.SummaryColumnConfig;
 
 /**
@@ -9,34 +7,13 @@ import com.sencha.gxt.widget.core.client.grid.SummaryColumnConfig;
  *
  * @see com.sencha.gxt.widget.core.client.grid.SummaryColumnConfig
  */
-@BeanBuilder(SummaryColumnConfig.class)
 @SuppressWarnings("UnusedDeclaration")
-public class SummaryColumnConfigBuilder<M, N> extends Construct.Parent<SummaryColumnConfigBuilder<M, N>> {
+@biz.freshcode.learn.gwt.client.builder.BeanBuilder(SummaryColumnConfig.class)
+public class SummaryColumnConfigBuilder<M, N> extends biz.freshcode.learn.gwt.client.builder.Construct.Parent<SummaryColumnConfigBuilder<M, N>> {
     public final SummaryColumnConfig<M, N> summaryColumnConfig;
 
     public SummaryColumnConfigBuilder(SummaryColumnConfig<M, N> v) {
         summaryColumnConfig = v;
-    }
-
-    /**
-     * @see com.sencha.gxt.widget.core.client.grid.SummaryColumnConfig#SummaryColumnConfig(com.sencha.gxt.core.client.ValueProvider, int, java.lang.String)
-     */
-    public SummaryColumnConfigBuilder(com.sencha.gxt.core.client.ValueProvider<? super M, N> v0, int v1, java.lang.String v2) {
-        this(new SummaryColumnConfig<M, N>(v0, v1, v2));
-    }
-
-    /**
-     * @see com.sencha.gxt.widget.core.client.grid.SummaryColumnConfig#SummaryColumnConfig(com.sencha.gxt.core.client.ValueProvider, int, com.google.gwt.safehtml.shared.SafeHtml)
-     */
-    public SummaryColumnConfigBuilder(com.sencha.gxt.core.client.ValueProvider<? super M, N> v0, int v1, com.google.gwt.safehtml.shared.SafeHtml v2) {
-        this(new SummaryColumnConfig<M, N>(v0, v1, v2));
-    }
-
-    /**
-     * @see com.sencha.gxt.widget.core.client.grid.SummaryColumnConfig#SummaryColumnConfig(com.sencha.gxt.core.client.ValueProvider, int)
-     */
-    public SummaryColumnConfigBuilder(com.sencha.gxt.core.client.ValueProvider<? super M, N> v0, int v1) {
-        this(new SummaryColumnConfig<M, N>(v0, v1));
     }
 
     /**
@@ -47,11 +24,24 @@ public class SummaryColumnConfigBuilder<M, N> extends Construct.Parent<SummaryCo
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.grid.SummaryColumnConfig#setAlignment(com.google.gwt.user.client.ui.HasHorizontalAlignment.HorizontalAlignmentConstant)
+     * @see com.sencha.gxt.widget.core.client.grid.SummaryColumnConfig#SummaryColumnConfig(com.sencha.gxt.core.client.ValueProvider, int)
      */
-    public SummaryColumnConfigBuilder<M, N> alignment(com.google.gwt.user.client.ui.HasHorizontalAlignment.HorizontalAlignmentConstant v0) {
-        summaryColumnConfig.setAlignment(v0);
-        return this;
+    public SummaryColumnConfigBuilder(com.sencha.gxt.core.client.ValueProvider<? super M, N> v0, int v1) {
+        this(new SummaryColumnConfig<M, N>(v0, v1));
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.grid.SummaryColumnConfig#SummaryColumnConfig(com.sencha.gxt.core.client.ValueProvider, int, com.google.gwt.safehtml.shared.SafeHtml)
+     */
+    public SummaryColumnConfigBuilder(com.sencha.gxt.core.client.ValueProvider<? super M, N> v0, int v1, com.google.gwt.safehtml.shared.SafeHtml v2) {
+        this(new SummaryColumnConfig<M, N>(v0, v1, v2));
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.grid.SummaryColumnConfig#SummaryColumnConfig(com.sencha.gxt.core.client.ValueProvider, int, java.lang.String)
+     */
+    public SummaryColumnConfigBuilder(com.sencha.gxt.core.client.ValueProvider<? super M, N> v0, int v1, java.lang.String v2) {
+        this(new SummaryColumnConfig<M, N>(v0, v1, v2));
     }
 
     /**
@@ -63,10 +53,18 @@ public class SummaryColumnConfigBuilder<M, N> extends Construct.Parent<SummaryCo
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.grid.SummaryColumnConfig#setColumnClassSuffix(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.grid.SummaryColumnConfig#setCellClassName(java.lang.String)
      */
-    public SummaryColumnConfigBuilder<M, N> columnClassSuffix(java.lang.String v0) {
-        summaryColumnConfig.setColumnClassSuffix(v0);
+    public SummaryColumnConfigBuilder<M, N> cellClassName(java.lang.String v0) {
+        summaryColumnConfig.setCellClassName(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.grid.SummaryColumnConfig#setCellPadding(boolean)
+     */
+    public SummaryColumnConfigBuilder<M, N> cellPadding(boolean v0) {
+        summaryColumnConfig.setCellPadding(v0);
         return this;
     }
 
@@ -159,6 +157,14 @@ public class SummaryColumnConfigBuilder<M, N> extends Construct.Parent<SummaryCo
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.grid.SummaryColumnConfig#setHorizontalAlignment(com.google.gwt.user.client.ui.HasHorizontalAlignment.HorizontalAlignmentConstant)
+     */
+    public SummaryColumnConfigBuilder<M, N> horizontalAlignment(com.google.gwt.user.client.ui.HasHorizontalAlignment.HorizontalAlignmentConstant v0) {
+        summaryColumnConfig.setHorizontalAlignment(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.grid.SummaryColumnConfig#setMenuDisabled(boolean)
      */
     public SummaryColumnConfigBuilder<M, N> menuDisabled(boolean v0) {
@@ -219,6 +225,14 @@ public class SummaryColumnConfigBuilder<M, N> extends Construct.Parent<SummaryCo
      */
     public SummaryColumnConfigBuilder<M, N> toolTip(com.google.gwt.safehtml.shared.SafeHtml v0) {
         summaryColumnConfig.setToolTip(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.grid.SummaryColumnConfig#setVerticalAlignment(com.google.gwt.user.client.ui.HasVerticalAlignment.VerticalAlignmentConstant)
+     */
+    public SummaryColumnConfigBuilder<M, N> verticalAlignment(com.google.gwt.user.client.ui.HasVerticalAlignment.VerticalAlignmentConstant v0) {
+        summaryColumnConfig.setVerticalAlignment(v0);
         return this;
     }
 

@@ -1,7 +1,5 @@
 package biz.freshcode.learn.gwt.client.builder.gxt.container;
 
-import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
-import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
 
 /**
@@ -9,9 +7,9 @@ import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
  *
  * @see com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer
  */
-@BeanBuilder(VerticalLayoutContainer.class)
 @SuppressWarnings("UnusedDeclaration")
-public class VerticalLayoutContainerBuilder extends Construct.Parent<VerticalLayoutContainerBuilder> {
+@biz.freshcode.learn.gwt.client.builder.BeanBuilder(VerticalLayoutContainer.class)
+public class VerticalLayoutContainerBuilder extends biz.freshcode.learn.gwt.client.builder.Construct.Parent<VerticalLayoutContainerBuilder> {
     public final VerticalLayoutContainer verticalLayoutContainer;
 
     public VerticalLayoutContainerBuilder(VerticalLayoutContainer v) {
@@ -23,17 +21,17 @@ public class VerticalLayoutContainerBuilder extends Construct.Parent<VerticalLay
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer#add(com.google.gwt.user.client.ui.Widget)
+     * @see com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer#add(com.google.gwt.user.client.ui.IsWidget)
      */
-    public VerticalLayoutContainerBuilder add(com.google.gwt.user.client.ui.Widget v0) {
+    public VerticalLayoutContainerBuilder add(com.google.gwt.user.client.ui.IsWidget v0) {
         verticalLayoutContainer.add(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer#add(com.google.gwt.user.client.ui.IsWidget)
+     * @see com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer#add(com.google.gwt.user.client.ui.Widget)
      */
-    public VerticalLayoutContainerBuilder add(com.google.gwt.user.client.ui.IsWidget v0) {
+    public VerticalLayoutContainerBuilder add(com.google.gwt.user.client.ui.Widget v0) {
         verticalLayoutContainer.add(v0);
         return this;
     }
@@ -143,17 +141,17 @@ public class VerticalLayoutContainerBuilder extends Construct.Parent<VerticalLay
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer#setHeight(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer#setHeight(int)
      */
-    public VerticalLayoutContainerBuilder height(java.lang.String v0) {
+    public VerticalLayoutContainerBuilder height(int v0) {
         verticalLayoutContainer.setHeight(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer#setHeight(int)
+     * @see com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer#setHeight(java.lang.String)
      */
-    public VerticalLayoutContainerBuilder height(int v0) {
+    public VerticalLayoutContainerBuilder height(java.lang.String v0) {
         verticalLayoutContainer.setHeight(v0);
         return this;
     }
@@ -343,17 +341,17 @@ public class VerticalLayoutContainerBuilder extends Construct.Parent<VerticalLay
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer#setWidth(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer#setWidth(int)
      */
-    public VerticalLayoutContainerBuilder width(java.lang.String v0) {
+    public VerticalLayoutContainerBuilder width(int v0) {
         verticalLayoutContainer.setWidth(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer#setWidth(int)
+     * @see com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer#setWidth(java.lang.String)
      */
-    public VerticalLayoutContainerBuilder width(int v0) {
+    public VerticalLayoutContainerBuilder width(java.lang.String v0) {
         verticalLayoutContainer.setWidth(v0);
         return this;
     }

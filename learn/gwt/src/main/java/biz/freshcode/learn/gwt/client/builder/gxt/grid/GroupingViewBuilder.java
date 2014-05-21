@@ -1,7 +1,5 @@
 package biz.freshcode.learn.gwt.client.builder.gxt.grid;
 
-import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
-import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.widget.core.client.grid.GroupingView;
 
 /**
@@ -9,9 +7,9 @@ import com.sencha.gxt.widget.core.client.grid.GroupingView;
  *
  * @see com.sencha.gxt.widget.core.client.grid.GroupingView
  */
-@BeanBuilder(GroupingView.class)
 @SuppressWarnings("UnusedDeclaration")
-public class GroupingViewBuilder<M> extends Construct.Parent<GroupingViewBuilder<M>> {
+@biz.freshcode.learn.gwt.client.builder.BeanBuilder(GroupingView.class)
+public class GroupingViewBuilder<M> extends biz.freshcode.learn.gwt.client.builder.Construct.Parent<GroupingViewBuilder<M>> {
     public final GroupingView<M> groupingView;
 
     public GroupingViewBuilder(GroupingView<M> v) {
@@ -19,17 +17,17 @@ public class GroupingViewBuilder<M> extends Construct.Parent<GroupingViewBuilder
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.grid.GroupingView#GroupingView(com.sencha.gxt.widget.core.client.grid.GroupingView.GroupingViewAppearance)
-     */
-    public GroupingViewBuilder(com.sencha.gxt.widget.core.client.grid.GroupingView.GroupingViewAppearance v0) {
-        this(new GroupingView<M>(v0));
-    }
-
-    /**
      * @see com.sencha.gxt.widget.core.client.grid.GroupingView#GroupingView(com.sencha.gxt.widget.core.client.grid.GridView.GridAppearance, com.sencha.gxt.widget.core.client.grid.GroupingView.GroupingViewAppearance)
      */
     public GroupingViewBuilder(com.sencha.gxt.widget.core.client.grid.GridView.GridAppearance v0, com.sencha.gxt.widget.core.client.grid.GroupingView.GroupingViewAppearance v1) {
         this(new GroupingView<M>(v0, v1));
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.grid.GroupingView#GroupingView(com.sencha.gxt.widget.core.client.grid.GroupingView.GroupingViewAppearance)
+     */
+    public GroupingViewBuilder(com.sencha.gxt.widget.core.client.grid.GroupingView.GroupingViewAppearance v0) {
+        this(new GroupingView<M>(v0));
     }
 
     /**
@@ -76,6 +74,14 @@ public class GroupingViewBuilder<M> extends Construct.Parent<GroupingViewBuilder
      */
     public GroupingViewBuilder<M> autoFill(boolean v0) {
         groupingView.setAutoFill(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.grid.GroupingView#setColumnHeader(com.sencha.gxt.widget.core.client.grid.ColumnHeader)
+     */
+    public GroupingViewBuilder<M> columnHeader(com.sencha.gxt.widget.core.client.grid.ColumnHeader<M> v0) {
+        groupingView.setColumnHeader(v0);
         return this;
     }
 

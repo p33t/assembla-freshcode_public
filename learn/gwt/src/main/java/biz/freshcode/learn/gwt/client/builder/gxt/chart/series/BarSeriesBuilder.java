@@ -1,7 +1,5 @@
 package biz.freshcode.learn.gwt.client.builder.gxt.chart.series;
 
-import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
-import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.chart.client.chart.series.BarSeries;
 
 /**
@@ -9,9 +7,9 @@ import com.sencha.gxt.chart.client.chart.series.BarSeries;
  *
  * @see com.sencha.gxt.chart.client.chart.series.BarSeries
  */
-@BeanBuilder(BarSeries.class)
 @SuppressWarnings("UnusedDeclaration")
-public class BarSeriesBuilder<M> extends Construct.Parent<BarSeriesBuilder<M>> {
+@biz.freshcode.learn.gwt.client.builder.BeanBuilder(BarSeries.class)
+public class BarSeriesBuilder<M> extends biz.freshcode.learn.gwt.client.builder.Construct.Parent<BarSeriesBuilder<M>> {
     public final BarSeries<M> barSeries;
 
     public BarSeriesBuilder(BarSeries<M> v) {

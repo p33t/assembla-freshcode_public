@@ -1,7 +1,5 @@
 package biz.freshcode.learn.gwt.client.builder.gxt;
 
-import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
-import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.widget.core.client.Dialog;
 
 /**
@@ -9,9 +7,9 @@ import com.sencha.gxt.widget.core.client.Dialog;
  *
  * @see com.sencha.gxt.widget.core.client.Dialog
  */
-@BeanBuilder(Dialog.class)
 @SuppressWarnings("UnusedDeclaration")
-public class DialogBuilder extends Construct.Parent<DialogBuilder> {
+@biz.freshcode.learn.gwt.client.builder.BeanBuilder(Dialog.class)
+public class DialogBuilder extends biz.freshcode.learn.gwt.client.builder.Construct.Parent<DialogBuilder> {
     public final Dialog dialog;
 
     public DialogBuilder(Dialog v) {
@@ -19,17 +17,17 @@ public class DialogBuilder extends Construct.Parent<DialogBuilder> {
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.Dialog#Dialog()
-     */
-    public DialogBuilder() {
-        this(new Dialog());
-    }
-
-    /**
      * @see com.sencha.gxt.widget.core.client.Dialog#Dialog(com.sencha.gxt.widget.core.client.Window.WindowAppearance)
      */
     public DialogBuilder(com.sencha.gxt.widget.core.client.Window.WindowAppearance v0) {
         this(new Dialog(v0));
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.Dialog#Dialog()
+     */
+    public DialogBuilder() {
+        this(new Dialog());
     }
 
     /**
@@ -225,9 +223,9 @@ public class DialogBuilder extends Construct.Parent<DialogBuilder> {
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.Dialog#setContainer(com.google.gwt.user.client.Element)
+     * @see com.sencha.gxt.widget.core.client.Dialog#setContainer(com.google.gwt.dom.client.Element)
      */
-    public DialogBuilder container(com.google.gwt.user.client.Element v0) {
+    public DialogBuilder container(com.google.gwt.dom.client.Element v0) {
         dialog.setContainer(v0);
         return this;
     }
@@ -329,17 +327,17 @@ public class DialogBuilder extends Construct.Parent<DialogBuilder> {
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.Dialog#setHeight(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.Dialog#setHeight(int)
      */
-    public DialogBuilder height(java.lang.String v0) {
+    public DialogBuilder height(int v0) {
         dialog.setHeight(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.Dialog#setHeight(int)
+     * @see com.sencha.gxt.widget.core.client.Dialog#setHeight(java.lang.String)
      */
-    public DialogBuilder height(int v0) {
+    public DialogBuilder height(java.lang.String v0) {
         dialog.setHeight(v0);
         return this;
     }
@@ -641,17 +639,17 @@ public class DialogBuilder extends Construct.Parent<DialogBuilder> {
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.Dialog#setWidth(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.Dialog#setWidth(int)
      */
-    public DialogBuilder width(java.lang.String v0) {
+    public DialogBuilder width(int v0) {
         dialog.setWidth(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.Dialog#setWidth(int)
+     * @see com.sencha.gxt.widget.core.client.Dialog#setWidth(java.lang.String)
      */
-    public DialogBuilder width(int v0) {
+    public DialogBuilder width(java.lang.String v0) {
         dialog.setWidth(v0);
         return this;
     }

@@ -1,7 +1,5 @@
 package biz.freshcode.learn.gwt.client.builder.gxt.container;
 
-import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
-import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.widget.core.client.container.VBoxLayoutContainer;
 
 /**
@@ -9,9 +7,9 @@ import com.sencha.gxt.widget.core.client.container.VBoxLayoutContainer;
  *
  * @see com.sencha.gxt.widget.core.client.container.VBoxLayoutContainer
  */
-@BeanBuilder(VBoxLayoutContainer.class)
 @SuppressWarnings("UnusedDeclaration")
-public class VBoxLayoutContainerBuilder extends Construct.Parent<VBoxLayoutContainerBuilder> {
+@biz.freshcode.learn.gwt.client.builder.BeanBuilder(VBoxLayoutContainer.class)
+public class VBoxLayoutContainerBuilder extends biz.freshcode.learn.gwt.client.builder.Construct.Parent<VBoxLayoutContainerBuilder> {
     public final VBoxLayoutContainer vBoxLayoutContainer;
 
     public VBoxLayoutContainerBuilder(VBoxLayoutContainer v) {
@@ -33,17 +31,17 @@ public class VBoxLayoutContainerBuilder extends Construct.Parent<VBoxLayoutConta
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.VBoxLayoutContainer#add(com.google.gwt.user.client.ui.Widget)
+     * @see com.sencha.gxt.widget.core.client.container.VBoxLayoutContainer#add(com.google.gwt.user.client.ui.IsWidget)
      */
-    public VBoxLayoutContainerBuilder add(com.google.gwt.user.client.ui.Widget v0) {
+    public VBoxLayoutContainerBuilder add(com.google.gwt.user.client.ui.IsWidget v0) {
         vBoxLayoutContainer.add(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.VBoxLayoutContainer#add(com.google.gwt.user.client.ui.IsWidget)
+     * @see com.sencha.gxt.widget.core.client.container.VBoxLayoutContainer#add(com.google.gwt.user.client.ui.Widget)
      */
-    public VBoxLayoutContainerBuilder add(com.google.gwt.user.client.ui.IsWidget v0) {
+    public VBoxLayoutContainerBuilder add(com.google.gwt.user.client.ui.Widget v0) {
         vBoxLayoutContainer.add(v0);
         return this;
     }
@@ -153,17 +151,17 @@ public class VBoxLayoutContainerBuilder extends Construct.Parent<VBoxLayoutConta
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.VBoxLayoutContainer#setHeight(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.container.VBoxLayoutContainer#setHeight(int)
      */
-    public VBoxLayoutContainerBuilder height(java.lang.String v0) {
+    public VBoxLayoutContainerBuilder height(int v0) {
         vBoxLayoutContainer.setHeight(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.VBoxLayoutContainer#setHeight(int)
+     * @see com.sencha.gxt.widget.core.client.container.VBoxLayoutContainer#setHeight(java.lang.String)
      */
-    public VBoxLayoutContainerBuilder height(int v0) {
+    public VBoxLayoutContainerBuilder height(java.lang.String v0) {
         vBoxLayoutContainer.setHeight(v0);
         return this;
     }
@@ -369,17 +367,17 @@ public class VBoxLayoutContainerBuilder extends Construct.Parent<VBoxLayoutConta
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.VBoxLayoutContainer#setWidth(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.container.VBoxLayoutContainer#setWidth(int)
      */
-    public VBoxLayoutContainerBuilder width(java.lang.String v0) {
+    public VBoxLayoutContainerBuilder width(int v0) {
         vBoxLayoutContainer.setWidth(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.VBoxLayoutContainer#setWidth(int)
+     * @see com.sencha.gxt.widget.core.client.container.VBoxLayoutContainer#setWidth(java.lang.String)
      */
-    public VBoxLayoutContainerBuilder width(int v0) {
+    public VBoxLayoutContainerBuilder width(java.lang.String v0) {
         vBoxLayoutContainer.setWidth(v0);
         return this;
     }

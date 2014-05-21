@@ -1,7 +1,5 @@
 package biz.freshcode.learn.gwt.client.builder.gxt.chart.axis;
 
-import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
-import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.chart.client.chart.axis.CategoryAxis;
 
 /**
@@ -9,9 +7,9 @@ import com.sencha.gxt.chart.client.chart.axis.CategoryAxis;
  *
  * @see com.sencha.gxt.chart.client.chart.axis.CategoryAxis
  */
-@BeanBuilder(CategoryAxis.class)
 @SuppressWarnings("UnusedDeclaration")
-public class CategoryAxisBuilder<M, V> extends Construct.Parent<CategoryAxisBuilder<M, V>> {
+@biz.freshcode.learn.gwt.client.builder.BeanBuilder(CategoryAxis.class)
+public class CategoryAxisBuilder<M, V> extends biz.freshcode.learn.gwt.client.builder.Construct.Parent<CategoryAxisBuilder<M, V>> {
     public final CategoryAxis<M, V> categoryAxis;
 
     public CategoryAxisBuilder(CategoryAxis<M, V> v) {

@@ -1,7 +1,5 @@
 package biz.freshcode.learn.gwt.client.builder.gwt;
 
-import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
-import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.google.gwt.user.client.ui.HTMLPanel;
 
 /**
@@ -9,9 +7,9 @@ import com.google.gwt.user.client.ui.HTMLPanel;
  *
  * @see com.google.gwt.user.client.ui.HTMLPanel
  */
-@BeanBuilder(HTMLPanel.class)
 @SuppressWarnings("UnusedDeclaration")
-public class HTMLPanelBuilder extends Construct.Parent<HTMLPanelBuilder> {
+@biz.freshcode.learn.gwt.client.builder.BeanBuilder(HTMLPanel.class)
+public class HTMLPanelBuilder extends biz.freshcode.learn.gwt.client.builder.Construct.Parent<HTMLPanelBuilder> {
     public final HTMLPanel hTMLPanel;
 
     public HTMLPanelBuilder(HTMLPanel v) {
@@ -26,16 +24,16 @@ public class HTMLPanelBuilder extends Construct.Parent<HTMLPanelBuilder> {
     }
 
     /**
-     * @see com.google.gwt.user.client.ui.HTMLPanel#HTMLPanel(com.google.gwt.safehtml.shared.SafeHtml)
+     * @see com.google.gwt.user.client.ui.HTMLPanel#HTMLPanel(java.lang.String)
      */
-    public HTMLPanelBuilder(com.google.gwt.safehtml.shared.SafeHtml v0) {
+    public HTMLPanelBuilder(java.lang.String v0) {
         this(new HTMLPanel(v0));
     }
 
     /**
-     * @see com.google.gwt.user.client.ui.HTMLPanel#HTMLPanel(java.lang.String)
+     * @see com.google.gwt.user.client.ui.HTMLPanel#HTMLPanel(com.google.gwt.safehtml.shared.SafeHtml)
      */
-    public HTMLPanelBuilder(java.lang.String v0) {
+    public HTMLPanelBuilder(com.google.gwt.safehtml.shared.SafeHtml v0) {
         this(new HTMLPanel(v0));
     }
 
@@ -72,9 +70,21 @@ public class HTMLPanelBuilder extends Construct.Parent<HTMLPanelBuilder> {
     }
 
     /**
-     * @see com.google.gwt.user.client.ui.HTMLPanel#addAndReplaceElement(com.google.gwt.user.client.ui.IsWidget, java.lang.String)
+     * @see com.google.gwt.user.client.ui.HTMLPanel#addAndReplaceElement(com.google.gwt.user.client.ui.IsWidget, com.google.gwt.user.client.Element)
      */
-    public HTMLPanelBuilder addAndReplaceElement(com.google.gwt.user.client.ui.IsWidget v0, java.lang.String v1) {
+    @Deprecated
+    @SuppressWarnings("deprecation")
+    public HTMLPanelBuilder addAndReplaceElement(com.google.gwt.user.client.ui.IsWidget v0, com.google.gwt.user.client.Element v1) {
+        hTMLPanel.addAndReplaceElement(v0, v1);
+        return this;
+    }
+
+    /**
+     * @see com.google.gwt.user.client.ui.HTMLPanel#addAndReplaceElement(com.google.gwt.user.client.ui.Widget, com.google.gwt.user.client.Element)
+     */
+    @Deprecated
+    @SuppressWarnings("deprecation")
+    public HTMLPanelBuilder addAndReplaceElement(com.google.gwt.user.client.ui.Widget v0, com.google.gwt.user.client.Element v1) {
         hTMLPanel.addAndReplaceElement(v0, v1);
         return this;
     }
@@ -83,22 +93,6 @@ public class HTMLPanelBuilder extends Construct.Parent<HTMLPanelBuilder> {
      * @see com.google.gwt.user.client.ui.HTMLPanel#addAndReplaceElement(com.google.gwt.user.client.ui.Widget, com.google.gwt.dom.client.Element)
      */
     public HTMLPanelBuilder addAndReplaceElement(com.google.gwt.user.client.ui.Widget v0, com.google.gwt.dom.client.Element v1) {
-        hTMLPanel.addAndReplaceElement(v0, v1);
-        return this;
-    }
-
-    /**
-     * @see com.google.gwt.user.client.ui.HTMLPanel#addAndReplaceElement(com.google.gwt.user.client.ui.Widget, com.google.gwt.user.client.Element)
-     */
-    public HTMLPanelBuilder addAndReplaceElement(com.google.gwt.user.client.ui.Widget v0, com.google.gwt.user.client.Element v1) {
-        hTMLPanel.addAndReplaceElement(v0, v1);
-        return this;
-    }
-
-    /**
-     * @see com.google.gwt.user.client.ui.HTMLPanel#addAndReplaceElement(com.google.gwt.user.client.ui.IsWidget, com.google.gwt.user.client.Element)
-     */
-    public HTMLPanelBuilder addAndReplaceElement(com.google.gwt.user.client.ui.IsWidget v0, com.google.gwt.user.client.Element v1) {
         hTMLPanel.addAndReplaceElement(v0, v1);
         return this;
     }
@@ -115,6 +109,14 @@ public class HTMLPanelBuilder extends Construct.Parent<HTMLPanelBuilder> {
      * @see com.google.gwt.user.client.ui.HTMLPanel#addAndReplaceElement(com.google.gwt.user.client.ui.Widget, java.lang.String)
      */
     public HTMLPanelBuilder addAndReplaceElement(com.google.gwt.user.client.ui.Widget v0, java.lang.String v1) {
+        hTMLPanel.addAndReplaceElement(v0, v1);
+        return this;
+    }
+
+    /**
+     * @see com.google.gwt.user.client.ui.HTMLPanel#addAndReplaceElement(com.google.gwt.user.client.ui.IsWidget, java.lang.String)
+     */
+    public HTMLPanelBuilder addAndReplaceElement(com.google.gwt.user.client.ui.IsWidget v0, java.lang.String v1) {
         hTMLPanel.addAndReplaceElement(v0, v1);
         return this;
     }

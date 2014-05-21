@@ -1,7 +1,5 @@
 package biz.freshcode.learn.gwt.client.builder.gxt.util;
 
-import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
-import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.core.client.util.Margins;
 
 /**
@@ -9,9 +7,9 @@ import com.sencha.gxt.core.client.util.Margins;
  *
  * @see com.sencha.gxt.core.client.util.Margins
  */
-@BeanBuilder(Margins.class)
 @SuppressWarnings("UnusedDeclaration")
-public class MarginsBuilder extends Construct.Parent<MarginsBuilder> {
+@biz.freshcode.learn.gwt.client.builder.BeanBuilder(Margins.class)
+public class MarginsBuilder extends biz.freshcode.learn.gwt.client.builder.Construct.Parent<MarginsBuilder> {
     public final Margins margins;
 
     public MarginsBuilder(Margins v) {

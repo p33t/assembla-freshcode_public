@@ -16,10 +16,10 @@
             <element id="module-output" name="learn-gwt" />
           </element>
           <element id="directory" name="lib">
-            <element id="library" level="project" name="Maven: com.google.gwt:gwt-servlet:2.5.1" />
+            <element id="library" level="project" name="Maven: com.google.gwt:gwt-servlet:2.6.1" />
             <element id="library" level="project" name="Maven: javax.validation:validation-api:1.0.0.GA" />
             <element id="library" level="project" name="Maven: org.json:json:20090211" />
-            <element id="library" level="project" name="Maven: com.google.web.bindery:requestfactory-server:2.5.1" />
+            <element id="library" level="project" name="Maven: com.google.web.bindery:requestfactory-server:2.6.1" />
             <element id="library" level="project" name="Maven: com.google.inject:guice:3.0" />
             <element id="library" level="project" name="Maven: javax.inject:javax.inject:1" />
             <element id="library" level="project" name="Maven: aopalliance:aopalliance:1.0" />
@@ -218,26 +218,26 @@
         <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/inject/gin/2.1.2/gin-2.1.2-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: com.google.gwt:gwt-servlet:2.5.1">
+    <library name="Maven: com.google.gwt:gwt-servlet:2.6.1">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-servlet/2.5.1/gwt-servlet-2.5.1.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-servlet/2.6.1/gwt-servlet-2.6.1.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-servlet/2.5.1/gwt-servlet-2.5.1-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-servlet/2.6.1/gwt-servlet-2.6.1-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-servlet/2.5.1/gwt-servlet-2.5.1-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-servlet/2.6.1/gwt-servlet-2.6.1-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: com.google.gwt:gwt-user:2.5.1">
+    <library name="Maven: com.google.gwt:gwt-user:2.6.1">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-user/2.5.1/gwt-user-2.5.1.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-user/2.6.1/gwt-user-2.6.1.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-user/2.5.1/gwt-user-2.5.1-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-user/2.6.1/gwt-user-2.6.1-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-user/2.5.1/gwt-user-2.5.1-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-user/2.6.1/gwt-user-2.6.1-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: com.google.inject.extensions:guice-assistedinject:3.0">
@@ -273,26 +273,26 @@
         <root url="jar://$MAVEN_REPOSITORY$/com/google/inject/guice/3.0/guice-3.0-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: com.google.web.bindery:requestfactory-apt:2.5.1">
+    <library name="Maven: com.google.web.bindery:requestfactory-apt:2.6.1">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/google/web/bindery/requestfactory-apt/2.5.1/requestfactory-apt-2.5.1.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/web/bindery/requestfactory-apt/2.6.1/requestfactory-apt-2.6.1.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/com/google/web/bindery/requestfactory-apt/2.5.1/requestfactory-apt-2.5.1-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/web/bindery/requestfactory-apt/2.6.1/requestfactory-apt-2.6.1-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/google/web/bindery/requestfactory-apt/2.5.1/requestfactory-apt-2.5.1-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/web/bindery/requestfactory-apt/2.6.1/requestfactory-apt-2.6.1-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: com.google.web.bindery:requestfactory-server:2.5.1">
+    <library name="Maven: com.google.web.bindery:requestfactory-server:2.6.1">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/google/web/bindery/requestfactory-server/2.5.1/requestfactory-server-2.5.1.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/web/bindery/requestfactory-server/2.6.1/requestfactory-server-2.6.1.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/com/google/web/bindery/requestfactory-server/2.5.1/requestfactory-server-2.5.1-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/web/bindery/requestfactory-server/2.6.1/requestfactory-server-2.6.1-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/google/web/bindery/requestfactory-server/2.5.1/requestfactory-server-2.5.1-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/web/bindery/requestfactory-server/2.6.1/requestfactory-server-2.6.1-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: com.gwtplatform:gwtp-clients-common:1.2.1">
@@ -394,48 +394,48 @@
         <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-mvp-shared/1.2.1/gwtp-mvp-shared-1.2.1-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: com.sencha.gxt:gxt-chart:3.0.6">
+    <library name="Maven: com.sencha.gxt:gxt-chart:3.1.0">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt-chart/3.0.6/gxt-chart-3.0.6.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt-chart/3.1.0/gxt-chart-3.1.0.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt-chart/3.0.6/gxt-chart-3.0.6-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt-chart/3.1.0/gxt-chart-3.1.0-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt-chart/3.0.6/gxt-chart-3.0.6-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt-chart/3.1.0/gxt-chart-3.1.0-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: com.sencha.gxt:gxt-chart:sources:3.0.6">
+    <library name="Maven: com.sencha.gxt:gxt-chart:sources:3.1.0">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt-chart/3.0.6/gxt-chart-3.0.6-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt-chart/3.1.0/gxt-chart-3.1.0-sources.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt-chart/3.0.6/gxt-chart-3.0.6-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt-chart/3.1.0/gxt-chart-3.1.0-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt-chart/3.0.6/gxt-chart-3.0.6-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt-chart/3.1.0/gxt-chart-3.1.0-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: com.sencha.gxt:gxt:3.0.6">
+    <library name="Maven: com.sencha.gxt:gxt:3.1.0">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt/3.0.6/gxt-3.0.6.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt/3.1.0/gxt-3.1.0.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt/3.0.6/gxt-3.0.6-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt/3.1.0/gxt-3.1.0-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt/3.0.6/gxt-3.0.6-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt/3.1.0/gxt-3.1.0-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: com.sencha.gxt:gxt:sources:3.0.6">
+    <library name="Maven: com.sencha.gxt:gxt:sources:3.1.0">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt/3.0.6/gxt-3.0.6-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt/3.1.0/gxt-3.1.0-sources.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt/3.0.6/gxt-3.0.6-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt/3.1.0/gxt-3.1.0-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt/3.0.6/gxt-3.0.6-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt/3.1.0/gxt-3.1.0-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: commons-collections:commons-collections:3.2.1">

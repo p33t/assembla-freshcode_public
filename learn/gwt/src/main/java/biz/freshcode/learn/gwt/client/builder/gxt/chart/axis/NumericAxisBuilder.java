@@ -1,7 +1,5 @@
 package biz.freshcode.learn.gwt.client.builder.gxt.chart.axis;
 
-import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
-import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.chart.client.chart.axis.NumericAxis;
 
 /**
@@ -9,9 +7,9 @@ import com.sencha.gxt.chart.client.chart.axis.NumericAxis;
  *
  * @see com.sencha.gxt.chart.client.chart.axis.NumericAxis
  */
-@BeanBuilder(NumericAxis.class)
 @SuppressWarnings("UnusedDeclaration")
-public class NumericAxisBuilder<M> extends Construct.Parent<NumericAxisBuilder<M>> {
+@biz.freshcode.learn.gwt.client.builder.BeanBuilder(NumericAxis.class)
+public class NumericAxisBuilder<M> extends biz.freshcode.learn.gwt.client.builder.Construct.Parent<NumericAxisBuilder<M>> {
     public final NumericAxis<M> numericAxis;
 
     public NumericAxisBuilder(NumericAxis<M> v) {

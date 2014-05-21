@@ -1,7 +1,5 @@
 package biz.freshcode.learn.gwt.client.builder.gxt.grid;
 
-import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
-import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.widget.core.client.grid.ColumnModel;
 
 /**
@@ -9,9 +7,9 @@ import com.sencha.gxt.widget.core.client.grid.ColumnModel;
  *
  * @see com.sencha.gxt.widget.core.client.grid.ColumnModel
  */
-@BeanBuilder(ColumnModel.class)
 @SuppressWarnings("UnusedDeclaration")
-public class ColumnModelBuilder<M> extends Construct.Parent<ColumnModelBuilder<M>> {
+@biz.freshcode.learn.gwt.client.builder.BeanBuilder(ColumnModel.class)
+public class ColumnModelBuilder<M> extends biz.freshcode.learn.gwt.client.builder.Construct.Parent<ColumnModelBuilder<M>> {
     public final ColumnModel<M> columnModel;
 
     public ColumnModelBuilder(ColumnModel<M> v) {
@@ -70,6 +68,14 @@ public class ColumnModelBuilder<M> extends Construct.Parent<ColumnModelBuilder<M
      */
     public ColumnModelBuilder<M> hidden(int v0, boolean v1) {
         columnModel.setHidden(v0, v1);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.grid.ColumnModel#setUserResized(boolean)
+     */
+    public ColumnModelBuilder<M> userResized(boolean v0) {
+        columnModel.setUserResized(v0);
         return this;
     }
 }

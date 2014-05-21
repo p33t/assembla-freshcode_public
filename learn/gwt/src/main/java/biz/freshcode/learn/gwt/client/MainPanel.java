@@ -522,7 +522,7 @@ public class MainPanel extends Composite implements AcceptsOneWidget {
             return;
         }
         if (newContent == null) newContent = new HTMLPanel("<p>NULL Content :(</p>");
-        pnl.remove(content);
+        if (content != null) content.asWidget().removeFromParent();
         content = newContent;
         pnl.add(content);
     }

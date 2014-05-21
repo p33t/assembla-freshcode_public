@@ -1,7 +1,5 @@
 package biz.freshcode.learn.gwt.client.builder.gxt.container;
 
-import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
-import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
 
 /**
@@ -9,9 +7,9 @@ import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
  *
  * @see com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer
  */
-@BeanBuilder(HorizontalLayoutContainer.class)
 @SuppressWarnings("UnusedDeclaration")
-public class HorizontalLayoutContainerBuilder extends Construct.Parent<HorizontalLayoutContainerBuilder> {
+@biz.freshcode.learn.gwt.client.builder.BeanBuilder(HorizontalLayoutContainer.class)
+public class HorizontalLayoutContainerBuilder extends biz.freshcode.learn.gwt.client.builder.Construct.Parent<HorizontalLayoutContainerBuilder> {
     public final HorizontalLayoutContainer horizontalLayoutContainer;
 
     public HorizontalLayoutContainerBuilder(HorizontalLayoutContainer v) {
@@ -23,17 +21,17 @@ public class HorizontalLayoutContainerBuilder extends Construct.Parent<Horizonta
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer#add(com.google.gwt.user.client.ui.Widget)
+     * @see com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer#add(com.google.gwt.user.client.ui.IsWidget)
      */
-    public HorizontalLayoutContainerBuilder add(com.google.gwt.user.client.ui.Widget v0) {
+    public HorizontalLayoutContainerBuilder add(com.google.gwt.user.client.ui.IsWidget v0) {
         horizontalLayoutContainer.add(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer#add(com.google.gwt.user.client.ui.IsWidget)
+     * @see com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer#add(com.google.gwt.user.client.ui.Widget)
      */
-    public HorizontalLayoutContainerBuilder add(com.google.gwt.user.client.ui.IsWidget v0) {
+    public HorizontalLayoutContainerBuilder add(com.google.gwt.user.client.ui.Widget v0) {
         horizontalLayoutContainer.add(v0);
         return this;
     }
@@ -143,17 +141,17 @@ public class HorizontalLayoutContainerBuilder extends Construct.Parent<Horizonta
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer#setHeight(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer#setHeight(int)
      */
-    public HorizontalLayoutContainerBuilder height(java.lang.String v0) {
+    public HorizontalLayoutContainerBuilder height(int v0) {
         horizontalLayoutContainer.setHeight(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer#setHeight(int)
+     * @see com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer#setHeight(java.lang.String)
      */
-    public HorizontalLayoutContainerBuilder height(int v0) {
+    public HorizontalLayoutContainerBuilder height(java.lang.String v0) {
         horizontalLayoutContainer.setHeight(v0);
         return this;
     }
@@ -343,17 +341,17 @@ public class HorizontalLayoutContainerBuilder extends Construct.Parent<Horizonta
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer#setWidth(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer#setWidth(int)
      */
-    public HorizontalLayoutContainerBuilder width(java.lang.String v0) {
+    public HorizontalLayoutContainerBuilder width(int v0) {
         horizontalLayoutContainer.setWidth(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer#setWidth(int)
+     * @see com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer#setWidth(java.lang.String)
      */
-    public HorizontalLayoutContainerBuilder width(int v0) {
+    public HorizontalLayoutContainerBuilder width(java.lang.String v0) {
         horizontalLayoutContainer.setWidth(v0);
         return this;
     }

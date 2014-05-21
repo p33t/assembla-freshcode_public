@@ -1,7 +1,5 @@
 package biz.freshcode.learn.gwt.client.builder.gxt.container;
 
-import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
-import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer;
 
 /**
@@ -9,20 +7,13 @@ import com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer;
  *
  * @see com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer
  */
-@BeanBuilder(HtmlLayoutContainer.class)
 @SuppressWarnings("UnusedDeclaration")
-public class HtmlLayoutContainerBuilder extends Construct.Parent<HtmlLayoutContainerBuilder> {
+@biz.freshcode.learn.gwt.client.builder.BeanBuilder(HtmlLayoutContainer.class)
+public class HtmlLayoutContainerBuilder extends biz.freshcode.learn.gwt.client.builder.Construct.Parent<HtmlLayoutContainerBuilder> {
     public final HtmlLayoutContainer htmlLayoutContainer;
 
     public HtmlLayoutContainerBuilder(HtmlLayoutContainer v) {
         htmlLayoutContainer = v;
-    }
-
-    /**
-     * @see com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer#HtmlLayoutContainer(com.google.gwt.safehtml.shared.SafeHtml)
-     */
-    public HtmlLayoutContainerBuilder(com.google.gwt.safehtml.shared.SafeHtml v0) {
-        this(new HtmlLayoutContainer(v0));
     }
 
     /**
@@ -33,17 +24,24 @@ public class HtmlLayoutContainerBuilder extends Construct.Parent<HtmlLayoutConta
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer#add(com.google.gwt.user.client.ui.Widget)
+     * @see com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer#HtmlLayoutContainer(com.google.gwt.safehtml.shared.SafeHtml)
      */
-    public HtmlLayoutContainerBuilder add(com.google.gwt.user.client.ui.Widget v0) {
-        htmlLayoutContainer.add(v0);
-        return this;
+    public HtmlLayoutContainerBuilder(com.google.gwt.safehtml.shared.SafeHtml v0) {
+        this(new HtmlLayoutContainer(v0));
     }
 
     /**
      * @see com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer#add(com.google.gwt.user.client.ui.IsWidget)
      */
     public HtmlLayoutContainerBuilder add(com.google.gwt.user.client.ui.IsWidget v0) {
+        htmlLayoutContainer.add(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer#add(com.google.gwt.user.client.ui.Widget)
+     */
+    public HtmlLayoutContainerBuilder add(com.google.gwt.user.client.ui.Widget v0) {
         htmlLayoutContainer.add(v0);
         return this;
     }
@@ -145,14 +143,6 @@ public class HtmlLayoutContainerBuilder extends Construct.Parent<HtmlLayoutConta
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer#setHTML(com.google.gwt.safehtml.shared.SafeHtml)
-     */
-    public HtmlLayoutContainerBuilder hTML(com.google.gwt.safehtml.shared.SafeHtml v0) {
-        htmlLayoutContainer.setHTML(v0);
-        return this;
-    }
-
-    /**
      * @see com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer#setHTML(java.lang.String)
      */
     public HtmlLayoutContainerBuilder hTML(java.lang.String v0) {
@@ -161,10 +151,10 @@ public class HtmlLayoutContainerBuilder extends Construct.Parent<HtmlLayoutConta
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer#setHeight(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer#setHTML(com.google.gwt.safehtml.shared.SafeHtml)
      */
-    public HtmlLayoutContainerBuilder height(java.lang.String v0) {
-        htmlLayoutContainer.setHeight(v0);
+    public HtmlLayoutContainerBuilder hTML(com.google.gwt.safehtml.shared.SafeHtml v0) {
+        htmlLayoutContainer.setHTML(v0);
         return this;
     }
 
@@ -172,6 +162,14 @@ public class HtmlLayoutContainerBuilder extends Construct.Parent<HtmlLayoutConta
      * @see com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer#setHeight(int)
      */
     public HtmlLayoutContainerBuilder height(int v0) {
+        htmlLayoutContainer.setHeight(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer#setHeight(java.lang.String)
+     */
+    public HtmlLayoutContainerBuilder height(java.lang.String v0) {
         htmlLayoutContainer.setHeight(v0);
         return this;
     }
@@ -345,17 +343,17 @@ public class HtmlLayoutContainerBuilder extends Construct.Parent<HtmlLayoutConta
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer#setWidth(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer#setWidth(int)
      */
-    public HtmlLayoutContainerBuilder width(java.lang.String v0) {
+    public HtmlLayoutContainerBuilder width(int v0) {
         htmlLayoutContainer.setWidth(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer#setWidth(int)
+     * @see com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer#setWidth(java.lang.String)
      */
-    public HtmlLayoutContainerBuilder width(int v0) {
+    public HtmlLayoutContainerBuilder width(java.lang.String v0) {
         htmlLayoutContainer.setWidth(v0);
         return this;
     }
