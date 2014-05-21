@@ -11,7 +11,6 @@
 
     <Get name="securityHandler">
         <Set name="loginService">
-            <!-- NOTE: This config is duplicated in the pom (jetty plugin) -->
             <New class="org.eclipse.jetty.security.HashLoginService">
                 <Set name="name">Login with bruce x2</Set>
                 <Set name="config"><SystemProperty name="jetty.home" default="."/>/src/test/config/jetty-realm.properties
