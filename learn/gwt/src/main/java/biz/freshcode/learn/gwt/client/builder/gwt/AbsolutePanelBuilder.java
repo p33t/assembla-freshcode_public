@@ -1,7 +1,5 @@
 package biz.freshcode.learn.gwt.client.builder.gwt;
 
-import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
-import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.google.gwt.user.client.ui.AbsolutePanel;
 
 /**
@@ -9,9 +7,9 @@ import com.google.gwt.user.client.ui.AbsolutePanel;
  *
  * @see com.google.gwt.user.client.ui.AbsolutePanel
  */
-@BeanBuilder(AbsolutePanel.class)
 @SuppressWarnings("UnusedDeclaration")
-public class AbsolutePanelBuilder extends Construct.Parent<AbsolutePanelBuilder> {
+@biz.freshcode.learn.gwt.client.builder.BeanBuilder(AbsolutePanel.class)
+public class AbsolutePanelBuilder extends biz.freshcode.learn.gwt.client.builder.Construct.Parent<AbsolutePanelBuilder> {
     public final AbsolutePanel absolutePanel;
 
     public AbsolutePanelBuilder(AbsolutePanel v) {
@@ -42,17 +40,17 @@ public class AbsolutePanelBuilder extends Construct.Parent<AbsolutePanelBuilder>
     }
 
     /**
-     * @see com.google.gwt.user.client.ui.AbsolutePanel#add(com.google.gwt.user.client.ui.Widget, int, int)
+     * @see com.google.gwt.user.client.ui.AbsolutePanel#add(com.google.gwt.user.client.ui.IsWidget, int, int)
      */
-    public AbsolutePanelBuilder add(com.google.gwt.user.client.ui.Widget v0, int v1, int v2) {
+    public AbsolutePanelBuilder add(com.google.gwt.user.client.ui.IsWidget v0, int v1, int v2) {
         absolutePanel.add(v0, v1, v2);
         return this;
     }
 
     /**
-     * @see com.google.gwt.user.client.ui.AbsolutePanel#add(com.google.gwt.user.client.ui.IsWidget, int, int)
+     * @see com.google.gwt.user.client.ui.AbsolutePanel#add(com.google.gwt.user.client.ui.Widget, int, int)
      */
-    public AbsolutePanelBuilder add(com.google.gwt.user.client.ui.IsWidget v0, int v1, int v2) {
+    public AbsolutePanelBuilder add(com.google.gwt.user.client.ui.Widget v0, int v1, int v2) {
         absolutePanel.add(v0, v1, v2);
         return this;
     }

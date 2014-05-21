@@ -1,7 +1,5 @@
 package biz.freshcode.learn.gwt.client.builder.gxt.draw.sprite;
 
-import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
-import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.chart.client.draw.sprite.TextSprite;
 
 /**
@@ -9,9 +7,9 @@ import com.sencha.gxt.chart.client.draw.sprite.TextSprite;
  *
  * @see com.sencha.gxt.chart.client.draw.sprite.TextSprite
  */
-@BeanBuilder(TextSprite.class)
 @SuppressWarnings("UnusedDeclaration")
-public class TextSpriteBuilder extends Construct.Parent<TextSpriteBuilder> {
+@biz.freshcode.learn.gwt.client.builder.BeanBuilder(TextSprite.class)
+public class TextSpriteBuilder extends biz.freshcode.learn.gwt.client.builder.Construct.Parent<TextSpriteBuilder> {
     public final TextSprite textSprite;
 
     public TextSpriteBuilder(TextSprite v) {
@@ -121,17 +119,17 @@ public class TextSpriteBuilder extends Construct.Parent<TextSpriteBuilder> {
     }
 
     /**
-     * @see com.sencha.gxt.chart.client.draw.sprite.TextSprite#setRotation(double)
+     * @see com.sencha.gxt.chart.client.draw.sprite.TextSprite#setRotation(com.sencha.gxt.chart.client.draw.Rotation)
      */
-    public TextSpriteBuilder rotation(double v0) {
+    public TextSpriteBuilder rotation(com.sencha.gxt.chart.client.draw.Rotation v0) {
         textSprite.setRotation(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.chart.client.draw.sprite.TextSprite#setRotation(com.sencha.gxt.chart.client.draw.Rotation)
+     * @see com.sencha.gxt.chart.client.draw.sprite.TextSprite#setRotation(double)
      */
-    public TextSpriteBuilder rotation(com.sencha.gxt.chart.client.draw.Rotation v0) {
+    public TextSpriteBuilder rotation(double v0) {
         textSprite.setRotation(v0);
         return this;
     }
@@ -145,17 +143,17 @@ public class TextSpriteBuilder extends Construct.Parent<TextSpriteBuilder> {
     }
 
     /**
-     * @see com.sencha.gxt.chart.client.draw.sprite.TextSprite#setScaling(com.sencha.gxt.chart.client.draw.Scaling)
+     * @see com.sencha.gxt.chart.client.draw.sprite.TextSprite#setScaling(double)
      */
-    public TextSpriteBuilder scaling(com.sencha.gxt.chart.client.draw.Scaling v0) {
+    public TextSpriteBuilder scaling(double v0) {
         textSprite.setScaling(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.chart.client.draw.sprite.TextSprite#setScaling(double)
+     * @see com.sencha.gxt.chart.client.draw.sprite.TextSprite#setScaling(com.sencha.gxt.chart.client.draw.Scaling)
      */
-    public TextSpriteBuilder scaling(double v0) {
+    public TextSpriteBuilder scaling(com.sencha.gxt.chart.client.draw.Scaling v0) {
         textSprite.setScaling(v0);
         return this;
     }

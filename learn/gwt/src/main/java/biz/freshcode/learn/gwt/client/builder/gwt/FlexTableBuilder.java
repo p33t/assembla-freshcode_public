@@ -1,7 +1,5 @@
 package biz.freshcode.learn.gwt.client.builder.gwt;
 
-import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
-import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.google.gwt.user.client.ui.FlexTable;
 
 /**
@@ -9,9 +7,9 @@ import com.google.gwt.user.client.ui.FlexTable;
  *
  * @see com.google.gwt.user.client.ui.FlexTable
  */
-@BeanBuilder(FlexTable.class)
 @SuppressWarnings("UnusedDeclaration")
-public class FlexTableBuilder extends Construct.Parent<FlexTableBuilder> {
+@biz.freshcode.learn.gwt.client.builder.BeanBuilder(FlexTable.class)
+public class FlexTableBuilder extends biz.freshcode.learn.gwt.client.builder.Construct.Parent<FlexTableBuilder> {
     public final FlexTable flexTable;
 
     public FlexTableBuilder(FlexTable v) {
@@ -65,6 +63,8 @@ public class FlexTableBuilder extends Construct.Parent<FlexTableBuilder> {
     /**
      * @see com.google.gwt.user.client.ui.FlexTable#addTableListener(com.google.gwt.user.client.ui.TableListener)
      */
+    @Deprecated
+    @SuppressWarnings("deprecation")
     public FlexTableBuilder addTableListener(com.google.gwt.user.client.ui.TableListener v0) {
         flexTable.addTableListener(v0);
         return this;

@@ -1,7 +1,5 @@
 package biz.freshcode.learn.gwt.client.builder.gxt.button;
 
-import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
-import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 
 /**
@@ -9,9 +7,9 @@ import com.sencha.gxt.widget.core.client.button.TextButton;
  *
  * @see com.sencha.gxt.widget.core.client.button.TextButton
  */
-@BeanBuilder(TextButton.class)
 @SuppressWarnings("UnusedDeclaration")
-public class TextButtonBuilder extends Construct.Parent<TextButtonBuilder> {
+@biz.freshcode.learn.gwt.client.builder.BeanBuilder(TextButton.class)
+public class TextButtonBuilder extends biz.freshcode.learn.gwt.client.builder.Construct.Parent<TextButtonBuilder> {
     public final TextButton textButton;
 
     public TextButtonBuilder(TextButton v) {
@@ -157,14 +155,6 @@ public class TextButtonBuilder extends Construct.Parent<TextButtonBuilder> {
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.button.TextButton#setHTML(java.lang.String)
-     */
-    public TextButtonBuilder hTML(java.lang.String v0) {
-        textButton.setHTML(v0);
-        return this;
-    }
-
-    /**
      * @see com.sencha.gxt.widget.core.client.button.TextButton#setHTML(com.google.gwt.safehtml.shared.SafeHtml)
      */
     public TextButtonBuilder hTML(com.google.gwt.safehtml.shared.SafeHtml v0) {
@@ -173,10 +163,10 @@ public class TextButtonBuilder extends Construct.Parent<TextButtonBuilder> {
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.button.TextButton#setHeight(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.button.TextButton#setHTML(java.lang.String)
      */
-    public TextButtonBuilder height(java.lang.String v0) {
-        textButton.setHeight(v0);
+    public TextButtonBuilder hTML(java.lang.String v0) {
+        textButton.setHTML(v0);
         return this;
     }
 
@@ -184,6 +174,14 @@ public class TextButtonBuilder extends Construct.Parent<TextButtonBuilder> {
      * @see com.sencha.gxt.widget.core.client.button.TextButton#setHeight(int)
      */
     public TextButtonBuilder height(int v0) {
+        textButton.setHeight(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.button.TextButton#setHeight(java.lang.String)
+     */
+    public TextButtonBuilder height(java.lang.String v0) {
         textButton.setHeight(v0);
         return this;
     }
@@ -445,17 +443,17 @@ public class TextButtonBuilder extends Construct.Parent<TextButtonBuilder> {
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.button.TextButton#setWidth(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.button.TextButton#setWidth(int)
      */
-    public TextButtonBuilder width(java.lang.String v0) {
+    public TextButtonBuilder width(int v0) {
         textButton.setWidth(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.button.TextButton#setWidth(int)
+     * @see com.sencha.gxt.widget.core.client.button.TextButton#setWidth(java.lang.String)
      */
-    public TextButtonBuilder width(int v0) {
+    public TextButtonBuilder width(java.lang.String v0) {
         textButton.setWidth(v0);
         return this;
     }

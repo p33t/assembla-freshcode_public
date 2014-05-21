@@ -1,7 +1,5 @@
 package biz.freshcode.learn.gwt.client.builder.gxt.container;
 
-import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
-import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.widget.core.client.container.BoxLayoutContainer.BoxLayoutData;
 
 /**
@@ -9,9 +7,9 @@ import com.sencha.gxt.widget.core.client.container.BoxLayoutContainer.BoxLayoutD
  *
  * @see com.sencha.gxt.widget.core.client.container.BoxLayoutContainer.BoxLayoutData
  */
-@BeanBuilder(BoxLayoutData.class)
 @SuppressWarnings("UnusedDeclaration")
-public class BoxLayoutDataBuilder extends Construct.Parent<BoxLayoutDataBuilder> {
+@biz.freshcode.learn.gwt.client.builder.BeanBuilder(BoxLayoutData.class)
+public class BoxLayoutDataBuilder extends biz.freshcode.learn.gwt.client.builder.Construct.Parent<BoxLayoutDataBuilder> {
     public final BoxLayoutData boxLayoutData;
 
     public BoxLayoutDataBuilder(BoxLayoutData v) {
@@ -19,17 +17,17 @@ public class BoxLayoutDataBuilder extends Construct.Parent<BoxLayoutDataBuilder>
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.BoxLayoutContainer.BoxLayoutData#BoxLayoutData()
-     */
-    public BoxLayoutDataBuilder() {
-        this(new BoxLayoutData());
-    }
-
-    /**
      * @see com.sencha.gxt.widget.core.client.container.BoxLayoutContainer.BoxLayoutData#BoxLayoutData(com.sencha.gxt.core.client.util.Margins)
      */
     public BoxLayoutDataBuilder(com.sencha.gxt.core.client.util.Margins v0) {
         this(new BoxLayoutData(v0));
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.container.BoxLayoutContainer.BoxLayoutData#BoxLayoutData()
+     */
+    public BoxLayoutDataBuilder() {
+        this(new BoxLayoutData());
     }
 
     /**

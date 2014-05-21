@@ -1,7 +1,5 @@
 package biz.freshcode.learn.gwt.client.builder.gxt.container;
 
-import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
-import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData;
 
 /**
@@ -9,9 +7,9 @@ import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderL
  *
  * @see com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData
  */
-@BeanBuilder(BorderLayoutData.class)
 @SuppressWarnings("UnusedDeclaration")
-public class BorderLayoutDataBuilder extends Construct.Parent<BorderLayoutDataBuilder> {
+@biz.freshcode.learn.gwt.client.builder.BeanBuilder(BorderLayoutData.class)
+public class BorderLayoutDataBuilder extends biz.freshcode.learn.gwt.client.builder.Construct.Parent<BorderLayoutDataBuilder> {
     public final BorderLayoutData borderLayoutData;
 
     public BorderLayoutDataBuilder(BorderLayoutData v) {

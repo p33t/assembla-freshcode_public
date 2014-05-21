@@ -3,16 +3,16 @@
 
 <!-- A development only file.  This is excluded from the resulting war. -->
 
-<Configure class="org.mortbay.jetty.webapp.WebAppContext">
+<Configure class="org.eclipse.jetty.webapp.WebAppContext">
     <!--  This doesn't log anything in GWT dev mode.  Logging config perhaps? -->
-    <Call class="org.mortbay.log.Log" name="warn">
+    <Call class="org.eclipse.jetty.util.log.Log" name="warn">
         <Arg>!!!!!!!!!!!!!!!!! executing jetty-web.xml</Arg>
     </Call>
 
     <Get name="securityHandler">
-        <Set name="userRealm">
+        <Set name="loginService">
             <!-- NOTE: This config is duplicated in the pom (jetty plugin) -->
-            <New class="org.mortbay.jetty.security.HashUserRealm">
+            <New class="org.eclipse.jetty.security.HashLoginService">
                 <Set name="name">Login with bruce x2</Set>
                 <Set name="config"><SystemProperty name="jetty.home" default="."/>/src/test/config/jetty-realm.properties
                 </Set>

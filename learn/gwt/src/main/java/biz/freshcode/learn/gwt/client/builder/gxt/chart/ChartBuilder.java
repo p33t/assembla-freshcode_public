@@ -1,7 +1,5 @@
 package biz.freshcode.learn.gwt.client.builder.gxt.chart;
 
-import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
-import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.chart.client.chart.Chart;
 
 /**
@@ -9,9 +7,9 @@ import com.sencha.gxt.chart.client.chart.Chart;
  *
  * @see com.sencha.gxt.chart.client.chart.Chart
  */
-@BeanBuilder(Chart.class)
 @SuppressWarnings("UnusedDeclaration")
-public class ChartBuilder<M> extends Construct.Parent<ChartBuilder<M>> {
+@biz.freshcode.learn.gwt.client.builder.BeanBuilder(Chart.class)
+public class ChartBuilder<M> extends biz.freshcode.learn.gwt.client.builder.Construct.Parent<ChartBuilder<M>> {
     public final Chart<M> chart;
 
     public ChartBuilder(Chart<M> v) {
@@ -169,9 +167,17 @@ public class ChartBuilder<M> extends Construct.Parent<ChartBuilder<M>> {
     }
 
     /**
-     * @see com.sencha.gxt.chart.client.chart.Chart#setDefaultInsets(double)
+     * @see com.sencha.gxt.chart.client.chart.Chart#setDefaultInsets(int)
      */
-    public ChartBuilder<M> defaultInsets(double v0) {
+    public ChartBuilder<M> defaultInsets(int v0) {
+        chart.setDefaultInsets(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.chart.client.chart.Chart#setDefaultInsets(com.sencha.gxt.core.client.util.Region)
+     */
+    public ChartBuilder<M> defaultInsets(com.sencha.gxt.core.client.util.Region v0) {
         chart.setDefaultInsets(v0);
         return this;
     }
@@ -193,17 +199,17 @@ public class ChartBuilder<M> extends Construct.Parent<ChartBuilder<M>> {
     }
 
     /**
-     * @see com.sencha.gxt.chart.client.chart.Chart#setHeight(java.lang.String)
+     * @see com.sencha.gxt.chart.client.chart.Chart#setHeight(int)
      */
-    public ChartBuilder<M> height(java.lang.String v0) {
+    public ChartBuilder<M> height(int v0) {
         chart.setHeight(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.chart.client.chart.Chart#setHeight(int)
+     * @see com.sencha.gxt.chart.client.chart.Chart#setHeight(java.lang.String)
      */
-    public ChartBuilder<M> height(int v0) {
+    public ChartBuilder<M> height(java.lang.String v0) {
         chart.setHeight(v0);
         return this;
     }
@@ -417,17 +423,17 @@ public class ChartBuilder<M> extends Construct.Parent<ChartBuilder<M>> {
     }
 
     /**
-     * @see com.sencha.gxt.chart.client.chart.Chart#setWidth(java.lang.String)
+     * @see com.sencha.gxt.chart.client.chart.Chart#setWidth(int)
      */
-    public ChartBuilder<M> width(java.lang.String v0) {
+    public ChartBuilder<M> width(int v0) {
         chart.setWidth(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.chart.client.chart.Chart#setWidth(int)
+     * @see com.sencha.gxt.chart.client.chart.Chart#setWidth(java.lang.String)
      */
-    public ChartBuilder<M> width(int v0) {
+    public ChartBuilder<M> width(java.lang.String v0) {
         chart.setWidth(v0);
         return this;
     }

@@ -1,7 +1,5 @@
 package biz.freshcode.learn.gwt.client.builder.gxt.container;
 
-import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
-import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.widget.core.client.container.FlowLayoutContainer;
 
 /**
@@ -9,9 +7,9 @@ import com.sencha.gxt.widget.core.client.container.FlowLayoutContainer;
  *
  * @see com.sencha.gxt.widget.core.client.container.FlowLayoutContainer
  */
-@BeanBuilder(FlowLayoutContainer.class)
 @SuppressWarnings("UnusedDeclaration")
-public class FlowLayoutContainerBuilder extends Construct.Parent<FlowLayoutContainerBuilder> {
+@biz.freshcode.learn.gwt.client.builder.BeanBuilder(FlowLayoutContainer.class)
+public class FlowLayoutContainerBuilder extends biz.freshcode.learn.gwt.client.builder.Construct.Parent<FlowLayoutContainerBuilder> {
     public final FlowLayoutContainer flowLayoutContainer;
 
     public FlowLayoutContainerBuilder(FlowLayoutContainer v) {
@@ -23,17 +21,17 @@ public class FlowLayoutContainerBuilder extends Construct.Parent<FlowLayoutConta
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.FlowLayoutContainer#add(com.google.gwt.user.client.ui.Widget)
+     * @see com.sencha.gxt.widget.core.client.container.FlowLayoutContainer#add(com.google.gwt.user.client.ui.IsWidget)
      */
-    public FlowLayoutContainerBuilder add(com.google.gwt.user.client.ui.Widget v0) {
+    public FlowLayoutContainerBuilder add(com.google.gwt.user.client.ui.IsWidget v0) {
         flowLayoutContainer.add(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.FlowLayoutContainer#add(com.google.gwt.user.client.ui.IsWidget)
+     * @see com.sencha.gxt.widget.core.client.container.FlowLayoutContainer#add(com.google.gwt.user.client.ui.Widget)
      */
-    public FlowLayoutContainerBuilder add(com.google.gwt.user.client.ui.IsWidget v0) {
+    public FlowLayoutContainerBuilder add(com.google.gwt.user.client.ui.Widget v0) {
         flowLayoutContainer.add(v0);
         return this;
     }
@@ -135,17 +133,17 @@ public class FlowLayoutContainerBuilder extends Construct.Parent<FlowLayoutConta
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.FlowLayoutContainer#setHeight(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.container.FlowLayoutContainer#setHeight(int)
      */
-    public FlowLayoutContainerBuilder height(java.lang.String v0) {
+    public FlowLayoutContainerBuilder height(int v0) {
         flowLayoutContainer.setHeight(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.FlowLayoutContainer#setHeight(int)
+     * @see com.sencha.gxt.widget.core.client.container.FlowLayoutContainer#setHeight(java.lang.String)
      */
-    public FlowLayoutContainerBuilder height(int v0) {
+    public FlowLayoutContainerBuilder height(java.lang.String v0) {
         flowLayoutContainer.setHeight(v0);
         return this;
     }
@@ -335,17 +333,17 @@ public class FlowLayoutContainerBuilder extends Construct.Parent<FlowLayoutConta
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.FlowLayoutContainer#setWidth(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.container.FlowLayoutContainer#setWidth(int)
      */
-    public FlowLayoutContainerBuilder width(java.lang.String v0) {
+    public FlowLayoutContainerBuilder width(int v0) {
         flowLayoutContainer.setWidth(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.FlowLayoutContainer#setWidth(int)
+     * @see com.sencha.gxt.widget.core.client.container.FlowLayoutContainer#setWidth(java.lang.String)
      */
-    public FlowLayoutContainerBuilder width(int v0) {
+    public FlowLayoutContainerBuilder width(java.lang.String v0) {
         flowLayoutContainer.setWidth(v0);
         return this;
     }

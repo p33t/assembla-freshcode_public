@@ -1,7 +1,5 @@
 package biz.freshcode.learn.gwt.client.builder.gxt.chart.series;
 
-import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
-import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.chart.client.chart.series.SeriesToolTipConfig;
 
 /**
@@ -9,9 +7,9 @@ import com.sencha.gxt.chart.client.chart.series.SeriesToolTipConfig;
  *
  * @see com.sencha.gxt.chart.client.chart.series.SeriesToolTipConfig
  */
-@BeanBuilder(SeriesToolTipConfig.class)
 @SuppressWarnings("UnusedDeclaration")
-public class SeriesToolTipConfigBuilder<M> extends Construct.Parent<SeriesToolTipConfigBuilder<M>> {
+@biz.freshcode.learn.gwt.client.builder.BeanBuilder(SeriesToolTipConfig.class)
+public class SeriesToolTipConfigBuilder<M> extends biz.freshcode.learn.gwt.client.builder.Construct.Parent<SeriesToolTipConfigBuilder<M>> {
     public final SeriesToolTipConfig<M> seriesToolTipConfig;
 
     public SeriesToolTipConfigBuilder(SeriesToolTipConfig<M> v) {
@@ -27,6 +25,14 @@ public class SeriesToolTipConfigBuilder<M> extends Construct.Parent<SeriesToolTi
      */
     public SeriesToolTipConfigBuilder<M> anchor(com.sencha.gxt.core.client.Style.Side v0) {
         seriesToolTipConfig.setAnchor(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.chart.client.chart.series.SeriesToolTipConfig#setAnchorArrow(boolean)
+     */
+    public SeriesToolTipConfigBuilder<M> anchorArrow(boolean v0) {
+        seriesToolTipConfig.setAnchorArrow(v0);
         return this;
     }
 
@@ -143,14 +149,6 @@ public class SeriesToolTipConfigBuilder<M> extends Construct.Parent<SeriesToolTi
     }
 
     /**
-     * @see com.sencha.gxt.chart.client.chart.series.SeriesToolTipConfig#setMouseOffset(int[])
-     */
-    public SeriesToolTipConfigBuilder<M> mouseOffset(int[] v0) {
-        seriesToolTipConfig.setMouseOffset(v0);
-        return this;
-    }
-
-    /**
      * @see com.sencha.gxt.chart.client.chart.series.SeriesToolTipConfig#setMouseOffsetX(int)
      */
     public SeriesToolTipConfigBuilder<M> mouseOffsetX(int v0) {
@@ -191,17 +189,17 @@ public class SeriesToolTipConfigBuilder<M> extends Construct.Parent<SeriesToolTi
     }
 
     /**
-     * @see com.sencha.gxt.chart.client.chart.series.SeriesToolTipConfig#setTitleHtml(java.lang.String)
+     * @see com.sencha.gxt.chart.client.chart.series.SeriesToolTipConfig#setTitleHtml(com.google.gwt.safehtml.shared.SafeHtml)
      */
-    public SeriesToolTipConfigBuilder<M> titleHtml(java.lang.String v0) {
+    public SeriesToolTipConfigBuilder<M> titleHtml(com.google.gwt.safehtml.shared.SafeHtml v0) {
         seriesToolTipConfig.setTitleHtml(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.chart.client.chart.series.SeriesToolTipConfig#setTitleHtml(com.google.gwt.safehtml.shared.SafeHtml)
+     * @see com.sencha.gxt.chart.client.chart.series.SeriesToolTipConfig#setTitleHtml(java.lang.String)
      */
-    public SeriesToolTipConfigBuilder<M> titleHtml(com.google.gwt.safehtml.shared.SafeHtml v0) {
+    public SeriesToolTipConfigBuilder<M> titleHtml(java.lang.String v0) {
         seriesToolTipConfig.setTitleHtml(v0);
         return this;
     }

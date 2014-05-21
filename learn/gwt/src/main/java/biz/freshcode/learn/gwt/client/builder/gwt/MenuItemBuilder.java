@@ -1,7 +1,5 @@
 package biz.freshcode.learn.gwt.client.builder.gwt;
 
-import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
-import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.google.gwt.user.client.ui.MenuItem;
 
 /**
@@ -9,9 +7,9 @@ import com.google.gwt.user.client.ui.MenuItem;
  *
  * @see com.google.gwt.user.client.ui.MenuItem
  */
-@BeanBuilder(MenuItem.class)
 @SuppressWarnings("UnusedDeclaration")
-public class MenuItemBuilder extends Construct.Parent<MenuItemBuilder> {
+@biz.freshcode.learn.gwt.client.builder.BeanBuilder(MenuItem.class)
+public class MenuItemBuilder extends biz.freshcode.learn.gwt.client.builder.Construct.Parent<MenuItemBuilder> {
     public final MenuItem menuItem;
 
     public MenuItemBuilder(MenuItem v) {
@@ -26,16 +24,23 @@ public class MenuItemBuilder extends Construct.Parent<MenuItemBuilder> {
     }
 
     /**
-     * @see com.google.gwt.user.client.ui.MenuItem#MenuItem(java.lang.String, com.google.gwt.core.client.Scheduler.ScheduledCommand)
+     * @see com.google.gwt.user.client.ui.MenuItem#MenuItem(java.lang.String, boolean, com.google.gwt.core.client.Scheduler.ScheduledCommand)
      */
-    public MenuItemBuilder(java.lang.String v0, com.google.gwt.core.client.Scheduler.ScheduledCommand v1) {
+    public MenuItemBuilder(java.lang.String v0, boolean v1, com.google.gwt.core.client.Scheduler.ScheduledCommand v2) {
+        this(new MenuItem(v0, v1, v2));
+    }
+
+    /**
+     * @see com.google.gwt.user.client.ui.MenuItem#MenuItem(com.google.gwt.safehtml.shared.SafeHtml, com.google.gwt.user.client.ui.MenuBar)
+     */
+    public MenuItemBuilder(com.google.gwt.safehtml.shared.SafeHtml v0, com.google.gwt.user.client.ui.MenuBar v1) {
         this(new MenuItem(v0, v1));
     }
 
     /**
-     * @see com.google.gwt.user.client.ui.MenuItem#MenuItem(java.lang.String, com.google.gwt.user.client.ui.MenuBar)
+     * @see com.google.gwt.user.client.ui.MenuItem#MenuItem(com.google.gwt.safehtml.shared.SafeHtml, com.google.gwt.core.client.Scheduler.ScheduledCommand)
      */
-    public MenuItemBuilder(java.lang.String v0, com.google.gwt.user.client.ui.MenuBar v1) {
+    public MenuItemBuilder(com.google.gwt.safehtml.shared.SafeHtml v0, com.google.gwt.core.client.Scheduler.ScheduledCommand v1) {
         this(new MenuItem(v0, v1));
     }
 
@@ -47,24 +52,17 @@ public class MenuItemBuilder extends Construct.Parent<MenuItemBuilder> {
     }
 
     /**
-     * @see com.google.gwt.user.client.ui.MenuItem#MenuItem(com.google.gwt.safehtml.shared.SafeHtml, com.google.gwt.core.client.Scheduler.ScheduledCommand)
+     * @see com.google.gwt.user.client.ui.MenuItem#MenuItem(java.lang.String, com.google.gwt.user.client.ui.MenuBar)
      */
-    public MenuItemBuilder(com.google.gwt.safehtml.shared.SafeHtml v0, com.google.gwt.core.client.Scheduler.ScheduledCommand v1) {
+    public MenuItemBuilder(java.lang.String v0, com.google.gwt.user.client.ui.MenuBar v1) {
         this(new MenuItem(v0, v1));
     }
 
     /**
-     * @see com.google.gwt.user.client.ui.MenuItem#MenuItem(com.google.gwt.safehtml.shared.SafeHtml, com.google.gwt.user.client.ui.MenuBar)
+     * @see com.google.gwt.user.client.ui.MenuItem#MenuItem(java.lang.String, com.google.gwt.core.client.Scheduler.ScheduledCommand)
      */
-    public MenuItemBuilder(com.google.gwt.safehtml.shared.SafeHtml v0, com.google.gwt.user.client.ui.MenuBar v1) {
+    public MenuItemBuilder(java.lang.String v0, com.google.gwt.core.client.Scheduler.ScheduledCommand v1) {
         this(new MenuItem(v0, v1));
-    }
-
-    /**
-     * @see com.google.gwt.user.client.ui.MenuItem#MenuItem(java.lang.String, boolean, com.google.gwt.core.client.Scheduler.ScheduledCommand)
-     */
-    public MenuItemBuilder(java.lang.String v0, boolean v1, com.google.gwt.core.client.Scheduler.ScheduledCommand v2) {
-        this(new MenuItem(v0, v1, v2));
     }
 
     /**
@@ -86,6 +84,8 @@ public class MenuItemBuilder extends Construct.Parent<MenuItemBuilder> {
     /**
      * @see com.google.gwt.user.client.ui.MenuItem#setCommand(com.google.gwt.user.client.Command)
      */
+    @Deprecated
+    @SuppressWarnings("deprecation")
     public MenuItemBuilder command(com.google.gwt.user.client.Command v0) {
         menuItem.setCommand(v0);
         return this;

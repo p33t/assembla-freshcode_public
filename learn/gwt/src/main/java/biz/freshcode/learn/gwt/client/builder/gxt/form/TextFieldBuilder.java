@@ -1,7 +1,5 @@
 package biz.freshcode.learn.gwt.client.builder.gxt.form;
 
-import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
-import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.widget.core.client.form.TextField;
 
 /**
@@ -9,9 +7,9 @@ import com.sencha.gxt.widget.core.client.form.TextField;
  *
  * @see com.sencha.gxt.widget.core.client.form.TextField
  */
-@BeanBuilder(TextField.class)
 @SuppressWarnings("UnusedDeclaration")
-public class TextFieldBuilder extends Construct.Parent<TextFieldBuilder> {
+@biz.freshcode.learn.gwt.client.builder.BeanBuilder(TextField.class)
+public class TextFieldBuilder extends biz.freshcode.learn.gwt.client.builder.Construct.Parent<TextFieldBuilder> {
     public final TextField textField;
 
     public TextFieldBuilder(TextField v) {
@@ -176,17 +174,17 @@ public class TextFieldBuilder extends Construct.Parent<TextFieldBuilder> {
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.form.TextField#setDirectionEstimator(boolean)
+     * @see com.sencha.gxt.widget.core.client.form.TextField#setDirectionEstimator(com.google.gwt.i18n.shared.DirectionEstimator)
      */
-    public TextFieldBuilder directionEstimator(boolean v0) {
+    public TextFieldBuilder directionEstimator(com.google.gwt.i18n.shared.DirectionEstimator v0) {
         textField.setDirectionEstimator(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.form.TextField#setDirectionEstimator(com.google.gwt.i18n.shared.DirectionEstimator)
+     * @see com.sencha.gxt.widget.core.client.form.TextField#setDirectionEstimator(boolean)
      */
-    public TextFieldBuilder directionEstimator(com.google.gwt.i18n.shared.DirectionEstimator v0) {
+    public TextFieldBuilder directionEstimator(boolean v0) {
         textField.setDirectionEstimator(v0);
         return this;
     }
@@ -216,17 +214,17 @@ public class TextFieldBuilder extends Construct.Parent<TextFieldBuilder> {
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.form.TextField#setHeight(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.form.TextField#setHeight(int)
      */
-    public TextFieldBuilder height(java.lang.String v0) {
+    public TextFieldBuilder height(int v0) {
         textField.setHeight(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.form.TextField#setHeight(int)
+     * @see com.sencha.gxt.widget.core.client.form.TextField#setHeight(java.lang.String)
      */
-    public TextFieldBuilder height(int v0) {
+    public TextFieldBuilder height(java.lang.String v0) {
         textField.setHeight(v0);
         return this;
     }

@@ -1,7 +1,5 @@
 package biz.freshcode.learn.gwt.client.builder.gxt.form;
 
-import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
-import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.widget.core.client.form.TextArea;
 
 /**
@@ -9,9 +7,9 @@ import com.sencha.gxt.widget.core.client.form.TextArea;
  *
  * @see com.sencha.gxt.widget.core.client.form.TextArea
  */
-@BeanBuilder(TextArea.class)
 @SuppressWarnings("UnusedDeclaration")
-public class TextAreaBuilder extends Construct.Parent<TextAreaBuilder> {
+@biz.freshcode.learn.gwt.client.builder.BeanBuilder(TextArea.class)
+public class TextAreaBuilder extends biz.freshcode.learn.gwt.client.builder.Construct.Parent<TextAreaBuilder> {
     public final TextArea textArea;
 
     public TextAreaBuilder(TextArea v) {
@@ -19,17 +17,17 @@ public class TextAreaBuilder extends Construct.Parent<TextAreaBuilder> {
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.form.TextArea#TextArea()
-     */
-    public TextAreaBuilder() {
-        this(new TextArea());
-    }
-
-    /**
      * @see com.sencha.gxt.widget.core.client.form.TextArea#TextArea(com.sencha.gxt.cell.core.client.form.TextAreaInputCell)
      */
     public TextAreaBuilder(com.sencha.gxt.cell.core.client.form.TextAreaInputCell v0) {
         this(new TextArea(v0));
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.form.TextArea#TextArea()
+     */
+    public TextAreaBuilder() {
+        this(new TextArea());
     }
 
     /**
@@ -169,17 +167,17 @@ public class TextAreaBuilder extends Construct.Parent<TextAreaBuilder> {
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.form.TextArea#setDirectionEstimator(boolean)
+     * @see com.sencha.gxt.widget.core.client.form.TextArea#setDirectionEstimator(com.google.gwt.i18n.shared.DirectionEstimator)
      */
-    public TextAreaBuilder directionEstimator(boolean v0) {
+    public TextAreaBuilder directionEstimator(com.google.gwt.i18n.shared.DirectionEstimator v0) {
         textArea.setDirectionEstimator(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.form.TextArea#setDirectionEstimator(com.google.gwt.i18n.shared.DirectionEstimator)
+     * @see com.sencha.gxt.widget.core.client.form.TextArea#setDirectionEstimator(boolean)
      */
-    public TextAreaBuilder directionEstimator(com.google.gwt.i18n.shared.DirectionEstimator v0) {
+    public TextAreaBuilder directionEstimator(boolean v0) {
         textArea.setDirectionEstimator(v0);
         return this;
     }
@@ -209,17 +207,17 @@ public class TextAreaBuilder extends Construct.Parent<TextAreaBuilder> {
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.form.TextArea#setHeight(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.form.TextArea#setHeight(int)
      */
-    public TextAreaBuilder height(java.lang.String v0) {
+    public TextAreaBuilder height(int v0) {
         textArea.setHeight(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.form.TextArea#setHeight(int)
+     * @see com.sencha.gxt.widget.core.client.form.TextArea#setHeight(java.lang.String)
      */
-    public TextAreaBuilder height(int v0) {
+    public TextAreaBuilder height(java.lang.String v0) {
         textArea.setHeight(v0);
         return this;
     }
@@ -505,17 +503,17 @@ public class TextAreaBuilder extends Construct.Parent<TextAreaBuilder> {
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.form.TextArea#setWidth(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.form.TextArea#setWidth(int)
      */
-    public TextAreaBuilder width(java.lang.String v0) {
+    public TextAreaBuilder width(int v0) {
         textArea.setWidth(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.form.TextArea#setWidth(int)
+     * @see com.sencha.gxt.widget.core.client.form.TextArea#setWidth(java.lang.String)
      */
-    public TextAreaBuilder width(int v0) {
+    public TextAreaBuilder width(java.lang.String v0) {
         textArea.setWidth(v0);
         return this;
     }

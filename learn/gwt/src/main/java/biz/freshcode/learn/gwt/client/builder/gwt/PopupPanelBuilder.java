@@ -1,7 +1,5 @@
 package biz.freshcode.learn.gwt.client.builder.gwt;
 
-import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
-import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.google.gwt.user.client.ui.PopupPanel;
 
 /**
@@ -9,9 +7,9 @@ import com.google.gwt.user.client.ui.PopupPanel;
  *
  * @see com.google.gwt.user.client.ui.PopupPanel
  */
-@BeanBuilder(PopupPanel.class)
 @SuppressWarnings("UnusedDeclaration")
-public class PopupPanelBuilder extends Construct.Parent<PopupPanelBuilder> {
+@biz.freshcode.learn.gwt.client.builder.BeanBuilder(PopupPanel.class)
+public class PopupPanelBuilder extends biz.freshcode.learn.gwt.client.builder.Construct.Parent<PopupPanelBuilder> {
     public final PopupPanel popupPanel;
 
     public PopupPanelBuilder(PopupPanel v) {
@@ -19,17 +17,17 @@ public class PopupPanelBuilder extends Construct.Parent<PopupPanelBuilder> {
     }
 
     /**
-     * @see com.google.gwt.user.client.ui.PopupPanel#PopupPanel(boolean, boolean)
-     */
-    public PopupPanelBuilder(boolean v0, boolean v1) {
-        this(new PopupPanel(v0, v1));
-    }
-
-    /**
      * @see com.google.gwt.user.client.ui.PopupPanel#PopupPanel(boolean)
      */
     public PopupPanelBuilder(boolean v0) {
         this(new PopupPanel(v0));
+    }
+
+    /**
+     * @see com.google.gwt.user.client.ui.PopupPanel#PopupPanel(boolean, boolean)
+     */
+    public PopupPanelBuilder(boolean v0, boolean v1) {
+        this(new PopupPanel(v0, v1));
     }
 
     /**
@@ -66,6 +64,8 @@ public class PopupPanelBuilder extends Construct.Parent<PopupPanelBuilder> {
     /**
      * @see com.google.gwt.user.client.ui.PopupPanel#addPopupListener(com.google.gwt.user.client.ui.PopupListener)
      */
+    @Deprecated
+    @SuppressWarnings("deprecation")
     public PopupPanelBuilder addPopupListener(com.google.gwt.user.client.ui.PopupListener v0) {
         popupPanel.addPopupListener(v0);
         return this;

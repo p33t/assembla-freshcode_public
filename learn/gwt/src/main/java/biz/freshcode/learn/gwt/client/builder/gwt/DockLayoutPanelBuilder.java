@@ -1,7 +1,5 @@
 package biz.freshcode.learn.gwt.client.builder.gwt;
 
-import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
-import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
 
 /**
@@ -9,9 +7,9 @@ import com.google.gwt.user.client.ui.DockLayoutPanel;
  *
  * @see com.google.gwt.user.client.ui.DockLayoutPanel
  */
-@BeanBuilder(DockLayoutPanel.class)
 @SuppressWarnings("UnusedDeclaration")
-public class DockLayoutPanelBuilder extends Construct.Parent<DockLayoutPanelBuilder> {
+@biz.freshcode.learn.gwt.client.builder.BeanBuilder(DockLayoutPanel.class)
+public class DockLayoutPanelBuilder extends biz.freshcode.learn.gwt.client.builder.Construct.Parent<DockLayoutPanelBuilder> {
     public final DockLayoutPanel dockLayoutPanel;
 
     public DockLayoutPanelBuilder(DockLayoutPanel v) {

@@ -1,7 +1,5 @@
 package biz.freshcode.learn.gwt.client.builder.gxt.toolbar;
 
-import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
-import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.widget.core.client.toolbar.ToolBar;
 
 /**
@@ -9,20 +7,13 @@ import com.sencha.gxt.widget.core.client.toolbar.ToolBar;
  *
  * @see com.sencha.gxt.widget.core.client.toolbar.ToolBar
  */
-@BeanBuilder(ToolBar.class)
 @SuppressWarnings("UnusedDeclaration")
-public class ToolBarBuilder extends Construct.Parent<ToolBarBuilder> {
+@biz.freshcode.learn.gwt.client.builder.BeanBuilder(ToolBar.class)
+public class ToolBarBuilder extends biz.freshcode.learn.gwt.client.builder.Construct.Parent<ToolBarBuilder> {
     public final ToolBar toolBar;
 
     public ToolBarBuilder(ToolBar v) {
         toolBar = v;
-    }
-
-    /**
-     * @see com.sencha.gxt.widget.core.client.toolbar.ToolBar#ToolBar()
-     */
-    public ToolBarBuilder() {
-        this(new ToolBar());
     }
 
     /**
@@ -33,17 +24,24 @@ public class ToolBarBuilder extends Construct.Parent<ToolBarBuilder> {
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.toolbar.ToolBar#add(com.google.gwt.user.client.ui.Widget)
+     * @see com.sencha.gxt.widget.core.client.toolbar.ToolBar#ToolBar()
      */
-    public ToolBarBuilder add(com.google.gwt.user.client.ui.Widget v0) {
-        toolBar.add(v0);
-        return this;
+    public ToolBarBuilder() {
+        this(new ToolBar());
     }
 
     /**
      * @see com.sencha.gxt.widget.core.client.toolbar.ToolBar#add(com.google.gwt.user.client.ui.IsWidget)
      */
     public ToolBarBuilder add(com.google.gwt.user.client.ui.IsWidget v0) {
+        toolBar.add(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.toolbar.ToolBar#add(com.google.gwt.user.client.ui.Widget)
+     */
+    public ToolBarBuilder add(com.google.gwt.user.client.ui.Widget v0) {
         toolBar.add(v0);
         return this;
     }
@@ -169,17 +167,17 @@ public class ToolBarBuilder extends Construct.Parent<ToolBarBuilder> {
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.toolbar.ToolBar#setHeight(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.toolbar.ToolBar#setHeight(int)
      */
-    public ToolBarBuilder height(java.lang.String v0) {
+    public ToolBarBuilder height(int v0) {
         toolBar.setHeight(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.toolbar.ToolBar#setHeight(int)
+     * @see com.sencha.gxt.widget.core.client.toolbar.ToolBar#setHeight(java.lang.String)
      */
-    public ToolBarBuilder height(int v0) {
+    public ToolBarBuilder height(java.lang.String v0) {
         toolBar.setHeight(v0);
         return this;
     }
@@ -409,17 +407,17 @@ public class ToolBarBuilder extends Construct.Parent<ToolBarBuilder> {
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.toolbar.ToolBar#setWidth(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.toolbar.ToolBar#setWidth(int)
      */
-    public ToolBarBuilder width(java.lang.String v0) {
+    public ToolBarBuilder width(int v0) {
         toolBar.setWidth(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.toolbar.ToolBar#setWidth(int)
+     * @see com.sencha.gxt.widget.core.client.toolbar.ToolBar#setWidth(java.lang.String)
      */
-    public ToolBarBuilder width(int v0) {
+    public ToolBarBuilder width(java.lang.String v0) {
         toolBar.setWidth(v0);
         return this;
     }

@@ -1,7 +1,5 @@
 package biz.freshcode.learn.gwt.client.builder.gxt.container;
 
-import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
-import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.widget.core.client.container.Viewport;
 
 /**
@@ -9,9 +7,9 @@ import com.sencha.gxt.widget.core.client.container.Viewport;
  *
  * @see com.sencha.gxt.widget.core.client.container.Viewport
  */
-@BeanBuilder(Viewport.class)
 @SuppressWarnings("UnusedDeclaration")
-public class ViewportBuilder extends Construct.Parent<ViewportBuilder> {
+@biz.freshcode.learn.gwt.client.builder.BeanBuilder(Viewport.class)
+public class ViewportBuilder extends biz.freshcode.learn.gwt.client.builder.Construct.Parent<ViewportBuilder> {
     public final Viewport viewport;
 
     public ViewportBuilder(Viewport v) {
@@ -19,17 +17,17 @@ public class ViewportBuilder extends Construct.Parent<ViewportBuilder> {
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.Viewport#Viewport()
-     */
-    public ViewportBuilder() {
-        this(new Viewport());
-    }
-
-    /**
      * @see com.sencha.gxt.widget.core.client.container.Viewport#Viewport(com.sencha.gxt.widget.core.client.container.Viewport.ViewportAppearance)
      */
     public ViewportBuilder(com.sencha.gxt.widget.core.client.container.Viewport.ViewportAppearance v0) {
         this(new Viewport(v0));
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.container.Viewport#Viewport()
+     */
+    public ViewportBuilder() {
+        this(new Viewport());
     }
 
     /**
@@ -153,17 +151,17 @@ public class ViewportBuilder extends Construct.Parent<ViewportBuilder> {
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.Viewport#setHeight(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.container.Viewport#setHeight(int)
      */
-    public ViewportBuilder height(java.lang.String v0) {
+    public ViewportBuilder height(int v0) {
         viewport.setHeight(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.Viewport#setHeight(int)
+     * @see com.sencha.gxt.widget.core.client.container.Viewport#setHeight(java.lang.String)
      */
-    public ViewportBuilder height(int v0) {
+    public ViewportBuilder height(java.lang.String v0) {
         viewport.setHeight(v0);
         return this;
     }
@@ -361,17 +359,17 @@ public class ViewportBuilder extends Construct.Parent<ViewportBuilder> {
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.Viewport#setWidth(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.container.Viewport#setWidth(int)
      */
-    public ViewportBuilder width(java.lang.String v0) {
+    public ViewportBuilder width(int v0) {
         viewport.setWidth(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.Viewport#setWidth(int)
+     * @see com.sencha.gxt.widget.core.client.container.Viewport#setWidth(java.lang.String)
      */
-    public ViewportBuilder width(int v0) {
+    public ViewportBuilder width(java.lang.String v0) {
         viewport.setWidth(v0);
         return this;
     }

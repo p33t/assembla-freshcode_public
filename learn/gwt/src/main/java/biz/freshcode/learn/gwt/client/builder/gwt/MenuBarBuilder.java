@@ -1,7 +1,5 @@
 package biz.freshcode.learn.gwt.client.builder.gwt;
 
-import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
-import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.google.gwt.user.client.ui.MenuBar;
 
 /**
@@ -9,27 +7,13 @@ import com.google.gwt.user.client.ui.MenuBar;
  *
  * @see com.google.gwt.user.client.ui.MenuBar
  */
-@BeanBuilder(MenuBar.class)
 @SuppressWarnings("UnusedDeclaration")
-public class MenuBarBuilder extends Construct.Parent<MenuBarBuilder> {
+@biz.freshcode.learn.gwt.client.builder.BeanBuilder(MenuBar.class)
+public class MenuBarBuilder extends biz.freshcode.learn.gwt.client.builder.Construct.Parent<MenuBarBuilder> {
     public final MenuBar menuBar;
 
     public MenuBarBuilder(MenuBar v) {
         menuBar = v;
-    }
-
-    /**
-     * @see com.google.gwt.user.client.ui.MenuBar#MenuBar(com.google.gwt.user.client.ui.MenuBar.Resources)
-     */
-    public MenuBarBuilder(com.google.gwt.user.client.ui.MenuBar.Resources v0) {
-        this(new MenuBar(v0));
-    }
-
-    /**
-     * @see com.google.gwt.user.client.ui.MenuBar#MenuBar(com.google.gwt.user.client.ui.MenuBar.MenuBarImages)
-     */
-    public MenuBarBuilder(com.google.gwt.user.client.ui.MenuBar.MenuBarImages v0) {
-        this(new MenuBar(v0));
     }
 
     /**
@@ -40,10 +24,28 @@ public class MenuBarBuilder extends Construct.Parent<MenuBarBuilder> {
     }
 
     /**
-     * @see com.google.gwt.user.client.ui.MenuBar#MenuBar()
+     * @see com.google.gwt.user.client.ui.MenuBar#MenuBar(com.google.gwt.user.client.ui.MenuBar.MenuBarImages)
      */
-    public MenuBarBuilder() {
-        this(new MenuBar());
+    @Deprecated
+    @SuppressWarnings("deprecation")
+    public MenuBarBuilder(com.google.gwt.user.client.ui.MenuBar.MenuBarImages v0) {
+        this(new MenuBar(v0));
+    }
+
+    /**
+     * @see com.google.gwt.user.client.ui.MenuBar#MenuBar(com.google.gwt.user.client.ui.MenuBar.Resources)
+     */
+    public MenuBarBuilder(com.google.gwt.user.client.ui.MenuBar.Resources v0) {
+        this(new MenuBar(v0));
+    }
+
+    /**
+     * @see com.google.gwt.user.client.ui.MenuBar#MenuBar(boolean, com.google.gwt.user.client.ui.MenuBar.MenuBarImages)
+     */
+    @Deprecated
+    @SuppressWarnings("deprecation")
+    public MenuBarBuilder(boolean v0, com.google.gwt.user.client.ui.MenuBar.MenuBarImages v1) {
+        this(new MenuBar(v0, v1));
     }
 
     /**
@@ -54,10 +56,10 @@ public class MenuBarBuilder extends Construct.Parent<MenuBarBuilder> {
     }
 
     /**
-     * @see com.google.gwt.user.client.ui.MenuBar#MenuBar(boolean, com.google.gwt.user.client.ui.MenuBar.MenuBarImages)
+     * @see com.google.gwt.user.client.ui.MenuBar#MenuBar()
      */
-    public MenuBarBuilder(boolean v0, com.google.gwt.user.client.ui.MenuBar.MenuBarImages v1) {
-        this(new MenuBar(v0, v1));
+    public MenuBarBuilder() {
+        this(new MenuBar());
     }
 
     /**

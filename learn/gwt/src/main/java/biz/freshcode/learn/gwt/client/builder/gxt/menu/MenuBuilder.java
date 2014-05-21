@@ -1,7 +1,5 @@
 package biz.freshcode.learn.gwt.client.builder.gxt.menu;
 
-import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
-import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.widget.core.client.menu.Menu;
 
 /**
@@ -9,9 +7,9 @@ import com.sencha.gxt.widget.core.client.menu.Menu;
  *
  * @see com.sencha.gxt.widget.core.client.menu.Menu
  */
-@BeanBuilder(Menu.class)
 @SuppressWarnings("UnusedDeclaration")
-public class MenuBuilder extends Construct.Parent<MenuBuilder> {
+@biz.freshcode.learn.gwt.client.builder.BeanBuilder(Menu.class)
+public class MenuBuilder extends biz.freshcode.learn.gwt.client.builder.Construct.Parent<MenuBuilder> {
     public final Menu menu;
 
     public MenuBuilder(Menu v) {
@@ -33,17 +31,17 @@ public class MenuBuilder extends Construct.Parent<MenuBuilder> {
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.menu.Menu#add(com.google.gwt.user.client.ui.Widget)
+     * @see com.sencha.gxt.widget.core.client.menu.Menu#add(com.google.gwt.user.client.ui.IsWidget)
      */
-    public MenuBuilder add(com.google.gwt.user.client.ui.Widget v0) {
+    public MenuBuilder add(com.google.gwt.user.client.ui.IsWidget v0) {
         menu.add(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.menu.Menu#add(com.google.gwt.user.client.ui.IsWidget)
+     * @see com.sencha.gxt.widget.core.client.menu.Menu#add(com.google.gwt.user.client.ui.Widget)
      */
-    public MenuBuilder add(com.google.gwt.user.client.ui.IsWidget v0) {
+    public MenuBuilder add(com.google.gwt.user.client.ui.Widget v0) {
         menu.add(v0);
         return this;
     }
@@ -177,17 +175,17 @@ public class MenuBuilder extends Construct.Parent<MenuBuilder> {
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.menu.Menu#setHeight(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.menu.Menu#setHeight(int)
      */
-    public MenuBuilder height(java.lang.String v0) {
+    public MenuBuilder height(int v0) {
         menu.setHeight(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.menu.Menu#setHeight(int)
+     * @see com.sencha.gxt.widget.core.client.menu.Menu#setHeight(java.lang.String)
      */
-    public MenuBuilder height(int v0) {
+    public MenuBuilder height(java.lang.String v0) {
         menu.setHeight(v0);
         return this;
     }
@@ -237,6 +235,14 @@ public class MenuBuilder extends Construct.Parent<MenuBuilder> {
      */
     public MenuBuilder minWidth(int v0) {
         menu.setMinWidth(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.menu.Menu#setOnHideFocusElement(com.google.gwt.dom.client.Element)
+     */
+    public MenuBuilder onHideFocusElement(com.google.gwt.dom.client.Element v0) {
+        menu.setOnHideFocusElement(v0);
         return this;
     }
 
@@ -385,17 +391,17 @@ public class MenuBuilder extends Construct.Parent<MenuBuilder> {
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.menu.Menu#setWidth(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.menu.Menu#setWidth(int)
      */
-    public MenuBuilder width(java.lang.String v0) {
+    public MenuBuilder width(int v0) {
         menu.setWidth(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.menu.Menu#setWidth(int)
+     * @see com.sencha.gxt.widget.core.client.menu.Menu#setWidth(java.lang.String)
      */
-    public MenuBuilder width(int v0) {
+    public MenuBuilder width(java.lang.String v0) {
         menu.setWidth(v0);
         return this;
     }

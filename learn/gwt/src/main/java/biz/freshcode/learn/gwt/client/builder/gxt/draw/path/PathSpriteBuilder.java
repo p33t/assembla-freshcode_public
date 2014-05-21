@@ -1,7 +1,5 @@
 package biz.freshcode.learn.gwt.client.builder.gxt.draw.path;
 
-import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
-import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.chart.client.draw.path.PathSprite;
 
 /**
@@ -9,13 +7,27 @@ import com.sencha.gxt.chart.client.draw.path.PathSprite;
  *
  * @see com.sencha.gxt.chart.client.draw.path.PathSprite
  */
-@BeanBuilder(PathSprite.class)
 @SuppressWarnings("UnusedDeclaration")
-public class PathSpriteBuilder extends Construct.Parent<PathSpriteBuilder> {
+@biz.freshcode.learn.gwt.client.builder.BeanBuilder(PathSprite.class)
+public class PathSpriteBuilder extends biz.freshcode.learn.gwt.client.builder.Construct.Parent<PathSpriteBuilder> {
     public final PathSprite pathSprite;
 
     public PathSpriteBuilder(PathSprite v) {
         pathSprite = v;
+    }
+
+    /**
+     * @see com.sencha.gxt.chart.client.draw.path.PathSprite#PathSprite(com.sencha.gxt.chart.client.draw.sprite.RectangleSprite)
+     */
+    public PathSpriteBuilder(com.sencha.gxt.chart.client.draw.sprite.RectangleSprite v0) {
+        this(new PathSprite(v0));
+    }
+
+    /**
+     * @see com.sencha.gxt.chart.client.draw.path.PathSprite#PathSprite(com.sencha.gxt.chart.client.draw.sprite.TextSprite)
+     */
+    public PathSpriteBuilder(com.sencha.gxt.chart.client.draw.sprite.TextSprite v0) {
+        this(new PathSprite(v0));
     }
 
     /**
@@ -36,20 +48,6 @@ public class PathSpriteBuilder extends Construct.Parent<PathSpriteBuilder> {
      * @see com.sencha.gxt.chart.client.draw.path.PathSprite#PathSprite(com.sencha.gxt.chart.client.draw.sprite.EllipseSprite)
      */
     public PathSpriteBuilder(com.sencha.gxt.chart.client.draw.sprite.EllipseSprite v0) {
-        this(new PathSprite(v0));
-    }
-
-    /**
-     * @see com.sencha.gxt.chart.client.draw.path.PathSprite#PathSprite(com.sencha.gxt.chart.client.draw.sprite.RectangleSprite)
-     */
-    public PathSpriteBuilder(com.sencha.gxt.chart.client.draw.sprite.RectangleSprite v0) {
-        this(new PathSprite(v0));
-    }
-
-    /**
-     * @see com.sencha.gxt.chart.client.draw.path.PathSprite#PathSprite(com.sencha.gxt.chart.client.draw.sprite.TextSprite)
-     */
-    public PathSpriteBuilder(com.sencha.gxt.chart.client.draw.sprite.TextSprite v0) {
         this(new PathSprite(v0));
     }
 
@@ -150,17 +148,17 @@ public class PathSpriteBuilder extends Construct.Parent<PathSpriteBuilder> {
     }
 
     /**
-     * @see com.sencha.gxt.chart.client.draw.path.PathSprite#setRotation(double)
+     * @see com.sencha.gxt.chart.client.draw.path.PathSprite#setRotation(com.sencha.gxt.chart.client.draw.Rotation)
      */
-    public PathSpriteBuilder rotation(double v0) {
+    public PathSpriteBuilder rotation(com.sencha.gxt.chart.client.draw.Rotation v0) {
         pathSprite.setRotation(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.chart.client.draw.path.PathSprite#setRotation(com.sencha.gxt.chart.client.draw.Rotation)
+     * @see com.sencha.gxt.chart.client.draw.path.PathSprite#setRotation(double)
      */
-    public PathSpriteBuilder rotation(com.sencha.gxt.chart.client.draw.Rotation v0) {
+    public PathSpriteBuilder rotation(double v0) {
         pathSprite.setRotation(v0);
         return this;
     }
@@ -174,17 +172,17 @@ public class PathSpriteBuilder extends Construct.Parent<PathSpriteBuilder> {
     }
 
     /**
-     * @see com.sencha.gxt.chart.client.draw.path.PathSprite#setScaling(com.sencha.gxt.chart.client.draw.Scaling)
+     * @see com.sencha.gxt.chart.client.draw.path.PathSprite#setScaling(double)
      */
-    public PathSpriteBuilder scaling(com.sencha.gxt.chart.client.draw.Scaling v0) {
+    public PathSpriteBuilder scaling(double v0) {
         pathSprite.setScaling(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.chart.client.draw.path.PathSprite#setScaling(double)
+     * @see com.sencha.gxt.chart.client.draw.path.PathSprite#setScaling(com.sencha.gxt.chart.client.draw.Scaling)
      */
-    public PathSpriteBuilder scaling(double v0) {
+    public PathSpriteBuilder scaling(com.sencha.gxt.chart.client.draw.Scaling v0) {
         pathSprite.setScaling(v0);
         return this;
     }

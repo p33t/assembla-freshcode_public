@@ -1,7 +1,5 @@
 package biz.freshcode.learn.gwt.client.builder.gxt.chart;
 
-import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
-import biz.freshcode.learn.gwt.client.builder.Construct;
 import com.sencha.gxt.chart.client.chart.Legend;
 
 /**
@@ -9,9 +7,9 @@ import com.sencha.gxt.chart.client.chart.Legend;
  *
  * @see com.sencha.gxt.chart.client.chart.Legend
  */
-@BeanBuilder(Legend.class)
 @SuppressWarnings("UnusedDeclaration")
-public class LegendBuilder<M> extends Construct.Parent<LegendBuilder<M>> {
+@biz.freshcode.learn.gwt.client.builder.BeanBuilder(Legend.class)
+public class LegendBuilder<M> extends biz.freshcode.learn.gwt.client.builder.Construct.Parent<LegendBuilder<M>> {
     public final Legend<M> legend;
 
     public LegendBuilder(Legend<M> v) {
