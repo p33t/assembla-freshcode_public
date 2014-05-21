@@ -1,0 +1,142 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>biz.freshcode.learn.jetty-maven-plugin</groupId>
+    <artifactId>learn-jetty-maven-plugin</artifactId>
+    <packaging>war</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>learn-jetty-maven-plugin</name>
+    <url>http://maven.apache.org</url>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>learn-jetty-maven-plugin</finalName>
+        <plugins>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>keytool-maven-plugin</artifactId>
+                <version>1.1</version>
+                <executions>
+                    <execution>
+                        <phase>generate-resources</phase>
+                        <id>clean</id>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <phase>generate-resources</phase>
+                        <id>genkey</id>
+                        <goals>
+                            <goal>genkey</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <keystore>${project.build.directory}/jetty-ssl.keystore</keystore>
+                    <dname>cn=localhost</dname>
+                    <keypass>jetty-learn</keypass>
+                    <storepass>jetty-learn</storepass>
+                    <alias>jetty-learn</alias>
+                    <keyalg>RSA</keyalg>
+                </configuration>
+            </plugin>
+
+<!-- V6 Can't get this working... NoClassDefFoundError...JspApplicationContextImpl
+            <plugin>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>maven-jetty-plugin</artifactId>
+                <version>6.1.26</version>
+                <configuration>
+                    <contextPath>/</contextPath>
+                    <scanIntervalSeconds>5</scanIntervalSeconds>
+                    <stopKey>eb058638-8fff-40a1-a57d-4473ba5982d7</stopKey>
+                    <stopPort>8090</stopPort>
+                    <connectors>
+                        <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
+                            <port>8080</port>
+                            <maxIdleTime>60000</maxIdleTime>
+                            <confidentialPort>8443</confidentialPort>
+                        </connector>
+                        <connector implementation="org.mortbay.jetty.security.SslSelectChannelConnector">
+                            <port>8443</port>
+                            <maxIdleTime>60000</maxIdleTime>
+                            <keystore>${project.build.directory}/jetty-ssl.keystore</keystore>
+                            <password>jetty-learn</password>
+                            <keyPassword>jetty-learn</keyPassword>
+                        </connector>
+                    </connectors>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.mortbay.jetty</groupId>
+                        <artifactId>jetty-sslengine</artifactId>
+                        <version>6.1.26</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+-->
+
+            <!-- V8 -->
+            <plugin>
+                <groupId>org.mortbay.jetty</groupId>
+               	<artifactId>jetty-maven-plugin</artifactId>
+               	<version>8.1.15.v20140411</version>
+                <configuration>
+                    <stopKey>eb058638-8fff-40a1-a57d-4473ba5982d7</stopKey>
+                    <stopPort>8090</stopPort>
+                    <connectors>
+                        <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
+                            <port>8080</port>
+                            <maxIdleTime>60000</maxIdleTime>
+                            <confidentialPort>8443</confidentialPort>
+                        </connector>
+                        <connector implementation="org.eclipse.jetty.server.ssl.SslSelectChannelConnector">
+                            <port>8443</port>
+                            <maxIdleTime>60000</maxIdleTime>
+                            <keystore>${project.build.directory}/jetty-ssl.keystore</keystore>
+                            <password>jetty-learn</password>
+                            <keyPassword>jetty-learn</keyPassword>
+                        </connector>
+                    </connectors>
+                <!--
+                    <contextPath>/</contextPath>
+                    <scanIntervalSeconds>5</scanIntervalSeconds>
+                -->
+                </configuration>
+                <!--
+                <dependencies>
+                    <dependency>
+                        <groupId>org.mortbay.jetty</groupId>
+                        <artifactId>jetty-sslengine</artifactId>
+                        <version>6.1.26</version>
+                    </dependency>
+                </dependencies>
+                -->
+            </plugin>
+
+            <!-- V9
+            HTTPS is too hard
+                        <plugin>
+                            <groupId>org.eclipse.jetty</groupId>
+                            <artifactId>jetty-maven-plugin</artifactId>
+                            <version>9.1.5.v20140505</version>
+                            <configuration>
+                                <stopPort>8090</stopPort>
+                                <stopKey>eb058638-8fff-40a1-a57d-4473ba5982d7</stopKey>
+                                <war>${basedir}/target/learn-jetty-maven-plugin.war</war>
+                            </configuration>
+                        </plugin>
+            -->
+        </plugins>
+    </build>
+</project>
