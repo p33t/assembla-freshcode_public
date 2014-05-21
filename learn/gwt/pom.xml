@@ -64,11 +64,11 @@
             <version>4.7</version>
             <scope>test</scope>
         </dependency>
+        <!-- NOTE: Needed for Request Factory API but no validation implementation needed, hence INFO log message -->
         <dependency>
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
             <version>1.0.0.GA</version>
-            <!-- Needed on server... <scope>provided</scope>-->
         </dependency>
         <dependency>
             <groupId>javax.validation</groupId>
