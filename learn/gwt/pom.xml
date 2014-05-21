@@ -257,13 +257,14 @@
                 <configuration>
                     <stopKey>59a65811-ad00-468d-ba60-9591bc3c5d97</stopKey>
                     <stopPort>8090</stopPort>
-                    <!--
-                    jetty-web.xml is excluded from war, so ref it directly
-                    Cannot move it to another location because GWT needs it to be 'bundled'.
-                    -->
+                    <!-- NOTE: Ideally we could specify dev config like this.
+                    But there is no equivalent for GWT Dev Mode :(
+                    So we put jetty-web.xml in with web.xml and exclude it from the WAR,
+                    but it is still available for jetty:run-exploded
                     <webApp>
                         <jettyEnvXml>${basedir}/src/main/webapp/WEB-INF/jetty-web.xml</jettyEnvXml>
                     </webApp>
+                    -->
                     <connectors>
                         <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
                             <port>8080</port>
