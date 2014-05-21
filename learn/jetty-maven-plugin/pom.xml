@@ -94,6 +94,9 @@
                 <configuration>
                     <stopKey>eb058638-8fff-40a1-a57d-4473ba5982d7</stopKey>
                     <stopPort>8090</stopPort>
+                    <webApp>
+                        <jettyEnvXml>${basedir}/src/test/config/jetty-env.xml</jettyEnvXml>
+                    </webApp>
                     <connectors>
                         <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
                             <port>8080</port>
