@@ -28,6 +28,14 @@
             <version>1.4.178</version>
         </dependency>
 
+        <!-- JNDI extensions -->
+        <!--<dependency>-->
+        <!--<groupId>org.eclipse.jetty.aggregate</groupId>-->
+        <!--<artifactId>jetty-plus</artifactId>-->
+        <!--<version>8.1.12.v20130726</version>-->
+        <!--&lt;!&ndash;<version>8.1.15.v20140411</version>&ndash;&gt;-->
+        <!--</dependency>-->
+
         <dependency>
             <groupId>com.google.gwt</groupId>
             <artifactId>gwt-servlet</artifactId>
@@ -40,24 +48,30 @@
             <version>${gwtVersion}</version>
             <scope>provided</scope>
         </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.google.gwt</groupId>-->
+            <!--<artifactId>gwt-dev</artifactId>-->
+            <!--<version>${gwtVersion}</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.7</version>
             <scope>test</scope>
         </dependency>
+        <!-- NOTE: 'provided' prevents dev mode log spam -->
         <dependency>
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
             <version>1.0.0.GA</version>
-            <scope>test</scope>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
             <version>1.0.0.GA</version>
             <classifier>sources</classifier>
-            <scope>test</scope>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
@@ -89,6 +103,9 @@
                     <hostedWebapp>${webappDirectory}</hostedWebapp>
                     <i18nMessagesBundle>pkg.client.Messages</i18nMessagesBundle>
                 </configuration>
+
+                <dependencies>
+                </dependencies>
             </plugin>
 
             <!-- Copy static web files before executing gwt:run -->
