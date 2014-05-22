@@ -16,6 +16,7 @@
             <element id="module-output" name="gwt-min" />
           </element>
           <element id="directory" name="lib">
+            <element id="library" level="project" name="Maven: com.h2database:h2:1.4.178" />
             <element id="library" level="project" name="Maven: com.google.gwt:gwt-servlet:2.6.1" />
           </element>
         </element>
@@ -128,6 +129,17 @@
       </JAVADOC>
       <SOURCES>
         <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-user/2.6.1/gwt-user-2.6.1-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: com.h2database:h2:1.4.178">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/h2database/h2/1.4.178/h2-1.4.178.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/com/h2database/h2/1.4.178/h2-1.4.178-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/h2database/h2/1.4.178/h2-1.4.178-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: javax.validation:validation-api:1.0.0.GA">
