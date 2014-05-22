@@ -17,6 +17,7 @@
         <gwtVersion>2.6.1</gwtVersion>
         <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <gwt.server>pkg.server.boot.JndiJettyLauncher</gwt.server>
     </properties>
 
     <dependencies>
@@ -48,11 +49,13 @@
             <version>${gwtVersion}</version>
             <scope>provided</scope>
         </dependency>
-        <!--<dependency>-->
-            <!--<groupId>com.google.gwt</groupId>-->
-            <!--<artifactId>gwt-dev</artifactId>-->
-            <!--<version>${gwtVersion}</version>-->
-        <!--</dependency>-->
+        <!-- Needed for custom JettyLauncher compile -->
+        <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-dev</artifactId>
+            <version>${gwtVersion}</version>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
