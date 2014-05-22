@@ -29,14 +29,6 @@
             <version>1.4.178</version>
         </dependency>
 
-        <!-- JNDI extensions -->
-        <!--<dependency>-->
-        <!--<groupId>org.eclipse.jetty</groupId>-->
-        <!--<artifactId>jetty-plus</artifactId>-->
-        <!--<version>8.1.12.v20130726</version>-->
-        <!--<version>8.1.15.v20140411</version>-->
-        <!--</dependency>-->
-
         <dependency>
             <groupId>com.google.gwt</groupId>
             <artifactId>gwt-servlet</artifactId>
@@ -76,6 +68,18 @@
             <classifier>sources</classifier>
             <scope>provided</scope>
         </dependency>
+
+        <!-- JNDI extensions -->
+        <!-- Causes class loader issues...
+        groupId: org.eclipse.jetty.aggregate   is another option
+        -->
+        <!--<dependency>-->
+            <!--<groupId>org.eclipse.jetty</groupId>-->
+            <!--<artifactId>jetty-plus</artifactId>-->
+            <!--<version>8.1.12.v20130726</version>-->
+        <!--</dependency>-->
+
+        <!--<version>8.1.15.v20140411</version>-->
     </dependencies>
 
     <build>
@@ -112,8 +116,14 @@
                     </systemProperties>
                 </configuration>
 
-                <dependencies>
-                </dependencies>
+                <!-- Doesn't seem to help -->
+                <!--<dependencies>-->
+                <!--<dependency>-->
+                <!--<groupId>org.eclipse.jetty</groupId>-->
+                <!--<artifactId>jetty-plus</artifactId>-->
+                <!--<version>8.1.12.v20130726</version>-->
+                <!--</dependency>-->
+                <!--</dependencies>-->
             </plugin>
 
             <!-- Copy static web files before executing gwt:run -->
