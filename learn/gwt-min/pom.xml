@@ -31,7 +31,7 @@
 
         <!-- JNDI extensions -->
         <!--<dependency>-->
-        <!--<groupId>org.eclipse.jetty.aggregate</groupId>-->
+        <!--<groupId>org.eclipse.jetty</groupId>-->
         <!--<artifactId>jetty-plus</artifactId>-->
         <!--<version>8.1.12.v20130726</version>-->
         <!--&lt;!&ndash;<version>8.1.15.v20140411</version>&ndash;&gt;-->
@@ -105,6 +105,10 @@
                     <runTarget>Main.html</runTarget>
                     <hostedWebapp>${webappDirectory}</hostedWebapp>
                     <i18nMessagesBundle>pkg.client.Messages</i18nMessagesBundle>
+                    <systemProperties>
+                        <java.naming.factory.initial>org.eclipse.jetty.jndi.InitialContextFactory</java.naming.factory.initial>
+                        <java.naming.factory.url.pkgs>org.eclipse.jetty.jndi</java.naming.factory.url.pkgs>
+                    </systemProperties>
                 </configuration>
 
                 <dependencies>
@@ -126,6 +130,7 @@
                 </executions>
                 <configuration>
                     <webappDirectory>${webappDirectory}</webappDirectory>
+                    <!-- TODO: Filter out all jetty stuff ( **/jetty-* ?) -->
                     <packagingExcludes>WEB-INF/jetty-web.xml</packagingExcludes>
                 </configuration>
             </plugin>
