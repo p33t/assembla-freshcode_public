@@ -20,6 +20,14 @@
     </properties>
 
     <dependencies>
+
+        <!-- Something to retrieve from JNDI -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.178</version>
+        </dependency>
+
         <dependency>
             <groupId>com.google.gwt</groupId>
             <artifactId>gwt-servlet</artifactId>
