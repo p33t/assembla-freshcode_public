@@ -17,6 +17,7 @@
         <gwtVersion>2.6.1</gwtVersion>
         <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <gwt.server>pkg.server.boot.JndiJettyLauncher</gwt.server>
     </properties>
 
     <dependencies>
@@ -33,7 +34,7 @@
         <!--<groupId>org.eclipse.jetty</groupId>-->
         <!--<artifactId>jetty-plus</artifactId>-->
         <!--<version>8.1.12.v20130726</version>-->
-        <!--&lt;!&ndash;<version>8.1.15.v20140411</version>&ndash;&gt;-->
+        <!--<version>8.1.15.v20140411</version>-->
         <!--</dependency>-->
 
         <dependency>
@@ -45,6 +46,13 @@
         <dependency>
             <groupId>com.google.gwt</groupId>
             <artifactId>gwt-user</artifactId>
+            <version>${gwtVersion}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- Needed for custom JettyLauncher compile -->
+        <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-dev</artifactId>
             <version>${gwtVersion}</version>
             <scope>provided</scope>
         </dependency>
@@ -98,7 +106,8 @@
                     <hostedWebapp>${webappDirectory}</hostedWebapp>
                     <i18nMessagesBundle>pkg.client.Messages</i18nMessagesBundle>
                     <systemProperties>
-                        <java.naming.factory.initial>org.eclipse.jetty.jndi.InitialContextFactory</java.naming.factory.initial>
+                        <java.naming.factory.initial>org.eclipse.jetty.jndi.InitialContextFactory
+                        </java.naming.factory.initial>
                         <java.naming.factory.url.pkgs>org.eclipse.jetty.jndi</java.naming.factory.url.pkgs>
                     </systemProperties>
                 </configuration>

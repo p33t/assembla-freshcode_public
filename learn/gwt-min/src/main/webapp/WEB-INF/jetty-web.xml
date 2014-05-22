@@ -22,13 +22,13 @@
         <!--Not needed for Jetty 8 <Item>org.eclipse.jetty.webapp.TagLibConfiguration</Item>-->
     </Array>
 
-    <Call name="setAttribute">
-        <Arg>org.eclipse.jetty.webapp.configuration</Arg>
-        <Arg>
-            <Ref id="plusConfig"/>
-        </Arg>
-    </Call>
-
+    <!-- Doesn't work ?! -->
+    <!--<Call name="setAttribute">-->
+        <!--<Arg>org.eclipse.jetty.webapp.configuration</Arg>-->
+        <!--<Arg>-->
+            <!--<Ref id="plusConfig"/>-->
+        <!--</Arg>-->
+    <!--</Call>-->
 
     <!--<New id="appDb" class="org.eclipse.jetty.plus.jndi.Resource">-->
        <!--<Arg></Arg>-->
