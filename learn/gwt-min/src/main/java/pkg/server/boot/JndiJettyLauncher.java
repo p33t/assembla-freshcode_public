@@ -8,6 +8,9 @@ import java.io.File;
 
 import static pkg.server.util.AppServerUtil.LOG;
 
+/**
+ * Originally from a GWT 2.3 hack: http://webtide.intalio.com/2011/08/gwt-and-jndi
+ */
 public class JndiJettyLauncher extends JettyLauncher {
     private static final String[] CONFIG_CLASSES = new String[]{
             "org.eclipse.jetty.webapp.WebInfConfiguration",
