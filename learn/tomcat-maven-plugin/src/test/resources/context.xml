@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/">
+    <Resource name="jdbc/appDb"
+              auth="Container"
+              type="javax.sql.DataSource"
+              class="org.h2.jdbcx.JdbcDataSource"
+              url="jdbc:h2:mem:appDb"/>
+</Context>

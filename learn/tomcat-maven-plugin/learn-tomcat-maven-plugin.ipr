@@ -15,9 +15,6 @@
           <element id="directory" name="classes">
             <element id="module-output" name="tomcat-maven-plugin" />
           </element>
-          <element id="directory" name="lib">
-            <element id="library" level="project" name="Maven: com.h2database:h2:1.4.178" />
-          </element>
         </element>
       </root>
     </artifact>
@@ -107,17 +104,6 @@
     <mapping directory="" vcs="svn" />
   </component>
   <component name="libraryTable">
-    <library name="Maven: com.h2database:h2:1.4.178">
-      <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/h2database/h2/1.4.178/h2-1.4.178.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/com/h2database/h2/1.4.178/h2-1.4.178-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/h2database/h2/1.4.178/h2-1.4.178-sources.jar!/" />
-      </SOURCES>
-    </library>
     <library name="Maven: junit:junit:3.8.1">
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/junit/junit/3.8.1/junit-3.8.1.jar!/" />

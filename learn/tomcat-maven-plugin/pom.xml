@@ -10,11 +10,12 @@
     <dependencies>
 
         <!-- Something to retrieve from JNDI -->
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>1.4.178</version>
-        </dependency>
+        <!-- Datasource is supplied but type is unknown -->
+        <!--<dependency>-->
+            <!--<groupId>com.h2database</groupId>-->
+            <!--<artifactId>h2</artifactId>-->
+            <!--<version>1.4.178</version>-->
+        <!--</dependency>-->
 
         <dependency>
         	<groupId>org.apache.tomcat</groupId>
@@ -77,7 +78,7 @@
                     <keystoreFile>${project.build.directory}/tomcat-ssl.keystore</keystoreFile>
                     <keystorePass>tomcat-learn</keystorePass>
                     <!-- optional path to a context file -->
-                    <!--<contextFile>${tomcatContextXml}</contextFile>-->
+                    <contextFile>${project.basedir}/src/test/resources/context.xml</contextFile>
                     <!-- optional system properties you want to add -->
                     <systemProperties>
                         <appserver.base>${project.build.directory}/appserver-base</appserver.base>
@@ -94,6 +95,13 @@
                 </configuration>
                 <!-- For any extra dependencies needed when running embedded Tomcat (not WAR dependencies) add them below -->
                 <dependencies>
+                    <!-- Support JNDI defined data source -->
+                    <dependency>
+                        <groupId>com.h2database</groupId>
+                        <artifactId>h2</artifactId>
+                        <version>1.4.178</version>
+                    </dependency>
+
                     <!--<dependency>-->
                     <!--<groupId>org.apache.derby</groupId>-->
                     <!--<artifactId>derby</artifactId>-->
