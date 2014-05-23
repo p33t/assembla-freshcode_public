@@ -1,7 +1,7 @@
 package pkg;
 
-import org.h2.jdbcx.JdbcDataSource;
-
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
@@ -16,16 +16,17 @@ import static pkg.AppServerUtil.LOG;
 public class AppListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent servletContextEvent) {
         LOG.info("Context intialised: " + servletContextEvent.getServletContext().getServerInfo());
+        // Stepping stone on way to JNDI data source
+//        JdbcDataSource ds;
+//        ds = new JdbcDataSource();
+//        ds.setURL("jdbc:h2:mem:appDb");
 
-        JdbcDataSource ds;
-        ds = new JdbcDataSource();
-        ds.setURL("jdbc:h2:mem:appDb");
-
-//        try {
-//            ds = (DataSource) new InitialContext().lookup("java:comp/env/jdbc/appDb");
-//        } catch (NamingException e) {
-//            throw new RuntimeException(e);
-//        }
+        DataSource ds;
+        try {
+            ds = (DataSource) new InitialContext().lookup("java:comp/env/jdbc/appDb");
+        } catch (NamingException e) {
+            throw new RuntimeException(e);
+        }
 
         describe(ds);
     }
