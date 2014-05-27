@@ -21,7 +21,7 @@ public class AppClientUtil {
         @Override
         public void log(LogRecord record) {
             delegate.log(record);
-            GWT.log(record.getMessage(), record.getThrown());
+// No need.  Happens automagically...            GWT.log(record.getMessage(), record.getThrown());
         }
     }
 }

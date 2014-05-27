@@ -1,5 +1,6 @@
 package biz.freshcode.learn.gwtp.client.boot;
 
+import biz.freshcode.learn.gwtp.client.boot.inject.PartiallyInjected;
 import biz.freshcode.learn.gwtp.client.compound.*;
 import biz.freshcode.learn.gwtp.client.editform.EditForm;
 import biz.freshcode.learn.gwtp.client.editform.EditFormViewImpl;
@@ -14,6 +15,7 @@ import biz.freshcode.learn.gwtp.client.ext.ExtModule;
 import biz.freshcode.learn.gwtp.client.special.SpecialModule;
 import biz.freshcode.learn.gwtp.shared.AppUtil;
 import biz.freshcode.learn.gwtp.shared.boot.SessionInfo;
+import com.google.gwt.inject.client.assistedinject.GinFactoryModuleBuilder;
 import com.gwtplatform.dispatch.rpc.client.gin.RpcDispatchAsyncModule;
 import com.gwtplatform.dispatch.shared.SecurityCookie;
 import com.gwtplatform.mvp.client.annotations.DefaultPlace;
@@ -51,5 +53,8 @@ public class AppModule extends AbstractPresenterModule {
 
         install(new ExtModule());
         install(new SpecialModule());
+
+        install(new GinFactoryModuleBuilder().build(PartiallyInjected.Factory.class));
+
     }
 }
