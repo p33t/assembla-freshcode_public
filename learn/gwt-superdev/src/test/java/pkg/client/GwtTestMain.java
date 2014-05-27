@@ -5,6 +5,8 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.junit.client.GWTTestCase;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.rpc.ServiceDefTarget;
+import pkg.shared.GreetingService;
+import pkg.shared.GreetingServiceAsync;
 
 /**
  * GWT JUnit <b>integration</b> tests must extend GWTTestCase.

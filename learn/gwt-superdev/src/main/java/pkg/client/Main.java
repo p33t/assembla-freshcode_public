@@ -6,6 +6,8 @@ import com.google.gwt.event.dom.client.*;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
 import pkg.shared.FieldVerifier;
+import pkg.shared.GreetingService;
+import pkg.shared.GreetingServiceAsync;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
