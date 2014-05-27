@@ -5,21 +5,26 @@ import biz.freshcode.learn.gwtp.shared.AppRpcServiceAsync;
 import biz.freshcode.learn.gwtp.shared.boot.SessionInfo;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.DOM;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.gwtplatform.mvp.client.ApplicationController;
 
+import java.util.logging.Level;
+
+import static biz.freshcode.learn.gwtp.client.util.AppClientUtil.LOG;
+
 public class EntryPoint implements com.google.gwt.core.client.EntryPoint {
     @Override
     public void onModuleLoad() {
-        DOM.removeChild(RootPanel.getBodyElement(), DOM.getElementById("loading"));
-
-        GWT.log("In onModuleLoad().");
+        LOG.info("In onModuleLoad().");
         AppRpcServiceAsync rpc = GWT.create(AppRpcService.class);
         rpc.loadSessionInfo(new AsyncCallback<SessionInfo>() {
             @Override
             public void onFailure(Throwable caught) {
-                GWT.log("loadSessionInfo() failed.  Cannot start app.", caught);
+                removeLoading();
+                LOG.log(Level.SEVERE, "loadSessionInfo() failed.  Cannot start app.", caught);
+                Window.alert("Failed to start application.");
             }
 
             @Override
@@ -28,10 +33,15 @@ public class EntryPoint implements com.google.gwt.core.client.EntryPoint {
                 long localBootTime = System.currentTimeMillis();
                 RoughServerTime.init(localBootTime, info.getBootTime());
                 SessionInfoProvider.init(info);
-                GWT.log("Session info loaded.  Launching app...");
+                LOG.info("Session info loaded.  Launching app...");
+                removeLoading();
                 launch();
             }
         });
+    }
+
+    private void removeLoading() {
+        DOM.removeChild(RootPanel.getBodyElement(), DOM.getElementById("loading"));
     }
 
     private void launch() {
