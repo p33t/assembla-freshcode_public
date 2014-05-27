@@ -1,6 +1,6 @@
 package pkg.server;
 
-import pkg.client.GreetingService;
+import pkg.shared.GreetingService;
 import pkg.shared.FieldVerifier;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
