@@ -22,4 +22,7 @@
     <!-- NOTE: 'client' is excluded from server -->
     <source path='client'/>
     <source path='shared'/>
+
+    <!-- For superdevmode -->
+    <add-linker name="xsiframe"/>
 </module>
