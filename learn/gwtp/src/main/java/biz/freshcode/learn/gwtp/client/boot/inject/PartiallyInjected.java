@@ -12,7 +12,8 @@ public class PartiallyInjected {
     }
 
     public interface Factory {
-        // NOTE: @Assist prevents GIN errors during compile.
-        PartiallyInjected create(@Assisted String assist);
+        // NOTE: In the past, @Assist prevented GIN errors during clean + gwt:run-codeserver
+        //       But now it seems to work ?!
+        PartiallyInjected create(String assist);
     }
 }
