@@ -106,6 +106,14 @@
             <classifier>sources</classifier>
         </dependency>
 
+        <!-- Address linking error: java.lang.NoClassDefFoundError: org/json/JSONException -->
+        <dependency>
+        	<groupId>org.json</groupId>
+        	<artifactId>json</artifactId>
+        	<version>20140107</version>
+            <scope>provided</scope>
+        </dependency>
+
         <!--Dispatch framework (command pattern RPC)-->
         <dependency>
             <groupId>com.gwtplatform</groupId>
