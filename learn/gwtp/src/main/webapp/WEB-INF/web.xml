@@ -30,4 +30,6 @@
         <welcome-file>App.jsp</welcome-file>
     </welcome-file-list>
 
+    <!-- NOTE: Can wrap the whole app in HTTPS and authentication here -->
+
 </web-app>
