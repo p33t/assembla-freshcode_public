@@ -15,7 +15,7 @@ public class PersonFormFields implements Editor<Person> {
     TextField name = new TextFieldBuilder()
             .addValidator(new MinLengthValidator(3))
             .textField;
-    PasswordEditorAlt newPassword = new PasswordEditorAlt();
+    PasswordEditor newPassword = new PasswordEditor();
     ListBoxField<Flavour> favourite = new ListBoxField<Flavour>();
 
     public PersonFormFields() {
