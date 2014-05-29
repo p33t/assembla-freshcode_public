@@ -19,7 +19,7 @@ import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newList;
 import static biz.freshcode.learn.gwt.client.util.AppObjectUtils.safeEquals;
 
 /**
- * This class employs a work-around for a bug.
+ * This class employs a work-around for a bug pre GXT 3.1.0.
  * Specifically it caches errors and records them in the delegate during a 'flush'... but it didn't work.
  *
  * @see PasswordEditor
