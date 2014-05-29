@@ -81,37 +81,6 @@
                 </configuration>
             </plugin>
 
-
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>keytool-maven-plugin</artifactId>
-                <version>1.1</version>
-                <executions>
-                    <execution>
-                        <phase>generate-resources</phase>
-                        <id>clean</id>
-                        <goals>
-                            <goal>clean</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <phase>generate-resources</phase>
-                        <id>genkey</id>
-                        <goals>
-                            <goal>genkey</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <keystore>${project.build.directory}/tomcat-ssl.keystore</keystore>
-                    <dname>cn=localhost</dname>
-                    <keypass>tomcat-learn</keypass>
-                    <storepass>tomcat-learn</storepass>
-                    <alias>tomcat-learn</alias>
-                    <keyalg>RSA</keyalg>
-                </configuration>
-            </plugin>
-
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
@@ -119,11 +88,7 @@
                 <configuration>
                     <path>/</path>
                     <port>8080</port>
-                    <httpsPort>8443</httpsPort>
-                    <keystoreFile>${project.build.directory}/tomcat-ssl.keystore</keystoreFile>
-                    <keystorePass>tomcat-learn</keystorePass>
-                    <!-- Will use for JNDI config...
-                    <contextFile>${project.basedir}/src/test/resources/context.xml</contextFile>-->
+                    <!--No Need...<contextFile>${project.basedir}/src/test/resources/context.xml</contextFile>-->
                     <systemProperties>
                         <appserver.base>${project.build.directory}/appserver-base</appserver.base>
                         <appserver.home>${project.build.directory}/appserver-home</appserver.home>
@@ -132,15 +97,6 @@
                     </systemProperties>
                     <useTestClasspath>false</useTestClasspath>
                 </configuration>
-
-                <dependencies>
-                    <!-- Support JNDI defined data source -->
-                    <dependency>
-                        <groupId>com.h2database</groupId>
-                        <artifactId>h2</artifactId>
-                        <version>1.4.178</version>
-                    </dependency>
-                </dependencies>
             </plugin>
 
             <!-- Copy static web files before executing gwt:run -->

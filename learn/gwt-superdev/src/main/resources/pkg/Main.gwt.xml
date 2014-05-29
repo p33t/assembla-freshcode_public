@@ -16,9 +16,9 @@
 
     <!-- Other module inherits                                      -->
 
-
     <!-- For superdevmode -->
     <add-linker name="xsiframe"/>
+
     <!-- Specify the app entry point class.                         -->
     <entry-point class='pkg.client.Main'/>
 
