@@ -5,7 +5,11 @@
 </head>
 
 <h2>Login Page</h2>
-<br><br>
+
+<p>
+    Try logging in with username 'bruce' and password 'bruce'.
+</p>
+
 <form action="j_security_check" method=post>
     <p><strong>Please Enter Your User Name: </strong>
     <input type="text" name="j_username" size="25">

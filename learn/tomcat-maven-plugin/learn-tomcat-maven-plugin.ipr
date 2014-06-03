@@ -42,6 +42,7 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="tomcat-maven-plugin" />
+        <module name="tomcat-salted-passwords" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -49,12 +50,24 @@
     </bytecodeTargetLevel>
   </component>
   <component name="CopyrightManager" default="" />
+  <component name="DataSourceManagerImpl" format="xml" hash="677251618">
+    <data-source source="LOCAL" name="IDE" uuid="f1a2e67e-b4a4-4684-8d1f-2a15b7608f49">
+      <driver-ref>h2.in-memory</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.h2.Driver</jdbc-driver>
+      <jdbc-url>jdbc:h2:mem:</jdbc-url>
+      <libraries />
+    </data-source>
+  </component>
   <component name="DependencyValidationManager">
     <option name="SKIP_IMPORT_STATEMENTS" value="false" />
   </component>
   <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/pkg/AppListener.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/pkg/AppServerUtil.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tomcat-parent" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tomcat-salted-passwords" charset="UTF-8" />
   </component>
   <component name="EntryPointsManager">
     <entry_points version="2.0" />
@@ -76,6 +89,7 @@
           <option name="processLiterals" value="true" />
           <option name="processComments" value="true" />
         </inspection_tool>
+        <inspection_tool class="SqlResolveInspection" enabled="false" level="WARNING" enabled_by_default="false" />
       </profile>
     </profiles>
     <option name="PROJECT_PROFILE" value="Project Default" />
@@ -86,16 +100,23 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/tomcat-salted-passwords/pom.xml" />
+        <option value="$PROJECT_DIR$/tomcat-parent/pom.xml" />
       </list>
     </option>
   </component>
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/tomcat-maven-plugin.iml" filepath="$PROJECT_DIR$/tomcat-maven-plugin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tomcat-parent/tomcat-parent.iml" filepath="$PROJECT_DIR$/tomcat-parent/tomcat-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tomcat-salted-passwords/tomcat-salted-passwords.iml" filepath="$PROJECT_DIR$/tomcat-salted-passwords/tomcat-salted-passwords.iml" />
     </modules>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" assert-keyword="true" jdk-15="true" project-jdk-name="1.7" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
+  </component>
+  <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/src/main/java/pkg/AppListener.java" dialect="H2" />
   </component>
   <component name="SvnBranchConfigurationManager">
     <option name="mySupportsUserInfoFilter" value="true" />
@@ -115,6 +136,50 @@
         <root url="jar://$MAVEN_REPOSITORY$/junit/junit/3.8.1/junit-3.8.1-sources.jar!/" />
       </SOURCES>
     </library>
+    <library name="Maven: org.apache.tomcat:tomcat-annotations-api:7.0.47">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-annotations-api/7.0.47/tomcat-annotations-api-7.0.47.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-annotations-api/7.0.47/tomcat-annotations-api-7.0.47-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-annotations-api/7.0.47/tomcat-annotations-api-7.0.47-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.tomcat:tomcat-api:7.0.47">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-api/7.0.47/tomcat-api-7.0.47.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-api/7.0.47/tomcat-api-7.0.47-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-api/7.0.47/tomcat-api-7.0.47-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.tomcat:tomcat-catalina:7.0.47">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-catalina/7.0.47/tomcat-catalina-7.0.47.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-catalina/7.0.47/tomcat-catalina-7.0.47-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-catalina/7.0.47/tomcat-catalina-7.0.47-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.tomcat:tomcat-juli:7.0.47">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-juli/7.0.47/tomcat-juli-7.0.47.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-juli/7.0.47/tomcat-juli-7.0.47-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-juli/7.0.47/tomcat-juli-7.0.47-sources.jar!/" />
+      </SOURCES>
+    </library>
     <library name="Maven: org.apache.tomcat:tomcat-servlet-api:7.0.47">
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-servlet-api/7.0.47/tomcat-servlet-api-7.0.47.jar!/" />
@@ -124,6 +189,17 @@
       </JAVADOC>
       <SOURCES>
         <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-servlet-api/7.0.47/tomcat-servlet-api-7.0.47-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.tomcat:tomcat-util:7.0.47">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-util/7.0.47/tomcat-util-7.0.47.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-util/7.0.47/tomcat-util-7.0.47-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-util/7.0.47/tomcat-util-7.0.47-sources.jar!/" />
       </SOURCES>
     </library>
   </component>
