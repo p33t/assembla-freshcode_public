@@ -6,13 +6,14 @@
               class="org.h2.jdbcx.JdbcDataSource"
               url="jdbc:h2:mem:appDb"/>
 
-    <Realm className="pkg.TestRealm"
+    <!--
+    <Realm className="org.apache.catalina.realm.DataSourceRealm" userCredCol="userpassword"
+    -->
+    <Realm className="pkg.TestRealm" userCredCol="usercred" userSaltCol="usersalt"
            localDataSource="true"
            dataSourceName="jdbc/appDb"
            userTable="usercred"
            userNameCol="username"
-           userCredCol="usercred"
-           userSaltCol="usersalt"
            userRoleTable="userrole"
            roleNameCol="userrole"/>
 </Context>
