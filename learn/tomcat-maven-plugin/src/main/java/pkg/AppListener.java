@@ -6,6 +6,7 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 import javax.sql.DataSource;
+import javax.xml.bind.DatatypeConverter;
 import java.sql.*;
 
 import static pkg.AppServerUtil.LOG;
@@ -39,11 +40,18 @@ public class AppListener implements ServletContextListener {
             DatabaseMetaData meta = conn.getMetaData();
             LOG.info("Connected to " + meta.getDatabaseProductName() + " " + meta.getDatabaseProductVersion());
 
+            byte[] saltArr = TestRealm.generateSalt();
+            String theSalt = DatatypeConverter.printBase64Binary(saltArr);
+            byte[] passwordArr = TestRealm.mutatePassword("bruce", saltArr);
+            String theCred = DatatypeConverter.printBase64Binary(passwordArr);
+
             PreparedStatement primeUserCred = conn.prepareStatement(
                     "CREATE TABLE usercred (username VARCHAR(32), " +
-                            "userpassword VARCHAR(32)" +
+                            "userpassword VARCHAR(32)," +
+                            "usersalt VARCHAR(64)," +
+                            "usercred VARCHAR(64)" +
                             ");" +
-                            "INSERT INTO usercred VALUES ('bruce', 'bruce');"
+                            "INSERT INTO usercred VALUES ('bruce', 'bruce', '" + theSalt + "', '" + theCred + "');"
             );
             primeUserCred.execute();
             LOG.info("usercred table primed with 'bruce' / 'bruce'");
