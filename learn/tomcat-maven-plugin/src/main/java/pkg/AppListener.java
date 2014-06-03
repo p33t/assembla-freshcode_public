@@ -59,7 +59,8 @@ public class AppListener implements ServletContextListener {
 
             PreparedStatement primeUserRole = conn.prepareStatement(
                     "CREATE TABLE userrole (username VARCHAR(32), userrole VARCHAR(32));" +
-                            "INSERT INTO userrole VALUES ('bruce', 'authentic');"
+                            "INSERT INTO userrole VALUES ('bruce', 'authentic');"+
+                            "INSERT INTO userrole VALUES ('bruce', 'privilege');"
             );
             primeUserRole.execute();
             LOG.info("userrole table primed with 'bruce' / 'authentic'");
