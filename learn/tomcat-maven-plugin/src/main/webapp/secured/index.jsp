@@ -5,5 +5,6 @@
 </head>
 <body>
 <p>This page should have required authentication.</p>
+<p><a href="../logout.jsp">Logout</a></p>
 </body>
 </html>
