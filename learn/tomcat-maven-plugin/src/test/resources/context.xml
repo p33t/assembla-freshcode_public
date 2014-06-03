@@ -11,7 +11,8 @@
            dataSourceName="jdbc/appDb"
            userTable="usercred"
            userNameCol="username"
-           userCredCol="userpassword"
+           userCredCol="usercred"
+           userSaltCol="usersalt"
            userRoleTable="userrole"
            roleNameCol="userrole"/>
 </Context>
