@@ -5,4 +5,13 @@
               type="javax.sql.DataSource"
               class="org.h2.jdbcx.JdbcDataSource"
               url="jdbc:h2:mem:appDb"/>
+
+    <Realm className="org.apache.catalina.realm.DataSourceRealm"
+           localDataSource="true"
+           dataSourceName="jdbc/appDb"
+           userTable="usercred"
+           userNameCol="username"
+           userCredCol="userpassword"
+           userRoleTable="userrole"
+           roleNameCol="userrole"/>
 </Context>
