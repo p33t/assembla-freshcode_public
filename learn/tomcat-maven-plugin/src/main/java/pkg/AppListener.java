@@ -26,7 +26,7 @@ public class AppListener implements ServletContextListener {
             throw new RuntimeException(e);
         }
 
-        describe(ds);
+        primeDb(ds);
     }
 
     @Override
@@ -34,13 +34,15 @@ public class AppListener implements ServletContextListener {
         LOG.info("Context destroyed: " + servletContextEvent.getServletContext().getServerInfo());
     }
 
-    private void describe(DataSource ds) {
+    private void primeDb(DataSource ds) {
         try (Connection conn = ds.getConnection()) {
             DatabaseMetaData meta = conn.getMetaData();
             LOG.info("Connected to " + meta.getDatabaseProductName() + " " + meta.getDatabaseProductVersion());
 
             PreparedStatement primeUserCred = conn.prepareStatement(
-                    "CREATE TABLE usercred (username VARCHAR(32), userpassword VARCHAR(32));" +
+                    "CREATE TABLE usercred (username VARCHAR(32), " +
+                            "userpassword VARCHAR(32)" +
+                            ");" +
                             "INSERT INTO usercred VALUES ('bruce', 'bruce');"
             );
             primeUserCred.execute();
@@ -55,7 +57,7 @@ public class AppListener implements ServletContextListener {
             LOG.info("userrole table primed with 'bruce' / 'authentic'");
 
 
-            try (ResultSet rs = conn.prepareStatement("select * from usercred").executeQuery()) {
+            try (ResultSet rs = conn.prepareStatement("SELECT * FROM usercred").executeQuery()) {
                 if (!rs.next()) pop("No results");
                 String username = rs.getString(1);
                 String userpassword = rs.getString(2);

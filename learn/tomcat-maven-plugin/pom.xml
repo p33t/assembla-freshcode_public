@@ -7,6 +7,14 @@
     <version>1.0-SNAPSHOT</version>
     <name>tomcat-maven-plugin Maven Webapp</name>
     <url>http://maven.apache.org</url>
+
+    <parent>
+        <relativePath>./tomcat-parent/pom.xml</relativePath>
+        <groupId>biz.freshcode.learn.tomcat.parent</groupId>
+        <artifactId>tomcat-parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
     <dependencies>
 
         <!-- Something to retrieve from JNDI -->
@@ -20,7 +28,14 @@
         <dependency>
         	<groupId>org.apache.tomcat</groupId>
         	<artifactId>tomcat-servlet-api</artifactId>
-        	<version>7.0.47</version>
+        	<version>${tomcat.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>biz.freshcode.learn.tomcat.realm.salted</groupId>
+            <artifactId>tomcat-salted-passwords</artifactId>
+            <version>${tomcat.salted.password.version}</version>
             <scope>provided</scope>
         </dependency>
 
@@ -102,16 +117,11 @@
                         <version>1.4.178</version>
                     </dependency>
 
-                    <!--<dependency>-->
-                    <!--<groupId>org.apache.derby</groupId>-->
-                    <!--<artifactId>derby</artifactId>-->
-                    <!--<version>${derbyVersion}</version>-->
-                    <!--</dependency>-->
-                    <!--<dependency>-->
-                    <!--<groupId>javax.mail</groupId>-->
-                    <!--<artifactId>mail</artifactId>-->
-                    <!--<version>1.4</version>-->
-                    <!--</dependency>-->
+                    <dependency>
+                        <groupId>biz.freshcode.learn.tomcat.realm.salted</groupId>
+                        <artifactId>tomcat-salted-passwords</artifactId>
+                        <version>${tomcat.salted.password.version}</version>
+                    </dependency>
                 </dependencies>
             </plugin>
 
