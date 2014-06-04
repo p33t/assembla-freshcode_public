@@ -13,9 +13,9 @@ public class PasswordMutationServiceImpl implements PasswordMutationService {
     // These will ultimately be configurable.
     // Default to recommendations from:
     // http://www.javacodegeeks.com/2012/05/secure-password-storage-donts-dos-and.html
-    public static final int SEED_SIZE = 8;
-    public static final int KEY_LEN = 160; // bits
-    public static final int ITERATIONS = 20000;
+    private int seedNumBytes = 8;
+    private int keyNumBits = 160; // bits
+    private int digestIterationCount = 20000;
 
     @Override
     public String mutatePassword(String password) {
@@ -30,7 +30,7 @@ public class PasswordMutationServiceImpl implements PasswordMutationService {
     @Override
     public boolean verifyMutatedPassword(String candidatePassword, String storedMutatedPassword) {
         byte[] mute = DatatypeConverter.parseBase64Binary(storedMutatedPassword);
-        byte[] salt = new byte[SEED_SIZE];
+        byte[] salt = new byte[seedNumBytes];
         System.arraycopy(mute, 0, salt, 0, salt.length);
         byte[] digest = new byte[mute.length - salt.length];
         System.arraycopy(mute, salt.length, digest, 0, digest.length);
@@ -40,7 +40,7 @@ public class PasswordMutationServiceImpl implements PasswordMutationService {
 
     private byte[] generateSalt() {
         try {
-            return SecureRandom.getInstance("SHA1PRNG").generateSeed(SEED_SIZE);
+            return SecureRandom.getInstance("SHA1PRNG").generateSeed(seedNumBytes);
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }
@@ -54,11 +54,35 @@ public class PasswordMutationServiceImpl implements PasswordMutationService {
             throw new RuntimeException(e);
         }
 
-        KeySpec spec = new PBEKeySpec(password.toCharArray(), salt, ITERATIONS, KEY_LEN);
+        KeySpec spec = new PBEKeySpec(password.toCharArray(), salt, digestIterationCount, keyNumBits);
         try {
             return skf.generateSecret(spec).getEncoded();
         } catch (InvalidKeySpecException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public int getDigestIterationCount() {
+        return digestIterationCount;
+    }
+
+    public void setDigestIterationCount(int digestIterationCount) {
+        this.digestIterationCount = digestIterationCount;
+    }
+
+    public int getKeyNumBits() {
+        return keyNumBits;
+    }
+
+    public void setKeyNumBits(int keyNumBits) {
+        this.keyNumBits = keyNumBits;
+    }
+
+    public int getSeedNumBytes() {
+        return seedNumBytes;
+    }
+
+    public void setSeedNumBytes(int seedNumBytes) {
+        this.seedNumBytes = seedNumBytes;
     }
 }
