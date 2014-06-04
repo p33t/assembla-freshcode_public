@@ -8,7 +8,10 @@ import org.apache.catalina.realm.DataSourceRealm;
 import org.apache.catalina.realm.GenericPrincipal;
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
+import org.apache.naming.ContextBindings;
 
+import javax.naming.Context;
+import javax.naming.NamingException;
 import java.security.Principal;
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -30,8 +33,7 @@ public class PasswordMutationRealm extends DataSourceRealm {
     @Override
     protected Principal authenticate(Connection dbConnection, String username, String credentials) {
         String stored = getPassword(dbConnection, username);
-        // TODO: Get this from JNDI
-        PasswordMutationService service = new PasswordMutationServiceImpl();
+        PasswordMutationService service = lookupService();
         boolean validated = service.verifyMutatedPassword(credentials, stored);
 
         if (containerLog.isTraceEnabled()) {
@@ -43,6 +45,24 @@ public class PasswordMutationRealm extends DataSourceRealm {
 
         ArrayList<String> list = getRoles(dbConnection, username);
         return new GenericPrincipal(username, credentials, list);
+    }
+
+    /**
+     * Retrieve the SaltingService from JNDI.
+     */
+    protected PasswordMutationService lookupService() {
+        try {
+            Context context;
+            if (localDigestService) {
+                context = ContextBindings.getClassLoader();
+                context = (Context) context.lookup("comp/env");
+            } else {
+                context = getServer().getGlobalNamingContext();
+            }
+            return (PasswordMutationService) context.lookup(digestServiceName);
+        } catch (NamingException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public String getDigestServiceName() {
