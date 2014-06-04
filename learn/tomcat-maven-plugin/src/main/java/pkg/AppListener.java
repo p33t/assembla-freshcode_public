@@ -6,7 +6,6 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 import javax.sql.DataSource;
-import javax.xml.bind.DatatypeConverter;
 import java.sql.*;
 
 import static pkg.AppServerUtil.LOG;
@@ -21,18 +20,18 @@ public class AppListener implements ServletContextListener {
 //        ds.setURL("jdbc:h2:mem:appDb");
 
         DataSource ds;
-        SaltingService salter;
+        PasswordMutationService pms;
         try {
             InitialContext ctx = new InitialContext();
             ds = (DataSource) ctx.lookup("java:comp/env/jdbc/appDb");
 //            salter = (SaltingService) ctx.lookup("java:comp/env/env/appSalter");
             // TODO: Get this from JDNI.
-            salter = new SaltingServiceImpl();
+            pms = new PasswordMutationServiceImpl();
         } catch (NamingException e) {
             throw new RuntimeException(e);
         }
 
-        primeDb(ds, salter);
+        primeDb(ds, pms);
     }
 
     @Override
@@ -40,23 +39,25 @@ public class AppListener implements ServletContextListener {
         LOG.info("Context destroyed: " + servletContextEvent.getServletContext().getServerInfo());
     }
 
-    private void primeDb(DataSource ds, SaltingService salter) {
+    private void primeDb(DataSource ds, PasswordMutationService pms) {
         try (Connection conn = ds.getConnection()) {
             DatabaseMetaData meta = conn.getMetaData();
             LOG.info("Connected to " + meta.getDatabaseProductName() + " " + meta.getDatabaseProductVersion());
 
-            byte[] saltArr = salter.generateSalt();
-            String theSalt = DatatypeConverter.printBase64Binary(saltArr);
-            byte[] passwordArr = salter.digestPassword("bruce", saltArr);
-            String theCred = DatatypeConverter.printBase64Binary(passwordArr);
+//            byte[] saltArr = salter.generateSalt();
+//            String theSalt = DatatypeConverter.printBase64Binary(saltArr);
+//            byte[] passwordArr = salter.digestPassword("bruce", saltArr);
+//            String theCred = DatatypeConverter.printBase64Binary(passwordArr);
+            String theCred = pms.mutatePassword("bruce");
 
             PreparedStatement primeUserCred = conn.prepareStatement(
                     "CREATE TABLE usercred (username VARCHAR(32), " +
                             "userpassword VARCHAR(32)," +
-                            "usersalt VARCHAR(64)," +
+//                            "usersalt VARCHAR(64)," +
                             "usercred VARCHAR(64)" +
                             ");" +
-                            "INSERT INTO usercred VALUES ('bruce', 'bruce', '" + theSalt + "', '" + theCred + "');"
+//                            "INSERT INTO usercred VALUES ('bruce', 'bruce', '" + theSalt + "', '" + theCred + "');"
+                            "INSERT INTO usercred VALUES ('bruce', 'bruce', '" + theCred + "');"
             );
             primeUserCred.execute();
             LOG.info("usercred table primed with 'bruce' / 'bruce'");
