@@ -21,13 +21,18 @@ public class AppListener implements ServletContextListener {
 //        ds.setURL("jdbc:h2:mem:appDb");
 
         DataSource ds;
+        SaltingService salter;
         try {
-            ds = (DataSource) new InitialContext().lookup("java:comp/env/jdbc/appDb");
+            InitialContext ctx = new InitialContext();
+            ds = (DataSource) ctx.lookup("java:comp/env/jdbc/appDb");
+//            salter = (SaltingService) ctx.lookup("java:comp/env/env/appSalter");
+            // TODO: Get this from JDNI.
+            salter = new SaltingServiceImpl();
         } catch (NamingException e) {
             throw new RuntimeException(e);
         }
 
-        primeDb(ds);
+        primeDb(ds, salter);
     }
 
     @Override
@@ -35,14 +40,14 @@ public class AppListener implements ServletContextListener {
         LOG.info("Context destroyed: " + servletContextEvent.getServletContext().getServerInfo());
     }
 
-    private void primeDb(DataSource ds) {
+    private void primeDb(DataSource ds, SaltingService salter) {
         try (Connection conn = ds.getConnection()) {
             DatabaseMetaData meta = conn.getMetaData();
             LOG.info("Connected to " + meta.getDatabaseProductName() + " " + meta.getDatabaseProductVersion());
 
-            byte[] saltArr = TestRealm.generateSalt();
+            byte[] saltArr = salter.generateSalt();
             String theSalt = DatatypeConverter.printBase64Binary(saltArr);
-            byte[] passwordArr = TestRealm.mutatePassword("bruce", saltArr);
+            byte[] passwordArr = salter.digestPassword("bruce", saltArr);
             String theCred = DatatypeConverter.printBase64Binary(passwordArr);
 
             PreparedStatement primeUserCred = conn.prepareStatement(
@@ -59,7 +64,7 @@ public class AppListener implements ServletContextListener {
 
             PreparedStatement primeUserRole = conn.prepareStatement(
                     "CREATE TABLE userrole (username VARCHAR(32), userrole VARCHAR(32));" +
-                            "INSERT INTO userrole VALUES ('bruce', 'authentic');"+
+                            "INSERT INTO userrole VALUES ('bruce', 'authentic');" +
                             "INSERT INTO userrole VALUES ('bruce', 'privilege');"
             );
             primeUserRole.execute();
