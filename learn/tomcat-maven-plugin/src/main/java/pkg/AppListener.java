@@ -60,7 +60,7 @@ public class AppListener implements ServletContextListener {
                             "INSERT INTO usercred VALUES ('bruce', 'bruce', '" + theCred + "');"
             );
             primeUserCred.execute();
-            LOG.info("usercred table primed with 'bruce' / 'bruce'");
+            LOG.info("usercred table primed with 'bruce' / 'bruce' / '" + theCred + "'");
 
 
             PreparedStatement primeUserRole = conn.prepareStatement(
