@@ -13,9 +13,7 @@
     <!--
     <Realm className="org.apache.catalina.realm.DataSourceRealm" userCredCol="userpassword"
     -->
-    <Realm className="pkg.TestRealm" userCredCol="usercred" userSaltCol="usersalt"
-           saltingServiceName="env/appSalter" localSaltingService="true"
-
+    <Realm className="pkg.SaltingRealm" userCredCol="usercred" userSaltCol="usersalt"
            localDataSource="true"
            dataSourceName="jdbc/appDb"
            userTable="usercred"
