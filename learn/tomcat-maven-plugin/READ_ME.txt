@@ -1,7 +1,8 @@
 Example use of tomcat maven plugin with:
 - JNDI Datasource
 - Form-based authentication
-- Custom security realm.
+- Custom security realm
+- salted, slow-digested password storage
 
 Steps:
 - Install the 'tomcat-parent'.
