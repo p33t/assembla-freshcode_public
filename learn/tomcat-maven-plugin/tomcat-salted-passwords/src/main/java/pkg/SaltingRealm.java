@@ -5,20 +5,20 @@ import org.apache.catalina.realm.SaltedDataSourceRealm;
 import javax.xml.bind.DatatypeConverter;
 import java.util.Arrays;
 
-public class TestRealm extends SaltedDataSourceRealm {
+public class SaltingRealm extends SaltedDataSourceRealm {
     protected static final String name = "TestRealm";
 
     /**
-     * The name in JNDI under which the PasswordMutationService implementation is stored.
+     * The name in JNDI under which to find password digest service.
      */
-    protected String passwordMutationName;
+    protected String digestServiceName;
 
     /**
-     * Indicates where to resolve the saltedPasswordName.
+     * Indicates where to resolve the password digest service.
      *
      * @see #localDataSource
      */
-    protected boolean localPasswordMutation;
+    protected boolean localDigestService;
 
     @Override
     protected boolean compareCredentials(String userPassword, String salt, String serverHash) {
@@ -50,12 +50,12 @@ public class TestRealm extends SaltedDataSourceRealm {
         return new SaltingServiceImpl();
     }
 
-    public boolean getLocalPasswordMutation() {
-        return localPasswordMutation;
+    public boolean getLocalDigestService() {
+        return localDigestService;
     }
 
-    public void setLocalPasswordMutation(boolean localPasswordMutation) {
-        this.localPasswordMutation = localPasswordMutation;
+    public void setLocalDigestService(boolean localDigestService) {
+        this.localDigestService = localDigestService;
     }
 
     @Override
@@ -63,11 +63,11 @@ public class TestRealm extends SaltedDataSourceRealm {
         return name;
     }
 
-    public String getPasswordMutationName() {
-        return passwordMutationName;
+    public String getDigestServiceName() {
+        return digestServiceName;
     }
 
-    public void setPasswordMutationName(String passwordMutationName) {
-        this.passwordMutationName = passwordMutationName;
+    public void setDigestServiceName(String digestServiceName) {
+        this.digestServiceName = digestServiceName;
     }
 }
