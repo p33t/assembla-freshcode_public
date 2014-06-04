@@ -6,15 +6,18 @@
               class="org.h2.jdbcx.JdbcDataSource"
               url="jdbc:h2:mem:appDb"/>
 
-    <Resource name="env/appSalter"
-              type="pkg.SaltingService"
-              class="pkg.SaltingServiceImpl"/>
+    <Resource name="bean/appPasswordMutation" auth="Container"
+              type="pkg.PasswordMutationService"
+              factory="pkg.PasswordMutationFactory"
+              singleton="true"/>
 
     <!--
     <Realm className="org.apache.catalina.realm.DataSourceRealm" userCredCol="userpassword"
     <Realm className="pkg.SaltingRealm" userCredCol="usercred" userSaltCol="usersalt"
     -->
     <Realm className="pkg.PasswordMutationRealm" userCredCol="usercred"
+           digestServiceName="bean/appPasswordMutation" localDigestService="true"
+
            localDataSource="true"
            dataSourceName="jdbc/appDb"
            userTable="usercred"
