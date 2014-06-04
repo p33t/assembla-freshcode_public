@@ -12,8 +12,9 @@
 
     <!--
     <Realm className="org.apache.catalina.realm.DataSourceRealm" userCredCol="userpassword"
-    -->
     <Realm className="pkg.SaltingRealm" userCredCol="usercred" userSaltCol="usersalt"
+    -->
+    <Realm className="pkg.PasswordMutationRealm" userCredCol="usercred"
            localDataSource="true"
            dataSourceName="jdbc/appDb"
            userTable="usercred"
