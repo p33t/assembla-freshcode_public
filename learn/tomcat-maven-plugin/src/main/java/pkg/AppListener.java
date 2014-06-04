@@ -25,6 +25,8 @@ public class AppListener implements ServletContextListener {
             InitialContext ctx = new InitialContext();
             ds = (DataSource) ctx.lookup("java:comp/env/jdbc/appDb");
             pms =  (PasswordMutationService) ctx.lookup("java:comp/env/bean/appPasswordMutation");
+            SomeBean sb = (SomeBean) ctx.lookup("java:comp/env/bean/someBean");
+            LOG.info("Loaded " + sb);
         } catch (NamingException e) {
             throw new RuntimeException(e);
         }

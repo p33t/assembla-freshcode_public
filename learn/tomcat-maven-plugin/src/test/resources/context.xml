@@ -7,9 +7,25 @@
               url="jdbc:h2:mem:appDb"/>
 
     <Resource name="bean/appPasswordMutation" auth="Container"
-              type="pkg.PasswordMutationService"
-              factory="pkg.PasswordMutationFactory"
+              type="pkg.PasswordMutationServiceImpl"
+              factory="org.apache.naming.factory.BeanFactory"
               singleton="true"/>
+
+    <Resource name="bean/someBean"
+              singleton="true"
+              auth="Container"
+              type="pkg.SomeBean"
+              i="10"
+              str="abcdefg"
+              factory="org.apache.naming.factory.BeanFactory"/>
+<!--
+    <ResourceParams name="bean/someBean">
+        <parameter>
+            <name>str</name>
+            <value>abcdefg</value>
+        </parameter>
+    </ResourceParams>
+-->
 
     <!--
     <Realm className="org.apache.catalina.realm.DataSourceRealm" userCredCol="userpassword"
