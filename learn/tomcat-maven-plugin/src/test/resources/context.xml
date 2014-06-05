@@ -10,8 +10,8 @@
               factory="org.apache.naming.factory.BeanFactory"
               type="pkg.PasswordMutator"
               seedNumBytes="8"
-              keyNumBits="160"
-              digestIterationCount="10000"
+              keyNumBits="176"
+              digestIterationCount="20000"
               singleton="true"/>
 
     <Resource name="bean/someBean"
@@ -34,7 +34,7 @@
     <Realm className="org.apache.catalina.realm.DataSourceRealm" userCredCol="userpassword"
     <Realm className="pkg.SaltingRealm" userCredCol="usercred" userSaltCol="usersalt"
     -->
-    <Realm className="pkg.PasswordMutationRealm" userCredCol="usercred"
+    <Realm className="pkg.PasswordMutatorRealm" userCredCol="usercred"
            passwordMutatorName="bean/appPasswordMutator" localPasswordMutator="true"
 
            localDataSource="true"
