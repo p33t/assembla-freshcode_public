@@ -60,7 +60,7 @@ public class PasswordMutator implements Provider<String> {
     }
 
     /**
-     * Adapts to common interface to prevent containe coupling.
+     * Adapts to common interface to prevent container coupling.
      *
      * @see #mutatePassword(String)
      */
