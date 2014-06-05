@@ -32,12 +32,14 @@
             <scope>provided</scope>
         </dependency>
 
+<!-- Thanks to javax.xml.ws.Provider interface we no longer need this dependency.
         <dependency>
             <groupId>biz.freshcode.learn.tomcat.realm.salted</groupId>
             <artifactId>tomcat-salted-passwords</artifactId>
             <version>${tomcat.salted.password.version}</version>
             <scope>provided</scope>
         </dependency>
+-->
 
         <dependency>
             <groupId>junit</groupId>

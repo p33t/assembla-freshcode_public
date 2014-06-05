@@ -2,8 +2,8 @@ package pkg;
 
 import junit.framework.TestCase;
 
-public class PasswordMutationServiceImplTest extends TestCase {
-    private PasswordMutationService subject = new PasswordMutationServiceImpl();
+public class PasswordMutatorTest extends TestCase {
+    private PasswordMutator subject = new PasswordMutator();
 
     public void test() {
         String pwd = "Password" + Math.random();
