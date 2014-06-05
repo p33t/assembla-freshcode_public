@@ -21,19 +21,19 @@ public class AppListener implements ServletContextListener {
 //        ds.setURL("jdbc:h2:mem:appDb");
 
         DataSource ds;
-        Provider<String> pms;
+        Provider<String> passwordMutator;
         try {
             InitialContext ctx = new InitialContext();
             ds = (DataSource) ctx.lookup("java:comp/env/jdbc/appDb");
             //noinspection unchecked
-            pms = (Provider<String>) ctx.lookup("java:comp/env/bean/appPasswordMutator");
+            passwordMutator = (Provider<String>) ctx.lookup("java:comp/env/bean/appPasswordMutator");
             Object someBean = ctx.lookup("java:comp/env/bean/someBean");
             LOG.info("Loaded " + someBean);
         } catch (NamingException e) {
             throw new RuntimeException(e);
         }
 
-        primeDb(ds, pms);
+        primeDb(ds, passwordMutator);
     }
 
     @Override
