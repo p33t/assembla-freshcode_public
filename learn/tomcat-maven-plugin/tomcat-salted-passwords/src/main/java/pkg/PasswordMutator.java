@@ -35,6 +35,7 @@ public class PasswordMutator implements Provider<String> {
      * @see #verifyMutatedPassword(String, String)
      */
     public String mutatePassword(String password) {
+        if (password == null) return null;
         byte[] salt = generateSalt();
         byte[] digest = digestPassword(password, salt);
         byte[] result = new byte[salt.length + digest.length];
@@ -50,6 +51,8 @@ public class PasswordMutator implements Provider<String> {
      * @param storedMutatedPassword A mutation of the users password retrieved from storage.
      */
     public boolean verifyMutatedPassword(String candidatePassword, String storedMutatedPassword) {
+        if (storedMutatedPassword == null) return candidatePassword == null;
+        if (candidatePassword == null) return false;
         byte[] mute = DatatypeConverter.parseBase64Binary(storedMutatedPassword);
         byte[] salt = new byte[seedNumBytes];
         System.arraycopy(mute, 0, salt, 0, salt.length);
