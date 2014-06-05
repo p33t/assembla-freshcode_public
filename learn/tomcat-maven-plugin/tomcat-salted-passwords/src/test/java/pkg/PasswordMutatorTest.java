@@ -12,4 +12,14 @@ public class PasswordMutatorTest extends TestCase {
         assertTrue(subject.verifyMutatedPassword(pwd, mute));
         assertFalse(subject.verifyMutatedPassword(bad, mute));
     }
+
+    public void testNulls() {
+        assertNull(subject.mutatePassword(null));
+        assertTrue(subject.verifyMutatedPassword(null, null));
+    }
+
+    public void testEmptyString() {
+        String mute = subject.mutatePassword("");
+        assertTrue(subject.verifyMutatedPassword("", mute));
+    }
 }
