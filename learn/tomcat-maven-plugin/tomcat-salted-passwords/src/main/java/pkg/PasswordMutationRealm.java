@@ -47,6 +47,14 @@ public class PasswordMutationRealm extends DataSourceRealm {
         return new GenericPrincipal(username, credentials, list);
     }
 
+    /* NOTE: Use this method instead of 'authenticate()' if targeting tomcat 7.0.50 or later (?)
+    @Override
+    protected boolean compareCredentials(String userCredentials, String serverCredentials) {
+        PasswordMutator service = lookupService();
+        return service.verifyMutatedPassword(userCredentials, serverCredentials);
+    }
+    */
+
     /**
      * Retrieve the SaltingService from JNDI.
      */

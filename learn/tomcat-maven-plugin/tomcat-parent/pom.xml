@@ -12,6 +12,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <!-- NOTE: It looks like the tomcat7-maven-plugin (v2.0) is stuck on 7.0.47 -->
     <tomcat.version>7.0.47</tomcat.version>
     <tomcat.salted.password.version>1.0-SNAPSHOT</tomcat.salted.password.version>
   </properties>
