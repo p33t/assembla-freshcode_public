@@ -22,6 +22,8 @@ public class PasswordMutator implements Provider<String> {
     private int seedNumBytes = 8;
     private int keyNumBits = 160; // bits
     private int digestIterationCount = 20000;
+    private String secureRandomAlgorithm = "SHA1PRNG";
+    private String pbeKeyAlgorithm = "PBKDF2WithHmacSHA1";
 
     /**
      * Mutates the password for storage and later verification against supplied login credentials.
@@ -69,7 +71,7 @@ public class PasswordMutator implements Provider<String> {
 
     private byte[] generateSalt() {
         try {
-            return SecureRandom.getInstance("SHA1PRNG").generateSeed(seedNumBytes);
+            return SecureRandom.getInstance(secureRandomAlgorithm).generateSeed(seedNumBytes);
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }
@@ -78,7 +80,7 @@ public class PasswordMutator implements Provider<String> {
     private byte[] digestPassword(String password, byte[] salt) {
         SecretKeyFactory skf;
         try {
-            skf = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
+            skf = SecretKeyFactory.getInstance(pbeKeyAlgorithm);
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }
@@ -105,6 +107,22 @@ public class PasswordMutator implements Provider<String> {
 
     public void setKeyNumBits(int keyNumBits) {
         this.keyNumBits = keyNumBits;
+    }
+
+    public String getPbeKeyAlgorithm() {
+        return pbeKeyAlgorithm;
+    }
+
+    public void setPbeKeyAlgorithm(String pbeKeyAlgorithm) {
+        this.pbeKeyAlgorithm = pbeKeyAlgorithm;
+    }
+
+    public String getSecureRandomAlgorithm() {
+        return secureRandomAlgorithm;
+    }
+
+    public void setSecureRandomAlgorithm(String secureRandomAlgorithm) {
+        this.secureRandomAlgorithm = secureRandomAlgorithm;
     }
 
     public int getSeedNumBytes() {
