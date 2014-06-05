@@ -17,15 +17,15 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 /**
- * A customised DataSourceRealm that delegates password verification to a PasswordMutator instance,
+ * A customised DataSourceRealm that delegates password verification to a {@link PasswordMutator} instance,
  * which is obtained from JNDI.
  *
  * @see pkg.PasswordMutator
  */
 @SuppressWarnings("UnusedDeclaration")
-public class PasswordMutationRealm extends DataSourceRealm {
-    protected static final String name = PasswordMutationRealm.class.getSimpleName();
-    private static final Log log = LogFactory.getLog(PasswordMutationRealm.class);
+public class PasswordMutatorRealm extends DataSourceRealm {
+    protected static final String name = PasswordMutatorRealm.class.getSimpleName();
+    private static final Log log = LogFactory.getLog(PasswordMutatorRealm.class);
 
     private String passwordMutatorName;
     private boolean localPasswordMutator;
