@@ -24,7 +24,6 @@ public class PasswordMutatorTest extends TestCase {
     }
 
     public void testBruce() {
-        System.out.println(subject.mutatePassword("bruce"));
         // Generated with seed=8byte, keyLen=176bits, digestIterations=20k
         assertTrue(subject.verifyMutatedPassword("bruce", "Ym6avkx2XnEjv9fz1Mi7xRpscQ/rb3Je1HADffc7"));
     }
