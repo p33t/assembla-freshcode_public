@@ -5,6 +5,8 @@ import org.apache.catalina.realm.SaltedDataSourceRealm;
 import javax.xml.bind.DatatypeConverter;
 import java.util.Arrays;
 
+@SuppressWarnings({"deprecation", "UnusedDeclaration"})
+@Deprecated
 public class SaltingRealm extends SaltedDataSourceRealm {
     protected static final String name = "TestRealm";
 

@@ -17,23 +17,23 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 /**
- * A customised DataSourceRealm that delegates password verification to a PasswordMutationService,
+ * A customised DataSourceRealm that delegates password verification to a PasswordMutator instance,
  * which is obtained from JNDI.
  *
- * @see pkg.PasswordMutationService
+ * @see pkg.PasswordMutator
  */
 @SuppressWarnings("UnusedDeclaration")
 public class PasswordMutationRealm extends DataSourceRealm {
     protected static final String name = PasswordMutationRealm.class.getSimpleName();
     private static final Log log = LogFactory.getLog(PasswordMutationRealm.class);
 
-    private String digestServiceName;
-    private boolean localDigestService;
+    private String passwordMutatorName;
+    private boolean localPasswordMutator;
 
     @Override
     protected Principal authenticate(Connection dbConnection, String username, String credentials) {
         String stored = getPassword(dbConnection, username);
-        PasswordMutationService service = lookupService();
+        PasswordMutator service = lookupService();
         boolean validated = service.verifyMutatedPassword(credentials, stored);
 
         if (containerLog.isTraceEnabled()) {
@@ -50,27 +50,27 @@ public class PasswordMutationRealm extends DataSourceRealm {
     /**
      * Retrieve the SaltingService from JNDI.
      */
-    protected PasswordMutationService lookupService() {
+    protected PasswordMutator lookupService() {
         try {
             Context context;
-            if (localDigestService) {
+            if (localPasswordMutator) {
                 context = ContextBindings.getClassLoader();
                 context = (Context) context.lookup("comp/env");
             } else {
                 context = getServer().getGlobalNamingContext();
             }
-            return (PasswordMutationService) context.lookup(digestServiceName);
+            return (PasswordMutator) context.lookup(passwordMutatorName);
         } catch (NamingException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public String getDigestServiceName() {
-        return digestServiceName;
+    public String getPasswordMutatorName() {
+        return passwordMutatorName;
     }
 
-    public void setDigestServiceName(String digestServiceName) {
-        this.digestServiceName = digestServiceName;
+    public void setPasswordMutatorName(String passwordMutatorName) {
+        this.passwordMutatorName = passwordMutatorName;
     }
 
     @Override
@@ -78,12 +78,12 @@ public class PasswordMutationRealm extends DataSourceRealm {
         return name;
     }
 
-    public boolean isLocalDigestService() {
-        return localDigestService;
+    public boolean isLocalPasswordMutator() {
+        return localPasswordMutator;
     }
 
-    public void setLocalDigestService(boolean localDigestService) {
-        this.localDigestService = localDigestService;
+    public void setLocalPasswordMutator(boolean localPasswordMutator) {
+        this.localPasswordMutator = localPasswordMutator;
     }
 }
 

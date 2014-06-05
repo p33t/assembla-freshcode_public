@@ -1,5 +1,11 @@
 package pkg;
 
+/**
+ * An experiment with JNDI custom resource and BeanFactory.
+ *
+ * @see org.apache.naming.factory.BeanFactory
+ */
+@SuppressWarnings("UnusedDeclaration")
 public class SomeBean {
     private String str;
     private int i;

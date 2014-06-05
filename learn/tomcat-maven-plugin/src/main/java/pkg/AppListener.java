@@ -6,6 +6,7 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 import javax.sql.DataSource;
+import javax.xml.ws.Provider;
 import java.sql.*;
 
 import static pkg.AppServerUtil.LOG;
@@ -20,13 +21,14 @@ public class AppListener implements ServletContextListener {
 //        ds.setURL("jdbc:h2:mem:appDb");
 
         DataSource ds;
-        PasswordMutationService pms;
+        Provider<String> pms;
         try {
             InitialContext ctx = new InitialContext();
             ds = (DataSource) ctx.lookup("java:comp/env/jdbc/appDb");
-            pms =  (PasswordMutationService) ctx.lookup("java:comp/env/bean/appPasswordMutation");
-            SomeBean sb = (SomeBean) ctx.lookup("java:comp/env/bean/someBean");
-            LOG.info("Loaded " + sb);
+            //noinspection unchecked
+            pms = (Provider<String>) ctx.lookup("java:comp/env/bean/appPasswordMutator");
+            Object someBean = ctx.lookup("java:comp/env/bean/someBean");
+            LOG.info("Loaded " + someBean);
         } catch (NamingException e) {
             throw new RuntimeException(e);
         }
@@ -39,7 +41,7 @@ public class AppListener implements ServletContextListener {
         LOG.info("Context destroyed: " + servletContextEvent.getServletContext().getServerInfo());
     }
 
-    private void primeDb(DataSource ds, PasswordMutationService pms) {
+    private void primeDb(DataSource ds, Provider<String> pms) {
         try (Connection conn = ds.getConnection()) {
             DatabaseMetaData meta = conn.getMetaData();
             LOG.info("Connected to " + meta.getDatabaseProductName() + " " + meta.getDatabaseProductVersion());
@@ -48,7 +50,7 @@ public class AppListener implements ServletContextListener {
 //            String theSalt = DatatypeConverter.printBase64Binary(saltArr);
 //            byte[] passwordArr = salter.digestPassword("bruce", saltArr);
 //            String theCred = DatatypeConverter.printBase64Binary(passwordArr);
-            String theCred = pms.mutatePassword("bruce");
+            String theCred = pms.invoke("bruce");
 
             PreparedStatement primeUserCred = conn.prepareStatement(
                     "CREATE TABLE usercred (username VARCHAR(32), " +

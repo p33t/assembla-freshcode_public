@@ -3,7 +3,13 @@ package pkg;
 /**
  * A service for mutating passwords with salt.
  * Note that the same password should yield different mutations every time.
+ * <br/>
+ * Deprecated in favour of a common interface.
+ * @see javax.xml.ws.Provider
+ * @see pkg.PasswordMutator
  */
+@SuppressWarnings("UnusedDeclaration")
+@Deprecated
 public interface PasswordMutationService {
     /**
      * Mutates the given password for storage purposes.

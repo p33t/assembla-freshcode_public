@@ -6,9 +6,9 @@
               class="org.h2.jdbcx.JdbcDataSource"
               url="jdbc:h2:mem:appDb"/>
 
-    <Resource name="bean/appPasswordMutation" auth="Container"
+    <Resource name="bean/appPasswordMutator" auth="Container"
               factory="org.apache.naming.factory.BeanFactory"
-              type="pkg.PasswordMutationServiceImpl"
+              type="pkg.PasswordMutator"
               seedNumBytes="8"
               keyNumBits="160"
               digestIterationCount="10000"
@@ -35,7 +35,7 @@
     <Realm className="pkg.SaltingRealm" userCredCol="usercred" userSaltCol="usersalt"
     -->
     <Realm className="pkg.PasswordMutationRealm" userCredCol="usercred"
-           digestServiceName="bean/appPasswordMutation" localDigestService="true"
+           passwordMutatorName="bean/appPasswordMutator" localPasswordMutator="true"
 
            localDataSource="true"
            dataSourceName="jdbc/appDb"

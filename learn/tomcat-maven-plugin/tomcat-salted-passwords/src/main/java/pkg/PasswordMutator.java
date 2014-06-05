@@ -3,13 +3,19 @@ package pkg;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import javax.xml.bind.DatatypeConverter;
+import javax.xml.ws.Provider;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.KeySpec;
 import java.util.Arrays;
 
-public class PasswordMutationServiceImpl implements PasswordMutationService {
+/**
+ * Implements configurable password mutation and verification.
+ * It implements {@link javax.xml.ws.Provider} so that applications can be decoupled.
+ */
+@SuppressWarnings("UnusedDeclaration")
+public class PasswordMutator implements Provider<String> {
     // These will ultimately be configurable.
     // Default to recommendations from:
     // http://www.javacodegeeks.com/2012/05/secure-password-storage-donts-dos-and.html
@@ -17,7 +23,15 @@ public class PasswordMutationServiceImpl implements PasswordMutationService {
     private int keyNumBits = 160; // bits
     private int digestIterationCount = 20000;
 
-    @Override
+    /**
+     * Mutates the password for storage and later verification against supplied login credentials.
+     * This method will return different values when called with the same password.
+     * Note that the 'salt' is also stored in the resulting string.
+     *
+     * @param password The password to be mutated.
+     * @return A string that can be used to verify login credentials.
+     * @see #verifyMutatedPassword(String, String)
+     */
     public String mutatePassword(String password) {
         byte[] salt = generateSalt();
         byte[] digest = digestPassword(password, salt);
@@ -27,7 +41,12 @@ public class PasswordMutationServiceImpl implements PasswordMutationService {
         return DatatypeConverter.printBase64Binary(result);
     }
 
-    @Override
+    /**
+     * Confirm the given password was used to create the given stored mutation.
+     *
+     * @param candidatePassword     The password supplied by a user that wants to be authenticated.
+     * @param storedMutatedPassword A mutation of the users password retrieved from storage.
+     */
     public boolean verifyMutatedPassword(String candidatePassword, String storedMutatedPassword) {
         byte[] mute = DatatypeConverter.parseBase64Binary(storedMutatedPassword);
         byte[] salt = new byte[seedNumBytes];
@@ -36,6 +55,16 @@ public class PasswordMutationServiceImpl implements PasswordMutationService {
         System.arraycopy(mute, salt.length, digest, 0, digest.length);
         byte[] candidate = digestPassword(candidatePassword, salt);
         return Arrays.equals(digest, candidate);
+    }
+
+    /**
+     * Adapts to common interface to prevent containe coupling.
+     *
+     * @see #mutatePassword(String)
+     */
+    @Override
+    public String invoke(String request) {
+        return mutatePassword(request);
     }
 
     private byte[] generateSalt() {
