@@ -16,11 +16,10 @@ import java.util.Arrays;
  */
 @SuppressWarnings("UnusedDeclaration")
 public class PasswordMutator implements Provider<String> {
-    // These will ultimately be configurable.
-    // Default to recommendations from:
+    // Default to recommendations largely from:
     // http://www.javacodegeeks.com/2012/05/secure-password-storage-donts-dos-and.html
     private int seedNumBytes = 8;
-    private int keyNumBits = 160; // bits
+    private int keyNumBits = 160 + 16; // bits (extra 16 to fill up last two digits that are otherwise '==')
     private int digestIterationCount = 20000;
     private String secureRandomAlgorithm = "SHA1PRNG";
     private String pbeKeyAlgorithm = "PBKDF2WithHmacSHA1";

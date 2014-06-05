@@ -22,4 +22,10 @@ public class PasswordMutatorTest extends TestCase {
         String mute = subject.mutatePassword("");
         assertTrue(subject.verifyMutatedPassword("", mute));
     }
+
+    public void testBruce() {
+        System.out.println(subject.mutatePassword("bruce"));
+        // Generated with seed=8byte, keyLen=176bits, digestIterations=20k
+        assertTrue(subject.verifyMutatedPassword("bruce", "Ym6avkx2XnEjv9fz1Mi7xRpscQ/rb3Je1HADffc7"));
+    }
 }
