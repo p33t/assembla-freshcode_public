@@ -29,6 +29,8 @@ public class PasswordMutatorRealm extends DataSourceRealm {
 
     private String passwordMutatorName;
     private boolean localPasswordMutator;
+    // TODO: Add an 'implicitRole' string value that automatically adds a given role to all authenticated users.
+    // EG: implicitRole='USER'
 
     @Override
     protected Principal authenticate(Connection dbConnection, String username, String credentials) {

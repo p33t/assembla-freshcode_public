@@ -10,7 +10,7 @@
     if (p != null) {
         username = p.getName();
         for (String role : ROLE_LIST) {
-            roles += "<br/>" + role + ": " + request.isUserInRole(role);
+            roles += "<br/>&nbsp;" + role + ": " + request.isUserInRole(role);
         }
     }
 %>
