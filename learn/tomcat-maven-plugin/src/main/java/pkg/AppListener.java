@@ -53,7 +53,7 @@ public class AppListener implements ServletContextListener {
             String theCred = pms.invoke("bruce");
 
             PreparedStatement primeUserCred = conn.prepareStatement(
-                    "CREATE TABLE usercred (username VARCHAR(32), " +
+                    "CREATE OR REPLACE TABLE usercred (username VARCHAR(32), " +
                             "userpassword VARCHAR(32)," +
 //                            "usersalt VARCHAR(64)," +
                             "usercred VARCHAR(64)" +
@@ -66,7 +66,7 @@ public class AppListener implements ServletContextListener {
 
 
             PreparedStatement primeUserRole = conn.prepareStatement(
-                    "CREATE TABLE userrole (username VARCHAR(32), userrole VARCHAR(32));" +
+                    "CREATE OR REPLACE TABLE userrole (username VARCHAR(32), userrole VARCHAR(32));" +
                             "INSERT INTO userrole VALUES ('bruce', 'authentic');" +
                             "INSERT INTO userrole VALUES ('bruce', 'privilege');"
             );
