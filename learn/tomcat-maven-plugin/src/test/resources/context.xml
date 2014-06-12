@@ -3,7 +3,7 @@
     <Resource name="jdbc/appDb"
               auth="Container"
               type="javax.sql.DataSource"
-              class="org.h2.jdbcx.JdbcDataSource"
+              driverClassName="org.h2.jdbcx.JdbcDataSource"
               url="jdbc:h2:mem:appDb"/>
 
     <Resource name="bean/appPasswordMutator" auth="Container"
@@ -34,13 +34,14 @@
     <Realm className="org.apache.catalina.realm.DataSourceRealm" userCredCol="userpassword"
     <Realm className="pkg.SaltingRealm" userCredCol="usercred" userSaltCol="usersalt"
     -->
-    <Realm className="pkg.PasswordMutatorRealm" userCredCol="usercred"
-           passwordMutatorName="bean/appPasswordMutator" localPasswordMutator="true"
-
-           localDataSource="true"
+    <Realm className="pkg.PasswordMutatorRealm"
+           passwordMutatorName="bean/appPasswordMutator"
+           localPasswordMutator="true"
            dataSourceName="jdbc/appDb"
+           localDataSource="true"
            userTable="usercred"
            userNameCol="username"
+           userCredCol="usercred"
            userRoleTable="userrole"
            roleNameCol="userrole"/>
 </Context>
