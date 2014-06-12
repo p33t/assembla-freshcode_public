@@ -3,7 +3,7 @@
     <Resource name="jdbc/appDb"
               auth="Container"
               type="javax.sql.DataSource"
-              driverClassName="org.h2.jdbcx.JdbcDataSource"
+              driverClassName="org.h2.Driver"
               url="jdbc:h2:mem:appDb"/>
 
     <Resource name="bean/appPasswordMutator" auth="Container"
