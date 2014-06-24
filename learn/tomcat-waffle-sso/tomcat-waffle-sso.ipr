@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactManager">
+    <artifact type="war" name="tomcat-waffle-sso:war">
+      <output-path>$PROJECT_DIR$/target</output-path>
+      <root id="archive" name="tomcat-waffle-sso.war">
+        <element id="artifact" artifact-name="tomcat-waffle-sso:war exploded" />
+      </root>
+    </artifact>
+    <artifact type="exploded-war" name="tomcat-waffle-sso:war exploded">
+      <output-path>$PROJECT_DIR$/target/tomcat-waffle-sso</output-path>
+      <root id="root">
+        <element id="javaee-facet-resources" facet="tomcat-waffle-sso/web/Web" />
+        <element id="directory" name="WEB-INF">
+          <element id="directory" name="classes">
+            <element id="module-output" name="tomcat-waffle-sso" />
+          </element>
+        </element>
+      </root>
+    </artifact>
+    <artifact type="war" name="lib-jars:war">
+      <output-path>$PROJECT_DIR$/lib-jars/target</output-path>
+      <root id="archive" name="tomcat-lib-jars-1.0-SNAPSHOT.war">
+        <element id="artifact" artifact-name="lib-jars:war exploded" />
+      </root>
+    </artifact>
+    <artifact type="exploded-war" name="lib-jars:war exploded">
+      <output-path>$PROJECT_DIR$/lib-jars/target/tomcat-lib-jars-1.0-SNAPSHOT</output-path>
+      <root id="root">
+        <element id="javaee-facet-resources" facet="lib-jars/web/Web" />
+        <element id="directory" name="WEB-INF">
+          <element id="directory" name="classes">
+            <element id="module-output" name="lib-jars" />
+          </element>
+          <element id="directory" name="lib">
+            <element id="library" level="project" name="Maven: com.github.dblock.waffle:waffle-tomcat7:1.6" />
+            <element id="library" level="project" name="Maven: com.github.dblock.waffle:waffle-jna:1.6" />
+            <element id="library" level="project" name="Maven: net.java.dev.jna:jna:4.0.0" />
+            <element id="library" level="project" name="Maven: net.java.dev.jna:jna-platform:4.0.0" />
+            <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.2" />
+            <element id="library" level="project" name="Maven: com.google.guava:guava:14.0.1" />
+            <element id="library" level="project" name="Maven: org.slf4j:slf4j-jdk14:1.7.2" />
+          </element>
+        </element>
+      </root>
+    </artifact>
+  </component>
+  <component name="CompilerConfiguration">
+    <option name="DEFAULT_COMPILER" value="Javac" />
+    <resourceExtensions />
+    <wildcardResourcePatterns>
+      <entry name="!?*.java" />
+      <entry name="!?*.form" />
+      <entry name="!?*.class" />
+      <entry name="!?*.groovy" />
+      <entry name="!?*.scala" />
+      <entry name="!?*.flex" />
+      <entry name="!?*.kt" />
+      <entry name="!?*.clj" />
+    </wildcardResourcePatterns>
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="false">
+        <processorPath useClasspath="true" />
+      </profile>
+      <profile default="false" name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="lib-jars" />
+        <module name="tomcat-waffle-sso" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="tomcat-waffle-sso" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="CopyrightManager" default="" />
+  <component name="DependencyValidationManager">
+    <option name="SKIP_IMPORT_STATEMENTS" value="false" />
+  </component>
+  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
+    <file url="file://$PROJECT_DIR$/lib-jars" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/logout.jsp" charset="UTF-8" />
+  </component>
+  <component name="EntryPointsManager">
+    <entry_points version="2.0" />
+  </component>
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$" />
+  </component>
+  <component name="InspectionProjectProfileManager">
+    <profiles>
+      <profile version="1.0" is_locked="false">
+        <option name="myName" value="Project Default" />
+        <option name="myLocal" value="false" />
+        <inspection_tool class="LoggerInitializedWithForeignClass" enabled="false" level="WARNING" enabled_by_default="false">
+          <option name="loggerClassName" value="org.apache.log4j.Logger,org.slf4j.LoggerFactory,org.apache.commons.logging.LogFactory,java.util.logging.Logger" />
+          <option name="loggerFactoryMethodName" value="getLogger,getLogger,getLog,getLogger" />
+        </inspection_tool>
+        <inspection_tool class="SpellCheckingInspection" enabled="false" level="TYPO" enabled_by_default="false">
+          <option name="processCode" value="true" />
+          <option name="processLiterals" value="true" />
+          <option name="processComments" value="true" />
+        </inspection_tool>
+      </profile>
+    </profiles>
+    <option name="PROJECT_PROFILE" value="Project Default" />
+    <option name="USE_PROJECT_PROFILE" value="true" />
+    <version value="1.0" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/lib-jars/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/lib-jars/lib-jars.iml" filepath="$PROJECT_DIR$/lib-jars/lib-jars.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tomcat-waffle-sso.iml" filepath="$PROJECT_DIR$/tomcat-waffle-sso.iml" />
+    </modules>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true" project-jdk-name="1.7" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+  <component name="SvnBranchConfigurationManager">
+    <option name="mySupportsUserInfoFilter" value="true" />
+  </component>
+  <component name="VcsDirectoryMappings">
+    <mapping directory="" vcs="svn" />
+  </component>
+  <component name="libraryTable">
+    <library name="Maven: com.github.dblock.waffle:waffle-jna:1.6">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/github/dblock/waffle/waffle-jna/1.6/waffle-jna-1.6.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/com/github/dblock/waffle/waffle-jna/1.6/waffle-jna-1.6-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/github/dblock/waffle/waffle-jna/1.6/waffle-jna-1.6-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: com.github.dblock.waffle:waffle-tomcat7:1.6">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/github/dblock/waffle/waffle-tomcat7/1.6/waffle-tomcat7-1.6.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/com/github/dblock/waffle/waffle-tomcat7/1.6/waffle-tomcat7-1.6-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/github/dblock/waffle/waffle-tomcat7/1.6/waffle-tomcat7-1.6-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: com.google.guava:guava:14.0.1">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/guava/guava/14.0.1/guava-14.0.1.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/guava/guava/14.0.1/guava-14.0.1-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/guava/guava/14.0.1/guava-14.0.1-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: net.java.dev.jna:jna-platform:4.0.0">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/net/java/dev/jna/jna-platform/4.0.0/jna-platform-4.0.0.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/net/java/dev/jna/jna-platform/4.0.0/jna-platform-4.0.0-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/net/java/dev/jna/jna-platform/4.0.0/jna-platform-4.0.0-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: net.java.dev.jna:jna:4.0.0">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/net/java/dev/jna/jna/4.0.0/jna-4.0.0.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/net/java/dev/jna/jna/4.0.0/jna-4.0.0-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/net/java/dev/jna/jna/4.0.0/jna-4.0.0-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.tomcat:tomcat-servlet-api:7.0.54">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-servlet-api/7.0.54/tomcat-servlet-api-7.0.54.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-servlet-api/7.0.54/tomcat-servlet-api-7.0.54-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-servlet-api/7.0.54/tomcat-servlet-api-7.0.54-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.slf4j:slf4j-api:1.7.2">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.7.2/slf4j-api-1.7.2.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.7.2/slf4j-api-1.7.2-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.7.2/slf4j-api-1.7.2-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.slf4j:slf4j-jdk14:1.7.2">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-jdk14/1.7.2/slf4j-jdk14-1.7.2.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-jdk14/1.7.2/slf4j-jdk14-1.7.2-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-jdk14/1.7.2/slf4j-jdk14-1.7.2-sources.jar!/" />
+      </SOURCES>
+    </library>
+  </component>
+</project>
+
