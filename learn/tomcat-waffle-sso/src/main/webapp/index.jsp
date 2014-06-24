@@ -20,6 +20,13 @@
     User: <%=user%><br/>
     <%=roles%>
 </p>
-<a href="logout.jsp">Logout</a>
+
+<p>
+    <a href="role-check.jsp">Check for more roles?</a>
+</p>
+
+<p>
+    <a href="logout.jsp">Logout</a>
+</p>
 </body>
 </html>
