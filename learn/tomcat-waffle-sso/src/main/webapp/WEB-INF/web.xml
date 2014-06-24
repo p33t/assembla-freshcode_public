@@ -21,16 +21,14 @@
         <display-name>Exempt</display-name>
         <web-resource-collection>
             <web-resource-name>Exempt</web-resource-name>
-            <url-pattern>/login.jsp</url-pattern>
-            <url-pattern>/error.jsp</url-pattern>
             <url-pattern>/logout.jsp</url-pattern>
         </web-resource-collection>
     </security-constraint>
 
     <login-config>
         <form-login-config>
-            <form-login-page>/login.jsp</form-login-page>
-            <form-error-page>/error.jsp</form-error-page>
+            <form-login-page>/WEB-INF/login.jsp</form-login-page>
+            <form-error-page>/WEB-INF/error.jsp</form-error-page>
         </form-login-config>
     </login-config>
 

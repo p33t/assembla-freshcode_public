@@ -9,6 +9,6 @@
 </head>
 <body>
   <p>You are now logged out.</p>
-  <p><a href="#" onclick="window.history.back(); return false;">Back</a></p>
+  <p><a href="<%=request.getContextPath()%>">Login</a></p>
 </body>
 </html>

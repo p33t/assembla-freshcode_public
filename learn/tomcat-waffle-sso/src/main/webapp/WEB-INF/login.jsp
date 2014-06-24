@@ -1,4 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String contextPath = request.getContextPath();
+%>
 <html>
 <head>
     <title>Login</title>
@@ -7,7 +10,7 @@
     <%--
     TODO: Trying moving this to WEB-INF... much nicer there.
     --%>
-    <form method="POST" name="loginform" action="index.jsp?j_security_check">
+    <form method="POST" name="loginform" action="<%=contextPath%>?j_security_check">
     <table style="vertical-align: middle;">
         <tr>
             <td>Username:</td>
@@ -23,7 +26,7 @@
     </table>
     </form>
     <hr>
-    <form method="POST" name="loginform" action="index.jsp?j_negotiate_check">
+    <form method="POST" name="loginform" action="<%=contextPath%>?j_negotiate_check">
         <input type="submit" name="loginbutton" value="Login (Negotiate)" />
     </form>
 </body>
