@@ -18,11 +18,13 @@
     }
 %>
 
-<form action="role-check.jsp">
+<form action="role-check.jsp" method="POST">
     <label title="Role to test">
         <input name="role" type="text" value="<%=role%>"/>
     </label>
     <input type="submit"/>
 </form>
+
+<p><a href="<%=request.getContextPath()%>">Home</a></p>
 </body>
 </html>
