@@ -16,6 +16,15 @@
         	<version>7.0.54</version>
             <scope>provided</scope>
         </dependency>
+
+        <!-- Single Sign On -->
+        <dependency>
+            <groupId>com.github.dblock.waffle</groupId>
+            <artifactId>waffle-tomcat7</artifactId>
+            <version>1.6</version>
+            <scope>provided</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
