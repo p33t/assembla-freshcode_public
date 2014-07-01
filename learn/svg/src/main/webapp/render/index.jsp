@@ -1,5 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="viewportWidth" value="${param.x + 2}"/>
+<c:set var="viewportHeight" value="${param.y + 2}"/>
+<c:set var="viewportRatio" value="${viewportHeight / viewportWidth}"/>
 <html>
 <head>
     <title>Rendering </title>
@@ -23,7 +26,7 @@
         -->
     </style>
     <script type="application/javascript">
-        var ratio = 2;
+        var svgRatio = ${viewportRatio};
 
         // From http://stackoverflow.com/a/13651455
         if(window.attachEvent) {
@@ -37,7 +40,7 @@
         }
 
         function resizeSvg() {
-            var height = window.innerWidth * ratio;
+            var height = window.innerWidth * svgRatio;
             var svg  = document.getElementsByTagName('svg')[0];
             svg.setAttribute("height", height.toString());
         }
@@ -46,12 +49,12 @@
 <body>
 <div class="non-printable">
     <p>
-        This will not be printed. TODO: Page nav links.
+        This will not be printed.
     </p>
 </div>
-<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 120 220">
-    <rect x="10" y="10" height="200" width="100"
-          style="stroke:#ff0000; fill: #bbb"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 ${viewportWidth} ${viewportHeight}">
+    <rect x="1" y="1" width="${param.x}" height="${param.y}"
+          style="fill: #bbb"/>
 </svg>
 <script type="application/javascript">
     resizeSvg();
