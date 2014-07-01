@@ -49,12 +49,27 @@
     </script>
 </head>
 <body>
-<c:forEach var="ixPage" begin="0" end="${param.count - 1}">
+<c:forEach var="ixPage" begin="0" end="${param.count - 1}" varStatus="pageStatus">
     <div class="non-printable">
-        <p>
-            This will not be printed.
+        <p id="pageIndex${ixPage}">
+            <c:if test="${!pageStatus.first}">
+            <a href="#pageIndex${ixPage - 1}">
+                </c:if>
+                Previous
+                <c:if test="${!pageStatus.first}">
+            </a>
+            </c:if>
+            &nbsp;
+            <c:if test="${!pageStatus.last}">
+            <a href="#pageIndex${ixPage + 1}">
+                </c:if>
+                Next
+                <c:if test="${!pageStatus.last}">
+            </a>
+            </c:if>
         </p>
     </div>
+    <p>Page #${ixPage + 1}</p>
     <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 ${viewboxWidth} ${viewboxHeight}">
         <rect x="1" y="1" width="${param.x}" height="${param.y}"
               style="fill: #bbb"/>
