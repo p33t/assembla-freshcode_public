@@ -29,10 +29,10 @@
         var svgRatio = ${viewboxRatio};
 
         // From http://stackoverflow.com/a/13651455
-        if(window.attachEvent) {
+        if (window.attachEvent) {
             window.attachEvent('onresize', resizeSvg);
         }
-        else if(window.addEventListener) {
+        else if (window.addEventListener) {
             window.addEventListener('resize', resizeSvg, true);
         }
         else {
@@ -41,21 +41,25 @@
 
         function resizeSvg() {
             var height = window.innerWidth * svgRatio;
-            var svg  = document.getElementsByTagName('svg')[0];
-            svg.setAttribute("height", height.toString());
+            var svgs = document.getElementsByTagName('svg');
+            svgs.forEach(function (svg) {
+                svg.setAttribute("height", height.toString());
+            });
         }
     </script>
 </head>
 <body>
-<div class="non-printable">
-    <p>
-        This will not be printed.
-    </p>
-</div>
-<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 ${viewboxWidth} ${viewboxHeight}">
-    <rect x="1" y="1" width="${param.x}" height="${param.y}"
-          style="fill: #bbb"/>
-</svg>
+<c:forEach var="ixPage" begin="0" end="${param.count - 1}">
+    <div class="non-printable">
+        <p>
+            This will not be printed.
+        </p>
+    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 ${viewboxWidth} ${viewboxHeight}">
+        <rect x="1" y="1" width="${param.x}" height="${param.y}"
+              style="fill: #bbb"/>
+    </svg>
+</c:forEach>
 <script type="application/javascript">
     resizeSvg();
 </script>
