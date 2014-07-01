@@ -1,8 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="viewportWidth" value="${param.x + 2}"/>
-<c:set var="viewportHeight" value="${param.y + 2}"/>
-<c:set var="viewportRatio" value="${viewportHeight / viewportWidth}"/>
+<c:set var="viewboxWidth" value="${param.x + 2}"/>
+<c:set var="viewboxHeight" value="${param.y + 2}"/>
+<c:set var="viewboxRatio" value="${viewboxHeight / viewboxWidth}"/>
 <html>
 <head>
     <title>Rendering </title>
@@ -26,7 +26,7 @@
         -->
     </style>
     <script type="application/javascript">
-        var svgRatio = ${viewportRatio};
+        var svgRatio = ${viewboxRatio};
 
         // From http://stackoverflow.com/a/13651455
         if(window.attachEvent) {
@@ -52,7 +52,7 @@
         This will not be printed.
     </p>
 </div>
-<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 ${viewportWidth} ${viewportHeight}">
+<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 ${viewboxWidth} ${viewboxHeight}">
     <rect x="1" y="1" width="${param.x}" height="${param.y}"
           style="fill: #bbb"/>
 </svg>
