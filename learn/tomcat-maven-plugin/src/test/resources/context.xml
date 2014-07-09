@@ -21,7 +21,7 @@
               i="10"
               str="abcdefg"
               factory="org.apache.naming.factory.BeanFactory"/>
-<!--
+<!-- Looks like this isn't allowed any more: http://stackoverflow.com/a/6015966
     <ResourceParams name="bean/someBean">
         <parameter>
             <name>str</name>
