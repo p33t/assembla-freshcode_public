@@ -49,9 +49,10 @@
         function resizeSvg() {
             var height = window.innerWidth * svgRatio;
             var svgs = document.getElementsByTagName('svg');
-            svgs.forEach(function (svg) {
-                svg.setAttribute("height", height.toString());
-            });
+            // Argh.. for each not allowed: http://stackoverflow.com/a/22754453
+            for (var i = 0; i < svgs.length; i++) {
+                svgs[i].setAttribute("height", height.toString());
+            }
         }
     </script>
 </head>
@@ -77,7 +78,7 @@
         </p>
     </div>
     <p>Page #${ixPage + 1}</p>
-    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 ${viewboxWidth} ${viewboxHeight}">
+    <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 ${viewboxWidth} ${viewboxHeight}">
         <rect x="1" y="1" width="${param.x}" height="${param.y}"
               style="fill: #bbb"/>
     </svg>
