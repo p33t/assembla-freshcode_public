@@ -55,5 +55,28 @@
     <text class="dayNum" x="190" y="35">25</text>
     <text class="shiftCode training" x="170" y="60">T</text>
 </svg>
+
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="300" height="300" viewbox="0 0 300 300">
+    <defs>
+            <rect id="sq" width="50" height="50" x="0" y="0"/>
+            <text id="d23" class="dayNum" x="30" y="15">23</text>
+            <text id="d24" class="dayNum" x="30" y="15">24</text>
+            <text id="d25" class="dayNum" x="30" y="15">25</text>
+            <text id="D" class="shiftCode" x="10" y="40">D</text>
+            <text id="T" class="shiftCode training" x="10" y="40">T</text>
+    </defs>
+
+    <use class="day" xlink:href="#sq" transform="translate(20,20)"/>
+    <use xlink:href="#d23" transform="translate(20,20)"/>
+    <use xlink:href="#D" transform="translate(20,20)"/>
+    <use class="day downtime" xlink:href="#sq" transform="translate(90,20)"/>
+    <use xlink:href="#d24" transform="translate(90,20)"/>
+    <use class="day downtime holiday" xlink:href="#sq" transform="translate(160,20)"/>
+    <use xlink:href="#d25" transform="translate(160,20)"/>
+    <use xlink:href="#T" transform="translate(160,20)"/>
+</svg>
+
 </body>
 </html>
