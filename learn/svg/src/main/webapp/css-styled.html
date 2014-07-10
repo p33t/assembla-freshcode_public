@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Styled SVG</title>
+    <style type="text/css">
+        body {
+            font-family: arial, helvetica, tahoma, sans-serif;
+        }
+
+        /*
+        Notes:
+        - The later declared styles have higher priority
+        */
+
+        .dayNum {
+            fill: #555;
+        }
+
+        .shiftCode {
+            fill: #000;
+            font-size: xx-large;
+        }
+
+        .training {
+            fill: #900;
+        }
+
+        .day {
+            fill: none;
+            stroke: #000;
+            stroke-width: 1px;
+        }
+
+        .downtime {
+            fill: #ddd;
+        }
+
+        .holiday {
+            fill: #faa;
+        }
+    </style>
+</head>
+<body>
+<p>
+    An illustration of using CSS style on an SVG image.
+</p>
+
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewbox="0 0 300 300">
+    <rect class="day" width="50" height="50" x="20" y="20"/>
+    <text class="dayNum" x="50" y="35">23</text>
+    <text class="shiftCode" x="30" y="60">D</text>
+    <rect class="day downtime" width="50" height="50" x="90" y="20"/>
+    <text class="dayNum" x="120" y="35">24</text>
+    <rect class="day downtime holiday" width="50" height="50" x="160" y="20"/>
+    <text class="dayNum" x="190" y="35">25</text>
+    <text class="shiftCode training" x="170" y="60">T</text>
+</svg>
+</body>
+</html>
