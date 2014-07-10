@@ -16,6 +16,9 @@
     <li>
         Suppression of browser-only elements during print
     </li>
+    <li>
+        Addition of page breaks during print
+    </li>
 </ul>
 
 <form target="output" method="get" action="render">
