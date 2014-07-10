@@ -1,9 +1,22 @@
 <html>
 <head>
-    <title>SVG Demo</title>
+    <title>SVG Show / Download Demo</title>
 </head>
 <body>
-<a href="render">Render</a>
+<p>
+    This page demonstrates the rendering of SVG in an HTML document with the following features:
+</p>
+<ul>
+    <li>
+        Width dominant auto resizing
+    </li>
+    <li>
+        Download vs Show using same content
+    </li>
+    <li>
+        Suppression of browser-only elements during print
+    </li>
+</ul>
 
 <form target="output" method="get" action="render">
     <label>Width
@@ -22,7 +35,7 @@
     <input type="submit" name="command" value="Show"/>
     <input type="submit" name="command" value="Download"/>
 </form>
-<iframe name="output" width="100%" height="80%">
+<iframe name="output" width="100%" height="70%">
 </iframe>
 </body>
 </html>
