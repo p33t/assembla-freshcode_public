@@ -5,6 +5,7 @@
 </head>
 <body>
 <a href="show-download-print.jsp">Show / Download / Print</a><br/>
+<a href="css-styled.html">CSS Styled SVG</a><br/>
 
 </body>
 </html>
