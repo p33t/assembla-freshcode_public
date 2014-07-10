@@ -49,6 +49,7 @@
     </script>
 </head>
 <body>
+Command: ${param.command}
 <c:forEach var="ixPage" begin="0" end="${param.count - 1}" varStatus="pageStatus">
     <div class="non-printable">
         <p id="pageIndex${ixPage}">
