@@ -19,6 +19,10 @@
             .non-printable {
                 display: none;
             }
+
+            .pageHeader {
+                page-break-before: always;
+            }
         }
 
         body {
@@ -57,6 +61,9 @@
     </script>
 </head>
 <body>
+<div class="non-printable">
+    <a href="#" onclick="window.print(); return false;">Print</a>
+</div>
 <c:forEach var="ixPage" begin="0" end="${param.count - 1}" varStatus="pageStatus">
     <div class="non-printable">
         <p id="pageIndex${ixPage}">
@@ -77,7 +84,7 @@
             </c:if>
         </p>
     </div>
-    <p>Page #${ixPage + 1}</p>
+    <p class="pageHeader">Page #${ixPage + 1}</p>
     <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 ${viewboxWidth} ${viewboxHeight}">
         <rect x="1" y="1" width="${param.x}" height="${param.y}"
               style="fill: #bbb"/>
