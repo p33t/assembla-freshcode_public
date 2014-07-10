@@ -1,4 +1,11 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    if ("Download".equals(request.getParameter("command"))) {
+        response.setContentType("application/octet-stream");
+        response.setHeader("Content-Disposition", "attachment;filename=svg-download.html");
+    } else {
+        response.setContentType("text/html;charset=UTF8");
+    }
+%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="viewboxWidth" value="${param.x + 2}"/>
 <c:set var="viewboxHeight" value="${param.y + 2}"/>
@@ -49,7 +56,6 @@
     </script>
 </head>
 <body>
-Command: ${param.command}
 <c:forEach var="ixPage" begin="0" end="${param.count - 1}" varStatus="pageStatus">
     <div class="non-printable">
         <p id="pageIndex${ixPage}">
