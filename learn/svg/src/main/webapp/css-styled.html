@@ -25,7 +25,7 @@
             fill: #900;
         }
 
-        .day {
+        .day, .day-g {
             fill: none;
             stroke: #000;
             stroke-width: 1px;
@@ -33,6 +33,11 @@
 
         .downtime {
             fill: #ddd;
+        }
+
+        .downtime-g {
+            stroke: #00f;
+            fill: #0ff;
         }
 
         .holiday {
@@ -45,7 +50,10 @@
     An illustration of using CSS style on an SVG image.
 </p>
 
-<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewbox="0 0 300 300">
+<p>
+    Fully generated (no defs).
+</p>
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="100" viewbox="0 0 300 100">
     <rect class="day" width="50" height="50" x="20" y="20"/>
     <text class="dayNum" x="50" y="35">23</text>
     <text class="shiftCode" x="30" y="60">D</text>
@@ -55,17 +63,19 @@
     <text class="dayNum" x="190" y="35">25</text>
     <text class="shiftCode training" x="170" y="60">T</text>
 </svg>
-
+<p>
+    Shallow defs (no groups 'g', can use all same css classes)
+</p>
 <svg xmlns="http://www.w3.org/2000/svg"
      xmlns:xlink="http://www.w3.org/1999/xlink"
-     width="300" height="300" viewbox="0 0 300 300">
+     width="300" height="100" viewbox="0 0 300 100">
     <defs>
-            <rect id="sq" width="50" height="50" x="0" y="0"/>
-            <text id="d23" class="dayNum" x="30" y="15">23</text>
-            <text id="d24" class="dayNum" x="30" y="15">24</text>
-            <text id="d25" class="dayNum" x="30" y="15">25</text>
-            <text id="D" class="shiftCode" x="10" y="40">D</text>
-            <text id="T" class="shiftCode training" x="10" y="40">T</text>
+        <rect id="sq" width="50" height="50" x="0" y="0"/>
+        <text id="d23" class="dayNum" x="30" y="15">23</text>
+        <text id="d24" class="dayNum" x="30" y="15">24</text>
+        <text id="d25" class="dayNum" x="30" y="15">25</text>
+        <text id="D" class="shiftCode" x="10" y="40">D</text>
+        <text id="T" class="shiftCode training" x="10" y="40">T</text>
     </defs>
 
     <use class="day" xlink:href="#sq" transform="translate(20,20)"/>
@@ -75,6 +85,40 @@
     <use xlink:href="#d24" transform="translate(90,20)"/>
     <use class="day downtime holiday" xlink:href="#sq" transform="translate(160,20)"/>
     <use xlink:href="#d25" transform="translate(160,20)"/>
+    <use xlink:href="#T" transform="translate(160,20)"/>
+</svg>
+<p>
+    NO-CAN-DO...Deep defs using groups (Can't nest 'use', need alternate css classes)<br/>
+    See http://stackoverflow.com/a/5073714/358006
+</p>
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="300" height="100" viewbox="0 0 300 100">
+    <defs>
+        <text id="D" class="shiftCode" x="10" y="40">D</text>
+        <text id="T" class="shiftCode training" x="10" y="40">T</text>
+
+        <g id="g23">
+            <rect width="50" height="50" x="0" y="0"/>
+            <text x="30" y="15">23</text>
+        </g>
+        <g id="g24">
+            <rect width="50" height="50" x="0" y="0"/>
+            <text x="30" y="15">24</text>
+        </g>
+        <g id="g25">
+            <rect width="50" height="50" x="0" y="0"/>
+            <text x="30" y="15">25</text>
+        </g>
+
+    </defs>
+
+    <use class="day-g" xlink:href="#g23" transform="translate(20, 20)"/>
+    <use xlink:href="#D" transform="translate(20,20)"/>
+
+    <use class="day-g downtime-g" xlink:href="#g24" transform="translate(90, 20)"/>
+
+    <use class="day-g downtime-g holiday-g" xlink:href="#g25" transform="translate(160, 20)"/>
     <use xlink:href="#T" transform="translate(160,20)"/>
 </svg>
 
