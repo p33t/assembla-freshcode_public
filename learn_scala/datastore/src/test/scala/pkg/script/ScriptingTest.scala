@@ -2,14 +2,14 @@ package pkg.script
 
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import org.scalatest.Suite
+import org.scalatest.{Spec, Suite}
 import javax.script.{Invocable, Compilable, ScriptException, ScriptEngineManager}
 import ScriptingTest._
 import sun.org.mozilla.javascript.internal.EvaluatorException
 import ScriptingUtil._
 
 @RunWith(classOf[JUnitRunner])
-class ScriptingTest extends Suite {
+class ScriptingTest extends Spec {
   // alternative... val js = new ScriptEngineManager().getEngineByMimeType("text/javascript")
   val js = JsFactory.getScriptEngine
 
@@ -39,9 +39,9 @@ class ScriptingTest extends Suite {
   }
 
   def testReturns() {
-    expect("springsteen") {js.eval("'springsteen';")}
+    assertResult("springsteen") {js.eval("'springsteen';")}
     // not allowed to use 'return' keyword outside a function in a script.
-    expect("bruce") {js.eval("if (true) 'bruce'; else 'lee';")}
+    assertResult("bruce") {js.eval("if (true) 'bruce'; else 'lee';")}
   }
 
   def testApply_BAD() {
@@ -49,7 +49,7 @@ class ScriptingTest extends Suite {
     binds.put("callback", ScriptingTest.Callback)
     // It's a NativeJavaObject... not a function.
     intercept[ScriptException] {
-      expect(ScriptingTest.Callback("bruce lee")) {
+      assertResult(ScriptingTest.Callback("bruce lee")) {
         js.eval("""callback('bruce lee');""", binds)
       }
     }
@@ -69,7 +69,7 @@ class ScriptingTest extends Suite {
     script.eval()
 
     val inv = script.getEngine.asInstanceOf[Invocable]
-    expect("bruce") {
+    assertResult("bruce") {
       inv.invokeFunction("hello", "bruce")
     }
   }
@@ -80,7 +80,7 @@ class ScriptingTest extends Suite {
       val one = MyClass(1, "one")
       val binds = js.createBindings()
       binds.put("one", one)
-      expect(MyClass(1, "uno")) {
+      assertResult(MyClass(1, "uno")) {
         js.eval("""
       one.copy({stringVal: "uno"});
     """, binds)

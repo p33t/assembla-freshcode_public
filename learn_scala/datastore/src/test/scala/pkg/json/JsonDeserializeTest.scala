@@ -1,12 +1,12 @@
 package pkg.json
 
-import org.scalatest.Suite
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
 import net.liftweb.json._
+import org.junit.runner.RunWith
+import org.scalatest.Spec
+import org.scalatest.junit.JUnitRunner
 
 @RunWith(classOf[JUnitRunner])
-class JsonDeserializeTest extends Suite {
+class JsonDeserializeTest extends Spec {
   implicit val JsonFormats = DefaultFormats + RestrictedSerializer // for Json conversion
   val StringParent = Parent("three", "four", Child("five"), new StringChild("six"))
   val VoidParent = Parent("one", "two", Child("three"), new VoidChild)
@@ -16,7 +16,7 @@ class JsonDeserializeTest extends Suite {
     def checkParent(p: Parent) {
       val str = Printer.compact(render(Extraction.decompose(p)))
       val actual = parse(str).extract[Parent]
-      expect(p)(actual)
+      assertResult(p)(actual)
     }
     checkParent(StringParent)
     checkParent(VoidParent)
@@ -25,7 +25,7 @@ class JsonDeserializeTest extends Suite {
   def testIgnoreExtraData() {
     val ast = Extraction.decompose(StringParent).asInstanceOf[JObject]
     val astExtra = JObject(JField("extraField", JString("ignored data")) :: ast.obj)
-    expect(StringParent) {
+    assertResult(StringParent) {
       astExtra.extract[Parent]
     }
   }
@@ -35,7 +35,7 @@ class JsonDeserializeTest extends Suite {
     val expected = C("bruce", JArray(List(JString("one"), JString("two"), JString("three"))))
     // Doesn't work...Extraction.decompose(expected)
     val ast = parse("""{"f":"bruce", "rest":["one","two","three"]}""")
-    expect(expected) {
+    assertResult(expected) {
       ast.extract[C]
     }
   }

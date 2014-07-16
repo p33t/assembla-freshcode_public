@@ -1,18 +1,17 @@
 package pkg.json
 
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
-import io.Source
-import net.liftweb.json.JsonAST._
+import java.io.InputStreamReader
+
 import net.liftweb.json.Extraction._
+import net.liftweb.json.JsonAST._
 import net.liftweb.json.Printer._
-import org.scalatest.Suite
-import net.liftweb.util.JSONParser
-import java.io.{InputStream, InputStreamReader, StringReader}
-import net.liftweb.json.{MappingException, JsonParser}
+import net.liftweb.json.{JsonParser, MappingException}
+import org.junit.runner.RunWith
+import org.scalatest.Spec
+import org.scalatest.junit.JUnitRunner
 
 @RunWith(classOf[JUnitRunner])
-class JsonFileTest extends Suite {
+class JsonFileTest extends Spec {
   implicit val formats = net.liftweb.json.DefaultFormats
   val JsonFileName = "simple.json"
   val Expected = Map(
@@ -23,9 +22,9 @@ class JsonFileTest extends Suite {
 
   def testLoadFile() {
     val contents = loadResourceFile(JsonFileName)
-    val actualBox = JSONParser.parse(contents)
-    val actual = actualBox.get
-    expect(Expected)(actual)
+    val actualBox = JsonParser.parse(contents)
+    val actual = actualBox.values
+    assertResult(Expected)(actual)
   }
 
   def testLoadFileTooHard() {

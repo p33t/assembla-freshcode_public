@@ -1,16 +1,16 @@
 package pkg.json
 
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
 import net.liftweb.json.Serialization.{read, write}
-import org.joda.time.Period
-import org.scalatest.Suite
 import net.liftweb.json._
+import org.joda.time.Period
 import org.joda.time.format.ISOPeriodFormat
+import org.junit.runner.RunWith
+import org.scalatest.Spec
+import org.scalatest.junit.JUnitRunner
 
 @RunWith(classOf[JUnitRunner])
-class JsonPolymorphismTest extends Suite {
-  import JsonPolymorphismTest._
+class JsonPolymorphismTest extends Spec {
+  import pkg.json.JsonPolymorphismTest._
   implicit val Formats = Serialization.formats(ShortTypeHints(List(classOf[Dog], classOf[BigCat]))) + PeriodSerializer
 
   def test() {
@@ -20,7 +20,7 @@ class JsonPolymorphismTest extends Suite {
     println(ser)
     val c2 = read[Cage[Dog]](ser)
     println("c2: " + c2)
-    expect(c)(c2)
+    assertResult(c)(c2)
   }
 }
 

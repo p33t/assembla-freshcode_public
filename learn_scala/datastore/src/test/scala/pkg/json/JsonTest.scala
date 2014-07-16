@@ -1,14 +1,14 @@
 package pkg.json
 
-import org.scalatest.Suite
-import net.liftweb.json.JsonAST._
 import net.liftweb.json.Extraction._
+import net.liftweb.json.JsonAST._
 import net.liftweb.json.Printer._
 import org.junit.runner.RunWith
+import org.scalatest.Spec
 import org.scalatest.junit.JUnitRunner
 
 @RunWith(classOf[JUnitRunner])
-class JsonTest extends Suite {
+class JsonTest extends Spec {
   implicit val formats = net.liftweb.json.DefaultFormats
   val desired = """{"one":1,"two":2,"three":[3,3,3]}"""
 
@@ -30,13 +30,13 @@ class JsonTest extends Suite {
 
   def testReplaceDoesNotAdd() {
     val obj = JObject(List(JField("bruce", JString("lee"))))
-    expect(obj){
+    assertResult(obj){
       obj.replace("swamp" :: Nil, JString("thing"))
     }
   }
 
   private def check(m: Any) {
-    expect(desired) {compact(render(decompose(m)))}
+    assertResult(desired) {compact(render(decompose(m)))}
   }
 }
 
