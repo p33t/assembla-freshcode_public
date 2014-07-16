@@ -9,7 +9,8 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <scala.version>2.10.3</scala.version>
+        <scala.version>2.11.1</scala.version>
+        <scala.libversion>2.11</scala.libversion>
     </properties>
 
     <dependencies>
@@ -30,6 +31,13 @@
           <groupId>org.scala-lang</groupId>
           <artifactId>scala-actors</artifactId>
           <version>${scala.version}</version>
+        </dependency>
+
+        <!-- To replicate old native xml handling -->
+        <dependency>
+            <groupId>org.scala-lang.modules</groupId>
+            <artifactId>scala-xml_${scala.libversion}</artifactId>
+            <version>1.0.2</version>
         </dependency>
     </dependencies>
 
