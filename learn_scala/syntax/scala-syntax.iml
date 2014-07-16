@@ -4,7 +4,7 @@
     <facet type="scala" name="Scala">
       <configuration>
         <option name="compilerLibraryLevel" value="Project" />
-        <option name="compilerLibraryName" value="Maven: org.scala-lang:scala-compiler-bundle:2.10.3" />
+        <option name="compilerLibraryName" value="Maven: org.scala-lang:scala-compiler-bundle:2.11.1" />
         <option name="maximumHeapSize" value="1024" />
         <option name="vmOptions" value="-Xms64m" />
       </configuration>
@@ -19,9 +19,10 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Maven: org.scala-lang:scala-library:2.10.3" level="project" />
-    <orderEntry type="library" name="Maven: org.scala-lang:scala-reflect:2.10.3" level="project" />
-    <orderEntry type="library" name="Maven: org.scala-lang:scala-actors:2.10.3" level="project" />
+    <orderEntry type="library" name="Maven: org.scala-lang:scala-library:2.11.1" level="project" />
+    <orderEntry type="library" name="Maven: org.scala-lang:scala-reflect:2.11.1" level="project" />
+    <orderEntry type="library" name="Maven: org.scala-lang:scala-actors:2.11.1" level="project" />
+    <orderEntry type="library" name="Maven: org.scala-lang.modules:scala-xml_2.11:1.0.2" level="project" />
   </component>
 </module>
 
