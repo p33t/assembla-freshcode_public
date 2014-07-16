@@ -1,13 +1,13 @@
 package pkg.script
 
-import org.scalatest.Suite
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
 import net.liftweb.json.JsonAST._
-import ScriptingUtil._
+import org.junit.runner.RunWith
+import org.scalatest.Spec
+import org.scalatest.junit.JUnitRunner
+import pkg.script.ScriptingUtil._
 
 @RunWith(classOf[JUnitRunner])
-class JsToAstTest extends Suite {
+class JsToAstTest extends Spec {
   val js = JsFactory.getScriptEngine
 
   def testTypes() {
@@ -30,7 +30,7 @@ class JsToAstTest extends Suite {
   private def check(script: String, expected: Any) {
     val result = js.eval(script)
     val converted = jsToAst(result)
-    expect(expected) {
+    assertResult(expected) {
       converted
     }
   }

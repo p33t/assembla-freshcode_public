@@ -1,12 +1,12 @@
 package pkg.json
 
-import org.scalatest.Suite
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
 import net.liftweb.json._
+import org.junit.runner.RunWith
+import org.scalatest.Spec
+import org.scalatest.junit.JUnitRunner
 
 @RunWith(classOf[JUnitRunner])
-class JsonMutationTest extends Suite {
+class JsonMutationTest extends Spec {
   def testMutation() {
     val before = parse("""{
       "series": [
@@ -20,7 +20,7 @@ class JsonMutationTest extends Suite {
         {"data":2}
       ]
     }""")
-    expect(expected){
+    assertResult(expected){
       before.transform {
         case JField("dataId", dataId: JString) => JField("data", JInt(dataId.values.toInt))
       }

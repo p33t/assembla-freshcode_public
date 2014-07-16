@@ -1,17 +1,17 @@
 package pkg.json
 
-import org.scalatest.Suite
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
 import net.liftweb.json._
+import org.junit.runner.RunWith
+import org.scalatest.Spec
+import org.scalatest.junit.JUnitRunner
 
 @RunWith(classOf[JUnitRunner])
-class MapSerializerTest extends Suite {
+class MapSerializerTest extends Spec {
   implicit val formats = DefaultFormats // ++ List(new MapSerializer[Int])
 
   def testDefaultMapNowPreservesInsertOrder() {
     val tuples = List("one" -> 1, "two" -> 2, "four" -> 4, "three" -> 3)
-    expect(tuples) {
+    assertResult(tuples) {
       Map(tuples: _*).toList
     }
   }
@@ -21,7 +21,7 @@ class MapSerializerTest extends Suite {
    */
   def testJsonOrderRetained() {
     val json = JsonParser.parse("""{"one": 1, "two": 2, "three": 3, "four": 4}""")
-    expect(json) {
+    assertResult(json) {
       val m = Extraction.extract[Map[String, Int]](json)
       Extraction.decompose(m)
     }

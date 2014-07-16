@@ -1,6 +1,6 @@
 package pkg.script
 
-import org.scalatest.Suite
+import org.scalatest.{Spec, Suite}
 import net.liftweb.json.JsonAST._
 import ScriptingUtil._
 import util.Random
@@ -10,7 +10,7 @@ import org.scalatest.junit.JUnitRunner
 import javax.script.{ScriptContext, SimpleScriptContext}
 
 @RunWith(classOf[JUnitRunner])
-class AstToJsTest extends Suite {
+class AstToJsTest extends Spec {
   val js = newEngine()
 
   def testSimple() {
@@ -40,15 +40,15 @@ class AstToJsTest extends Suite {
   def testArrayConcat() {
     val a1234 = JsonParser.parse("""["one", "two", "three", "four"]""")
     // control case
-    expect(a1234) {
+    assertResult(a1234) {
       jsToAst(js.eval("""["one", "two"].concat(["three", "four"])"""))
     }
-    expect(a1234) {
+    assertResult(a1234) {
       val a34 = JsonParser.parse("""["three", "four"]""")
       val result = eval(a34, """["one", "two"].concat(jv)""")
       jsToAst(result)
     }
-    expect(a1234) {
+    assertResult(a1234) {
       val a12 = JsonParser.parse("""["one", "two"]""")
       val result = eval(a12, """jv.concat(["three", "four"])""")
       jsToAst(result)
@@ -64,13 +64,13 @@ class AstToJsTest extends Suite {
   }
 
   private def check(jv: JValue, expr: String, expected: Any) {
-    expect(expected) {
+    assertResult(expected) {
       eval(jv, expr)
     }
   }
 
   private def checkSymmetry(jv: JValue) {
-    expect(jv) {
+    assertResult(jv) {
       val output: AnyRef = eval(jv, "jv")
       jsToAst(output)
     }
