@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SVG Rotation Timed</title>
+</head>
+<body>
+<!-- Rotating stuff: http://www.petercollingridge.co.uk/blog/svg-animation-rotating-elements -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 230 230">
+    <g id="gg">
+        <circle cx="110" cy="10" r="5" stroke="#000" fill="#f00">
+            <animateTransform attributeType="xml"
+                              attributeName="transform"
+                              type="rotate"
+                              from="0 110 110"
+                              to="360 110 110"
+                              dur="4s"
+                              repeatCount="indefinite"/>
+        </circle>
+    </g>
+</svg>
+</body>
+</html>
