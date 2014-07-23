@@ -12,7 +12,7 @@ object TypeArgDemo {
     classOp1[SomeClass]()
     classOp2[SomeClass]()
     classOp3[SomeClass]()
-//    classOp4[SomeClass]()
+    classOp4[BruceLee]()
   }
 
   def classOp1[T]()(implicit manifest: Manifest[T]) {
@@ -27,7 +27,16 @@ object TypeArgDemo {
     println("Class: " + tag.runtimeClass.getName)
   }
 
+  // Looks like scala 2.11 does bounds now.
+  def classOp4[T <: Bruce : Manifest]() {
+    println("Class: "  + manifest[T].runtimeClass.getName)
+  }
+
   //  def classOp4[T : TypeTag]() {
   //    println("Class: " + typeTag[T].runtimeClass.getName)
   //  }
+
+  class Bruce
+
+  class BruceLee extends Bruce
 }
