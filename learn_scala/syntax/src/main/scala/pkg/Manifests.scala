@@ -2,7 +2,7 @@ package pkg
 
 import reflect.ClassManifest
 
-
+@deprecated(message="Superceeded by TypeArgDemo")
 object Manifests {
   def main(args: Array[String]) {
     classOp[Bruce]
