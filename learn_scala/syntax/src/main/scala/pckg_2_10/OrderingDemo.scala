@@ -9,11 +9,17 @@ object OrderingDemo {
 
   def main(args: Array[String]): Unit = {
     traitSort()
+    clsSort()
     objectSortBad()
   }
 
   def traitSort() {
     implicit val order = new NameOrdTrait[Person]{}
+    assert(before.sorted == after)
+  }
+
+  def clsSort() {
+    implicit val order = new NameOrdCls[Person]
     assert(before.sorted == after)
   }
 
@@ -31,6 +37,8 @@ object OrderingDemo {
   trait NameOrdTrait[T <: Named] extends Ordering[T] {
     override def compare(x: T, y: T) = x.name.compareTo(y.name)
   }
-  
+
+  class NameOrdCls[T <: Named] extends NameOrdTrait[T]
+
   object NameOrdObj extends NameOrdTrait[Named]
 }
