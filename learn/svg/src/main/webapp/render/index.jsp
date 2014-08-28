@@ -38,6 +38,7 @@
     </style>
     <script type="application/javascript">
         var svgRatio = ${viewboxRatio};
+        var scale = 1.0;
 
         // From http://stackoverflow.com/a/13651455
         if (window.attachEvent) {
@@ -51,17 +52,27 @@
         }
 
         function resizeSvg() {
-            var height = window.innerWidth * svgRatio;
+            var height = window.innerWidth * svgRatio * scale;
             var svgs = document.getElementsByTagName('svg');
             // Argh.. for each not allowed: http://stackoverflow.com/a/22754453
             for (var i = 0; i < svgs.length; i++) {
                 svgs[i].setAttribute("height", height.toString());
             }
         }
+
+        function setScale(newScale) {
+            scale = newScale;
+            resizeSvg();
+        }
+
     </script>
 </head>
 <body>
 <div class="non-printable">
+    <a href="#" onclick="setScale(1.0); return false;">1:1</a>
+    <a href="#" onclick="setScale(0.5); return false;">1:2</a>
+    <a href="#" onclick="setScale(0.25); return false;">1:4</a>
+    <br/>
     <a href="#" onclick="window.print(); return false;">Print</a>
 </div>
 <c:forEach var="ixPage" begin="0" end="${param.count - 1}" varStatus="pageStatus">
