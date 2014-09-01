@@ -15,31 +15,79 @@
         }
 
         function resizeSvg() {
-            var side = Math.min(window.innerHeight, window.innerHeight);
+            var side = Math.min(window.innerHeight, window.innerWidth);
+            /*
             var svgs = document.getElementsByTagName('svg');
             // Argh.. for each not allowed: http://stackoverflow.com/a/22754453
             for (var i = 0; i < svgs.length; i++) {
                 svgs[i].setAttribute("height", side.toString());
                 svgs[i].setAttribute("width", side.toString());
             }
+            */
+            theSvg.setAttribute("height", side.toString());
+            theSvg.setAttribute("width", side.toString());
+        }
+
+        function tempoChange(delta) {
+            console.log("Tempo change: " + delta);
+            sync();
+        }
+
+        function sync() {
+//            var timing = theSvg.contentDocument.getElementById("timing");
+//            console.log("Current duration: " + timing.getAttribute("dur"))
         }
     </script>
+    <style type="text/css">
+        body {
+            background-color: #000000;
+        }
 
+        text {
+            text-anchor: middle;
+            dominant-baseline: central;
+            fill: green;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
 </head>
 <body>
 <!-- Rotating stuff: http://www.petercollingridge.co.uk/blog/svg-animation-rotating-elements -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 230 230">
-    <circle cx="110" cy="10" r="10" stroke="#000" fill="#f00">
-        <animateTransform attributeType="xml"
+    <!--<circle cx="110" cy="10" r="10" stroke="#000" fill="#f00">-->
+    <!--<animateTransform attributeType="xml"-->
+    <!--attributeName="transform"-->
+    <!--type="rotate"-->
+    <!--from="0 110 110"-->
+    <!--to="360 110 110"-->
+    <!--dur="2s"-->
+    <!--repeatCount="indefinite"/>-->
+    <!--</circle>-->
+    <circle cx="110" cy="110" r="100" fill="none" stroke="red" stroke-dasharray="40,600" stroke-width="15"
+            stroke-linecap="butt">
+        <animateTransform id="timing"
+                          attributeType="xml"
                           attributeName="transform"
                           type="rotate"
                           from="0 110 110"
                           to="360 110 110"
-                          dur="2s"
+                          dur="3s"
                           repeatCount="indefinite"/>
     </circle>
+    <!-- 6x -->
+    <!--<circle cx="110" cy="110" r="100" fill="none" stroke="white" stroke-dasharray="90,14" stroke-width="22" stroke-linecap="butt"/>-->
+    <!-- 8x -->
+    <!--<circle cx="110" cy="110" r="100" fill="none" stroke="white" stroke-dasharray="64,14" stroke-width="22" stroke-linecap="butt"/>-->
+    <!-- 12x -->
+    <circle cx="110" cy="110" r="100" fill="none" stroke="#333" stroke-dasharray="42.36,10" stroke-width="17"
+            stroke-linecap="butt" transform="rotate(2.5,110,110)"/>
+
+    <text id="tempoText" x="110" y="110" style="font-size:400%">199</text>
+    <text x="110" y="50" style="font-size: 300%" onclick="tempoChange(1)">&nbsp;&#9650;&nbsp;</text>
+    <text x="110" y="170" style="font-size: 300%" onclick="tempoChange(-1)">&nbsp;&#9660;&nbsp;</text>
 </svg>
 <script type="application/javascript">
+    var theSvg = document.getElementsByTagName("svg").item(0);
     resizeSvg();
 </script>
 </body>
