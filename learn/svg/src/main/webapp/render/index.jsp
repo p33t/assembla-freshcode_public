@@ -21,7 +21,7 @@
             }
 
             .pageHeader {
-                page-break-before: always;
+                page-break-inside: avoid;
             }
         }
 
