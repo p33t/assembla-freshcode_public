@@ -14,6 +14,9 @@ import java.net.URLConnection;
 import static pkg.StringUtils.escapeHTML;
 import static pkg.StringUtils.newlinesToXHTMLBreaks;
 
+/**
+ * This approach probably won't work for secure pages.
+ */
 public class EmailServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
