@@ -8,7 +8,7 @@
 
     <servlet>
         <servlet-name>emailServlet</servlet-name>
-        <servlet-class>pkg.EmailServlet</servlet-class>
+        <servlet-class>pkg.EmailServlet2</servlet-class>
     </servlet>
 
     <servlet-mapping>
