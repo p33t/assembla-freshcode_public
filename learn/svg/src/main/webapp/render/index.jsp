@@ -1,4 +1,5 @@
-<%
+<%@ page import="java.util.Date" %><%
+    System.out.println("rendering now " + new Date());
     if ("Download".equals(request.getParameter("command"))) {
         response.setContentType("application/octet-stream");
         response.setHeader("Content-Disposition", "attachment;filename=svg-download.html");
