@@ -29,16 +29,17 @@
         }
 
         function tempoChange(delta) {
-            rpm = rpm + delta;
+            rate = rate + delta;
             sync();
         }
 
         function sync() {
 //            console.log("Current speed: " + theTempoText.innerHTML);
-            theTempoText.innerHTML = rpm.toString();
-            var dur = 60 / rpm;
-            theTiming.setAttribute("dur", dur.toString() + "s");
-
+            theTempoText.innerHTML = rate.toString();
+            var dur = 60 / displayRatio / rate;
+            var durStr = dur.toString() + "s";
+            console.log("dur => " + durStr);
+            theTiming.setAttribute("dur", durStr);
         }
     </script>
     <style type="text/css">
@@ -101,7 +102,8 @@
     var theSvg = document.getElementsByTagName("svg").item(0);
     var theTiming = document.getElementById("timing");
     var theTempoText = document.getElementById("tempoText");
-    var rpm = 30;
+    var rate = 30;
+    var displayRatio = 1;
     resizeSvg();
     sync();
 </script>
