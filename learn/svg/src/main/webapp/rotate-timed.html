@@ -29,13 +29,16 @@
         }
 
         function tempoChange(delta) {
-            console.log("Tempo change: " + delta);
+            rpm = rpm + delta;
             sync();
         }
 
         function sync() {
-//            var timing = theSvg.contentDocument.getElementById("timing");
-//            console.log("Current duration: " + timing.getAttribute("dur"))
+//            console.log("Current speed: " + theTempoText.innerHTML);
+            theTempoText.innerHTML = rpm.toString();
+            var dur = 60 / rpm;
+            theTiming.setAttribute("dur", dur.toString() + "s");
+
         }
     </script>
     <style type="text/css">
@@ -96,7 +99,11 @@
 </svg>
 <script type="application/javascript">
     var theSvg = document.getElementsByTagName("svg").item(0);
+    var theTiming = document.getElementById("timing");
+    var theTempoText = document.getElementById("tempoText");
+    var rpm = 30;
     resizeSvg();
+    sync();
 </script>
 </body>
 </html>
