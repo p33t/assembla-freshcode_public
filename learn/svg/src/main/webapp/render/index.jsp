@@ -73,6 +73,7 @@
     <a href="#" onclick="setScale(1.0); return false;">1:1</a>
     <a href="#" onclick="setScale(0.5); return false;">1:2</a>
     <a href="#" onclick="setScale(0.25); return false;">1:4</a>
+    NOTE: Is better to explicitly set size of SVG (in mm), but need to be wary of retaining aspect ratio.
     <br/>
     <a href="#" onclick="window.print(); return false;">Print</a>
 </div>
