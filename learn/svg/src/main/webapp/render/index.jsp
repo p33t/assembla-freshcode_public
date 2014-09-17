@@ -1,4 +1,6 @@
+<%@ page import="pkg.ServletUtils" %>
 <%@ page import="java.util.Date" %><%
+    ServletUtils.noCache(response);
     System.out.println("rendering now " + new Date());
     if ("Download".equals(request.getParameter("command"))) {
         response.setContentType("application/octet-stream");
