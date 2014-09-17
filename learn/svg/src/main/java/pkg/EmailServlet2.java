@@ -38,6 +38,7 @@ public class EmailServlet2 extends HttpServlet {
         // NOTE: Must 'forward' instead of 'include' for download / header settings to work.
         render.include(req, altResp);
 
+        ServletUtils.noCache(resp);
         ServletOutputStream stream = resp.getOutputStream();
         String str = altResp.toString();
         stream.println("<html><head><title>Blah</title><body>Size: " + str.length() + "<br/><pre>");
