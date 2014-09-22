@@ -30,17 +30,16 @@
 
         function tempoChange(delta) {
             rate = rate + delta;
-            if (rate < 10) rate = 10;
-            if (rate > 180) rate = 180;
             sync();
         }
 
         function sync() {
-//            console.log("Current speed: " + theTempoText.innerHTML);
+            if (rate < 10) rate = 10;
+            if (rate > 180) rate = 180;
             theTempoText.innerHTML = rate.toString();
             var dur = 60 / displayRatio / rate;
             var durStr = dur.toString() + "s";
-            console.log("dur => " + durStr);
+//            console.log("dur => " + durStr);
             theTiming.setAttribute("dur", durStr);
         }
     </script>
