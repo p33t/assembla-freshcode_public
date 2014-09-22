@@ -30,6 +30,8 @@
 
         function tempoChange(delta) {
             rate = rate + delta;
+            if (rate < 10) rate = 10;
+            if (rate > 180) rate = 180;
             sync();
         }
 
@@ -75,7 +77,7 @@
     <!--dur="2s"-->
     <!--repeatCount="indefinite"/>-->
     <!--</circle>-->
-    <circle cx="120" cy="120" r="105" fill="none" stroke="red" stroke-dasharray="40,600" stroke-width="20"
+    <circle cx="120" cy="120" r="105" fill="none" stroke="red" stroke-dasharray="43,700" stroke-width="20"
             stroke-linecap="butt">
         <animateTransform id="timing"
                           attributeType="xml"
