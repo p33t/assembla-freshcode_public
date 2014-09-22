@@ -65,7 +65,7 @@
 </head>
 <body>
 <!-- Rotating stuff: http://www.petercollingridge.co.uk/blog/svg-animation-rotating-elements -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 230 230">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250">
     <!--<circle cx="110" cy="10" r="10" stroke="#000" fill="#f00">-->
     <!--<animateTransform attributeType="xml"-->
     <!--attributeName="transform"-->
@@ -75,28 +75,25 @@
     <!--dur="2s"-->
     <!--repeatCount="indefinite"/>-->
     <!--</circle>-->
-    <circle cx="110" cy="110" r="100" fill="none" stroke="red" stroke-dasharray="40,600" stroke-width="15"
+    <circle cx="120" cy="120" r="105" fill="none" stroke="red" stroke-dasharray="40,600" stroke-width="20"
             stroke-linecap="butt">
         <animateTransform id="timing"
                           attributeType="xml"
                           attributeName="transform"
                           type="rotate"
-                          from="0 110 110"
-                          to="360 110 110"
+                          from="0 120 120"
+                          to="360 120 120"
                           dur="3s"
                           repeatCount="indefinite"/>
     </circle>
-    <!-- 6x -->
-    <!--<circle cx="110" cy="110" r="100" fill="none" stroke="white" stroke-dasharray="90,14" stroke-width="22" stroke-linecap="butt"/>-->
-    <!-- 8x -->
-    <!--<circle cx="110" cy="110" r="100" fill="none" stroke="white" stroke-dasharray="64,14" stroke-width="22" stroke-linecap="butt"/>-->
-    <!-- 12x -->
-    <circle cx="110" cy="110" r="100" fill="none" stroke="#333" stroke-dasharray="42.36,10" stroke-width="17"
-            stroke-linecap="butt" transform="rotate(2.5,110,110)"/>
+    <circle cx="120" cy="120" r="105" fill="none" stroke="#333" stroke-dasharray="43,12" stroke-width="21"
+            stroke-linecap="butt" transform="rotate(2.5,120,120)"/>
 
-    <text id="tempoText" x="110" y="110" style="font-size:400%">199</text>
-    <text x="110" y="50" style="font-size: 300%" onclick="tempoChange(1)">&nbsp;&#9650;&nbsp;</text>
-    <text x="110" y="170" style="font-size: 300%" onclick="tempoChange(-1)">&nbsp;&#9660;&nbsp;</text>
+    <text id="tempoText" x="120" y="120" style="font-size:450%">199</text>
+    <text x="90" y="65" style="font-size: 250%" onclick="tempoChange(10)">&nbsp;+</text>
+    <text x="90" y="175" style="font-size: 250%" onclick="tempoChange(-10)">&nbsp;&#8210;</text>
+    <text x="150" y="65" style="font-size: 250%" onclick="tempoChange(1)">+&nbsp;</text>
+    <text x="150" y="175" style="font-size: 250%" onclick="tempoChange(-1)">&#8210;&nbsp;</text>
 </svg>
 <script type="application/javascript">
     var theSvg = document.getElementsByTagName("svg").item(0);
