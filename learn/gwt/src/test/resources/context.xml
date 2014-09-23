@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/">
+    <!-- authentication and roles -->
+    <Realm className="org.apache.catalina.realm.MemoryRealm"
+           pathname="../../src/test/resources/test-users.xml"/>
+</Context>

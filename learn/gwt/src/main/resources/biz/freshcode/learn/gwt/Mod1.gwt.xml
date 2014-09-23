@@ -2,7 +2,6 @@
 <module rename-to='Mod1'>
     <!-- Inherit the core Web Toolkit stuff.                        -->
     <inherits name='com.google.gwt.user.User'/>
-    <inherits name='com.google.gwt.inject.Inject' />
 
     <inherits name='com.google.gwt.user.theme.standard.Standard'/>
 
@@ -54,6 +53,8 @@
     <!--Speed Tweak: I think this works despite appearing to compile 6 permutations...
     <set-property name="user.agent" value="safari"/>
     -->
+    <!-- For superdevmode -->
+    <add-linker name="xsiframe"/>
 
     <!-- TODO: How about some 'servlet' elements?-->
 
