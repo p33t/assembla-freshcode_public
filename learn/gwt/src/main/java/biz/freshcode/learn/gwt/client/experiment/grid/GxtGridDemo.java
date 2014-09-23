@@ -49,6 +49,7 @@ import com.sencha.gxt.widget.core.client.info.Info;
 import com.sencha.gxt.widget.core.client.menu.Item;
 import com.sencha.gxt.widget.core.client.menu.Menu;
 import com.sencha.gxt.widget.core.client.menu.MenuItem;
+import com.sencha.gxt.widget.core.client.tips.QuickTip;
 
 import java.util.Set;
 
@@ -63,6 +64,7 @@ import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.*;
  * Hover widgets, background images for cells, cell-to-cell drag-drop.
  */
 public class GxtGridDemo extends AbstractIsWidget {
+    private static final int STR_COL = 3;
     private MegaPopOverCell megaCell;
     private ListStore<RowEntity> store = new ListStore<RowEntity>(new RowEntity.IdProvider());
     private HtmlLayoutContainer hlc;
@@ -71,7 +73,6 @@ public class GxtGridDemo extends AbstractIsWidget {
             .add(hlc = new HtmlLayoutContainer("<p>x</p>"))
             .popup;
     private Grid<RowEntity> grid;
-    private static final int STR_COL = 3;
 
     public GxtGridDemo() {
         for (int i = 0; i < 24; i++) store.add(new RowEntity());
@@ -81,6 +82,7 @@ public class GxtGridDemo extends AbstractIsWidget {
     protected Widget createWidget() {
         ColumnConfig megaCol;
         ColumnConfig strCol;
+        //noinspection unchecked
         grid = new Grid(store, new ColumnModel(newListFrom(
                 new ColumnConfigBuilder(megaCol = new ColumnConfig(new ToStringValueProvider<RowEntity>()))
                         .header("To String")
@@ -106,6 +108,9 @@ public class GxtGridDemo extends AbstractIsWidget {
                 if (col != STR_COL) cellPopup(evt.getRowIndex(), col);
             }
         });
+
+        // register qtip effects
+        new QuickTip(grid);
 
         // Set up cell last otherwise a chicken and egg problem
         megaCol.setCell(megaCell = new MegaPopOverCell(grid));
@@ -185,20 +190,12 @@ public class GxtGridDemo extends AbstractIsWidget {
         }
     }
 
-
     private class MegaPopOverCell extends PopOverCell<String, HorizontalLayoutContainer> {
         Dropper dropper;
 
         public MegaPopOverCell(Grid grid) {
             // TODO: Factor out a 'HoverWidget' parent which is a HorizLayCont, manages a 'getCurrentIfAny()' method and has opt-in 'More' menu.
             this(new Dropper(grid), new HorizontalLayoutContainer());
-        }
-
-        @Override
-        protected void customizeHoverWidget(HorizontalLayoutContainer hoverWidget, Context cell) {
-            // demo of custom hover widget.  Enabled only for every second row.
-            if (cell.getIndex() % 2 == 0) hoverWidget.enable();
-            else hoverWidget.disable();
         }
 
         private MegaPopOverCell(Dropper dropper, HorizontalLayoutContainer hoverWidget) {
@@ -233,20 +230,6 @@ public class GxtGridDemo extends AbstractIsWidget {
             });
         }
 
-        private Menu createMenu() {
-            MenuItem mi;
-            Menu m = new MenuBuilder()
-                    .add(mi = new MenuItem("Item 1", Bundle2.INSTANCE.drag()))
-                    .menu;
-            mi.addSelectionHandler(new SelectionHandler<Item>() {
-                @Override
-                public void onSelection(SelectionEvent<Item> event) {
-                    Info.display("Event", "Item 1 clicked");
-                }
-            });
-            return m;
-        }
-
         @Override
         public void render(Context context, String value, SafeHtmlBuilder sb) {
             // Div causes events to echo...sb.appendHtmlConstant("<div style='color:blue; text-align:center;'>");
@@ -264,12 +247,40 @@ public class GxtGridDemo extends AbstractIsWidget {
                 else cls = "";
             }
             if (!cls.isEmpty()) cls = " class='" + cls + "'";
-            sb.appendHtmlConstant("<p" + cls + ">");
+            // Reference for tooltips: http://ui-programming.blogspot.com.au/2010/01/gxt-how-to-set-tooltip-for-grid-cell.html
+            // NOTE: Need to register the widget first with 'new QuickTip(w)'
+            String qtip = "";
+            if (!isEven(context)) qtip = " qtip='" + context.getColumn() + "," + context.getIndex() + "'";
+            sb.appendHtmlConstant("<p" + cls + qtip + ">");
             sb.appendEscaped(value);
             sb.appendHtmlConstant("</p>");
         }
-    }
 
+        @Override
+        protected void customizeHoverWidget(HorizontalLayoutContainer hoverWidget, Context cell) {
+            // demo of custom hover widget.  Enabled only for every second row.
+            if (isEven(cell)) hoverWidget.enable();
+            else hoverWidget.disable();
+        }
+
+        private boolean isEven(Context cell) {
+            return cell.getIndex() % 2 == 0;
+        }
+
+        private Menu createMenu() {
+            MenuItem mi;
+            Menu m = new MenuBuilder()
+                    .add(mi = new MenuItem("Item 1", Bundle2.INSTANCE.drag()))
+                    .menu;
+            mi.addSelectionHandler(new SelectionHandler<Item>() {
+                @Override
+                public void onSelection(SelectionEvent<Item> event) {
+                    Info.display("Event", "Item 1 clicked");
+                }
+            });
+            return m;
+        }
+    }
 
     private class Dropper extends DropSupport {
         public Dropper(Grid grid) {
