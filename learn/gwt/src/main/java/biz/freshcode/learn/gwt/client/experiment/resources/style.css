@@ -29,3 +29,11 @@
     width: 100%;  /* Otherwise image sets width */
     height: auto; /* Otherwise image sets height */
 }
+
+@sprite .dirtyBgnd4 {
+    gwt-image: "dirtyGif4";
+    background-repeat: no-repeat;
+    background-position: right top;
+    width: 100%;  /* Otherwise image sets width */
+    height: auto; /* Otherwise image sets height */
+}
