@@ -39,6 +39,9 @@ public class ResourcesDemo extends AbstractIsWidget {
                 .add(new HTMLPanelBuilder("<p>Background Image Alternative 3 @sprite</p>")
                         .addStyleName(STYLE.dirtyBgnd3())
                         .hTMLPanel)
+                .add(new HTMLPanelBuilder("<p>Background Image Alternative 4 positioned right</p>")
+                        .addStyleName(STYLE.dirtyBgnd4())
+                        .hTMLPanel)
                         .verticalLayoutContainer;
     }
 }

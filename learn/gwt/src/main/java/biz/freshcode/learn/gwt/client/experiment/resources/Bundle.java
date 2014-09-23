@@ -27,6 +27,10 @@ public interface Bundle extends ClientBundle {
 //    @ImageResource.ImageOptions(repeatStyle = ImageResource.RepeatStyle.None)
     ImageResource dirtyGif3();
 
+    @Source("dirty-right.gif")
+    ImageResource dirtyGif4();
+
+
     @Source("style.css")
     Style style();
 
@@ -40,5 +44,7 @@ public interface Bundle extends ClientBundle {
         String dirtyBgnd2();
 
         String dirtyBgnd3();
+
+        String dirtyBgnd4();
     }
 }
