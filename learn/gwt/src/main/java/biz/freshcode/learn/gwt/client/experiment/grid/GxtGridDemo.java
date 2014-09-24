@@ -117,6 +117,15 @@ public class GxtGridDemo extends AbstractIsWidget {
 
         setupEditing(strCol);
 
+        grid.setContextMenu(new MenuBuilder()
+                .add(new MenuItem("Custom", new SelectionHandler<MenuItem>() {
+                    @Override
+                    public void onSelection(SelectionEvent<MenuItem> event) {
+                        Info.display("Event", "Custom right click item");
+                    }
+                }))
+                .menu);
+
         grid.getView().setColumnLines(true); // Fixed in 3.0.0b
         return grid;
     }
