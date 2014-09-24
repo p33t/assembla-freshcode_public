@@ -247,6 +247,10 @@ public class GxtGridDemo extends AbstractIsWidget {
                 else cls = "";
             }
             if (!cls.isEmpty()) cls = " class='" + cls + "'";
+
+            // TODO: Rework this to use natural tooltip and MouseOverCell... qtip keeps getting hidden inappropriately
+            //       The trick is to not remove the existing tooltip once it is set... just 'disable' it.
+
             // Reference for tooltips: http://ui-programming.blogspot.com.au/2010/01/gxt-how-to-set-tooltip-for-grid-cell.html
             // NOTE: Need to register the widget first with 'new QuickTip(w)'
             String qtip = "";
