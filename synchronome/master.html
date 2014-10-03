@@ -47,6 +47,17 @@
 //            console.log("dur => " + durStr);
             theTiming.setAttribute("dur", durStr);
         }
+
+        function readTempo() {
+            var desired = prompt("Desired tempo", rate.toString());
+            if (desired != null) {
+                var i = parseInt(desired);
+                if (!isNaN(i)) {
+                    rate = i;
+                    sync();
+                }
+            }
+        }
     </script>
     <style type="text/css">
         body {
@@ -95,7 +106,7 @@
     <circle cx="120" cy="120" r="105" fill="none" stroke="#333" stroke-dasharray="43,12" stroke-width="21"
             stroke-linecap="butt" transform="rotate(2.5,120,120)"/>
 
-    <text id="tempoText" x="120" y="120" style="font-size:450%">199</text>
+    <text id="tempoText" x="120" y="120" style="font-size:450%" onclick="readTempo()">199</text>
     <text x="90" y="65" style="font-size: 250%" onclick="tempoChange(5)">&nbsp;+</text>
     <text x="90" y="175" style="font-size: 250%" onclick="tempoChange(-5)">&nbsp;-</text>
     <text x="150" y="65" style="font-size: 250%" onclick="tempoChange(1)">+&nbsp;</text>
