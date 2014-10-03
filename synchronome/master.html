@@ -1,8 +1,13 @@
 <!DOCTYPE html>
+<!--
+  Copyright 2014 Peter W Leong
+-->
 <html>
 <head>
     <title>SVG Rotation Timed</title>
     <script type="application/javascript">
+        var copyright = "Copyright 2014 Peter W Leong\nVisit http://synchronome.freshcode.biz for more information";
+
         // From http://stackoverflow.com/a/13651455
         if (window.attachEvent) {
             window.attachEvent('onresize', resizeSvg);
@@ -95,6 +100,7 @@
     <text x="90" y="175" style="font-size: 250%" onclick="tempoChange(-5)">&nbsp;-</text>
     <text x="150" y="65" style="font-size: 250%" onclick="tempoChange(1)">+&nbsp;</text>
     <text x="150" y="175" style="font-size: 250%" onclick="tempoChange(-1)">-&nbsp;</text>
+    <text x="15" y="20" style="font-size: 200%" onclick="alert(copyright)">&copy;</text>
 </svg>
 <script type="application/javascript">
     var theSvg = document.getElementsByTagName("svg").item(0);
