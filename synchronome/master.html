@@ -41,6 +41,7 @@
             if (rate < 10) rate = 10;
             if (rate > 180) rate = 180;
             theTempoText.innerHTML = rate.toString();
+            theRatioText.innerHTML = "x" + displayRatio.toString();
             var dur = 60 * displayRatio / rate;
             var durStr = dur.toString() + "s";
 //            console.log("dur => " + durStr);
@@ -60,6 +61,12 @@
                     setRate(i);
                 }
             }
+        }
+
+        function toggleDisplayRatio() {
+            if (displayRatio == 4) displayRatio = 3;
+            else displayRatio = 4;
+            sync();
         }
     </script>
     <style type="text/css">
@@ -109,17 +116,19 @@
     <circle cx="120" cy="120" r="105" fill="none" stroke="#333" stroke-dasharray="43,12" stroke-width="21"
             stroke-linecap="butt" transform="rotate(2.5,120,120)"/>
 
-    <text id="tempoText" x="120" y="120" style="font-size:450%" onclick="readTempo()">199</text>
+    <text x="120" y="120" style="font-size:450%" onclick="readTempo()" id="tempoText">199</text>
     <text x="90" y="65" style="font-size: 250%" onclick="tempoChange(5)">&nbsp;+</text>
     <text x="90" y="175" style="font-size: 250%" onclick="tempoChange(-5)">&nbsp;-</text>
     <text x="150" y="65" style="font-size: 250%" onclick="tempoChange(1)">+&nbsp;</text>
     <text x="150" y="175" style="font-size: 250%" onclick="tempoChange(-1)">-&nbsp;</text>
     <text x="15" y="20" style="font-size: 200%" onclick="alert(copyright)">&copy;</text>
+    <text x="220" y="220" style="font-size: 250%" onclick="toggleDisplayRatio()" id="ratioText">x?</text>
 </svg>
 <script type="application/javascript">
     var theSvg = document.getElementsByTagName("svg").item(0);
     var theTiming = document.getElementById("timing");
     var theTempoText = document.getElementById("tempoText");
+    var theRatioText = document.getElementById("ratioText");
     var rate = 30;
     var displayRatio = 4;
     resizeSvg();
