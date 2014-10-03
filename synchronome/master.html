@@ -34,8 +34,7 @@
         }
 
         function tempoChange(delta) {
-            rate = rate + delta;
-            sync();
+            setRate(rate + delta);
         }
 
         function sync() {
@@ -48,13 +47,17 @@
             theTiming.setAttribute("dur", durStr);
         }
 
+        function setRate(i) {
+            rate = i;
+            sync();
+        }
+
         function readTempo() {
             var desired = prompt("Desired tempo", rate.toString());
             if (desired != null) {
                 var i = parseInt(desired);
                 if (!isNaN(i)) {
-                    rate = i;
-                    sync();
+                    setRate(i);
                 }
             }
         }
