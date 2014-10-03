@@ -37,7 +37,7 @@
             if (rate < 10) rate = 10;
             if (rate > 180) rate = 180;
             theTempoText.innerHTML = rate.toString();
-            var dur = 60 / displayRatio / rate;
+            var dur = 60 * displayRatio / rate;
             var durStr = dur.toString() + "s";
 //            console.log("dur => " + durStr);
             theTiming.setAttribute("dur", durStr);
@@ -101,7 +101,7 @@
     var theTiming = document.getElementById("timing");
     var theTempoText = document.getElementById("tempoText");
     var rate = 30;
-    var displayRatio = 1;
+    var displayRatio = 4;
     resizeSvg();
     sync();
 </script>
