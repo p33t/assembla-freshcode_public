@@ -4,11 +4,10 @@
 -->
 <html>
 <head>
-    <title>SVG Rotation Timed</title>
+    <title>Synchronome</title>
     <script type="application/javascript">
         var copyright = "Copyright 2014 Peter W Leong\nMore information at\n   http://synchronome.freshcode.biz";
 
-        // From http://stackoverflow.com/a/13651455
         if (window.attachEvent) {
             window.attachEvent('onresize', resizeSvg);
         }
@@ -21,14 +20,6 @@
 
         function resizeSvg() {
             var side = Math.min(window.innerHeight, window.innerWidth);
-            /*
-            var svgs = document.getElementsByTagName('svg');
-            // Argh.. for each not allowed: http://stackoverflow.com/a/22754453
-            for (var i = 0; i < svgs.length; i++) {
-                svgs[i].setAttribute("height", side.toString());
-                svgs[i].setAttribute("width", side.toString());
-            }
-            */
             theSvg.setAttribute("height", side.toString());
             theSvg.setAttribute("width", side.toString());
         }
@@ -44,7 +35,6 @@
             theRatioText.innerHTML = "x" + displayRatio.toString();
             var dur = 60 * displayRatio / rate;
             var durStr = dur.toString() + "s";
-//            console.log("dur => " + durStr);
             theTiming.setAttribute("dur", durStr);
         }
 
@@ -91,17 +81,7 @@
     </style>
 </head>
 <body>
-<!-- Rotating stuff: http://www.petercollingridge.co.uk/blog/svg-animation-rotating-elements -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250">
-    <!--<circle cx="110" cy="10" r="10" stroke="#000" fill="#f00">-->
-    <!--<animateTransform attributeType="xml"-->
-    <!--attributeName="transform"-->
-    <!--type="rotate"-->
-    <!--from="0 110 110"-->
-    <!--to="360 110 110"-->
-    <!--dur="2s"-->
-    <!--repeatCount="indefinite"/>-->
-    <!--</circle>-->
     <circle cx="120" cy="120" r="105" fill="none" stroke="red" stroke-dasharray="43,700" stroke-width="20"
             stroke-linecap="butt">
         <animateTransform id="timing"
