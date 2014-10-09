@@ -38,7 +38,9 @@
             theTiming.setAttribute("dur", durStr);
 
             var line = (circumference / 2 / displayRatio) - gap;
-            theCircle.setAttribute("stroke-dasharray", line.toString() + "," + gap.toString());
+            var lineStr = line.toString();
+            theCircle.setAttribute("stroke-dasharray", lineStr + "," + gap.toString());
+            theRotor.setAttribute("stroke-dasharray", lineStr + "," + circumference.toString());
         }
 
         function setRate(i) {
@@ -57,7 +59,8 @@
         }
 
         function toggleDisplayRatio() {
-            if (displayRatio == 4) displayRatio = 3;
+            if (displayRatio == 5) displayRatio = 3;
+            else if (displayRatio == 4) displayRatio = 5;
             else displayRatio = 4;
             sync();
         }
@@ -86,7 +89,7 @@
 <body>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250">
     <circle cx="120" cy="120" r="105" fill="none" stroke="red" stroke-dasharray="43,700" stroke-width="20"
-            stroke-linecap="butt">
+            stroke-linecap="butt" id="rotor">
         <animateTransform id="timing"
                           attributeType="xml"
                           attributeName="transform"
@@ -113,6 +116,7 @@
     var theTempoText = document.getElementById("tempoText");
     var theRatioText = document.getElementById("ratioText");
     var theCircle = document.getElementById("circle");
+    var theRotor = document.getElementById("rotor");
     var rate = 30;
     var displayRatio = 4;
     var circumference = Math.PI * 2 * 105; // radius of circle
