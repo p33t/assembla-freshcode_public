@@ -36,6 +36,9 @@
             var dur = 60 * displayRatio / rate;
             var durStr = dur.toString() + "s";
             theTiming.setAttribute("dur", durStr);
+
+            var line = (circumference / 2 / displayRatio) - gap;
+            theCircle.setAttribute("stroke-dasharray", line.toString() + "," + gap.toString());
         }
 
         function setRate(i) {
@@ -94,7 +97,7 @@
                           repeatCount="indefinite"/>
     </circle>
     <circle cx="120" cy="120" r="105" fill="none" stroke="#333" stroke-dasharray="43,12" stroke-width="21"
-            stroke-linecap="butt" transform="rotate(2.5,120,120)"/>
+            stroke-linecap="butt" id="circle"/>
 
     <text x="120" y="120" style="font-size:450%" onclick="readTempo()" id="tempoText">199</text>
     <text x="90" y="65" style="font-size: 250%" onclick="tempoChange(5)">&nbsp;+</text>
@@ -109,8 +112,13 @@
     var theTiming = document.getElementById("timing");
     var theTempoText = document.getElementById("tempoText");
     var theRatioText = document.getElementById("ratioText");
+    var theCircle = document.getElementById("circle");
     var rate = 30;
     var displayRatio = 4;
+    var circumference = Math.PI * 2 * 105; // radius of circle
+    var gap = 12;
+    var rotate = gap / 2 * 360 / circumference + 90;
+    theCircle.setAttribute("transform", "rotate(" + rotate.toString() + ",120,120)");
     resizeSvg();
     sync();
 </script>
