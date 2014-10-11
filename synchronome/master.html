@@ -34,16 +34,27 @@
             if (rate > 180) rate = 180;
             theTempoText.innerHTML = rate.toString();
             theRatioText.innerHTML = "x" + displayRatio.toString();
-            var dur = 60 * displayRatio / rate;
+            var dur = 60 * displayRatio / rate / 2;
             var durStr = dur.toString() + "s";
             theTiming.setAttribute("dur", durStr);
 
-            var line = (circumference / 2 / displayRatio) - gap;
+            // TODO: Try dual coloured indicator to get 16ths
+            // Also a threshold for too much activity... reduce number of things going on.
+
+            var section = (circumference / 2 / displayRatio);
+            var line;
+            // gap can be a ratio of the section
+            if (gap < 1) line = section * (1-gap);
+            else line = section - gap;
+
             var lineStr = line.toString();
-            theCircle.setAttribute("stroke-dasharray", lineStr + "," + gap.toString());
-            var rotorDash = lineStr + "," + circumference.toString();
+            theCircle.setAttribute("stroke-dasharray", lineStr + "," + (section - line).toString());
+            var rotorDash = (line).toString() + "," + circumference.toString();
             theRotor.setAttribute("stroke-dasharray", rotorDash);
             theRotor2.setAttribute("stroke-dasharray", rotorDash);
+
+            var rotate = gap / 2 * 360 / circumference + 90;
+            theCircle.setAttribute("transform", "rotate(" + rotate.toString() + ",120,120)");
         }
 
         function setRate(i) {
@@ -124,12 +135,10 @@
     var theCircle = document.getElementById("circle");
     var theRotor = document.getElementById("rotor");
     var theRotor2 = document.getElementById("rotor2");
-    var rate = 30;
+    var rate = 80;
     var displayRatio = 4;
     var circumference = Math.PI * 2 * 105; // radius of circle
-    var gap = 12;
-    var rotate = gap / 2 * 360 / circumference + 90;
-    theCircle.setAttribute("transform", "rotate(" + rotate.toString() + ",120,120)");
+    var gap = .2;
     resizeSvg();
     sync();
 </script>
