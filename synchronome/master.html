@@ -34,14 +34,15 @@
             if (rate > 180) rate = 180;
             theTempoText.innerHTML = rate.toString();
             theRatioText.innerHTML = "x" + displayRatio.toString();
-            var dur = 60 * displayRatio / rate / 2;
+            var dur = 60 * displayRatio / rate;
             var durStr = dur.toString() + "s";
             theTiming.setAttribute("dur", durStr);
 
             // TODO: Try dual coloured indicator to get 16ths
             // Also a threshold for too much activity... reduce number of things going on.
 
-            var section = (circumference / 2 / displayRatio);
+            var sectionRatio = 1 / 2 / displayRatio;
+            var section = circumference * sectionRatio;
             var line;
             // gap can be a ratio of the section
             if (gap < 1) line = section * (1-gap);
@@ -49,12 +50,18 @@
 
             var lineStr = line.toString();
             theCircle.setAttribute("stroke-dasharray", lineStr + "," + (section - line).toString());
-            var rotorDash = (line).toString() + "," + circumference.toString();
-            theRotor.setAttribute("stroke-dasharray", rotorDash);
-            theRotor2.setAttribute("stroke-dasharray", rotorDash);
+            var rotor1Length = line;
+            var rotorDash1 = (rotor1Length).toString() + "," + circumference.toString();
+            // a 16th beat (in x4)
+            var rotor2Length = section / 2;
+            var rotorDash2 = (rotor2Length).toString() + "," + circumference.toString();
+            var rotor2Rotate = (rotor1Length - rotor2Length) * 360 / circumference;
+            theRotor.setAttribute("stroke-dasharray", rotorDash1);
+            theRotor2.setAttribute("stroke-dasharray", rotorDash2);
+            theRotor2.setAttribute("transform", "rotate(" + rotor2Rotate.toString() +",120,120)");
 
             var rotate = gap / 2 * 360 / circumference + 90;
-            theCircle.setAttribute("transform", "rotate(" + rotate.toString() + ",120,120)");
+            theCircle.setAttribute("transform", "rotate(" + rotor2Rotate.toString() + ",120,120)");
         }
 
         function setRate(i) {
@@ -105,8 +112,8 @@
     <g>
         <circle cx="120" cy="120" r="105" fill="none" stroke="red" stroke-dasharray="43,700" stroke-width="20"
                 stroke-linecap="butt" id="rotor"/>
-        <circle cx="120" cy="120" r="105" fill="none" stroke="yellow" stroke-dasharray="43,700" stroke-width="20"
-                stroke-linecap="butt" id="rotor2" transform="rotate(180,120,120)"/>
+        <circle cx="120" cy="120" r="105" fill="none" stroke="gold" stroke-dasharray="43,700" stroke-width="20"
+                stroke-linecap="butt" id="rotor2"/>
         <animateTransform id="timing"
                           attributeType="xml"
                           attributeName="transform"
