@@ -21,17 +21,17 @@ public class VerticalLayoutContainerBuilder extends biz.freshcode.learn.gwt.clie
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer#add(com.google.gwt.user.client.ui.IsWidget)
+     * @see com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer#add(com.google.gwt.user.client.ui.Widget)
      */
-    public VerticalLayoutContainerBuilder add(com.google.gwt.user.client.ui.IsWidget v0) {
+    public VerticalLayoutContainerBuilder add(com.google.gwt.user.client.ui.Widget v0) {
         verticalLayoutContainer.add(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer#add(com.google.gwt.user.client.ui.Widget)
+     * @see com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer#add(com.google.gwt.user.client.ui.IsWidget)
      */
-    public VerticalLayoutContainerBuilder add(com.google.gwt.user.client.ui.Widget v0) {
+    public VerticalLayoutContainerBuilder add(com.google.gwt.user.client.ui.IsWidget v0) {
         verticalLayoutContainer.add(v0);
         return this;
     }
@@ -141,17 +141,17 @@ public class VerticalLayoutContainerBuilder extends biz.freshcode.learn.gwt.clie
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer#setHeight(int)
+     * @see com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer#setHeight(java.lang.String)
      */
-    public VerticalLayoutContainerBuilder height(int v0) {
+    public VerticalLayoutContainerBuilder height(java.lang.String v0) {
         verticalLayoutContainer.setHeight(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer#setHeight(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer#setHeight(int)
      */
-    public VerticalLayoutContainerBuilder height(java.lang.String v0) {
+    public VerticalLayoutContainerBuilder height(int v0) {
         verticalLayoutContainer.setHeight(v0);
         return this;
     }
@@ -341,17 +341,17 @@ public class VerticalLayoutContainerBuilder extends biz.freshcode.learn.gwt.clie
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer#setWidth(int)
+     * @see com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer#setWidth(java.lang.String)
      */
-    public VerticalLayoutContainerBuilder width(int v0) {
+    public VerticalLayoutContainerBuilder width(java.lang.String v0) {
         verticalLayoutContainer.setWidth(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer#setWidth(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer#setWidth(int)
      */
-    public VerticalLayoutContainerBuilder width(java.lang.String v0) {
+    public VerticalLayoutContainerBuilder width(int v0) {
         verticalLayoutContainer.setWidth(v0);
         return this;
     }

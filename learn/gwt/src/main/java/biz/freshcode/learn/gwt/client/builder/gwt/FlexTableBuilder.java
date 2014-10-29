@@ -21,17 +21,17 @@ public class FlexTableBuilder extends biz.freshcode.learn.gwt.client.builder.Con
     }
 
     /**
-     * @see com.google.gwt.user.client.ui.FlexTable#add(com.google.gwt.user.client.ui.IsWidget)
+     * @see com.google.gwt.user.client.ui.FlexTable#add(com.google.gwt.user.client.ui.Widget)
      */
-    public FlexTableBuilder add(com.google.gwt.user.client.ui.IsWidget v0) {
+    public FlexTableBuilder add(com.google.gwt.user.client.ui.Widget v0) {
         flexTable.add(v0);
         return this;
     }
 
     /**
-     * @see com.google.gwt.user.client.ui.FlexTable#add(com.google.gwt.user.client.ui.Widget)
+     * @see com.google.gwt.user.client.ui.FlexTable#add(com.google.gwt.user.client.ui.IsWidget)
      */
-    public FlexTableBuilder add(com.google.gwt.user.client.ui.Widget v0) {
+    public FlexTableBuilder add(com.google.gwt.user.client.ui.IsWidget v0) {
         flexTable.add(v0);
         return this;
     }
@@ -63,8 +63,8 @@ public class FlexTableBuilder extends biz.freshcode.learn.gwt.client.builder.Con
     /**
      * @see com.google.gwt.user.client.ui.FlexTable#addTableListener(com.google.gwt.user.client.ui.TableListener)
      */
-    @Deprecated
     @SuppressWarnings("deprecation")
+    @Deprecated
     public FlexTableBuilder addTableListener(com.google.gwt.user.client.ui.TableListener v0) {
         flexTable.addTableListener(v0);
         return this;
@@ -95,17 +95,17 @@ public class FlexTableBuilder extends biz.freshcode.learn.gwt.client.builder.Con
     }
 
     /**
-     * @see com.google.gwt.user.client.ui.FlexTable#setHTML(int, int, com.google.gwt.safehtml.shared.SafeHtml)
+     * @see com.google.gwt.user.client.ui.FlexTable#setHTML(int, int, java.lang.String)
      */
-    public FlexTableBuilder hTML(int v0, int v1, com.google.gwt.safehtml.shared.SafeHtml v2) {
+    public FlexTableBuilder hTML(int v0, int v1, java.lang.String v2) {
         flexTable.setHTML(v0, v1, v2);
         return this;
     }
 
     /**
-     * @see com.google.gwt.user.client.ui.FlexTable#setHTML(int, int, java.lang.String)
+     * @see com.google.gwt.user.client.ui.FlexTable#setHTML(int, int, com.google.gwt.safehtml.shared.SafeHtml)
      */
-    public FlexTableBuilder hTML(int v0, int v1, java.lang.String v2) {
+    public FlexTableBuilder hTML(int v0, int v1, com.google.gwt.safehtml.shared.SafeHtml v2) {
         flexTable.setHTML(v0, v1, v2);
         return this;
     }

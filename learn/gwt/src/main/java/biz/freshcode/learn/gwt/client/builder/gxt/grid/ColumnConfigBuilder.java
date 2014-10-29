@@ -17,6 +17,13 @@ public class ColumnConfigBuilder<M, N> extends biz.freshcode.learn.gwt.client.bu
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.grid.ColumnConfig#ColumnConfig(com.sencha.gxt.core.client.ValueProvider, int, java.lang.String)
+     */
+    public ColumnConfigBuilder(com.sencha.gxt.core.client.ValueProvider<? super M, N> v0, int v1, java.lang.String v2) {
+        this(new ColumnConfig<M, N>(v0, v1, v2));
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.grid.ColumnConfig#ColumnConfig(com.sencha.gxt.core.client.ValueProvider, int, com.google.gwt.safehtml.shared.SafeHtml)
      */
     public ColumnConfigBuilder(com.sencha.gxt.core.client.ValueProvider<? super M, N> v0, int v1, com.google.gwt.safehtml.shared.SafeHtml v2) {
@@ -28,13 +35,6 @@ public class ColumnConfigBuilder<M, N> extends biz.freshcode.learn.gwt.client.bu
      */
     public ColumnConfigBuilder(com.sencha.gxt.core.client.ValueProvider<? super M, N> v0, int v1) {
         this(new ColumnConfig<M, N>(v0, v1));
-    }
-
-    /**
-     * @see com.sencha.gxt.widget.core.client.grid.ColumnConfig#ColumnConfig(com.sencha.gxt.core.client.ValueProvider, int, java.lang.String)
-     */
-    public ColumnConfigBuilder(com.sencha.gxt.core.client.ValueProvider<? super M, N> v0, int v1, java.lang.String v2) {
-        this(new ColumnConfig<M, N>(v0, v1, v2));
     }
 
     /**

@@ -17,17 +17,10 @@ public class IconButtonBuilder extends biz.freshcode.learn.gwt.client.builder.Co
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.button.IconButton#IconButton(com.sencha.gxt.widget.core.client.button.IconButton.IconButtonAppearance, com.sencha.gxt.widget.core.client.button.IconButton.IconConfig)
+     * @see com.sencha.gxt.widget.core.client.button.IconButton#IconButton(java.lang.String, com.sencha.gxt.widget.core.client.event.SelectEvent.SelectHandler)
      */
-    public IconButtonBuilder(com.sencha.gxt.widget.core.client.button.IconButton.IconButtonAppearance v0, com.sencha.gxt.widget.core.client.button.IconButton.IconConfig v1) {
+    public IconButtonBuilder(java.lang.String v0, com.sencha.gxt.widget.core.client.event.SelectEvent.SelectHandler v1) {
         this(new IconButton(v0, v1));
-    }
-
-    /**
-     * @see com.sencha.gxt.widget.core.client.button.IconButton#IconButton(com.sencha.gxt.widget.core.client.button.IconButton.IconConfig)
-     */
-    public IconButtonBuilder(com.sencha.gxt.widget.core.client.button.IconButton.IconConfig v0) {
-        this(new IconButton(v0));
     }
 
     /**
@@ -38,9 +31,16 @@ public class IconButtonBuilder extends biz.freshcode.learn.gwt.client.builder.Co
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.button.IconButton#IconButton(java.lang.String, com.sencha.gxt.widget.core.client.event.SelectEvent.SelectHandler)
+     * @see com.sencha.gxt.widget.core.client.button.IconButton#IconButton(com.sencha.gxt.widget.core.client.button.IconButton.IconConfig)
      */
-    public IconButtonBuilder(java.lang.String v0, com.sencha.gxt.widget.core.client.event.SelectEvent.SelectHandler v1) {
+    public IconButtonBuilder(com.sencha.gxt.widget.core.client.button.IconButton.IconConfig v0) {
+        this(new IconButton(v0));
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.button.IconButton#IconButton(com.sencha.gxt.widget.core.client.button.IconButton.IconButtonAppearance, com.sencha.gxt.widget.core.client.button.IconButton.IconConfig)
+     */
+    public IconButtonBuilder(com.sencha.gxt.widget.core.client.button.IconButton.IconButtonAppearance v0, com.sencha.gxt.widget.core.client.button.IconButton.IconConfig v1) {
         this(new IconButton(v0, v1));
     }
 
@@ -133,17 +133,17 @@ public class IconButtonBuilder extends biz.freshcode.learn.gwt.client.builder.Co
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.button.IconButton#setHeight(int)
+     * @see com.sencha.gxt.widget.core.client.button.IconButton#setHeight(java.lang.String)
      */
-    public IconButtonBuilder height(int v0) {
+    public IconButtonBuilder height(java.lang.String v0) {
         iconButton.setHeight(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.button.IconButton#setHeight(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.button.IconButton#setHeight(int)
      */
-    public IconButtonBuilder height(java.lang.String v0) {
+    public IconButtonBuilder height(int v0) {
         iconButton.setHeight(v0);
         return this;
     }
@@ -317,17 +317,17 @@ public class IconButtonBuilder extends biz.freshcode.learn.gwt.client.builder.Co
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.button.IconButton#setWidth(int)
+     * @see com.sencha.gxt.widget.core.client.button.IconButton#setWidth(java.lang.String)
      */
-    public IconButtonBuilder width(int v0) {
+    public IconButtonBuilder width(java.lang.String v0) {
         iconButton.setWidth(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.button.IconButton#setWidth(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.button.IconButton#setWidth(int)
      */
-    public IconButtonBuilder width(java.lang.String v0) {
+    public IconButtonBuilder width(int v0) {
         iconButton.setWidth(v0);
         return this;
     }

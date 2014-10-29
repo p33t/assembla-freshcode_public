@@ -17,6 +17,13 @@ public class HBoxLayoutContainerBuilder extends biz.freshcode.learn.gwt.client.b
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.container.HBoxLayoutContainer#HBoxLayoutContainer(com.sencha.gxt.widget.core.client.container.HBoxLayoutContainer.HBoxLayoutAlign)
+     */
+    public HBoxLayoutContainerBuilder(com.sencha.gxt.widget.core.client.container.HBoxLayoutContainer.HBoxLayoutAlign v0) {
+        this(new HBoxLayoutContainer(v0));
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.container.HBoxLayoutContainer#HBoxLayoutContainer(com.sencha.gxt.widget.core.client.container.HBoxLayoutContainer.HBoxLayoutContainerAppearance)
      */
     public HBoxLayoutContainerBuilder(com.sencha.gxt.widget.core.client.container.HBoxLayoutContainer.HBoxLayoutContainerAppearance v0) {
@@ -31,24 +38,17 @@ public class HBoxLayoutContainerBuilder extends biz.freshcode.learn.gwt.client.b
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.HBoxLayoutContainer#HBoxLayoutContainer(com.sencha.gxt.widget.core.client.container.HBoxLayoutContainer.HBoxLayoutAlign)
+     * @see com.sencha.gxt.widget.core.client.container.HBoxLayoutContainer#add(com.google.gwt.user.client.ui.Widget)
      */
-    public HBoxLayoutContainerBuilder(com.sencha.gxt.widget.core.client.container.HBoxLayoutContainer.HBoxLayoutAlign v0) {
-        this(new HBoxLayoutContainer(v0));
+    public HBoxLayoutContainerBuilder add(com.google.gwt.user.client.ui.Widget v0) {
+        hBoxLayoutContainer.add(v0);
+        return this;
     }
 
     /**
      * @see com.sencha.gxt.widget.core.client.container.HBoxLayoutContainer#add(com.google.gwt.user.client.ui.IsWidget)
      */
     public HBoxLayoutContainerBuilder add(com.google.gwt.user.client.ui.IsWidget v0) {
-        hBoxLayoutContainer.add(v0);
-        return this;
-    }
-
-    /**
-     * @see com.sencha.gxt.widget.core.client.container.HBoxLayoutContainer#add(com.google.gwt.user.client.ui.Widget)
-     */
-    public HBoxLayoutContainerBuilder add(com.google.gwt.user.client.ui.Widget v0) {
         hBoxLayoutContainer.add(v0);
         return this;
     }
@@ -174,17 +174,17 @@ public class HBoxLayoutContainerBuilder extends biz.freshcode.learn.gwt.client.b
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.HBoxLayoutContainer#setHeight(int)
+     * @see com.sencha.gxt.widget.core.client.container.HBoxLayoutContainer#setHeight(java.lang.String)
      */
-    public HBoxLayoutContainerBuilder height(int v0) {
+    public HBoxLayoutContainerBuilder height(java.lang.String v0) {
         hBoxLayoutContainer.setHeight(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.HBoxLayoutContainer#setHeight(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.container.HBoxLayoutContainer#setHeight(int)
      */
-    public HBoxLayoutContainerBuilder height(java.lang.String v0) {
+    public HBoxLayoutContainerBuilder height(int v0) {
         hBoxLayoutContainer.setHeight(v0);
         return this;
     }
@@ -382,17 +382,17 @@ public class HBoxLayoutContainerBuilder extends biz.freshcode.learn.gwt.client.b
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.HBoxLayoutContainer#setWidth(int)
+     * @see com.sencha.gxt.widget.core.client.container.HBoxLayoutContainer#setWidth(java.lang.String)
      */
-    public HBoxLayoutContainerBuilder width(int v0) {
+    public HBoxLayoutContainerBuilder width(java.lang.String v0) {
         hBoxLayoutContainer.setWidth(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.HBoxLayoutContainer#setWidth(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.container.HBoxLayoutContainer#setWidth(int)
      */
-    public HBoxLayoutContainerBuilder width(java.lang.String v0) {
+    public HBoxLayoutContainerBuilder width(int v0) {
         hBoxLayoutContainer.setWidth(v0);
         return this;
     }

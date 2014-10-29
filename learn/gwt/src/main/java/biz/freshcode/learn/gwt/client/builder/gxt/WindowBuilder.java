@@ -17,17 +17,17 @@ public class WindowBuilder extends biz.freshcode.learn.gwt.client.builder.Constr
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.Window#Window(com.sencha.gxt.widget.core.client.Window.WindowAppearance)
-     */
-    public WindowBuilder(com.sencha.gxt.widget.core.client.Window.WindowAppearance v0) {
-        this(new Window(v0));
-    }
-
-    /**
      * @see com.sencha.gxt.widget.core.client.Window#Window()
      */
     public WindowBuilder() {
         this(new Window());
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.Window#Window(com.sencha.gxt.widget.core.client.Window.WindowAppearance)
+     */
+    public WindowBuilder(com.sencha.gxt.widget.core.client.Window.WindowAppearance v0) {
+        this(new Window(v0));
     }
 
     /**
@@ -319,17 +319,17 @@ public class WindowBuilder extends biz.freshcode.learn.gwt.client.builder.Constr
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.Window#setHeight(int)
+     * @see com.sencha.gxt.widget.core.client.Window#setHeight(java.lang.String)
      */
-    public WindowBuilder height(int v0) {
+    public WindowBuilder height(java.lang.String v0) {
         window.setHeight(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.Window#setHeight(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.Window#setHeight(int)
      */
-    public WindowBuilder height(java.lang.String v0) {
+    public WindowBuilder height(int v0) {
         window.setHeight(v0);
         return this;
     }
@@ -599,14 +599,6 @@ public class WindowBuilder extends biz.freshcode.learn.gwt.client.builder.Constr
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.Window#setWidget(com.google.gwt.user.client.ui.IsWidget)
-     */
-    public WindowBuilder widget(com.google.gwt.user.client.ui.IsWidget v0) {
-        window.setWidget(v0);
-        return this;
-    }
-
-    /**
      * @see com.sencha.gxt.widget.core.client.Window#setWidget(com.google.gwt.user.client.ui.Widget)
      */
     public WindowBuilder widget(com.google.gwt.user.client.ui.Widget v0) {
@@ -615,10 +607,10 @@ public class WindowBuilder extends biz.freshcode.learn.gwt.client.builder.Constr
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.Window#setWidth(int)
+     * @see com.sencha.gxt.widget.core.client.Window#setWidget(com.google.gwt.user.client.ui.IsWidget)
      */
-    public WindowBuilder width(int v0) {
-        window.setWidth(v0);
+    public WindowBuilder widget(com.google.gwt.user.client.ui.IsWidget v0) {
+        window.setWidget(v0);
         return this;
     }
 
@@ -626,6 +618,14 @@ public class WindowBuilder extends biz.freshcode.learn.gwt.client.builder.Constr
      * @see com.sencha.gxt.widget.core.client.Window#setWidth(java.lang.String)
      */
     public WindowBuilder width(java.lang.String v0) {
+        window.setWidth(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.Window#setWidth(int)
+     */
+    public WindowBuilder width(int v0) {
         window.setWidth(v0);
         return this;
     }

@@ -17,10 +17,10 @@ public class GroupSummaryViewBuilder<M> extends biz.freshcode.learn.gwt.client.b
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.grid.GroupSummaryView#GroupSummaryView()
+     * @see com.sencha.gxt.widget.core.client.grid.GroupSummaryView#GroupSummaryView(com.sencha.gxt.widget.core.client.grid.GroupSummaryView.GroupSummaryViewAppearance)
      */
-    public GroupSummaryViewBuilder() {
-        this(new GroupSummaryView<M>());
+    public GroupSummaryViewBuilder(com.sencha.gxt.widget.core.client.grid.GroupSummaryView.GroupSummaryViewAppearance v0) {
+        this(new GroupSummaryView<M>(v0));
     }
 
     /**
@@ -31,10 +31,10 @@ public class GroupSummaryViewBuilder<M> extends biz.freshcode.learn.gwt.client.b
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.grid.GroupSummaryView#GroupSummaryView(com.sencha.gxt.widget.core.client.grid.GroupSummaryView.GroupSummaryViewAppearance)
+     * @see com.sencha.gxt.widget.core.client.grid.GroupSummaryView#GroupSummaryView()
      */
-    public GroupSummaryViewBuilder(com.sencha.gxt.widget.core.client.grid.GroupSummaryView.GroupSummaryViewAppearance v0) {
-        this(new GroupSummaryView<M>(v0));
+    public GroupSummaryViewBuilder() {
+        this(new GroupSummaryView<M>());
     }
 
     /**

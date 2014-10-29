@@ -136,17 +136,17 @@ public class SimpleContainerBuilder extends biz.freshcode.learn.gwt.client.build
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.SimpleContainer#setHeight(int)
+     * @see com.sencha.gxt.widget.core.client.container.SimpleContainer#setHeight(java.lang.String)
      */
-    public SimpleContainerBuilder height(int v0) {
+    public SimpleContainerBuilder height(java.lang.String v0) {
         simpleContainer.setHeight(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.SimpleContainer#setHeight(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.container.SimpleContainer#setHeight(int)
      */
-    public SimpleContainerBuilder height(java.lang.String v0) {
+    public SimpleContainerBuilder height(int v0) {
         simpleContainer.setHeight(v0);
         return this;
     }
@@ -328,14 +328,6 @@ public class SimpleContainerBuilder extends biz.freshcode.learn.gwt.client.build
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.SimpleContainer#setWidget(com.google.gwt.user.client.ui.IsWidget)
-     */
-    public SimpleContainerBuilder widget(com.google.gwt.user.client.ui.IsWidget v0) {
-        simpleContainer.setWidget(v0);
-        return this;
-    }
-
-    /**
      * @see com.sencha.gxt.widget.core.client.container.SimpleContainer#setWidget(com.google.gwt.user.client.ui.Widget)
      */
     public SimpleContainerBuilder widget(com.google.gwt.user.client.ui.Widget v0) {
@@ -344,10 +336,10 @@ public class SimpleContainerBuilder extends biz.freshcode.learn.gwt.client.build
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.SimpleContainer#setWidth(int)
+     * @see com.sencha.gxt.widget.core.client.container.SimpleContainer#setWidget(com.google.gwt.user.client.ui.IsWidget)
      */
-    public SimpleContainerBuilder width(int v0) {
-        simpleContainer.setWidth(v0);
+    public SimpleContainerBuilder widget(com.google.gwt.user.client.ui.IsWidget v0) {
+        simpleContainer.setWidget(v0);
         return this;
     }
 
@@ -355,6 +347,14 @@ public class SimpleContainerBuilder extends biz.freshcode.learn.gwt.client.build
      * @see com.sencha.gxt.widget.core.client.container.SimpleContainer#setWidth(java.lang.String)
      */
     public SimpleContainerBuilder width(java.lang.String v0) {
+        simpleContainer.setWidth(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.container.SimpleContainer#setWidth(int)
+     */
+    public SimpleContainerBuilder width(int v0) {
         simpleContainer.setWidth(v0);
         return this;
     }

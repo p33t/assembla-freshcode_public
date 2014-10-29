@@ -31,17 +31,17 @@ public class CssFloatLayoutContainerBuilder extends biz.freshcode.learn.gwt.clie
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.CssFloatLayoutContainer#add(com.google.gwt.user.client.ui.IsWidget)
+     * @see com.sencha.gxt.widget.core.client.container.CssFloatLayoutContainer#add(com.google.gwt.user.client.ui.Widget)
      */
-    public CssFloatLayoutContainerBuilder add(com.google.gwt.user.client.ui.IsWidget v0) {
+    public CssFloatLayoutContainerBuilder add(com.google.gwt.user.client.ui.Widget v0) {
         cssFloatLayoutContainer.add(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.CssFloatLayoutContainer#add(com.google.gwt.user.client.ui.Widget)
+     * @see com.sencha.gxt.widget.core.client.container.CssFloatLayoutContainer#add(com.google.gwt.user.client.ui.IsWidget)
      */
-    public CssFloatLayoutContainerBuilder add(com.google.gwt.user.client.ui.Widget v0) {
+    public CssFloatLayoutContainerBuilder add(com.google.gwt.user.client.ui.IsWidget v0) {
         cssFloatLayoutContainer.add(v0);
         return this;
     }
@@ -151,17 +151,17 @@ public class CssFloatLayoutContainerBuilder extends biz.freshcode.learn.gwt.clie
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.CssFloatLayoutContainer#setHeight(int)
+     * @see com.sencha.gxt.widget.core.client.container.CssFloatLayoutContainer#setHeight(java.lang.String)
      */
-    public CssFloatLayoutContainerBuilder height(int v0) {
+    public CssFloatLayoutContainerBuilder height(java.lang.String v0) {
         cssFloatLayoutContainer.setHeight(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.CssFloatLayoutContainer#setHeight(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.container.CssFloatLayoutContainer#setHeight(int)
      */
-    public CssFloatLayoutContainerBuilder height(java.lang.String v0) {
+    public CssFloatLayoutContainerBuilder height(int v0) {
         cssFloatLayoutContainer.setHeight(v0);
         return this;
     }
@@ -359,17 +359,17 @@ public class CssFloatLayoutContainerBuilder extends biz.freshcode.learn.gwt.clie
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.CssFloatLayoutContainer#setWidth(int)
+     * @see com.sencha.gxt.widget.core.client.container.CssFloatLayoutContainer#setWidth(java.lang.String)
      */
-    public CssFloatLayoutContainerBuilder width(int v0) {
+    public CssFloatLayoutContainerBuilder width(java.lang.String v0) {
         cssFloatLayoutContainer.setWidth(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.CssFloatLayoutContainer#setWidth(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.container.CssFloatLayoutContainer#setWidth(int)
      */
-    public CssFloatLayoutContainerBuilder width(java.lang.String v0) {
+    public CssFloatLayoutContainerBuilder width(int v0) {
         cssFloatLayoutContainer.setWidth(v0);
         return this;
     }

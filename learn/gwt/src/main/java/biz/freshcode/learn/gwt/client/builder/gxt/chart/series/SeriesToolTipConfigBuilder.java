@@ -61,17 +61,17 @@ public class SeriesToolTipConfigBuilder<M> extends biz.freshcode.learn.gwt.clien
     }
 
     /**
-     * @see com.sencha.gxt.chart.client.chart.series.SeriesToolTipConfig#setBodyHtml(com.google.gwt.safehtml.shared.SafeHtml)
+     * @see com.sencha.gxt.chart.client.chart.series.SeriesToolTipConfig#setBodyHtml(java.lang.String)
      */
-    public SeriesToolTipConfigBuilder<M> bodyHtml(com.google.gwt.safehtml.shared.SafeHtml v0) {
+    public SeriesToolTipConfigBuilder<M> bodyHtml(java.lang.String v0) {
         seriesToolTipConfig.setBodyHtml(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.chart.client.chart.series.SeriesToolTipConfig#setBodyHtml(java.lang.String)
+     * @see com.sencha.gxt.chart.client.chart.series.SeriesToolTipConfig#setBodyHtml(com.google.gwt.safehtml.shared.SafeHtml)
      */
-    public SeriesToolTipConfigBuilder<M> bodyHtml(java.lang.String v0) {
+    public SeriesToolTipConfigBuilder<M> bodyHtml(com.google.gwt.safehtml.shared.SafeHtml v0) {
         seriesToolTipConfig.setBodyHtml(v0);
         return this;
     }
@@ -189,17 +189,17 @@ public class SeriesToolTipConfigBuilder<M> extends biz.freshcode.learn.gwt.clien
     }
 
     /**
-     * @see com.sencha.gxt.chart.client.chart.series.SeriesToolTipConfig#setTitleHtml(com.google.gwt.safehtml.shared.SafeHtml)
+     * @see com.sencha.gxt.chart.client.chart.series.SeriesToolTipConfig#setTitleHtml(java.lang.String)
      */
-    public SeriesToolTipConfigBuilder<M> titleHtml(com.google.gwt.safehtml.shared.SafeHtml v0) {
+    public SeriesToolTipConfigBuilder<M> titleHtml(java.lang.String v0) {
         seriesToolTipConfig.setTitleHtml(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.chart.client.chart.series.SeriesToolTipConfig#setTitleHtml(java.lang.String)
+     * @see com.sencha.gxt.chart.client.chart.series.SeriesToolTipConfig#setTitleHtml(com.google.gwt.safehtml.shared.SafeHtml)
      */
-    public SeriesToolTipConfigBuilder<M> titleHtml(java.lang.String v0) {
+    public SeriesToolTipConfigBuilder<M> titleHtml(com.google.gwt.safehtml.shared.SafeHtml v0) {
         seriesToolTipConfig.setTitleHtml(v0);
         return this;
     }

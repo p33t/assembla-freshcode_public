@@ -167,17 +167,17 @@ public class ChartBuilder<M> extends biz.freshcode.learn.gwt.client.builder.Cons
     }
 
     /**
-     * @see com.sencha.gxt.chart.client.chart.Chart#setDefaultInsets(int)
+     * @see com.sencha.gxt.chart.client.chart.Chart#setDefaultInsets(com.sencha.gxt.core.client.util.Region)
      */
-    public ChartBuilder<M> defaultInsets(int v0) {
+    public ChartBuilder<M> defaultInsets(com.sencha.gxt.core.client.util.Region v0) {
         chart.setDefaultInsets(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.chart.client.chart.Chart#setDefaultInsets(com.sencha.gxt.core.client.util.Region)
+     * @see com.sencha.gxt.chart.client.chart.Chart#setDefaultInsets(int)
      */
-    public ChartBuilder<M> defaultInsets(com.sencha.gxt.core.client.util.Region v0) {
+    public ChartBuilder<M> defaultInsets(int v0) {
         chart.setDefaultInsets(v0);
         return this;
     }
@@ -199,17 +199,17 @@ public class ChartBuilder<M> extends biz.freshcode.learn.gwt.client.builder.Cons
     }
 
     /**
-     * @see com.sencha.gxt.chart.client.chart.Chart#setHeight(int)
+     * @see com.sencha.gxt.chart.client.chart.Chart#setHeight(java.lang.String)
      */
-    public ChartBuilder<M> height(int v0) {
+    public ChartBuilder<M> height(java.lang.String v0) {
         chart.setHeight(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.chart.client.chart.Chart#setHeight(java.lang.String)
+     * @see com.sencha.gxt.chart.client.chart.Chart#setHeight(int)
      */
-    public ChartBuilder<M> height(java.lang.String v0) {
+    public ChartBuilder<M> height(int v0) {
         chart.setHeight(v0);
         return this;
     }
@@ -423,17 +423,17 @@ public class ChartBuilder<M> extends biz.freshcode.learn.gwt.client.builder.Cons
     }
 
     /**
-     * @see com.sencha.gxt.chart.client.chart.Chart#setWidth(int)
+     * @see com.sencha.gxt.chart.client.chart.Chart#setWidth(java.lang.String)
      */
-    public ChartBuilder<M> width(int v0) {
+    public ChartBuilder<M> width(java.lang.String v0) {
         chart.setWidth(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.chart.client.chart.Chart#setWidth(java.lang.String)
+     * @see com.sencha.gxt.chart.client.chart.Chart#setWidth(int)
      */
-    public ChartBuilder<M> width(java.lang.String v0) {
+    public ChartBuilder<M> width(int v0) {
         chart.setWidth(v0);
         return this;
     }

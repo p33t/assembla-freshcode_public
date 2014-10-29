@@ -17,17 +17,17 @@ public class PopupPanelBuilder extends biz.freshcode.learn.gwt.client.builder.Co
     }
 
     /**
-     * @see com.google.gwt.user.client.ui.PopupPanel#PopupPanel(boolean)
-     */
-    public PopupPanelBuilder(boolean v0) {
-        this(new PopupPanel(v0));
-    }
-
-    /**
      * @see com.google.gwt.user.client.ui.PopupPanel#PopupPanel(boolean, boolean)
      */
     public PopupPanelBuilder(boolean v0, boolean v1) {
         this(new PopupPanel(v0, v1));
+    }
+
+    /**
+     * @see com.google.gwt.user.client.ui.PopupPanel#PopupPanel(boolean)
+     */
+    public PopupPanelBuilder(boolean v0) {
+        this(new PopupPanel(v0));
     }
 
     /**
@@ -64,8 +64,8 @@ public class PopupPanelBuilder extends biz.freshcode.learn.gwt.client.builder.Co
     /**
      * @see com.google.gwt.user.client.ui.PopupPanel#addPopupListener(com.google.gwt.user.client.ui.PopupListener)
      */
-    @Deprecated
     @SuppressWarnings("deprecation")
+    @Deprecated
     public PopupPanelBuilder addPopupListener(com.google.gwt.user.client.ui.PopupListener v0) {
         popupPanel.addPopupListener(v0);
         return this;

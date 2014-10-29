@@ -173,17 +173,17 @@ public class PopupBuilder extends biz.freshcode.learn.gwt.client.builder.Constru
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.Popup#setHeight(int)
+     * @see com.sencha.gxt.widget.core.client.Popup#setHeight(java.lang.String)
      */
-    public PopupBuilder height(int v0) {
+    public PopupBuilder height(java.lang.String v0) {
         popup.setHeight(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.Popup#setHeight(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.Popup#setHeight(int)
      */
-    public PopupBuilder height(java.lang.String v0) {
+    public PopupBuilder height(int v0) {
         popup.setHeight(v0);
         return this;
     }
@@ -365,14 +365,6 @@ public class PopupBuilder extends biz.freshcode.learn.gwt.client.builder.Constru
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.Popup#setWidget(com.google.gwt.user.client.ui.IsWidget)
-     */
-    public PopupBuilder widget(com.google.gwt.user.client.ui.IsWidget v0) {
-        popup.setWidget(v0);
-        return this;
-    }
-
-    /**
      * @see com.sencha.gxt.widget.core.client.Popup#setWidget(com.google.gwt.user.client.ui.Widget)
      */
     public PopupBuilder widget(com.google.gwt.user.client.ui.Widget v0) {
@@ -381,10 +373,10 @@ public class PopupBuilder extends biz.freshcode.learn.gwt.client.builder.Constru
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.Popup#setWidth(int)
+     * @see com.sencha.gxt.widget.core.client.Popup#setWidget(com.google.gwt.user.client.ui.IsWidget)
      */
-    public PopupBuilder width(int v0) {
-        popup.setWidth(v0);
+    public PopupBuilder widget(com.google.gwt.user.client.ui.IsWidget v0) {
+        popup.setWidget(v0);
         return this;
     }
 
@@ -392,6 +384,14 @@ public class PopupBuilder extends biz.freshcode.learn.gwt.client.builder.Constru
      * @see com.sencha.gxt.widget.core.client.Popup#setWidth(java.lang.String)
      */
     public PopupBuilder width(java.lang.String v0) {
+        popup.setWidth(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.Popup#setWidth(int)
+     */
+    public PopupBuilder width(int v0) {
         popup.setWidth(v0);
         return this;
     }

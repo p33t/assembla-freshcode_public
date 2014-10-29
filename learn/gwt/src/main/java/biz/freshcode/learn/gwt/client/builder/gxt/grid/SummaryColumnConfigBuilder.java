@@ -17,17 +17,10 @@ public class SummaryColumnConfigBuilder<M, N> extends biz.freshcode.learn.gwt.cl
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.grid.SummaryColumnConfig#SummaryColumnConfig(com.sencha.gxt.core.client.ValueProvider)
+     * @see com.sencha.gxt.widget.core.client.grid.SummaryColumnConfig#SummaryColumnConfig(com.sencha.gxt.core.client.ValueProvider, int, java.lang.String)
      */
-    public SummaryColumnConfigBuilder(com.sencha.gxt.core.client.ValueProvider<? super M, N> v0) {
-        this(new SummaryColumnConfig<M, N>(v0));
-    }
-
-    /**
-     * @see com.sencha.gxt.widget.core.client.grid.SummaryColumnConfig#SummaryColumnConfig(com.sencha.gxt.core.client.ValueProvider, int)
-     */
-    public SummaryColumnConfigBuilder(com.sencha.gxt.core.client.ValueProvider<? super M, N> v0, int v1) {
-        this(new SummaryColumnConfig<M, N>(v0, v1));
+    public SummaryColumnConfigBuilder(com.sencha.gxt.core.client.ValueProvider<? super M, N> v0, int v1, java.lang.String v2) {
+        this(new SummaryColumnConfig<M, N>(v0, v1, v2));
     }
 
     /**
@@ -38,10 +31,17 @@ public class SummaryColumnConfigBuilder<M, N> extends biz.freshcode.learn.gwt.cl
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.grid.SummaryColumnConfig#SummaryColumnConfig(com.sencha.gxt.core.client.ValueProvider, int, java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.grid.SummaryColumnConfig#SummaryColumnConfig(com.sencha.gxt.core.client.ValueProvider, int)
      */
-    public SummaryColumnConfigBuilder(com.sencha.gxt.core.client.ValueProvider<? super M, N> v0, int v1, java.lang.String v2) {
-        this(new SummaryColumnConfig<M, N>(v0, v1, v2));
+    public SummaryColumnConfigBuilder(com.sencha.gxt.core.client.ValueProvider<? super M, N> v0, int v1) {
+        this(new SummaryColumnConfig<M, N>(v0, v1));
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.grid.SummaryColumnConfig#SummaryColumnConfig(com.sencha.gxt.core.client.ValueProvider)
+     */
+    public SummaryColumnConfigBuilder(com.sencha.gxt.core.client.ValueProvider<? super M, N> v0) {
+        this(new SummaryColumnConfig<M, N>(v0));
     }
 
     /**
