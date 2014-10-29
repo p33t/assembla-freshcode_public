@@ -17,17 +17,17 @@ public class DialogBuilder extends biz.freshcode.learn.gwt.client.builder.Constr
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.Dialog#Dialog(com.sencha.gxt.widget.core.client.Window.WindowAppearance)
-     */
-    public DialogBuilder(com.sencha.gxt.widget.core.client.Window.WindowAppearance v0) {
-        this(new Dialog(v0));
-    }
-
-    /**
      * @see com.sencha.gxt.widget.core.client.Dialog#Dialog()
      */
     public DialogBuilder() {
         this(new Dialog());
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.Dialog#Dialog(com.sencha.gxt.widget.core.client.Window.WindowAppearance)
+     */
+    public DialogBuilder(com.sencha.gxt.widget.core.client.Window.WindowAppearance v0) {
+        this(new Dialog(v0));
     }
 
     /**
@@ -327,17 +327,17 @@ public class DialogBuilder extends biz.freshcode.learn.gwt.client.builder.Constr
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.Dialog#setHeight(int)
+     * @see com.sencha.gxt.widget.core.client.Dialog#setHeight(java.lang.String)
      */
-    public DialogBuilder height(int v0) {
+    public DialogBuilder height(java.lang.String v0) {
         dialog.setHeight(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.Dialog#setHeight(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.Dialog#setHeight(int)
      */
-    public DialogBuilder height(java.lang.String v0) {
+    public DialogBuilder height(int v0) {
         dialog.setHeight(v0);
         return this;
     }
@@ -623,14 +623,6 @@ public class DialogBuilder extends biz.freshcode.learn.gwt.client.builder.Constr
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.Dialog#setWidget(com.google.gwt.user.client.ui.IsWidget)
-     */
-    public DialogBuilder widget(com.google.gwt.user.client.ui.IsWidget v0) {
-        dialog.setWidget(v0);
-        return this;
-    }
-
-    /**
      * @see com.sencha.gxt.widget.core.client.Dialog#setWidget(com.google.gwt.user.client.ui.Widget)
      */
     public DialogBuilder widget(com.google.gwt.user.client.ui.Widget v0) {
@@ -639,10 +631,10 @@ public class DialogBuilder extends biz.freshcode.learn.gwt.client.builder.Constr
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.Dialog#setWidth(int)
+     * @see com.sencha.gxt.widget.core.client.Dialog#setWidget(com.google.gwt.user.client.ui.IsWidget)
      */
-    public DialogBuilder width(int v0) {
-        dialog.setWidth(v0);
+    public DialogBuilder widget(com.google.gwt.user.client.ui.IsWidget v0) {
+        dialog.setWidget(v0);
         return this;
     }
 
@@ -650,6 +642,14 @@ public class DialogBuilder extends biz.freshcode.learn.gwt.client.builder.Constr
      * @see com.sencha.gxt.widget.core.client.Dialog#setWidth(java.lang.String)
      */
     public DialogBuilder width(java.lang.String v0) {
+        dialog.setWidth(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.Dialog#setWidth(int)
+     */
+    public DialogBuilder width(int v0) {
         dialog.setWidth(v0);
         return this;
     }

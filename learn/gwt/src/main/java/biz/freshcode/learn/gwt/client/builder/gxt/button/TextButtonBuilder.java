@@ -155,14 +155,6 @@ public class TextButtonBuilder extends biz.freshcode.learn.gwt.client.builder.Co
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.button.TextButton#setHTML(com.google.gwt.safehtml.shared.SafeHtml)
-     */
-    public TextButtonBuilder hTML(com.google.gwt.safehtml.shared.SafeHtml v0) {
-        textButton.setHTML(v0);
-        return this;
-    }
-
-    /**
      * @see com.sencha.gxt.widget.core.client.button.TextButton#setHTML(java.lang.String)
      */
     public TextButtonBuilder hTML(java.lang.String v0) {
@@ -171,10 +163,10 @@ public class TextButtonBuilder extends biz.freshcode.learn.gwt.client.builder.Co
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.button.TextButton#setHeight(int)
+     * @see com.sencha.gxt.widget.core.client.button.TextButton#setHTML(com.google.gwt.safehtml.shared.SafeHtml)
      */
-    public TextButtonBuilder height(int v0) {
-        textButton.setHeight(v0);
+    public TextButtonBuilder hTML(com.google.gwt.safehtml.shared.SafeHtml v0) {
+        textButton.setHTML(v0);
         return this;
     }
 
@@ -182,6 +174,14 @@ public class TextButtonBuilder extends biz.freshcode.learn.gwt.client.builder.Co
      * @see com.sencha.gxt.widget.core.client.button.TextButton#setHeight(java.lang.String)
      */
     public TextButtonBuilder height(java.lang.String v0) {
+        textButton.setHeight(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.button.TextButton#setHeight(int)
+     */
+    public TextButtonBuilder height(int v0) {
         textButton.setHeight(v0);
         return this;
     }
@@ -443,17 +443,17 @@ public class TextButtonBuilder extends biz.freshcode.learn.gwt.client.builder.Co
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.button.TextButton#setWidth(int)
+     * @see com.sencha.gxt.widget.core.client.button.TextButton#setWidth(java.lang.String)
      */
-    public TextButtonBuilder width(int v0) {
+    public TextButtonBuilder width(java.lang.String v0) {
         textButton.setWidth(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.button.TextButton#setWidth(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.button.TextButton#setWidth(int)
      */
-    public TextButtonBuilder width(java.lang.String v0) {
+    public TextButtonBuilder width(int v0) {
         textButton.setWidth(v0);
         return this;
     }

@@ -133,17 +133,17 @@ public class ToolButtonBuilder extends biz.freshcode.learn.gwt.client.builder.Co
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.button.ToolButton#setHeight(int)
+     * @see com.sencha.gxt.widget.core.client.button.ToolButton#setHeight(java.lang.String)
      */
-    public ToolButtonBuilder height(int v0) {
+    public ToolButtonBuilder height(java.lang.String v0) {
         toolButton.setHeight(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.button.ToolButton#setHeight(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.button.ToolButton#setHeight(int)
      */
-    public ToolButtonBuilder height(java.lang.String v0) {
+    public ToolButtonBuilder height(int v0) {
         toolButton.setHeight(v0);
         return this;
     }
@@ -317,17 +317,17 @@ public class ToolButtonBuilder extends biz.freshcode.learn.gwt.client.builder.Co
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.button.ToolButton#setWidth(int)
+     * @see com.sencha.gxt.widget.core.client.button.ToolButton#setWidth(java.lang.String)
      */
-    public ToolButtonBuilder width(int v0) {
+    public ToolButtonBuilder width(java.lang.String v0) {
         toolButton.setWidth(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.button.ToolButton#setWidth(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.button.ToolButton#setWidth(int)
      */
-    public ToolButtonBuilder width(java.lang.String v0) {
+    public ToolButtonBuilder width(int v0) {
         toolButton.setWidth(v0);
         return this;
     }

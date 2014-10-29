@@ -17,10 +17,10 @@ public class ToolTipConfigBuilder extends biz.freshcode.learn.gwt.client.builder
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.tips.ToolTipConfig#ToolTipConfig()
+     * @see com.sencha.gxt.widget.core.client.tips.ToolTipConfig#ToolTipConfig(java.lang.String, java.lang.String)
      */
-    public ToolTipConfigBuilder() {
-        this(new ToolTipConfig());
+    public ToolTipConfigBuilder(java.lang.String v0, java.lang.String v1) {
+        this(new ToolTipConfig(v0, v1));
     }
 
     /**
@@ -31,10 +31,10 @@ public class ToolTipConfigBuilder extends biz.freshcode.learn.gwt.client.builder
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.tips.ToolTipConfig#ToolTipConfig(java.lang.String, java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.tips.ToolTipConfig#ToolTipConfig()
      */
-    public ToolTipConfigBuilder(java.lang.String v0, java.lang.String v1) {
-        this(new ToolTipConfig(v0, v1));
+    public ToolTipConfigBuilder() {
+        this(new ToolTipConfig());
     }
 
     /**
@@ -78,17 +78,17 @@ public class ToolTipConfigBuilder extends biz.freshcode.learn.gwt.client.builder
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.tips.ToolTipConfig#setBodyHtml(com.google.gwt.safehtml.shared.SafeHtml)
+     * @see com.sencha.gxt.widget.core.client.tips.ToolTipConfig#setBodyHtml(java.lang.String)
      */
-    public ToolTipConfigBuilder bodyHtml(com.google.gwt.safehtml.shared.SafeHtml v0) {
+    public ToolTipConfigBuilder bodyHtml(java.lang.String v0) {
         toolTipConfig.setBodyHtml(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.tips.ToolTipConfig#setBodyHtml(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.tips.ToolTipConfig#setBodyHtml(com.google.gwt.safehtml.shared.SafeHtml)
      */
-    public ToolTipConfigBuilder bodyHtml(java.lang.String v0) {
+    public ToolTipConfigBuilder bodyHtml(com.google.gwt.safehtml.shared.SafeHtml v0) {
         toolTipConfig.setBodyHtml(v0);
         return this;
     }
@@ -190,17 +190,17 @@ public class ToolTipConfigBuilder extends biz.freshcode.learn.gwt.client.builder
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.tips.ToolTipConfig#setTitleHtml(com.google.gwt.safehtml.shared.SafeHtml)
+     * @see com.sencha.gxt.widget.core.client.tips.ToolTipConfig#setTitleHtml(java.lang.String)
      */
-    public ToolTipConfigBuilder titleHtml(com.google.gwt.safehtml.shared.SafeHtml v0) {
+    public ToolTipConfigBuilder titleHtml(java.lang.String v0) {
         toolTipConfig.setTitleHtml(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.tips.ToolTipConfig#setTitleHtml(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.tips.ToolTipConfig#setTitleHtml(com.google.gwt.safehtml.shared.SafeHtml)
      */
-    public ToolTipConfigBuilder titleHtml(java.lang.String v0) {
+    public ToolTipConfigBuilder titleHtml(com.google.gwt.safehtml.shared.SafeHtml v0) {
         toolTipConfig.setTitleHtml(v0);
         return this;
     }

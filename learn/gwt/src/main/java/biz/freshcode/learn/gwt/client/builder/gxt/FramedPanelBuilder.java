@@ -255,17 +255,17 @@ public class FramedPanelBuilder extends biz.freshcode.learn.gwt.client.builder.C
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.FramedPanel#setHeight(int)
+     * @see com.sencha.gxt.widget.core.client.FramedPanel#setHeight(java.lang.String)
      */
-    public FramedPanelBuilder height(int v0) {
+    public FramedPanelBuilder height(java.lang.String v0) {
         framedPanel.setHeight(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.FramedPanel#setHeight(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.FramedPanel#setHeight(int)
      */
-    public FramedPanelBuilder height(java.lang.String v0) {
+    public FramedPanelBuilder height(int v0) {
         framedPanel.setHeight(v0);
         return this;
     }
@@ -479,14 +479,6 @@ public class FramedPanelBuilder extends biz.freshcode.learn.gwt.client.builder.C
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.FramedPanel#setWidget(com.google.gwt.user.client.ui.IsWidget)
-     */
-    public FramedPanelBuilder widget(com.google.gwt.user.client.ui.IsWidget v0) {
-        framedPanel.setWidget(v0);
-        return this;
-    }
-
-    /**
      * @see com.sencha.gxt.widget.core.client.FramedPanel#setWidget(com.google.gwt.user.client.ui.Widget)
      */
     public FramedPanelBuilder widget(com.google.gwt.user.client.ui.Widget v0) {
@@ -495,10 +487,10 @@ public class FramedPanelBuilder extends biz.freshcode.learn.gwt.client.builder.C
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.FramedPanel#setWidth(int)
+     * @see com.sencha.gxt.widget.core.client.FramedPanel#setWidget(com.google.gwt.user.client.ui.IsWidget)
      */
-    public FramedPanelBuilder width(int v0) {
-        framedPanel.setWidth(v0);
+    public FramedPanelBuilder widget(com.google.gwt.user.client.ui.IsWidget v0) {
+        framedPanel.setWidget(v0);
         return this;
     }
 
@@ -506,6 +498,14 @@ public class FramedPanelBuilder extends biz.freshcode.learn.gwt.client.builder.C
      * @see com.sencha.gxt.widget.core.client.FramedPanel#setWidth(java.lang.String)
      */
     public FramedPanelBuilder width(java.lang.String v0) {
+        framedPanel.setWidth(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.FramedPanel#setWidth(int)
+     */
+    public FramedPanelBuilder width(int v0) {
         framedPanel.setWidth(v0);
         return this;
     }

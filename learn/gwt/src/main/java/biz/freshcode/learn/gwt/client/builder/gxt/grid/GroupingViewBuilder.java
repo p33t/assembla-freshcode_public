@@ -17,17 +17,17 @@ public class GroupingViewBuilder<M> extends biz.freshcode.learn.gwt.client.build
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.grid.GroupingView#GroupingView(com.sencha.gxt.widget.core.client.grid.GridView.GridAppearance, com.sencha.gxt.widget.core.client.grid.GroupingView.GroupingViewAppearance)
-     */
-    public GroupingViewBuilder(com.sencha.gxt.widget.core.client.grid.GridView.GridAppearance v0, com.sencha.gxt.widget.core.client.grid.GroupingView.GroupingViewAppearance v1) {
-        this(new GroupingView<M>(v0, v1));
-    }
-
-    /**
      * @see com.sencha.gxt.widget.core.client.grid.GroupingView#GroupingView(com.sencha.gxt.widget.core.client.grid.GroupingView.GroupingViewAppearance)
      */
     public GroupingViewBuilder(com.sencha.gxt.widget.core.client.grid.GroupingView.GroupingViewAppearance v0) {
         this(new GroupingView<M>(v0));
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.grid.GroupingView#GroupingView(com.sencha.gxt.widget.core.client.grid.GridView.GridAppearance, com.sencha.gxt.widget.core.client.grid.GroupingView.GroupingViewAppearance)
+     */
+    public GroupingViewBuilder(com.sencha.gxt.widget.core.client.grid.GridView.GridAppearance v0, com.sencha.gxt.widget.core.client.grid.GroupingView.GroupingViewAppearance v1) {
+        this(new GroupingView<M>(v0, v1));
     }
 
     /**

@@ -31,17 +31,17 @@ public class VBoxLayoutContainerBuilder extends biz.freshcode.learn.gwt.client.b
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.VBoxLayoutContainer#add(com.google.gwt.user.client.ui.IsWidget)
+     * @see com.sencha.gxt.widget.core.client.container.VBoxLayoutContainer#add(com.google.gwt.user.client.ui.Widget)
      */
-    public VBoxLayoutContainerBuilder add(com.google.gwt.user.client.ui.IsWidget v0) {
+    public VBoxLayoutContainerBuilder add(com.google.gwt.user.client.ui.Widget v0) {
         vBoxLayoutContainer.add(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.VBoxLayoutContainer#add(com.google.gwt.user.client.ui.Widget)
+     * @see com.sencha.gxt.widget.core.client.container.VBoxLayoutContainer#add(com.google.gwt.user.client.ui.IsWidget)
      */
-    public VBoxLayoutContainerBuilder add(com.google.gwt.user.client.ui.Widget v0) {
+    public VBoxLayoutContainerBuilder add(com.google.gwt.user.client.ui.IsWidget v0) {
         vBoxLayoutContainer.add(v0);
         return this;
     }
@@ -151,17 +151,17 @@ public class VBoxLayoutContainerBuilder extends biz.freshcode.learn.gwt.client.b
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.VBoxLayoutContainer#setHeight(int)
+     * @see com.sencha.gxt.widget.core.client.container.VBoxLayoutContainer#setHeight(java.lang.String)
      */
-    public VBoxLayoutContainerBuilder height(int v0) {
+    public VBoxLayoutContainerBuilder height(java.lang.String v0) {
         vBoxLayoutContainer.setHeight(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.VBoxLayoutContainer#setHeight(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.container.VBoxLayoutContainer#setHeight(int)
      */
-    public VBoxLayoutContainerBuilder height(java.lang.String v0) {
+    public VBoxLayoutContainerBuilder height(int v0) {
         vBoxLayoutContainer.setHeight(v0);
         return this;
     }
@@ -367,17 +367,17 @@ public class VBoxLayoutContainerBuilder extends biz.freshcode.learn.gwt.client.b
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.VBoxLayoutContainer#setWidth(int)
+     * @see com.sencha.gxt.widget.core.client.container.VBoxLayoutContainer#setWidth(java.lang.String)
      */
-    public VBoxLayoutContainerBuilder width(int v0) {
+    public VBoxLayoutContainerBuilder width(java.lang.String v0) {
         vBoxLayoutContainer.setWidth(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.VBoxLayoutContainer#setWidth(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.container.VBoxLayoutContainer#setWidth(int)
      */
-    public VBoxLayoutContainerBuilder width(java.lang.String v0) {
+    public VBoxLayoutContainerBuilder width(int v0) {
         vBoxLayoutContainer.setWidth(v0);
         return this;
     }

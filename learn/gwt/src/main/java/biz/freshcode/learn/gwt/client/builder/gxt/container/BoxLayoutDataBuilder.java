@@ -17,17 +17,17 @@ public class BoxLayoutDataBuilder extends biz.freshcode.learn.gwt.client.builder
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.BoxLayoutContainer.BoxLayoutData#BoxLayoutData(com.sencha.gxt.core.client.util.Margins)
-     */
-    public BoxLayoutDataBuilder(com.sencha.gxt.core.client.util.Margins v0) {
-        this(new BoxLayoutData(v0));
-    }
-
-    /**
      * @see com.sencha.gxt.widget.core.client.container.BoxLayoutContainer.BoxLayoutData#BoxLayoutData()
      */
     public BoxLayoutDataBuilder() {
         this(new BoxLayoutData());
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.container.BoxLayoutContainer.BoxLayoutData#BoxLayoutData(com.sencha.gxt.core.client.util.Margins)
+     */
+    public BoxLayoutDataBuilder(com.sencha.gxt.core.client.util.Margins v0) {
+        this(new BoxLayoutData(v0));
     }
 
     /**

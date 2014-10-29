@@ -40,17 +40,17 @@ public class AbsolutePanelBuilder extends biz.freshcode.learn.gwt.client.builder
     }
 
     /**
-     * @see com.google.gwt.user.client.ui.AbsolutePanel#add(com.google.gwt.user.client.ui.IsWidget, int, int)
+     * @see com.google.gwt.user.client.ui.AbsolutePanel#add(com.google.gwt.user.client.ui.Widget, int, int)
      */
-    public AbsolutePanelBuilder add(com.google.gwt.user.client.ui.IsWidget v0, int v1, int v2) {
+    public AbsolutePanelBuilder add(com.google.gwt.user.client.ui.Widget v0, int v1, int v2) {
         absolutePanel.add(v0, v1, v2);
         return this;
     }
 
     /**
-     * @see com.google.gwt.user.client.ui.AbsolutePanel#add(com.google.gwt.user.client.ui.Widget, int, int)
+     * @see com.google.gwt.user.client.ui.AbsolutePanel#add(com.google.gwt.user.client.ui.IsWidget, int, int)
      */
-    public AbsolutePanelBuilder add(com.google.gwt.user.client.ui.Widget v0, int v1, int v2) {
+    public AbsolutePanelBuilder add(com.google.gwt.user.client.ui.IsWidget v0, int v1, int v2) {
         absolutePanel.add(v0, v1, v2);
         return this;
     }

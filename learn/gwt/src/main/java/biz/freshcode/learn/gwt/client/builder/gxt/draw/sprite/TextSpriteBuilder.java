@@ -143,17 +143,17 @@ public class TextSpriteBuilder extends biz.freshcode.learn.gwt.client.builder.Co
     }
 
     /**
-     * @see com.sencha.gxt.chart.client.draw.sprite.TextSprite#setScaling(double)
+     * @see com.sencha.gxt.chart.client.draw.sprite.TextSprite#setScaling(com.sencha.gxt.chart.client.draw.Scaling)
      */
-    public TextSpriteBuilder scaling(double v0) {
+    public TextSpriteBuilder scaling(com.sencha.gxt.chart.client.draw.Scaling v0) {
         textSprite.setScaling(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.chart.client.draw.sprite.TextSprite#setScaling(com.sencha.gxt.chart.client.draw.Scaling)
+     * @see com.sencha.gxt.chart.client.draw.sprite.TextSprite#setScaling(double)
      */
-    public TextSpriteBuilder scaling(com.sencha.gxt.chart.client.draw.Scaling v0) {
+    public TextSpriteBuilder scaling(double v0) {
         textSprite.setScaling(v0);
         return this;
     }
