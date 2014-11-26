@@ -10,10 +10,10 @@
           <root url="file://$MODULE_DIR$/src/main/webapp" relative="/" />
         </webroots>
         <sourceRoots>
-          <root url="file://$MODULE_DIR$/src/main/resources" />
-          <root url="file://$MODULE_DIR$/target/generated-sources/gwt" />
           <root url="file://$MODULE_DIR$/src/main/java" />
+          <root url="file://$MODULE_DIR$/src/main/resources" />
           <root url="file://$MODULE_DIR$/src/special/java" />
+          <root url="file://$MODULE_DIR$/target/generated-sources/gwt" />
         </sourceRoots>
       </configuration>
     </facet>
@@ -35,44 +35,46 @@
       <sourceFolder url="file://$MODULE_DIR$/src/special/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/resources" type="java-test-resource" />
+      <excludeFolder url="file://$MODULE_DIR$/target/.generated" />
+      <excludeFolder url="file://$MODULE_DIR$/target/gwt-unitCache" />
       <excludeFolder url="file://$MODULE_DIR$/target/learn-gwtp-1.0-SNAPSHOT" />
+      <excludeFolder url="file://$MODULE_DIR$/target/maven-archiver" />
       <excludeFolder url="file://$MODULE_DIR$/target/maven-status" />
+      <excludeFolder url="file://$MODULE_DIR$/target/test-classes" />
+      <excludeFolder url="file://$MODULE_DIR$/target/tomcat" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.google.gwt:gwt-servlet:2.6.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.gwt:gwt-user:2.6.1" level="project" />
-    <orderEntry type="library" name="Maven: javax.validation:validation-api:1.0.0.GA" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: javax.validation:validation-api:sources:1.0.0.GA" level="project" />
     <orderEntry type="library" name="Maven: org.json:json:20090211" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.gwt:gwt-dev:2.6.1" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: com.gwtplatform:gwtp-dispatch-rpc-client:1.2.1" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: com.gwtplatform:gwtp-clients-common:1.2.1" level="project" />
+    <orderEntry type="library" name="Maven: javax.validation:validation-api:1.0.0.GA" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: javax.validation:validation-api:sources:1.0.0.GA" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.gwtplatform:gwtp-dispatch-rpc-client:1.3.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.gwtplatform:gwtp-clients-common:1.3.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.gwtplatform:gwtp-dispatch-common-client:1.3.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.guava:guava-gwt:17.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.code.findbugs:jsr305:1.3.9" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.guava:guava:17.0" level="project" />
+    <orderEntry type="library" name="Maven: com.gwtplatform:gwtp-dispatch-rpc-shared:1.3.1" level="project" />
     <orderEntry type="library" name="Maven: com.google.inject:guice:3.0" level="project" />
     <orderEntry type="library" name="Maven: javax.inject:javax.inject:1" level="project" />
     <orderEntry type="library" name="Maven: aopalliance:aopalliance:1.0" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.maven:maven-artifact:3.1.1" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.codehaus.plexus:plexus-utils:3.0.15" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: com.gwtplatform:gwtp-dispatch-common-client:1.2.1" level="project" />
-    <orderEntry type="library" name="Maven: com.gwtplatform:gwtp-dispatch-common-shared:1.2.1" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.guava:guava-gwt:16.0.1" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.code.findbugs:jsr305:1.3.9" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.guava:guava:16.0.1" level="project" />
-    <orderEntry type="library" name="Maven: com.gwtplatform:gwtp-dispatch-rpc-shared:1.2.1" level="project" />
-    <orderEntry type="library" name="Maven: com.gwtplatform:gwtp-dispatch-rpc-server:1.2.1" level="project" />
-    <orderEntry type="library" name="Maven: com.gwtplatform:gwtp-dispatch-rpc-server-guice:1.2.1" level="project" />
+    <orderEntry type="library" name="Maven: com.gwtplatform:gwtp-dispatch-rpc-server:1.3.1" level="project" />
+    <orderEntry type="library" name="Maven: com.gwtplatform:gwtp-dispatch-common-shared:1.3.1" level="project" />
+    <orderEntry type="library" name="Maven: com.gwtplatform:gwtp-dispatch-rpc-server-guice:1.3.1" level="project" />
     <orderEntry type="library" name="Maven: com.google.inject.extensions:guice-servlet:3.0" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: com.gwtplatform:gwtp-mvp-client:1.2.1" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: com.gwtplatform:gwtp-mvp-shared:1.2.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.gwtplatform:gwtp-mvp-client:1.3.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.gwtplatform:gwtp-mvp-shared:1.3.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.velocity:velocity:1.7" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: commons-collections:commons-collections:3.2.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: commons-lang:commons-lang:2.4" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.gwt.inject:gin:2.1.2" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.inject.extensions:guice-assistedinject:3.0" level="project" />
-    <orderEntry type="library" name="Maven: com.sencha.gxt:gxt:3.1.0" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: com.sencha.gxt:gxt:sources:3.1.0" level="project" />
+    <orderEntry type="library" name="Maven: com.sencha.gxt:gxt:3.1.2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.sencha.gxt:gxt:sources:3.1.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.7" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: biz.freshcode.b-generation:b-generation:0.3" level="project" />
   </component>
 </module>
-

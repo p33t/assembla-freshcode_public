@@ -15,20 +15,22 @@
     <properties>
         <!-- Convenience property to set the GWT version -->
         <gwt.version>2.6.1</gwt.version>
-        <gwtp.version>1.2.1</gwtp.version>
-        <gxt.version>3.1.0</gxt.version>
+        <gwtp.version>1.3.1</gwtp.version>
+        <!-- NOTE: Using commercial version.  Change to 3.1.1 for public version -->
+        <gxt.version>3.1.2</gxt.version>
         <!-- GWT needs at least java 1.5 -->
         <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <repositories>
-        <repository>
-            <id>sencha-gpl-release</id>
-            <name>Open source licensed Sencha artifacts</name>
-            <url>https://maven.sencha.com/repo/gpl-release/</url>
-        </repository>
-    </repositories>
+    <!--  Not sure about this any more.  See http://docs.sencha.com/gxt/3.1/getting_started/maven/Maven.html -->
+    <!--<repositories>-->
+        <!--<repository>-->
+            <!--<id>sencha-gpl-release</id>-->
+            <!--<name>Open source licensed Sencha artifacts</name>-->
+            <!--<url>https://maven.sencha.com/repo/gpl-release/</url>-->
+        <!--</repository>-->
+    <!--</repositories>-->
 
     <dependencies>
         <dependency>
@@ -214,6 +216,27 @@
                     </packagingExcludes>
                 </configuration>
             </plugin>
+
+
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <path>/</path>
+                    <port>8080</port>
+                    <!--For JNDI config -->
+                    <contextFile>${project.basedir}/src/test/resources/context.xml</contextFile>
+                    <systemProperties>
+                        <appserver.base>${project.build.directory}/appserver-base</appserver.base>
+                        <appserver.home>${project.build.directory}/appserver-home</appserver.home>
+                        <derby.system.home>${project.build.directory}/appserver-base/logs</derby.system.home>
+                        <java.io.tmpdir>${project.build.directory}</java.io.tmpdir>
+                    </systemProperties>
+                    <useTestClasspath>false</useTestClasspath>
+                </configuration>
+            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -223,6 +246,7 @@
                     <target>1.7</target>
                 </configuration>
             </plugin>
+
             <plugin>
                 <groupId>org.mortbay.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
