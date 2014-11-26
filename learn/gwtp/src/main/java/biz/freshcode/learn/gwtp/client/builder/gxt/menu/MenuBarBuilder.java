@@ -31,17 +31,17 @@ public class MenuBarBuilder extends biz.freshcode.learn.gwtp.client.builder.Cons
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.menu.MenuBar#add(com.google.gwt.user.client.ui.IsWidget)
+     * @see com.sencha.gxt.widget.core.client.menu.MenuBar#add(com.google.gwt.user.client.ui.Widget)
      */
-    public MenuBarBuilder add(com.google.gwt.user.client.ui.IsWidget v0) {
+    public MenuBarBuilder add(com.google.gwt.user.client.ui.Widget v0) {
         menuBar.add(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.menu.MenuBar#add(com.google.gwt.user.client.ui.Widget)
+     * @see com.sencha.gxt.widget.core.client.menu.MenuBar#add(com.google.gwt.user.client.ui.IsWidget)
      */
-    public MenuBarBuilder add(com.google.gwt.user.client.ui.Widget v0) {
+    public MenuBarBuilder add(com.google.gwt.user.client.ui.IsWidget v0) {
         menuBar.add(v0);
         return this;
     }
@@ -151,17 +151,17 @@ public class MenuBarBuilder extends biz.freshcode.learn.gwtp.client.builder.Cons
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.menu.MenuBar#setHeight(int)
+     * @see com.sencha.gxt.widget.core.client.menu.MenuBar#setHeight(java.lang.String)
      */
-    public MenuBarBuilder height(int v0) {
+    public MenuBarBuilder height(java.lang.String v0) {
         menuBar.setHeight(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.menu.MenuBar#setHeight(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.menu.MenuBar#setHeight(int)
      */
-    public MenuBarBuilder height(java.lang.String v0) {
+    public MenuBarBuilder height(int v0) {
         menuBar.setHeight(v0);
         return this;
     }
@@ -335,17 +335,17 @@ public class MenuBarBuilder extends biz.freshcode.learn.gwtp.client.builder.Cons
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.menu.MenuBar#setWidth(int)
+     * @see com.sencha.gxt.widget.core.client.menu.MenuBar#setWidth(java.lang.String)
      */
-    public MenuBarBuilder width(int v0) {
+    public MenuBarBuilder width(java.lang.String v0) {
         menuBar.setWidth(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.menu.MenuBar#setWidth(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.menu.MenuBar#setWidth(int)
      */
-    public MenuBarBuilder width(java.lang.String v0) {
+    public MenuBarBuilder width(int v0) {
         menuBar.setWidth(v0);
         return this;
     }

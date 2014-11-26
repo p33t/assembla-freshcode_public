@@ -231,17 +231,17 @@ public class ContentPanelBuilder extends biz.freshcode.learn.gwtp.client.builder
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.ContentPanel#setHeadingHtml(com.google.gwt.safehtml.shared.SafeHtml)
+     * @see com.sencha.gxt.widget.core.client.ContentPanel#setHeadingHtml(java.lang.String)
      */
-    public ContentPanelBuilder headingHtml(com.google.gwt.safehtml.shared.SafeHtml v0) {
+    public ContentPanelBuilder headingHtml(java.lang.String v0) {
         contentPanel.setHeadingHtml(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.ContentPanel#setHeadingHtml(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.ContentPanel#setHeadingHtml(com.google.gwt.safehtml.shared.SafeHtml)
      */
-    public ContentPanelBuilder headingHtml(java.lang.String v0) {
+    public ContentPanelBuilder headingHtml(com.google.gwt.safehtml.shared.SafeHtml v0) {
         contentPanel.setHeadingHtml(v0);
         return this;
     }
@@ -255,17 +255,17 @@ public class ContentPanelBuilder extends biz.freshcode.learn.gwtp.client.builder
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.ContentPanel#setHeight(int)
+     * @see com.sencha.gxt.widget.core.client.ContentPanel#setHeight(java.lang.String)
      */
-    public ContentPanelBuilder height(int v0) {
+    public ContentPanelBuilder height(java.lang.String v0) {
         contentPanel.setHeight(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.ContentPanel#setHeight(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.ContentPanel#setHeight(int)
      */
-    public ContentPanelBuilder height(java.lang.String v0) {
+    public ContentPanelBuilder height(int v0) {
         contentPanel.setHeight(v0);
         return this;
     }
@@ -479,14 +479,6 @@ public class ContentPanelBuilder extends biz.freshcode.learn.gwtp.client.builder
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.ContentPanel#setWidget(com.google.gwt.user.client.ui.IsWidget)
-     */
-    public ContentPanelBuilder widget(com.google.gwt.user.client.ui.IsWidget v0) {
-        contentPanel.setWidget(v0);
-        return this;
-    }
-
-    /**
      * @see com.sencha.gxt.widget.core.client.ContentPanel#setWidget(com.google.gwt.user.client.ui.Widget)
      */
     public ContentPanelBuilder widget(com.google.gwt.user.client.ui.Widget v0) {
@@ -495,10 +487,10 @@ public class ContentPanelBuilder extends biz.freshcode.learn.gwtp.client.builder
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.ContentPanel#setWidth(int)
+     * @see com.sencha.gxt.widget.core.client.ContentPanel#setWidget(com.google.gwt.user.client.ui.IsWidget)
      */
-    public ContentPanelBuilder width(int v0) {
-        contentPanel.setWidth(v0);
+    public ContentPanelBuilder widget(com.google.gwt.user.client.ui.IsWidget v0) {
+        contentPanel.setWidget(v0);
         return this;
     }
 
@@ -506,6 +498,14 @@ public class ContentPanelBuilder extends biz.freshcode.learn.gwtp.client.builder
      * @see com.sencha.gxt.widget.core.client.ContentPanel#setWidth(java.lang.String)
      */
     public ContentPanelBuilder width(java.lang.String v0) {
+        contentPanel.setWidth(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.ContentPanel#setWidth(int)
+     */
+    public ContentPanelBuilder width(int v0) {
         contentPanel.setWidth(v0);
         return this;
     }

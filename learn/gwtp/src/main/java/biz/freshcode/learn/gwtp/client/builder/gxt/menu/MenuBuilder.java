@@ -31,17 +31,17 @@ public class MenuBuilder extends biz.freshcode.learn.gwtp.client.builder.Constru
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.menu.Menu#add(com.google.gwt.user.client.ui.IsWidget)
+     * @see com.sencha.gxt.widget.core.client.menu.Menu#add(com.google.gwt.user.client.ui.Widget)
      */
-    public MenuBuilder add(com.google.gwt.user.client.ui.IsWidget v0) {
+    public MenuBuilder add(com.google.gwt.user.client.ui.Widget v0) {
         menu.add(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.menu.Menu#add(com.google.gwt.user.client.ui.Widget)
+     * @see com.sencha.gxt.widget.core.client.menu.Menu#add(com.google.gwt.user.client.ui.IsWidget)
      */
-    public MenuBuilder add(com.google.gwt.user.client.ui.Widget v0) {
+    public MenuBuilder add(com.google.gwt.user.client.ui.IsWidget v0) {
         menu.add(v0);
         return this;
     }
@@ -175,17 +175,17 @@ public class MenuBuilder extends biz.freshcode.learn.gwtp.client.builder.Constru
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.menu.Menu#setHeight(int)
+     * @see com.sencha.gxt.widget.core.client.menu.Menu#setHeight(java.lang.String)
      */
-    public MenuBuilder height(int v0) {
+    public MenuBuilder height(java.lang.String v0) {
         menu.setHeight(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.menu.Menu#setHeight(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.menu.Menu#setHeight(int)
      */
-    public MenuBuilder height(java.lang.String v0) {
+    public MenuBuilder height(int v0) {
         menu.setHeight(v0);
         return this;
     }
@@ -391,17 +391,17 @@ public class MenuBuilder extends biz.freshcode.learn.gwtp.client.builder.Constru
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.menu.Menu#setWidth(int)
+     * @see com.sencha.gxt.widget.core.client.menu.Menu#setWidth(java.lang.String)
      */
-    public MenuBuilder width(int v0) {
+    public MenuBuilder width(java.lang.String v0) {
         menu.setWidth(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.menu.Menu#setWidth(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.menu.Menu#setWidth(int)
      */
-    public MenuBuilder width(java.lang.String v0) {
+    public MenuBuilder width(int v0) {
         menu.setWidth(v0);
         return this;
     }
