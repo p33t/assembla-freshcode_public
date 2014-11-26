@@ -3,11 +3,10 @@ package biz.freshcode.learn.gwtp.client.bug;
 import biz.freshcode.learn.gwtp.client.boot.Root;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.Editor;
-import com.google.gwt.user.client.ui.IsWidget;
-import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.Presenter;
+import com.gwtplatform.mvp.client.ViewImpl;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
@@ -18,7 +17,6 @@ import com.sencha.gxt.data.shared.LabelProvider;
 import com.sencha.gxt.data.shared.ListStore;
 import com.sencha.gxt.data.shared.ModelKeyProvider;
 import com.sencha.gxt.data.shared.PropertyAccess;
-import com.sencha.gxt.widget.core.client.Component;
 import com.sencha.gxt.widget.core.client.form.ComboBox;
 import com.sencha.gxt.widget.core.client.form.TextField;
 import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
@@ -45,6 +43,7 @@ public class ComboBoxDebrisBug extends Presenter<ComboBoxDebrisBug.View, ComboBo
     @Override
     protected void onReset() {
         super.onReset();
+        // This seems to cause the problem.  It models a form retrieving an updated list of items from the server.
         getView().getIntStore().replaceAll(Arrays.asList(1, 2, 3, 4, 5));
     }
 
@@ -53,11 +52,10 @@ public class ComboBoxDebrisBug extends Presenter<ComboBoxDebrisBug.View, ComboBo
     public interface Proxy extends ProxyPlace<ComboBoxDebrisBug> {
     }
 
-    public static class View implements com.gwtplatform.mvp.client.View {
+    public static class View extends ViewImpl {
         private final ColumnConfig<MyBean, String> colId = new ColumnConfig<>(MY_ACCESS.idValue(), 10, "Id");
         private final ColumnConfig<MyBean, Integer> colInt = new ColumnConfig<>(MY_ACCESS.integer(), 10, "Integer");
         private final ColumnConfig<MyBean, String> colStr = new ColumnConfig<>(MY_ACCESS.string(), 10, "String");
-        private Grid<MyBean> grid;
         private final ListStore<Integer> intStore = new ListStore<>(new ModelKeyProvider<Integer>() {
             @Override
             public String getKey(Integer item) {
@@ -75,29 +73,7 @@ public class ComboBoxDebrisBug extends Presenter<ComboBoxDebrisBug.View, ComboBo
 
             g.getStore().add(new MyBean());
             g.getStore().add(new MyBean());
-
-            grid = g;
-        }
-
-        public Component asComponent() {
-            return grid;
-        }
-
-        @Override
-        public void addToSlot(Object slot, IsWidget content) {
-        }
-
-        @Override
-        public void removeFromSlot(Object slot, IsWidget content) {
-        }
-
-        @Override
-        public void setInSlot(Object slot, IsWidget content) {
-        }
-
-        @Override
-        public Widget asWidget() {
-            return asComponent();
+            initWidget(g);
         }
 
         private Grid<MyBean> createGrid() {

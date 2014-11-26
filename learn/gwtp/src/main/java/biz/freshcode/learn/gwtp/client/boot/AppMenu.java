@@ -16,7 +16,6 @@ import biz.freshcode.learn.gwtp.client.slotless.SlotlessDemo;
 import biz.freshcode.learn.gwtp.shared.generate.SomeBean;
 import biz.freshcode.learn.gwtp.util.client.IsWidgetImpl;
 import com.google.gwt.core.shared.GWT;
-import com.google.gwt.user.client.ui.Hyperlink;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -67,7 +66,7 @@ public class AppMenu extends IsWidgetImpl<Widget> {
                         Info.display("Partial Inject", "See log for result");
                     }
                 }))
-                .add(new Hyperlink("Combo Box Debris", ComboBoxDebrisBug.TOKEN))
+                .add(btn("Combo Box Debris", ComboBoxDebrisBug.TOKEN))
                 .add(new FillToolItem())
                 .add(titler)
                 .toolBar);
