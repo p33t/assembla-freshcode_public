@@ -1,6 +1,7 @@
 package biz.freshcode.learn.gwtp.client.boot;
 
 import biz.freshcode.learn.gwtp.client.boot.inject.PartiallyInjected;
+import biz.freshcode.learn.gwtp.client.bug.ComboBoxDebrisBug;
 import biz.freshcode.learn.gwtp.client.builder.Construct;
 import biz.freshcode.learn.gwtp.client.builder.gxt.toolbar.ToolBarBuilder;
 import biz.freshcode.learn.gwtp.client.compound.Child1;
@@ -65,6 +66,7 @@ public class AppMenu extends IsWidgetImpl<Widget> {
                         Info.display("Partial Inject", "See log for result");
                     }
                 }))
+                .add(btn("Combo Box Debris", ComboBoxDebrisBug.TOKEN))
                 .add(new FillToolItem())
                 .add(titler)
                 .toolBar);

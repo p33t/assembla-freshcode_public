@@ -1,9 +1,11 @@
 package biz.freshcode.learn.gwtp.client.boot;
 
 import biz.freshcode.learn.gwtp.client.boot.inject.PartiallyInjected;
+import biz.freshcode.learn.gwtp.client.bug.ComboBoxDebrisBug;
 import biz.freshcode.learn.gwtp.client.compound.*;
 import biz.freshcode.learn.gwtp.client.editform.EditForm;
 import biz.freshcode.learn.gwtp.client.editform.EditFormViewImpl;
+import biz.freshcode.learn.gwtp.client.ext.ExtModule;
 import biz.freshcode.learn.gwtp.client.home.Home;
 import biz.freshcode.learn.gwtp.client.home.HomeViewImpl;
 import biz.freshcode.learn.gwtp.client.paginggrid.PagingGrid;
@@ -11,7 +13,6 @@ import biz.freshcode.learn.gwtp.client.paginggrid.PagingGridViewImpl;
 import biz.freshcode.learn.gwtp.client.popup.PopupDemo;
 import biz.freshcode.learn.gwtp.client.slotless.SlotlessChild;
 import biz.freshcode.learn.gwtp.client.slotless.SlotlessDemo;
-import biz.freshcode.learn.gwtp.client.ext.ExtModule;
 import biz.freshcode.learn.gwtp.client.special.SpecialModule;
 import biz.freshcode.learn.gwtp.shared.AppUtil;
 import biz.freshcode.learn.gwtp.shared.boot.SessionInfo;
@@ -25,7 +26,7 @@ import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 import com.gwtplatform.mvp.client.gin.DefaultModule;
 import com.gwtplatform.mvp.client.proxy.DefaultPlaceManager;
 
-public class AppModule extends AbstractPresenterModule {
+public class PresenterModule extends AbstractPresenterModule {
 
     @Override
     protected void configure() {
@@ -50,6 +51,7 @@ public class AppModule extends AbstractPresenterModule {
         bindPresenter(PopupDemo.class, PopupDemo.Proxy.class);
         bindPresenter(SlotlessDemo.class, SlotlessDemo.Proxy.class);
         bindPresenter(SlotlessChild.class, SlotlessChild.Proxy.class);
+        bindPresenter(ComboBoxDebrisBug.class, ComboBoxDebrisBug.Proxy.class);
 
         install(new ExtModule());
         install(new SpecialModule());

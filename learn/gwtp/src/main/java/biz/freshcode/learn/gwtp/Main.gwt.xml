@@ -15,5 +15,5 @@
     <source path='shared'/>
 
     <set-configuration-property name="gin.ginjector.modules"
-                                value="biz.freshcode.learn.gwtp.client.boot.AppModule"/>
+                                value="biz.freshcode.learn.gwtp.client.boot.PresenterModule"/>
 </module>
