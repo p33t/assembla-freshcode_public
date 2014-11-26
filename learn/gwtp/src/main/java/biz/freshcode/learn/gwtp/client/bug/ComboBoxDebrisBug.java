@@ -12,6 +12,7 @@ import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import com.sencha.gxt.cell.core.client.form.ComboBoxCell;
+import com.sencha.gxt.core.client.Style;
 import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.data.shared.LabelProvider;
 import com.sencha.gxt.data.shared.ListStore;
@@ -22,6 +23,7 @@ import com.sencha.gxt.widget.core.client.form.TextField;
 import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
 import com.sencha.gxt.widget.core.client.grid.ColumnModel;
 import com.sencha.gxt.widget.core.client.grid.Grid;
+import com.sencha.gxt.widget.core.client.grid.GridView;
 import com.sencha.gxt.widget.core.client.grid.editing.GridInlineEditing;
 
 import java.util.Arrays;
@@ -75,7 +77,13 @@ public class ComboBoxDebrisBug extends Presenter<ComboBoxDebrisBug.View, ComboBo
 
             List<ColumnConfig<MyBean, ?>> cols = Arrays.<ColumnConfig<MyBean, ?>>asList(colId, colInt, colStr);
             Grid<MyBean> g = new Grid<>(store, new ColumnModel<>(cols));
-            g.getView().setForceFit(true);
+            g.getSelectionModel().setSelectionMode(Style.SelectionMode.SINGLE);
+
+            GridView<MyBean> v = g.getView();
+            v.setForceFit(true);
+            v.setTrackMouseOver(false);
+            v.setColumnLines(true);
+            v.setStripeRows(true);
             return g;
         }
 
@@ -98,6 +106,7 @@ public class ComboBoxDebrisBug extends Presenter<ComboBoxDebrisBug.View, ComboBo
         }
     }
 
+    @SuppressWarnings("UnusedDeclaration")
     public static class MyBean {
         private static int nextId = 1;
         String id = "id-" + nextId++;
