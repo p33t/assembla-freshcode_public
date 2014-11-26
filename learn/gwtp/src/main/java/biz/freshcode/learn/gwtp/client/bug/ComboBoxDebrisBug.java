@@ -84,22 +84,21 @@ public class ComboBoxDebrisBug extends Presenter<ComboBoxDebrisBug.View, ComboBo
             ContentPanel cp = new ContentPanel();
             cp.setHeadingHtml("An illustration of the ComboBox debris bug");
             cp.setWidget(new ScrollPanel(new HTML(new SafeHtmlBuilder()
-                    .appendEscapedLines(
-                            "\nSteps:" +
-                                    "\n- Click in the 'Integer' column to invoke the combo box" +
-                                    "\n- Press 'Tab' to conclude the edit" +
-                                    "\n- Click the 'Home' button to navigate away from this page" +
-                                    "\n- Click 'Combo Box Debris' to return to this page" +
-                                    "\n.... the list portion of the combo is displayed at 0,0" +
-                                    "\n\nClues:" +
-                                    "\n- Only 'Tab' causes the bug, clicking the adjacent cell will NOT cause the bug" +
-                                    "\n- Clicking anywhere on the page only hides the debris temporarily" +
-                                    "\n-- Navigating back to this page will cause it to reappear" +
-                                    "\n- To remove debris permanently click in the 'Integer' column and then click elsewhere")
+                    .appendEscapedLines("\nSteps:" +
+                            "\n- Click in the 'Integer' column to invoke the combo box" +
+                            "\n- Press 'Tab' to conclude the edit" +
+                            "\n- Click the 'Home' button to navigate away from this page" +
+                            "\n- Click 'Combo Box Debris' to return to this page" +
+                            "\n.... the list portion of the combo is displayed at 0,0" +
+                            "\n\nClues:" +
+                            "\n- Only 'Tab' causes the bug, clicking the adjacent cell will NOT cause the bug" +
+                            "\n- Clicking anywhere on the page only hides the debris temporarily" +
+                            "\n-- Navigating back to this page will cause it to reappear" +
+                            "\n- To remove debris permanently click in the 'Integer' column and then click elsewhere")
                     .toSafeHtml())));
-            cp.setResize(true);
             BorderLayoutContainer.BorderLayoutData layout = new BorderLayoutContainer.BorderLayoutData(220);
             layout.setMargins(new Margins(5, 5, 10, 5));
+            layout.setSplit(true);
             blc.setNorthWidget(cp, layout);
             initWidget(blc);
         }
