@@ -4,6 +4,8 @@ import biz.freshcode.learn.gwtp.client.boot.Root;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.Editor;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
+import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.ScrollPanel;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.Presenter;
@@ -18,8 +20,8 @@ import com.sencha.gxt.data.shared.LabelProvider;
 import com.sencha.gxt.data.shared.ListStore;
 import com.sencha.gxt.data.shared.ModelKeyProvider;
 import com.sencha.gxt.data.shared.PropertyAccess;
+import com.sencha.gxt.widget.core.client.ContentPanel;
 import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
-import com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer;
 import com.sencha.gxt.widget.core.client.form.ComboBox;
 import com.sencha.gxt.widget.core.client.form.TextField;
 import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
@@ -78,8 +80,10 @@ public class ComboBoxDebrisBug extends Presenter<ComboBoxDebrisBug.View, ComboBo
             g.getStore().add(new MyBean());
             BorderLayoutContainer blc = new BorderLayoutContainer();
             blc.setCenterWidget(g);
-            blc.setNorthWidget(new HtmlLayoutContainer(new SafeHtmlBuilder()
-                    .appendEscapedLines("An illustration of the ComboBox debris bug." +
+            ContentPanel cp = new ContentPanel();
+            cp.setHeadingHtml("An illustration of the ComboBox debris bug");
+            cp.setWidget(new ScrollPanel(new HTML(new SafeHtmlBuilder()
+                    .appendEscapedLines(
                             "\nSteps:" +
                             "\n- Click in the 'Integer' column to invoke the combo box" +
                             "\n- Press 'Tab' to conclude the edit" +
@@ -91,7 +95,9 @@ public class ComboBoxDebrisBug extends Presenter<ComboBoxDebrisBug.View, ComboBo
                             "\n- Clicking anywhere on the page only hides the debris temporarily" +
                             "\n-- Navigating back to this page will cause it to reappear" +
                             "\n- To remove debris permanently click in the 'Integer' column and then click elsewhere")
-                    .toSafeHtml()), new BorderLayoutContainer.BorderLayoutData(200));
+                    .toSafeHtml())));
+            cp.setResize(true);
+            blc.setNorthWidget(cp, new BorderLayoutContainer.BorderLayoutData(220));
             initWidget(blc);
         }
 
