@@ -42,7 +42,8 @@ public class GuiceServletConfig extends GuiceServletContextListener {
             bindConstant().annotatedWith(SecurityCookie.class).to(AppUtil.XSRF_COOKIE);
             // populates the SecurityCookie for XSRF protection
             // this required all servlets and filters to be moved to this method
-            filter("*.jsp").through(HttpSessionSecurityCookieFilter.class);
+            // NOTE: This simple XSRF protection seems to be incompatible with parallel RPC call scenarios.
+            filter("/*").through(HttpSessionSecurityCookieFilter.class);
             serve("/" + ActionImpl.DEFAULT_SERVICE_NAME + "*").with(DispatchServiceImpl.class);
 
             String gwtModule = getServletContext().getInitParameter("gwtModule");
