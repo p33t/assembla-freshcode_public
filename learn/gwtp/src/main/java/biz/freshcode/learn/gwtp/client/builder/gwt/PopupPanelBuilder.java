@@ -64,8 +64,8 @@ public class PopupPanelBuilder extends biz.freshcode.learn.gwtp.client.builder.C
     /**
      * @see com.google.gwt.user.client.ui.PopupPanel#addPopupListener(com.google.gwt.user.client.ui.PopupListener)
      */
-    @Deprecated
     @SuppressWarnings("deprecation")
+    @Deprecated
     public PopupPanelBuilder addPopupListener(com.google.gwt.user.client.ui.PopupListener v0) {
         popupPanel.addPopupListener(v0);
         return this;

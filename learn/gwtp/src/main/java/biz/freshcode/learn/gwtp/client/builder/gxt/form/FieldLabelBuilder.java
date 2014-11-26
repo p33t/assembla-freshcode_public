@@ -187,17 +187,17 @@ public class FieldLabelBuilder extends biz.freshcode.learn.gwtp.client.builder.C
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.form.FieldLabel#setHeight(int)
+     * @see com.sencha.gxt.widget.core.client.form.FieldLabel#setHeight(java.lang.String)
      */
-    public FieldLabelBuilder height(int v0) {
+    public FieldLabelBuilder height(java.lang.String v0) {
         fieldLabel.setHeight(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.form.FieldLabel#setHeight(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.form.FieldLabel#setHeight(int)
      */
-    public FieldLabelBuilder height(java.lang.String v0) {
+    public FieldLabelBuilder height(int v0) {
         fieldLabel.setHeight(v0);
         return this;
     }
@@ -443,17 +443,17 @@ public class FieldLabelBuilder extends biz.freshcode.learn.gwtp.client.builder.C
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.form.FieldLabel#setWidth(int)
+     * @see com.sencha.gxt.widget.core.client.form.FieldLabel#setWidth(java.lang.String)
      */
-    public FieldLabelBuilder width(int v0) {
+    public FieldLabelBuilder width(java.lang.String v0) {
         fieldLabel.setWidth(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.form.FieldLabel#setWidth(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.form.FieldLabel#setWidth(int)
      */
-    public FieldLabelBuilder width(java.lang.String v0) {
+    public FieldLabelBuilder width(int v0) {
         fieldLabel.setWidth(v0);
         return this;
     }

@@ -135,7 +135,7 @@
         <dependency>
             <groupId>biz.freshcode.b-generation</groupId>
             <artifactId>b-generation</artifactId>
-            <version>0.3</version>
+            <version>0.4</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
