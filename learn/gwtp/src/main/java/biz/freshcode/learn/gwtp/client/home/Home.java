@@ -1,20 +1,19 @@
 package biz.freshcode.learn.gwtp.client.home;
 
 import biz.freshcode.learn.gwtp.client.boot.Root;
-import biz.freshcode.learn.gwtp.util.client.HasTitle;
 import biz.freshcode.learn.gwtp.shared.dispatch.SdAction;
 import biz.freshcode.learn.gwtp.shared.dispatch.StrResult;
+import biz.freshcode.learn.gwtp.util.client.HasTitle;
 import com.google.gwt.core.shared.GWT;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.widget.client.TextButton;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.dispatch.rpc.shared.DispatchAsync;
 import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
+import com.sencha.gxt.widget.core.client.button.TextButton;
+import com.sencha.gxt.widget.core.client.event.SelectEvent;
 
 public class Home extends Presenter<Home.View, Home.Proxy> implements HasTitle {
     public static final String TOKEN = "home";
@@ -35,9 +34,9 @@ public class Home extends Presenter<Home.View, Home.Proxy> implements HasTitle {
     @Override
     protected void onBind() {
         super.onBind();
-        getView().getBtnAction().addClickHandler(new ClickHandler() {
+        getView().getBtnAction().addSelectHandler(new SelectEvent.SelectHandler() {
             @Override
-            public void onClick(ClickEvent event) {
+            public void onSelect(SelectEvent event) {
                 rpc();
             }
         });

@@ -3,8 +3,8 @@ package biz.freshcode.learn.gwtp.client.home;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.VerticalPanel;
-import com.google.gwt.widget.client.TextButton;
 import com.gwtplatform.mvp.client.ViewImpl;
+import com.sencha.gxt.widget.core.client.button.TextButton;
 
 public class HomeViewImpl extends ViewImpl implements Home.View {
     private TextButton btnAction;

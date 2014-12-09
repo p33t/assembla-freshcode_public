@@ -9,8 +9,6 @@
     <!--<inherits name='com.google.gwt.junit.JUnit'/>-->
 
     <inherits name="com.google.gwt.logging.Logging"/>
-    <!--Don't want the logging on the pop in top-left of screen -->
-    <set-property name="gwt.logging.popupHandler" value="DISABLED"/>
 
     <!-- Inherit the default GWT style sheet.  You can change       -->
     <!-- the theme of your GWT application by uncommenting          -->
