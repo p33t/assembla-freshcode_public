@@ -2,3 +2,13 @@ Some more manual notes on Scala....
 
 Look at a class after implicits have been expanded / inserted...
 scalac -Xprint:typer <some file>
+
+ADT: Algebraic Data Types
+- The type is the sum / union of its data constructors
+- A data constructor is the product of it arguments
+
+'lift' a function into other uses, like a=>b can be lifted into Option[a]=>Option[b]
+
+'strict' mean eval all args, 'non-strict' is lazy eval
+
+.. at 6.4 of FP in Scala.
