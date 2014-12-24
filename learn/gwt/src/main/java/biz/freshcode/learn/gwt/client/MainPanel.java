@@ -47,6 +47,7 @@ import biz.freshcode.learn.gwt.client.experiment.resources.ResourcesDemo;
 import biz.freshcode.learn.gwt.client.experiment.toolbar.ToolBarDemo;
 import biz.freshcode.learn.gwt.client.experiment.tree.TreeDemo;
 import biz.freshcode.learn.gwt.client.experiment.triggerfield.TriggerFieldDemo;
+import biz.freshcode.learn.gwt.client.experiment.upload.FileUploadDemo;
 import biz.freshcode.learn.gwt.client.experiment.window.WindowDemo;
 import biz.freshcode.learn.gwt.client.experiment.xtemplate.XTemplateDemo;
 import biz.freshcode.learn.gwt.client.inject.SessionInfo;
@@ -158,6 +159,12 @@ public class MainPanel extends Composite implements AcceptsOneWidget {
                                 }))
                                 .menuBar))
                         .addItem(new MenuItem("Experiments", subMenu()
+                                .addItem(new MenuItem("File Upload", new Command() {
+                                    public void execute() {
+                                        IsWidget w = GWT.create(FileUploadDemo.class);
+                                        replaceContent(w);
+                                    }
+                                }))
                                 .addItem(new MenuItem("Logging", new Command() {
                                     public void execute() {
                                         IsWidget w = GWT.create(LoggingDemo.class);

@@ -12,13 +12,12 @@ import biz.freshcode.learn.gwt.client.experiment.forms.HrMinField;
 import biz.freshcode.learn.gwt.client.util.ExceptionUtil;
 import com.sencha.gxt.chart.client.chart.axis.NumericAxis;
 import com.sencha.gxt.widget.core.client.button.TextButton;
-import com.sencha.gxt.widget.core.client.container.NorthSouthContainer;
 import com.sencha.gxt.widget.core.client.form.*;
 
 import java.lang.reflect.Method;
 
 public class BeanBuilderGenerator extends DefaultBeanBuilderGenerator {
-    static final Class CLASS = NorthSouthContainer.class; //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    static final Class CLASS = FileUploadField.class; //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     public static final String BASE_PKG = "biz.freshcode.learn.gwt.client.builder";
 
     public static void main(String[] args) {
@@ -43,7 +42,7 @@ public class BeanBuilderGenerator extends DefaultBeanBuilderGenerator {
                 .packageMapper(mapper)
                 .probe();
 
-        System.out.println(str);
+//        System.out.println(str);
 
         new BeanBuilderWriter()
                 .generator(new BeanBuilderGenerator())

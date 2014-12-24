@@ -29,14 +29,13 @@
     <inherits name='com.google.gwt.precompress.Precompress'/>
 
     <inherits name="com.google.gwt.logging.Logging"/>
-    <!--Don't want the logging on the pop in top-left of screen -->
-    <set-property name="gwt.logging.popupHandler" value="DISABLED"/>
 
     <inherits name='com.google.web.bindery.requestfactory.RequestFactory'/>
     <inherits name="com.google.gwt.activity.Activity"/>
     <inherits name="com.gwtplatform.dispatch.Dispatch"/>
     <inherits name="com.sencha.gxt.chart.Chart"/>
     <inherits name="com.gwtplatform.mvp.Mvp"/>
+    <inherits name="elemental.Elemental"/>
 
     <!-- Specify the app entry point class.                         -->
     <entry-point class='biz.freshcode.learn.gwt.client.EntryPoint'/>

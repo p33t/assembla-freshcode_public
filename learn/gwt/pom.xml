@@ -22,7 +22,7 @@
 
     <properties>
         <!-- Convenience property to set the GWT version -->
-        <gwtVersion>2.6.1</gwtVersion>
+        <gwtVersion>2.7.0</gwtVersion>
         <gwtpVersion>1.3.1</gwtpVersion>
         <!-- NOTE: Might need to change this to 3.1.0 or x.0 for GPL access. -->
         <gxtVersion>3.1.0</gxtVersion>
@@ -44,6 +44,22 @@
             <version>${gwtVersion}</version>
             <scope>provided</scope>
         </dependency>
+
+        <!-- Access to HTML5 features like FileRead.-->
+        <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-elemental</artifactId>
+            <version>${gwtVersion}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-elemental</artifactId>
+            <version>${gwtVersion}</version>
+            <scope>provided</scope>
+            <classifier>sources</classifier>
+        </dependency>
+
         <!-- Facilitates annotation processing to achieve RequestFactory instrumentation -->
         <dependency>
             <groupId>com.google.web.bindery</groupId>
@@ -106,11 +122,11 @@
             <classifier>sources</classifier>
         </dependency>
 
-        <!-- Address linking error: java.lang.NoClassDefFoundError: org/json/JSONException -->
+        <!-- Addresses linking error: java.lang.NoClassDefFoundError: org/json/JSONException -->
         <dependency>
-        	<groupId>org.json</groupId>
-        	<artifactId>json</artifactId>
-        	<version>20140107</version>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20140107</version>
             <scope>provided</scope>
         </dependency>
 
@@ -160,6 +176,13 @@
             <version>2.1.2</version>
             <scope>provided</scope>
         </dependency>
+        <!-- This is old and clunky...
+                <dependency>
+                    <groupId>com.googlecode.gwtupload</groupId>
+                    <artifactId>gwtupload</artifactId>
+                    <version>1.0.1</version>
+                </dependency>
+        -->
     </dependencies>
 
     <build>
