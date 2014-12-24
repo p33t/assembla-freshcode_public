@@ -17,8 +17,10 @@ public class FileUploadDemo extends IsWidgetImpl {
                 .add(html = new HTML())
                 .flowLayoutContainer);
 
-        // TODO: Restrict type of file.
-        observeImageData(this, filer.getElement());
+        Element e = filer.getElement();
+        // NOTE: This only puts an initial filter on the file select dialog.  It can be overridden by user.
+        e.setAttribute("accept", ".txt");
+        observeImageData(this, e);
     }
 
     public void fileContents(String s) {
