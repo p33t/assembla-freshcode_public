@@ -15,18 +15,21 @@
             <element id="module-output" name="learn-gwt" />
           </element>
           <element id="directory" name="lib">
-            <element id="library" level="project" name="Maven: com.google.gwt:gwt-servlet:2.6.1" />
+            <element id="library" level="project" name="Maven: com.google.gwt:gwt-servlet:2.7.0" />
+            <element id="library" level="project" name="Maven: com.google.web.bindery:requestfactory-server:2.7.0" />
             <element id="library" level="project" name="Maven: javax.validation:validation-api:1.0.0.GA" />
-            <element id="library" level="project" name="Maven: com.google.web.bindery:requestfactory-server:2.6.1" />
+            <element id="library" level="project" name="Maven: com.gwtplatform:gwtp-dispatch-rpc-shared:1.3.1" />
             <element id="library" level="project" name="Maven: com.google.inject:guice:3.0" />
             <element id="library" level="project" name="Maven: javax.inject:javax.inject:1" />
             <element id="library" level="project" name="Maven: aopalliance:aopalliance:1.0" />
-            <element id="library" level="project" name="Maven: com.gwtplatform:gwtp-dispatch-common-shared:1.3.1" />
-            <element id="library" level="project" name="Maven: com.gwtplatform:gwtp-dispatch-rpc-shared:1.3.1" />
             <element id="library" level="project" name="Maven: com.gwtplatform:gwtp-dispatch-rpc-server:1.3.1" />
+            <element id="library" level="project" name="Maven: com.gwtplatform:gwtp-dispatch-common-shared:1.3.1" />
             <element id="library" level="project" name="Maven: com.gwtplatform:gwtp-dispatch-rpc-server-guice:1.3.1" />
             <element id="library" level="project" name="Maven: com.google.inject.extensions:guice-servlet:3.0" />
           </element>
+        </element>
+        <element id="directory" name="META-INF">
+          <element id="file-copy" path="$PROJECT_DIR$/target/MANIFEST.MF" />
         </element>
         <element id="javaee-facet-resources" facet="learn-gwt/web/Web" />
         <element id="gwt-compiler-output" facet="learn-gwt/gwt/GWT" />
@@ -217,26 +220,48 @@
         <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/inject/gin/2.1.2/gin-2.1.2-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: com.google.gwt:gwt-servlet:2.6.1">
+    <library name="Maven: com.google.gwt:gwt-elemental:2.7.0">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-servlet/2.6.1/gwt-servlet-2.6.1.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-elemental/2.7.0/gwt-elemental-2.7.0.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-servlet/2.6.1/gwt-servlet-2.6.1-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-elemental/2.7.0/gwt-elemental-2.7.0-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-servlet/2.6.1/gwt-servlet-2.6.1-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-elemental/2.7.0/gwt-elemental-2.7.0-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: com.google.gwt:gwt-user:2.6.1">
+    <library name="Maven: com.google.gwt:gwt-elemental:sources:2.7.0">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-user/2.6.1/gwt-user-2.6.1.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-elemental/2.7.0/gwt-elemental-2.7.0-sources.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-user/2.6.1/gwt-user-2.6.1-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-elemental/2.7.0/gwt-elemental-2.7.0-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-user/2.6.1/gwt-user-2.6.1-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-elemental/2.7.0/gwt-elemental-2.7.0-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: com.google.gwt:gwt-servlet:2.7.0">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-servlet/2.7.0/gwt-servlet-2.7.0.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-servlet/2.7.0/gwt-servlet-2.7.0-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-servlet/2.7.0/gwt-servlet-2.7.0-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: com.google.gwt:gwt-user:2.7.0">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-user/2.7.0/gwt-user-2.7.0.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-user/2.7.0/gwt-user-2.7.0-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-user/2.7.0/gwt-user-2.7.0-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: com.google.inject.extensions:guice-assistedinject:3.0">
@@ -272,26 +297,26 @@
         <root url="jar://$MAVEN_REPOSITORY$/com/google/inject/guice/3.0/guice-3.0-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: com.google.web.bindery:requestfactory-apt:2.6.1">
+    <library name="Maven: com.google.web.bindery:requestfactory-apt:2.7.0">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/google/web/bindery/requestfactory-apt/2.6.1/requestfactory-apt-2.6.1.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/web/bindery/requestfactory-apt/2.7.0/requestfactory-apt-2.7.0.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/com/google/web/bindery/requestfactory-apt/2.6.1/requestfactory-apt-2.6.1-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/web/bindery/requestfactory-apt/2.7.0/requestfactory-apt-2.7.0-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/google/web/bindery/requestfactory-apt/2.6.1/requestfactory-apt-2.6.1-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/web/bindery/requestfactory-apt/2.7.0/requestfactory-apt-2.7.0-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: com.google.web.bindery:requestfactory-server:2.6.1">
+    <library name="Maven: com.google.web.bindery:requestfactory-server:2.7.0">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/google/web/bindery/requestfactory-server/2.6.1/requestfactory-server-2.6.1.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/web/bindery/requestfactory-server/2.7.0/requestfactory-server-2.7.0.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/com/google/web/bindery/requestfactory-server/2.6.1/requestfactory-server-2.6.1-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/web/bindery/requestfactory-server/2.7.0/requestfactory-server-2.7.0-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/google/web/bindery/requestfactory-server/2.6.1/requestfactory-server-2.6.1-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/web/bindery/requestfactory-server/2.7.0/requestfactory-server-2.7.0-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: com.gwtplatform:gwtp-clients-common:1.3.1">
@@ -527,4 +552,3 @@
     </library>
   </component>
 </project>
-

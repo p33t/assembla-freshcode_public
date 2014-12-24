@@ -2,12 +2,11 @@ package biz.freshcode.learn.gwt.client.bug;
 
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.*;
-import com.google.gwt.widget.client.TextButton;
 import com.sencha.gxt.widget.core.client.Window;
+import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.Viewport;
+import com.sencha.gxt.widget.core.client.event.SelectEvent;
 
 public class WindowMoveBug extends AbstractIsWidget {
     @Override
@@ -32,9 +31,9 @@ public class WindowMoveBug extends AbstractIsWidget {
 
         public LaunchPanel() {
             TextButton b = new TextButton("Open Window");
-            b.addClickHandler(new ClickHandler() {
+            b.addSelectHandler(new SelectEvent.SelectHandler() {
                 @Override
-                public void onClick(ClickEvent event) {
+                public void onSelect(SelectEvent event) {
                     Window w = new Window();
                     w.setHeadingHtml("A Window");
                     w.add(new HTMLPanel("<p>Move this window down and to the right.<br/>" +
