@@ -6,14 +6,18 @@ import com.google.gwt.dom.client.Element;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.user.client.ui.FileUpload;
 import com.google.gwt.user.client.ui.HTML;
+import com.sencha.gxt.widget.core.client.button.TextButton;
+import com.sencha.gxt.widget.core.client.event.SelectEvent;
 
 public class FileUploadDemo extends IsWidgetImpl {
     private final FileUpload filer;
     private final HTML html;
 
     public FileUploadDemo() {
+        TextButton btn;
         initWidget(new FlowLayoutContainerBuilder()
                 .add(filer = new FileUpload())
+                .add(btn = new TextButton("Alt Browse..."))
                 .add(html = new HTML())
                 .flowLayoutContainer);
 
@@ -21,6 +25,14 @@ public class FileUploadDemo extends IsWidgetImpl {
         // NOTE: This only puts an initial filter on the file select dialog.  It can be overridden by user.
         e.setAttribute("accept", ".txt");
         observeImageData(this, e);
+
+        filer.setVisible(false);
+        btn.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent event) {
+                filer.click();
+            }
+        });
     }
 
     public void fileContents(String s) {
