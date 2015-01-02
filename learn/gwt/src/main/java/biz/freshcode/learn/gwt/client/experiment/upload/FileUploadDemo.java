@@ -49,10 +49,10 @@ public class FileUploadDemo extends IsWidgetImpl {
 
         function handleFileSelect(evt) {
             var files = evt.target.files;
-            for (var i = 0, f; f = files[i]; i++) {
+            if (files) {
                 var reader = new FileReader();
                 reader.onload = handleOnLoad;
-                reader.readAsText(files[i]); // NOTE: Encoding can be supplied here.
+                reader.readAsText(files[0], "UTF-8"); // NOTE: Encoding can be supplied here.
             }
         }
 
