@@ -25,7 +25,7 @@ public class FileUploadDemo extends IsWidgetImpl {
         Element e = filer.getElement();
         // NOTE: This only puts an initial filter on the file select dialog.  It can be overridden by user.
         e.setAttribute("accept", ".txt");
-        observeImageData(this, e);
+        observeFileSelect(this, e);
 
         filer.setVisible(false);
         btn.addSelectHandler(new SelectEvent.SelectHandler() {
@@ -42,18 +42,16 @@ public class FileUploadDemo extends IsWidgetImpl {
                 .toSafeHtml());
     }
 
-    public static native void observeImageData(FileUploadDemo demo, Element e) /*-{
+    public static native void observeFileSelect(FileUploadDemo demo, Element e) /*-{
+        function handleOnLoad(evt) {
+            demo.@biz.freshcode.learn.gwt.client.experiment.upload.FileUploadDemo::fileContents(Ljava/lang/String;)(evt.target.result);
+        }
+
         function handleFileSelect(evt) {
             var files = evt.target.files;
-            var output = [];
             for (var i = 0, f; f = files[i]; i++) {
-                //var name = f.name;
-                //var type = f.type;
-                //var size = f.size;
                 var reader = new FileReader();
-                reader.onload = function (evt) {
-                    demo.@biz.freshcode.learn.gwt.client.experiment.upload.FileUploadDemo::fileContents(Ljava/lang/String;)(evt.target.result);
-                };
+                reader.onload = handleOnLoad;
                 reader.readAsText(files[i]); // NOTE: Encoding can be supplied here.
             }
         }
