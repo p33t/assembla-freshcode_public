@@ -16,6 +16,7 @@ public class FileUploadDemo extends IsWidgetImpl {
     public FileUploadDemo() {
         TextButton btn;
         initWidget(new FlowLayoutContainerBuilder()
+                // NOTE: IE requires this to be added despite being hidden later.
                 .add(filer = new FileUpload())
                 .add(btn = new TextButton("Alt Browse..."))
                 .add(html = new HTML())
