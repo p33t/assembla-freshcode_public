@@ -20,6 +20,7 @@ import biz.freshcode.learn.gwt.client.experiment.chart.mixed.MixedChartDemo;
 import biz.freshcode.learn.gwt.client.experiment.chart.mixed2.MixedChart2Demo;
 import biz.freshcode.learn.gwt.client.experiment.chart.step.StepChartDemo;
 import biz.freshcode.learn.gwt.client.experiment.contextmenu.ContextMenuDemo;
+import biz.freshcode.learn.gwt.client.experiment.cookie.CookieDemo;
 import biz.freshcode.learn.gwt.client.experiment.dnd.DndUi;
 import biz.freshcode.learn.gwt.client.experiment.dynamiclayout.DynamicLayoutDemo;
 import biz.freshcode.learn.gwt.client.experiment.fieldsync.FieldSyncDemo;
@@ -159,6 +160,12 @@ public class MainPanel extends Composite implements AcceptsOneWidget {
                                 }))
                                 .menuBar))
                         .addItem(new MenuItem("Experiments", subMenu()
+                                .addItem(new MenuItem("Cookie Ops", new Command() {
+                                    public void execute() {
+                                        IsWidget w = GWT.create(CookieDemo.class);
+                                        replaceContent(w);
+                                    }
+                                }))
                                 .addItem(new MenuItem("File Upload", new Command() {
                                     public void execute() {
                                         IsWidget w = GWT.create(FileUploadDemo.class);

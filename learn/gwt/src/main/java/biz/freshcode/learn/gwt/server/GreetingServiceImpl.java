@@ -5,6 +5,8 @@ import biz.freshcode.learn.gwt.client.inject.SessionInfo;
 import biz.freshcode.learn.gwt.shared.FieldVerifier;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
+import javax.servlet.http.Cookie;
+
 /**
  * The server side implementation of the RPC service.
  */
@@ -31,6 +33,14 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
     return "Hello, " + input + "!<br><br>I am running " + serverInfo
         + ".<br><br>It looks like you are using:<br>" + userAgent;
   }
+
+    @Override
+    public String readCookie(String cookieName) {
+        for (Cookie c: getThreadLocalRequest().getCookies()) {
+            if (c.getName().equals(cookieName)) return c.getValue();
+        }
+        return null;
+    }
 
     @Override
     public SessionInfo.Bean loadSessionInfo() {
