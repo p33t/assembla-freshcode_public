@@ -41,7 +41,7 @@ public class FileUploadDemo extends IsWidgetImpl {
                 reader.onload = function (evt) {
                     demo.@biz.freshcode.learn.gwt.client.experiment.upload.FileUploadDemo::fileContents(Ljava/lang/String;)(evt.target.result);
                 };
-                reader.readAsText(files[i]);
+                reader.readAsText(files[i]); // NOTE: Encoding can be supplied here.
             }
         }
 
