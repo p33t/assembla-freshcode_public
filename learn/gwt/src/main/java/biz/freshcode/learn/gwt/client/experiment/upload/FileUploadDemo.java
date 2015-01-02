@@ -2,8 +2,8 @@ package biz.freshcode.learn.gwt.client.experiment.upload;
 
 import biz.freshcode.learn.gwt.client.builder.gxt.container.FlowLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.client.util.IsWidgetImpl;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
-import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.FileUpload;
 import com.google.gwt.user.client.ui.HTML;
 
