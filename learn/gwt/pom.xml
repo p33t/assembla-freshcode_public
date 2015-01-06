@@ -45,20 +45,21 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- Access to HTML5 features like FileRead.-->
-        <dependency>
-            <groupId>com.google.gwt</groupId>
-            <artifactId>gwt-elemental</artifactId>
-            <version>${gwtVersion}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.google.gwt</groupId>
-            <artifactId>gwt-elemental</artifactId>
-            <version>${gwtVersion}</version>
-            <scope>provided</scope>
-            <classifier>sources</classifier>
-        </dependency>
+        <!-- Access to HTML5 features like FileReader.
+          ...Actually using FileReader from javascript directly. -->
+        <!--<dependency>-->
+            <!--<groupId>com.google.gwt</groupId>-->
+            <!--<artifactId>gwt-elemental</artifactId>-->
+            <!--<version>${gwtVersion}</version>-->
+            <!--<scope>provided</scope>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>com.google.gwt</groupId>-->
+            <!--<artifactId>gwt-elemental</artifactId>-->
+            <!--<version>${gwtVersion}</version>-->
+            <!--<scope>provided</scope>-->
+            <!--<classifier>sources</classifier>-->
+        <!--</dependency>-->
 
         <!-- Facilitates annotation processing to achieve RequestFactory instrumentation -->
         <dependency>
