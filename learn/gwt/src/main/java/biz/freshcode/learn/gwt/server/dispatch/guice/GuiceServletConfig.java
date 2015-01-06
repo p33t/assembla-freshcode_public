@@ -6,6 +6,7 @@ import biz.freshcode.learn.gwt.server.dispatch.DdHandler;
 import biz.freshcode.learn.gwt.server.dispatch.SdHandler;
 import biz.freshcode.learn.gwt.shared.dispatch.DdAction;
 import biz.freshcode.learn.gwt.shared.dispatch.SdAction;
+import com.google.gwt.logging.server.RemoteLoggingServiceImpl;
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -57,6 +58,9 @@ public class GuiceServletConfig extends GuiceServletContextListener {
             Map<String, String> params = newMap();
             params.put("symbolMapsDirectory", "WEB-INF/classes/symbolMaps/");
             serve("/gwtRequest").with(RequestFactoryServlet.class, params);
+
+            // Not sure why this is enabled but need the servlet.
+            serve("/Mod1/remote_logging").with(RemoteLoggingServiceImpl.class);
         }
     }
 
@@ -67,6 +71,7 @@ public class GuiceServletConfig extends GuiceServletContextListener {
             // need to be set to 'singleton' externally.
             bind(GreetingServiceImpl.class).in(Singleton.class);
             bind(RequestFactoryServlet.class).in(Singleton.class);
+            bind(RemoteLoggingServiceImpl.class).in(Singleton.class);
         }
     }
 }
