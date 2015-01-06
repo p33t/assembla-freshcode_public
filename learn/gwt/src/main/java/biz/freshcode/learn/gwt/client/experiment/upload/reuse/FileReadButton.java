@@ -10,6 +10,9 @@ import com.sencha.gxt.widget.core.client.event.SelectEvent;
 
 import static biz.freshcode.learn.gwt.client.util.ExceptionUtil.illegalState;
 
+/**
+ * Loads a file into memory on the client side (NOTE: Requires FileReader >= IE10).
+ */
 public class FileReadButton extends IsWidgetImpl {
     private Callback callback;
     private FileUpload filer;
