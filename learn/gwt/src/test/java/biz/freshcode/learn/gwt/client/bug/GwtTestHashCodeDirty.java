@@ -8,7 +8,7 @@ import com.google.gwt.junit.client.GWTTestCase;
 import com.sencha.gxt.widget.core.client.form.TextField;
 
 // Turns out the problem (elsewhere) was from 'mutable' data being modified.  Defensive copying was needed.
-public class HashCodeDirtyGwtTest extends GWTTestCase {
+public class GwtTestHashCodeDirty extends GWTTestCase {
 
     public void test() {
         Driver driver = GWT.create(Driver.class);

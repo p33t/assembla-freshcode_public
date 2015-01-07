@@ -7,7 +7,7 @@ import com.google.web.bindery.autobean.shared.AutoBean;
 
 import static com.google.web.bindery.autobean.shared.AutoBeanUtils.deepEquals;
 
-public class TestBeanGwtTest extends GWTTestCase {
+public class GwtTestTestBean extends GWTTestCase {
 
     public void testSmoke() {
         assertTrue(true);
