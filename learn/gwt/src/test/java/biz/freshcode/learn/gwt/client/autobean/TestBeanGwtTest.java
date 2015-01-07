@@ -1,12 +1,13 @@
 package biz.freshcode.learn.gwt.client.autobean;
 
+import biz.freshcode.learn.gwt.client.test.TestUtil;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.junit.client.GWTTestCase;
 import com.google.web.bindery.autobean.shared.AutoBean;
 
 import static com.google.web.bindery.autobean.shared.AutoBeanUtils.deepEquals;
 
-public class GwtTestBean extends GWTTestCase {
+public class TestBeanGwtTest extends GWTTestCase {
 
     public void testSmoke() {
         assertTrue(true);
@@ -50,6 +51,6 @@ public class GwtTestBean extends GWTTestCase {
 
     @Override
     public String getModuleName() {
-        return "biz.freshcode.learn.gwt.Mod1JUnit";
+        return TestUtil.MODULE_NAME;
     }
 }

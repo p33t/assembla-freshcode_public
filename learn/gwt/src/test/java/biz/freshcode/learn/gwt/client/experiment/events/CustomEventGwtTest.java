@@ -1,5 +1,6 @@
 package biz.freshcode.learn.gwt.client.experiment.events;
 
+import biz.freshcode.learn.gwt.client.test.TestUtil;
 import com.google.gwt.junit.client.GWTTestCase;
 import com.google.web.bindery.event.shared.HandlerRegistration;
 
@@ -18,7 +19,7 @@ public class CustomEventGwtTest extends GWTTestCase {
 
     @Override
     public String getModuleName() {
-        return "biz.freshcode.learn.gwt.Mod1";
+        return TestUtil.MODULE_NAME;
     }
 
     static class MyHandler implements CustomEvent.Handler {

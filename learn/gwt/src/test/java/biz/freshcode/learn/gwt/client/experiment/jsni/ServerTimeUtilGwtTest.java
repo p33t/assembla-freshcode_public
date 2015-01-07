@@ -1,8 +1,9 @@
 package biz.freshcode.learn.gwt.client.experiment.jsni;
 
+import biz.freshcode.learn.gwt.client.test.TestUtil;
 import com.google.gwt.junit.client.GWTTestCase;
 
-public class ServerTimeUtilTest extends GWTTestCase {
+public class ServerTimeUtilGwtTest extends GWTTestCase {
 
     public void test() {
         assertEquals(1234, ServerTimeUtil.serverTimeDiff());
@@ -10,6 +11,6 @@ public class ServerTimeUtilTest extends GWTTestCase {
 
     @Override
     public String getModuleName() {
-        return "biz.freshcode.learn.gwt.Mod1";
+        return TestUtil.MODULE_NAME;
     }
 }
