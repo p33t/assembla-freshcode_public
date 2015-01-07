@@ -17,7 +17,7 @@ import com.google.gwt.user.client.rpc.ServiceDefTarget;
  * See http://mojo.codehaus.org/gwt-maven-plugin/user-guide/testing.html
  * for details.
  */
-public class GreetGwtTest extends GWTTestCase {
+public class GwtTestGreet extends GWTTestCase {
 
     /**
      * Must refer to a valid module that sources this class.

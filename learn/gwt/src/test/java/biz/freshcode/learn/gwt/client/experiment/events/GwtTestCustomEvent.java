@@ -4,7 +4,7 @@ import biz.freshcode.learn.gwt.client.test.TestUtil;
 import com.google.gwt.junit.client.GWTTestCase;
 import com.google.web.bindery.event.shared.HandlerRegistration;
 
-public class CustomEventGwtTest extends GWTTestCase {
+public class GwtTestCustomEvent extends GWTTestCase {
 
     public void test() {
         CustomModel model = new CustomModel();
