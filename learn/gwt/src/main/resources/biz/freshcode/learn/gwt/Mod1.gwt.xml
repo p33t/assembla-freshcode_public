@@ -37,6 +37,10 @@
     <inherits name="com.gwtplatform.mvp.Mvp"/>
     <!--<inherits name="elemental.Elemental"/>-->
 
+    <set-property name="gwt.logging.enabled" value="TRUE"/>
+    <set-property name="gwt.logging.consoleHandler" value="ENABLED"/>
+    <set-property name="gwt.logging.logLevel" value="INFO"/>
+
     <!-- Specify the app entry point class.                         -->
     <entry-point class='biz.freshcode.learn.gwt.client.EntryPoint'/>
 
@@ -52,8 +56,6 @@
     <!--Speed Tweak: I think this works despite appearing to compile 6 permutations...
     <set-property name="user.agent" value="safari"/>
     -->
-    <!-- For superdevmode -->
-    <add-linker name="xsiframe"/>
 
     <!-- TODO: How about some 'servlet' elements?-->
 
