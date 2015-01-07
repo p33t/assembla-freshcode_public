@@ -1,5 +1,6 @@
 package biz.freshcode.learn.gwt.client.bug;
 
+import biz.freshcode.learn.gwt.client.test.TestUtil;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.Editor;
 import com.google.gwt.editor.client.SimpleBeanEditorDriver;
@@ -27,7 +28,7 @@ public class HashCodeDirtyGwtTest extends GWTTestCase {
 
     @Override
     public String getModuleName() {
-        return "Mod1JUnit";
+        return TestUtil.MODULE_NAME;
     }
 
     public interface Driver extends SimpleBeanEditorDriver<AltHash, AltHashEdit> {
