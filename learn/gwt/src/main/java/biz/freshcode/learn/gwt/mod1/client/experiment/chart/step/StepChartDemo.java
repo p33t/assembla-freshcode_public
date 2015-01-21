@@ -1,10 +1,10 @@
 package biz.freshcode.learn.gwt.mod1.client.experiment.chart.step;
 
-import biz.freshcode.learn.gwt.common.client.builder.gxt.container.BorderLayoutContainerBuilder;
-import biz.freshcode.learn.gwt.common.client.builder.gxt.container.HorizontalLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.mod1.client.experiment.chart.reuse.PointSeries;
 import biz.freshcode.learn.gwt.mod1.client.util.AbstractIsWidget;
 import biz.freshcode.learn.gwt.mod1.client.util.AppCollectionUtil;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.container.BorderLayoutContainerBuilder;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.container.HorizontalLayoutContainerBuilder;
 import com.sencha.gxt.core.client.util.Point;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;

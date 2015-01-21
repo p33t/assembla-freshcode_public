@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module rename-to='Mod1'>
-    <inherits name='biz.freshcode.learn.gwt.common.Common'/>
+    <inherits name='biz.freshcode.learn.gwt2.common.Common'/>
     <inherits name='com.google.web.bindery.requestfactory.RequestFactory'/>
     <inherits name="com.google.gwt.activity.Activity"/>
     <!--<inherits name="elemental.Elemental"/>-->

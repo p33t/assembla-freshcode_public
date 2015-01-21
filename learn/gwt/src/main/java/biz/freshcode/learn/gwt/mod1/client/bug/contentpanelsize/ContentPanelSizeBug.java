@@ -1,11 +1,11 @@
 package biz.freshcode.learn.gwt.mod1.client.bug.contentpanelsize;
 
-import biz.freshcode.learn.gwt.common.client.builder.gxt.ContentPanelBuilder;
-import biz.freshcode.learn.gwt.common.client.builder.gxt.container.BoxLayoutDataBuilder;
-import biz.freshcode.learn.gwt.common.client.builder.gxt.container.HBoxLayoutContainerBuilder;
-import biz.freshcode.learn.gwt.common.client.builder.gxt.container.HtmlLayoutContainerBuilder;
-import biz.freshcode.learn.gwt.common.client.builder.gxt.util.MarginsBuilder;
 import biz.freshcode.learn.gwt.mod1.client.util.AbstractIsWidget;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.ContentPanelBuilder;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.container.BoxLayoutDataBuilder;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.container.HBoxLayoutContainerBuilder;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.container.HtmlLayoutContainerBuilder;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.util.MarginsBuilder;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.CssResource;

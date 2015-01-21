@@ -6,8 +6,8 @@ package biz.freshcode.learn.gwt.mod1.client.experiment.forms;
  * @see biz.freshcode.learn.gwt.mod1.client.experiment.forms.HrMinField
  */
 @SuppressWarnings("UnusedDeclaration")
-@biz.freshcode.learn.gwt.common.client.builder.BeanBuilder(HrMinField.class)
-public class HrMinFieldBuilder extends biz.freshcode.learn.gwt.common.client.builder.Construct.Parent<HrMinFieldBuilder> {
+@biz.freshcode.learn.gwt2.common.client.builder.BeanBuilder(HrMinField.class)
+public class HrMinFieldBuilder extends biz.freshcode.learn.gwt2.common.client.builder.Construct.Parent<HrMinFieldBuilder> {
     public final HrMinField hrMinField;
 
     public HrMinFieldBuilder(HrMinField v) {

@@ -1,9 +1,9 @@
 package biz.freshcode.learn.gwt.mod1.client.experiment.forms3;
 
-import biz.freshcode.learn.gwt.common.client.builder.gxt.DialogBuilder;
-import biz.freshcode.learn.gwt.common.client.builder.gxt.container.VerticalLayoutContainerBuilder;
-import biz.freshcode.learn.gwt.common.client.builder.gxt.form.FieldLabelBuilder;
 import biz.freshcode.learn.gwt.mod1.client.util.AbstractIsWidget;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.DialogBuilder;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.container.VerticalLayoutContainerBuilder;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.form.FieldLabelBuilder;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.editor.client.SimpleBeanEditorDriver;
 import com.google.gwt.user.client.ui.HTML;

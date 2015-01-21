@@ -1,9 +1,5 @@
 package biz.freshcode.learn.gwt.mod1.client;
 
-import biz.freshcode.learn.gwt.common.client.builder.gwt.DockLayoutPanelBuilder;
-import biz.freshcode.learn.gwt.common.client.builder.gwt.MenuBarBuilder;
-import biz.freshcode.learn.gwt.common.client.builder.gxt.DialogBuilder;
-import biz.freshcode.learn.gwt.common.client.builder.gxt.container.ViewportBuilder;
 import biz.freshcode.learn.gwt.mod1.client.bug.*;
 import biz.freshcode.learn.gwt.mod1.client.bug.contentpanelsize.ContentPanelSizeBug;
 import biz.freshcode.learn.gwt.mod1.client.bug.dateaccessbug.DateAccessBug;
@@ -61,6 +57,10 @@ import biz.freshcode.learn.gwt.mod1.client.uibinder.eg.BorderLayoutEg;
 import biz.freshcode.learn.gwt.mod1.client.uibinder.eg.Tutorial1;
 import biz.freshcode.learn.gwt.mod1.client.uibinder.eg.Tutorial2;
 import biz.freshcode.learn.gwt.mod1.client.uispike.gxt.UiSpikePanel;
+import biz.freshcode.learn.gwt2.common.client.builder.gwt.DockLayoutPanelBuilder;
+import biz.freshcode.learn.gwt2.common.client.builder.gwt.MenuBarBuilder;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.DialogBuilder;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.container.ViewportBuilder;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.place.shared.PlaceController;

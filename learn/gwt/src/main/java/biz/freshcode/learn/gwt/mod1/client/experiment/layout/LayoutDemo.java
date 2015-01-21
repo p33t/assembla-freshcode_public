@@ -1,11 +1,11 @@
 package biz.freshcode.learn.gwt.mod1.client.experiment.layout;
 
-import biz.freshcode.learn.gwt.common.client.builder.gxt.DialogBuilder;
-import biz.freshcode.learn.gwt.common.client.builder.gxt.container.BorderLayoutContainerBuilder;
-import biz.freshcode.learn.gwt.common.client.builder.gxt.container.BorderLayoutDataBuilder;
-import biz.freshcode.learn.gwt.common.client.builder.gxt.container.FlowLayoutContainerBuilder;
-import biz.freshcode.learn.gwt.common.client.builder.gxt.container.VerticalLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.mod1.client.util.AbstractIsWidget;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.DialogBuilder;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.container.BorderLayoutContainerBuilder;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.container.BorderLayoutDataBuilder;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.container.FlowLayoutContainerBuilder;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.container.VerticalLayoutContainerBuilder;
 import com.google.gwt.user.client.ui.HTML;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;

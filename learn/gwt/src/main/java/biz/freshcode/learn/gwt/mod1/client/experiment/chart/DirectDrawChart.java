@@ -1,11 +1,11 @@
 package biz.freshcode.learn.gwt.mod1.client.experiment.chart;
 
-import biz.freshcode.learn.gwt.common.client.builder.gxt.chart.ChartBuilder;
-import biz.freshcode.learn.gwt.common.client.builder.gxt.chart.axis.NumericAxisBuilder;
-import biz.freshcode.learn.gwt.common.client.builder.gxt.chart.series.LineSeriesBuilder;
-import biz.freshcode.learn.gwt.common.client.builder.gxt.draw.path.PathSpriteBuilder;
 import biz.freshcode.learn.gwt.mod1.client.util.AbstractIsWidget;
 import biz.freshcode.learn.gwt.mod1.client.util.IdentityHashProvider;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.chart.ChartBuilder;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.chart.axis.NumericAxisBuilder;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.chart.series.LineSeriesBuilder;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.draw.path.PathSpriteBuilder;
 import com.sencha.gxt.chart.client.chart.Chart;
 import com.sencha.gxt.chart.client.chart.series.Primitives;
 import com.sencha.gxt.chart.client.draw.path.PathSprite;

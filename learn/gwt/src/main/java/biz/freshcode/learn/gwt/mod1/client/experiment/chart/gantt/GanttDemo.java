@@ -1,17 +1,17 @@
 package biz.freshcode.learn.gwt.mod1.client.experiment.chart.gantt;
 
-import biz.freshcode.learn.gwt.common.client.builder.Construct;
-import biz.freshcode.learn.gwt.common.client.builder.gxt.chart.ChartBuilder;
-import biz.freshcode.learn.gwt.common.client.builder.gxt.chart.axis.NumericAxisBuilder;
-import biz.freshcode.learn.gwt.common.client.builder.gxt.chart.series.LineSeriesBuilder;
-import biz.freshcode.learn.gwt.common.client.builder.gxt.chart.series.SeriesToolTipConfigBuilder;
-import biz.freshcode.learn.gwt.common.client.builder.gxt.container.BorderLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.mod1.client.experiment.chart.gantt.reuse.GanttBar;
 import biz.freshcode.learn.gwt.mod1.client.experiment.chart.gantt.reuse.GanttInfo;
 import biz.freshcode.learn.gwt.mod1.client.experiment.chart.gantt.reuse.StartDurn;
 import biz.freshcode.learn.gwt.mod1.client.experiment.chart.reuse.ChartElem;
 import biz.freshcode.learn.gwt.mod1.client.experiment.chart.reuse.SeriesGap;
 import biz.freshcode.learn.gwt.mod1.client.util.AbstractIsWidget;
+import biz.freshcode.learn.gwt2.common.client.builder.Construct;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.chart.ChartBuilder;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.chart.axis.NumericAxisBuilder;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.chart.series.LineSeriesBuilder;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.chart.series.SeriesToolTipConfigBuilder;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.container.BorderLayoutContainerBuilder;
 import com.sencha.gxt.chart.client.chart.Chart;
 import com.sencha.gxt.chart.client.chart.series.SeriesLabelProvider;
 import com.sencha.gxt.chart.client.draw.RGB;

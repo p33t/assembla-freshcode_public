@@ -1,10 +1,10 @@
 package biz.freshcode.learn.gwt.mod1.client.experiment.forms2;
 
-import biz.freshcode.learn.gwt.common.client.builder.Construct;
-import biz.freshcode.learn.gwt.common.client.builder.gxt.form.SimpleComboBoxBuilder;
-import biz.freshcode.learn.gwt.common.client.builder.gxt.form.TextFieldBuilder;
-import biz.freshcode.learn.gwt.common.client.builder.gxt.grid.ColumnConfigBuilder;
 import biz.freshcode.learn.gwt.mod1.client.util.AbstractIsWidget;
+import biz.freshcode.learn.gwt2.common.client.builder.Construct;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.form.SimpleComboBoxBuilder;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.form.TextFieldBuilder;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.grid.ColumnConfigBuilder;
 import com.google.gwt.cell.client.AbstractCell;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.user.client.ui.Widget;
