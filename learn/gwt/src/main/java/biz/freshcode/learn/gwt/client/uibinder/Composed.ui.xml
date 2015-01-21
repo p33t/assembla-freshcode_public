@@ -1,5 +1,0 @@
-<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
-<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
-             xmlns:my='urn:import:biz.freshcode.learn.gwt.client.uibinder'>
-    <my:PanelMagic/>
-</ui:UiBinder>

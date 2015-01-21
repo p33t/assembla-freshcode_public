@@ -1,0 +1,17 @@
+package biz.freshcode.learn.gwt.mod1.client.uibinder;
+
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.Widget;
+
+public class PanelMagic extends Composite {
+    interface Binder extends UiBinder<Widget, PanelMagic> {
+    }
+
+    private static Binder binder = GWT.create(Binder.class);
+
+    {
+        initWidget(binder.createAndBindUi(this));
+    }
+}
