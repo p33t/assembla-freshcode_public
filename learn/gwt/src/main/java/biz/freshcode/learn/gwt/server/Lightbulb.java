@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newList;
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newMap;
+import static biz.freshcode.learn.gwt2.common.client.util.AppCollectionUtil.newList;
+import static biz.freshcode.learn.gwt2.common.client.util.AppCollectionUtil.newMap;
 
 public class Lightbulb {
     private Boolean isOn;

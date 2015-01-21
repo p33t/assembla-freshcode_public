@@ -7,18 +7,19 @@ import biz.freshcode.b_generation.PackageMapper;
 import biz.freshcode.b_generation.migrate.BuilderScan;
 import biz.freshcode.b_generation.migrate.MigrationProbe;
 import biz.freshcode.learn.gwt.client.experiment.forms.HrMinField;
-import biz.freshcode.learn.gwt.client.util.ExceptionUtil;
 import biz.freshcode.learn.gwt2.common.client.builder.BeanBuilder;
 import biz.freshcode.learn.gwt2.common.client.builder.Construct;
+import biz.freshcode.learn.gwt2.common.client.util.ExceptionUtil;
 import com.sencha.gxt.chart.client.chart.axis.NumericAxis;
 import com.sencha.gxt.widget.core.client.button.TextButton;
+import com.sencha.gxt.widget.core.client.container.Viewport;
 import com.sencha.gxt.widget.core.client.form.*;
 
 import java.lang.reflect.Method;
 
 public class BeanBuilderGenerator extends DefaultBeanBuilderGenerator {
-    static final Class CLASS = FileUploadField.class; //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-    public static final String BASE_PKG = "biz.freshcode.learn.gwt.common.client.builder";
+    static final Class CLASS = Viewport.class; //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    public static final String BASE_PKG = "biz.freshcode.learn.gwt2.common.client.builder";
 
     public static void main(String[] args) {
 //        For migrating to new components.

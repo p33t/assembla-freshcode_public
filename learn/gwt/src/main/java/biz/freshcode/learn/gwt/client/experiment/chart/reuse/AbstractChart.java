@@ -11,8 +11,8 @@ import com.sencha.gxt.widget.core.client.Composite;
 
 import java.util.List;
 
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newList;
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newListFrom;
+import static biz.freshcode.learn.gwt2.common.client.util.AppCollectionUtil.newList;
+import static biz.freshcode.learn.gwt2.common.client.util.AppCollectionUtil.newListFrom;
 
 public abstract class AbstractChart<T> extends Composite {
     protected final Chart<T> chart = new Chart<T>();

@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.ListIterator;
 
 import static biz.freshcode.learn.gwt.client.experiment.chart.PointAccess.ACCESS;
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newList;
+import static biz.freshcode.learn.gwt2.common.client.util.AppCollectionUtil.newList;
 import static com.sencha.gxt.chart.client.chart.Chart.Position;
 
 public class DirectDrawChart extends AbstractIsWidget<Chart<Point>> {

@@ -20,7 +20,7 @@ import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.info.Info;
 
 import static biz.freshcode.learn.gwt.client.experiment.mouseover.Bundle.STYLE;
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newSetFrom;
+import static biz.freshcode.learn.gwt2.common.client.util.AppCollectionUtil.newSetFrom;
 
 public class MouseOverWidget extends AbstractIsWidget {
     private static final SelectEvent.SelectHandler GO_HANDLER = new SelectEvent.SelectHandler() {

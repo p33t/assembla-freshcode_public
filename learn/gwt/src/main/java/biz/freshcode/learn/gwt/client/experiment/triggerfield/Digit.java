@@ -4,7 +4,7 @@ import com.sencha.gxt.widget.core.client.form.PropertyEditor;
 
 import java.text.ParseException;
 
-import static biz.freshcode.learn.gwt.client.util.ExceptionUtil.illegalArg;
+import static biz.freshcode.learn.gwt2.common.client.util.ExceptionUtil.illegalArg;
 
 public class Digit {
     byte val;

@@ -14,8 +14,8 @@ import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import java.util.Date;
 import java.util.List;
 
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newList;
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newListFrom;
+import static biz.freshcode.learn.gwt2.common.client.util.AppCollectionUtil.newList;
+import static biz.freshcode.learn.gwt2.common.client.util.AppCollectionUtil.newListFrom;
 
 public class Gantt2Demo extends AbstractIsWidget<BorderLayoutContainer> implements BarFocusEvent.Handler {
     private static final int HR = 60;

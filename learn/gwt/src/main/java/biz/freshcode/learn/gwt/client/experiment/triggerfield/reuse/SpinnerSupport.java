@@ -12,7 +12,7 @@ import java.text.ParseException;
 import java.util.Iterator;
 import java.util.List;
 
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newList;
+import static biz.freshcode.learn.gwt2.common.client.util.AppCollectionUtil.newList;
 
 /**
  * Works around the spinner field event crappiness (apparent in GXT 3.0.1).

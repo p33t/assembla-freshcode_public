@@ -9,8 +9,8 @@ import com.sencha.gxt.widget.core.client.form.AdapterField;
 
 import java.util.List;
 
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newList;
-import static biz.freshcode.learn.gwt.client.util.ExceptionUtil.illegalArg;
+import static biz.freshcode.learn.gwt2.common.client.util.AppCollectionUtil.newList;
+import static biz.freshcode.learn.gwt2.common.client.util.ExceptionUtil.illegalArg;
 
 public class ListBoxField<T> extends AdapterField<T> {
     private final ListBox listBox;

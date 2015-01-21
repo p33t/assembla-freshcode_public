@@ -35,9 +35,9 @@ import java.util.Map;
 
 import static biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartElem.Access.CE_ACCESS;
 import static biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartUtil.interpolate;
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newListFrom;
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newMap;
-import static biz.freshcode.learn.gwt.client.util.ExceptionUtil.illegalArg;
+import static biz.freshcode.learn.gwt2.common.client.util.AppCollectionUtil.newListFrom;
+import static biz.freshcode.learn.gwt2.common.client.util.AppCollectionUtil.newMap;
+import static biz.freshcode.learn.gwt2.common.client.util.ExceptionUtil.illegalArg;
 import static com.sencha.gxt.chart.client.chart.Chart.Position;
 
 public class ChartDemo extends AbstractIsWidget<BorderLayoutContainer> {

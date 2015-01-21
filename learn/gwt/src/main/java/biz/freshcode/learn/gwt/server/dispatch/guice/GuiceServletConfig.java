@@ -22,7 +22,7 @@ import com.gwtplatform.dispatch.shared.SecurityCookie;
 
 import java.util.Map;
 
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newMap;
+import static biz.freshcode.learn.gwt2.common.client.util.AppCollectionUtil.newMap;
 
 /**
  * Almost entirely duplicated from gwtp basic sample.

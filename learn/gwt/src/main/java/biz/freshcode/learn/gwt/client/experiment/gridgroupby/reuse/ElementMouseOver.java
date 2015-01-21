@@ -11,9 +11,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newList;
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newMap;
-import static biz.freshcode.learn.gwt.client.util.AppObjectUtils.safeEquals;
+import static biz.freshcode.learn.gwt2.common.client.util.AppCollectionUtil.newList;
+import static biz.freshcode.learn.gwt2.common.client.util.AppCollectionUtil.newMap;
+import static biz.freshcode.learn.gwt2.common.client.util.AppObjectUtils.safeEquals;
 
 /**
  * Facilitates hover operations on a SafeHtml rendered elements.

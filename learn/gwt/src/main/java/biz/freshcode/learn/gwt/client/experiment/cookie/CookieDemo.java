@@ -1,9 +1,9 @@
 package biz.freshcode.learn.gwt.client.experiment.cookie;
 
 import biz.freshcode.learn.gwt.client.GreetingServiceAsync;
-import biz.freshcode.learn.gwt.client.util.IsWidgetImpl;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.container.BorderLayoutContainerBuilder;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.toolbar.ToolBarBuilder;
+import biz.freshcode.learn.gwt2.common.client.util.IsWidgetImpl;
 import com.google.gwt.user.client.Cookies;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.datepicker.client.CalendarUtil;

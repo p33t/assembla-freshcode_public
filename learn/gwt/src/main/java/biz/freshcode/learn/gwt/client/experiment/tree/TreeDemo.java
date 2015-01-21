@@ -12,7 +12,7 @@ import com.sencha.gxt.widget.core.client.info.Info;
 import com.sencha.gxt.widget.core.client.selection.SelectionChangedEvent;
 import com.sencha.gxt.widget.core.client.tree.Tree;
 
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newListFrom;
+import static biz.freshcode.learn.gwt2.common.client.util.AppCollectionUtil.newListFrom;
 
 public class TreeDemo extends AbstractIsWidget {
     @Override

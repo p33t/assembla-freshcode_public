@@ -26,7 +26,7 @@ import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newListFrom;
+import static biz.freshcode.learn.gwt2.common.client.util.AppCollectionUtil.newListFrom;
 
 public class Forms2Demo extends AbstractIsWidget {
 

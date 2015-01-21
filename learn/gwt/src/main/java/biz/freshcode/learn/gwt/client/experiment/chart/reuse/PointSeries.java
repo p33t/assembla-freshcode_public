@@ -4,9 +4,9 @@ import com.sencha.gxt.core.client.util.Point;
 
 import java.util.*;
 
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newListFrom;
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newMap;
-import static biz.freshcode.learn.gwt.client.util.ExceptionUtil.illegalArg;
+import static biz.freshcode.learn.gwt2.common.client.util.AppCollectionUtil.newListFrom;
+import static biz.freshcode.learn.gwt2.common.client.util.AppCollectionUtil.newMap;
+import static biz.freshcode.learn.gwt2.common.client.util.ExceptionUtil.illegalArg;
 
 /**
  * Holds an ordered series of points where x can only have one value.

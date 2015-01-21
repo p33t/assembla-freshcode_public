@@ -4,7 +4,7 @@ import com.google.gwt.user.client.ui.Widget;
 
 import java.util.Iterator;
 
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newListFrom;
+import static biz.freshcode.learn.gwt2.common.client.util.AppCollectionUtil.newListFrom;
 
 /**
  * Initialises multiple MouseOverState instances and funnels callback invocations into a

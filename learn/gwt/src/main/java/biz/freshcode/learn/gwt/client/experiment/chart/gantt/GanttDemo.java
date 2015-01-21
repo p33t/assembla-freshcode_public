@@ -28,7 +28,7 @@ import java.util.Map;
 
 import static biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartElem.Access.CE_ACCESS;
 import static biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartUtil.interpolate;
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.*;
+import static biz.freshcode.learn.gwt2.common.client.util.AppCollectionUtil.*;
 
 public class GanttDemo extends AbstractIsWidget<BorderLayoutContainer> {
     private static final int HR = 60;

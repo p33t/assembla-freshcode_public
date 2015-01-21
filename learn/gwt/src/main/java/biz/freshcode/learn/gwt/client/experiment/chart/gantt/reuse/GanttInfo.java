@@ -2,7 +2,7 @@ package biz.freshcode.learn.gwt.client.experiment.chart.gantt.reuse;
 
 import java.util.Date;
 
-import static biz.freshcode.learn.gwt.client.util.ExceptionUtil.illegalArg;
+import static biz.freshcode.learn.gwt2.common.client.util.ExceptionUtil.illegalArg;
 
 public class GanttInfo {
     private final Iterable<GanttBar> bars;

@@ -18,7 +18,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.*;
+import static biz.freshcode.learn.gwt2.common.client.util.AppCollectionUtil.*;
 
 public class PreferredTimesField extends AdapterField<Set<AmPm>> implements HasValueChangeHandlers<Set<AmPm>> {
     private static final Set<AmPm> EMPTY_FLAGS = Collections.emptySet();

@@ -22,7 +22,7 @@ import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import java.util.List;
 import java.util.Random;
 
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newListFrom;
+import static biz.freshcode.learn.gwt2.common.client.util.AppCollectionUtil.newListFrom;
 import static com.sencha.gxt.chart.client.chart.Chart.Position;
 import static com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData;
 

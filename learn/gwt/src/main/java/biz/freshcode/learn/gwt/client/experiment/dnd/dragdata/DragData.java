@@ -5,7 +5,7 @@ import com.sencha.gxt.dnd.core.client.DndDragStartEvent;
 
 import java.util.*;
 
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.*;
+import static biz.freshcode.learn.gwt2.common.client.util.AppCollectionUtil.*;
 import static java.util.Collections.unmodifiableSet;
 
 /**

@@ -58,7 +58,7 @@ import static biz.freshcode.learn.gwt.client.experiment.grid.Bundle2.STYLE;
 import static biz.freshcode.learn.gwt.client.experiment.grid.RowEntity.Flag.GREEN;
 import static biz.freshcode.learn.gwt.client.experiment.grid.RowEntity.Flag.RED;
 import static biz.freshcode.learn.gwt.client.experiment.grid.reuse.MouseOverCell.isSameContext;
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.*;
+import static biz.freshcode.learn.gwt2.common.client.util.AppCollectionUtil.*;
 
 /**
  * Hover widgets, background images for cells, cell-to-cell drag-drop.

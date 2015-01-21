@@ -10,7 +10,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newSetFrom;
+import static biz.freshcode.learn.gwt2.common.client.util.AppCollectionUtil.newSetFrom;
 
 public class ExamWidget extends AbstractIsWidget<SimpleContainer> {
     private final Exam exam;

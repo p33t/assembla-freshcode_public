@@ -1,13 +1,13 @@
 package biz.freshcode.learn.gwt.client.experiment.upload;
 
 import biz.freshcode.learn.gwt.client.experiment.upload.reuse.FileReadButton;
-import biz.freshcode.learn.gwt.client.util.IsWidgetImpl;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.container.FlowLayoutContainerBuilder;
+import biz.freshcode.learn.gwt2.common.client.util.IsWidgetImpl;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.user.client.ui.HTML;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 
-import static biz.freshcode.learn.gwt.client.util.ClientUtil.log;
+import static biz.freshcode.learn.gwt2.common.client.util.ClientUtil.log;
 
 public class FileUploadDemo extends IsWidgetImpl {
     private final HTML html;
