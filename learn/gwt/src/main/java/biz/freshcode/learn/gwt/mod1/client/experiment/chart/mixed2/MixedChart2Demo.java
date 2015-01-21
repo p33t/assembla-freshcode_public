@@ -1,14 +1,14 @@
 package biz.freshcode.learn.gwt.mod1.client.experiment.chart.mixed2;
 
-import biz.freshcode.learn.gwt.common.client.builder.gxt.chart.ChartBuilder;
-import biz.freshcode.learn.gwt.common.client.builder.gxt.chart.axis.NumericAxisBuilder;
-import biz.freshcode.learn.gwt.common.client.builder.gxt.chart.series.LineSeriesBuilder;
-import biz.freshcode.learn.gwt.common.client.builder.gxt.container.BorderLayoutContainerBuilder;
-import biz.freshcode.learn.gwt.common.client.builder.gxt.container.HorizontalLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.mod1.client.experiment.chart.reuse.PointSeries;
 import biz.freshcode.learn.gwt.mod1.client.experiment.chart.reuse.SeriesMap;
 import biz.freshcode.learn.gwt.mod1.client.experiment.chart.reuse.SeriesMapChart;
 import biz.freshcode.learn.gwt.mod1.client.util.AbstractIsWidget;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.chart.ChartBuilder;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.chart.axis.NumericAxisBuilder;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.chart.series.LineSeriesBuilder;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.container.BorderLayoutContainerBuilder;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.container.HorizontalLayoutContainerBuilder;
 import com.sencha.gxt.chart.client.draw.RGB;
 import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.core.client.util.Point;

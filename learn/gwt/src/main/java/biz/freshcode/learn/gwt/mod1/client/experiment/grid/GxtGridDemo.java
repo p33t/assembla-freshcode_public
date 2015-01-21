@@ -1,10 +1,5 @@
 package biz.freshcode.learn.gwt.mod1.client.experiment.grid;
 
-import biz.freshcode.learn.gwt.common.client.builder.gxt.PopupBuilder;
-import biz.freshcode.learn.gwt.common.client.builder.gxt.button.ToolButtonBuilder;
-import biz.freshcode.learn.gwt.common.client.builder.gxt.container.HorizontalLayoutContainerBuilder;
-import biz.freshcode.learn.gwt.common.client.builder.gxt.grid.ColumnConfigBuilder;
-import biz.freshcode.learn.gwt.common.client.builder.gxt.menu.MenuBuilder;
 import biz.freshcode.learn.gwt.mod1.client.experiment.dnd.DropAssessment;
 import biz.freshcode.learn.gwt.mod1.client.experiment.dnd.DropSupport;
 import biz.freshcode.learn.gwt.mod1.client.experiment.dnd.dragdata.DragData;
@@ -14,6 +9,11 @@ import biz.freshcode.learn.gwt.mod1.client.experiment.grid.reuse.HasTarget;
 import biz.freshcode.learn.gwt.mod1.client.experiment.grid.reuse.PopOverCell;
 import biz.freshcode.learn.gwt.mod1.client.util.AbstractIsWidget;
 import biz.freshcode.learn.gwt.mod1.client.util.DummySelectHandler;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.PopupBuilder;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.button.ToolButtonBuilder;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.container.HorizontalLayoutContainerBuilder;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.grid.ColumnConfigBuilder;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.menu.MenuBuilder;
 import com.google.gwt.cell.client.Cell;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Element;

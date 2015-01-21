@@ -1,6 +1,6 @@
 package biz.freshcode.learn.gwt.mod1.client.experiment.forms3;
 
-import biz.freshcode.learn.gwt.common.client.builder.gxt.form.TextFieldBuilder;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.form.TextFieldBuilder;
 import com.google.gwt.editor.client.Editor;
 import com.sencha.gxt.data.shared.StringLabelProvider;
 import com.sencha.gxt.widget.core.client.form.TextField;

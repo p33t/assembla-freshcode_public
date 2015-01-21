@@ -1,8 +1,8 @@
 package biz.freshcode.learn.gwt.mod1.client.experiment.resources;
 
-import biz.freshcode.learn.gwt.common.client.builder.gwt.HTMLPanelBuilder;
-import biz.freshcode.learn.gwt.common.client.builder.gxt.container.VerticalLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.mod1.client.util.AbstractIsWidget;
+import biz.freshcode.learn.gwt2.common.client.builder.gwt.HTMLPanelBuilder;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.container.VerticalLayoutContainerBuilder;
 import com.google.gwt.user.client.ui.Widget;
 
 import static biz.freshcode.learn.gwt.mod1.client.experiment.resources.Bundle.STYLE;

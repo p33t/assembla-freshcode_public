@@ -1,10 +1,10 @@
 package biz.freshcode.learn.gwt.mod1.client.rpc.dispatch;
 
-import biz.freshcode.learn.gwt.common.client.builder.gxt.button.TextButtonBuilder;
-import biz.freshcode.learn.gwt.common.client.builder.gxt.container.VerticalLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.mod1.client.util.AbstractIsWidget;
 import biz.freshcode.learn.gwt.mod1.shared.dispatch.DdAction;
 import biz.freshcode.learn.gwt.mod1.shared.dispatch.StrResult;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.button.TextButtonBuilder;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.container.VerticalLayoutContainerBuilder;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HTML;

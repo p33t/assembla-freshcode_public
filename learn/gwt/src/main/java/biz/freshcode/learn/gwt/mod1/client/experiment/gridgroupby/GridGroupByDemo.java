@@ -1,13 +1,13 @@
 package biz.freshcode.learn.gwt.mod1.client.experiment.gridgroupby;
 
-import biz.freshcode.learn.gwt.common.client.builder.gxt.container.BorderLayoutContainerBuilder;
-import biz.freshcode.learn.gwt.common.client.builder.gxt.grid.GroupSummaryViewBuilder;
-import biz.freshcode.learn.gwt.common.client.builder.gxt.grid.SummaryColumnConfigBuilder;
 import biz.freshcode.learn.gwt.mod1.client.experiment.grid.reuse.PopOverCell;
 import biz.freshcode.learn.gwt.mod1.client.experiment.gridgroupby.reuse.ElementMouseOver;
 import biz.freshcode.learn.gwt.mod1.client.experiment.hoverwidget.reuse.HoverWidgetSupport;
 import biz.freshcode.learn.gwt.mod1.client.util.AbstractIsWidget;
 import biz.freshcode.learn.gwt.mod1.client.util.IdentityHashProvider;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.container.BorderLayoutContainerBuilder;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.grid.GroupSummaryViewBuilder;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.grid.SummaryColumnConfigBuilder;
 import com.google.gwt.cell.client.AbstractCell;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.dom.client.Element;

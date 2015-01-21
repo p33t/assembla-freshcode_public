@@ -1,11 +1,11 @@
 package biz.freshcode.learn.gwt.mod1.client.experiment.forms;
 
-import biz.freshcode.learn.gwt.common.client.builder.gxt.container.VerticalLayoutContainerBuilder;
-import biz.freshcode.learn.gwt.common.client.builder.gxt.form.FieldLabelBuilder;
-import biz.freshcode.learn.gwt.common.client.builder.gxt.form.NumberFieldBuilder;
-import biz.freshcode.learn.gwt.common.client.builder.gxt.form.TextFieldBuilder;
-import biz.freshcode.learn.gwt.common.client.builder.gxt.grid.ColumnConfigBuilder;
 import biz.freshcode.learn.gwt.mod1.client.util.AbstractIsWidget;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.container.VerticalLayoutContainerBuilder;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.form.FieldLabelBuilder;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.form.NumberFieldBuilder;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.form.TextFieldBuilder;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.grid.ColumnConfigBuilder;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.editor.client.Editor;
 import com.google.gwt.editor.client.EditorError;

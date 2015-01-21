@@ -1,8 +1,8 @@
 package biz.freshcode.learn.gwt.mod1.client.experiment.upload;
 
-import biz.freshcode.learn.gwt.common.client.builder.gxt.container.FlowLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.mod1.client.experiment.upload.reuse.FileReadButton;
 import biz.freshcode.learn.gwt.mod1.client.util.IsWidgetImpl;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.container.FlowLayoutContainerBuilder;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.user.client.ui.HTML;
 import com.sencha.gxt.widget.core.client.button.TextButton;

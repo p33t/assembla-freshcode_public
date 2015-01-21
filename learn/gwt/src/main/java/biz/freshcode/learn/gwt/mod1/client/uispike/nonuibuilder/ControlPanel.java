@@ -1,11 +1,11 @@
 package biz.freshcode.learn.gwt.mod1.client.uispike.nonuibuilder;
 
-import biz.freshcode.learn.gwt.common.client.builder.gxt.container.BorderLayoutContainerBuilder;
-import biz.freshcode.learn.gwt.common.client.builder.gxt.container.BorderLayoutDataBuilder;
-import biz.freshcode.learn.gwt.common.client.builder.gxt.container.VerticalLayoutContainerBuilder;
-import biz.freshcode.learn.gwt.common.client.builder.gxt.toolbar.ToolBarBuilder;
 import biz.freshcode.learn.gwt.mod1.client.uispike.Row;
 import biz.freshcode.learn.gwt.mod1.client.util.AbstractIsWidget;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.container.BorderLayoutContainerBuilder;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.container.BorderLayoutDataBuilder;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.container.VerticalLayoutContainerBuilder;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.toolbar.ToolBarBuilder;
 import com.google.gwt.user.client.Random;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.core.client.dom.ScrollSupport;

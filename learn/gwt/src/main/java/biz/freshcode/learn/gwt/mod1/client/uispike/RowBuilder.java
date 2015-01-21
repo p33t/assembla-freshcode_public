@@ -6,8 +6,8 @@ package biz.freshcode.learn.gwt.mod1.client.uispike;
  * @see biz.freshcode.learn.gwt.mod1.client.uispike.Row
  */
 @SuppressWarnings("UnusedDeclaration")
-@biz.freshcode.learn.gwt.common.client.builder.BeanBuilder(Row.class)
-public class RowBuilder extends biz.freshcode.learn.gwt.common.client.builder.Construct.Parent<RowBuilder> {
+@biz.freshcode.learn.gwt2.common.client.builder.BeanBuilder(Row.class)
+public class RowBuilder extends biz.freshcode.learn.gwt2.common.client.builder.Construct.Parent<RowBuilder> {
     public final Row row;
 
     public RowBuilder(Row v) {
