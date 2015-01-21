@@ -1,7 +1,7 @@
 package biz.freshcode.learn.gwt.client.rpc.dispatch;
 
-import biz.freshcode.learn.gwt.mod1.shared.dispatch.SdAction;
-import biz.freshcode.learn.gwt.mod1.shared.dispatch.StrResult;
+import biz.freshcode.learn.gwt.shared.dispatch.SdAction;
+import biz.freshcode.learn.gwt.shared.dispatch.StrResult;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 

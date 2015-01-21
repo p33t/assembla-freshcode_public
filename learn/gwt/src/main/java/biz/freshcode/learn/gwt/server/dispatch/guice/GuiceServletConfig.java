@@ -1,11 +1,11 @@
 package biz.freshcode.learn.gwt.server.dispatch.guice;
 
 import biz.freshcode.learn.gwt.client.inject.AppModule;
-import biz.freshcode.learn.gwt.mod1.shared.dispatch.DdAction;
-import biz.freshcode.learn.gwt.mod1.shared.dispatch.SdAction;
 import biz.freshcode.learn.gwt.server.GreetingServiceImpl;
 import biz.freshcode.learn.gwt.server.dispatch.DdHandler;
 import biz.freshcode.learn.gwt.server.dispatch.SdHandler;
+import biz.freshcode.learn.gwt.shared.dispatch.DdAction;
+import biz.freshcode.learn.gwt.shared.dispatch.SdAction;
 import com.google.gwt.logging.server.RemoteLoggingServiceImpl;
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
