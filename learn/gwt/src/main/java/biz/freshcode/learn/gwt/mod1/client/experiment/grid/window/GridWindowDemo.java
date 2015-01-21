@@ -1,8 +1,8 @@
 package biz.freshcode.learn.gwt.mod1.client.experiment.grid.window;
 
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.WindowBuilder;
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.container.BorderLayoutContainerBuilder;
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.grid.ColumnConfigBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.WindowBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.container.BorderLayoutContainerBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.grid.ColumnConfigBuilder;
 import com.sencha.gxt.core.client.IdentityValueProvider;
 import com.sencha.gxt.data.shared.ListStore;
 import com.sencha.gxt.data.shared.ModelKeyProvider;

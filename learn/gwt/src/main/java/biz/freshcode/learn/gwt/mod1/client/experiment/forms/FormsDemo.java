@@ -1,8 +1,8 @@
 package biz.freshcode.learn.gwt.mod1.client.experiment.forms;
 
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.DialogBuilder;
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.button.TextButtonBuilder;
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.container.FlowLayoutContainerBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.DialogBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.button.TextButtonBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.container.FlowLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.mod1.client.util.AbstractIsWidget;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 import com.google.gwt.user.client.ui.HTMLPanel;

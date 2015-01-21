@@ -1,6 +1,6 @@
 package biz.freshcode.learn.gwt.mod1.client.experiment.forms;
 
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.DialogBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.DialogBuilder;
 import biz.freshcode.learn.gwt.mod1.client.util.AbstractIsWidget;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.SimpleBeanEditorDriver;

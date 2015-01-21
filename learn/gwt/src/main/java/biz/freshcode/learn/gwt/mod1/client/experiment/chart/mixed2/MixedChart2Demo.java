@@ -1,10 +1,10 @@
 package biz.freshcode.learn.gwt.mod1.client.experiment.chart.mixed2;
 
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.chart.ChartBuilder;
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.chart.axis.NumericAxisBuilder;
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.chart.series.LineSeriesBuilder;
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.container.BorderLayoutContainerBuilder;
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.container.HorizontalLayoutContainerBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.chart.ChartBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.chart.axis.NumericAxisBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.chart.series.LineSeriesBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.container.BorderLayoutContainerBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.container.HorizontalLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.mod1.client.experiment.chart.reuse.PointSeries;
 import biz.freshcode.learn.gwt.mod1.client.experiment.chart.reuse.SeriesMap;
 import biz.freshcode.learn.gwt.mod1.client.experiment.chart.reuse.SeriesMapChart;

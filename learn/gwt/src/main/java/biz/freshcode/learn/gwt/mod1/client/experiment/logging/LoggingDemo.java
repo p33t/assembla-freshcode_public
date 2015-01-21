@@ -1,6 +1,6 @@
 package biz.freshcode.learn.gwt.mod1.client.experiment.logging;
 
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.container.FlowLayoutContainerBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.container.FlowLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.mod1.client.util.AbstractIsWidget;
 import com.google.gwt.core.client.GWT;
 import com.sencha.gxt.widget.core.client.button.TextButton;

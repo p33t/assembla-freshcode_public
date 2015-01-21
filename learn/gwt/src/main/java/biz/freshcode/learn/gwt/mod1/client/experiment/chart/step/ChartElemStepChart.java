@@ -1,9 +1,9 @@
 package biz.freshcode.learn.gwt.mod1.client.experiment.chart.step;
 
-import biz.freshcode.learn.gwt.mod1.client.builder.IterConstruct;
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.chart.ChartBuilder;
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.chart.axis.NumericAxisBuilder;
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.chart.series.AreaSeriesBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.IterConstruct;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.chart.ChartBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.chart.axis.NumericAxisBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.chart.series.AreaSeriesBuilder;
 import biz.freshcode.learn.gwt.mod1.client.experiment.chart.reuse.ChartElem;
 import biz.freshcode.learn.gwt.mod1.client.experiment.chart.reuse.ChartElemChart;
 import biz.freshcode.learn.gwt.mod1.client.experiment.chart.reuse.ChartUtil;

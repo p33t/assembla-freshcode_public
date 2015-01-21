@@ -1,9 +1,9 @@
 package biz.freshcode.learn.gwt.mod1.client.uispike.nonuibuilder;
 
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.ContentPanelBuilder;
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.container.BorderLayoutContainerBuilder;
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.container.BorderLayoutDataBuilder;
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.util.MarginsBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.ContentPanelBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.container.BorderLayoutContainerBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.container.BorderLayoutDataBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.util.MarginsBuilder;
 import biz.freshcode.learn.gwt.mod1.client.uispike.Row;
 import biz.freshcode.learn.gwt.mod1.client.util.AbstractIsWidget;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;

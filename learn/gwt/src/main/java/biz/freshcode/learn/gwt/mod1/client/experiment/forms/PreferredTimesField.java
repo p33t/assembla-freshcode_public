@@ -1,6 +1,6 @@
 package biz.freshcode.learn.gwt.mod1.client.experiment.forms;
 
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.grid.ColumnConfigBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.grid.ColumnConfigBuilder;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.event.logical.shared.HasValueChangeHandlers;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;

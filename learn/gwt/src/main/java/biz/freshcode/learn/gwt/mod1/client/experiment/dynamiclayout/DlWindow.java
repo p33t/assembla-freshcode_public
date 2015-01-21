@@ -1,10 +1,10 @@
 package biz.freshcode.learn.gwt.mod1.client.experiment.dynamiclayout;
 
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.WindowBuilder;
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.container.BoxLayoutDataBuilder;
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.container.FlowLayoutContainerBuilder;
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.container.VBoxLayoutContainerBuilder;
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.form.TextAreaBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.WindowBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.container.BoxLayoutDataBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.container.FlowLayoutContainerBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.container.VBoxLayoutContainerBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.form.TextAreaBuilder;
 import biz.freshcode.learn.gwt.mod1.client.util.AbstractIsWidget;
 import com.sencha.gxt.widget.core.client.Window;
 import com.sencha.gxt.widget.core.client.button.TextButton;

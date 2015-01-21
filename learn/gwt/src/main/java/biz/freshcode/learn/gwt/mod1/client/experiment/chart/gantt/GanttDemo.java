@@ -1,11 +1,11 @@
 package biz.freshcode.learn.gwt.mod1.client.experiment.chart.gantt;
 
-import biz.freshcode.learn.gwt.mod1.client.builder.Construct;
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.chart.ChartBuilder;
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.chart.axis.NumericAxisBuilder;
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.chart.series.LineSeriesBuilder;
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.chart.series.SeriesToolTipConfigBuilder;
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.container.BorderLayoutContainerBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.Construct;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.chart.ChartBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.chart.axis.NumericAxisBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.chart.series.LineSeriesBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.chart.series.SeriesToolTipConfigBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.container.BorderLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.mod1.client.experiment.chart.gantt.reuse.GanttBar;
 import biz.freshcode.learn.gwt.mod1.client.experiment.chart.gantt.reuse.GanttInfo;
 import biz.freshcode.learn.gwt.mod1.client.experiment.chart.gantt.reuse.StartDurn;
