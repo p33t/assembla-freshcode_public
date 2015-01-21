@@ -1,0 +1,32 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'
+             xmlns:container='urn:import:com.sencha.gxt.widget.core.client.container'
+             xmlns:gxt='urn:import:com.sencha.gxt.widget.core.client'
+             xmlns:my='urn:import:biz.freshcode.learn.gwt.client.uispike.gxt'
+        >
+
+    <ui:style>
+        .highlight {
+            background-color: #e0ffff;
+        }
+    </ui:style>
+
+    <ui:with field="config" type="biz.freshcode.learn.gwt.client.uispike.gxt.UiSpikePanel.UiConfig"/>
+
+    <container:BorderLayoutContainer styleName="{style.highlight}">
+        <container:west layoutData="{config.westLayout}">
+            <!-- NOTE: ContentPanel for heading and work-around for resize bug -->
+            <gxt:ContentPanel headingText="West Heading">
+                <my:ControlPanel ui:field="pnlControl"/>
+            </gxt:ContentPanel>
+        </container:west>
+        <container:center>
+            <gxt:ContentPanel ui:field="pnlCenter">
+                <g:HTMLPanel>
+                    <p>This is some more HTML</p>
+                </g:HTMLPanel>
+            </gxt:ContentPanel>
+        </container:center>
+    </container:BorderLayoutContainer>
+</ui:UiBinder>

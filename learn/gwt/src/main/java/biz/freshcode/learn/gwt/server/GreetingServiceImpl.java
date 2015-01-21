@@ -1,7 +1,7 @@
 package biz.freshcode.learn.gwt.server;
 
-import biz.freshcode.learn.gwt.mod1.client.GreetingService;
-import biz.freshcode.learn.gwt.mod1.client.inject.SessionInfo;
+import biz.freshcode.learn.gwt.client.GreetingService;
+import biz.freshcode.learn.gwt.client.inject.SessionInfo;
 import biz.freshcode.learn.gwt.mod1.shared.FieldVerifier;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
