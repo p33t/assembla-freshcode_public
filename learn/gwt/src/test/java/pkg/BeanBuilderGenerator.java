@@ -6,10 +6,10 @@ import biz.freshcode.b_generation.DefaultBeanBuilderGenerator;
 import biz.freshcode.b_generation.PackageMapper;
 import biz.freshcode.b_generation.migrate.BuilderScan;
 import biz.freshcode.b_generation.migrate.MigrationProbe;
-import biz.freshcode.learn.gwt.client.builder.BeanBuilder;
-import biz.freshcode.learn.gwt.client.builder.Construct;
-import biz.freshcode.learn.gwt.client.experiment.forms.HrMinField;
-import biz.freshcode.learn.gwt.client.util.ExceptionUtil;
+import biz.freshcode.learn.gwt.mod1.client.builder.BeanBuilder;
+import biz.freshcode.learn.gwt.mod1.client.builder.Construct;
+import biz.freshcode.learn.gwt.mod1.client.experiment.forms.HrMinField;
+import biz.freshcode.learn.gwt.mod1.client.util.ExceptionUtil;
 import com.sencha.gxt.chart.client.chart.axis.NumericAxis;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.form.*;
@@ -18,7 +18,7 @@ import java.lang.reflect.Method;
 
 public class BeanBuilderGenerator extends DefaultBeanBuilderGenerator {
     static final Class CLASS = FileUploadField.class; //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-    public static final String BASE_PKG = "biz.freshcode.learn.gwt.client.builder";
+    public static final String BASE_PKG = "biz.freshcode.learn.gwt.mod1.client.builder";
 
     public static void main(String[] args) {
 //        For migrating to new components.
@@ -27,7 +27,7 @@ public class BeanBuilderGenerator extends DefaultBeanBuilderGenerator {
                 .addMapping("com.sencha.gxt.chart.client", BASE_PKG + ".gxt")
                 .addMapping("com.sencha.gxt.core.client", BASE_PKG + ".gxt")
                 .addMapping("com.google.gwt.user.client.ui", BASE_PKG + ".gwt")
-                .addMapping("biz.freshcode.learn.gwt.client", BASE_PKG + ".freshcode");
+                .addMapping("biz.freshcode.learn.gwt.mod1.client", BASE_PKG + ".freshcode");
         String str = new MigrationProbe()
                 .builderScan(new BuilderScan().targetAnnotation(BeanBuilder.class))
                 .beanClassReader(new MigrationProbe.BeanClassReader() {

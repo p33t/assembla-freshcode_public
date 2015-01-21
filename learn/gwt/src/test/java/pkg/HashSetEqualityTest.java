@@ -4,7 +4,7 @@ import junit.framework.TestCase;
 
 import java.util.Set;
 
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newSetFrom;
+import static biz.freshcode.learn.gwt.mod1.client.util.AppCollectionUtil.newSetFrom;
 
 /**
  * Trying to figure out is HashSet has implemented hashCode() and equals() properly.

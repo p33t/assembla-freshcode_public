@@ -1,0 +1,21 @@
+package biz.freshcode.learn.gwt.mod1.shared.dispatch;
+
+import com.gwtplatform.dispatch.rpc.shared.ActionImpl;
+
+public class SdAction extends ActionImpl<StrResult> {
+    private String str;
+
+    // for ser'n
+    @SuppressWarnings("UnusedDeclaration")
+    private SdAction() {
+        // nothing
+    }
+
+    public SdAction(String str) {
+        this.str = str;
+    }
+
+    public String getStr() {
+        return str;
+    }
+}

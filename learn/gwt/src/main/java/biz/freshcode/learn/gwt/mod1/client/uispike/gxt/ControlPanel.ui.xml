@@ -1,0 +1,26 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:container='urn:import:com.sencha.gxt.widget.core.client.container'
+             xmlns:toolbar='urn:import:com.sencha.gxt.widget.core.client.toolbar'
+             xmlns:button='urn:import:com.sencha.gxt.widget.core.client.button'
+        >
+
+    <ui:with field="config" type="biz.freshcode.learn.gwt.mod1.client.uispike.gxt.ControlPanel.Config"/>
+
+    <container:BorderLayoutContainer>
+        <container:north layoutData="{config.northLayout}">
+            <toolbar:ToolBar>
+                <!-- Hmmm... this isn't responding to resize events properly.  Collapse and restore seems to rectify location. -->
+                <toolbar:FillToolItem/>
+                <button:TextButton text="Process" ui:field="btnProcess"/>
+                <toolbar:SeparatorToolItem/>
+                <button:TextButton text="Add" ui:field="btnAdd"/>
+            </toolbar:ToolBar>
+        </container:north>
+        <container:center>
+            <!-- NOTE: Scrolling is not available on SimpleContainer or ContentPanel.  Look for implementors of 'HasScrollSupport'. -->
+            <container:VerticalLayoutContainer ui:field="lines">
+            </container:VerticalLayoutContainer>
+        </container:center>
+    </container:BorderLayoutContainer>
+</ui:UiBinder>

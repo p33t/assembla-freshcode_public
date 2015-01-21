@@ -1,0 +1,20 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'
+             xmlns:container='urn:import:com.sencha.gxt.widget.core.client.container'
+             xmlns:toolbar='urn:import:com.sencha.gxt.widget.core.client.toolbar'
+             xmlns:button="urn:import:com.sencha.gxt.widget.core.client.button"
+        >
+    <container:VerticalLayoutContainer>
+        <container:child>
+            <toolbar:ToolBar>
+                <toolbar:LabelToolItem ui:field="lblName"/>
+                <toolbar:FillToolItem/>
+                <button:TextButton text="Edit.." ui:field="btnEdit"/>
+            </toolbar:ToolBar>
+        </container:child>
+        <container:child>
+            <g:HTMLPanel ui:field="pnlContent"/>
+        </container:child>
+    </container:VerticalLayoutContainer>
+</ui:UiBinder>

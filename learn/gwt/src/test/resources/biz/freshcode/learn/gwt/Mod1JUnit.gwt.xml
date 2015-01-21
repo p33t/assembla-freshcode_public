@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module>
     <!-- Inherit our applications main module.                      -->
-    <inherits name='biz.freshcode.learn.gwt.Mod1'/>
+    <inherits name='biz.freshcode.learn.gwt.mod1.Mod1'/>
 
     <!-- Specify the path to any remote services.                   -->
     <servlet path="/Mod1/greet" class="biz.freshcode.learn.gwt.server.GreetingServiceImpl"/>
