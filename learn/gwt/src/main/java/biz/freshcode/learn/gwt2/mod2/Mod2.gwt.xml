@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module rename-to='Mod2'>
+    <inherits name='biz.freshcode.learn.gwt2.common.Common'/>
+
+    <inherits name='com.gwtplatform.mvp.MvpWithEntryPoint'/>
+
+    <!-- Specify the paths for translatable code                    -->
+    <source path='client'/>
+    <source path='shared'/>
+
+    <set-configuration-property name="gin.ginjector.modules"
+                                value="biz.freshcode.learn.gwt2.mod2.client.boot.ClientModule"/>
+</module>
