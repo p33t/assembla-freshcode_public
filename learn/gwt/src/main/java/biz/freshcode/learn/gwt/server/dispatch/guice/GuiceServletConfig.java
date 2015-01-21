@@ -1,6 +1,6 @@
 package biz.freshcode.learn.gwt.server.dispatch.guice;
 
-import biz.freshcode.learn.gwt.mod1.client.inject.AppModule;
+import biz.freshcode.learn.gwt.client.inject.AppModule;
 import biz.freshcode.learn.gwt.mod1.shared.dispatch.DdAction;
 import biz.freshcode.learn.gwt.mod1.shared.dispatch.SdAction;
 import biz.freshcode.learn.gwt.server.GreetingServiceImpl;
@@ -22,7 +22,7 @@ import com.gwtplatform.dispatch.shared.SecurityCookie;
 
 import java.util.Map;
 
-import static biz.freshcode.learn.gwt.mod1.client.util.AppCollectionUtil.newMap;
+import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newMap;
 
 /**
  * Almost entirely duplicated from gwtp basic sample.

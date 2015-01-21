@@ -224,7 +224,7 @@
                 <configuration>
                     <runTarget>Mod1.html</runTarget>
                     <hostedWebapp>${webappDirectory}</hostedWebapp>
-                    <i18nMessagesBundle>biz.freshcode.learn.gwt.mod1.client.Messages</i18nMessagesBundle>
+                    <i18nMessagesBundle>biz.freshcode.learn.gwt.client.Messages</i18nMessagesBundle>
                     <!-- Speed tweak -->
                     <!--<draftCompile>true</draftCompile>-->
                 </configuration>
