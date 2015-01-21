@@ -23,6 +23,7 @@ response.setDateHeader ("Expires", -1);
 <p>Select desired module...</p>
 
 <p><a href="Mod1.html">Mod1</a></p>
+<p><a href="Mod2.html">Mod2</a></p>
 <input type="button" value="Dates" onclick="showDates();return false;"/>
 </body>
 </html>
