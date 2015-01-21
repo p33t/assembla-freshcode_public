@@ -12,6 +12,7 @@ import com.gwtplatform.mvp.client.ViewImpl;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.sencha.gxt.core.client.dom.ScrollSupport;
+import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData;
 
 public class ResizeSpike extends Presenter<View, ResizeSpike.Proxy> {
     public static final String TOKEN = "resize";
@@ -34,12 +35,9 @@ public class ResizeSpike extends Presenter<View, ResizeSpike.Proxy> {
                     .scrollMode(ScrollSupport.ScrollMode.AUTOY)
                     .add(new FieldLabelBuilder()
                             .text("Label")
-                            .width("100%")
                             .widget(new TextAreaBuilder()
-                                    .height(150)
-// No effect...                                    .width("100%")
                                     .textArea)
-                            .fieldLabel)
+                            .fieldLabel, new VerticalLayoutData(1.0, 150))
                     .verticalLayoutContainer);
         }
     }
