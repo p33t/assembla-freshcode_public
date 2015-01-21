@@ -5,6 +5,7 @@ import biz.freshcode.learn.gwt2.common.client.builder.gxt.menu.MenuBuilder;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.toolbar.ToolBarBuilder;
 import biz.freshcode.learn.gwt2.common.client.util.IsWidgetImpl;
 import biz.freshcode.learn.gwt2.mod2.client.home.Home;
+import biz.freshcode.learn.gwt2.mod2.client.spike.adapterfieldgrid.AdapterFieldGridSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.resize.ResizeSpike;
 import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.event.logical.shared.SelectionHandler;
@@ -28,6 +29,7 @@ public class RootMenu extends IsWidgetImpl {
                         .text("Spike")
                         .menu(new MenuBuilder()
                                 .add(new MenuItem("Resize", new Handler<MenuItem>(ResizeSpike.TOKEN)))
+                                .add(new MenuItem("Adapter Field Grid", new Handler<MenuItem>(AdapterFieldGridSpike.TOKEN)))
                                 .menu)
                         .textButton)
                 .toolBar);

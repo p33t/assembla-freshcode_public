@@ -12,13 +12,13 @@ import biz.freshcode.learn.gwt2.common.client.builder.Construct;
 import biz.freshcode.learn.gwt2.common.client.util.ExceptionUtil;
 import com.sencha.gxt.chart.client.chart.axis.NumericAxis;
 import com.sencha.gxt.widget.core.client.button.TextButton;
-import com.sencha.gxt.widget.core.client.container.Viewport;
 import com.sencha.gxt.widget.core.client.form.*;
+import com.sencha.gxt.widget.core.client.grid.Grid;
 
 import java.lang.reflect.Method;
 
 public class BeanBuilderGenerator extends DefaultBeanBuilderGenerator {
-    static final Class CLASS = Viewport.class; //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    static final Class CLASS = Grid.class; //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     public static final String BASE_PKG = "biz.freshcode.learn.gwt2.common.client.builder";
 
     public static void main(String[] args) {

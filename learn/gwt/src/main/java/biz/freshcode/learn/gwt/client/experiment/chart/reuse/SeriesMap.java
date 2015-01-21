@@ -7,8 +7,8 @@ import com.sencha.gxt.data.shared.ModelKeyProvider;
 
 import java.util.*;
 
-import static biz.freshcode.learn.gwt.client.experiment.chart.reuse.UnityAccess.unityAccess;
 import static biz.freshcode.learn.gwt2.common.client.util.AppCollectionUtil.*;
+import static biz.freshcode.learn.gwt2.common.client.util.data.UnityAccess.unityAccess;
 
 /**
  * A collection of named and configured PointSeries.  This is an immutable structure.
