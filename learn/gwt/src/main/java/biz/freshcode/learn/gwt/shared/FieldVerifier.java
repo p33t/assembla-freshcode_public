@@ -1,4 +1,4 @@
-package biz.freshcode.learn.gwt.mod1.shared;
+package biz.freshcode.learn.gwt.shared;
 
 /**
  * <p>

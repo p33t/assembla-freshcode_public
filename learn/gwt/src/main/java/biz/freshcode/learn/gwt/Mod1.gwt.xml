@@ -13,7 +13,7 @@
 
     <!-- Specify the paths for translatable code                    -->
     <source path='client'/>
-    <source path='mod1/shared'/>
+    <source path='shared'/>
 
     <!-- Dev quick compile: for Chrome is 'safari' -->
     <!--Firefox only = gecko1_8-->

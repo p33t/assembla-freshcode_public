@@ -1,7 +1,7 @@
 package biz.freshcode.learn.gwt.client;
 
 import biz.freshcode.learn.gwt.client.test.TestUtil;
-import biz.freshcode.learn.gwt.mod1.shared.FieldVerifier;
+import biz.freshcode.learn.gwt.shared.FieldVerifier;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.junit.client.GWTTestCase;
 import com.google.gwt.user.client.rpc.AsyncCallback;

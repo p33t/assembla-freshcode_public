@@ -1,4 +1,4 @@
-package biz.freshcode.learn.gwt.mod1.shared.dispatch;
+package biz.freshcode.learn.gwt.shared.dispatch;
 
 import com.gwtplatform.dispatch.rpc.shared.Result;
 

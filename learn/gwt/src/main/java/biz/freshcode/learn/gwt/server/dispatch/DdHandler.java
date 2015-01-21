@@ -1,7 +1,7 @@
 package biz.freshcode.learn.gwt.server.dispatch;
 
-import biz.freshcode.learn.gwt.mod1.shared.dispatch.DdAction;
-import biz.freshcode.learn.gwt.mod1.shared.dispatch.StrResult;
+import biz.freshcode.learn.gwt.shared.dispatch.DdAction;
+import biz.freshcode.learn.gwt.shared.dispatch.StrResult;
 import com.gwtplatform.dispatch.rpc.server.ExecutionContext;
 import com.gwtplatform.dispatch.rpc.server.actionhandler.ActionHandler;
 import com.gwtplatform.dispatch.shared.ActionException;
