@@ -1,6 +1,6 @@
 package biz.freshcode.learn.gwt.mod1.client.uispike.gxt;
 
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.container.BorderLayoutDataBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.container.BorderLayoutDataBuilder;
 import biz.freshcode.learn.gwt.mod1.client.uispike.Row;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;

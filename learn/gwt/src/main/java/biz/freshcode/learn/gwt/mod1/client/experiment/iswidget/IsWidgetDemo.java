@@ -1,6 +1,6 @@
 package biz.freshcode.learn.gwt.mod1.client.experiment.iswidget;
 
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.container.VerticalLayoutContainerBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.container.VerticalLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.mod1.client.util.AbstractIsWidget;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.widget.core.client.button.TextButton;

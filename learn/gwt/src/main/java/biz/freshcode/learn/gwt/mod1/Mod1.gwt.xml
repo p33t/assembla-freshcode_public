@@ -1,45 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module rename-to='Mod1'>
-    <!-- Inherit the core Web Toolkit stuff.                        -->
-    <inherits name='com.google.gwt.user.User'/>
-
-    <inherits name='com.google.gwt.user.theme.standard.Standard'/>
-
-    <inherits name='com.sencha.gxt.ui.GXT'/>
-
-    <!-- We need the JUnit module in the main module,               -->
-    <!-- otherwise eclipse complains (Google plugin bug?)           -->
-    <inherits name='com.google.gwt.junit.JUnit'/>
-
-    <!-- Inherit the default GWT style sheet.  You can change       -->
-    <!-- the theme of your GWT application by uncommenting          -->
-    <!-- any one of the following lines.                            -->
-
-    <!-- Must come after GXT module -->
-    <inherits name='com.sencha.gxt.theme.gray.Gray'/>
-
-    <!-- Other module inherits                                      -->
-    <!-- Not necessary -->
-    <!--<inherits name="com.google.gwt.uibinder.UiBinder"/>-->
-
-    <!--Trying to debug client bundles... not sure if this is necessary-->
-    <inherits name="com.google.gwt.resources.Resources"/>
-
-    <!-- GZip the output files by default -->
-    <inherits name='com.google.gwt.precompress.Precompress'/>
-
-    <inherits name="com.google.gwt.logging.Logging"/>
-
+    <inherits name='biz.freshcode.learn.gwt.common.Common'/>
     <inherits name='com.google.web.bindery.requestfactory.RequestFactory'/>
     <inherits name="com.google.gwt.activity.Activity"/>
-    <inherits name="com.gwtplatform.dispatch.Dispatch"/>
-    <inherits name="com.sencha.gxt.chart.Chart"/>
-    <inherits name="com.gwtplatform.mvp.Mvp"/>
     <!--<inherits name="elemental.Elemental"/>-->
-
-    <set-property name="gwt.logging.enabled" value="TRUE"/>
-    <set-property name="gwt.logging.consoleHandler" value="ENABLED"/>
-    <set-property name="gwt.logging.logLevel" value="INFO"/>
 
     <!-- Specify the app entry point class.                         -->
     <entry-point class='biz.freshcode.learn.gwt.mod1.client.EntryPoint'/>

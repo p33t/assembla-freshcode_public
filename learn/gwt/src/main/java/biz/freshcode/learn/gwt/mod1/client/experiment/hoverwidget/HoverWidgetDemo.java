@@ -1,8 +1,8 @@
 package biz.freshcode.learn.gwt.mod1.client.experiment.hoverwidget;
 
-import biz.freshcode.learn.gwt.mod1.client.builder.Construct;
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.container.HorizontalLayoutContainerBuilder;
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.container.VerticalLayoutContainerBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.Construct;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.container.HorizontalLayoutContainerBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.container.VerticalLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.mod1.client.experiment.hoverwidget.reuse.HoverWidgetSupport;
 import biz.freshcode.learn.gwt.mod1.client.experiment.mouseover.reuse.MouseOverState;
 import biz.freshcode.learn.gwt.mod1.client.experiment.mouseover.reuse.MultiMouseOverState;

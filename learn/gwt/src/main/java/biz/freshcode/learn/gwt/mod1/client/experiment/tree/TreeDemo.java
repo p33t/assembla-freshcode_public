@@ -1,7 +1,7 @@
 package biz.freshcode.learn.gwt.mod1.client.experiment.tree;
 
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.ContentPanelBuilder;
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.container.BorderLayoutContainerBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.ContentPanelBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.container.BorderLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.mod1.client.util.AbstractIsWidget;
 import biz.freshcode.learn.gwt.mod1.client.util.IdentityHashProvider;
 import com.google.gwt.user.client.ui.Widget;

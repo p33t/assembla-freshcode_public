@@ -1,8 +1,8 @@
 package biz.freshcode.learn.gwt.mod1.client.experiment.cookie;
 
+import biz.freshcode.learn.gwt.common.client.builder.gxt.container.BorderLayoutContainerBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.toolbar.ToolBarBuilder;
 import biz.freshcode.learn.gwt.mod1.client.GreetingServiceAsync;
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.container.BorderLayoutContainerBuilder;
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.toolbar.ToolBarBuilder;
 import biz.freshcode.learn.gwt.mod1.client.util.IsWidgetImpl;
 import com.google.gwt.user.client.Cookies;
 import com.google.gwt.user.client.rpc.AsyncCallback;

@@ -1,13 +1,13 @@
 package biz.freshcode.learn.gwt.mod1.client.experiment.window;
 
+import biz.freshcode.learn.gwt.common.client.builder.gwt.HTMLPanelBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.DialogBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.PopupBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.WindowBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.container.BorderLayoutContainerBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.container.HorizontalLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.mod1.client.EntryPoint;
 import biz.freshcode.learn.gwt.mod1.client.IsRootContent;
-import biz.freshcode.learn.gwt.mod1.client.builder.gwt.HTMLPanelBuilder;
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.DialogBuilder;
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.PopupBuilder;
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.WindowBuilder;
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.container.BorderLayoutContainerBuilder;
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.container.HorizontalLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.mod1.client.util.AbstractIsWidget;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.user.client.ui.HTMLPanel;

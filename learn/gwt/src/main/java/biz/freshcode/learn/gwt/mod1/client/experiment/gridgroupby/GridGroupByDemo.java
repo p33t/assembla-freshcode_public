@@ -1,8 +1,8 @@
 package biz.freshcode.learn.gwt.mod1.client.experiment.gridgroupby;
 
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.container.BorderLayoutContainerBuilder;
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.grid.GroupSummaryViewBuilder;
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.grid.SummaryColumnConfigBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.container.BorderLayoutContainerBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.grid.GroupSummaryViewBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.grid.SummaryColumnConfigBuilder;
 import biz.freshcode.learn.gwt.mod1.client.experiment.grid.reuse.PopOverCell;
 import biz.freshcode.learn.gwt.mod1.client.experiment.gridgroupby.reuse.ElementMouseOver;
 import biz.freshcode.learn.gwt.mod1.client.experiment.hoverwidget.reuse.HoverWidgetSupport;

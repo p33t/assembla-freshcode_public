@@ -1,8 +1,8 @@
 package biz.freshcode.learn.gwt.mod1.client.rpc.greet;
 
+import biz.freshcode.learn.gwt.common.client.builder.gxt.container.VerticalLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.mod1.client.GreetingService;
 import biz.freshcode.learn.gwt.mod1.client.GreetingServiceAsync;
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.container.VerticalLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.mod1.client.util.AbstractIsWidget;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.safehtml.shared.SafeHtml;

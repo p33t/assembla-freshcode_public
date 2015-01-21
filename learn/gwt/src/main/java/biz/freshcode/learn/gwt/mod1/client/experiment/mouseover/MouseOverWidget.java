@@ -1,9 +1,9 @@
 package biz.freshcode.learn.gwt.mod1.client.experiment.mouseover;
 
-import biz.freshcode.learn.gwt.mod1.client.builder.gwt.AbsolutePanelBuilder;
-import biz.freshcode.learn.gwt.mod1.client.builder.gwt.HTMLPanelBuilder;
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.button.ToolButtonBuilder;
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.container.VerticalLayoutContainerBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gwt.AbsolutePanelBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gwt.HTMLPanelBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.button.ToolButtonBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.container.VerticalLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.mod1.client.experiment.dnd.dragdata.DragData;
 import biz.freshcode.learn.gwt.mod1.client.experiment.mouseover.reuse.MouseOverState;
 import biz.freshcode.learn.gwt.mod1.client.util.AbstractIsWidget;

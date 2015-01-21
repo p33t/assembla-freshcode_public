@@ -1,7 +1,7 @@
 package biz.freshcode.learn.gwt.mod1.client.experiment.chart.gantt2;
 
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.container.BorderLayoutContainerBuilder;
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.container.HorizontalLayoutContainerBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.container.BorderLayoutContainerBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.container.HorizontalLayoutContainerBuilder;
 import biz.freshcode.learn.gwt.mod1.client.experiment.chart.gantt.reuse.StartDurn;
 import biz.freshcode.learn.gwt.mod1.client.experiment.chart.gantt2.reuse.*;
 import biz.freshcode.learn.gwt.mod1.client.util.AbstractIsWidget;

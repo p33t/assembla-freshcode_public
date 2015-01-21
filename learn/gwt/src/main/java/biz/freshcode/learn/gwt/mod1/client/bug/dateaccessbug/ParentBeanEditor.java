@@ -1,7 +1,7 @@
 package biz.freshcode.learn.gwt.mod1.client.bug.dateaccessbug;
 
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.container.FlowLayoutContainerBuilder;
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.form.FieldLabelBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.container.FlowLayoutContainerBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.form.FieldLabelBuilder;
 import biz.freshcode.learn.gwt.mod1.client.util.AbstractIsWidget;
 import com.google.gwt.editor.client.Editor;
 import com.google.gwt.user.client.ui.Widget;

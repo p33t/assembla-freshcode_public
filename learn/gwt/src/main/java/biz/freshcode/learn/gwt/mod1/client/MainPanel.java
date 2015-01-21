@@ -1,12 +1,12 @@
 package biz.freshcode.learn.gwt.mod1.client;
 
+import biz.freshcode.learn.gwt.common.client.builder.gwt.DockLayoutPanelBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gwt.MenuBarBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.DialogBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.container.ViewportBuilder;
 import biz.freshcode.learn.gwt.mod1.client.bug.*;
 import biz.freshcode.learn.gwt.mod1.client.bug.contentpanelsize.ContentPanelSizeBug;
 import biz.freshcode.learn.gwt.mod1.client.bug.dateaccessbug.DateAccessBug;
-import biz.freshcode.learn.gwt.mod1.client.builder.gwt.DockLayoutPanelBuilder;
-import biz.freshcode.learn.gwt.mod1.client.builder.gwt.MenuBarBuilder;
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.DialogBuilder;
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.container.ViewportBuilder;
 import biz.freshcode.learn.gwt.mod1.client.experiment.Resizer;
 import biz.freshcode.learn.gwt.mod1.client.experiment.appearance.AppearanceDemo;
 import biz.freshcode.learn.gwt.mod1.client.experiment.busy.BusyDemo;

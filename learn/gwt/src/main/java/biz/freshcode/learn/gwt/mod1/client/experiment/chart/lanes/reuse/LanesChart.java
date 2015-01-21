@@ -1,10 +1,10 @@
 package biz.freshcode.learn.gwt.mod1.client.experiment.chart.lanes.reuse;
 
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.chart.ChartBuilder;
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.chart.axis.NumericAxisBuilder;
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.chart.series.LineSeriesBuilder;
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.chart.series.SeriesToolTipConfigBuilder;
-import biz.freshcode.learn.gwt.mod1.client.builder.gxt.draw.path.PathSpriteBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.chart.ChartBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.chart.axis.NumericAxisBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.chart.series.LineSeriesBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.chart.series.SeriesToolTipConfigBuilder;
+import biz.freshcode.learn.gwt.common.client.builder.gxt.draw.path.PathSpriteBuilder;
 import biz.freshcode.learn.gwt.mod1.client.experiment.chart.gantt.reuse.StartDurn;
 import biz.freshcode.learn.gwt.mod1.client.experiment.chart.gantt2.reuse.BarFocusEvent;
 import biz.freshcode.learn.gwt.mod1.client.experiment.chart.gantt2.reuse.BarInfo;
