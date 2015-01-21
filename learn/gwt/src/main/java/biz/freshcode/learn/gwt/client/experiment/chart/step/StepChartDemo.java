@@ -2,9 +2,9 @@ package biz.freshcode.learn.gwt.client.experiment.chart.step;
 
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.PointSeries;
 import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
-import biz.freshcode.learn.gwt.client.util.AppCollectionUtil;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.container.BorderLayoutContainerBuilder;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.container.HorizontalLayoutContainerBuilder;
+import biz.freshcode.learn.gwt2.common.client.util.AppCollectionUtil;
 import com.sencha.gxt.core.client.util.Point;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
@@ -13,7 +13,7 @@ import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import java.util.Map;
 import java.util.Random;
 
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newMap;
+import static biz.freshcode.learn.gwt2.common.client.util.AppCollectionUtil.newMap;
 import static com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData;
 
 public class StepChartDemo extends AbstractIsWidget<BorderLayoutContainer> {

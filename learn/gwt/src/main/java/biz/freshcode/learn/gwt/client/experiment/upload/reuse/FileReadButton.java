@@ -1,14 +1,14 @@
 package biz.freshcode.learn.gwt.client.experiment.upload.reuse;
 
-import biz.freshcode.learn.gwt.client.util.ClientUtil;
-import biz.freshcode.learn.gwt.client.util.IsWidgetImpl;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.container.FlowLayoutContainerBuilder;
+import biz.freshcode.learn.gwt2.common.client.util.ClientUtil;
+import biz.freshcode.learn.gwt2.common.client.util.IsWidgetImpl;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.FileUpload;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 
-import static biz.freshcode.learn.gwt.client.util.ExceptionUtil.illegalState;
+import static biz.freshcode.learn.gwt2.common.client.util.ExceptionUtil.illegalState;
 
 /**
  * Loads a file into memory on the client side (NOTE: Requires FileReader >= IE10).

@@ -9,7 +9,7 @@ import com.sencha.gxt.widget.core.client.form.TextArea;
 
 import java.util.Set;
 
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newSet;
+import static biz.freshcode.learn.gwt2.common.client.util.AppCollectionUtil.newSet;
 
 public class HashCodeCheck extends AbstractIsWidget<VerticalLayoutContainer> {
     public static final int ELEM_COUNT = 100000;

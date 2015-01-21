@@ -7,7 +7,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 
 import javax.inject.Provider;
 
-import static biz.freshcode.learn.gwt.client.util.ExceptionUtil.illegalState;
+import static biz.freshcode.learn.gwt2.common.client.util.ExceptionUtil.illegalState;
 
 public class SessionInfoProvider implements Provider<SessionInfo> {
     private static SessionInfo.Bean sessionInfo;

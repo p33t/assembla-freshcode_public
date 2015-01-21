@@ -9,7 +9,7 @@ import com.sencha.gxt.core.client.XTemplates;
 
 import java.util.List;
 
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newListFrom;
+import static biz.freshcode.learn.gwt2.common.client.util.AppCollectionUtil.newListFrom;
 
 public class XTemplateDemo extends AbstractIsWidget {
     Renderer renderer = GWT.create(Renderer.class);

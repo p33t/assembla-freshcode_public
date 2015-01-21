@@ -7,8 +7,8 @@ import junit.framework.TestCase;
 import java.util.List;
 import java.util.Map;
 
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newListFrom;
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newMap;
+import static biz.freshcode.learn.gwt2.common.client.util.AppCollectionUtil.newListFrom;
+import static biz.freshcode.learn.gwt2.common.client.util.AppCollectionUtil.newMap;
 
 
 public class ChartUtilTest extends TestCase {

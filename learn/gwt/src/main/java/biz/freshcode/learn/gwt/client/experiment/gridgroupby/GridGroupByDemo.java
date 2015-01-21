@@ -28,7 +28,7 @@ import com.sencha.gxt.widget.core.client.info.Info;
 import java.util.*;
 
 import static biz.freshcode.learn.gwt.client.experiment.gridgroupby.GridGroupByDemo.GroupComponent.SUMMARY;
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newListFrom;
+import static biz.freshcode.learn.gwt2.common.client.util.AppCollectionUtil.newListFrom;
 
 public class GridGroupByDemo extends AbstractIsWidget<BorderLayoutContainer> {
     private static final String BRAVO = "Bravo (Hover enabled)";

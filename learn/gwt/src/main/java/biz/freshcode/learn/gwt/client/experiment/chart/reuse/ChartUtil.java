@@ -9,9 +9,9 @@ import java.util.Map;
 import java.util.Set;
 
 import static biz.freshcode.learn.gwt.client.experiment.chart.reuse.SeriesGap.ZERO_DEF;
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.*;
-import static biz.freshcode.learn.gwt.client.util.ExceptionUtil.illegalArg;
-import static biz.freshcode.learn.gwt.client.util.ExceptionUtil.illegalState;
+import static biz.freshcode.learn.gwt2.common.client.util.AppCollectionUtil.*;
+import static biz.freshcode.learn.gwt2.common.client.util.ExceptionUtil.illegalArg;
+import static biz.freshcode.learn.gwt2.common.client.util.ExceptionUtil.illegalState;
 
 public class ChartUtil {
     /**

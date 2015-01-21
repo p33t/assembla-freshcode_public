@@ -3,8 +3,8 @@ package biz.freshcode.learn.gwt.client.experiment.dnd.dragdata;
 import java.util.Map;
 import java.util.Set;
 
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newMap;
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newSet;
+import static biz.freshcode.learn.gwt2.common.client.util.AppCollectionUtil.newMap;
+import static biz.freshcode.learn.gwt2.common.client.util.AppCollectionUtil.newSet;
 
 /**
  * Helper class for constructing the payload map.

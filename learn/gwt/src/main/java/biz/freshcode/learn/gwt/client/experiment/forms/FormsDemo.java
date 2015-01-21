@@ -19,7 +19,7 @@ import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import java.util.Date;
 import java.util.List;
 
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newSetFrom;
+import static biz.freshcode.learn.gwt2.common.client.util.AppCollectionUtil.newSetFrom;
 
 public class FormsDemo extends AbstractIsWidget {
     // Keep this around so that changes can be accumulated.

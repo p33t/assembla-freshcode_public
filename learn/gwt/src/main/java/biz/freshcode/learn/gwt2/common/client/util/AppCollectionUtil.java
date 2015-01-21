@@ -1,4 +1,4 @@
-package biz.freshcode.learn.gwt.client.util;
+package biz.freshcode.learn.gwt2.common.client.util;
 
 import java.util.*;
 

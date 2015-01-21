@@ -15,8 +15,8 @@ import com.sencha.gxt.widget.core.client.form.error.DefaultEditorError;
 
 import java.util.List;
 
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newList;
-import static biz.freshcode.learn.gwt.client.util.AppObjectUtils.safeEquals;
+import static biz.freshcode.learn.gwt2.common.client.util.AppCollectionUtil.newList;
+import static biz.freshcode.learn.gwt2.common.client.util.AppObjectUtils.safeEquals;
 
 /**
  * This class employs a work-around for a bug pre GXT 3.1.0.

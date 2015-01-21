@@ -8,8 +8,8 @@ import com.sencha.gxt.data.shared.PropertyAccess;
 
 import java.util.Map;
 
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newMap;
-import static biz.freshcode.learn.gwt.client.util.ExceptionUtil.illegalArg;
+import static biz.freshcode.learn.gwt2.common.client.util.AppCollectionUtil.newMap;
+import static biz.freshcode.learn.gwt2.common.client.util.ExceptionUtil.illegalArg;
 
 /**
  * An element in a GXT Chart.  This class illustrates the short-coming of GXT charting.

@@ -21,7 +21,7 @@ import com.sencha.gxt.widget.core.client.form.error.DefaultEditorError;
 
 import java.util.List;
 
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newList;
+import static biz.freshcode.learn.gwt2.common.client.util.AppCollectionUtil.newList;
 
 /**
  * A text field that pops up at the cursor for quick read of text from user.

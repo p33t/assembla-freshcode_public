@@ -33,7 +33,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.newList;
+import static biz.freshcode.learn.gwt2.common.client.util.AppCollectionUtil.newList;
 
 public class FormBeanEditor extends AbstractIsWidget implements Editor<FormBean> {
     TextField str;

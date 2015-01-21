@@ -36,9 +36,9 @@ import java.util.Map;
 
 import static biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartElem.Access.CE_ACCESS;
 import static biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartUtil.interpolate;
-import static biz.freshcode.learn.gwt.client.util.AppCollectionUtil.*;
-import static biz.freshcode.learn.gwt.client.util.AppObjectUtils.safeEquals;
-import static biz.freshcode.learn.gwt.client.util.ExceptionUtil.illegalArg;
+import static biz.freshcode.learn.gwt2.common.client.util.AppCollectionUtil.*;
+import static biz.freshcode.learn.gwt2.common.client.util.AppObjectUtils.safeEquals;
+import static biz.freshcode.learn.gwt2.common.client.util.ExceptionUtil.illegalArg;
 import static com.sencha.gxt.chart.client.chart.Chart.Position;
 
 public class GanttChart extends ChartElemChart implements SeriesSelectionEvent.SeriesSelectionHandler<ChartElem> {

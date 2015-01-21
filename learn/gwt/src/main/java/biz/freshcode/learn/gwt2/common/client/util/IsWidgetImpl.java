@@ -1,15 +1,13 @@
-package biz.freshcode.learn.gwt.client.util;
+package biz.freshcode.learn.gwt2.common.client.util;
 
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
-
-import static biz.freshcode.learn.gwt.client.util.ExceptionUtil.illegalState;
 
 public class IsWidgetImpl implements IsWidget {
     private Widget widget;
 
     protected void initWidget(Widget w) {
-        if (isInitialised()) throw illegalState("Can only initWidget() once.");
+        if (isInitialised()) throw ExceptionUtil.illegalState("Can only initWidget() once.");
         widget = w;
     }
 
@@ -19,7 +17,7 @@ public class IsWidgetImpl implements IsWidget {
 
     @Override
     public Widget asWidget() {
-        if (!isInitialised()) throw illegalState("The widget has not been initialised.");
+        if (!isInitialised()) throw ExceptionUtil.illegalState("The widget has not been initialised.");
         return widget;
     }
 }

@@ -17,17 +17,17 @@ public class ViewportBuilder extends biz.freshcode.learn.gwt2.common.client.buil
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.Viewport#Viewport()
-     */
-    public ViewportBuilder() {
-        this(new Viewport());
-    }
-
-    /**
      * @see com.sencha.gxt.widget.core.client.container.Viewport#Viewport(com.sencha.gxt.widget.core.client.container.Viewport.ViewportAppearance)
      */
     public ViewportBuilder(com.sencha.gxt.widget.core.client.container.Viewport.ViewportAppearance v0) {
         this(new Viewport(v0));
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.container.Viewport#Viewport()
+     */
+    public ViewportBuilder() {
+        this(new Viewport());
     }
 
     /**
