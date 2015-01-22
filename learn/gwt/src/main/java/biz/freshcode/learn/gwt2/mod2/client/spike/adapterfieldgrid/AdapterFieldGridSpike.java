@@ -15,6 +15,13 @@ import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 
+/**
+ * Investigating why the error is not shown on a form next to a grid.
+ * The 'markInvalid()' method works on an AdapterField, unfortunately a 'clearInvalid()'
+ * is called multiple times during a SimpleBeanEditorDriver.flush().
+ * Instead, using 'forceInvalid()' works and is probably more appropriate given the validation happens externally.
+ * markInvalid() appears to be used more internally for a field during validation.
+ */
 public class AdapterFieldGridSpike extends Presenter<AdapterFieldGridSpike.View, AdapterFieldGridSpike.Proxy> {
     public static final String TOKEN = "adapterFieldGrid";
 
