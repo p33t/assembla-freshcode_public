@@ -14,6 +14,11 @@ import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.sencha.gxt.core.client.dom.ScrollSupport;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData;
 
+/**
+ * Trying to figure out why a text area is not resizing automatically.
+ * Turns out the width on a FieldLabel and TextArea should not be used.
+ * The VerticalLayoutData of width 1.0 ensures the contents are resized.
+ */
 public class ResizeSpike extends Presenter<View, ResizeSpike.Proxy> {
     public static final String TOKEN = "resize";
 
