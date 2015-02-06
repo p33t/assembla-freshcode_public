@@ -1,17 +1,14 @@
 package biz.freshcode.learn.gwt2.mod2.client.spike.adapterfieldgrid;
 
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.grid.ColumnConfigBuilder;
+import biz.freshcode.learn.gwt2.common.client.util.ClientUtil;
 import biz.freshcode.learn.gwt2.common.client.util.data.UnityAccess;
 import com.google.inject.Inject;
-import com.sencha.gxt.data.shared.ListStore;
 import com.sencha.gxt.widget.core.client.form.AdapterField;
-import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
-import com.sencha.gxt.widget.core.client.grid.ColumnModel;
 import com.sencha.gxt.widget.core.client.grid.Grid;
 
 import java.util.List;
 
-import static biz.freshcode.learn.gwt2.common.client.util.AppCollectionUtil.newList;
 import static biz.freshcode.learn.gwt2.common.client.util.data.UnityAccess.unityAccess;
 
 public class GridField extends AdapterField<List<String>> {
@@ -29,13 +26,10 @@ public class GridField extends AdapterField<List<String>> {
     }
 
     private static Grid<String> createGrid() {
-        List<ColumnConfig<String, ?>> cols = newList();
-        cols.add(new ColumnConfigBuilder<>(access)
-                .header("Header")
-                .columnConfig);
-        Grid<String> g = new Grid<>(new ListStore<>(access), new ColumnModel<>(cols));
-        g.setBorders(true);
-        g.getView().setForceFit(true);
+        Grid<String> g = ClientUtil.createGrid(access,
+                new ColumnConfigBuilder<>(access)
+                        .header("Header")
+                        .columnConfig);
         g.getStore().add("Bruce");
         return g;
     }

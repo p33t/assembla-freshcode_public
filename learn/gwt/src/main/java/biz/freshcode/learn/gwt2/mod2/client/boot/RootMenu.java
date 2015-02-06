@@ -6,6 +6,7 @@ import biz.freshcode.learn.gwt2.common.client.builder.gxt.toolbar.ToolBarBuilder
 import biz.freshcode.learn.gwt2.common.client.util.IsWidgetImpl;
 import biz.freshcode.learn.gwt2.mod2.client.home.Home;
 import biz.freshcode.learn.gwt2.mod2.client.spike.adapterfieldgrid.AdapterFieldGridSpike;
+import biz.freshcode.learn.gwt2.mod2.client.spike.dragorder.DragOrderSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.resize.ResizeSpike;
 import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.event.logical.shared.SelectionHandler;
@@ -28,11 +29,16 @@ public class RootMenu extends IsWidgetImpl {
                 .add(new TextButtonBuilder()
                         .text("Spike")
                         .menu(new MenuBuilder()
-                                .add(new MenuItem("Resize", new Handler<MenuItem>(ResizeSpike.TOKEN)))
-                                .add(new MenuItem("Adapter Field Grid", new Handler<MenuItem>(AdapterFieldGridSpike.TOKEN)))
+                                .add(menuItem("Drag Order", DragOrderSpike.TOKEN))
+                                .add(menuItem("Resize", ResizeSpike.TOKEN))
+                                .add(menuItem("Adapter Field Grid", AdapterFieldGridSpike.TOKEN))
                                 .menu)
                         .textButton)
                 .toolBar);
+    }
+
+    private MenuItem menuItem(String text, String token) {
+        return new MenuItem(text, new Handler<MenuItem>(token));
     }
 
     private class Handler<T> implements SelectEvent.SelectHandler, SelectionHandler<T> {
