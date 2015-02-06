@@ -17,12 +17,12 @@ public class ClientUtil {
         LOG.info(msg);
     }
 
-    public static Grid<String> createGrid(ModelKeyProvider<String> keyer, ColumnConfig<String, ?>... cols) {
+    public static <T> Grid<T> createGrid(ModelKeyProvider<T> keyer, ColumnConfig<T, ?>... cols) {
         return createGrid(keyer, Arrays.asList(cols));
     }
 
-    public static Grid<String> createGrid(ModelKeyProvider<String> keyer, List<ColumnConfig<String, ?>> cols) {
-        Grid<String> g = new Grid<>(new ListStore<>(keyer), new ColumnModel<>(cols));
+    public static <T> Grid<T> createGrid(ModelKeyProvider<T> keyer, List<ColumnConfig<T, ?>> cols) {
+        Grid<T> g = new Grid<>(new ListStore<>(keyer), new ColumnModel<>(cols));
         g.setBorders(true);
         g.getView().setForceFit(true);
         return g;
