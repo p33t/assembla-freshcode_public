@@ -42,7 +42,7 @@ public class DragOrderSpike extends Presenter<DragOrderSpike.View, DragOrderSpik
 
         @Inject
         public View() {
-            initWidget(grid = ClientUtil.<String>createGrid(access,
+            initWidget(grid = ClientUtil.createGrid(access,
                     new ColumnConfigBuilder<>(access)
                             .header("Name")
                             .menuDisabled(true)
