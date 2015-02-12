@@ -17,6 +17,7 @@ import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
+import com.sencha.gxt.widget.core.client.event.BeforeShowContextMenuEvent;
 import com.sencha.gxt.widget.core.client.grid.Grid;
 import com.sencha.gxt.widget.core.client.menu.MenuItem;
 
@@ -50,6 +51,7 @@ public class GridInteractSpike extends Presenter<GridInteractSpike.View, GridInt
     public static class View extends ViewImpl {
         private final UnityAccess<String> access = unityAccess();
         private final Grid<String> grid;
+        private final MenuItem menuItem;
 
         @Inject
         public View() {
@@ -77,8 +79,16 @@ public class GridInteractSpike extends Presenter<GridInteractSpike.View, GridInt
             );
             MultiCellSelectionModel.setup(grid);
             grid.setContextMenu(new MenuBuilder()
-                    .add(new MenuItem("Hello"))
+                    .add(menuItem = new MenuItem("Hello"))
                     .menu);
+            grid.addBeforeShowContextMenuHandler(new BeforeShowContextMenuEvent.BeforeShowContextMenuHandler() {
+                @Override
+                public void onBeforeShowContextMenu(BeforeShowContextMenuEvent event) {
+                    MultiCellSelectionModel<String> sm = (MultiCellSelectionModel<String>) grid.getSelectionModel();
+                    int size = sm.getSelections().size();
+                    menuItem.setText(size + " item" + (size == 1 ? "" : "s"));
+                }
+            });
         }
 
         public Grid<String> getGrid() {
