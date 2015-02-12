@@ -9,4 +9,9 @@ public class AppObjectUtils {
         if (l == null) return r == null;
         else return r != null && l.equals(r);
     }
+
+    public static <T> T ifNull(T t, T alt) {
+        if (t == null) return alt;
+        return t;
+    }
 }
