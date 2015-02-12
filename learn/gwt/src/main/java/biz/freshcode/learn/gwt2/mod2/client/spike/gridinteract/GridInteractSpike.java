@@ -7,6 +7,8 @@ import biz.freshcode.learn.gwt2.common.client.util.ClientUtil;
 import biz.freshcode.learn.gwt2.common.client.util.data.UnityAccess;
 import biz.freshcode.learn.gwt2.mod2.client.boot.Root;
 import biz.freshcode.learn.gwt2.mod2.client.spike.gridinteract.reuse.MultiCellSelectionModel;
+import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.Presenter;
@@ -14,10 +16,12 @@ import com.gwtplatform.mvp.client.ViewImpl;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.sencha.gxt.core.client.ValueProvider;
+import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
 import com.sencha.gxt.widget.core.client.grid.Grid;
 import com.sencha.gxt.widget.core.client.menu.MenuItem;
 
 import static biz.freshcode.learn.gwt2.common.client.util.AppObjectUtils.ifNull;
+import static biz.freshcode.learn.gwt2.common.client.util.AppStringUtil.lines;
 import static biz.freshcode.learn.gwt2.common.client.util.data.UnityAccess.unityAccess;
 import static java.util.Arrays.asList;
 
@@ -26,6 +30,11 @@ import static java.util.Arrays.asList;
  */
 public class GridInteractSpike extends Presenter<GridInteractSpike.View, GridInteractSpike.Proxy> {
     public static final String TOKEN = "gridInteract";
+    private static final String NOTES = lines(
+            "A grid with:",
+            "- multi-cell selection",
+            "- context menu"
+    );
 
     @Inject
     public GridInteractSpike(EventBus eventBus, View view, Proxy proxy) {
@@ -45,6 +54,8 @@ public class GridInteractSpike extends Presenter<GridInteractSpike.View, GridInt
         @Inject
         public View() {
             initWidget(new BorderLayoutContainerBuilder()
+                            .northWidget(new HTML(new SafeHtmlBuilder().appendEscapedLines(NOTES).toSafeHtml()),
+                                    new BorderLayoutContainer.BorderLayoutData(40))
                             .centerWidget(grid = ClientUtil.createGrid(access,
                                     new ColumnConfigBuilder<>(access)
                                             .header("Name")
