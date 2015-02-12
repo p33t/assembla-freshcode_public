@@ -7,6 +7,7 @@ import biz.freshcode.learn.gwt2.common.client.util.IsWidgetImpl;
 import biz.freshcode.learn.gwt2.mod2.client.home.Home;
 import biz.freshcode.learn.gwt2.mod2.client.spike.adapterfieldgrid.AdapterFieldGridSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.dragorder.DragOrderSpike;
+import biz.freshcode.learn.gwt2.mod2.client.spike.gridinteract.GridInteractSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.resize.ResizeSpike;
 import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.event.logical.shared.SelectionHandler;
@@ -29,6 +30,7 @@ public class RootMenu extends IsWidgetImpl {
                 .add(new TextButtonBuilder()
                         .text("Spike")
                         .menu(new MenuBuilder()
+                                .add(menuItem("Grid Interact", GridInteractSpike.TOKEN))
                                 .add(menuItem("Drag Order", DragOrderSpike.TOKEN))
                                 .add(menuItem("Resize", ResizeSpike.TOKEN))
                                 .add(menuItem("Adapter Field Grid", AdapterFieldGridSpike.TOKEN))
