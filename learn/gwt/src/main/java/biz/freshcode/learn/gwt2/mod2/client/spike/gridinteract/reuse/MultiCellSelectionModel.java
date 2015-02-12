@@ -1,30 +1,34 @@
-package biz.freshcode.learn.gwt2.common.client.util.grid;
+package biz.freshcode.learn.gwt2.mod2.client.spike.gridinteract.reuse;
 
 import com.google.gwt.dom.client.NativeEvent;
 import com.sencha.gxt.widget.core.client.event.CellMouseDownEvent;
 import com.sencha.gxt.widget.core.client.grid.CellSelectionModel;
 import com.sencha.gxt.widget.core.client.grid.Grid;
+import com.sencha.gxt.widget.core.client.grid.GridView;
 import com.sencha.gxt.widget.core.client.selection.CellSelection;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The cellSelections ArrayList is filled while the shift or Ctrl key is being pressed and
- * the user is selecting cells.   A couple of key notes:
- * <p/>
- * The first entry in cellSelections is the "anchor", so when a Shift-Select is selected, we calculate the selected box of cells
- * based on distance from the anchor to the selected cell.
+ * Enables multiple individual cell selection in a grid.
+ * Note that the GridView.onCellSelect() and .onCellDeselect() must be available.
  */
 public class MultiCellSelectionModel<M> extends CellSelectionModel<M> {
     //Allows us to support multiple cell selections.
     protected List<CellSelection<M>> cellSelections = new ArrayList<>();
     protected boolean isShiftSelected = false;
     protected boolean isCtrlSelected = false;
+    private final CellSelectOps ops;
+
+    public MultiCellSelectionModel(CellSelectOps ops) {
+        this.ops = ops;
+    }
 
     public static <M> void setup(Grid<M> grid) {
-        grid.setView(new AltGridView<M>());
-        grid.setSelectionModel(new MultiCellSelectionModel<M>());
+        AltGridView<M> view = new AltGridView<M>();
+        grid.setView(view);
+        grid.setSelectionModel(new MultiCellSelectionModel<M>(view));
     }
 
     @Override
@@ -47,8 +51,8 @@ public class MultiCellSelectionModel<M> extends CellSelectionModel<M> {
         selection = new CellSelection<>(m, row, cell);
 
         if (grid.isViewReady()) {
-            getView().onCellSelect(row, cell);
-            getView().focusCell(row, cell, true);
+            ops.onCellSelect(row, cell);
+            grid.getView().focusCell(row, cell, true);
         }
         if (isMulti()) {
             cellSelections.add(selection); //Push the current cell on the selection stack.
@@ -91,7 +95,7 @@ public class MultiCellSelectionModel<M> extends CellSelectionModel<M> {
             }
             int row = listStore.indexOf(cell.getModel());
             if (grid.isViewReady()) {
-                getView().onCellDeselect(row, cell.getCell());
+                ops.onCellDeselect(row, cell.getCell());
             }
         }
         cellSelections.clear();
@@ -100,7 +104,7 @@ public class MultiCellSelectionModel<M> extends CellSelectionModel<M> {
         if ((clearCurrent) && (selection != null)) {
             int row = listStore.indexOf(selection.getModel());
             if (grid.isViewReady()) {
-                getView().onCellDeselect(row, selection.getCell());
+                ops.onCellDeselect(row, selection.getCell());
             }
             selection = null;
         }
@@ -109,7 +113,7 @@ public class MultiCellSelectionModel<M> extends CellSelectionModel<M> {
     private void selectAllSelections() {
         for (CellSelection cell : cellSelections) {
             if (grid.isViewReady()) {
-                getView().onCellSelect(cell.getRow(), cell.getCell());
+                ops.onCellSelect(cell.getRow(), cell.getCell());
             }
         }
     }
@@ -166,7 +170,7 @@ public class MultiCellSelectionModel<M> extends CellSelectionModel<M> {
         int index = findCell(cell.getRow(), cell.getCell(), cellSelections);
         if (index != (cellSelections.size() - 1)) { //we need to "Unselect this cell;
             if (grid.isViewReady()) {
-                getView().onCellDeselect(cell.getRow(), cell.getCell());
+                ops.onCellDeselect(cell.getRow(), cell.getCell());
             }
             cellSelections.remove(cellSelections.size() - 1);
             cellSelections.remove(index);
@@ -187,10 +191,6 @@ public class MultiCellSelectionModel<M> extends CellSelectionModel<M> {
         isCtrlSelected = false;
     }
 
-    private AltGridView<M> getView() {
-        return (AltGridView<M>) grid.getView();
-    }
-
     private int findCell(int row, int col, List<CellSelection<M>> cells) {
         for (int i = 0; i < cells.size(); i++) {
             CellSelection cell = cells.get(i);
@@ -204,5 +204,26 @@ public class MultiCellSelectionModel<M> extends CellSelectionModel<M> {
     private CellSelection<M> createCell(int row, int col) {
         M m = listStore.get(row);
         return new CellSelection<>(m, row, col);
+    }
+
+    public interface CellSelectOps {
+        void onCellDeselect(int row, int col);
+
+        void onCellSelect(int row, int col);
+    }
+
+    /**
+     * Exposes cell select methods for use by selection models.
+     */
+    public static class AltGridView<M> extends GridView<M> implements CellSelectOps {
+        @Override
+        public void onCellDeselect(int row, int col) {
+            super.onCellDeselect(row, col);
+        }
+
+        @Override
+        public void onCellSelect(int row, int col) {
+            super.onCellSelect(row, col);
+        }
     }
 }
