@@ -5,8 +5,8 @@ import biz.freshcode.learn.gwt2.common.client.builder.gxt.grid.ColumnConfigBuild
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.menu.MenuBuilder;
 import biz.freshcode.learn.gwt2.common.client.util.ClientUtil;
 import biz.freshcode.learn.gwt2.common.client.util.data.UnityAccess;
-import biz.freshcode.learn.gwt2.common.client.util.grid.MultiCellSelectionModel;
 import biz.freshcode.learn.gwt2.mod2.client.boot.Root;
+import biz.freshcode.learn.gwt2.mod2.client.spike.gridinteract.reuse.MultiCellSelectionModel;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.Presenter;
