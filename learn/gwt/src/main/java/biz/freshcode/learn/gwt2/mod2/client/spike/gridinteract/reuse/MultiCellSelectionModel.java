@@ -33,17 +33,15 @@ public class MultiCellSelectionModel<M> extends CellSelectionModel<M> {
 
     @Override
     public void deselectAll() {
-        if (!isMulti()) {
-            super.deselectAll();
-            deselectAllSelections(true);
-        }
+        super.deselectAll();
+        deselectAllSelections(true);
     }
 
     @Override
     public void selectCell(int row, int cell) {
         if (!isMulti()) {
             deselectAllSelections(true);
-        } else if ((selection != null) && (cellSelections.size() == 0)) { //need to push the current selection on the stack.
+        } else if (selection != null && cellSelections.size() == 0) { //need to push the current selection on the stack.
             cellSelections.add(selection);
         }
 
@@ -90,7 +88,7 @@ public class MultiCellSelectionModel<M> extends CellSelectionModel<M> {
      */
     private void deselectAllSelections(boolean clearCurrent) {
         for (CellSelection<M> cell : cellSelections) {
-            if ((cell == selection) && (!clearCurrent)) { //we will deal with the current selection seperatly.
+            if (cell == selection && !clearCurrent) { //we will deal with the current selection seperatly.
                 continue;
             }
             int row = listStore.indexOf(cell.getModel());
@@ -101,7 +99,7 @@ public class MultiCellSelectionModel<M> extends CellSelectionModel<M> {
         cellSelections.clear();
 
 
-        if ((clearCurrent) && (selection != null)) {
+        if (clearCurrent && selection != null) {
             int row = listStore.indexOf(selection.getModel());
             if (grid.isViewReady()) {
                 ops.onCellDeselect(row, selection.getCell());
