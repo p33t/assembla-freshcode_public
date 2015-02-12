@@ -7,6 +7,7 @@ import com.sencha.gxt.widget.core.client.grid.Grid;
 import com.sencha.gxt.widget.core.client.selection.CellSelection;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The cellSelections ArrayList is filled while the shift or Ctrl key is being pressed and
@@ -17,8 +18,7 @@ import java.util.ArrayList;
  */
 public class MultiCellSelectionModel<M> extends CellSelectionModel<M> {
     //Allows us to support multiple cell selections.
-    protected ArrayList<CellSelection<M>> cellSelections = new ArrayList<>();
-    protected boolean isInMultiSelect = false;
+    protected List<CellSelection<M>> cellSelections = new ArrayList<>();
     protected boolean isShiftSelected = false;
     protected boolean isCtrlSelected = false;
 
@@ -29,7 +29,7 @@ public class MultiCellSelectionModel<M> extends CellSelectionModel<M> {
 
     @Override
     public void deselectAll() {
-        if (!isInMultiSelect) {
+        if (!isMulti()) {
             super.deselectAll();
             deselectAllSelections(true);
         }
@@ -37,25 +37,20 @@ public class MultiCellSelectionModel<M> extends CellSelectionModel<M> {
 
     @Override
     public void selectCell(int row, int cell) {
-        if (!isInMultiSelect) {
+        if (!isMulti()) {
             deselectAllSelections(true);
         } else if ((selection != null) && (cellSelections.size() == 0)) { //need to push the current selection on the stack.
             cellSelections.add(selection);
         }
 
         M m = listStore.get(row);
-//    if (GXT.isAriaEnabled() && selectedHeader != null) {
-//      selectedHeader = null;
-//      FocusFrame.get().frame(grid);
-//    }
-
-        selection = new CellSelection(m, row, cell);
+        selection = new CellSelection<>(m, row, cell);
 
         if (grid.isViewReady()) {
             getView().onCellSelect(row, cell);
             getView().focusCell(row, cell, true);
         }
-        if (isInMultiSelect) {
+        if (isMulti()) {
             cellSelections.add(selection); //Push the current cell on the selection stack.
 
             if (isCtrlSelected) {
@@ -66,8 +61,22 @@ public class MultiCellSelectionModel<M> extends CellSelectionModel<M> {
         }
     }
 
-    public ArrayList<CellSelection<M>> getSelections() {
-        return cellSelections;
+    public List<CellSelection<M>> getSelections() {
+        return new ArrayList<>(cellSelections);
+    }
+
+    @Override
+    protected void onKeyPress(NativeEvent e) {
+        setFlags(e.getCtrlKey(), e.getShiftKey());
+        super.onKeyPress(e);
+        clearFlags();
+    }
+
+    @Override
+    protected void handleMouseDown(CellMouseDownEvent e) {
+        setFlags(e.getEvent().getCtrlKey(), e.getEvent().getShiftKey());
+        super.handleMouseDown(e);
+        clearFlags();
     }
 
     /**
@@ -75,7 +84,7 @@ public class MultiCellSelectionModel<M> extends CellSelectionModel<M> {
      * <p/>
      * If clearCurrent is set to true, then the current selection is also cleared.
      */
-    protected void deselectAllSelections(boolean clearCurrent) {
+    private void deselectAllSelections(boolean clearCurrent) {
         for (CellSelection<M> cell : cellSelections) {
             if ((cell == selection) && (!clearCurrent)) { //we will deal with the current selection seperatly.
                 continue;
@@ -97,7 +106,7 @@ public class MultiCellSelectionModel<M> extends CellSelectionModel<M> {
         }
     }
 
-    protected void selectAllSelections() {
+    private void selectAllSelections() {
         for (CellSelection cell : cellSelections) {
             if (grid.isViewReady()) {
                 getView().onCellSelect(cell.getRow(), cell.getCell());
@@ -105,7 +114,7 @@ public class MultiCellSelectionModel<M> extends CellSelectionModel<M> {
         }
     }
 
-    protected void doShiftSelect() {
+    private void doShiftSelect() {
         if (cellSelections.size() == 0) return;
         //Assume the last one on the list was shift selected.
         CellSelection<M> cell = cellSelections.get(cellSelections.size() - 1);
@@ -146,7 +155,7 @@ public class MultiCellSelectionModel<M> extends CellSelectionModel<M> {
         selectAllSelections();
     }
 
-    protected void doCtrlSelect() {
+    private void doCtrlSelect() {
         //Assume the last one on the cellSelection list was ctrl - selected......
         CellSelection cell = (cellSelections.size() > 0) ? cellSelections.get(cellSelections.size() - 1) : null;
         if (cell == null) { //shouldn't happen.
@@ -164,37 +173,25 @@ public class MultiCellSelectionModel<M> extends CellSelectionModel<M> {
         }
     }
 
-    @Override
-    protected void onKeyPress(NativeEvent e) {
-        setFlags(e.getCtrlKey(), e.getShiftKey());
-        super.onKeyPress(e);
-        clearFlags();
-    }
-
-    @Override
-    protected void handleMouseDown(CellMouseDownEvent e) {
-        setFlags(e.getEvent().getCtrlKey(), e.getEvent().getShiftKey());
-        super.handleMouseDown(e);
-        clearFlags();
-    }
-
     private void setFlags(boolean ctrlSelected, boolean shiftSelected) {
         isShiftSelected = shiftSelected;
         isCtrlSelected = ctrlSelected;
-        isInMultiSelect = (shiftSelected || ctrlSelected);
+    }
+
+    private boolean isMulti() {
+        return isShiftSelected || isCtrlSelected;
     }
 
     private void clearFlags() {
         isShiftSelected = false;
         isCtrlSelected = false;
-        isInMultiSelect = false;
     }
 
     private AltGridView<M> getView() {
         return (AltGridView<M>) grid.getView();
     }
 
-    private int findCell(int row, int col, ArrayList<CellSelection<M>> cells) {
+    private int findCell(int row, int col, List<CellSelection<M>> cells) {
         for (int i = 0; i < cells.size(); i++) {
             CellSelection cell = cells.get(i);
             if ((cell.getRow() == row) && (cell.getCell() == col)) {
