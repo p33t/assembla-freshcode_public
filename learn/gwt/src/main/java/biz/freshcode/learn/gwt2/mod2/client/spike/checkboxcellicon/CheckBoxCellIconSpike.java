@@ -3,17 +3,19 @@ package biz.freshcode.learn.gwt2.mod2.client.spike.checkboxcellicon;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.grid.ColumnConfigBuilder;
 import biz.freshcode.learn.gwt2.common.client.util.ClientUtil;
 import biz.freshcode.learn.gwt2.mod2.client.boot.Root;
+import com.google.gwt.cell.client.AbstractCell;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.ViewImpl;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
-import com.sencha.gxt.cell.core.client.form.CheckBoxCell;
 import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.data.shared.ModelKeyProvider;
 import com.sencha.gxt.data.shared.PropertyAccess;
+import com.sencha.gxt.widget.core.client.event.CellClickEvent;
 import com.sencha.gxt.widget.core.client.grid.Grid;
 
 import java.util.Arrays;
@@ -51,8 +53,22 @@ public class CheckBoxCellIconSpike extends Presenter<CheckBoxCellIconSpike.View,
                             .header("Boolean")
                             .menuDisabled(true)
                             .sortable(false)
-                            .cell(new CheckBoxCell())
+                            .cell(new AbstractCell<Boolean>() {
+                                @Override
+                                public void render(Context context, Boolean value, SafeHtmlBuilder sb) {
+                                    sb.appendEscaped(value == Boolean.TRUE ? "X" : "O");
+                                }
+                            })
+                            .cellClassName(Bundle.STYLE.centerAlign())
                             .columnConfig));
+            grid.addCellClickHandler(new CellClickEvent.CellClickHandler() {
+                @Override
+                public void onCellClick(CellClickEvent event) {
+                    Row row = grid.getStore().get(event.getRowIndex());
+                    row.setValue(!row.getValue());
+                    grid.getStore().update(row);
+                }
+            });
             grid.getStore().setAutoCommit(true);
         }
 
@@ -78,7 +94,7 @@ public class CheckBoxCellIconSpike extends Presenter<CheckBoxCellIconSpike.View,
             this.id = id;
         }
 
-        public boolean isValue() {
+        public boolean getValue() {
             return value;
         }
 
