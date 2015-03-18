@@ -13,12 +13,11 @@ import biz.freshcode.learn.gwt2.common.client.util.ExceptionUtil;
 import com.sencha.gxt.chart.client.chart.axis.NumericAxis;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.form.*;
-import com.sencha.gxt.widget.core.client.grid.Grid;
 
 import java.lang.reflect.Method;
 
 public class BeanBuilderGenerator extends DefaultBeanBuilderGenerator {
-    static final Class CLASS = Grid.class; //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    static final Class CLASS = Radio.class; //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     public static final String BASE_PKG = "biz.freshcode.learn.gwt2.common.client.builder";
 
     public static void main(String[] args) {
@@ -85,6 +84,8 @@ public class BeanBuilderGenerator extends DefaultBeanBuilderGenerator {
             return genericTypeResolve(type, "Number", forJavadoc, "V");
         if (genericTypeMatch(beanCls, type, TextButton.class, "C"))
             return genericTypeResolve(type, "String", forJavadoc, "C");
+        if (genericTypeMatch(beanCls, type, Radio.class, "T", "C"))
+            return genericTypeResolve(type, "Boolean", forJavadoc, "T", "C");
         return super.mapType(beanCls, m, type, argIndex, forJavadoc);
     }
 }

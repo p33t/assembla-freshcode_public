@@ -5,6 +5,7 @@ import biz.freshcode.learn.gwt2.mod2.client.spike.adapterfieldgrid.AdapterFieldG
 import biz.freshcode.learn.gwt2.mod2.client.spike.checkboxcellicon.CheckBoxCellIconSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.dragorder.DragOrderSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.gridinteract.GridInteractSpike;
+import biz.freshcode.learn.gwt2.mod2.client.spike.radiobutton.RadioSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.resize.ResizeSpike;
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 
@@ -18,5 +19,6 @@ public class PresenterModule extends AbstractPresenterModule {
         bindPresenter(DragOrderSpike.class, DragOrderSpike.Proxy.class);
         bindPresenter(GridInteractSpike.class, GridInteractSpike.Proxy.class);
         bindPresenter(CheckBoxCellIconSpike.class, CheckBoxCellIconSpike.Proxy.class);
+        bindPresenter(RadioSpike.class, RadioSpike.Proxy.class);
     }
 }
