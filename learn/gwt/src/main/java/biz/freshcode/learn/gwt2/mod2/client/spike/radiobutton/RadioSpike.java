@@ -2,6 +2,7 @@ package biz.freshcode.learn.gwt2.mod2.client.spike.radiobutton;
 
 import biz.freshcode.learn.gwt2.common.client.builder.gwt.HorizontalPanelBuilder;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.ContentPanelBuilder;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.container.VerticalLayoutContainerBuilder;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.form.FieldLabelBuilder;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.form.RadioBuilder;
 import biz.freshcode.learn.gwt2.mod2.client.boot.Root;
@@ -20,7 +21,7 @@ import com.sencha.gxt.widget.core.client.info.Info;
 
 /**
  * Why are radio button events not working?
- *  I must have been using them wrong.
+ * I must have been using them wrong.
  */
 public class RadioSpike extends Presenter<RadioSpike.View, RadioSpike.Proxy> {
     public static final String TOKEN = "radio";
@@ -42,13 +43,15 @@ public class RadioSpike extends Presenter<RadioSpike.View, RadioSpike.Proxy> {
         @Inject
         public View() {
             initWidget(new ContentPanelBuilder()
-                    .add(new FieldLabelBuilder()
-                            .text("Radio")
-                            .widget(new HorizontalPanelBuilder()
-                                    .add(createRadio("Val1"))
-                                    .add(createRadio("Val2"))
-                                    .horizontalPanel)
-                            .fieldLabel)
+                    .widget(new VerticalLayoutContainerBuilder()
+                            .add(new FieldLabelBuilder()
+                                    .text("Radio")
+                                    .widget(new HorizontalPanelBuilder()
+                                            .add(createRadio("Val1"))
+                                            .add(createRadio("Val2"))
+                                            .horizontalPanel)
+                                    .fieldLabel)
+                            .verticalLayoutContainer)
                     .contentPanel);
             group.addValueChangeHandler(new ValueChangeHandler<HasValue<Boolean>>() {
                 @Override
@@ -61,7 +64,7 @@ public class RadioSpike extends Presenter<RadioSpike.View, RadioSpike.Proxy> {
 
         private Radio createRadio(String lbl) {
             Radio r = new RadioBuilder()
-                    .name(NAME)
+//                    .name(NAME)
                     .boxLabel(lbl)
                     .itemId("Item: " + lbl)
                     .radio;

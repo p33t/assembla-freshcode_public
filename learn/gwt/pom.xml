@@ -236,7 +236,7 @@
                 <version>2.2</version>
                 <configuration>
                     <path>/</path>
-                    <port>8080</port>
+                    <port>8086</port>
                     <contextFile>${project.basedir}/src/test/resources/context.xml</contextFile>
                     <systemProperties>
                         <appserver.base>${project.build.directory}/appserver-base</appserver.base>
