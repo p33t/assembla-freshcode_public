@@ -27,7 +27,9 @@ import static biz.freshcode.learn.gwt2.common.client.util.data.UnityAccess.unity
 import static java.util.Arrays.asList;
 
 /**
- * Illustrate how to change order of grid elements using drag/drop
+ * Illustrate how to change order of grid elements using drag/drop.
+ * NOTE !!!!!!!!!!!!!!!!!!: The menu width is decided the first time it is shown.
+ * Workaround for dynamic menu width is to create a new menu every time.
  */
 public class GridInteractSpike extends Presenter<GridInteractSpike.View, GridInteractSpike.Proxy> {
     public static final String TOKEN = "gridInteract";
