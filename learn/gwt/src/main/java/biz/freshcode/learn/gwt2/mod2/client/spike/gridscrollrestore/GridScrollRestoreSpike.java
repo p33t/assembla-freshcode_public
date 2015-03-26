@@ -12,10 +12,12 @@ import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.ViewImpl;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
+import com.sencha.gxt.core.client.Style;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.grid.Grid;
+import com.sencha.gxt.widget.core.client.info.Info;
 
 import java.util.List;
 
@@ -46,11 +48,10 @@ public class GridScrollRestoreSpike extends Presenter<GridScrollRestoreSpike.Vie
         public View() {
             initWidget(new BorderLayoutContainerBuilder()
                             .northWidget(new ToolBarBuilder()
-                                            .add(new TextButton("New Data", new SelectEvent.SelectHandler() {
+                                            .add(new TextButton("replaceAll()", new SelectEvent.SelectHandler() {
                                                 @Override
                                                 public void onSelect(SelectEvent event) {
-                                                    List<String> ss = genData(50);
-                                                    grid.getStore().replaceAll(ss);
+                                                    replaceAll();
                                                 }
                                             }))
                                             .toolBar,
@@ -64,6 +65,18 @@ public class GridScrollRestoreSpike extends Presenter<GridScrollRestoreSpike.Vie
                             ))
                             .borderLayoutContainer
             );
+        }
+
+        private void replaceAll() {
+            List<String> ss = genData(50);
+            final int scrollTop = getScrollTop();
+            grid.getStore().replaceAll(ss);
+            grid.getView().getScroller().scrollTo(Style.ScrollDirection.TOP, scrollTop);
+            Info.display("Note", "Scrolling to " + scrollTop + " resulted in " + getScrollTop());
+        }
+
+        private int getScrollTop() {
+            return grid.getView().getScrollState().getY();
         }
 
         private List<String> genData(int rowCount) {
