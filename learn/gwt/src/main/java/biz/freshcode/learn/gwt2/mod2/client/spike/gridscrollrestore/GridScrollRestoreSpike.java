@@ -76,7 +76,7 @@ public class GridScrollRestoreSpike extends Presenter<GridScrollRestoreSpike.Vie
         }
 
         private int getScrollTop() {
-            return grid.getView().getScrollState().getY();
+            return grid.getView().getScroller().getScrollTop();
         }
 
         private List<String> genData(int rowCount) {
