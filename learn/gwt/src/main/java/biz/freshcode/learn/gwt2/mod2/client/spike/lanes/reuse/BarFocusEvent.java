@@ -1,4 +1,4 @@
-package biz.freshcode.learn.gwt.client.experiment.chart.gantt2.reuse;
+package biz.freshcode.learn.gwt2.mod2.client.spike.lanes.reuse;
 
 import com.google.gwt.event.shared.EventHandler;
 import com.google.gwt.event.shared.GwtEvent;
@@ -22,11 +22,6 @@ public class BarFocusEvent extends GwtEvent<BarFocusEvent.Handler> {
     @Override
     public Type<Handler> getAssociatedType() {
         return TYPE;
-    }
-
-    @Override
-    public GanttChart getSource() {
-        return (GanttChart) super.getSource();
     }
 
     @Override

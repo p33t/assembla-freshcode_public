@@ -1,7 +1,7 @@
 package biz.freshcode.learn.gwt.client.experiment.contextmenu;
 
-import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.menu.MenuBuilder;
+import biz.freshcode.learn.gwt2.common.client.util.AbstractIsWidget;
 import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.user.client.ui.Widget;

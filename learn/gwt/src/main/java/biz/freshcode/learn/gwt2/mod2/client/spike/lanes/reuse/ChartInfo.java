@@ -1,4 +1,6 @@
-package biz.freshcode.learn.gwt.client.experiment.chart.gantt2.reuse;
+package biz.freshcode.learn.gwt2.mod2.client.spike.lanes.reuse;
+
+import biz.freshcode.learn.gwt2.common.client.util.data.HasIdTitle;
 
 import java.util.Date;
 import java.util.List;

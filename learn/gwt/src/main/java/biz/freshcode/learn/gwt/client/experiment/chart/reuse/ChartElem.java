@@ -1,5 +1,6 @@
 package biz.freshcode.learn.gwt.client.experiment.chart.reuse;
 
+import biz.freshcode.learn.gwt2.common.client.util.chart.SeriesMapChart;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.editor.client.Editor;
 import com.sencha.gxt.core.client.ValueProvider;

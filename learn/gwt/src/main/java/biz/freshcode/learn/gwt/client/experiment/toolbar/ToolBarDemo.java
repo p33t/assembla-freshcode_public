@@ -1,12 +1,12 @@
 package biz.freshcode.learn.gwt.client.experiment.toolbar;
 
 import biz.freshcode.learn.gwt.client.IsRootContent;
-import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.PopupBuilder;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.button.ToolButtonBuilder;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.container.BorderLayoutContainerBuilder;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.tips.ToolTipConfigBuilder;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.toolbar.ToolBarBuilder;
+import biz.freshcode.learn.gwt2.common.client.util.AbstractIsWidget;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.ui.Widget;

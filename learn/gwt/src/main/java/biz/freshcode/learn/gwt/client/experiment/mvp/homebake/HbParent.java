@@ -1,7 +1,7 @@
 package biz.freshcode.learn.gwt.client.experiment.mvp.homebake;
 
-import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.container.BorderLayoutContainerBuilder;
+import biz.freshcode.learn.gwt2.common.client.util.AbstractIsWidget;
 import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
 
 public class HbParent extends AbstractIsWidget<BorderLayoutContainer> implements HbNorth.Host {

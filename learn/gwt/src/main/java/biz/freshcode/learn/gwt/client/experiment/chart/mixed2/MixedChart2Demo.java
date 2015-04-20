@@ -1,14 +1,14 @@
 package biz.freshcode.learn.gwt.client.experiment.chart.mixed2;
 
-import biz.freshcode.learn.gwt.client.experiment.chart.reuse.PointSeries;
-import biz.freshcode.learn.gwt.client.experiment.chart.reuse.SeriesMap;
-import biz.freshcode.learn.gwt.client.experiment.chart.reuse.SeriesMapChart;
-import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.chart.ChartBuilder;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.chart.axis.NumericAxisBuilder;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.chart.series.LineSeriesBuilder;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.container.BorderLayoutContainerBuilder;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.container.HorizontalLayoutContainerBuilder;
+import biz.freshcode.learn.gwt2.common.client.util.AbstractIsWidget;
+import biz.freshcode.learn.gwt2.common.client.util.chart.PointSeries;
+import biz.freshcode.learn.gwt2.common.client.util.chart.SeriesMap;
+import biz.freshcode.learn.gwt2.common.client.util.chart.SeriesMapChart;
 import com.sencha.gxt.chart.client.draw.RGB;
 import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.core.client.util.Point;

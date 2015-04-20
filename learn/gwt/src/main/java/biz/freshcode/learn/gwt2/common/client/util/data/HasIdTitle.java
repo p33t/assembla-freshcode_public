@@ -1,4 +1,4 @@
-package biz.freshcode.learn.gwt.client.experiment.chart.gantt2.reuse;
+package biz.freshcode.learn.gwt2.common.client.util.data;
 
 public interface HasIdTitle {
     String getId();

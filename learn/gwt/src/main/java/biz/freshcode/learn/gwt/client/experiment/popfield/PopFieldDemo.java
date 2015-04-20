@@ -1,9 +1,9 @@
 package biz.freshcode.learn.gwt.client.experiment.popfield;
 
-import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.PopupBuilder;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.button.TextButtonBuilder;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.form.TextFieldBuilder;
+import biz.freshcode.learn.gwt2.common.client.util.AbstractIsWidget;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.editor.client.Editor;

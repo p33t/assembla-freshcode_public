@@ -1,6 +1,5 @@
 package biz.freshcode.learn.gwt.client.experiment.chart.gantt2.reuse;
 
-import biz.freshcode.learn.gwt.client.experiment.chart.gantt.reuse.StartDurn;
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartElem;
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartElemChart;
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.MapFun;
@@ -10,6 +9,11 @@ import biz.freshcode.learn.gwt2.common.client.builder.gxt.chart.axis.NumericAxis
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.chart.series.LineSeriesBuilder;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.chart.series.SeriesToolTipConfigBuilder;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.draw.path.PathSpriteBuilder;
+import biz.freshcode.learn.gwt2.common.client.util.data.HasIdTitle;
+import biz.freshcode.learn.gwt2.common.client.util.data.StartDurn;
+import biz.freshcode.learn.gwt2.mod2.client.spike.lanes.reuse.BarFocusEvent;
+import biz.freshcode.learn.gwt2.mod2.client.spike.lanes.reuse.BarInfo;
+import biz.freshcode.learn.gwt2.mod2.client.spike.lanes.reuse.ChartInfo;
 import com.google.gwt.core.shared.GWT;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.event.shared.HandlerRegistration;

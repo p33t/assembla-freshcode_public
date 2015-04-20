@@ -1,6 +1,6 @@
 package biz.freshcode.learn.gwt.client.bug;
 
-import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
+import biz.freshcode.learn.gwt2.common.client.util.AbstractIsWidget;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.ui.*;
 import com.sencha.gxt.widget.core.client.Window;

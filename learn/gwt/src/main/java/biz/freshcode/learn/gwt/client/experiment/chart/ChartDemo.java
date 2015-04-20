@@ -2,7 +2,6 @@ package biz.freshcode.learn.gwt.client.experiment.chart;
 
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartElem;
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.SeriesGap;
-import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
 import biz.freshcode.learn.gwt.client.util.IdentityHashProvider;
 import biz.freshcode.learn.gwt2.common.client.builder.Construct;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.chart.ChartBuilder;
@@ -14,6 +13,7 @@ import biz.freshcode.learn.gwt2.common.client.builder.gxt.chart.series.LineSerie
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.container.BorderLayoutContainerBuilder;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.container.HorizontalLayoutContainerBuilder;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.draw.path.PathSpriteBuilder;
+import biz.freshcode.learn.gwt2.common.client.util.AbstractIsWidget;
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.i18n.client.NumberFormat;

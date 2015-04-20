@@ -10,6 +10,7 @@ import biz.freshcode.learn.gwt2.mod2.client.spike.checkboxcellicon.CheckBoxCellI
 import biz.freshcode.learn.gwt2.mod2.client.spike.dragorder.DragOrderSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.gridinteract.GridInteractSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.gridscrollrestore.GridScrollRestoreSpike;
+import biz.freshcode.learn.gwt2.mod2.client.spike.lanes.LanesChartSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.radiobutton.RadioSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.resize.ResizeSpike;
 import com.google.gwt.event.logical.shared.SelectionEvent;
@@ -33,6 +34,7 @@ public class RootMenu extends IsWidgetImpl {
                 .add(new TextButtonBuilder()
                         .text("Spike")
                         .menu(new MenuBuilder()
+                                .add(menuItem("Lanes Chart", LanesChartSpike.TOKEN))
                                 .add(menuItem("Grid Scroll Restore", GridScrollRestoreSpike.TOKEN))
                                 .add(menuItem("Radio", RadioSpike.TOKEN))
                                 .add(menuItem("Check Box Cell Icon", CheckBoxCellIconSpike.TOKEN))

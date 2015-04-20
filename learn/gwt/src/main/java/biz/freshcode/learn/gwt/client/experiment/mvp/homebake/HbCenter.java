@@ -1,6 +1,6 @@
 package biz.freshcode.learn.gwt.client.experiment.mvp.homebake;
 
-import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
+import biz.freshcode.learn.gwt2.common.client.util.AbstractIsWidget;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer;
