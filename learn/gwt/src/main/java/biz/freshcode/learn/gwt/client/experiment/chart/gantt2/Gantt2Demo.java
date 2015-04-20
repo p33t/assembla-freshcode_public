@@ -1,10 +1,14 @@
 package biz.freshcode.learn.gwt.client.experiment.chart.gantt2;
 
-import biz.freshcode.learn.gwt.client.experiment.chart.gantt.reuse.StartDurn;
-import biz.freshcode.learn.gwt.client.experiment.chart.gantt2.reuse.*;
-import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
+import biz.freshcode.learn.gwt.client.experiment.chart.gantt2.reuse.GanttChart;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.container.BorderLayoutContainerBuilder;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.container.HorizontalLayoutContainerBuilder;
+import biz.freshcode.learn.gwt2.common.client.util.AbstractIsWidget;
+import biz.freshcode.learn.gwt2.common.client.util.data.HasIdTitle;
+import biz.freshcode.learn.gwt2.common.client.util.data.StartDurn;
+import biz.freshcode.learn.gwt2.mod2.client.spike.lanes.reuse.BarFocusEvent;
+import biz.freshcode.learn.gwt2.mod2.client.spike.lanes.reuse.BarInfo;
+import biz.freshcode.learn.gwt2.mod2.client.spike.lanes.reuse.ChartInfo;
 import com.google.gwt.core.client.GWT;
 import com.sencha.gxt.chart.client.draw.RGB;
 import com.sencha.gxt.widget.core.client.button.TextButton;

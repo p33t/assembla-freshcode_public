@@ -3,11 +3,11 @@ package biz.freshcode.learn.gwt.client.experiment.chart.step;
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartElem;
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartElemChart;
 import biz.freshcode.learn.gwt.client.experiment.chart.reuse.ChartUtil;
-import biz.freshcode.learn.gwt.client.experiment.chart.reuse.PointSeries;
 import biz.freshcode.learn.gwt2.common.client.builder.IterConstruct;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.chart.ChartBuilder;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.chart.axis.NumericAxisBuilder;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.chart.series.AreaSeriesBuilder;
+import biz.freshcode.learn.gwt2.common.client.util.chart.PointSeries;
 import com.sencha.gxt.chart.client.chart.axis.NumericAxis;
 import com.sencha.gxt.chart.client.draw.sprite.TextSprite;
 

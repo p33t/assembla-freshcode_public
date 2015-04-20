@@ -1,7 +1,7 @@
 package biz.freshcode.learn.gwt.client.experiment.dnd;
 
 import biz.freshcode.learn.gwt.client.experiment.dnd.dragdata.DragData;
-import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
+import biz.freshcode.learn.gwt2.common.client.util.AbstractIsWidget;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.sencha.gxt.fx.client.FxElement;
 import com.sencha.gxt.widget.core.client.container.SimpleContainer;

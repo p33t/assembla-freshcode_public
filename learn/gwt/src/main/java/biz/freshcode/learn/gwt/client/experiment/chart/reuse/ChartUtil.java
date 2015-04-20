@@ -1,5 +1,6 @@
 package biz.freshcode.learn.gwt.client.experiment.chart.reuse;
 
+import biz.freshcode.learn.gwt2.common.client.util.chart.PointSeries;
 import com.sencha.gxt.core.client.util.Point;
 import com.sencha.gxt.core.client.util.PrecisePoint;
 

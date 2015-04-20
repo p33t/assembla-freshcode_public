@@ -1,6 +1,6 @@
 package biz.freshcode.learn.gwt.client.experiment.mvp.gwtp;
 
-import biz.freshcode.learn.gwt.client.util.AbstractIsWidget;
+import biz.freshcode.learn.gwt2.common.client.util.AbstractIsWidget;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.View;

@@ -1,5 +1,7 @@
 package biz.freshcode.learn.gwt.client.experiment.chart.gantt.reuse;
 
+import biz.freshcode.learn.gwt2.common.client.util.data.StartDurn;
+
 public class GanttBar {
     private final String id;
     private final String resource;

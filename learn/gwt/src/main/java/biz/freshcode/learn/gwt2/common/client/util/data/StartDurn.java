@@ -1,4 +1,4 @@
-package biz.freshcode.learn.gwt.client.experiment.chart.gantt.reuse;
+package biz.freshcode.learn.gwt2.common.client.util.data;
 
 /**
  * A start and duration relative to some point in time.  Units are 'minutes'.

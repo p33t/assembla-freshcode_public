@@ -1,4 +1,4 @@
-package biz.freshcode.learn.gwt.client.experiment.chart.reuse;
+package biz.freshcode.learn.gwt2.common.client.util.chart;
 
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.chart.client.chart.Chart;

@@ -1,18 +1,15 @@
-package biz.freshcode.learn.gwt.client.experiment.chart.lanes.reuse;
+package biz.freshcode.learn.gwt2.mod2.client.spike.lanes.reuse;
 
-import biz.freshcode.learn.gwt.client.experiment.chart.gantt.reuse.StartDurn;
-import biz.freshcode.learn.gwt.client.experiment.chart.gantt2.reuse.BarFocusEvent;
-import biz.freshcode.learn.gwt.client.experiment.chart.gantt2.reuse.BarInfo;
-import biz.freshcode.learn.gwt.client.experiment.chart.gantt2.reuse.ChartInfo;
-import biz.freshcode.learn.gwt.client.experiment.chart.gantt2.reuse.HasIdTitle;
-import biz.freshcode.learn.gwt.client.experiment.chart.reuse.PointSeries;
-import biz.freshcode.learn.gwt.client.experiment.chart.reuse.SeriesMap;
-import biz.freshcode.learn.gwt.client.experiment.chart.reuse.SeriesMapChart;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.chart.ChartBuilder;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.chart.axis.NumericAxisBuilder;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.chart.series.LineSeriesBuilder;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.chart.series.SeriesToolTipConfigBuilder;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.draw.path.PathSpriteBuilder;
+import biz.freshcode.learn.gwt2.common.client.util.chart.PointSeries;
+import biz.freshcode.learn.gwt2.common.client.util.chart.SeriesMap;
+import biz.freshcode.learn.gwt2.common.client.util.chart.SeriesMapChart;
+import biz.freshcode.learn.gwt2.common.client.util.data.HasIdTitle;
+import biz.freshcode.learn.gwt2.common.client.util.data.StartDurn;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.event.shared.HandlerRegistration;
 import com.google.web.bindery.event.shared.SimpleEventBus;
@@ -109,7 +106,6 @@ public class LanesChart extends SeriesMapChart implements SeriesSelectionEvent.S
             primeChart();
         }
 
-        // focused bar
         NumericAxis<Integer> left = getNumericAxis(Position.LEFT);
         boolean refocus = false;
         for (BarInfo bar : bars) {
@@ -184,7 +180,7 @@ public class LanesChart extends SeriesMapChart implements SeriesSelectionEvent.S
     }
 
     protected void setupChart() {
-        new ChartBuilder<Integer>(chart)
+        new ChartBuilder<>(chart)
                 .addAxis(new NumericAxisBuilder<Integer>()
                         .position(Position.BOTTOM)
 //                        .titleConfig(new TextSprite("Time"))
@@ -255,7 +251,7 @@ public class LanesChart extends SeriesMapChart implements SeriesSelectionEvent.S
                 .yAxisPosition(Position.LEFT)
                 .yField(access)
                 .xAxisPosition(Position.BOTTOM)
-                        // Man this is painful
+                        // NOTE: It's the data points that have the tooltip (not the line).
                 .toolTipConfig(new SeriesToolTipConfigBuilder<Integer>()
                         .labelProvider(new SeriesLabelProvider<Integer>() {
                             @Override
