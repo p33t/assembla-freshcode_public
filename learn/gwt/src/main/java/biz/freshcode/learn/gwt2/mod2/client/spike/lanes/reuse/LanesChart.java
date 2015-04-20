@@ -19,6 +19,7 @@ import com.sencha.gxt.chart.client.chart.series.LineSeries;
 import com.sencha.gxt.chart.client.chart.series.Series;
 import com.sencha.gxt.chart.client.chart.series.SeriesLabelProvider;
 import com.sencha.gxt.chart.client.draw.RGB;
+import com.sencha.gxt.chart.client.draw.sprite.CircleSprite;
 import com.sencha.gxt.chart.client.draw.sprite.TextSprite;
 import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.core.client.util.Point;
@@ -248,6 +249,8 @@ public class LanesChart extends SeriesMapChart implements SeriesSelectionEvent.S
 
     private LineSeries<Integer> createSeries(final ValueProvider<Integer, Double> access, RGB colour) {
         LineSeries<Integer> s = new LineSeriesBuilder<Integer>()
+                // Keep marker small
+                .markerConfig(new CircleSprite(STROKE_NON_FOCUSED))
                 .yAxisPosition(Position.LEFT)
                 .yField(access)
                 .xAxisPosition(Position.BOTTOM)
