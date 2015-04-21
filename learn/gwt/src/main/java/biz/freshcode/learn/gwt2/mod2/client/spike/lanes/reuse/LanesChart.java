@@ -116,7 +116,7 @@ public class LanesChart extends SeriesMapChart implements SeriesSelectionEvent.S
             ValueProvider<Integer, Double> f = accessY(barId, Double.NaN);
             left.addField(f);
 
-            LineSeries<Integer> s = createSeries(f, bar.getColour());
+            LineSeries<Integer> s = createSeries(f, bar.getColour(), bar.getTitle());
             chart.addSeries(s);
         }
 
@@ -124,7 +124,7 @@ public class LanesChart extends SeriesMapChart implements SeriesSelectionEvent.S
         if (focusedPeriodOrNull != null) {
             NumericAxis<Integer> bottom = getNumericAxis(Position.BOTTOM);
             left.addField(FOCUSED_PERIOD_FIELD);
-            LineSeries<Integer> s = createSeries(FOCUSED_PERIOD_FIELD, FOCUSED_PERIOD_COL);
+            LineSeries<Integer> s = createSeries(FOCUSED_PERIOD_FIELD, FOCUSED_PERIOD_COL, null);
             s.setFill(FOCUSED_PERIOD_COL);
             // Hmm... would be nice to make stroke fully transparent... but fiddling with rendered doesn't work ?!
             chart.addSeries(s);
@@ -148,6 +148,7 @@ public class LanesChart extends SeriesMapChart implements SeriesSelectionEvent.S
     }
 
     public void focusBar(String idOrNull) {
+//        ToolTipConfig ttc = null;
         for (Series<Integer> s : chart.getSeries()) {
             if (!(s instanceof LineSeries)) continue;
             LineSeries<Integer> ls = (LineSeries<Integer>) s;
@@ -157,12 +158,32 @@ public class LanesChart extends SeriesMapChart implements SeriesSelectionEvent.S
             // Markers suffer from interpolated points
             ls.setStrokeWidth(focused ? STROKE_FOCUSED : STROKE_NON_FOCUSED);
             ls.setShowMarkers(focused);
+//            if (focused) {
+//                BarInfo bar = getBar(barId);
+//                if (bar != null) {
+//                    ttc = new ToolTipConfigBuilder()
+//                            .bodyText(bar.getTitle())
+//                            .autoHide(false)
+//                            .trackMouse(false)
+//                            .anchorToTarget(true)
+//                            .toolTipConfig;
+//                }
+//            }
 //            ls.setRenderer(focused ? FOCAL_RENDER : NON_FOCAL_RENDER);
 //            Seems to have 'sticky' effects that hang around after no longer focused.
 //            ls.setLineRenderer(focused ? FOCAL_RENDER : NON_FOCAL_RENDER);
         }
         setLastFocusId(idOrNull);
+//        if (chart.getToolTip() != null) chart.getToolTip().hide();
+//        chart.setToolTipConfig(ttc);
         chart.redrawChart();
+    }
+
+    private BarInfo getBar(String barId) {
+        for (BarInfo b : prevBars) {
+            if (b.getId().equals(barId)) return b;
+        }
+        return null;
     }
 
     @Override
@@ -244,26 +265,16 @@ public class LanesChart extends SeriesMapChart implements SeriesSelectionEvent.S
 
         // add config
         getNumericAxis(Position.LEFT).addField(primer);
-        chart.addSeries(createSeries(primer, new RGB("#ffffff")));
+        chart.addSeries(createSeries(primer, new RGB("#ffffff"), null));
     }
 
-    private LineSeries<Integer> createSeries(final ValueProvider<Integer, Double> access, RGB colour) {
+    private LineSeries<Integer> createSeries(final ValueProvider<Integer, Double> access, RGB colour, final String titleOrNull) {
         LineSeries<Integer> s = new LineSeriesBuilder<Integer>()
                 // Keep marker small
                 .markerConfig(new CircleSprite(STROKE_NON_FOCUSED))
                 .yAxisPosition(Position.LEFT)
                 .yField(access)
                 .xAxisPosition(Position.BOTTOM)
-                        // NOTE: It's the data points that have the tooltip (not the line).
-                .toolTipConfig(new SeriesToolTipConfigBuilder<Integer>()
-                        .labelProvider(new SeriesLabelProvider<Integer>() {
-                            @Override
-                            public String getLabel(Integer item, ValueProvider<? super Integer, ? extends Number> provider) {
-                                return access.getPath();
-                            }
-                        })
-                        .seriesToolTipConfig)
-                        //                                            .highlighter()
                         // needed to orient lines
                 .xField(ACCESS_X)
                 .stroke(colour)
@@ -279,6 +290,20 @@ public class LanesChart extends SeriesMapChart implements SeriesSelectionEvent.S
 //                Does nothing.... our series don't have gaps... we want control over colours.
 //                .gapless(false)
                 .lineSeries;
+
+        if (titleOrNull != null) {
+            // NOTE: It's the data points that have the tooltip (not the line).
+            s.setToolTipConfig(new SeriesToolTipConfigBuilder<Integer>()
+                            .trackMouse(true)
+                            .labelProvider(new SeriesLabelProvider<Integer>() {
+                                @Override
+                                public String getLabel(Integer item, ValueProvider<? super Integer, ? extends Number> provider) {
+                                    return titleOrNull;
+                                }
+                            })
+                            .seriesToolTipConfig
+            );
+        }
         s.addSeriesSelectionHandler(this);
         return s;
     }
