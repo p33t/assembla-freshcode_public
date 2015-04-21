@@ -40,7 +40,6 @@ public class LanesChartSpike extends Presenter<LanesChartSpike.View, LanesChartS
             new BarInfo("id8", "Rocker Outbound", "Foxtrot", new RGB("#00008f"), new StartDurn(16 * HR, 4 * HR))
     );
 
-
     @Inject
     public LanesChartSpike(EventBus eventBus, View view, Proxy proxy) {
         super(eventBus, view, proxy, Root.SLOT);
