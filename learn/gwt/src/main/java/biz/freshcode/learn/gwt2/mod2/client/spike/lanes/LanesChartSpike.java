@@ -30,14 +30,14 @@ public class LanesChartSpike extends Presenter<LanesChartSpike.View, LanesChartS
     public static final String TOKEN = "lanesChartSpike";
     private static final int HR = 60;
     private static final List<BarInfo> BARS = newListFrom(
-            new BarInfo("id1", "Maintenance", "Alpha", new RGB("#ff0000"), new StartDurn(6 * HR, 4 * HR)),
+            new BarInfo("id1", "Maintenance A", "Alpha", new RGB("#ff0000"), new StartDurn(6 * HR, 4 * HR)),
             new BarInfo("id2", "Minow Inbound", "Bravo", new RGB("#00ff00"), new StartDurn(8 * HR, 3 * HR)),
-            new BarInfo("id3", "Whisky & Coke Outbound", "Bravo", new RGB("#0000ff"), new StartDurn(12 * HR, 3 * HR)),
-            new BarInfo("id4", "Whisky & Coke Outbound", "Charlie", new RGB("#0000ff"), new StartDurn(12 * HR, 3 * HR)),
-            new BarInfo("id5", "Maintenance", "Delta", new RGB("#8f0000"), new StartDurn(10 * HR, 4 * HR)),
+            new BarInfo("id3", "Whisky & Coke Outbound A", "Bravo", new RGB("#0000ff"), new StartDurn(12 * HR, 3 * HR)),
+            new BarInfo("id4", "Whisky & Coke Outbound B", "Charlie", new RGB("#0000ff"), new StartDurn(12 * HR, 3 * HR)),
+            new BarInfo("id5", "Maintenance B", "Delta", new RGB("#8f0000"), new StartDurn(10 * HR, 4 * HR)),
             new BarInfo("id6", "Dreamy Inbound", "Echo", new RGB("#008f00"), new StartDurn(13 * HR, 3 * HR)),
-            new BarInfo("id7", "Rocker Outbound", "Echo", new RGB("#00008f"), new StartDurn(16 * HR, 4 * HR)),
-            new BarInfo("id8", "Rocker Outbound", "Foxtrot", new RGB("#00008f"), new StartDurn(16 * HR, 4 * HR))
+            new BarInfo("id7", "Rocker Outbound A", "Echo", new RGB("#00008f"), new StartDurn(16 * HR, 4 * HR)),
+            new BarInfo("id8", "Rocker Outbound B", "Foxtrot", new RGB("#00008f"), new StartDurn(16 * HR, 4 * HR))
     );
 
     @Inject

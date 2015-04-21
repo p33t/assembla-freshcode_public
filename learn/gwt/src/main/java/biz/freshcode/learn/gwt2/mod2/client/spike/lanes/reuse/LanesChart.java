@@ -3,21 +3,25 @@ package biz.freshcode.learn.gwt2.mod2.client.spike.lanes.reuse;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.chart.ChartBuilder;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.chart.axis.NumericAxisBuilder;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.chart.series.LineSeriesBuilder;
-import biz.freshcode.learn.gwt2.common.client.builder.gxt.chart.series.SeriesToolTipConfigBuilder;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.draw.path.PathSpriteBuilder;
+import biz.freshcode.learn.gwt2.common.client.builder.gxt.tips.ToolTipConfigBuilder;
 import biz.freshcode.learn.gwt2.common.client.util.chart.PointSeries;
 import biz.freshcode.learn.gwt2.common.client.util.chart.SeriesMap;
 import biz.freshcode.learn.gwt2.common.client.util.chart.SeriesMapChart;
 import biz.freshcode.learn.gwt2.common.client.util.data.HasIdTitle;
 import biz.freshcode.learn.gwt2.common.client.util.data.StartDurn;
+import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.safehtml.shared.SafeHtmlUtils;
+import com.google.gwt.user.client.Command;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.event.shared.HandlerRegistration;
 import com.google.web.bindery.event.shared.SimpleEventBus;
 import com.sencha.gxt.chart.client.chart.axis.NumericAxis;
+import com.sencha.gxt.chart.client.chart.event.SeriesItemOutEvent;
+import com.sencha.gxt.chart.client.chart.event.SeriesItemOverEvent;
 import com.sencha.gxt.chart.client.chart.event.SeriesSelectionEvent;
 import com.sencha.gxt.chart.client.chart.series.LineSeries;
 import com.sencha.gxt.chart.client.chart.series.Series;
-import com.sencha.gxt.chart.client.chart.series.SeriesLabelProvider;
 import com.sencha.gxt.chart.client.draw.RGB;
 import com.sencha.gxt.chart.client.draw.sprite.CircleSprite;
 import com.sencha.gxt.chart.client.draw.sprite.TextSprite;
@@ -34,7 +38,7 @@ import static biz.freshcode.learn.gwt2.common.client.util.AppObjectUtils.safeEqu
 import static biz.freshcode.learn.gwt2.common.client.util.ExceptionUtil.illegalArg;
 import static com.sencha.gxt.chart.client.chart.Chart.Position;
 
-public class LanesChart extends SeriesMapChart implements SeriesSelectionEvent.SeriesSelectionHandler<Integer> {
+public class LanesChart extends SeriesMapChart implements SeriesSelectionEvent.SeriesSelectionHandler<Integer>, SeriesItemOverEvent.SeriesItemOverHandler<Integer>, SeriesItemOutEvent.SeriesItemOutHandler<Integer> {
     private static final int HR = 60;
     private static final String PRIMER = "primer";
     public static final int STROKE_NON_FOCUSED = 3;
@@ -47,6 +51,7 @@ public class LanesChart extends SeriesMapChart implements SeriesSelectionEvent.S
     private StartDurn focusedPeriodOrNull;
     private final EventBus bus;
     private Iterable<BarInfo> prevBars = newList();
+    private String currentBarIdIfAny;
 
     public LanesChart() {
         this(new SimpleEventBus());
@@ -116,7 +121,7 @@ public class LanesChart extends SeriesMapChart implements SeriesSelectionEvent.S
             ValueProvider<Integer, Double> f = accessY(barId, Double.NaN);
             left.addField(f);
 
-            LineSeries<Integer> s = createSeries(f, bar.getColour(), bar.getTitle());
+            LineSeries<Integer> s = createSeries(f, bar.getColour());
             chart.addSeries(s);
         }
 
@@ -124,7 +129,7 @@ public class LanesChart extends SeriesMapChart implements SeriesSelectionEvent.S
         if (focusedPeriodOrNull != null) {
             NumericAxis<Integer> bottom = getNumericAxis(Position.BOTTOM);
             left.addField(FOCUSED_PERIOD_FIELD);
-            LineSeries<Integer> s = createSeries(FOCUSED_PERIOD_FIELD, FOCUSED_PERIOD_COL, null);
+            LineSeries<Integer> s = createSeries(FOCUSED_PERIOD_FIELD, FOCUSED_PERIOD_COL);
             s.setFill(FOCUSED_PERIOD_COL);
             // Hmm... would be nice to make stroke fully transparent... but fiddling with rendered doesn't work ?!
             chart.addSeries(s);
@@ -179,13 +184,6 @@ public class LanesChart extends SeriesMapChart implements SeriesSelectionEvent.S
         chart.redrawChart();
     }
 
-    private BarInfo getBar(String barId) {
-        for (BarInfo b : prevBars) {
-            if (b.getId().equals(barId)) return b;
-        }
-        return null;
-    }
-
     @Override
     public void onSeriesSelection(SeriesSelectionEvent<Integer> event) {
         String barId = event.getValueProvider().getPath();
@@ -199,6 +197,18 @@ public class LanesChart extends SeriesMapChart implements SeriesSelectionEvent.S
 
     public void unfocusPeriod() {
         focusPeriod(null);
+    }
+
+    @Override
+    public void onSeriesOverItem(SeriesItemOverEvent<Integer> evt) {
+        currentBarIdIfAny = evt.getValueProvider().getPath();
+        syncToolTip();
+    }
+
+    @Override
+    public void onSeriesLeaveItem(SeriesItemOutEvent<Integer> event) {
+        currentBarIdIfAny = null;
+        syncToolTip();
     }
 
     protected void setupChart() {
@@ -236,6 +246,46 @@ public class LanesChart extends SeriesMapChart implements SeriesSelectionEvent.S
         prevBars = newList();
     }
 
+    /**
+     * Formal tooltip synchronisation to make it nice and smooth.
+     */
+    private void syncToolTip() {
+        final String altBarId = currentBarIdIfAny;
+        Scheduler.get().scheduleDeferred(new Command() {
+            @Override
+            public void execute() {
+                //noinspection StringEquality
+                if (altBarId != currentBarIdIfAny) return; // something has changed in the mean time.  Abort.
+
+                BarInfo bar = currentBarIdIfAny == null ? null : getBar(currentBarIdIfAny);
+
+                if (bar == null) {
+                    if (chart.getToolTip() != null) chart.getToolTip().disable();
+                } else {
+                    String body = SafeHtmlUtils.htmlEscape(bar.getTitle());
+                    if (chart.getToolTip() == null ||
+                            !body.equals(chart.getToolTip().getToolTipConfig().getBodyHtml())) {
+                        // need to update tooltip
+                        chart.setToolTipConfig(new ToolTipConfigBuilder()
+                                .bodyHtml(body)
+                                .autoHide(false)
+                                .trackMouse(true)
+                                .toolTipConfig);
+                    }
+                    chart.getToolTip().enable();
+                    chart.getToolTip().show();
+                }
+            }
+        });
+    }
+
+    private BarInfo getBar(String barId) {
+        for (BarInfo b : prevBars) {
+            if (b.getId().equals(barId)) return b;
+        }
+        return null;
+    }
+
     private PointSeries pointSeries(StartDurn sd, int y) {
         return PointSeries.NIL.add(
                 new Point(sd.getStart(), y),
@@ -265,10 +315,10 @@ public class LanesChart extends SeriesMapChart implements SeriesSelectionEvent.S
 
         // add config
         getNumericAxis(Position.LEFT).addField(primer);
-        chart.addSeries(createSeries(primer, new RGB("#ffffff"), null));
+        chart.addSeries(createSeries(primer, new RGB("#ffffff")));
     }
 
-    private LineSeries<Integer> createSeries(final ValueProvider<Integer, Double> access, RGB colour, final String titleOrNull) {
+    private LineSeries<Integer> createSeries(final ValueProvider<Integer, Double> access, RGB colour) {
         LineSeries<Integer> s = new LineSeriesBuilder<Integer>()
                 // Keep marker small
                 .markerConfig(new CircleSprite(STROKE_NON_FOCUSED))
@@ -290,21 +340,9 @@ public class LanesChart extends SeriesMapChart implements SeriesSelectionEvent.S
 //                Does nothing.... our series don't have gaps... we want control over colours.
 //                .gapless(false)
                 .lineSeries;
-
-        if (titleOrNull != null) {
-            // NOTE: It's the data points that have the tooltip (not the line).
-            s.setToolTipConfig(new SeriesToolTipConfigBuilder<Integer>()
-                            .trackMouse(true)
-                            .labelProvider(new SeriesLabelProvider<Integer>() {
-                                @Override
-                                public String getLabel(Integer item, ValueProvider<? super Integer, ? extends Number> provider) {
-                                    return titleOrNull;
-                                }
-                            })
-                            .seriesToolTipConfig
-            );
-        }
         s.addSeriesSelectionHandler(this);
+        s.addSeriesItemOverHandler(this);
+        s.addSeriesItemOutHandler(this);
         return s;
     }
 
