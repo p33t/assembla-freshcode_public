@@ -340,6 +340,8 @@ public class LanesChart extends SeriesMapChart implements SeriesSelectionEvent.S
 //                Does nothing.... our series don't have gaps... we want control over colours.
 //                .gapless(false)
                 .lineSeries;
+        // tighten mouse over / click area
+        s.setSelectionTolerance(STROKE_FOCUSED);
         s.addSeriesSelectionHandler(this);
         s.addSeriesItemOverHandler(this);
         s.addSeriesItemOutHandler(this);
