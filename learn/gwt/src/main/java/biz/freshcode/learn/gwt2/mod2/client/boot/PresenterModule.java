@@ -3,6 +3,7 @@ package biz.freshcode.learn.gwt2.mod2.client.boot;
 import biz.freshcode.learn.gwt2.mod2.client.home.Home;
 import biz.freshcode.learn.gwt2.mod2.client.spike.adapterfieldgrid.AdapterFieldGridSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.checkboxcellicon.CheckBoxCellIconSpike;
+import biz.freshcode.learn.gwt2.mod2.client.spike.customdropdown.CustomDropDownSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.dragorder.DragOrderSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.gridinteract.GridInteractSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.gridscrollrestore.GridScrollRestoreSpike;
@@ -24,5 +25,6 @@ public class PresenterModule extends AbstractPresenterModule {
         bindPresenter(RadioSpike.class, RadioSpike.Proxy.class);
         bindPresenter(GridScrollRestoreSpike.class, GridScrollRestoreSpike.Proxy.class);
         bindPresenter(LanesChartSpike.class, LanesChartSpike.Proxy.class);
+        bindPresenter(CustomDropDownSpike.class, CustomDropDownSpike.Proxy.class);
     }
 }
