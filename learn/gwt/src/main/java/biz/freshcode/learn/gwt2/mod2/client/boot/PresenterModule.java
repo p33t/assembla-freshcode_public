@@ -8,6 +8,7 @@ import biz.freshcode.learn.gwt2.mod2.client.spike.dragorder.DragOrderSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.gridinteract.GridInteractSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.gridscrollrestore.GridScrollRestoreSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.lanes.LanesChartSpike;
+import biz.freshcode.learn.gwt2.mod2.client.spike.multiselectbutton.MultiSelectButtonSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.radiobutton.RadioSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.resize.ResizeSpike;
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
@@ -26,5 +27,6 @@ public class PresenterModule extends AbstractPresenterModule {
         bindPresenter(GridScrollRestoreSpike.class, GridScrollRestoreSpike.Proxy.class);
         bindPresenter(LanesChartSpike.class, LanesChartSpike.Proxy.class);
         bindPresenter(CustomDropDownSpike.class, CustomDropDownSpike.Proxy.class);
+        bindPresenter(MultiSelectButtonSpike.class, MultiSelectButtonSpike.Proxy.class);
     }
 }

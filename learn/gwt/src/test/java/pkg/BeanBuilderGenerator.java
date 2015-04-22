@@ -17,7 +17,7 @@ import com.sencha.gxt.widget.core.client.form.*;
 import java.lang.reflect.Method;
 
 public class BeanBuilderGenerator extends DefaultBeanBuilderGenerator {
-    static final Class CLASS = Radio.class; //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    static final Class CLASS = CheckBox.class; //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     public static final String BASE_PKG = "biz.freshcode.learn.gwt2.common.client.builder";
 
     public static void main(String[] args) {
@@ -85,6 +85,8 @@ public class BeanBuilderGenerator extends DefaultBeanBuilderGenerator {
         if (genericTypeMatch(beanCls, type, TextButton.class, "C"))
             return genericTypeResolve(type, "String", forJavadoc, "C");
         if (genericTypeMatch(beanCls, type, Radio.class, "T", "C"))
+            return genericTypeResolve(type, "Boolean", forJavadoc, "T", "C");
+        if (genericTypeMatch(beanCls, type, CheckBox.class, "T", "C"))
             return genericTypeResolve(type, "Boolean", forJavadoc, "T", "C");
         return super.mapType(beanCls, m, type, argIndex, forJavadoc);
     }
