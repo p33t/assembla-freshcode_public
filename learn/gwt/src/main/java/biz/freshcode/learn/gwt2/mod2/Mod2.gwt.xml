@@ -4,10 +4,15 @@
 
     <inherits name='com.gwtplatform.mvp.MvpWithEntryPoint'/>
 
+    <replace-with class="biz.freshcode.learn.gwt2.mod2.client.spike.customdropdown.CddCellDefaultAppearance">
+      <when-type-is class="biz.freshcode.learn.gwt2.mod2.client.spike.customdropdown.CddCell.Appearance" />
+    </replace-with>
+
     <!-- Specify the paths for translatable code                    -->
     <source path='client'/>
     <source path='shared'/>
 
     <set-configuration-property name="gin.ginjector.modules"
                                 value="biz.freshcode.learn.gwt2.mod2.client.boot.ClientModule"/>
+
 </module>
