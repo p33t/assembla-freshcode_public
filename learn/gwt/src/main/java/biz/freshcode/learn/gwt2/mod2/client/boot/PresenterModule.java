@@ -5,6 +5,7 @@ import biz.freshcode.learn.gwt2.mod2.client.spike.adapterfieldgrid.AdapterFieldG
 import biz.freshcode.learn.gwt2.mod2.client.spike.checkboxcellicon.CheckBoxCellIconSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.customdropdown.CustomDropDownSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.dragorder.DragOrderSpike;
+import biz.freshcode.learn.gwt2.mod2.client.spike.gridgraphic.GridGraphicSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.gridinteract.GridInteractSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.gridscrollrestore.GridScrollRestoreSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.lanes.LanesChartSpike;
@@ -28,5 +29,6 @@ public class PresenterModule extends AbstractPresenterModule {
         bindPresenter(LanesChartSpike.class, LanesChartSpike.Proxy.class);
         bindPresenter(CustomDropDownSpike.class, CustomDropDownSpike.Proxy.class);
         bindPresenter(MultiSelectButtonSpike.class, MultiSelectButtonSpike.Proxy.class);
+        bindPresenter(GridGraphicSpike.class, GridGraphicSpike.Proxy.class);
     }
 }
