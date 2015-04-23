@@ -17,7 +17,7 @@ import java.util.Map;
 import static biz.freshcode.learn.gwt2.common.client.util.AppCollectionUtil.newList;
 
 /**
- *
+ * A button that displays how many of the contained checks are selected.
  */
 public class MultiSelectButton extends TextButton {
     private final String prefix;
