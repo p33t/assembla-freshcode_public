@@ -4,10 +4,10 @@ import biz.freshcode.learn.gwt2.common.client.builder.gxt.button.TextButtonBuild
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.container.HorizontalLayoutContainerBuilder;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.menu.MenuBuilder;
 import biz.freshcode.learn.gwt2.mod2.client.boot.Root;
+import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.event.logical.shared.BeforeSelectionEvent;
 import com.google.gwt.event.logical.shared.BeforeSelectionHandler;
-import com.google.gwt.event.logical.shared.SelectionEvent;
-import com.google.gwt.event.logical.shared.SelectionHandler;
+import com.google.gwt.user.client.Command;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.Presenter;
@@ -52,7 +52,7 @@ public class MultiSelectButtonSpike extends Presenter<MultiSelectButtonSpike.Vie
                                     .add(chkAll = new CheckMenuItem("(All)"))
                                     .add(chk1 = new CheckMenuItem("Check 1"))
                                     .add(chk2 = new CheckMenuItem("Check 2"))
-                                    .add(new MenuItem("Save"))
+                                    .add(new MenuItem("Done"))
                                     .menu)
                             .textButton)
                     .horizontalLayoutContainer);
@@ -60,6 +60,15 @@ public class MultiSelectButtonSpike extends Presenter<MultiSelectButtonSpike.Vie
                 @Override
                 public void onBeforeSelection(BeforeSelectionEvent<Item> event) {
                     if (event.getItem() instanceof CheckMenuItem) event.cancel();
+                    Scheduler.get().scheduleDeferred(new Command() {
+                        @Override
+                        public void execute() {
+                            int i = 0;
+                            if (chk1.isChecked()) i++;
+                            if (chk2.isChecked()) i++;
+                            btn.setText("Checks: " + i + "/2");
+                        }
+                    });
                 }
             });
 
@@ -69,15 +78,6 @@ public class MultiSelectButtonSpike extends Presenter<MultiSelectButtonSpike.Vie
                     boolean checked = event.getChecked() == Tree.CheckState.CHECKED;
                     chk1.setChecked(checked);
                     chk2.setChecked(checked);
-                }
-            });
-            mnu.addSelectionHandler(new SelectionHandler<Item>() {
-                @Override
-                public void onSelection(SelectionEvent<Item> event) {
-                    int i = 0;
-                    if (chk1.isChecked()) i++;
-                    if (chk2.isChecked()) i++;
-                    btn.setText("Checks: " + i + "/2");
                 }
             });
         }
