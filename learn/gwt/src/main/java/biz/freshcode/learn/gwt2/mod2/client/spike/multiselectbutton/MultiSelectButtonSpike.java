@@ -31,14 +31,14 @@ public class MultiSelectButtonSpike extends Presenter<MultiSelectButtonSpike.Vie
 
         @Inject
         public View() {
-            MultiSelectButton x0 = new MultiSelectButton("Checks0: ");
+            MultiSelectButton x0 = new MultiSelectButton("None: ");
 
-            MultiSelectButton x1 = new MultiSelectButton("Checks1: ");
+            MultiSelectButton x1 = new MultiSelectButton("Single: ");
             Map<String, String> opts1 = new HashMap<>();
             opts1.put("1", "One");
             x1.setOptions(opts1);
 
-            MultiSelectButton x2 = new MultiSelectButton("Checks2: ");
+            MultiSelectButton x2 = new MultiSelectButton("Double: ");
             Map<String, String> opts2 = new HashMap<>();
             opts2.put("1", "One");
             opts2.put("2", "Two");
