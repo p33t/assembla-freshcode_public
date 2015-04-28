@@ -78,8 +78,7 @@ public class MultiSelectButton extends TextButton {
         }
         setText(prefix + selected.size() + "/" + total);
         if (!matchAll) {
-            if (isAll()) chkAll.setChecked(true, SUPPRESS_EVENT);
-            else chkAll.setChecked(false, SUPPRESS_EVENT);
+            chkAll.setChecked(isAll(), SUPPRESS_EVENT);
         }
     }
 }
