@@ -1,6 +1,7 @@
 package biz.freshcode.learn.gwt2.mod2.client.spike.gridgraphic;
 
 import com.google.gwt.cell.client.AbstractCell;
+import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 
 import java.util.Map;
@@ -17,6 +18,20 @@ public class GgCell extends AbstractCell<GgRow> {
     GgCell(int from, int toEx) {
         this.from = from;
         this.toEx = toEx;
+    }
+
+    public SafeHtml linesHeader() {
+        SafeHtmlBuilder sb = new SafeHtmlBuilder();
+//         border-top: none; border-bottom: none; border-collapse:collapse;
+        sb.appendHtmlConstant("<table style='border-collapse:collapse; width:100%;'><tr>");
+        for (int i = from; i < toEx; i++) {
+            renderCell(sb, percent(1), "+" + i, "inherit", false);
+//            sb.appendHtmlConstant("<td style='width:" + percent(1) + "%; text-align:center; border:1px solid gray;'>");
+//            sb.appendEscaped("+" + i);
+//            sb.appendHtmlConstant("</td>");
+        }
+        sb.appendHtmlConstant("</tr></table>");
+        return sb.toSafeHtml();
     }
 
     @Override
@@ -40,12 +55,12 @@ public class GgCell extends AbstractCell<GgRow> {
                     int from = truncate(e.getFromIn());
                     int space = percent(from - lastToEx);
                     lastToEx = from + w;
-                    if (space > 0) renderCell(sb, space, " ", "inherit");
-                    renderCell(sb, percent(w), e.getTitle(), e.getColour());
+                    if (space > 0) renderCell(sb, space, " ", "inherit", true);
+                    renderCell(sb, percent(w), e.getTitle(), e.getColour(), true);
                 }
             }
             int rem = percent(toEx - lastToEx);
-            if (rem > 0) renderCell(sb, rem, " ", "inherit");
+            if (rem > 0) renderCell(sb, rem, " ", "inherit", true);
 
             sb.appendHtmlConstant("</tr/></table>");
         }
@@ -56,9 +71,11 @@ public class GgCell extends AbstractCell<GgRow> {
         return Math.round(100f * width / total);
     }
 
-    private void renderCell(SafeHtmlBuilder sb, int perc, String title, String colour) {
-        sb.appendHtmlConstant("<td style='width:" + perc + "%; background-color:" + colour +
-                "; text-align:center; padding-top:4px; padding-bottom:4px;'>");
+    private void renderCell(SafeHtmlBuilder sb, int perc, String title, String colour, boolean pad) {
+        String padding = pad ? " padding:4px 0px;" : "";
+        String line = pad? "solid": "dotted";
+        sb.appendHtmlConstant("<td style='width:" + perc + "%; border-right: 1px " + line + " lightgray; background-color:" + colour +
+                "; text-align:center;" + padding + "'>");
         sb.appendEscaped(title);
         sb.appendHtmlConstant("</td>");
     }
