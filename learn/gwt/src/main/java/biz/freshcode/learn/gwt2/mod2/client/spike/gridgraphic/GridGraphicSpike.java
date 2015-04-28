@@ -71,19 +71,22 @@ public class GridGraphicSpike extends Presenter<GridGraphicSpike.View, GridGraph
 
         @SuppressWarnings("unchecked")
         private Grid<GgRow> createGrid() {
+            GgCell cell0 = new GgCell(0, 10);
             return ClientUtil.createGrid(HasId.ID_PROVIDER,
                     new ColumnConfigBuilder(HasIdTitle.TITLE_PROVIDER)
                             .width(1)
                             .header("Title")
                             .columnConfig,
                     new ColumnConfigBuilder(new IdentityValueProvider<GgRow>())
-                            .cell(new GgCell(0, 10))
+                            .cell(cell0)
                             .width(10)
-                            .header("Lines")
+                            .header(cell0.linesHeader())
+//                            .columnHeaderClassName(Bundle.STYLE.noPad())
                             .cellPadding(false)
                             .columnConfig
             );
         }
+
 
         private void scalingTest() {
             dialog("Scaling Test", new DrawComponentBuilder(new StretchDrawComponent())
@@ -104,6 +107,16 @@ public class GridGraphicSpike extends Presenter<GridGraphicSpike.View, GridGraph
 
         private List<GgRow> rows() {
             return newListFrom(
+                    new GgRow(nextId(), "Bruce", newListFrom(
+                            new GgElem(nextId(), "B1", 3, 5, "blue"),
+                            new GgElem(nextId(), "B2", 5, 9, "green"),
+                            new GgElem(nextId(), "B3", 8, 15, "orange"),
+                            new GgElem(nextId(), "B4", 15, 20, "red")
+                    )),
+                    new GgRow(nextId(), "Lee", newListFrom(
+                            new GgElem(nextId(), "B1", 2, 5, "pink"),
+                            new GgElem(nextId(), "B2", 7, 9, "yellow")
+                    )),
                     new GgRow(nextId(), "Bruce", newListFrom(
                             new GgElem(nextId(), "B1", 3, 5, "blue"),
                             new GgElem(nextId(), "B2", 5, 9, "green"),
