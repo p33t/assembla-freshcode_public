@@ -20,6 +20,7 @@ import static biz.freshcode.learn.gwt2.common.client.util.AppCollectionUtil.newL
  * A button that displays how many of the contained checks are selected.
  */
 public class MultiSelectButton extends TextButton {
+    public static final boolean SUPPRESS_EVENT = true;
     private final String prefix;
     private final Menu menu = new Menu();
     private final CheckMenuItem chkAll = new CheckMenuItem("(All)");
@@ -55,7 +56,7 @@ public class MultiSelectButton extends TextButton {
 
     public void setOptions(Map<String, String> labelsById) {
         menu.clear();
-        chkAll.setChecked(true, true);
+        chkAll.setChecked(true, SUPPRESS_EVENT);
         if (labelsById.size() > 1) menu.add(chkAll);
         for (Map.Entry<String, String> me : labelsById.entrySet()) {
             CheckMenuItem chk = new CheckMenuItem(me.getValue());
@@ -71,14 +72,14 @@ public class MultiSelectButton extends TextButton {
         for (Widget widget : menu) {
             if (widget instanceof CheckMenuItem && widget != chkAll) {
                 CheckMenuItem chk = (CheckMenuItem) widget;
-                if (matchAll) chk.setChecked(chkAll.isChecked(), true);
+                if (matchAll) chk.setChecked(chkAll.isChecked(), SUPPRESS_EVENT);
                 if (chk.isChecked()) selected.add(chk.getItemId());
             }
         }
         setText(prefix + selected.size() + "/" + total);
         if (!matchAll) {
-            if (isAll()) chkAll.setChecked(true, true);
-            if (selected.size() == 0) chkAll.setChecked(false, true);
+            if (isAll()) chkAll.setChecked(true, SUPPRESS_EVENT);
+            else chkAll.setChecked(false, SUPPRESS_EVENT);
         }
     }
 }
