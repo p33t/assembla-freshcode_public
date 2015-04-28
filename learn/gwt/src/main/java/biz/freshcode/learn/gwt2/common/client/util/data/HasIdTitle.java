@@ -1,7 +1,24 @@
 package biz.freshcode.learn.gwt2.common.client.util.data;
 
-public interface HasIdTitle {
-    String getId();
+import com.sencha.gxt.core.client.ValueProvider;
+
+public interface HasIdTitle extends HasId {
+    public static final ValueProvider<HasIdTitle, String> TITLE_PROVIDER = new ValueProvider<HasIdTitle, String>() {
+        @Override
+        public String getValue(HasIdTitle object) {
+            return object.getTitle();
+        }
+
+        @Override
+        public void setValue(HasIdTitle object, String value) {
+            throw new RuntimeException("setValue not implemented");
+        }
+
+        @Override
+        public String getPath() {
+            return "title";
+        }
+    };
 
     String getTitle();
 
