@@ -20,7 +20,7 @@ import static biz.freshcode.learn.gwt2.common.client.util.AppCollectionUtil.newL
  * A button that displays how many of the contained checks are selected.
  */
 public class MultiSelectButton extends TextButton {
-    public static final boolean SUPPRESS_EVENT = true;
+    private static final boolean SUPPRESS_EVENT = true;
     private final String prefix;
     private final Menu menu = new Menu();
     private final CheckMenuItem chkAll = new CheckMenuItem("(All)");
