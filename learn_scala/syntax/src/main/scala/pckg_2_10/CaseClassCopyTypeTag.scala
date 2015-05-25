@@ -46,16 +46,16 @@ object CaseClassCopyTypeTag {
       val clsMir = mir.reflectClass(tpe.typeSymbol.asClass)
       // NOTE: This barfs when multiple contructors, however, for case classes
       //       one would overload the 'apply' method on companion anyway
-      val ctor = tpe.declaration(ru.nme.CONSTRUCTOR).asMethod
+      val ctor = tpe.decl(ru.termNames.CONSTRUCTOR).asMethod
       clsMir.reflectConstructor(ctor)
     }
-    private val terms = tpe.declarations
+    private val terms = tpe.decls
       .filter(d => !d.isMethod)
       // ignores extra vals
-      .take(ctorm.symbol.paramss(0).size)
+      .take(ctorm.symbol.paramLists.head.size)
       .map(_.asTerm)
       .toList
-    private val ixs = 0 until terms.size
+    private val ixs = terms.indices
     private val argOrder = ixs.map {
       i =>
         val term = terms(i)
@@ -73,16 +73,14 @@ object CaseClassCopyTypeTag {
       // Check name and convert to argIx
       val valByIx = vals.map {
         case (name, newVal) =>
-          val ix = argOrder.get(name)
-            .getOrElse(throw new IllegalArgumentException("Unknown field: " + name))
+          val ix = argOrder.getOrElse(name, throw new IllegalArgumentException("Unknown field: " + name))
           (ix, newVal)
       }.toMap
 
       lazy val instMir = mir.reflect(t)
       val args = ixs.map {
         i =>
-          valByIx.get(i)
-            .getOrElse(instMir.reflectField(terms(i)).get)
+          valByIx.getOrElse(i, instMir.reflectField(terms(i)).get)
       }
       ctorm(args: _*).asInstanceOf[T]
     }
