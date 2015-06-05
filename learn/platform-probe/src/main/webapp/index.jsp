@@ -19,6 +19,9 @@
 
             String appHome = application.getInitParameter("app.home");
             out.println("<br/>getInitParameter('app.home') = " + appHome);
+
+            String tempDir = System.getProperty("java.io.tmpdir");
+            out.println("<br/>java.io.tmpdir = " + tempDir);
         %>
     </p>
 
