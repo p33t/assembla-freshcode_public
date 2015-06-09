@@ -10,7 +10,27 @@ Context path: /platform-probe (don't forget the slash)
 XML Configuration file URL: /home/pleong/work/learn/platform-probe/src/main/config/platform-probe.xml
 ... it has the same effect
 
+OR
+
+Bundle with war at .../META-INF/context.xml
+
  -->
-<Context docBase="/home/pleong/work/learn/platform-probe/target/platform-probe.war">
+<!--<Context docBase="/home/pleong/work/learn/platform-probe/target/platform-probe.war">-->
+
+<Context>
+    <Resource name="jdbc/appDb"
+              auth="Container"
+              type="javax.sql.DataSource"
+              driverClassName="org.h2.Driver"
+              url="jdbc:h2:mem:appDb"/>
+
+<!--
+    <Resource name="jdbc/appDb"
+              auth="Container"
+              type="javax.sql.DataSource"
+              driverClassName="org.postgresql.Driver"
+              url="jdbc:postgres://postgres11038-sws01.ec.fasthit.net.au/demo;user=demo;password=demo"/>
+-->
+
     <Parameter name="app.home" value="/some/custom/folder"/>
 </Context>
