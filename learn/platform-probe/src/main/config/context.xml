@@ -13,6 +13,7 @@ XML Configuration file URL: /home/pleong/work/learn/platform-probe/src/main/conf
 OR
 
 Bundle with war at .../META-INF/context.xml
+... See comment in pom.xml about war packaging
 
  -->
 <!--<Context docBase="/home/pleong/work/learn/platform-probe/target/platform-probe.war">-->
