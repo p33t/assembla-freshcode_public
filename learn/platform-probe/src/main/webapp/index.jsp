@@ -11,7 +11,7 @@
     <body>
         <h1>Hello World!</h1>
         <p><a href="./confidential">Confidential area</a></p>
-
+        <p><a href="./test-db.jsp">DB Test</a></p>
     <p>
         <%
 
