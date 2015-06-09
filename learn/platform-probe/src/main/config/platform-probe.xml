@@ -29,7 +29,10 @@ Bundle with war at .../META-INF/context.xml
               auth="Container"
               type="javax.sql.DataSource"
               driverClassName="org.postgresql.Driver"
-              url="jdbc:postgres://postgres11038-sws01.ec.fasthit.net.au/demo;user=demo;password=demo"/>
+              url="jdbc:postgresql://localhost:5432/peregrine"
+              username="peregrine"
+              password="peregrine"
+            />
 -->
 
     <Parameter name="app.home" value="/some/custom/folder"/>
