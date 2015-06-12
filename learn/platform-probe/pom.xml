@@ -78,8 +78,7 @@
                     <keystoreFile>${project.build.directory}/tomcat-ssl.keystore</keystoreFile>
                     <keystorePass>platform-probe</keystorePass>
                     <!-- optional path to a context file -->
-                    <!-- NOTE:  Not currently needed because it's bundled in WAR  -->
-                    <!--<contextFile>${project.basedir}/src/main/config/context.xml</contextFile>-->
+                    <contextFile>${project.basedir}/src/main/config/context.xml</contextFile>
                     <!-- optional system properties you want to add -->
                     <systemProperties>
                         <appserver.base>${project.build.directory}/appserver-base</appserver.base>
@@ -125,6 +124,7 @@
                         </goals>
                     </execution>
                 </executions>
+<!--
                 <configuration>
                     <webResources>
                         <resource>
@@ -139,6 +139,7 @@
                     <webappDirectory>${webappDirectory}</webappDirectory>
 
                 </configuration>
+-->
             </plugin>
 
 
