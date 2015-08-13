@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module rename-to="Main">
+  <!-- Inherit our applications main module.                      -->
+  <inherits name='biz.freshcode.learn.gwt_bootstrap.Main' />
+
+  <!-- Specify the path to any remote services.                   -->
+  <servlet path="/Main/greet" class="biz.freshcode.learn.gwt_bootstrap.server.GreetingServiceImpl" />
+
+</module>
