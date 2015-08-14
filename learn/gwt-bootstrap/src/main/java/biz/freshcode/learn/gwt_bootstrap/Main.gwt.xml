@@ -11,6 +11,7 @@
     <!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/>     -->
 
     <!-- Other module inherits                                      -->
+    <inherits name='com.gwtplatform.mvp.MvpWithEntryPoint'/>
     <inherits name="org.gwtbootstrap3.GwtBootstrap3"/>
 
     <!-- For IE8
@@ -19,8 +20,9 @@
     </module>
     -->
 
-    <!-- Specify the app entry point class.                         -->
-    <entry-point class='biz.freshcode.learn.gwt_bootstrap.client.Main'/>
+    <set-configuration-property name="gin.ginjector.modules"
+                                value="biz.freshcode.learn.gwt_bootstrap.client.boot.ClientModule"/>
+
 
     <!-- Specify the paths for translatable code                    -->
     <source path='client'/>
