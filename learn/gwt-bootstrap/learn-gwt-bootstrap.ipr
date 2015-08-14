@@ -107,12 +107,34 @@
     <output url="file://$PROJECT_DIR$/out" />
   </component>
   <component name="SvnBranchConfigurationManager">
+    <option name="myConfigurationMap">
+      <map>
+        <entry key="$PROJECT_DIR$">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="trunkUrl" value="https://subversion.assembla.com/svn/freshcode_public/learn/gwt-bootstrap" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="mySupportsUserInfoFilter" value="true" />
   </component>
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="svn" />
   </component>
   <component name="libraryTable">
+    <library name="Maven: biz.freshcode.b-generation:b-generation:0.4">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/biz/freshcode/b-generation/b-generation/0.4/b-generation-0.4.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/biz/freshcode/b-generation/b-generation/0.4/b-generation-0.4-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/biz/freshcode/b-generation/b-generation/0.4/b-generation-0.4-sources.jar!/" />
+      </SOURCES>
+    </library>
     <library name="Maven: com.google.gwt:gwt-dev:2.7.0">
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/com/google/gwt/gwt-dev/2.7.0/gwt-dev-2.7.0.jar!/" />
