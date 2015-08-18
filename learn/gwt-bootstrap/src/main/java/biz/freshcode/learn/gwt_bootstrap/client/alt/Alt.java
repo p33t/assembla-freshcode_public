@@ -2,11 +2,9 @@ package biz.freshcode.learn.gwt_bootstrap.client.alt;
 
 import biz.freshcode.learn.gwt_bootstrap.client.boot.PlaceToken;
 import biz.freshcode.learn.gwt_bootstrap.client.boot.RootPresenter;
-import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.AnchorBuilder;
 import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.ColumnBuilder;
 import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.JumbotronBuilder;
 import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.RowBuilder;
-import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.html.ParagraphBuilder;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.Presenter;
@@ -16,8 +14,9 @@ import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyCodeSplit;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import org.gwtbootstrap3.client.ui.constants.ColumnSize;
-import org.gwtbootstrap3.client.ui.html.Paragraph;
-import org.gwtbootstrap3.client.ui.html.Text;
+
+import static biz.freshcode.learn.gwt_bootstrap.client.boot.PlaceToken.TOK_HOME;
+import static biz.freshcode.learn.gwt_bootstrap.client.builder.ParagraphSupport.p;
 
 public class Alt extends Presenter<View, Alt.Proxy> {
 
@@ -38,16 +37,10 @@ public class Alt extends Presenter<View, Alt.Proxy> {
                     new RowBuilder()
                             .add(new ColumnBuilder(ColumnSize.XS_12)
                                     .add(new JumbotronBuilder()
-                                            .add(new Paragraph("Hello Alt"))
-                                            .add(new ParagraphBuilder()
-                                                    .add(new Text("Would you like to go "))
-                                                    .add(new AnchorBuilder()
-                                                            .text("Home")
-                                                            .targetHistoryToken(PlaceToken.TOK_HOME)
-                                                            .anchor)
-                                                    .add(new Text("? &amp;"))
-//                                                    .add(new Entity)
-                                                    .paragraph)
+                                            .add(p("Hello Alt"))
+                                            .add(p("Would you like to go "))
+                                            .add(p("Home", TOK_HOME))
+                                            .add(p("Note that entities and elems are passed as literals: &amp; <bruce>lee</bruce>"))
                                             .jumbotron)
                                     .column)
                             .row
