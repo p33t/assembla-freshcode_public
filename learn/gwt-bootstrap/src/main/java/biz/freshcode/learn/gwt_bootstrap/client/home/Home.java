@@ -2,8 +2,10 @@ package biz.freshcode.learn.gwt_bootstrap.client.home;
 
 import biz.freshcode.learn.gwt_bootstrap.client.alt.Alt;
 import biz.freshcode.learn.gwt_bootstrap.client.boot.RootPresenter;
+import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.AnchorBuilder;
 import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.ColumnBuilder;
 import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.RowBuilder;
+import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.html.ParagraphBuilder;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.Presenter;
@@ -15,7 +17,7 @@ import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import org.gwtbootstrap3.client.ui.Heading;
 import org.gwtbootstrap3.client.ui.constants.ColumnSize;
 import org.gwtbootstrap3.client.ui.constants.HeadingSize;
-import org.gwtbootstrap3.client.ui.html.Paragraph;
+import org.gwtbootstrap3.client.ui.html.Text;
 
 public class Home extends Presenter<View, Home.Proxy> {
     public static final String TOKEN = "home";
@@ -38,15 +40,17 @@ public class Home extends Presenter<View, Home.Proxy> {
                             .add(new ColumnBuilder(ColumnSize.XS_12)
                                     // NOTE: H1 seems to resist getting stuck under the nav bar (like paragraph)
                                     .add(new Heading(HeadingSize.H1, "Hello World"))
-                                    // TODO: There has to be a better way.
-                                    .add(new Paragraph("Another way to get to the " + a("Alt Page", "#" + Alt.TOKEN) + "."))
+                                    .add(new ParagraphBuilder()
+                                            .add(new Text("Another way to get to the "))
+                                            .add(new AnchorBuilder()
+                                                    .text("Alt Page")
+                                                    .targetHistoryToken(Alt.TOKEN)
+                                                    .anchor)
+                                            .add(new Text("."))
+                                            .paragraph)
                                     .column)
                             .row
             );
-        }
-
-        public static String a(String text, String href) {
-            return "<a href='" + href + "'>" + text + "</a>";
         }
     }
 }
