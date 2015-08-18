@@ -1,6 +1,8 @@
 package biz.freshcode.learn.gwt_bootstrap.client.builder;
 
+import com.google.gwt.user.client.ui.IsWidget;
 import org.gwtbootstrap3.client.ui.Anchor;
+import org.gwtbootstrap3.client.ui.html.Br;
 import org.gwtbootstrap3.client.ui.html.Paragraph;
 import org.gwtbootstrap3.client.ui.html.Text;
 
@@ -31,6 +33,16 @@ public class ParagraphSupport extends Paragraph {
 
     public ParagraphSupport txt(String text) {
         add(new Text(text));
+        return this;
+    }
+
+    public ParagraphSupport br() {
+        add(new Br());
+        return this;
+    }
+
+    public ParagraphSupport append(IsWidget w) {
+        add(w);
         return this;
     }
 }
