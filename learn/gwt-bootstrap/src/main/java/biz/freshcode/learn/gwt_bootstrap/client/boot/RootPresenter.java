@@ -1,7 +1,6 @@
 package biz.freshcode.learn.gwt_bootstrap.client.boot;
 
 import biz.freshcode.learn.gwt_bootstrap.client.alt.Alt;
-import biz.freshcode.learn.gwt_bootstrap.client.builder.com.google.gwt.user.client.ui.ScrollPanelBuilder;
 import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.*;
 import biz.freshcode.learn.gwt_bootstrap.client.home.Home;
 import com.google.gwt.core.client.Scheduler;
@@ -12,6 +11,7 @@ import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.IsWidget;
+import com.google.gwt.user.client.ui.ScrollPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
@@ -46,46 +46,42 @@ public class RootPresenter extends Presenter<View, RootPresenter.Proxy> {
         public View() {
             NavbarCollapseButton collapseButton;
             NavbarCollapse collapseTarget;
-            initWidget(
-                    new ScrollPanelBuilder()
-                            .widget(new ContainerBuilder()
-                                    .add(new NavbarBuilder()
-                                            .position(NavbarPosition.FIXED_TOP)
-                                            .add(new ContainerBuilder()
-                                                    .add(new NavbarHeaderBuilder()
-                                                            .add(new NavbarBrandBuilder()
-                                                                    .targetHistoryToken(Home.TOKEN)
-                                                                    .hTML("Learn GWTBootstrap3")
-                                                                    .navbarBrand)
-                                                            .add(collapseButton = new NavbarCollapseButtonBuilder()
-                                                                    .navbarCollapseButton)
-                                                            .navbarHeader)
-                                                    .add(collapseTarget = new NavbarCollapseBuilder()
-                                                            .add(new NavbarNavBuilder()
+            initWidget(new ScrollPanel(new ContainerBuilder()
+                    .add(new NavbarBuilder()
+                            .position(NavbarPosition.FIXED_TOP)
+                            .add(new ContainerBuilder()
+                                    .add(new NavbarHeaderBuilder()
+                                            .add(new NavbarBrandBuilder()
+                                                    .targetHistoryToken(Home.TOKEN)
+                                                    .hTML("Learn GWTBootstrap3")
+                                                    .navbarBrand)
+                                            .add(collapseButton = new NavbarCollapseButton())
+                                            .navbarHeader)
+                                    .add(collapseTarget = new NavbarCollapseBuilder()
+                                            .add(new NavbarNavBuilder()
+                                                    .add(new AnchorListItemBuilder()
+                                                            .text("Alt Page")
+                                                            .targetHistoryToken(Alt.TOKEN)
+                                                            .anchorListItem)
+                                                    .add(new ListDropDownBuilder()
+                                                            .add(new AnchorButtonBuilder()
+                                                                    .dataToggle(Toggle.DROPDOWN)
+                                                                    .text("Sub Menu")
+                                                                    .anchorButton)
+                                                            .add(new DropDownMenuBuilder()
                                                                     .add(new AnchorListItemBuilder()
-                                                                            .text("Alt Page")
+                                                                            .text("Alt Page Too")
                                                                             .targetHistoryToken(Alt.TOKEN)
                                                                             .anchorListItem)
-                                                                    .add(new ListDropDownBuilder()
-                                                                            .add(new AnchorButtonBuilder()
-                                                                                    .dataToggle(Toggle.DROPDOWN)
-                                                                                    .text("Sub Menu")
-                                                                                    .anchorButton)
-                                                                            .add(new DropDownMenuBuilder()
-                                                                                    .add(new AnchorListItemBuilder()
-                                                                                            .text("Alt Page Too")
-                                                                                            .targetHistoryToken(Alt.TOKEN)
-                                                                                            .anchorListItem)
-                                                                                    .dropDownMenu)
-                                                                            .listDropDown)
-                                                                    .navbarNav)
-                                                            .navbarCollapse)
-                                                    .container)
-                                            .navbar)
-                                    .add(slotPanel = new SimplePanel())
+                                                                    .dropDownMenu)
+                                                            .listDropDown)
+                                                    .navbarNav)
+                                            .navbarCollapse)
                                     .container)
-                            .scrollPanel
-            );
+                            .navbar)
+                    .add(slotPanel = new SimplePanel())
+                    .container
+            ));
 
             // setup responsive nav bar
             collapseButton.setDataTargetWidget(collapseTarget);
