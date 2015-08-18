@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module rename-to='Main'>
     <!-- Inherit the core Web Toolkit stuff.                        -->
-    <inherits name='com.google.gwt.user.User'/>
+    <inherits name='com.google.gwt.inject.Inject'/>
 
     <!-- Inherit the default GWT style sheet.  You can change       -->
     <!-- the theme of your GWT application by uncommenting          -->
     <!-- any one of the following lines.                            -->
-    <inherits name='com.google.gwt.user.theme.standard.Standard'/>
+    <!--<inherits name='com.google.gwt.user.theme.standard.Standard'/>-->
     <!-- <inherits name='com.google.gwt.user.theme.chrome.Chrome'/> -->
     <!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/>     -->
 
     <!-- Other module inherits                                      -->
     <inherits name='com.gwtplatform.mvp.MvpWithEntryPoint'/>
+
+    <public path='client/resource'>
+        <include name='css/*.css'/>
+    </public>
+    <stylesheet src="css/extra-style.css"/>
+
     <inherits name="org.gwtbootstrap3.GwtBootstrap3"/>
 
     <!-- For IE8
