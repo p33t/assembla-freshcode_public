@@ -19,6 +19,8 @@ import org.gwtbootstrap3.client.ui.constants.ColumnSize;
 import org.gwtbootstrap3.client.ui.constants.HeadingSize;
 import org.gwtbootstrap3.client.ui.html.Text;
 
+import static biz.freshcode.learn.gwt_bootstrap.client.boot.PlaceToken.TOK_ALT;
+
 public class Home extends Presenter<View, Home.Proxy> {
 
     @Inject
@@ -37,13 +39,12 @@ public class Home extends Presenter<View, Home.Proxy> {
             initWidget(
                     new RowBuilder()
                             .add(new ColumnBuilder(ColumnSize.XS_12)
-                                    // NOTE: H1 seems to resist getting stuck under the nav bar (like paragraph)
                                     .add(new Heading(HeadingSize.H1, "Hello World"))
                                     .add(new ParagraphBuilder()
                                             .add(new Text("Another way to get to the "))
                                             .add(new AnchorBuilder()
                                                     .text("Alt Page")
-                                                    .targetHistoryToken(PlaceToken.TOK_ALT)
+                                                    .targetHistoryToken(TOK_ALT)
                                                     .anchor)
                                             .add(new Text("."))
                                             .paragraph)
