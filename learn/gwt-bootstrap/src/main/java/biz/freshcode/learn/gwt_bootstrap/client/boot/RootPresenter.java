@@ -1,8 +1,6 @@
 package biz.freshcode.learn.gwt_bootstrap.client.boot;
 
-import biz.freshcode.learn.gwt_bootstrap.client.alt.Alt;
 import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.*;
-import biz.freshcode.learn.gwt_bootstrap.client.home.Home;
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
@@ -25,6 +23,9 @@ import org.gwtbootstrap3.client.ui.NavbarCollapse;
 import org.gwtbootstrap3.client.ui.NavbarCollapseButton;
 import org.gwtbootstrap3.client.ui.constants.NavbarPosition;
 import org.gwtbootstrap3.client.ui.constants.Toggle;
+
+import static biz.freshcode.learn.gwt_bootstrap.client.boot.PlaceToken.TOK_ALT;
+import static biz.freshcode.learn.gwt_bootstrap.client.boot.PlaceToken.TOK_HOME;
 
 public class RootPresenter extends Presenter<View, RootPresenter.Proxy> {
     @ContentSlot
@@ -52,7 +53,7 @@ public class RootPresenter extends Presenter<View, RootPresenter.Proxy> {
                             .add(new ContainerBuilder()
                                     .add(new NavbarHeaderBuilder()
                                             .add(new NavbarBrandBuilder()
-                                                    .targetHistoryToken(Home.TOKEN)
+                                                    .targetHistoryToken(TOK_HOME)
                                                     .hTML("Learn GWTBootstrap3")
                                                     .navbarBrand)
                                             .add(collapseButton = new NavbarCollapseButton())
@@ -61,7 +62,7 @@ public class RootPresenter extends Presenter<View, RootPresenter.Proxy> {
                                             .add(new NavbarNavBuilder()
                                                     .add(new AnchorListItemBuilder()
                                                             .text("Alt Page")
-                                                            .targetHistoryToken(Alt.TOKEN)
+                                                            .targetHistoryToken(TOK_ALT)
                                                             .anchorListItem)
                                                     .add(new ListDropDownBuilder()
                                                             .add(new AnchorButtonBuilder()
@@ -71,7 +72,7 @@ public class RootPresenter extends Presenter<View, RootPresenter.Proxy> {
                                                             .add(new DropDownMenuBuilder()
                                                                     .add(new AnchorListItemBuilder()
                                                                             .text("Alt Page Too")
-                                                                            .targetHistoryToken(Alt.TOKEN)
+                                                                            .targetHistoryToken(TOK_ALT)
                                                                             .anchorListItem)
                                                                     .dropDownMenu)
                                                             .listDropDown)

@@ -1,6 +1,6 @@
 package biz.freshcode.learn.gwt_bootstrap.client.home;
 
-import biz.freshcode.learn.gwt_bootstrap.client.alt.Alt;
+import biz.freshcode.learn.gwt_bootstrap.client.boot.PlaceToken;
 import biz.freshcode.learn.gwt_bootstrap.client.boot.RootPresenter;
 import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.AnchorBuilder;
 import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.ColumnBuilder;
@@ -20,7 +20,6 @@ import org.gwtbootstrap3.client.ui.constants.HeadingSize;
 import org.gwtbootstrap3.client.ui.html.Text;
 
 public class Home extends Presenter<View, Home.Proxy> {
-    public static final String TOKEN = "home";
 
     @Inject
     public Home(EventBus eventBus, View view, Proxy proxy) {
@@ -28,7 +27,7 @@ public class Home extends Presenter<View, Home.Proxy> {
     }
 
     @ProxyStandard
-    @NameToken(TOKEN)
+    @NameToken(PlaceToken.TOK_HOME)
     public interface Proxy extends ProxyPlace<Home> {
     }
 
@@ -44,7 +43,7 @@ public class Home extends Presenter<View, Home.Proxy> {
                                             .add(new Text("Another way to get to the "))
                                             .add(new AnchorBuilder()
                                                     .text("Alt Page")
-                                                    .targetHistoryToken(Alt.TOKEN)
+                                                    .targetHistoryToken(PlaceToken.TOK_ALT)
                                                     .anchor)
                                             .add(new Text("."))
                                             .paragraph)
