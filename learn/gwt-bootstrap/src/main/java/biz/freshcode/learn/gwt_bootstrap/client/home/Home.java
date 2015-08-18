@@ -1,8 +1,8 @@
 package biz.freshcode.learn.gwt_bootstrap.client.home;
 
+import biz.freshcode.learn.gwt_bootstrap.client.alt.Alt;
 import biz.freshcode.learn.gwt_bootstrap.client.boot.RootPresenter;
 import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.ColumnBuilder;
-import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.JumbotronBuilder;
 import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.RowBuilder;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
@@ -36,13 +36,17 @@ public class Home extends Presenter<View, Home.Proxy> {
             initWidget(
                     new RowBuilder()
                             .add(new ColumnBuilder(ColumnSize.XS_12)
-                                    .add(new JumbotronBuilder()
-                                            // NOTE: H1 seems to resist getting stuck under the nav bar (like paragraph)
-                                            .add(new Heading(HeadingSize.H1, "Hello World"))
-                                            .jumbotron)
+                                    // NOTE: H1 seems to resist getting stuck under the nav bar (like paragraph)
+                                    .add(new Heading(HeadingSize.H1, "Hello World"))
+                                    // TODO: There has to be a better way.
+                                    .add(new Paragraph("Another way to get to the " + a("Alt Page", "#" + Alt.TOKEN) + "."))
                                     .column)
                             .row
             );
+        }
+
+        public static String a(String text, String href) {
+            return "<a href='" + href + "'>" + text + "</a>";
         }
     }
 }
