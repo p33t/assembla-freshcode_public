@@ -8,15 +8,17 @@ import com.gwtplatform.mvp.client.annotations.UnauthorizedPlace;
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 import com.gwtplatform.mvp.client.gin.DefaultModule;
 
+import static biz.freshcode.learn.gwt_bootstrap.client.boot.PlaceToken.TOK_HOME;
+
 public class ClientModule extends AbstractPresenterModule {
 
     @Override
     protected void configure() {
         install(new DefaultModule());
 
-        bindConstant().annotatedWith(DefaultPlace.class).to(Home.TOKEN);
-        bindConstant().annotatedWith(ErrorPlace.class).to(Home.TOKEN);
-        bindConstant().annotatedWith(UnauthorizedPlace.class).to(Home.TOKEN);
+        bindConstant().annotatedWith(DefaultPlace.class).to(TOK_HOME);
+        bindConstant().annotatedWith(ErrorPlace.class).to(TOK_HOME);
+        bindConstant().annotatedWith(UnauthorizedPlace.class).to(TOK_HOME);
 
         bindPresenter(RootPresenter.class, RootPresenter.Proxy.class);
         bindPresenter(Home.class, Home.Proxy.class);
