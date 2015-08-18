@@ -20,6 +20,9 @@
 
     <inherits name="org.gwtbootstrap3.GwtBootstrap3"/>
 
+    <!-- Custom theme -->
+    <stylesheet src="css/slate.bootstrap.min.css"/>
+
     <!-- For IE8
     <module>
       <inherits name="org.gwtbootstrap3.extras.respond.Respond"/>
