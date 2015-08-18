@@ -12,7 +12,9 @@ import com.gwtplatform.mvp.client.ViewImpl;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
+import org.gwtbootstrap3.client.ui.Heading;
 import org.gwtbootstrap3.client.ui.constants.ColumnSize;
+import org.gwtbootstrap3.client.ui.constants.HeadingSize;
 import org.gwtbootstrap3.client.ui.html.Paragraph;
 
 public class Home extends Presenter<View, Home.Proxy> {
@@ -35,7 +37,8 @@ public class Home extends Presenter<View, Home.Proxy> {
                     new RowBuilder()
                             .add(new ColumnBuilder(ColumnSize.XS_12)
                                     .add(new JumbotronBuilder()
-                                            .add(new Paragraph("Hello World Again"))
+                                            // NOTE: H1 seems to resist getting stuck under the nav bar (like paragraph)
+                                            .add(new Heading(HeadingSize.H1, "Hello World"))
                                             .jumbotron)
                                     .column)
                             .row
