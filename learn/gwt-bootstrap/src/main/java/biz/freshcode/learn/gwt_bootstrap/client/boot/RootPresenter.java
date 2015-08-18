@@ -21,6 +21,8 @@ import com.gwtplatform.mvp.client.ViewImpl;
 import com.gwtplatform.mvp.client.annotations.ContentSlot;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.gwtplatform.mvp.client.proxy.RevealContentHandler;
+import org.gwtbootstrap3.client.ui.NavbarCollapse;
+import org.gwtbootstrap3.client.ui.NavbarCollapseButton;
 import org.gwtbootstrap3.client.ui.constants.NavbarPosition;
 import org.gwtbootstrap3.client.ui.constants.Toggle;
 
@@ -38,11 +40,12 @@ public class RootPresenter extends Presenter<View, RootPresenter.Proxy> {
     }
 
     public static class View extends ViewImpl {
-        public static final String NAVBAR_COLLAPSE = "navbar-collapse";
         private final SimplePanel slotPanel;
 
         @Inject
         public View() {
+            NavbarCollapseButton collapseButton;
+            NavbarCollapse collapseTarget;
             initWidget(
                     new ScrollPanelBuilder()
                             .widget(new ContainerBuilder()
@@ -54,13 +57,10 @@ public class RootPresenter extends Presenter<View, RootPresenter.Proxy> {
                                                                     .targetHistoryToken(Home.TOKEN)
                                                                     .hTML("Learn GWTBootstrap3")
                                                                     .navbarBrand)
-                                                            .add(new NavbarCollapseButtonBuilder()
-                                                                    // TODO: Try dataTargetWidget instead.
-                                                                    .dataTarget("#" + NAVBAR_COLLAPSE)
+                                                            .add(collapseButton = new NavbarCollapseButtonBuilder()
                                                                     .navbarCollapseButton)
                                                             .navbarHeader)
-                                                    .add(new NavbarCollapseBuilder()
-                                                            .id(NAVBAR_COLLAPSE)
+                                                    .add(collapseTarget = new NavbarCollapseBuilder()
                                                             .add(new NavbarNavBuilder()
                                                                     .add(new AnchorListItemBuilder()
                                                                             .text("Alt Page")
@@ -86,6 +86,9 @@ public class RootPresenter extends Presenter<View, RootPresenter.Proxy> {
                                     .container)
                             .scrollPanel
             );
+
+            // setup responsive nav bar
+            collapseButton.setDataTargetWidget(collapseTarget);
 
             // Making the window scroll to top on every page change
             History.addValueChangeHandler(new ValueChangeHandler<String>() {
