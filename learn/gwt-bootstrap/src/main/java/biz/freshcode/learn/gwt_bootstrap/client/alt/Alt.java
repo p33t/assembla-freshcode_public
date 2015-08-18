@@ -1,4 +1,4 @@
-package biz.freshcode.learn.gwt_bootstrap.client.home;
+package biz.freshcode.learn.gwt_bootstrap.client.alt;
 
 import biz.freshcode.learn.gwt_bootstrap.client.boot.RootPresenter;
 import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.ColumnBuilder;
@@ -15,17 +15,17 @@ import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import org.gwtbootstrap3.client.ui.constants.ColumnSize;
 import org.gwtbootstrap3.client.ui.html.Paragraph;
 
-public class Home extends Presenter<View, Home.Proxy> {
-    public static final String TOKEN = "home";
+public class Alt extends Presenter<View, Alt.Proxy> {
+    public static final String TOKEN = "alt";
 
     @Inject
-    public Home(EventBus eventBus, View view, Proxy proxy) {
+    public Alt(EventBus eventBus, View view, Proxy proxy) {
         super(eventBus, view, proxy, RootPresenter.SLOT);
     }
 
     @ProxyStandard
     @NameToken(TOKEN)
-    public interface Proxy extends ProxyPlace<Home> {
+    public interface Proxy extends ProxyPlace<Alt> {
     }
 
     public static class View extends ViewImpl {
@@ -35,7 +35,7 @@ public class Home extends Presenter<View, Home.Proxy> {
                     new RowBuilder()
                             .add(new ColumnBuilder(ColumnSize.XS_12)
                                     .add(new JumbotronBuilder()
-                                            .add(new Paragraph("Hello World Again"))
+                                            .add(new Paragraph("Hello Alt"))
                                             .jumbotron)
                                     .column)
                             .row
