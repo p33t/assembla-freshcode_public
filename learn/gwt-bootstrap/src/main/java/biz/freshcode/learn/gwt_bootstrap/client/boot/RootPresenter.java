@@ -24,6 +24,7 @@ import org.gwtbootstrap3.client.ui.NavbarCollapseButton;
 import org.gwtbootstrap3.client.ui.constants.NavbarPosition;
 import org.gwtbootstrap3.client.ui.constants.Toggle;
 
+import static biz.freshcode.learn.gwt_bootstrap.client.boot.BootBundle.BOOT_BUNDLE;
 import static biz.freshcode.learn.gwt_bootstrap.client.boot.PlaceToken.TOK_ALT;
 import static biz.freshcode.learn.gwt_bootstrap.client.boot.PlaceToken.TOK_HOME;
 
@@ -52,10 +53,12 @@ public class RootPresenter extends Presenter<View, RootPresenter.Proxy> {
                             .position(NavbarPosition.FIXED_TOP)
                             .add(new ContainerBuilder()
                                     .add(new NavbarHeaderBuilder()
-                                            .add(new NavbarBrandBuilder()
+                                            .add(new ImageAnchorBuilder()
+                                                    .alt("Logo")
                                                     .targetHistoryToken(TOK_HOME)
-                                                    .hTML("Learn GWTBootstrap3")
-                                                    .navbarBrand)
+                                                    .url(BOOT_BUNDLE.logoSml().getSafeUri().asString())
+                                                    .height("50px")
+                                                    .imageAnchor)
                                             .add(collapseButton = new NavbarCollapseButton())
                                             .navbarHeader)
                                     .add(collapseTarget = new NavbarCollapseBuilder()
