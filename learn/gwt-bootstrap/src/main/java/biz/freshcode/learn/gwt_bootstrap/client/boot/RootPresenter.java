@@ -77,6 +77,10 @@ public class RootPresenter extends Presenter<View, RootPresenter.Proxy> {
                                                                             .text("Alt Page Too")
                                                                             .targetHistoryToken(TOK_ALT)
                                                                             .anchorListItem)
+                                                                    .add(new AnchorListItemBuilder()
+                                                                            .text("Home Too")
+                                                                            .targetHistoryToken(TOK_HOME)
+                                                                            .anchorListItem)
                                                                     .dropDownMenu)
                                                             .listDropDown)
                                                     .navbarNav)
@@ -101,6 +105,13 @@ public class RootPresenter extends Presenter<View, RootPresenter.Proxy> {
                             hideNavbarCollapse();
                         }
                     });
+                }
+            });
+
+            Window.addWindowScrollHandler(new Window.ScrollHandler() {
+                @Override
+                public void onWindowScroll(Window.ScrollEvent event) {
+                    hideNavbarCollapse();
                 }
             });
         }
