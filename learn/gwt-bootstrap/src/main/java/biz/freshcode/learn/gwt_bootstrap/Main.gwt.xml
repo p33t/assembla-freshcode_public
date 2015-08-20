@@ -11,7 +11,7 @@
     <!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/>     -->
 
     <!-- Other module inherits                                      -->
-    <inherits name='com.gwtplatform.mvp.MvpWithEntryPoint'/>
+    <inherits name='com.gwtplatform.mvp.Mvp'/>
 
     <public path='client/resource'>
         <include name='css/*.css'/>
@@ -32,6 +32,7 @@
 
     <set-configuration-property name="gin.ginjector.modules"
                                 value="biz.freshcode.learn.gwt_bootstrap.client.boot.ClientModule"/>
+    <entry-point class='biz.freshcode.learn.gwt_bootstrap.client.boot.EntryPoint'/>
 
 
     <!-- Specify the paths for translatable code                    -->
