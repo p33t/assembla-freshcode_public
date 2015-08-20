@@ -201,37 +201,37 @@
         <root url="jar://$MAVEN_REPOSITORY$/com/google/inject/guice/3.0/guice-3.0-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: com.gwtplatform:gwtp-clients-common:1.4">
+    <library name="Maven: com.gwtplatform:gwtp-clients-common:1.5">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-clients-common/1.4/gwtp-clients-common-1.4.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-clients-common/1.5/gwtp-clients-common-1.5.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-clients-common/1.4/gwtp-clients-common-1.4-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-clients-common/1.5/gwtp-clients-common-1.5-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-clients-common/1.4/gwtp-clients-common-1.4-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-clients-common/1.5/gwtp-clients-common-1.5-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: com.gwtplatform:gwtp-mvp-client:1.4">
+    <library name="Maven: com.gwtplatform:gwtp-mvp-client:1.5">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-mvp-client/1.4/gwtp-mvp-client-1.4.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-mvp-client/1.5/gwtp-mvp-client-1.5.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-mvp-client/1.4/gwtp-mvp-client-1.4-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-mvp-client/1.5/gwtp-mvp-client-1.5-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-mvp-client/1.4/gwtp-mvp-client-1.4-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-mvp-client/1.5/gwtp-mvp-client-1.5-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: com.gwtplatform:gwtp-mvp-shared:1.4">
+    <library name="Maven: com.gwtplatform:gwtp-mvp-shared:1.5">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-mvp-shared/1.4/gwtp-mvp-shared-1.4.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-mvp-shared/1.5/gwtp-mvp-shared-1.5.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-mvp-shared/1.4/gwtp-mvp-shared-1.4-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-mvp-shared/1.5/gwtp-mvp-shared-1.5-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-mvp-shared/1.4/gwtp-mvp-shared-1.4-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-mvp-shared/1.5/gwtp-mvp-shared-1.5-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: commons-collections:commons-collections:3.2.1">
