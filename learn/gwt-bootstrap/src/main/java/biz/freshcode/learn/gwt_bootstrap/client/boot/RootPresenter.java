@@ -43,11 +43,11 @@ public class RootPresenter extends Presenter<View, RootPresenter.Proxy> {
 
     public static class View extends ViewImpl {
         private final SimplePanel slotPanel;
+        private NavbarCollapse navbarCollapse;
 
         @Inject
         public View() {
             NavbarCollapseButton collapseButton;
-            NavbarCollapse collapseTarget;
             initWidget(new ScrollPanel(new ContainerBuilder()
                     .add(new NavbarBuilder()
                             .position(NavbarPosition.FIXED_TOP)
@@ -61,7 +61,7 @@ public class RootPresenter extends Presenter<View, RootPresenter.Proxy> {
                                                     .imageAnchor)
                                             .add(collapseButton = new NavbarCollapseButton())
                                             .navbarHeader)
-                                    .add(collapseTarget = new NavbarCollapseBuilder()
+                                    .add(navbarCollapse = new NavbarCollapseBuilder()
                                             .add(new NavbarNavBuilder()
                                                     .add(new AnchorListItemBuilder()
                                                             .text("Alt Page")
@@ -88,7 +88,7 @@ public class RootPresenter extends Presenter<View, RootPresenter.Proxy> {
             ));
 
             // setup responsive nav bar
-            collapseButton.setDataTargetWidget(collapseTarget);
+            collapseButton.setDataTargetWidget(navbarCollapse);
 
             // Making the window scroll to top on every page change
             History.addValueChangeHandler(new ValueChangeHandler<String>() {
@@ -98,6 +98,7 @@ public class RootPresenter extends Presenter<View, RootPresenter.Proxy> {
                         @Override
                         public void execute() {
                             Window.scrollTo(0, 0);
+                            hideNavbarCollapse();
                         }
                     });
                 }
@@ -110,6 +111,13 @@ public class RootPresenter extends Presenter<View, RootPresenter.Proxy> {
                 slotPanel.setWidget(content);
             } else {
                 super.setInSlot(slot, content);
+            }
+        }
+
+        private void hideNavbarCollapse() {
+            String ariaCollapse = navbarCollapse.getElement().getAttribute("aria-collapse");
+            if (!Boolean.parseBoolean(ariaCollapse)) {
+                navbarCollapse.toggle();
             }
         }
     }
