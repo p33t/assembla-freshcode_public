@@ -7,7 +7,6 @@ import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.ScrollPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.inject.Inject;
@@ -17,8 +16,10 @@ import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.ViewImpl;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.gwtplatform.mvp.client.presenter.slots.NestedSlot;
+import org.gwtbootstrap3.client.ui.Navbar;
 import org.gwtbootstrap3.client.ui.NavbarCollapse;
 import org.gwtbootstrap3.client.ui.NavbarCollapseButton;
+import org.gwtbootstrap3.client.ui.base.helper.StyleHelper;
 import org.gwtbootstrap3.client.ui.constants.NavbarPosition;
 import org.gwtbootstrap3.client.ui.constants.Toggle;
 
@@ -40,6 +41,7 @@ public class RootPresenter extends Presenter<View, RootPresenter.Proxy> {
 
     public static class View extends ViewImpl {
         private final SimplePanel slotPanel = new SimplePanel();
+        private final Navbar navbar;
         private NavbarCollapse navbarCollapse;
 
         @Inject
@@ -48,8 +50,9 @@ public class RootPresenter extends Presenter<View, RootPresenter.Proxy> {
 
             NavbarCollapseButton collapseButton;
             initWidget(new ScrollPanel(new ContainerBuilder()
-                    .add(new NavbarBuilder()
+                    .add(navbar = new NavbarBuilder()
                             .position(NavbarPosition.FIXED_TOP)
+                            .addStyleName("navbar-custom")
                             .add(new ContainerBuilder()
                                     .add(new NavbarHeaderBuilder()
                                             .add(new ImageAnchorBuilder()
@@ -111,6 +114,8 @@ public class RootPresenter extends Presenter<View, RootPresenter.Proxy> {
                 @Override
                 public void onWindowScroll(Window.ScrollEvent event) {
                     hideNavbarCollapse();
+                    boolean nearTop = event.getScrollTop() <= 50;
+                    StyleHelper.toggleStyleName(navbar, !nearTop, "top-nav-collapse");
                 }
             });
         }
