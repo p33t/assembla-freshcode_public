@@ -22,6 +22,7 @@
 
     <!-- Custom theme -->
     <stylesheet src="css/slate.bootstrap.min.css"/>
+    <stylesheet src="css/grayscale.css"/>
 
     <!-- For IE8
     <module>
