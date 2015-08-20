@@ -4,7 +4,6 @@ import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
-import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.Window;
@@ -16,9 +15,8 @@ import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.ViewImpl;
-import com.gwtplatform.mvp.client.annotations.ContentSlot;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
-import com.gwtplatform.mvp.client.proxy.RevealContentHandler;
+import com.gwtplatform.mvp.client.presenter.slots.NestedSlot;
 import org.gwtbootstrap3.client.ui.NavbarCollapse;
 import org.gwtbootstrap3.client.ui.NavbarCollapseButton;
 import org.gwtbootstrap3.client.ui.constants.NavbarPosition;
@@ -29,8 +27,7 @@ import static biz.freshcode.learn.gwt_bootstrap.client.boot.PlaceToken.TOK_ALT;
 import static biz.freshcode.learn.gwt_bootstrap.client.boot.PlaceToken.TOK_HOME;
 
 public class RootPresenter extends Presenter<View, RootPresenter.Proxy> {
-    @ContentSlot
-    public static final GwtEvent.Type<RevealContentHandler<?>> SLOT = new GwtEvent.Type<>();
+    public static final NestedSlot SLOT = new NestedSlot();
 
     @Inject
     public RootPresenter(EventBus eventBus, View view, Proxy proxy) {
@@ -42,11 +39,13 @@ public class RootPresenter extends Presenter<View, RootPresenter.Proxy> {
     }
 
     public static class View extends ViewImpl {
-        private final SimplePanel slotPanel;
+        private final SimplePanel slotPanel = new SimplePanel();
         private NavbarCollapse navbarCollapse;
 
         @Inject
         public View() {
+            bindSlot(SLOT, slotPanel);
+
             NavbarCollapseButton collapseButton;
             initWidget(new ScrollPanel(new ContainerBuilder()
                     .add(new NavbarBuilder()
@@ -87,7 +86,7 @@ public class RootPresenter extends Presenter<View, RootPresenter.Proxy> {
                                             .navbarCollapse)
                                     .container)
                             .navbar)
-                    .add(slotPanel = new SimplePanel())
+                    .add(slotPanel)
                     .container
             ));
 
@@ -114,15 +113,6 @@ public class RootPresenter extends Presenter<View, RootPresenter.Proxy> {
                     hideNavbarCollapse();
                 }
             });
-        }
-
-        @Override
-        public void setInSlot(Object slot, IsWidget content) {
-            if (slot == RootPresenter.SLOT) {
-                slotPanel.setWidget(content);
-            } else {
-                super.setInSlot(slot, content);
-            }
         }
 
         private void hideNavbarCollapse() {
