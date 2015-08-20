@@ -115,8 +115,8 @@ public class RootPresenter extends Presenter<View, RootPresenter.Proxy> {
         }
 
         private void hideNavbarCollapse() {
-            String areaExpanded = navbarCollapse.getElement().getAttribute("aria-expanded");
-            if (Boolean.parseBoolean(areaExpanded)) {
+            String ariaExpanded = navbarCollapse.getElement().getAttribute("aria-expanded");
+            if (Boolean.parseBoolean(ariaExpanded)) {
                 navbarCollapse.toggle();
             }
         }
