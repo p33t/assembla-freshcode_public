@@ -20,6 +20,7 @@
         <maven.compiler.target>1.7</maven.compiler.target>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <gwtbootstrap3.version>0.9.1</gwtbootstrap3.version>
     </properties>
 
     <dependencyManagement>
@@ -38,15 +39,16 @@
         <dependency>
         	<groupId>org.gwtbootstrap3</groupId>
         	<artifactId>gwtbootstrap3</artifactId>
-        	<version>0.9.1</version>
+        	<version>${gwtbootstrap3.version}</version>
             <scope>provided</scope>
-            <!--<classifier>source</classifier>-->
         </dependency>
-        <!--<dependency>-->
-            <!--<groupId>com.google.gwt</groupId>-->
-            <!--<artifactId>gwt-servlet</artifactId>-->
-            <!--<scope>runtime</scope>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>org.gwtbootstrap3</groupId>
+            <artifactId>gwtbootstrap3-extras</artifactId>
+            <version>${gwtbootstrap3.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
         <dependency>
             <groupId>com.google.gwt</groupId>
             <artifactId>gwt-user</artifactId>

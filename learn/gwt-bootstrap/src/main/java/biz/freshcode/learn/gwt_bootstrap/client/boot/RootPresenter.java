@@ -24,8 +24,7 @@ import org.gwtbootstrap3.client.ui.constants.NavbarPosition;
 import org.gwtbootstrap3.client.ui.constants.Toggle;
 
 import static biz.freshcode.learn.gwt_bootstrap.client.boot.BootBundle.BOOT_BUNDLE;
-import static biz.freshcode.learn.gwt_bootstrap.client.boot.PlaceToken.TOK_ALT;
-import static biz.freshcode.learn.gwt_bootstrap.client.boot.PlaceToken.TOK_HOME;
+import static biz.freshcode.learn.gwt_bootstrap.client.boot.PlaceToken.*;
 
 public class RootPresenter extends Presenter<View, RootPresenter.Proxy> {
     public static final NestedSlot SLOT = new NestedSlot();
@@ -65,6 +64,18 @@ public class RootPresenter extends Presenter<View, RootPresenter.Proxy> {
                                             .navbarHeader)
                                     .add(navbarCollapse = new NavbarCollapseBuilder()
                                             .add(new NavbarNavBuilder()
+                                                    .add(new ListDropDownBuilder()
+                                                            .add(new AnchorButtonBuilder()
+                                                                    .dataToggle(Toggle.DROPDOWN)
+                                                                    .text("Demo")
+                                                                    .anchorButton)
+                                                            .add(new DropDownMenuBuilder()
+                                                                    .add(new AnchorListItemBuilder()
+                                                                            .text("Graphic")
+                                                                            .targetHistoryToken(TOK_GRAPHIC)
+                                                                            .anchorListItem)
+                                                                    .dropDownMenu)
+                                                            .listDropDown)
                                                     .add(new AnchorListItemBuilder()
                                                             .text("Alt Page")
                                                             .targetHistoryToken(TOK_ALT)
