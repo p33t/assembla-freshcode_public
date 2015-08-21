@@ -24,11 +24,8 @@
     <stylesheet src="css/slate.bootstrap.min.css"/>
     <stylesheet src="css/grayscale.css"/>
 
-    <!-- For IE8
-    <module>
-      <inherits name="org.gwtbootstrap3.extras.respond.Respond"/>
-    </module>
-    -->
+    <!-- For IE8 -->
+    <!--<inherits name="org.gwtbootstrap3.extras.respond.Respond"/>-->
 
     <set-configuration-property name="gin.ginjector.modules"
                                 value="biz.freshcode.learn.gwt_bootstrap.client.boot.ClientModule"/>
