@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg id="svg2" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+ <metadata id="metadata7">
+  <rdf:RDF>
+   <cc:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title/>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <g id="layer1" transform="translate(0,-852.36218)">
+  <g id="g3826" transform="matrix(0.37567559,0,0,0.37567559,-39.452862,832.3869)">
+   <path id="path2985" d="m597.91,374.55a231.22,231.22,0,1,1,-462.45,0,231.22,231.22,0,1,1,462.45,0z" stroke-dashoffset="0" transform="matrix(0.91077251,0,0,0.90945291,38.080292,13.200096)" stroke="#006b82" stroke-dasharray="3, 3" stroke-miterlimit="4" stroke-width="3" fill="none"/>
+   <path id="path3755" fill="#e08d2f" d="m435,150.22a69.286,69.286,0,1,1,-138.57,0,69.286,69.286,0,1,1,138.57,0z" transform="translate(6.3329468,0)"/>
+  </g>
+  <text id="text3830" style="writing-mode:lr-tb;letter-spacing:0px;text-anchor:start;word-spacing:0px;text-align:start;" font-weight="normal" xml:space="preserve" transform="translate(0,852.36218)" font-style="normal" line-height="125%" font-stretch="normal" font-size="40px" font-variant="normal" y="122.97587" x="51.51778" font-family="Arial" fill="#000000"><tspan id="tspan3832" y="122.97587" x="51.51778">Some</tspan><tspan id="tspan3834" y="172.97586" x="51.51778">Text</tspan></text>
+ </g>
+</svg>
