@@ -11,6 +11,9 @@ public interface BootBundle extends ClientBundle {
     // Needed
     boolean DOM_MUTATED = BOOT_STYLE.ensureInjected();
 
+    @Source("media/graphic.png")
+    ImageResource graphic();
+
     @Source("media/logo-sml.png")
     ImageResource logoSml();
 
@@ -22,5 +25,7 @@ public interface BootBundle extends ClientBundle {
 
     interface Style extends CssResource {
         String lightBgnd();
+
+        String graphicBgnd();
     }
 }
