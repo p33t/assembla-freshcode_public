@@ -8,7 +8,6 @@ import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client
 import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.html.ParagraphBuilder;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.InlineHTML;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.Presenter;
@@ -21,11 +20,11 @@ import org.gwtbootstrap3.client.ui.Heading;
 import org.gwtbootstrap3.client.ui.constants.ColumnSize;
 import org.gwtbootstrap3.client.ui.constants.HeadingSize;
 import org.gwtbootstrap3.client.ui.constants.ImageType;
-import org.gwtbootstrap3.client.ui.gwt.CellTable;
 import org.gwtbootstrap3.client.ui.html.Text;
 
 import static biz.freshcode.learn.gwt_bootstrap.client.boot.BootBundle.BOOT_BUNDLE;
 import static biz.freshcode.learn.gwt_bootstrap.client.boot.BootBundle.BOOT_STYLE;
+import static biz.freshcode.learn.gwt_bootstrap.client.builder.ParagraphSupport.p;
 
 public class Graphic extends Presenter<View, Graphic.Proxy> {
 
@@ -55,7 +54,11 @@ public class Graphic extends Presenter<View, Graphic.Proxy> {
                                             .image)
                                     .add(new Text(" This is some text to go with the image"))
                                     .paragraph)
-                            .add(new HTML("<object type='image/svg+xml' data='" + GWT.getModuleBaseForStaticFiles() + "media/plain.svg'>SVG not supported</object>"))
+                            .add(p("Image below saved from Inkscape with plain SVG.  'width' will only clip the image."))
+                            .add(new HTML("<object width='150' type='image/svg+xml' data='" + GWT.getModuleBaseForStaticFiles() + "media/plain.svg'>SVG not supported</object>"))
+
+                            .add(p("Image below saved from Inkscape with optimised SVG and the 'viewport' option.  Now 'width' works."))
+                            .add(new HTML("<object width='100' type='image/svg+xml' data='" + GWT.getModuleBaseForStaticFiles() + "media/optim.svg'>SVG not supported</object>"))
                             .row);
         }
     }
