@@ -4,8 +4,9 @@ import biz.freshcode.learn.gwt_bootstrap.client.boot.PlaceToken;
 import biz.freshcode.learn.gwt_bootstrap.client.boot.RootPresenter;
 import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.ColumnBuilder;
 import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.ContainerBuilder;
-import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.JumbotronBuilder;
+import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.ImageBuilder;
 import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.RowBuilder;
+import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.html.ParagraphBuilder;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.Presenter;
@@ -15,9 +16,11 @@ import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyCodeSplit;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import org.gwtbootstrap3.client.ui.constants.ColumnSize;
+import org.gwtbootstrap3.client.ui.constants.ImageType;
+import org.gwtbootstrap3.client.ui.html.Text;
 
-import static biz.freshcode.learn.gwt_bootstrap.client.boot.PlaceToken.TOK_HOME;
-import static biz.freshcode.learn.gwt_bootstrap.client.builder.ParagraphSupport.p;
+import static biz.freshcode.learn.gwt_bootstrap.client.boot.BootBundle.BOOT_BUNDLE;
+import static biz.freshcode.learn.gwt_bootstrap.client.boot.BootBundle.BOOT_STYLE;
 
 public class Grids extends Presenter<View, Grids.Proxy> {
 
@@ -34,16 +37,23 @@ public class Grids extends Presenter<View, Grids.Proxy> {
     public static class View extends ViewImpl {
         @Inject
         public View() {
-            initWidget(
-                    new ContainerBuilder()
-                            .add(
-                                    new RowBuilder()
-                                            .add(new ColumnBuilder(ColumnSize.XS_12)
-                                                    .add(p("Hello Grids"))
-                                                    .column)
-                                            .row)
-                            .container
-            );
+            initWidget(new ContainerBuilder()
+                    .add(new RowBuilder()
+                            .add(new ColumnBuilder(ColumnSize.XS_4)
+                                    .add(new ImageBuilder()
+                                            .addStyleName(BOOT_STYLE.lightBgnd())
+                                            .url(BOOT_BUNDLE.strategy8().getSafeUri())
+                                            .type(ImageType.ROUNDED)
+                                            .image)
+                                    .column)
+                            .add(new ColumnBuilder(ColumnSize.XS_4)
+                                    .add(new ParagraphBuilder()
+                                            .addStyleName("h2")
+                                            .add(new Text("The Title"))
+                                            .paragraph)
+                                    .column)
+                            .row)
+                    .container);
         }
     }
 }
