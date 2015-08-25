@@ -10,7 +10,6 @@
     <artifact type="exploded-war" name="svg:war exploded">
       <output-path>$PROJECT_DIR$/target/learn-svg</output-path>
       <root id="root">
-        <element id="javaee-facet-resources" facet="svg/web/Web" />
         <element id="directory" name="WEB-INF">
           <element id="directory" name="classes">
             <element id="module-output" name="svg" />
@@ -20,6 +19,10 @@
             <element id="library" level="project" name="Maven: org.glassfish.web:jstl-impl:1.2" />
           </element>
         </element>
+        <element id="directory" name="META-INF">
+          <element id="file-copy" path="$PROJECT_DIR$/target/learn-svg/META-INF/MANIFEST.MF" />
+        </element>
+        <element id="javaee-facet-resources" facet="svg/web/Web" />
       </root>
     </artifact>
   </component>
@@ -48,6 +51,9 @@
         <module name="svg" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="svg" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
   <component name="CopyrightManager" default="" />
   <component name="DependencyValidationManager">
@@ -59,27 +65,6 @@
   </component>
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$" />
-  </component>
-  <component name="InspectionProjectProfileManager">
-    <profiles>
-      <profile version="1.0" is_locked="false">
-        <option name="myName" value="Project Default" />
-        <option name="myLocal" value="false" />
-        <inspection_tool class="CheckEmptyScriptTag" enabled="false" level="WARNING" enabled_by_default="false" />
-        <inspection_tool class="LoggerInitializedWithForeignClass" enabled="false" level="WARNING" enabled_by_default="false">
-          <option name="loggerClassName" value="org.apache.log4j.Logger,org.slf4j.LoggerFactory,org.apache.commons.logging.LogFactory,java.util.logging.Logger" />
-          <option name="loggerFactoryMethodName" value="getLogger,getLogger,getLog,getLogger" />
-        </inspection_tool>
-        <inspection_tool class="SpellCheckingInspection" enabled="false" level="TYPO" enabled_by_default="false">
-          <option name="processCode" value="true" />
-          <option name="processLiterals" value="true" />
-          <option name="processComments" value="true" />
-        </inspection_tool>
-      </profile>
-    </profiles>
-    <option name="PROJECT_PROFILE" value="Project Default" />
-    <option name="USE_PROJECT_PROFILE" value="true" />
-    <version value="1.0" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
@@ -160,4 +145,3 @@
     </library>
   </component>
 </project>
-
