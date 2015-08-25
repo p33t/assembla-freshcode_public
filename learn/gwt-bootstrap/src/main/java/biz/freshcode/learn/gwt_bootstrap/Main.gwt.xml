@@ -15,6 +15,7 @@
 
     <public path='client/resource'>
         <include name='css/*.css'/>
+        <include name='media/*'/>
     </public>
     <stylesheet src="css/extra-style.css"/>
 

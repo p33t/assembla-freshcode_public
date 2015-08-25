@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   width="200"
+   height="200"
+   id="svg2">
+  <defs
+     id="defs4" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(0,-852.36218)"
+     id="layer1">
+    <g
+       transform="matrix(0.37567559,0,0,0.37567559,-39.452862,832.3869)"
+       id="g3826">
+      <path
+         d="m 597.90877,374.54984 a 231.2234,231.2234 0 1 1 -462.44681,0 231.2234,231.2234 0 1 1 462.44681,0 z"
+         transform="matrix(0.91077251,0,0,0.90945291,38.080292,13.200096)"
+         id="path2985"
+         style="fill:none;stroke:#006b82;stroke-width:3;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:3, 3;stroke-dashoffset:0" />
+      <path
+         d="m 435.00001,150.21933 a 69.285713,69.285713 0 1 1 -138.57143,0 69.285713,69.285713 0 1 1 138.57143,0 z"
+         transform="translate(6.3329468,0)"
+         id="path3755"
+         style="fill:#e08d2f;fill-opacity:1;stroke:none" />
+    </g>
+    <text
+       x="51.51778"
+       y="122.97587"
+       transform="translate(0,852.36218)"
+       id="text3830"
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"><tspan
+         x="51.51778"
+         y="122.97587"
+         id="tspan3832">Some</tspan><tspan
+         x="51.51778"
+         y="172.97586"
+         id="tspan3834">Text</tspan></text>
+  </g>
+</svg>
