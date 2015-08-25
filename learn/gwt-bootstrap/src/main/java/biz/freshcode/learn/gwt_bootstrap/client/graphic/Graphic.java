@@ -2,6 +2,7 @@ package biz.freshcode.learn.gwt_bootstrap.client.graphic;
 
 import biz.freshcode.learn.gwt_bootstrap.client.boot.PlaceToken;
 import biz.freshcode.learn.gwt_bootstrap.client.boot.RootPresenter;
+import biz.freshcode.learn.gwt_bootstrap.client.builder.com.google.gwt.user.client.ui.HTMLBuilder;
 import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.ColumnBuilder;
 import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.ImageBuilder;
 import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.RowBuilder;
@@ -20,6 +21,7 @@ import org.gwtbootstrap3.client.ui.Heading;
 import org.gwtbootstrap3.client.ui.constants.ColumnSize;
 import org.gwtbootstrap3.client.ui.constants.HeadingSize;
 import org.gwtbootstrap3.client.ui.constants.ImageType;
+import org.gwtbootstrap3.client.ui.constants.Pull;
 import org.gwtbootstrap3.client.ui.html.Text;
 
 import static biz.freshcode.learn.gwt_bootstrap.client.boot.BootBundle.BOOT_BUNDLE;
@@ -59,6 +61,12 @@ public class Graphic extends Presenter<View, Graphic.Proxy> {
 
                             .add(p("Image below saved from Inkscape with optimised SVG and the 'viewport' option.  Now 'width' works."))
                             .add(new HTML("<object width='100' type='image/svg+xml' data='" + GWT.getModuleBaseForStaticFiles() + "media/optim.svg'>SVG not supported</object>"))
+
+                            .add(p("Now lets float it..."))
+                            .add(new HTMLBuilder("<object width='100' type='image/svg+xml' data='" + GWT.getModuleBaseForStaticFiles() + "media/optim.svg'>SVG not supported</object>")
+                                    .addStyleName(Pull.LEFT.getCssName())
+                                    .hTML)
+                            .add(p("Hopefully this text is right next to the image."))
                             .row);
         }
     }
