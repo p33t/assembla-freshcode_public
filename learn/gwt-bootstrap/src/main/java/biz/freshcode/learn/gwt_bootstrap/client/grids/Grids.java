@@ -2,10 +2,7 @@ package biz.freshcode.learn.gwt_bootstrap.client.grids;
 
 import biz.freshcode.learn.gwt_bootstrap.client.boot.PlaceToken;
 import biz.freshcode.learn.gwt_bootstrap.client.boot.RootPresenter;
-import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.ColumnBuilder;
-import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.ContainerBuilder;
-import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.ImageBuilder;
-import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.RowBuilder;
+import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.*;
 import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.html.ParagraphBuilder;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
@@ -15,9 +12,9 @@ import com.gwtplatform.mvp.client.ViewImpl;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyCodeSplit;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
-import org.gwtbootstrap3.client.ui.constants.ColumnOffset;
-import org.gwtbootstrap3.client.ui.constants.DeviceSize;
-import org.gwtbootstrap3.client.ui.constants.ImageType;
+import org.gwtbootstrap3.client.ui.Column;
+import org.gwtbootstrap3.client.ui.MediaList;
+import org.gwtbootstrap3.client.ui.constants.*;
 import org.gwtbootstrap3.client.ui.html.Text;
 
 import static biz.freshcode.learn.gwt_bootstrap.client.boot.BootBundle.BOOT_BUNDLE;
@@ -53,6 +50,7 @@ public class Grids extends Presenter<View, Grids.Proxy> {
                     .add(new RowBuilder()
                             .add(new ColumnBuilder(SM_3)
                                     .hiddenOn(DeviceSize.XS)
+                                    .addStyleName(Alignment.RIGHT.getCssName())
                                     .add(new ImageBuilder()
                                             .addStyleName(BOOT_STYLE.lightBgnd())
                                             .url(BOOT_BUNDLE.strategy8().getSafeUri())
@@ -74,7 +72,7 @@ public class Grids extends Presenter<View, Grids.Proxy> {
                                                     .url(BOOT_BUNDLE.pin().getSafeUri())
                                                     .type(ImageType.ROUNDED)
                                                     .image)
-                                            .add(new Text(" Entry number one"))
+                                            .add(new Text(" Entry number one (bad wrap)"))
                                             .addStyleName("h4")
                                             .paragraph)
                                     .column)
@@ -89,7 +87,50 @@ public class Grids extends Presenter<View, Grids.Proxy> {
                                             .paragraph)
                                     .column)
                             .row)
+                    // NOTE: These don't have to be on different rows... it depends on what wrap behaviour is desired.
+                    .add(new RowBuilder()
+                            .add(leftCol("Entry number one (nice wrap)"))
+                            .add(rightCol("Entry number two"))
+                            .row)
+                    .add(new RowBuilder()
+                            .add(leftCol("Entry number three"))
+                            .add(rightCol("Entry number four"))
+                            .row)
+                    .add(new RowBuilder()
+                            .add(leftCol("Entry number five"))
+                            .row)
                     .container);
+        }
+
+        private Column rightCol(String txt) {
+            return new ColumnBuilder(SM_5, XS_12)
+                    .add(mediaItem(txt))
+                    .column;
+        }
+
+        private Column leftCol(String txt) {
+            return new ColumnBuilder(SM_4, XS_12)
+                    .offset(ColumnOffset.SM_3, ColumnOffset.XS_0)
+                    .add(mediaItem(txt))
+                    .column;
+        }
+
+        private MediaList mediaItem(String txt) {
+            return new MediaListBuilder()
+                    .add(new ListItemBuilder()
+                            .add(new ImageAnchorBuilder()
+                                    .asMediaObject(true)
+                                    .pull(Pull.LEFT)
+                                    .url(BOOT_BUNDLE.pin().getSafeUri().asString())
+                                    .type(ImageType.ROUNDED)
+                                    .imageAnchor)
+                            .add(new MediaBodyBuilder()
+                                    .add(new ParagraphBuilder()
+                                            .add(new Text(txt))
+                                            .paragraph)
+                                    .mediaBody)
+                            .listItem)
+                    .mediaList;
         }
     }
 }
