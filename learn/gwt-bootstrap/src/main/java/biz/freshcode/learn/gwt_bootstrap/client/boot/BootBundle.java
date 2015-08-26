@@ -30,5 +30,10 @@ public interface BootBundle extends ClientBundle {
         String lightBgnd();
 
         String graphicBgnd();
+
+        String noBgndImg();
+
+        @ClassName("carousel-control")
+        String carouselControl();
     }
 }
