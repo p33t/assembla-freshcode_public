@@ -2,9 +2,8 @@ package biz.freshcode.learn.gwt_bootstrap.client.carousels;
 
 import biz.freshcode.learn.gwt_bootstrap.client.boot.PlaceToken;
 import biz.freshcode.learn.gwt_bootstrap.client.boot.RootPresenter;
-import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.ColumnBuilder;
-import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.JumbotronBuilder;
-import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.RowBuilder;
+import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.*;
+import com.google.gwt.dom.client.Style;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.Presenter;
@@ -13,11 +12,14 @@ import com.gwtplatform.mvp.client.ViewImpl;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyCodeSplit;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
-import org.gwtbootstrap3.client.ui.constants.ColumnSize;
-import org.gwtbootstrap3.client.ui.html.Paragraph;
+import org.gwtbootstrap3.client.ui.Carousel;
+import org.gwtbootstrap3.client.ui.Image;
+import org.gwtbootstrap3.client.ui.constants.IconType;
+import org.gwtbootstrap3.client.ui.constants.ImageType;
+import org.gwtbootstrap3.client.ui.constants.Responsiveness;
 
-import static biz.freshcode.learn.gwt_bootstrap.client.boot.PlaceToken.TOK_HOME;
-import static biz.freshcode.learn.gwt_bootstrap.client.builder.ParagraphSupport.p;
+import static biz.freshcode.learn.gwt_bootstrap.client.boot.BootBundle.BOOT_BUNDLE;
+import static biz.freshcode.learn.gwt_bootstrap.client.boot.BootBundle.BOOT_STYLE;
 
 public class Carousels extends Presenter<View, Carousels.Proxy> {
 
@@ -31,14 +33,70 @@ public class Carousels extends Presenter<View, Carousels.Proxy> {
     public interface Proxy extends ProxyPlace<Carousels> {
     }
 
+    /*
+<b:Carousel b:id="carousel-basic">
+  <b:CarouselIndicators>
+    <b:CarouselIndicator dataTarget="#carousel-basic" dataSlideTo="0" active="true"/>
+    <b:CarouselIndicator dataTarget="#carousel-basic" dataSlideTo="1"/>
+    <b:CarouselIndicator dataTarget="#carousel-basic" dataSlideTo="2"/>
+  </b:CarouselIndicators>
+  <b:CarouselInner>
+    <b:CarouselSlide active="true">
+      <b:Image url=".../>
+    </b:CarouselSlide>
+  </b:CarouselInner>
+  <b:CarouselControl dataTarget="#carousel-basic" prev="true" iconType="..."/>
+  <b:CarouselControl dataTarget="#carousel-basic" next="true" iconType="..."/>
+</b:Carousel>
+    */
+
     public static class View extends ViewImpl {
         @Inject
         public View() {
-            initWidget(new RowBuilder()
-                    .add(new ColumnBuilder(ColumnSize.XS_12)
-                            .add(new Paragraph("Carousels Baby!"))
-                            .column)
-                    .row);
+            Carousel csel = new Carousel();
+            initWidget(new CarouselBuilder(csel)
+                    .interval(2500)
+                    .add(new CarouselIndicatorsBuilder()
+                            .add(new CarouselIndicatorBuilder()
+                                    .dataTargetWidget(csel)
+                                    .dataSlideTo("0")
+                                    .active(true)
+                                    .carouselIndicator)
+                            .add(new CarouselIndicatorBuilder()
+                                    .dataTargetWidget(csel)
+                                    .dataSlideTo("1")
+                                    .carouselIndicator)
+                            .carouselIndicators)
+                    .add(new CarouselInnerBuilder()
+                            .add(new CarouselSlideBuilder()
+                                    .active(true)
+                                    .add(image(ImageType.ROUNDED))
+                                    .carouselSlide)
+                            .add(new CarouselSlideBuilder()
+                                    .add(image(ImageType.ROUNDED))
+                                    .carouselSlide)
+                            .carouselInner)
+                    .add(new CarouselControlBuilder()
+                            .dataTargetWidget(csel)
+                            .prev(true)
+                            .iconType(IconType.ANGLE_LEFT)
+                            .carouselControl)
+                    .add(new CarouselControlBuilder()
+                            .dataTargetWidget(csel)
+                            .next(true)
+                            .iconType(IconType.ANGLE_RIGHT)
+                            .carouselControl)
+                    .carousel);
+        }
+
+        private Image image(ImageType imageType) {
+            return new ImageBuilder()
+                    .addStyleName("img-responsive")
+                    .addStyleName("center-block")
+                    .addStyleName(BOOT_STYLE.lightBgnd())
+                    .url(BOOT_BUNDLE.strategy8().getSafeUri())
+                    .type(imageType)
+                    .image;
         }
     }
 }
