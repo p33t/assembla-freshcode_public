@@ -4,6 +4,7 @@ import biz.freshcode.learn.gwt_bootstrap.client.alt.Alt;
 import biz.freshcode.learn.gwt_bootstrap.client.graphic.Graphic;
 import biz.freshcode.learn.gwt_bootstrap.client.grids.Grids;
 import biz.freshcode.learn.gwt_bootstrap.client.home.Home;
+import biz.freshcode.learn.gwt_bootstrap.client.timed.Timed;
 import com.gwtplatform.mvp.client.annotations.DefaultPlace;
 import com.gwtplatform.mvp.client.annotations.ErrorPlace;
 import com.gwtplatform.mvp.client.annotations.UnauthorizedPlace;
@@ -27,5 +28,6 @@ public class ClientModule extends AbstractPresenterModule {
         bindPresenter(Alt.class, Alt.Proxy.class);
         bindPresenter(Graphic.class, Graphic.Proxy.class);
         bindPresenter(Grids.class, Grids.Proxy.class);
+        bindPresenter(Timed.class, Timed.Proxy.class);
     }
 }
