@@ -73,7 +73,7 @@ public class Carousels extends Presenter<View, Carousels.Proxy> {
                                     .add(image(ImageType.ROUNDED))
                                     .carouselSlide)
                             .add(new CarouselSlideBuilder()
-                                    .add(image(ImageType.ROUNDED))
+                                    .add(image(ImageType.CIRCLE))
                                     .carouselSlide)
                             .carouselInner)
                     .add(new CarouselControlBuilder()
