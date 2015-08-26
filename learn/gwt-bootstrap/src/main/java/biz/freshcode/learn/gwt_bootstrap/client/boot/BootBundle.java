@@ -20,6 +20,9 @@ public interface BootBundle extends ClientBundle {
     @Source("media/strategy8.png")
     ImageResource strategy8();
 
+    @Source("media/pin.jpeg")
+    ImageResource pin();
+
     @Source("style.css")
     Style style();
 
