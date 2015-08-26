@@ -20,6 +20,7 @@
     <stylesheet src="css/extra-style.css"/>
 
     <inherits name="org.gwtbootstrap3.GwtBootstrap3"/>
+    <inherits name="org.gwtbootstrap3.extras.animate.Animate"/>
 
     <!-- Custom theme -->
     <stylesheet src="css/slate.bootstrap.min.css"/>
