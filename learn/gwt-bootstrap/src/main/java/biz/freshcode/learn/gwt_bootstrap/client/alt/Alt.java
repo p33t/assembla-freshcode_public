@@ -33,31 +33,29 @@ public class Alt extends Presenter<View, Alt.Proxy> {
     public static class View extends ViewImpl {
         @Inject
         public View() {
-            initWidget(
-                    new RowBuilder()
-                            .add(new ColumnBuilder(ColumnSize.XS_12)
-                                    .add(new JumbotronBuilder()
-                                            .add(p("Hello Alt"))
-                                            .add(p("Would you like to go "))
-                                            .add(p("Home", TOK_HOME))
-                                            .add(p("Note that entities and elems are passed as literals: &amp; <bruce>lee</bruce>"))
-                                            .add(p("Trying"))
-                                            .add(p("to"))
-                                            .add(p("get"))
-                                            .add(p("a"))
-                                            .add(p("very"))
-                                            .add(p("long"))
-                                            .add(p("page"))
-                                            .add(p("to"))
-                                            .add(p("activate"))
-                                            .add(p("scroll"))
-                                            .add(p("effects"))
-                                            .add(p("..."))
-                                            .add(p("please."))
-                                            .jumbotron)
-                                    .column)
-                            .row
-            );
+            initWidget(new RowBuilder()
+                    .add(new ColumnBuilder(ColumnSize.XS_12)
+                            .add(new JumbotronBuilder()
+                                    .add(p("Hello Alt"))
+                                    .add(p("Would you like to go "))
+                                    .add(p("Home", TOK_HOME))
+                                    .add(p("Note that entities and elems are passed as literals: &amp; <bruce>lee</bruce>"))
+                                    .add(p("Trying"))
+                                    .add(p("to"))
+                                    .add(p("get"))
+                                    .add(p("a"))
+                                    .add(p("very"))
+                                    .add(p("long"))
+                                    .add(p("page"))
+                                    .add(p("to"))
+                                    .add(p("activate"))
+                                    .add(p("scroll"))
+                                    .add(p("effects"))
+                                    .add(p("..."))
+                                    .add(p("please."))
+                                    .jumbotron)
+                            .column)
+                    .row);
         }
     }
 }
