@@ -83,6 +83,8 @@ public class Carousels extends Presenter<View, Carousels.Proxy> {
                             .carouselControl)
                     .add(new CarouselControlBuilder()
                             .dataTargetWidget(csel)
+                            // Nix the gradient fill
+                            .addStyleName(BOOT_STYLE.noBgndImg())
                             .next(true)
                             .iconType(IconType.ANGLE_RIGHT)
                             .carouselControl)
