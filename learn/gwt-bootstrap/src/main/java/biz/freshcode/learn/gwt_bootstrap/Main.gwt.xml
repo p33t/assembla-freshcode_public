@@ -25,6 +25,8 @@
     <!-- Custom theme -->
     <stylesheet src="css/slate.bootstrap.min.css"/>
     <stylesheet src="css/grayscale.css"/>
+    <!-- This one has the last say. -->
+    <stylesheet src="css/override-style.css"/>
 
     <!-- For IE8 -->
     <!--<inherits name="org.gwtbootstrap3.extras.respond.Respond"/>-->

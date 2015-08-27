@@ -54,8 +54,12 @@ public class Carousels extends Presenter<View, Carousels.Proxy> {
         @Inject
         public View() {
             Carousel csel = new Carousel();
+//            NOTE: Still need 'slide' class.
+//            csel.removeStyleName("slide");
             initWidget(new CarouselBuilder(csel)
                     .interval(2500)
+                    // Want 'fade' instead.  This uses override-style.css
+                    .addStyleName("carousel-fade")
                     .add(new CarouselIndicatorsBuilder()
                             .add(new CarouselIndicatorBuilder()
                                     .dataTargetWidget(csel)
