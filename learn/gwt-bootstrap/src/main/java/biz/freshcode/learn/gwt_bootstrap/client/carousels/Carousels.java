@@ -3,7 +3,8 @@ package biz.freshcode.learn.gwt_bootstrap.client.carousels;
 import biz.freshcode.learn.gwt_bootstrap.client.boot.PlaceToken;
 import biz.freshcode.learn.gwt_bootstrap.client.boot.RootPresenter;
 import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.*;
-import com.google.gwt.dom.client.Style;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.Presenter;
@@ -13,10 +14,10 @@ import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyCodeSplit;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import org.gwtbootstrap3.client.ui.Carousel;
+import org.gwtbootstrap3.client.ui.CarouselIndicator;
 import org.gwtbootstrap3.client.ui.Image;
 import org.gwtbootstrap3.client.ui.constants.IconType;
 import org.gwtbootstrap3.client.ui.constants.ImageType;
-import org.gwtbootstrap3.client.ui.constants.Responsiveness;
 
 import static biz.freshcode.learn.gwt_bootstrap.client.boot.BootBundle.BOOT_BUNDLE;
 import static biz.freshcode.learn.gwt_bootstrap.client.boot.BootBundle.BOOT_STYLE;
@@ -58,7 +59,8 @@ public class Carousels extends Presenter<View, Carousels.Proxy> {
 //            csel.removeStyleName("slide");
             initWidget(new CarouselBuilder(csel)
                     .interval(2500)
-                    // Want 'fade' instead.  This uses override-style.css
+                            .height("300px")
+                            // Want 'fade' instead.  This uses override-style.css
                     .addStyleName("carousel-fade")
                     .add(new CarouselIndicatorsBuilder()
                             .add(new CarouselIndicatorBuilder()
@@ -66,10 +68,8 @@ public class Carousels extends Presenter<View, Carousels.Proxy> {
                                     .dataSlideTo("0")
                                     .active(true)
                                     .carouselIndicator)
-                            .add(new CarouselIndicatorBuilder()
-                                    .dataTargetWidget(csel)
-                                    .dataSlideTo("1")
-                                    .carouselIndicator)
+                            .add(indicator(csel, "1"))
+                            .add(indicator(csel, "2"))
                             .carouselIndicators)
                     .add(new CarouselInnerBuilder()
                             .add(new CarouselSlideBuilder()
@@ -79,6 +79,9 @@ public class Carousels extends Presenter<View, Carousels.Proxy> {
                             .add(new CarouselSlideBuilder()
                                     .add(image(ImageType.CIRCLE))
                                     .carouselSlide)
+                            .add(new CarouselSlideBuilder()
+                                    .add(new HTML("<object height='300px' type='image/svg+xml' data='" + GWT.getModuleBaseForStaticFiles() + "media/animated.svg'>SVG not supported</object>"))
+                                    .carouselSlide)
                             .carouselInner)
                     .add(new CarouselControlBuilder()
                             .dataTargetWidget(csel)
@@ -87,12 +90,19 @@ public class Carousels extends Presenter<View, Carousels.Proxy> {
                             .carouselControl)
                     .add(new CarouselControlBuilder()
                             .dataTargetWidget(csel)
-                            // Nix the gradient fill
+                                    // Nix the gradient fill
                             .addStyleName(BOOT_STYLE.noBgndImg())
                             .next(true)
                             .iconType(IconType.ANGLE_RIGHT)
                             .carouselControl)
                     .carousel);
+        }
+
+        private CarouselIndicator indicator(Carousel csel, String dataSlideTo) {
+            return new CarouselIndicatorBuilder()
+                    .dataTargetWidget(csel)
+                    .dataSlideTo(dataSlideTo)
+                    .carouselIndicator;
         }
 
         private Image image(ImageType imageType) {

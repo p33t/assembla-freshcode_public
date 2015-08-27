@@ -62,10 +62,10 @@ public class Graphic extends Presenter<View, Graphic.Proxy> {
                                     .add(new HTML("<object width='100' type='image/svg+xml' data='" + GWT.getModuleBaseForStaticFiles() + "media/optim.svg'>SVG not supported</object>"))
 
                                     .add(p("Image below exported as SVG from Animatron.com."))
-                                    .add(new HTML("<object width='100' type='image/svg+xml' data='" + GWT.getModuleBaseForStaticFiles() + "media/optim.svg'>SVG not supported</object>"))
+                                    .add(new HTML("<object width='300' type='image/svg+xml' data='" + GWT.getModuleBaseForStaticFiles() + "media/animated.svg'>SVG not supported</object>"))
 
                                     .add(p("Now lets float it..."))
-                                    .add(new HTMLBuilder("<object width='300' type='image/svg+xml' data='" + GWT.getModuleBaseForStaticFiles() + "media/animated.svg'>SVG not supported</object>")
+                                    .add(new HTMLBuilder("<object width='100' type='image/svg+xml' data='" + GWT.getModuleBaseForStaticFiles() + "media/optim.svg'>SVG not supported</object>")
                                             .addStyleName(Pull.LEFT.getCssName())
                                             .hTML)
                                     .add(p("Hopefully this text is right next to the image."))
