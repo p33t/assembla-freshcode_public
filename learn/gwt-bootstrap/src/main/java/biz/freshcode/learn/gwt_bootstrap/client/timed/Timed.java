@@ -2,6 +2,7 @@ package biz.freshcode.learn.gwt_bootstrap.client.timed;
 
 import biz.freshcode.learn.gwt_bootstrap.client.boot.RootPresenter;
 import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.ColumnBuilder;
+import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.ContainerBuilder;
 import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.ImageBuilder;
 import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.RowBuilder;
 import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.html.ParagraphBuilder;
@@ -53,8 +54,7 @@ public class Timed extends Presenter<Timed.View, Timed.Proxy> {
                     GWT.log("Adding animation");
                     getView().getImgMid().addStyleName(ANIMATION_CLASS);
                     getView().getParRight().addStyleName(ANIMATION_CLASS);
-                }
-                else {
+                } else {
                     GWT.log("Not Visible");
                 }
                 return false;
@@ -73,24 +73,34 @@ public class Timed extends Presenter<Timed.View, Timed.Proxy> {
 
         @Inject
         public View() {
-            initWidget(new RowBuilder()
-                    .add(new ColumnBuilder(ColumnSize.XS_4)
-                            .add(new Paragraph("An image and paragraph will appear in 2 secs..."))
-                            .column)
-                    .add(new ColumnBuilder(ColumnSize.XS_4)
-                            .add(imgMid = new ImageBuilder()
-                                    .addStyleName(BOOT_STYLE.lightBgnd())
-                                    .url(BOOT_BUNDLE.strategy8().getSafeUri())
-                                    .type(ImageType.ROUNDED)
-                                    .image)
-                            .column)
-                    .add(new ColumnBuilder(ColumnSize.XS_4)
-                            .add(parRight = new ParagraphBuilder()
-                                    .addStyleName(HeadingSize.H1.name())
-                                    .add(new Text("Paragraph"))
-                                    .paragraph)
-                            .column)
-                    .row);
+            initWidget(new ContainerBuilder()
+                    .add(new RowBuilder()
+                            .add(new ColumnBuilder(ColumnSize.XS_4)
+                                    .add(new Paragraph("An image and paragraph will appear in 2 secs..."))
+                                    .column)
+                            .add(new ColumnBuilder(ColumnSize.XS_4)
+                                    .add(imgMid = new ImageBuilder()
+                                            .addStyleName(BOOT_STYLE.lightBgnd())
+                                            .url(BOOT_BUNDLE.strategy8().getSafeUri())
+                                            .type(ImageType.ROUNDED)
+                                            .image)
+                                    .column)
+                            .add(new ColumnBuilder(ColumnSize.XS_4)
+                                    .add(parRight = new ParagraphBuilder()
+                                            .addStyleName(HeadingSize.H1.name())
+                                            .add(new Text("Paragraph"))
+                                            .paragraph)
+                                    .column)
+                            .row)
+                    .add(new RowBuilder()
+                            .add(new ColumnBuilder(ColumnSize.XS_4)
+                                    .add(new Paragraph("This one attempts to reveal an SVG gradually because SMIL is deprecated (Ugh!)"))
+                                    .column)
+                            .add(new ColumnBuilder(ColumnSize.XS_4)
+                                    .add(new CompositeReveal())
+                                    .column)
+                            .row)
+                    .container);
         }
 
         public Image getImgMid() {
