@@ -61,7 +61,7 @@ public class Graphic extends Presenter<View, Graphic.Proxy> {
                                     .add(p("Image below saved from Inkscape with optimised SVG and the 'viewport' option.  Now 'width' works."))
                                     .add(new HTML("<object width='100' type='image/svg+xml' data='" + GWT.getModuleBaseForStaticFiles() + "media/optim.svg'>SVG not supported</object>"))
 
-                                    .add(p("Image below exported as SVG from Animatron.com."))
+                                    .add(p("Image below exported as SVG from Animatron.com.  It uses SVG SMIL, which is not supported by IE and deprecated in Chrome :("))
                                     .add(new HTML("<object width='300' type='image/svg+xml' data='" + GWT.getModuleBaseForStaticFiles() + "media/animated.svg'>SVG not supported</object>"))
 
                                     .add(p("Now lets float it..."))
