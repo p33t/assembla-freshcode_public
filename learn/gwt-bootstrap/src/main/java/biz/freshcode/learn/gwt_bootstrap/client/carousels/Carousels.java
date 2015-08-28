@@ -75,6 +75,7 @@ public class Carousels extends Presenter<View, Carousels.Proxy> {
                                             .image)
                                     .carouselSlide)
                             .add(new CarouselSlideBuilder()
+//                                   NOTE: SVG animations restart automagically when using 'object'!!!!!!!!!!!!!
                                     .add(new HTMLBuilder("<object height='300px' type='image/svg+xml' data='" + GWT.getModuleBaseForStaticFiles() + "media/animated.svg'>SVG not supported</object>")
                                             .hTML)
                                     .carouselSlide)
