@@ -34,22 +34,6 @@ public class Carousels extends Presenter<View, Carousels.Proxy> {
     public interface Proxy extends ProxyPlace<Carousels> {
     }
 
-    /*
-<b:Carousel b:id="carousel-basic">
-  <b:CarouselIndicators>
-    <b:CarouselIndicator dataTarget="#carousel-basic" dataSlideTo="0" active="true"/>
-    <b:CarouselIndicator dataTarget="#carousel-basic" dataSlideTo="1"/>
-    <b:CarouselIndicator dataTarget="#carousel-basic" dataSlideTo="2"/>
-  </b:CarouselIndicators>
-  <b:CarouselInner>
-    <b:CarouselSlide active="true">
-      <b:Image url=".../>
-    </b:CarouselSlide>
-  </b:CarouselInner>
-  <b:CarouselControl dataTarget="#carousel-basic" prev="true" iconType="..."/>
-  <b:CarouselControl dataTarget="#carousel-basic" next="true" iconType="..."/>
-</b:Carousel>
-    */
 
     public static class View extends ViewImpl {
         @Inject
@@ -58,7 +42,7 @@ public class Carousels extends Presenter<View, Carousels.Proxy> {
 //            NOTE: Still need 'slide' class.
 //            csel.removeStyleName("slide");
             initWidget(new CarouselBuilder(csel)
-                    .interval(2500)
+                    .interval(3000)
                             .height("300px")
                             // Want 'fade' instead.  This uses override-style.css
                     .addStyleName("carousel-fade")
@@ -70,6 +54,7 @@ public class Carousels extends Presenter<View, Carousels.Proxy> {
                                     .carouselIndicator)
                             .add(indicator(csel, "1"))
                             .add(indicator(csel, "2"))
+                            .add(indicator(csel, "3"))
                             .carouselIndicators)
                     .add(new CarouselInnerBuilder()
                             .add(new CarouselSlideBuilder()
@@ -81,6 +66,9 @@ public class Carousels extends Presenter<View, Carousels.Proxy> {
                                     .carouselSlide)
                             .add(new CarouselSlideBuilder()
                                     .add(new HTML("<object height='300px' type='image/svg+xml' data='" + GWT.getModuleBaseForStaticFiles() + "media/animated.svg'>SVG not supported</object>"))
+                                    .carouselSlide)
+                            .add(new CarouselSlideBuilder()
+                                    .add(new HTML("<object height='300px' type='image/svg+xml' data='" + GWT.getModuleBaseForStaticFiles() + "media/composite.css.optim.svg'>SVG not supported</object>"))
                                     .carouselSlide)
                             .carouselInner)
                     .add(new CarouselControlBuilder()
