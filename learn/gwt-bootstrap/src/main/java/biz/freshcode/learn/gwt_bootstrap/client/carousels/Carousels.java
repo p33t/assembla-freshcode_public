@@ -2,9 +2,9 @@ package biz.freshcode.learn.gwt_bootstrap.client.carousels;
 
 import biz.freshcode.learn.gwt_bootstrap.client.boot.PlaceToken;
 import biz.freshcode.learn.gwt_bootstrap.client.boot.RootPresenter;
+import biz.freshcode.learn.gwt_bootstrap.client.builder.com.google.gwt.user.client.ui.HTMLBuilder;
 import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.*;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.user.client.ui.HTML;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.Presenter;
@@ -43,7 +43,7 @@ public class Carousels extends Presenter<View, Carousels.Proxy> {
 //            csel.removeStyleName("slide");
             initWidget(new CarouselBuilder(csel)
                     .interval(3000)
-                            .height("300px")
+                    .height("300px")
                             // Want 'fade' instead.  This uses override-style.css
                     .addStyleName("carousel-fade")
                     .add(new CarouselIndicatorsBuilder()
@@ -65,10 +65,15 @@ public class Carousels extends Presenter<View, Carousels.Proxy> {
                                     .add(image(ImageType.CIRCLE))
                                     .carouselSlide)
                             .add(new CarouselSlideBuilder()
-                                    .add(new HTML("<object height='300px' type='image/svg+xml' data='" + GWT.getModuleBaseForStaticFiles() + "media/animated.svg'>SVG not supported</object>"))
+                                    .add(new ImageBuilder()
+                                            .addStyleName("img-responsive")
+                                            .addStyleName("center-block")
+                                            .url(GWT.getModuleBaseForStaticFiles() + "media/composite.css.optim.svg")
+                                            .image)
                                     .carouselSlide)
                             .add(new CarouselSlideBuilder()
-                                    .add(new HTML("<object height='300px' type='image/svg+xml' data='" + GWT.getModuleBaseForStaticFiles() + "media/composite.css.optim.svg'>SVG not supported</object>"))
+                                    .add(new HTMLBuilder("<object height='300px' type='image/svg+xml' data='" + GWT.getModuleBaseForStaticFiles() + "media/animated.svg'>SVG not supported</object>")
+                                            .hTML)
                                     .carouselSlide)
                             .carouselInner)
                     .add(new CarouselControlBuilder()
