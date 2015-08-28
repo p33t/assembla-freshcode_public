@@ -17,7 +17,7 @@ import static biz.freshcode.b_generation.BgenStringUtil.join;
 public class BuilderGenerator extends DefaultBeanBuilderGenerator {
 
     private static final PackageMapper MAPPER = new PackageMapper()
-            .addMapping("", "biz.freshcode.learn.gwt_bootstrap.client.builder");
+            .addMapping("", BeanBuilder.class.getPackage().getName());
 
     private static final Class[] CLASSES = {Carousel.class};  //<<<<<<<<<<<<<<<<<< Bean Class
 
