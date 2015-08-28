@@ -1,15 +1,72 @@
 package pkg;
 
 import biz.freshcode.b_generation.BeanBuilderWriter;
-import org.gwtbootstrap3.client.ui.Heading;
+import biz.freshcode.b_generation.BgenUtil;
+import biz.freshcode.b_generation.DefaultBeanBuilderGenerator;
+import biz.freshcode.b_generation.PackageMapper;
+import biz.freshcode.b_generation.migrate.BuilderScan;
+import biz.freshcode.b_generation.migrate.MigrationProbe;
+import biz.freshcode.learn.gwt_bootstrap.client.builder.BeanBuilder;
+import biz.freshcode.learn.gwt_bootstrap.client.builder.Construct;
+import org.gwtbootstrap3.client.ui.Carousel;
 
 import java.io.File;
 
-public class BuilderGenerator {
+import static biz.freshcode.b_generation.BgenStringUtil.join;
+
+public class BuilderGenerator extends DefaultBeanBuilderGenerator {
+
+    private static final PackageMapper MAPPER = new PackageMapper()
+            .addMapping("", "biz.freshcode.learn.gwt_bootstrap.client.builder");
+
+    private static final Class[] CLASSES = {Carousel.class};  //<<<<<<<<<<<<<<<<<< Bean Class
+
     public static void main(String[] args) {
-        new BeanBuilderWriter()
-                .outputFolder(new File("src/main/java")) // The desired output folder
-                .addMapping("", "biz.freshcode.learn.gwt_bootstrap.client.builder")           // Map the package of the resulting builder
-                .write(Heading.class);                  // The bean class of the desired builder
+        write();
+//        probe();
     }
+
+    private static void probe() {
+        String msg = new MigrationProbe()
+                .packageMapper(MAPPER)
+                .builderScan(new BuilderScan().targetAnnotation(BeanBuilder.class))
+                .beanClassReader(new MigrationProbe.BeanClassReader() {
+                    @Override
+                    public Class read(Class builderClass) {
+                        BeanBuilder ann = (BeanBuilder) builderClass.getAnnotation(BeanBuilder.class);
+                        return ann.value();
+                    }
+                })
+                .probe();
+        System.out.println(msg);
+    }
+
+    private static void write() {
+        new BeanBuilderWriter()
+                .generator(new BuilderGenerator())
+                .outputFolder(new File("src/main/java")) // The desired output folder
+                .packageMapper(MAPPER)           // Map the package of the resulting builder
+                .write(CLASSES);                  // The bean class of the desired builder
+    }
+
+    /**
+     * Add the custom parent class for the builder.
+     */
+    @Override
+    protected String getBuilderParent(Class beanCls, String builderType) {
+        String parentName = BgenUtil.className(Construct.Parent.class);
+        return parentName + "<" + builderType + ">";
+    }
+
+    /**
+     * Adds a custom annotation to each builder to facilitate reflective operations
+     * like {@link biz.freshcode.b_generation.migrate.MigrationProbe}.
+     */
+    @Override
+    protected String getBuilderAnnotation(@SuppressWarnings("UnusedParameters") Class beanClass) {
+        String s = super.getBuilderAnnotation(beanClass);
+        s = join(s, "\n", "@" + BeanBuilder.class.getName() + "(" + beanClass.getSimpleName() + ".class)");
+        return s;
+    }
+
 }
