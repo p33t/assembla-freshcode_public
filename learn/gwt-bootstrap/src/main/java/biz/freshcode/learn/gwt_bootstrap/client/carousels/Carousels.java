@@ -43,6 +43,9 @@ public class Carousels extends Presenter<View, Carousels.Proxy> {
 //            csel.removeStyleName("slide");
             initWidget(new CarouselBuilder(csel)
                     .interval(3000)
+                    // TIP: Looks like the aspect ratio is set, so instead of playing with height, width, alignment
+                    // It's probably better to design the  graphics (SVG especially) with the desired aspect ratio.
+                    // GwtBootstrap3 demo images are 900x500.
                     .height("300px")
                             // Want 'fade' instead.  This uses override-style.css
                     .addStyleName("carousel-fade")
