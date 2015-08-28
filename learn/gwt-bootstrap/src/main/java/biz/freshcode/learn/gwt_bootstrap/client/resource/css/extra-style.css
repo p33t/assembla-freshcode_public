@@ -1,3 +1,8 @@
 body {
     padding-top: 90px;
 }
+
+/* NOTE: This style does NOT penetrate into <object> referenced SVG. */
+text#composite-2 {
+    opacity: .5;
+}

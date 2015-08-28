@@ -8,6 +8,7 @@ import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client
 import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.html.ParagraphBuilder;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.Presenter;
@@ -94,10 +95,10 @@ public class Timed extends Presenter<Timed.View, Timed.Proxy> {
                             .row)
                     .add(new RowBuilder()
                             .add(new ColumnBuilder(ColumnSize.XS_4)
-                                    .add(new Paragraph("This one attempts to reveal an SVG gradually because SMIL is deprecated (Ugh!)"))
+                                    .add(new Paragraph("This one attempts to style an SVG from a host page because SMIL is deprecated (Ugh!).  CSS does not penetrate into referenced SVG."))
                                     .column)
                             .add(new ColumnBuilder(ColumnSize.XS_4)
-                                    .add(new CompositeReveal())
+                                    .add(new HTML("<object width='100%' type='image/svg+xml' data='" + GWT.getModuleBaseForStaticFiles() + "media/composite.optim.svg'>SVG not supported</object>"))
                                     .column)
                             .row)
                     .container);
