@@ -15,6 +15,7 @@ import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import org.gwtbootstrap3.client.ui.Column;
 import org.gwtbootstrap3.client.ui.MediaList;
 import org.gwtbootstrap3.client.ui.constants.*;
+import org.gwtbootstrap3.client.ui.html.Paragraph;
 import org.gwtbootstrap3.client.ui.html.Text;
 
 import static biz.freshcode.learn.gwt_bootstrap.client.boot.BootBundle.BOOT_BUNDLE;
@@ -45,10 +46,7 @@ public class Grids extends Presenter<View, Grids.Proxy> {
                                             .url(BOOT_BUNDLE.strategy8().getSafeUri())
                                             .type(ImageType.ROUNDED)
                                             .image)
-                                    .add(new ParagraphBuilder()
-                                            .addStyleName("h2")
-                                            .add(new Text("Plan & Manage Change"))
-                                            .paragraph)
+                                    .add(heading("Plan & Manage Change"))
                                     .column)
                             .row)
                     .add(new RowBuilder()
@@ -62,12 +60,10 @@ public class Grids extends Presenter<View, Grids.Proxy> {
                                             .image)
                                     .column)
                             .add(new ColumnBuilder(XS_12, SM_9)
-                                    .add(new ParagraphBuilder()
-                                            // Ugh... there isn't a pretty way to vertically center
-                                            .addStyleName(BOOT_STYLE.verticalAlign98())
-                                            .addStyleName("h2")
-                                            .add(new Text("Plan & Manage Change"))
-                                            .paragraph)
+                                    // a slightly less nasty way to do vertical align
+                                    .addStyleName(BOOT_STYLE.verticalAlignContents())
+                                    .height("128px") // same as adjacent image
+                                    .add(heading("Plan & Manage Change"))
                                     .column)
                             .row)
                     .add(new RowBuilder()
@@ -106,6 +102,15 @@ public class Grids extends Presenter<View, Grids.Proxy> {
                             .add(leftCol("Entry number five"))
                             .row)
                     .container);
+        }
+
+        private Paragraph heading(String txt) {
+            return new ParagraphBuilder()
+                    // A nastier way to do vertical align...
+//                                            .addStyleName(BOOT_STYLE.verticalAlign98())
+                    .addStyleName("h2")
+                    .add(new Text(txt))
+                    .paragraph;
         }
 
         private Column rightCol(String txt) {
