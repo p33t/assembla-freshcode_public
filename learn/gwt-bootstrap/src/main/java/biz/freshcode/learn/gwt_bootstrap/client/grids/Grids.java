@@ -2,7 +2,10 @@ package biz.freshcode.learn.gwt_bootstrap.client.grids;
 
 import biz.freshcode.learn.gwt_bootstrap.client.boot.PlaceToken;
 import biz.freshcode.learn.gwt_bootstrap.client.boot.RootPresenter;
-import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.*;
+import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.ColumnBuilder;
+import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.ContainerBuilder;
+import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.ImageBuilder;
+import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.RowBuilder;
 import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.html.ParagraphBuilder;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
@@ -13,7 +16,6 @@ import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyCodeSplit;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import org.gwtbootstrap3.client.ui.Column;
-import org.gwtbootstrap3.client.ui.MediaList;
 import org.gwtbootstrap3.client.ui.constants.*;
 import org.gwtbootstrap3.client.ui.html.Paragraph;
 import org.gwtbootstrap3.client.ui.html.Text;
@@ -89,19 +91,36 @@ public class Grids extends Presenter<View, Grids.Proxy> {
                                             .paragraph)
                                     .column)
                             .row)
-                            // NOTE: These don't have to be on different rows... it depends on what wrap behaviour is desired.
+                    // A better way to do vertically centered bullets with large image.  Too bad we can't to fixed col widths.
                     .add(new RowBuilder()
-                            .add(leftCol("Entry number one (nice wrap)"))
-                            .add(rightCol("Entry number two"))
-                            .row)
-                    .add(new RowBuilder()
-                            .add(leftCol("Entry number three"))
-                            .add(rightCol("Entry number four"))
-                            .row)
-                    .add(new RowBuilder()
-                            .add(leftCol("Entry number five"))
+                            .add(new ColumnBuilder(SM_2)
+                                    .hiddenOn(DeviceSize.XS)
+                                    .column)
+                            .add(imgCol())
+                            .add(itemCol("Entry number one"))
+                            .add(imgCol())
+                            .add(itemCol("Entry number two"))
                             .row)
                     .container);
+        }
+
+        private Column itemCol(String txt) {
+            return new ColumnBuilder(XS_9, SM_3)
+                    .addStyleName(BOOT_STYLE.verticalAlignContents())
+                    .height("50px")
+                    .add(new Paragraph(txt))
+                    .column;
+        }
+
+        private Column imgCol() {
+            return new ColumnBuilder(XS_3, SM_2)
+                    .add(new ImageBuilder()
+                            .addStyleName("img-responsive")
+                            .pull(Pull.RIGHT)
+                            .url(BOOT_BUNDLE.logoSml().getSafeUri().asString())
+                            .type(ImageType.CIRCLE)
+                            .image)
+                    .column;
         }
 
         private Paragraph heading(String txt) {
@@ -113,35 +132,20 @@ public class Grids extends Presenter<View, Grids.Proxy> {
                     .paragraph;
         }
 
-        private Column rightCol(String txt) {
-            return new ColumnBuilder(SM_5, XS_12)
-                    .add(mediaItem(txt))
-                    .column;
-        }
-
-        private Column leftCol(String txt) {
-            return new ColumnBuilder(SM_4, XS_12)
-                    .offset(ColumnOffset.SM_3, ColumnOffset.XS_0)
-                    .add(mediaItem(txt))
-                    .column;
-        }
-
-        private MediaList mediaItem(String txt) {
-            return new MediaListBuilder()
-                    .add(new ListItemBuilder()
-                            .add(new ImageAnchorBuilder()
-                                    .asMediaObject(true)
-                                    .pull(Pull.LEFT)
-                                    .url(BOOT_BUNDLE.pin().getSafeUri().asString())
-                                    .type(ImageType.ROUNDED)
-                                    .imageAnchor)
-                            .add(new MediaBodyBuilder()
-                                    .add(new ParagraphBuilder()
-                                            .add(new Text(txt))
-                                            .paragraph)
-                                    .mediaBody)
-                            .listItem)
-                    .mediaList;
+        private void item(String txt, Column col) {
+            new ColumnBuilder(col)
+                    .addStyleName(BOOT_STYLE.verticalAlignContents())
+                    .height("50px")
+                    .add(new ImageBuilder()
+//                            .addStyleName("img-responsive")
+                            .pull(Pull.LEFT)
+                            .url(BOOT_BUNDLE.logoSml().getSafeUri().asString())
+                            .type(ImageType.CIRCLE)
+                            .image)
+                    .add(new ParagraphBuilder()
+                            .add(new Text(txt))
+                            .paragraph)
+            ;
         }
     }
 }
