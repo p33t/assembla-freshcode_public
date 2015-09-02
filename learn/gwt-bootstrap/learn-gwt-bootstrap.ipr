@@ -322,15 +322,15 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/gwtbootstrap3/gwtbootstrap3-extras/0.9.1/gwtbootstrap3-extras-0.9.1-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.gwtbootstrap3:gwtbootstrap3:0.9.1">
+    <library name="Maven: org.gwtbootstrap3:gwtbootstrap3:1.0.1-SNAPSHOT">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/gwtbootstrap3/gwtbootstrap3/0.9.1/gwtbootstrap3-0.9.1.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/gwtbootstrap3/gwtbootstrap3/1.0.1-SNAPSHOT/gwtbootstrap3-1.0.1-SNAPSHOT.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/org/gwtbootstrap3/gwtbootstrap3/0.9.1/gwtbootstrap3-0.9.1-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/gwtbootstrap3/gwtbootstrap3/1.0.1-SNAPSHOT/gwtbootstrap3-1.0.1-SNAPSHOT-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/gwtbootstrap3/gwtbootstrap3/0.9.1/gwtbootstrap3-0.9.1-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/gwtbootstrap3/gwtbootstrap3/1.0.1-SNAPSHOT/gwtbootstrap3-1.0.1-SNAPSHOT-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: org.hamcrest:hamcrest-core:1.3">
