@@ -19,6 +19,8 @@ a.noBgndImg.carousel-control {
     line-height: 98px;
 }
 
+/* NOTE: This approach is really only for known heights.
+IE: The adjacent image is bigger than any possible wrapped text. */
 .verticalAlignContents {
     display: table;
 }
