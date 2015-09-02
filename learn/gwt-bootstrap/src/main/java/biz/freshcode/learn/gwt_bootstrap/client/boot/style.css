@@ -18,3 +18,12 @@ a.noBgndImg.carousel-control {
 .verticalAlign98 {
     line-height: 98px;
 }
+
+.verticalAlignContents {
+    display: table;
+}
+
+.verticalAlignContents p {
+    display: table-cell;
+    vertical-align: middle;
+}
