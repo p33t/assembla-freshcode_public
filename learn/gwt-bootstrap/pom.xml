@@ -9,7 +9,7 @@
     <artifactId>learn-gwt-bootstrap</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>GWT Maven Archetype</name>
+    <name>learn-gwt-bootstrap</name>
 
     <properties>
         <!-- Convenience property to set the GWT version -->
@@ -20,7 +20,7 @@
         <maven.compiler.target>1.7</maven.compiler.target>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <gwtbootstrap3.version>0.9.1</gwtbootstrap3.version>
+        <gwtbootstrap3.version>1.0.1-SNAPSHOT</gwtbootstrap3.version>
     </properties>
 
     <dependencyManagement>
@@ -45,7 +45,7 @@
         <dependency>
             <groupId>org.gwtbootstrap3</groupId>
             <artifactId>gwtbootstrap3-extras</artifactId>
-            <version>${gwtbootstrap3.version}</version>
+            <version>0.9.1</version>
             <scope>provided</scope>
         </dependency>
 

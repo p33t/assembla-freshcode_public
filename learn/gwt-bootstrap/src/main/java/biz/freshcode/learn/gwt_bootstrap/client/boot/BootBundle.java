@@ -35,5 +35,7 @@ public interface BootBundle extends ClientBundle {
 
         @ClassName("carousel-control")
         String carouselControl();
+
+        String verticalAlign98();
     }
 }

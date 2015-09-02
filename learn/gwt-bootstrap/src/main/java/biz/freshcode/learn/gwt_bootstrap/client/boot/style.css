@@ -14,3 +14,7 @@
 a.noBgndImg.carousel-control {
     background-image: none;
 }
+
+.verticalAlign98 {
+    line-height: 98px;
+}
