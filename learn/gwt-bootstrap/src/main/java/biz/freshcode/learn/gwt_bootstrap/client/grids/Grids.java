@@ -101,6 +101,15 @@ public class Grids extends Presenter<View, Grids.Proxy> {
                             .add(imgCol())
                             .add(itemCol("Entry number two"))
                             .row)
+                    .add(new RowBuilder()
+                            .add(new ColumnBuilder(SM_2)
+                                    .hiddenOn(DeviceSize.XS)
+                                    .column)
+                            .add(imgCol())
+                            .add(itemCol("Entry number thee"))
+                            .add(imgCol())
+                            .add(itemCol("Entry number four"))
+                            .row)
                     .container);
         }
 
@@ -115,7 +124,8 @@ public class Grids extends Presenter<View, Grids.Proxy> {
         private Column imgCol() {
             return new ColumnBuilder(XS_3, SM_2)
                     .add(new ImageBuilder()
-                            .addStyleName("img-responsive")
+                            .responsive(true)
+                            .addStyleName(BOOT_STYLE.noPadding())
                             .pull(Pull.RIGHT)
                             .url(BOOT_BUNDLE.logoSml().getSafeUri().asString())
                             .type(ImageType.CIRCLE)
@@ -137,7 +147,7 @@ public class Grids extends Presenter<View, Grids.Proxy> {
                     .addStyleName(BOOT_STYLE.verticalAlignContents())
                     .height("50px")
                     .add(new ImageBuilder()
-//                            .addStyleName("img-responsive")
+//                            .responsive(true)
                             .pull(Pull.LEFT)
                             .url(BOOT_BUNDLE.logoSml().getSafeUri().asString())
                             .type(ImageType.CIRCLE)

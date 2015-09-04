@@ -29,3 +29,7 @@ IE: The adjacent image is bigger than any possible wrapped text. */
     display: table-cell;
     vertical-align: middle;
 }
+
+.noPadding {
+    padding: 0;
+}

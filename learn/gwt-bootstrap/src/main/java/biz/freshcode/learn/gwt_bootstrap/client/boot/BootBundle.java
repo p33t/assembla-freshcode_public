@@ -39,5 +39,7 @@ public interface BootBundle extends ClientBundle {
         String verticalAlign98();
 
         String verticalAlignContents();
+
+        String noPadding();
     }
 }
