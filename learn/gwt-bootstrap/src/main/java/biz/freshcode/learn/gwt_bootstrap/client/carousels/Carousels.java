@@ -69,7 +69,7 @@ public class Carousels extends Presenter<View, Carousels.Proxy> {
                                     .carouselSlide)
                             .add(new CarouselSlideBuilder()
                                     .add(new ImageBuilder()
-                                            .addStyleName("img-responsive")
+                                            .responsive(true)
                                             .addStyleName("center-block")
                                             .url(GWT.getModuleBaseForStaticFiles() + "media/composite.css.optim.svg")
                                             .image)
@@ -104,7 +104,7 @@ public class Carousels extends Presenter<View, Carousels.Proxy> {
 
         private Image image(ImageType imageType) {
             return new ImageBuilder()
-                    .addStyleName("img-responsive")
+                    .responsive(true)
                     .addStyleName("center-block")
                     .addStyleName(BOOT_STYLE.lightBgnd())
                     .url(BOOT_BUNDLE.strategy8().getSafeUri())
