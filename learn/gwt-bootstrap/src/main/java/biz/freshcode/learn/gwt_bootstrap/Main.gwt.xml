@@ -21,6 +21,7 @@
 
     <inherits name="org.gwtbootstrap3.GwtBootstrap3"/>
     <inherits name="org.gwtbootstrap3.extras.animate.Animate"/>
+    <inherits name="org.gwtbootstrap3.extras.growl.Growl"/>
 
     <!-- Custom theme -->
     <stylesheet src="css/slate.bootstrap.min.css"/>
