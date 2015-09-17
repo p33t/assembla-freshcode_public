@@ -7,9 +7,8 @@ import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client
 import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.RowBuilder;
 import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.TextBoxBuilder;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.dom.client.KeyCodes;
-import com.google.gwt.event.dom.client.KeyDownEvent;
-import com.google.gwt.event.dom.client.KeyDownHandler;
+import com.google.gwt.event.dom.client.*;
+import com.google.gwt.http.client.*;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.Presenter;
@@ -17,11 +16,15 @@ import com.gwtplatform.mvp.client.ViewImpl;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
+import org.gwtbootstrap3.client.ui.Button;
 import org.gwtbootstrap3.client.ui.InlineHelpBlock;
 import org.gwtbootstrap3.client.ui.TextBox;
 import org.gwtbootstrap3.client.ui.constants.ColumnSize;
 import org.gwtbootstrap3.client.ui.constants.IconType;
 import org.gwtbootstrap3.client.ui.html.Paragraph;
+import org.gwtbootstrap3.extras.growl.client.ui.Growl;
+
+import static org.gwtbootstrap3.extras.growl.client.ui.Growl.growl;
 
 public class Forms extends Presenter<Forms.View, Forms.Proxy> {
     @Inject
@@ -41,6 +44,29 @@ public class Forms extends Presenter<Forms.View, Forms.Proxy> {
                 }
             }
         });
+
+        view.getBtn().addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                String url = GWT.getHostPageBaseURL() + "lookup?t=" + System.currentTimeMillis();
+                RequestBuilder req = new RequestBuilder(RequestBuilder.GET, url);
+                try {
+                    req.sendRequest(null, new RequestCallback() {
+                        @Override
+                        public void onResponseReceived(Request request, Response response) {
+                            growl("Success: " + response.getText());
+                        }
+
+                        @Override
+                        public void onError(Request request, Throwable exception) {
+                            growl("Error: " + exception);
+                        }
+                    });
+                } catch (RequestException e) {
+                    growl("Could not send: " + e);
+                }
+            }
+        });
     }
 
     @ProxyStandard
@@ -51,6 +77,7 @@ public class Forms extends Presenter<Forms.View, Forms.Proxy> {
     public static class View extends ViewImpl {
         private final TextBox txtInput;
         private final InlineHelpBlock helpBlock;
+        private final Button btn;
 
         @Inject
         public View() {
@@ -63,10 +90,11 @@ public class Forms extends Presenter<Forms.View, Forms.Proxy> {
                                             .inlineHelpBlock)
                                     .add(txtInput = new TextBoxBuilder()
                                             .textBox)
+                                    .add(new Paragraph("This button will perform an HTTP request."))
+                                    .add(btn = new Button("Go"))
                                     .column)
                             .row
             );
-//            txtInput.sinkEvents(Event.KEYEVENTS);
         }
 
         public InlineHelpBlock getHelpBlock() {
@@ -75,6 +103,10 @@ public class Forms extends Presenter<Forms.View, Forms.Proxy> {
 
         public TextBox getTxtInput() {
             return txtInput;
+        }
+
+        public Button getBtn() {
+            return btn;
         }
     }
 }
