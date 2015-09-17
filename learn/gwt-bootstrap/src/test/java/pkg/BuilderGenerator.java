@@ -9,8 +9,11 @@ import biz.freshcode.b_generation.migrate.MigrationProbe;
 import biz.freshcode.learn.gwt_bootstrap.client.builder.BeanBuilder;
 import biz.freshcode.learn.gwt_bootstrap.client.builder.Construct;
 import org.gwtbootstrap3.client.ui.Carousel;
+import org.gwtbootstrap3.client.ui.InlineHelpBlock;
+import org.gwtbootstrap3.client.ui.TextBox;
 
 import java.io.File;
+import java.lang.reflect.Method;
 
 import static biz.freshcode.b_generation.BgenStringUtil.join;
 
@@ -19,7 +22,7 @@ public class BuilderGenerator extends DefaultBeanBuilderGenerator {
     private static final PackageMapper MAPPER = new PackageMapper()
             .addMapping("", BeanBuilder.class.getPackage().getName());
 
-    private static final Class[] CLASSES = {Carousel.class};  //<<<<<<<<<<<<<<<<<< Bean Class
+    private static final Class[] CLASSES = {InlineHelpBlock.class};  //<<<<<<<<<<<<<<<<<< Bean Class
 
     public static void main(String[] args) {
         write();
@@ -69,4 +72,10 @@ public class BuilderGenerator extends DefaultBeanBuilderGenerator {
         return s;
     }
 
+    @Override
+    protected String mapType(Class beanCls, Method m, String type, int argIndex, boolean forJavadoc) {
+        if (genericTypeMatch(beanCls, type, TextBox.class, "T"))
+            return genericTypeResolve(type, "String", forJavadoc, "T");
+        return super.mapType(beanCls, m, type, argIndex, forJavadoc);
+    }
 }
