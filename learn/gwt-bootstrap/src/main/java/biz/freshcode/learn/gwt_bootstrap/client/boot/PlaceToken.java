@@ -7,4 +7,5 @@ public class PlaceToken {
     public static final String TOK_GRIDS = "grids";
     public static final String TOK_TIMED = "timed";
     public static final String TOK_CAROUSELS = "carousels";
+    public static final String TOK_FORMS = "forms";
 }

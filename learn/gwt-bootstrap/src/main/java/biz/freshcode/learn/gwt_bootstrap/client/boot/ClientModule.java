@@ -2,6 +2,7 @@ package biz.freshcode.learn.gwt_bootstrap.client.boot;
 
 import biz.freshcode.learn.gwt_bootstrap.client.alt.Alt;
 import biz.freshcode.learn.gwt_bootstrap.client.carousels.Carousels;
+import biz.freshcode.learn.gwt_bootstrap.client.forms.Forms;
 import biz.freshcode.learn.gwt_bootstrap.client.graphic.Graphic;
 import biz.freshcode.learn.gwt_bootstrap.client.grids.Grids;
 import biz.freshcode.learn.gwt_bootstrap.client.home.Home;
@@ -31,5 +32,6 @@ public class ClientModule extends AbstractPresenterModule {
         bindPresenter(Grids.class, Grids.Proxy.class);
         bindPresenter(Timed.class, Timed.Proxy.class);
         bindPresenter(Carousels.class, Carousels.Proxy.class);
+        bindPresenter(Forms.class, Forms.Proxy.class);
     }
 }
