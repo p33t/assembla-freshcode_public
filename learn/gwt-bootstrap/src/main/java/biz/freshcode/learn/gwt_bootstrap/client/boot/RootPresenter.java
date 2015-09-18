@@ -2,6 +2,8 @@ package biz.freshcode.learn.gwt_bootstrap.client.boot;
 
 import biz.freshcode.learn.gwt_bootstrap.client.builder.org.gwtbootstrap3.client.ui.*;
 import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.Command;
@@ -16,10 +18,14 @@ import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.ViewImpl;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.gwtplatform.mvp.client.presenter.slots.NestedSlot;
+import com.gwtplatform.mvp.client.proxy.PlaceManager;
+import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
+import org.gwtbootstrap3.client.ui.Button;
 import org.gwtbootstrap3.client.ui.Navbar;
 import org.gwtbootstrap3.client.ui.NavbarCollapse;
 import org.gwtbootstrap3.client.ui.NavbarCollapseButton;
 import org.gwtbootstrap3.client.ui.base.helper.StyleHelper;
+import org.gwtbootstrap3.client.ui.constants.ButtonType;
 import org.gwtbootstrap3.client.ui.constants.NavbarPosition;
 import org.gwtbootstrap3.client.ui.constants.Toggle;
 
@@ -28,10 +34,30 @@ import static biz.freshcode.learn.gwt_bootstrap.client.boot.PlaceToken.*;
 
 public class RootPresenter extends Presenter<View, RootPresenter.Proxy> {
     public static final NestedSlot SLOT = new NestedSlot();
+    @Inject
+    private PlaceManager placeManager;
 
     @Inject
     public RootPresenter(EventBus eventBus, View view, Proxy proxy) {
         super(eventBus, view, proxy, RevealType.Root);
+
+        view.getBtnHomePlace().addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                // changes place, sets history (does NOT fire history change event)
+                placeManager.revealPlace(new PlaceRequest.Builder()
+                        .nameToken(TOK_HOME)
+                        .build());
+            }
+        });
+
+        view.getBtnHomeHistory().addClickHandler(new ClickHandler() {
+            @Override
+            public void onClick(ClickEvent event) {
+                // changes place, sets history and fires history change event
+                History.newItem(TOK_HOME);
+            }
+        });
     }
 
     @ProxyStandard
@@ -41,6 +67,8 @@ public class RootPresenter extends Presenter<View, RootPresenter.Proxy> {
     public static class View extends ViewImpl {
         private final SimplePanel slotPanel = new SimplePanel();
         private final Navbar navbar;
+        private final Button btnHomePlace;
+        private final Button btnHomeHistory;
         private NavbarCollapse navbarCollapse;
 
         @Inject
@@ -112,6 +140,20 @@ public class RootPresenter extends Presenter<View, RootPresenter.Proxy> {
                                                                             .anchorListItem)
                                                                     .dropDownMenu)
                                                             .listDropDown)
+                                                    .add(new ListItemBuilder()
+                                                            .add(btnHomePlace = new ButtonBuilder()
+                                                                    .text("Home via Place")
+                                                                    .marginTop(8)
+                                                                    .type(ButtonType.WARNING)
+                                                                    .button)
+                                                            .listItem)
+                                                    .add(new ListItemBuilder()
+                                                            .add(btnHomeHistory = new ButtonBuilder()
+                                                                    .text("Home via History")
+                                                                    .marginTop(8)
+                                                                    .type(ButtonType.SUCCESS)
+                                                                    .button)
+                                                            .listItem)
                                                     .navbarNav)
                                             .navbarCollapse)
                                     .container)
@@ -152,6 +194,14 @@ public class RootPresenter extends Presenter<View, RootPresenter.Proxy> {
             if (Boolean.parseBoolean(ariaExpanded)) {
                 navbarCollapse.toggle();
             }
+        }
+
+        public Button getBtnHomePlace() {
+            return btnHomePlace;
+        }
+
+        public Button getBtnHomeHistory() {
+            return btnHomeHistory;
         }
     }
 }
