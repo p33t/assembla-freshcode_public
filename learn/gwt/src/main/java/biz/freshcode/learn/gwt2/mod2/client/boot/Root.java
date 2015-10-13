@@ -2,22 +2,19 @@ package biz.freshcode.learn.gwt2.mod2.client.boot;
 
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.container.BorderLayoutContainerBuilder;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.container.ViewportBuilder;
-import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.ViewImpl;
-import com.gwtplatform.mvp.client.annotations.ContentSlot;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
-import com.gwtplatform.mvp.client.proxy.RevealContentHandler;
+import com.gwtplatform.mvp.client.presenter.slots.NestedSlot;
 import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData;
 
 public class Root extends Presenter<Root.View, Root.Proxy> {
-    @ContentSlot
-    public static final GwtEvent.Type<RevealContentHandler<?>> SLOT = new GwtEvent.Type<>();
+    public static final NestedSlot SLOT = new NestedSlot();
 
     @Inject
     public Root(EventBus eventBus, View view, Proxy proxy) {
@@ -33,6 +30,7 @@ public class Root extends Presenter<Root.View, Root.Proxy> {
 
         @Inject
         public View(RootMenu menu) {
+            // NOTE: Don't bindSlot... not sure if forceLayout() will be called.
             initWidget(new ViewportBuilder()
                     .add(blc = new BorderLayoutContainerBuilder()
                             .northWidget(menu, new BorderLayoutData(30))
