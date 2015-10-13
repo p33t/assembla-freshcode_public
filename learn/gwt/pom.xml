@@ -23,7 +23,7 @@
     <properties>
         <!-- Convenience property to set the GWT version -->
         <gwtVersion>2.7.0</gwtVersion>
-        <gwtpVersion>1.4</gwtpVersion>
+        <gwtpVersion>1.5</gwtpVersion>
         <!-- NOTE: Might need to change this to 3.1.0 or x.0 for GPL access. -->
         <gxtVersion>3.1.2</gxtVersion>
         <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>

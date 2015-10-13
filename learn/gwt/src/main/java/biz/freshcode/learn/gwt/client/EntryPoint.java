@@ -56,7 +56,7 @@ public class EntryPoint implements com.google.gwt.core.client.EntryPoint {
             handler.register(ctlr, bus, DEFAULT_PLACE);
 
             // Remove 'loading' spinner.
-            DOM.removeChild(RootPanel.getBodyElement(), DOM.getElementById("loading"));
+            RootPanel.getBodyElement().removeChild(DOM.getElementById("loading"));
 
             getRoot().add(pnl);
             // Goes to the place represented on URL else default place

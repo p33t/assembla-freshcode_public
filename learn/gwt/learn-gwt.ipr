@@ -18,18 +18,18 @@
             <element id="library" level="project" name="Maven: com.google.gwt:gwt-servlet:2.7.0" />
             <element id="library" level="project" name="Maven: com.google.web.bindery:requestfactory-server:2.7.0" />
             <element id="library" level="project" name="Maven: javax.validation:validation-api:1.0.0.GA" />
-            <element id="library" level="project" name="Maven: com.gwtplatform:gwtp-dispatch-rpc-shared:1.4" />
+            <element id="library" level="project" name="Maven: com.gwtplatform:gwtp-dispatch-rpc-shared:1.5" />
             <element id="library" level="project" name="Maven: com.google.inject:guice:3.0" />
             <element id="library" level="project" name="Maven: javax.inject:javax.inject:1" />
             <element id="library" level="project" name="Maven: aopalliance:aopalliance:1.0" />
-            <element id="library" level="project" name="Maven: com.gwtplatform:gwtp-dispatch-rpc-server:1.4" />
-            <element id="library" level="project" name="Maven: com.gwtplatform:gwtp-dispatch-common-shared:1.4" />
-            <element id="library" level="project" name="Maven: com.gwtplatform:gwtp-dispatch-rpc-server-guice:1.4" />
+            <element id="library" level="project" name="Maven: com.gwtplatform:gwtp-dispatch-rpc-server:1.5" />
+            <element id="library" level="project" name="Maven: com.gwtplatform:gwtp-dispatch-common-shared:1.5" />
+            <element id="library" level="project" name="Maven: com.gwtplatform:gwtp-dispatch-rpc-server-guice:1.5" />
             <element id="library" level="project" name="Maven: com.google.inject.extensions:guice-servlet:3.0" />
           </element>
         </element>
         <element id="directory" name="META-INF">
-          <element id="file-copy" path="$PROJECT_DIR$/target/MANIFEST.MF" />
+          <element id="file-copy" path="$PROJECT_DIR$/target/learn-gwt-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
         </element>
         <element id="javaee-facet-resources" facet="learn-gwt/web/Web" />
         <element id="gwt-compiler-output" facet="learn-gwt/gwt/GWT" />
@@ -59,7 +59,7 @@
       <profile default="true" name="Default" enabled="false">
         <processorPath useClasspath="true" />
       </profile>
-      <profile default="false" name="Maven default annotation processors profile" enabled="true">
+      <profile default="false" name="Annotation profile for learn-gwt" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -277,103 +277,103 @@
         <root url="jar://$MAVEN_REPOSITORY$/com/google/web/bindery/requestfactory-server/2.7.0/requestfactory-server-2.7.0-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: com.gwtplatform:gwtp-clients-common:1.4">
+    <library name="Maven: com.gwtplatform:gwtp-clients-common:1.5">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-clients-common/1.4/gwtp-clients-common-1.4.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-clients-common/1.5/gwtp-clients-common-1.5.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-clients-common/1.4/gwtp-clients-common-1.4-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-clients-common/1.5/gwtp-clients-common-1.5-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-clients-common/1.4/gwtp-clients-common-1.4-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-clients-common/1.5/gwtp-clients-common-1.5-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: com.gwtplatform:gwtp-dispatch-common-client:1.4">
+    <library name="Maven: com.gwtplatform:gwtp-dispatch-common-client:1.5">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-dispatch-common-client/1.4/gwtp-dispatch-common-client-1.4.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-dispatch-common-client/1.5/gwtp-dispatch-common-client-1.5.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-dispatch-common-client/1.4/gwtp-dispatch-common-client-1.4-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-dispatch-common-client/1.5/gwtp-dispatch-common-client-1.5-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-dispatch-common-client/1.4/gwtp-dispatch-common-client-1.4-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-dispatch-common-client/1.5/gwtp-dispatch-common-client-1.5-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: com.gwtplatform:gwtp-dispatch-common-shared:1.4">
+    <library name="Maven: com.gwtplatform:gwtp-dispatch-common-shared:1.5">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-dispatch-common-shared/1.4/gwtp-dispatch-common-shared-1.4.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-dispatch-common-shared/1.5/gwtp-dispatch-common-shared-1.5.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-dispatch-common-shared/1.4/gwtp-dispatch-common-shared-1.4-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-dispatch-common-shared/1.5/gwtp-dispatch-common-shared-1.5-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-dispatch-common-shared/1.4/gwtp-dispatch-common-shared-1.4-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-dispatch-common-shared/1.5/gwtp-dispatch-common-shared-1.5-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: com.gwtplatform:gwtp-dispatch-rpc-client:1.4">
+    <library name="Maven: com.gwtplatform:gwtp-dispatch-rpc-client:1.5">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-dispatch-rpc-client/1.4/gwtp-dispatch-rpc-client-1.4.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-dispatch-rpc-client/1.5/gwtp-dispatch-rpc-client-1.5.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-dispatch-rpc-client/1.4/gwtp-dispatch-rpc-client-1.4-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-dispatch-rpc-client/1.5/gwtp-dispatch-rpc-client-1.5-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-dispatch-rpc-client/1.4/gwtp-dispatch-rpc-client-1.4-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-dispatch-rpc-client/1.5/gwtp-dispatch-rpc-client-1.5-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: com.gwtplatform:gwtp-dispatch-rpc-server-guice:1.4">
+    <library name="Maven: com.gwtplatform:gwtp-dispatch-rpc-server-guice:1.5">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-dispatch-rpc-server-guice/1.4/gwtp-dispatch-rpc-server-guice-1.4.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-dispatch-rpc-server-guice/1.5/gwtp-dispatch-rpc-server-guice-1.5.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-dispatch-rpc-server-guice/1.4/gwtp-dispatch-rpc-server-guice-1.4-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-dispatch-rpc-server-guice/1.5/gwtp-dispatch-rpc-server-guice-1.5-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-dispatch-rpc-server-guice/1.4/gwtp-dispatch-rpc-server-guice-1.4-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-dispatch-rpc-server-guice/1.5/gwtp-dispatch-rpc-server-guice-1.5-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: com.gwtplatform:gwtp-dispatch-rpc-server:1.4">
+    <library name="Maven: com.gwtplatform:gwtp-dispatch-rpc-server:1.5">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-dispatch-rpc-server/1.4/gwtp-dispatch-rpc-server-1.4.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-dispatch-rpc-server/1.5/gwtp-dispatch-rpc-server-1.5.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-dispatch-rpc-server/1.4/gwtp-dispatch-rpc-server-1.4-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-dispatch-rpc-server/1.5/gwtp-dispatch-rpc-server-1.5-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-dispatch-rpc-server/1.4/gwtp-dispatch-rpc-server-1.4-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-dispatch-rpc-server/1.5/gwtp-dispatch-rpc-server-1.5-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: com.gwtplatform:gwtp-dispatch-rpc-shared:1.4">
+    <library name="Maven: com.gwtplatform:gwtp-dispatch-rpc-shared:1.5">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-dispatch-rpc-shared/1.4/gwtp-dispatch-rpc-shared-1.4.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-dispatch-rpc-shared/1.5/gwtp-dispatch-rpc-shared-1.5.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-dispatch-rpc-shared/1.4/gwtp-dispatch-rpc-shared-1.4-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-dispatch-rpc-shared/1.5/gwtp-dispatch-rpc-shared-1.5-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-dispatch-rpc-shared/1.4/gwtp-dispatch-rpc-shared-1.4-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-dispatch-rpc-shared/1.5/gwtp-dispatch-rpc-shared-1.5-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: com.gwtplatform:gwtp-mvp-client:1.4">
+    <library name="Maven: com.gwtplatform:gwtp-mvp-client:1.5">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-mvp-client/1.4/gwtp-mvp-client-1.4.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-mvp-client/1.5/gwtp-mvp-client-1.5.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-mvp-client/1.4/gwtp-mvp-client-1.4-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-mvp-client/1.5/gwtp-mvp-client-1.5-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-mvp-client/1.4/gwtp-mvp-client-1.4-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-mvp-client/1.5/gwtp-mvp-client-1.5-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: com.gwtplatform:gwtp-mvp-shared:1.4">
+    <library name="Maven: com.gwtplatform:gwtp-mvp-shared:1.5">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-mvp-shared/1.4/gwtp-mvp-shared-1.4.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-mvp-shared/1.5/gwtp-mvp-shared-1.5.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-mvp-shared/1.4/gwtp-mvp-shared-1.4-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-mvp-shared/1.5/gwtp-mvp-shared-1.5-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-mvp-shared/1.4/gwtp-mvp-shared-1.4-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-mvp-shared/1.5/gwtp-mvp-shared-1.5-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: com.sencha.gxt:gxt-chart:3.1.2">

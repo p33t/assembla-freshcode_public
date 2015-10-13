@@ -12,7 +12,7 @@ public class GmdModule extends AbstractPresenterModule {
     @Override
     protected void configure() {
 // Double binds...        bind(PlaceManager.class).to(GmdPlaceManager.class);
-        install(new DefaultModule(GmdPlaceManager.class));
+        install(new DefaultModule.Builder().placeManager(GmdPlaceManager.class).build());
         bindConstant().annotatedWith(DefaultPlace.class).to(GMD);
         bindConstant().annotatedWith(ErrorPlace.class).to(GMD);
         bindConstant().annotatedWith(UnauthorizedPlace.class).to(GMD);
