@@ -8,8 +8,7 @@ import biz.freshcode.b_generation.migrate.BuilderScan;
 import biz.freshcode.b_generation.migrate.MigrationProbe;
 import biz.freshcode.learn.gwt_bootstrap.client.builder.BeanBuilder;
 import biz.freshcode.learn.gwt_bootstrap.client.builder.Construct;
-import org.gwtbootstrap3.client.ui.Carousel;
-import org.gwtbootstrap3.client.ui.InlineHelpBlock;
+import org.gwtbootstrap3.client.ui.Button;
 import org.gwtbootstrap3.client.ui.TextBox;
 
 import java.io.File;
@@ -22,7 +21,7 @@ public class BuilderGenerator extends DefaultBeanBuilderGenerator {
     private static final PackageMapper MAPPER = new PackageMapper()
             .addMapping("", BeanBuilder.class.getPackage().getName());
 
-    private static final Class[] CLASSES = {InlineHelpBlock.class};  //<<<<<<<<<<<<<<<<<< Bean Class
+    private static final Class[] CLASSES = {Button.class};  //<<<<<<<<<<<<<<<<<< Bean Class
 
     public static void main(String[] args) {
         write();
