@@ -1,0 +1,52 @@
+Used the following scala code (and an online IDE http://remoteinterview.io) to generate snippets of xkb...
+See http://stackoverflow.com/questions/32822857/how-to-emulate-integrated-numeric-keypad-cursor-keys-in-linux
+
+object Scratch {
+  val name = "WinKeyAsFnKey"
+  val modifier = "Super"
+  val ks = List(
+    Key("AE07", "7", "ampersand", "HOME"),
+    Key("AE08", "8", "asterisk", "UP"),
+    Key("AE09", "9", "parenleft", "PGUP"),
+
+    Key("AD07", "u", "U", "LEFT"),
+//    Key("AD08", "i", "I", "I185"), Need symbol XF86ScrollUp / Down
+    Key("AD09", "o", "O", "RGHT"),
+
+    Key("AC07", "j", "J", "END"),
+    Key("AC08", "k", "K", "DOWN"),
+    Key("AC09", "l", "L", "PGDN"),
+
+    Key("AB07", "m", "M", "INS"),
+//    Key("AB08", "comma", "less", "I186"),
+    Key("AB09", "period", "greater", "DELE")
+  )
+
+  def main(args: Array[String]) {
+    val strings =
+      "For 'xkb_types' (last one wins)..." ::
+        "type \"" + name + "\" {" ::
+        "  modifiers = Shift+" + modifier + ";" ::
+        "  map[Shift] = level2;" ::
+        "  map[" + modifier + "] = level3;" ::
+        "  map[" + modifier + "+Shift] = level3;" ::
+        "  level_name[Level1] = \"Base\";" ::
+        "  level_name[Level2] = \"Caps\";" ::
+        "  level_name[Level3] = \"Fn\";" ::
+        "};" ::
+        "" ::
+        "For 'xkb_symbols'..." ::
+        ks.map {
+          k =>
+            "key <" + k.origKeyCode + "> {type=\"" + name + "\",symbols[Group1]=[" + k.neat + "," + k.shifted +
+              ",NoSymbol],actions=[NoAction(),NoAction(),RedirectKey(key=<" + k.fnKeyCode +
+              ">,clearmods=" + modifier + ")]};"
+
+        }
+
+    strings.foreach(println)
+  }
+
+  case class Key(origKeyCode: String, neat: String, shifted: String, fnKeyCode: String)
+}
+
