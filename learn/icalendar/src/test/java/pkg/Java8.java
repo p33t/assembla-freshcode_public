@@ -18,12 +18,12 @@ import java.util.List;
 import static java.util.Arrays.asList;
 
 public class Java8 extends TestCase {
-    public void testLamdaExpression() {
+    public void testLambdaExpression() {
         Runnable r = () -> System.out.println("Run");
         r.run();
     }
 
-    public void testLamdaMethodReference() {
+    public void testLambdaMethodReference() {
         List<PrintStream> l = asList(System.out, System.err);
         l.forEach(PrintStream::println);
     }
