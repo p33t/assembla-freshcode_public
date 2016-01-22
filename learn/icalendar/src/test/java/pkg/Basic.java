@@ -91,6 +91,9 @@ MS Outlook notes:
                         .vEvent)
                 .iCalendar;
         Biweekly.write(ical).go(System.out);
+        // NOTE: Use python http server in the target directory for Outlook Internet Calendar testing.
+        // Logging is handy too.
+        // python -m SimpleHTTPServer
         Biweekly.write(ical).go(new FileWriter("target/basic.ics"));
     }
 
