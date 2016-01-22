@@ -37,6 +37,22 @@ public class ICalendarBuilder extends pkg.builder.Construct.Parent<ICalendarBuil
     }
 
     /**
+     * @see biweekly.ICalendar#addExperimentalProperty(java.lang.String, java.lang.String)
+     */
+    public ICalendarBuilder addExperimentalProperty(java.lang.String v0, java.lang.String v1) {
+        iCalendar.addExperimentalProperty(v0, v1);
+        return this;
+    }
+
+    /**
+     * @see biweekly.ICalendar#addExperimentalProperty(java.lang.String, biweekly.ICalDataType, java.lang.String)
+     */
+    public ICalendarBuilder addExperimentalProperty(java.lang.String v0, biweekly.ICalDataType v1, java.lang.String v2) {
+        iCalendar.addExperimentalProperty(v0, v1, v2);
+        return this;
+    }
+
+    /**
      * @see biweekly.ICalendar#addFreeBusy(biweekly.component.VFreeBusy)
      */
     public ICalendarBuilder addFreeBusy(biweekly.component.VFreeBusy v0) {
@@ -93,6 +109,22 @@ public class ICalendarBuilder extends pkg.builder.Construct.Parent<ICalendarBuil
     }
 
     /**
+     * @see biweekly.ICalendar#setExperimentalProperty(java.lang.String, java.lang.String)
+     */
+    public ICalendarBuilder experimentalProperty(java.lang.String v0, java.lang.String v1) {
+        iCalendar.setExperimentalProperty(v0, v1);
+        return this;
+    }
+
+    /**
+     * @see biweekly.ICalendar#setExperimentalProperty(java.lang.String, biweekly.ICalDataType, java.lang.String)
+     */
+    public ICalendarBuilder experimentalProperty(java.lang.String v0, biweekly.ICalDataType v1, java.lang.String v2) {
+        iCalendar.setExperimentalProperty(v0, v1, v2);
+        return this;
+    }
+
+    /**
      * @see biweekly.ICalendar#setMethod(biweekly.property.Method)
      */
     public ICalendarBuilder method(biweekly.property.Method v0) {
@@ -101,9 +133,25 @@ public class ICalendarBuilder extends pkg.builder.Construct.Parent<ICalendarBuil
     }
 
     /**
+     * @see biweekly.ICalendar#setMethod(java.lang.String)
+     */
+    public ICalendarBuilder method(java.lang.String v0) {
+        iCalendar.setMethod(v0);
+        return this;
+    }
+
+    /**
      * @see biweekly.ICalendar#setProductId(biweekly.property.ProductId)
      */
     public ICalendarBuilder productId(biweekly.property.ProductId v0) {
+        iCalendar.setProductId(v0);
+        return this;
+    }
+
+    /**
+     * @see biweekly.ICalendar#setProductId(java.lang.String)
+     */
+    public ICalendarBuilder productId(java.lang.String v0) {
         iCalendar.setProductId(v0);
         return this;
     }

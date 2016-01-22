@@ -48,6 +48,22 @@ public class VAlarmBuilder extends pkg.builder.Construct.Parent<VAlarmBuilder> {
     }
 
     /**
+     * @see biweekly.component.VAlarm#addExperimentalProperty(java.lang.String, java.lang.String)
+     */
+    public VAlarmBuilder addExperimentalProperty(java.lang.String v0, java.lang.String v1) {
+        vAlarm.addExperimentalProperty(v0, v1);
+        return this;
+    }
+
+    /**
+     * @see biweekly.component.VAlarm#addExperimentalProperty(java.lang.String, biweekly.ICalDataType, java.lang.String)
+     */
+    public VAlarmBuilder addExperimentalProperty(java.lang.String v0, biweekly.ICalDataType v1, java.lang.String v2) {
+        vAlarm.addExperimentalProperty(v0, v1, v2);
+        return this;
+    }
+
+    /**
      * @see biweekly.component.VAlarm#addProperty(biweekly.property.ICalProperty)
      */
     public VAlarmBuilder addProperty(biweekly.property.ICalProperty v0) {
@@ -88,10 +104,42 @@ public class VAlarmBuilder extends pkg.builder.Construct.Parent<VAlarmBuilder> {
     }
 
     /**
+     * @see biweekly.component.VAlarm#setDescription(java.lang.String)
+     */
+    public VAlarmBuilder description(java.lang.String v0) {
+        vAlarm.setDescription(v0);
+        return this;
+    }
+
+    /**
      * @see biweekly.component.VAlarm#setDuration(biweekly.property.DurationProperty)
      */
     public VAlarmBuilder duration(biweekly.property.DurationProperty v0) {
         vAlarm.setDuration(v0);
+        return this;
+    }
+
+    /**
+     * @see biweekly.component.VAlarm#setDuration(biweekly.util.Duration)
+     */
+    public VAlarmBuilder duration(biweekly.util.Duration v0) {
+        vAlarm.setDuration(v0);
+        return this;
+    }
+
+    /**
+     * @see biweekly.component.VAlarm#setExperimentalProperty(java.lang.String, java.lang.String)
+     */
+    public VAlarmBuilder experimentalProperty(java.lang.String v0, java.lang.String v1) {
+        vAlarm.setExperimentalProperty(v0, v1);
+        return this;
+    }
+
+    /**
+     * @see biweekly.component.VAlarm#setExperimentalProperty(java.lang.String, biweekly.ICalDataType, java.lang.String)
+     */
+    public VAlarmBuilder experimentalProperty(java.lang.String v0, biweekly.ICalDataType v1, java.lang.String v2) {
+        vAlarm.setExperimentalProperty(v0, v1, v2);
         return this;
     }
 
@@ -120,6 +168,14 @@ public class VAlarmBuilder extends pkg.builder.Construct.Parent<VAlarmBuilder> {
     }
 
     /**
+     * @see biweekly.component.VAlarm#setRepeat(java.lang.Integer)
+     */
+    public VAlarmBuilder repeat(java.lang.Integer v0) {
+        vAlarm.setRepeat(v0);
+        return this;
+    }
+
+    /**
      * @see biweekly.component.VAlarm#setRepeat(int, biweekly.util.Duration)
      */
     public VAlarmBuilder repeat(int v0, biweekly.util.Duration v1) {
@@ -131,6 +187,14 @@ public class VAlarmBuilder extends pkg.builder.Construct.Parent<VAlarmBuilder> {
      * @see biweekly.component.VAlarm#setSummary(biweekly.property.Summary)
      */
     public VAlarmBuilder summary(biweekly.property.Summary v0) {
+        vAlarm.setSummary(v0);
+        return this;
+    }
+
+    /**
+     * @see biweekly.component.VAlarm#setSummary(java.lang.String)
+     */
+    public VAlarmBuilder summary(java.lang.String v0) {
         vAlarm.setSummary(v0);
         return this;
     }

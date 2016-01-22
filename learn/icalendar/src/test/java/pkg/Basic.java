@@ -60,25 +60,25 @@ MS Outlook notes:
     public void testSimpleEvent() throws IOException {
         DateTimeStamp timestamp = new DateTimeStamp(new Date()); // probably a pseudo-version
         ICalendar ical = new ICalendarBuilder()
-                .productId(new ProductId("-//learn.freshcode.biz//learn-icalendar"))
+                .productId("-//learn.freshcode.biz//learn-icalendar")
                 .calendarScale(CalendarScale.gregorian())
                 .addProperty(new RawProperty("X-WR-CALNAME", "My Calendar")) // was in Motocal and Outlook
                 .addEvent(new VEventBuilder()
-                        .uid(new Uid("jbloggs_2016-01-21")) // A uuid that is deterministic?  Perhaps add type of hours or some origin code?
-                        .summary(new Summary("Whole Day Event"))
-                        .description(new Description("Description of whole day event"))
+                        .uid("jbloggs_2016-01-21") // A uuid that is deterministic?  Perhaps add type of hours or some origin code?
+                        .summary("Whole Day Event")
+                        .description("Description of whole day event")
                         .dateTimeStamp(timestamp)
                         .dateStart(dateStart(y, m, d))
                         // Might be more logical to use duration because dateEnd appears to be exclusive (?!)
-                        .duration(new DurationProperty(Duration.builder().days(1).build()))
+                        .duration(Duration.builder().days(1).build())
                         .vEvent)
                 .addEvent(new VEventBuilder()
-                        .uid(new Uid("jbloggs_2016-01-22T003000Z"))
-                        .summary(new Summary("2 hrs with reminder (not)"))
-                        .description(new Description("Description 2"))
+                        .uid("jbloggs_2016-01-22T003000Z")
+                        .summary("2 hrs with reminder (not)")
+                        .description("Description 2")
                         .dateTimeStamp(timestamp)
-                        .dateStart(new DateStart(dateTime(y, m, d + 1, 0, 30))) // 10:30a GMT+10
-                        .duration(new DurationProperty(Duration.builder().hours(2).build()))
+                        .dateStart(dateTime(y, m, d + 1, 0, 30)) // 10:30a GMT+10
+                        .duration(Duration.builder().hours(2).build())
                         // NOTE: Reminders will NOT be set if they are in the past
                         // PLUS, they don't seem to work at all with Internet Calendars (?!)
                         .addAlarm(new VAlarmBuilder(
@@ -86,7 +86,7 @@ MS Outlook notes:
                                 new Trigger(Duration.builder().minutes(15).prior(true).build(),
 //                                        Related.START ... not used in Outlook
                                         null))
-                                .description(new Description("Reminder")) // required by Outlook
+                                .description("Reminder") // required by Outlook
                                 .vAlarm)
                         .vEvent)
                 .iCalendar;
