@@ -45,6 +45,22 @@ public class VEventBuilder extends pkg.builder.Construct.Parent<VEventBuilder> {
     }
 
     /**
+     * @see biweekly.component.VEvent#addAttendee(java.lang.String)
+     */
+    public VEventBuilder addAttendee(java.lang.String v0) {
+        vEvent.addAttendee(v0);
+        return this;
+    }
+
+    /**
+     * @see biweekly.component.VEvent#addCategories(java.lang.String...)
+     */
+    public VEventBuilder addCategories(java.lang.String... v0) {
+        vEvent.addCategories(v0);
+        return this;
+    }
+
+    /**
      * @see biweekly.component.VEvent#addCategories(biweekly.property.Categories)
      */
     public VEventBuilder addCategories(biweekly.property.Categories v0) {
@@ -53,9 +69,25 @@ public class VEventBuilder extends pkg.builder.Construct.Parent<VEventBuilder> {
     }
 
     /**
+     * @see biweekly.component.VEvent#addCategories(java.util.List)
+     */
+    public VEventBuilder addCategories(java.util.List<java.lang.String> v0) {
+        vEvent.addCategories(v0);
+        return this;
+    }
+
+    /**
      * @see biweekly.component.VEvent#addComment(biweekly.property.Comment)
      */
     public VEventBuilder addComment(biweekly.property.Comment v0) {
+        vEvent.addComment(v0);
+        return this;
+    }
+
+    /**
+     * @see biweekly.component.VEvent#addComment(java.lang.String)
+     */
+    public VEventBuilder addComment(java.lang.String v0) {
         vEvent.addComment(v0);
         return this;
     }
@@ -77,6 +109,14 @@ public class VEventBuilder extends pkg.builder.Construct.Parent<VEventBuilder> {
     }
 
     /**
+     * @see biweekly.component.VEvent#addContact(java.lang.String)
+     */
+    public VEventBuilder addContact(java.lang.String v0) {
+        vEvent.addContact(v0);
+        return this;
+    }
+
+    /**
      * @see biweekly.component.VEvent#addExceptionDates(biweekly.property.ExceptionDates)
      */
     public VEventBuilder addExceptionDates(biweekly.property.ExceptionDates v0) {
@@ -89,6 +129,30 @@ public class VEventBuilder extends pkg.builder.Construct.Parent<VEventBuilder> {
      */
     public VEventBuilder addExceptionRule(biweekly.property.ExceptionRule v0) {
         vEvent.addExceptionRule(v0);
+        return this;
+    }
+
+    /**
+     * @see biweekly.component.VEvent#addExceptionRule(biweekly.util.Recurrence)
+     */
+    public VEventBuilder addExceptionRule(biweekly.util.Recurrence v0) {
+        vEvent.addExceptionRule(v0);
+        return this;
+    }
+
+    /**
+     * @see biweekly.component.VEvent#addExperimentalProperty(java.lang.String, java.lang.String)
+     */
+    public VEventBuilder addExperimentalProperty(java.lang.String v0, java.lang.String v1) {
+        vEvent.addExperimentalProperty(v0, v1);
+        return this;
+    }
+
+    /**
+     * @see biweekly.component.VEvent#addExperimentalProperty(java.lang.String, biweekly.ICalDataType, java.lang.String)
+     */
+    public VEventBuilder addExperimentalProperty(java.lang.String v0, biweekly.ICalDataType v1, java.lang.String v2) {
+        vEvent.addExperimentalProperty(v0, v1, v2);
         return this;
     }
 
@@ -117,6 +181,22 @@ public class VEventBuilder extends pkg.builder.Construct.Parent<VEventBuilder> {
     }
 
     /**
+     * @see biweekly.component.VEvent#addRelatedTo(java.lang.String)
+     */
+    public VEventBuilder addRelatedTo(java.lang.String v0) {
+        vEvent.addRelatedTo(v0);
+        return this;
+    }
+
+    /**
+     * @see biweekly.component.VEvent#addResources(java.lang.String...)
+     */
+    public VEventBuilder addResources(java.lang.String... v0) {
+        vEvent.addResources(v0);
+        return this;
+    }
+
+    /**
      * @see biweekly.component.VEvent#addResources(biweekly.property.Resources)
      */
     public VEventBuilder addResources(biweekly.property.Resources v0) {
@@ -125,9 +205,25 @@ public class VEventBuilder extends pkg.builder.Construct.Parent<VEventBuilder> {
     }
 
     /**
+     * @see biweekly.component.VEvent#addResources(java.util.List)
+     */
+    public VEventBuilder addResources(java.util.List<java.lang.String> v0) {
+        vEvent.addResources(v0);
+        return this;
+    }
+
+    /**
      * @see biweekly.component.VEvent#setClassification(biweekly.property.Classification)
      */
     public VEventBuilder classification(biweekly.property.Classification v0) {
+        vEvent.setClassification(v0);
+        return this;
+    }
+
+    /**
+     * @see biweekly.component.VEvent#setClassification(java.lang.String)
+     */
+    public VEventBuilder classification(java.lang.String v0) {
         vEvent.setClassification(v0);
         return this;
     }
@@ -157,10 +253,34 @@ public class VEventBuilder extends pkg.builder.Construct.Parent<VEventBuilder> {
     }
 
     /**
+     * @see biweekly.component.VEvent#setCreated(java.util.Date)
+     */
+    public VEventBuilder created(java.util.Date v0) {
+        vEvent.setCreated(v0);
+        return this;
+    }
+
+    /**
      * @see biweekly.component.VEvent#setDateEnd(biweekly.property.DateEnd)
      */
     public VEventBuilder dateEnd(biweekly.property.DateEnd v0) {
         vEvent.setDateEnd(v0);
+        return this;
+    }
+
+    /**
+     * @see biweekly.component.VEvent#setDateEnd(java.util.Date)
+     */
+    public VEventBuilder dateEnd(java.util.Date v0) {
+        vEvent.setDateEnd(v0);
+        return this;
+    }
+
+    /**
+     * @see biweekly.component.VEvent#setDateEnd(java.util.Date, boolean)
+     */
+    public VEventBuilder dateEnd(java.util.Date v0, boolean v1) {
+        vEvent.setDateEnd(v0, v1);
         return this;
     }
 
@@ -173,9 +293,33 @@ public class VEventBuilder extends pkg.builder.Construct.Parent<VEventBuilder> {
     }
 
     /**
+     * @see biweekly.component.VEvent#setDateStart(java.util.Date)
+     */
+    public VEventBuilder dateStart(java.util.Date v0) {
+        vEvent.setDateStart(v0);
+        return this;
+    }
+
+    /**
+     * @see biweekly.component.VEvent#setDateStart(java.util.Date, boolean)
+     */
+    public VEventBuilder dateStart(java.util.Date v0, boolean v1) {
+        vEvent.setDateStart(v0, v1);
+        return this;
+    }
+
+    /**
      * @see biweekly.component.VEvent#setDateTimeStamp(biweekly.property.DateTimeStamp)
      */
     public VEventBuilder dateTimeStamp(biweekly.property.DateTimeStamp v0) {
+        vEvent.setDateTimeStamp(v0);
+        return this;
+    }
+
+    /**
+     * @see biweekly.component.VEvent#setDateTimeStamp(java.util.Date)
+     */
+    public VEventBuilder dateTimeStamp(java.util.Date v0) {
         vEvent.setDateTimeStamp(v0);
         return this;
     }
@@ -189,10 +333,42 @@ public class VEventBuilder extends pkg.builder.Construct.Parent<VEventBuilder> {
     }
 
     /**
+     * @see biweekly.component.VEvent#setDescription(java.lang.String)
+     */
+    public VEventBuilder description(java.lang.String v0) {
+        vEvent.setDescription(v0);
+        return this;
+    }
+
+    /**
      * @see biweekly.component.VEvent#setDuration(biweekly.property.DurationProperty)
      */
     public VEventBuilder duration(biweekly.property.DurationProperty v0) {
         vEvent.setDuration(v0);
+        return this;
+    }
+
+    /**
+     * @see biweekly.component.VEvent#setDuration(biweekly.util.Duration)
+     */
+    public VEventBuilder duration(biweekly.util.Duration v0) {
+        vEvent.setDuration(v0);
+        return this;
+    }
+
+    /**
+     * @see biweekly.component.VEvent#setExperimentalProperty(java.lang.String, java.lang.String)
+     */
+    public VEventBuilder experimentalProperty(java.lang.String v0, java.lang.String v1) {
+        vEvent.setExperimentalProperty(v0, v1);
+        return this;
+    }
+
+    /**
+     * @see biweekly.component.VEvent#setExperimentalProperty(java.lang.String, biweekly.ICalDataType, java.lang.String)
+     */
+    public VEventBuilder experimentalProperty(java.lang.String v0, biweekly.ICalDataType v1, java.lang.String v2) {
+        vEvent.setExperimentalProperty(v0, v1, v2);
         return this;
     }
 
@@ -213,9 +389,25 @@ public class VEventBuilder extends pkg.builder.Construct.Parent<VEventBuilder> {
     }
 
     /**
+     * @see biweekly.component.VEvent#setLastModified(java.util.Date)
+     */
+    public VEventBuilder lastModified(java.util.Date v0) {
+        vEvent.setLastModified(v0);
+        return this;
+    }
+
+    /**
      * @see biweekly.component.VEvent#setLocation(biweekly.property.Location)
      */
     public VEventBuilder location(biweekly.property.Location v0) {
+        vEvent.setLocation(v0);
+        return this;
+    }
+
+    /**
+     * @see biweekly.component.VEvent#setLocation(java.lang.String)
+     */
+    public VEventBuilder location(java.lang.String v0) {
         vEvent.setLocation(v0);
         return this;
     }
@@ -229,9 +421,25 @@ public class VEventBuilder extends pkg.builder.Construct.Parent<VEventBuilder> {
     }
 
     /**
+     * @see biweekly.component.VEvent#setOrganizer(java.lang.String)
+     */
+    public VEventBuilder organizer(java.lang.String v0) {
+        vEvent.setOrganizer(v0);
+        return this;
+    }
+
+    /**
      * @see biweekly.component.VEvent#setPriority(biweekly.property.Priority)
      */
     public VEventBuilder priority(biweekly.property.Priority v0) {
+        vEvent.setPriority(v0);
+        return this;
+    }
+
+    /**
+     * @see biweekly.component.VEvent#setPriority(java.lang.Integer)
+     */
+    public VEventBuilder priority(java.lang.Integer v0) {
         vEvent.setPriority(v0);
         return this;
     }
@@ -261,9 +469,25 @@ public class VEventBuilder extends pkg.builder.Construct.Parent<VEventBuilder> {
     }
 
     /**
+     * @see biweekly.component.VEvent#setRecurrenceId(java.util.Date)
+     */
+    public VEventBuilder recurrenceId(java.util.Date v0) {
+        vEvent.setRecurrenceId(v0);
+        return this;
+    }
+
+    /**
      * @see biweekly.component.VEvent#setRecurrenceRule(biweekly.property.RecurrenceRule)
      */
     public VEventBuilder recurrenceRule(biweekly.property.RecurrenceRule v0) {
+        vEvent.setRecurrenceRule(v0);
+        return this;
+    }
+
+    /**
+     * @see biweekly.component.VEvent#setRecurrenceRule(biweekly.util.Recurrence)
+     */
+    public VEventBuilder recurrenceRule(biweekly.util.Recurrence v0) {
         vEvent.setRecurrenceRule(v0);
         return this;
     }
@@ -285,6 +509,14 @@ public class VEventBuilder extends pkg.builder.Construct.Parent<VEventBuilder> {
     }
 
     /**
+     * @see biweekly.component.VEvent#setSequence(java.lang.Integer)
+     */
+    public VEventBuilder sequence(java.lang.Integer v0) {
+        vEvent.setSequence(v0);
+        return this;
+    }
+
+    /**
      * @see biweekly.component.VEvent#setStatus(biweekly.property.Status)
      */
     public VEventBuilder status(biweekly.property.Status v0) {
@@ -301,9 +533,25 @@ public class VEventBuilder extends pkg.builder.Construct.Parent<VEventBuilder> {
     }
 
     /**
+     * @see biweekly.component.VEvent#setSummary(java.lang.String)
+     */
+    public VEventBuilder summary(java.lang.String v0) {
+        vEvent.setSummary(v0);
+        return this;
+    }
+
+    /**
      * @see biweekly.component.VEvent#setTransparency(biweekly.property.Transparency)
      */
     public VEventBuilder transparency(biweekly.property.Transparency v0) {
+        vEvent.setTransparency(v0);
+        return this;
+    }
+
+    /**
+     * @see biweekly.component.VEvent#setTransparency(java.lang.Boolean)
+     */
+    public VEventBuilder transparency(java.lang.Boolean v0) {
         vEvent.setTransparency(v0);
         return this;
     }
@@ -317,9 +565,25 @@ public class VEventBuilder extends pkg.builder.Construct.Parent<VEventBuilder> {
     }
 
     /**
+     * @see biweekly.component.VEvent#setUid(java.lang.String)
+     */
+    public VEventBuilder uid(java.lang.String v0) {
+        vEvent.setUid(v0);
+        return this;
+    }
+
+    /**
      * @see biweekly.component.VEvent#setUrl(biweekly.property.Url)
      */
     public VEventBuilder url(biweekly.property.Url v0) {
+        vEvent.setUrl(v0);
+        return this;
+    }
+
+    /**
+     * @see biweekly.component.VEvent#setUrl(java.lang.String)
+     */
+    public VEventBuilder url(java.lang.String v0) {
         vEvent.setUrl(v0);
         return this;
     }
