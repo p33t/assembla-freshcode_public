@@ -17,9 +17,16 @@
 
     <dependencies>
         <dependency>
-           <groupId>net.sf.biweekly</groupId>
-           <artifactId>biweekly</artifactId>
-           <version>0.4.4</version>
+            <groupId>net.sf.biweekly</groupId>
+            <artifactId>biweekly</artifactId>
+            <version>0.4.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>biz.freshcode.b-generation</groupId>
+            <artifactId>b-generation</artifactId>
+            <version>0.4</version>
+            <scope>test</scope>
         </dependency>
 
         <dependency>

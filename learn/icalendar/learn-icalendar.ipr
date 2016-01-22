@@ -44,6 +44,16 @@
       </list>
     </option>
   </component>
+  <component name="ProjectDictionaryState">
+    <dictionary name="pleong">
+      <words>
+        <w>calname</w>
+        <w>freshcode</w>
+        <w>ical</w>
+        <w>icalendar</w>
+      </words>
+    </dictionary>
+  </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
@@ -69,6 +79,17 @@
     <mapping directory="" vcs="svn" />
   </component>
   <component name="libraryTable">
+    <library name="Maven: biz.freshcode.b-generation:b-generation:0.4">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/biz/freshcode/b-generation/b-generation/0.4/b-generation-0.4.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/biz/freshcode/b-generation/b-generation/0.4/b-generation-0.4-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/biz/freshcode/b-generation/b-generation/0.4/b-generation-0.4-sources.jar!/" />
+      </SOURCES>
+    </library>
     <library name="Maven: com.fasterxml.jackson.core:jackson-core:2.6.1">
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-core/2.6.1/jackson-core-2.6.1.jar!/" />
