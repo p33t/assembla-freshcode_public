@@ -33,6 +33,10 @@ public class BuilderGen extends DefaultBeanBuilderGenerator {
                 && Character.isUpperCase(name.charAt(3));
     }
 
+    protected static boolean isBuilderMethod(String name) {
+        return isSetXxx(name) || isAddXxx(name);
+    }
+
     @Override
     protected String getBuilderParent(Class beanCls, String builderType) {
         String parentName = BgenUtil.className(Construct.Parent.class);
@@ -48,9 +52,9 @@ public class BuilderGen extends DefaultBeanBuilderGenerator {
 
     @Override
     protected boolean isBuilderMethod(Method m) {
+        String name = m.getName();
         return super.isBuilderMethod(m) ||
                 // Special allowance to propagate convenience builder methods
-                ((isSetXxx(m.getName()) || isAddXxx(m.getName()))
-                        && ICalProperty.class.isAssignableFrom(m.getReturnType()));
+                (isBuilderMethod(name) && ICalProperty.class.isAssignableFrom(m.getReturnType()));
     }
 }
