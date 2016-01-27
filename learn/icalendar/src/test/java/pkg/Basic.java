@@ -43,10 +43,10 @@ public class Basic extends TestCase {
 
     /* TODO: This might be scope related (from Outlook sample)
 METHOD:PUBLISH             Probably don't use just yet...see http://www.kanzaki.com/docs/ical/method.html
-X-CALSTART:20160125T000000
+X-CALSTART:20160125T000000   Identifies the start time of the first instance of an appointment in the iCalendar file.  Ignored on Outlook import
 X-CALEND:20160127T010000Z
 X-CALEND:20160127T000000
-X-CLIPSTART:20160121T140000Z
+X-CLIPSTART:20160121T140000Z Indicates the start of the date range that the user selected for export during the creation of the iCalendar file.  Ignored on Outlook import.
 X-CLIPEND:20160128T140000Z
 X-WR-RELCALID:{0000002E-7033-CD74-D555-E8B62594B1D6}
 
@@ -64,6 +64,7 @@ MS Outlook notes:
                 .calendarScale(CalendarScale.gregorian())
                 .addProperty(new RawProperty("X-WR-CALNAME", "My Calendar")) // was in Motocal and Outlook
                 .addEvent(new VEventBuilder()
+                        // From Wikipedia "Outlook 2002 and Outlook 2003 demand a UID and a DTSTAMP"
                         .uid("jbloggs_2016-01-21") // A uuid that is deterministic?  Perhaps add type of hours or some origin code?
                         .summary("Whole Day Event")
                         .description("Description of whole day event")
