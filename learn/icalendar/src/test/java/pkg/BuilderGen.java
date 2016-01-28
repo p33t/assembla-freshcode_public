@@ -5,6 +5,7 @@ import biweekly.property.ICalProperty;
 import biz.freshcode.b_generation.BeanBuilderWriter;
 import biz.freshcode.b_generation.BgenUtil;
 import biz.freshcode.b_generation.DefaultBeanBuilderGenerator;
+import biz.freshcode.b_generation.PackageMapper;
 import pkg.builder.BeanBuilder;
 import pkg.builder.Construct;
 
@@ -18,8 +19,13 @@ public class BuilderGen extends DefaultBeanBuilderGenerator {
     public static void main(String[] args) {
         new BeanBuilderWriter()
                 .generator(new BuilderGen())
-                .addMapping("", "pkg.builder")
+                .packageMapper(mapper())
                 .write(BEAN_CLS);
+    }
+
+    private static PackageMapper mapper() {
+        return new PackageMapper()
+                .addMapping("", "pkg.builder");
     }
 
     protected static boolean isAddXxx(String name) {
