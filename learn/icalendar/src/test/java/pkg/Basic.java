@@ -3,7 +3,9 @@ package pkg;
 import biweekly.Biweekly;
 import biweekly.ICalendar;
 import biweekly.property.*;
+import biweekly.util.DateTimeComponents;
 import biweekly.util.Duration;
+import biweekly.util.ICalDate;
 import junit.framework.TestCase;
 import pkg.builder.biweekly.ICalendarBuilder;
 import pkg.builder.biweekly.component.VAlarmBuilder;
@@ -19,10 +21,6 @@ public class Basic extends TestCase {
     int y = 2016;
     int m = 1;
     int d = 25;
-
-    private static Date ymd(int year, int month, int day) {
-        return calendar(year, month, day).getTime();
-    }
 
     private static Calendar calendar(int year, int month, int day) {
         Calendar c = Calendar.getInstance();
@@ -69,7 +67,7 @@ MS Outlook notes:
                         .summary("Whole Day Event")
                         .description("Description of whole day event")
                         .dateTimeStamp(timestamp)
-                        .dateStart(dateStart(y, m, d))
+                        .dateStart(new ICalDate(new DateTimeComponents(y, m, d), false))
                         // Might be more logical to use duration because dateEnd appears to be exclusive (?!)
                         .duration(Duration.builder().days(1).build())
                         .vEvent)
@@ -96,9 +94,5 @@ MS Outlook notes:
         // Logging is handy too.
         // python -m SimpleHTTPServer
         Biweekly.write(ical).go(new FileWriter("target/basic.ics"));
-    }
-
-    private DateStart dateStart(int year, int month, int day) {
-        return new DateStart(ymd(year, month, day), false);
     }
 }
