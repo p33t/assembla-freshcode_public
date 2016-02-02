@@ -51,6 +51,8 @@ X-WR-RELCALID:{0000002E-7033-CD74-D555-E8B62594B1D6}
 MS Outlook notes:
 - Can hover over calendar checkbox to see last updated
 - Send/Receive button also updates the calendar
+- Custom properties start with 'X-'. EG: X-MICROSOFT-DISALLOW-COUNTER.
+  See https://tools.ietf.org/html/rfc5545#section-3.8.8.2
 
 
 
