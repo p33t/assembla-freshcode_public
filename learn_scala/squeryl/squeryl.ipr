@@ -176,6 +176,28 @@
         <root url="jar://$MAVEN_REPOSITORY$/log4j/log4j/1.2.16/log4j-1.2.16-sources.jar!/" />
       </SOURCES>
     </library>
+    <library name="Maven: org.scala-lang.modules:scala-parser-combinators_2.11:1.0.3">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/modules/scala-parser-combinators_2.11/1.0.3/scala-parser-combinators_2.11-1.0.3.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/modules/scala-parser-combinators_2.11/1.0.3/scala-parser-combinators_2.11-1.0.3-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/modules/scala-parser-combinators_2.11/1.0.3/scala-parser-combinators_2.11-1.0.3-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.scala-lang.modules:scala-xml_2.11:1.0.2">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/modules/scala-xml_2.11/1.0.2/scala-xml_2.11-1.0.2.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/modules/scala-xml_2.11/1.0.2/scala-xml_2.11-1.0.2-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/modules/scala-xml_2.11/1.0.2/scala-xml_2.11-1.0.2-sources.jar!/" />
+      </SOURCES>
+    </library>
     <library name="Maven: org.scala-lang:scala-compiler-bundle:2.8.1">
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-compiler/2.8.1/scala-compiler-2.8.1.jar!/" />
@@ -192,66 +214,66 @@
       <JAVADOC />
       <SOURCES />
     </library>
-    <library name="Maven: org.scala-lang:scala-compiler:2.10.3">
+    <library name="Maven: org.scala-lang:scala-compiler:2.11.6">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-compiler/2.10.3/scala-compiler-2.10.3.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-compiler/2.11.6/scala-compiler-2.11.6.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-compiler/2.10.3/scala-compiler-2.10.3-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-compiler/2.11.6/scala-compiler-2.11.6-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-compiler/2.10.3/scala-compiler-2.10.3-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-compiler/2.11.6/scala-compiler-2.11.6-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.scala-lang:scala-library:2.10.3" type="Scala">
+    <library name="Maven: org.scala-lang:scala-library:2.11.7" type="Scala">
       <properties>
         <compiler-classpath>
-          <root url="file://$MAVEN_REPOSITORY$/org/scala-lang/scala-compiler/2.10.3/scala-compiler-2.10.3.jar" />
-          <root url="file://$MAVEN_REPOSITORY$/org/scala-lang/scala-library/2.10.3/scala-library-2.10.3.jar" />
-          <root url="file://$MAVEN_REPOSITORY$/org/scala-lang/scala-reflect/2.10.3/scala-reflect-2.10.3.jar" />
+          <root url="file://$MAVEN_REPOSITORY$/org/scala-lang/scala-compiler/2.11.7/scala-compiler-2.11.7.jar" />
+          <root url="file://$MAVEN_REPOSITORY$/org/scala-lang/scala-library/2.11.7/scala-library-2.11.7.jar" />
+          <root url="file://$MAVEN_REPOSITORY$/org/scala-lang/scala-reflect/2.11.7/scala-reflect-2.11.7.jar" />
         </compiler-classpath>
       </properties>
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-library/2.10.3/scala-library-2.10.3.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-library/2.11.7/scala-library-2.11.7.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-library/2.10.3/scala-library-2.10.3-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-library/2.11.7/scala-library-2.11.7-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-library/2.10.3/scala-library-2.10.3-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-library/2.11.7/scala-library-2.11.7-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.scala-lang:scala-reflect:2.10.0">
+    <library name="Maven: org.scala-lang:scala-reflect:2.11.7">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-reflect/2.10.0/scala-reflect-2.10.0.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-reflect/2.11.7/scala-reflect-2.11.7.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-reflect/2.10.0/scala-reflect-2.10.0-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-reflect/2.11.7/scala-reflect-2.11.7-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-reflect/2.10.0/scala-reflect-2.10.0-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-reflect/2.11.7/scala-reflect-2.11.7-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.scala-lang:scalap:2.10.3">
+    <library name="Maven: org.scala-lang:scalap:2.11.6">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scalap/2.10.3/scalap-2.10.3.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scalap/2.11.6/scalap-2.11.6.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scalap/2.10.3/scalap-2.10.3-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scalap/2.11.6/scalap-2.11.6-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scalap/2.10.3/scalap-2.10.3-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scalap/2.11.6/scalap-2.11.6-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.scalatest:scalatest_2.10:2.0">
+    <library name="Maven: org.scalatest:scalatest_2.11:2.2.6">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scalatest/scalatest_2.10/2.0/scalatest_2.10-2.0.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/scalatest/scalatest_2.11/2.2.6/scalatest_2.11-2.2.6.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scalatest/scalatest_2.10/2.0/scalatest_2.10-2.0-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/scalatest/scalatest_2.11/2.2.6/scalatest_2.11-2.2.6-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scalatest/scalatest_2.10/2.0/scalatest_2.10-2.0-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/scalatest/scalatest_2.11/2.2.6/scalatest_2.11-2.2.6-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: org.slf4j:slf4j-api:1.6.1">
@@ -276,15 +298,15 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-log4j12/1.6.1/slf4j-log4j12-1.6.1-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.squeryl:squeryl_2.10:0.9.6-RC2">
+    <library name="Maven: org.squeryl:squeryl_2.11:0.9.6-RC4">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/squeryl/squeryl_2.10/0.9.6-RC2/squeryl_2.10-0.9.6-RC2.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/squeryl/squeryl_2.11/0.9.6-RC4/squeryl_2.11-0.9.6-RC4.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/org/squeryl/squeryl_2.10/0.9.6-RC2/squeryl_2.10-0.9.6-RC2-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/squeryl/squeryl_2.11/0.9.6-RC4/squeryl_2.11-0.9.6-RC4-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/squeryl/squeryl_2.10/0.9.6-RC2/squeryl_2.10-0.9.6-RC2-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/squeryl/squeryl_2.11/0.9.6-RC4/squeryl_2.11-0.9.6-RC4-sources.jar!/" />
       </SOURCES>
     </library>
   </component>
