@@ -1,8 +1,9 @@
 package pkg.db
 
-import model.DirectedEntity
-import org.squeryl.{OptionalKeyedEntityDef, Session, SessionFactory, Schema}
-import DbTypes._
+import org.squeryl._
+import pkg.db.DbTypes._
+import pkg.db.model.DirectedEntity
+
 import scala.reflect.Manifest
 
 object AppSchema extends Schema {
