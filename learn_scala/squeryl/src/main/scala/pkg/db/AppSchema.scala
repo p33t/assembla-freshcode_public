@@ -2,7 +2,7 @@ package pkg.db
 
 import org.squeryl._
 import pkg.db.DbTypes._
-import pkg.db.model.DirectedEntity
+import pkg.db.model.{ClobEntity, DirectedEntity}
 
 import scala.reflect.Manifest
 
@@ -31,6 +31,11 @@ object AppSchema extends Schema {
   ))
 
   val directedEntity = table[DirectedEntity]
+
+  val clobEntity = table[ClobEntity]
+  on(clobEntity)(x => declare(
+    x.data is dbType("clob")
+  ))
 
   /**
    * Used for tables with a version field.

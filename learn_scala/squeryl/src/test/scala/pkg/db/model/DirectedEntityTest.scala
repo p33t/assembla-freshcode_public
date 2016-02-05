@@ -13,7 +13,7 @@ class DirectedEntityTest extends FunSuite {
 
  test("save & restore") {
     val id = UUID.randomUUID()
-    val de = new DirectedEntity(id, DirectionEnum.NORTH, None)
+    val de = new DirectedEntity(id, DirectionEnum.SOUTH, None)
     AppSchema.init()
     inTransaction {
       AppSchema.reset()
