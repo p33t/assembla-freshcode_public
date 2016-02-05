@@ -1,16 +1,17 @@
 package pkg.db.model
 
-import org.scalatest.Suite
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
-import pkg.db.AppSchema
 import java.util.UUID
-import pkg.db.model.Direction.North
+
+import org.junit.runner.RunWith
+import org.scalatest.FunSuite
+import org.scalatest.junit.JUnitRunner
 import org.squeryl.customtypes.CustomTypesMode._
+import pkg.db.AppSchema
+import pkg.db.model.Direction.North
 
 @RunWith(classOf[JUnitRunner])
-class DirectedEntityTest extends Suite {
-  def testSaveRestore() {
+class DirectedEntityTest extends FunSuite {
+ test("save & restore") {
     val id = UUID.randomUUID()
     val de = new DirectedEntity(id, North)
     AppSchema.init()
@@ -22,7 +23,7 @@ class DirectedEntityTest extends Suite {
     inTransaction {
       AppSchema.directedEntity.lookup(id) match {
         case None => fail("Unable to locate entity with id " + id)
-        case Some(found) => expect(de)(found)
+        case Some(found) => assertResult(de)(found)
       }
     }
   }

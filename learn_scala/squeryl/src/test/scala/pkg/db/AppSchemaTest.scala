@@ -2,7 +2,7 @@ package pkg.db
 
 import org.scalatest.junit.JUnitRunner
 import org.junit.runner.RunWith
-import org.scalatest.FunSuite
+import org.scalatest.{Spec, FunSuite}
 import DbTypes._
 
 @RunWith(classOf[JUnitRunner])
@@ -26,6 +26,6 @@ class AppSchemaTest extends FunSuite {
       AppSchema.t1.where(row => row.id === t1.id).headOption
     }
 
-    assert(result == Some(t1b.copy(ver = t1b.ver + 1)))
+    assert(result === Some(t1b.copy(ver = t1b.ver + 1)))
   }
 }

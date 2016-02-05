@@ -1,14 +1,13 @@
 package pkg.db
 
-import org.junit.Test
 import org.junit.runner.RunWith
+import org.scalatest.{FunSuite, Spec}
 import org.scalatest.junit.JUnitRunner
-import org.scalatest.Suite
 
 @RunWith(classOf[JUnitRunner])
-class DbTest extends Suite {
+class DbTest extends FunSuite {
 
-  def testConnect() {
+  test("connect") {
     pkg.db.Db.withConnection {
       _ => ()
     }
