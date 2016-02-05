@@ -33,6 +33,7 @@ class ClobEntityTest extends FunSuite {
         stmt.setObject(1, data)
         stmt.setObject(2, id)
         stmt.execute()
+        data.free()
         assertResult(1)(stmt.getUpdateCount)
       }
     }
