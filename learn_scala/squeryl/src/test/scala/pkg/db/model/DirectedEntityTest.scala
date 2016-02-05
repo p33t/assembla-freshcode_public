@@ -5,16 +5,15 @@ import java.util.UUID
 import org.junit.runner.RunWith
 import org.scalatest.FunSuite
 import org.scalatest.junit.JUnitRunner
-import org.squeryl.customtypes.CustomTypesMode._
 import pkg.db.AppSchema
-import pkg.db.model.Direction.North
+import pkg.db.DbTypes._
 
 @RunWith(classOf[JUnitRunner])
 class DirectedEntityTest extends FunSuite {
 
  test("save & restore") {
     val id = UUID.randomUUID()
-    val de = new DirectedEntity(id, North)
+    val de = new DirectedEntity(id, DirectionEnum.NORTH, None)
     AppSchema.init()
     inTransaction {
       AppSchema.reset()

@@ -3,6 +3,7 @@ package pkg.db.model
 import org.squeryl.customtypes.{CustomType, StringField}
 import pkg.db.model.Direction.{North, South}
 
+@deprecated("Was using CustomTypeMode... which I believe is obsolete.")
 class Direction(s: String) extends StringField(s) {
   self: CustomType[String] =>
 
