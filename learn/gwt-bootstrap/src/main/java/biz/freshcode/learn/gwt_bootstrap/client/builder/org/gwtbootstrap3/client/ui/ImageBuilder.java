@@ -17,6 +17,13 @@ public class ImageBuilder extends biz.freshcode.learn.gwt_bootstrap.client.build
     }
 
     /**
+     * @see org.gwtbootstrap3.client.ui.Image#Image()
+     */
+    public ImageBuilder() {
+        this(new Image());
+    }
+
+    /**
      * @see org.gwtbootstrap3.client.ui.Image#Image(java.lang.String)
      */
     public ImageBuilder(java.lang.String v0) {
@@ -24,24 +31,10 @@ public class ImageBuilder extends biz.freshcode.learn.gwt_bootstrap.client.build
     }
 
     /**
-     * @see org.gwtbootstrap3.client.ui.Image#Image(com.google.gwt.safehtml.shared.SafeUri, int, int, int, int)
-     */
-    public ImageBuilder(com.google.gwt.safehtml.shared.SafeUri v0, int v1, int v2, int v3, int v4) {
-        this(new Image(v0, v1, v2, v3, v4));
-    }
-
-    /**
      * @see org.gwtbootstrap3.client.ui.Image#Image(com.google.gwt.resources.client.ImageResource)
      */
     public ImageBuilder(com.google.gwt.resources.client.ImageResource v0) {
         this(new Image(v0));
-    }
-
-    /**
-     * @see org.gwtbootstrap3.client.ui.Image#Image()
-     */
-    public ImageBuilder() {
-        this(new Image());
     }
 
     /**
@@ -55,6 +48,13 @@ public class ImageBuilder extends biz.freshcode.learn.gwt_bootstrap.client.build
      * @see org.gwtbootstrap3.client.ui.Image#Image(java.lang.String, int, int, int, int)
      */
     public ImageBuilder(java.lang.String v0, int v1, int v2, int v3, int v4) {
+        this(new Image(v0, v1, v2, v3, v4));
+    }
+
+    /**
+     * @see org.gwtbootstrap3.client.ui.Image#Image(com.google.gwt.safehtml.shared.SafeUri, int, int, int, int)
+     */
+    public ImageBuilder(com.google.gwt.safehtml.shared.SafeUri v0, int v1, int v2, int v3, int v4) {
         this(new Image(v0, v1, v2, v3, v4));
     }
 

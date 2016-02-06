@@ -24,10 +24,10 @@ public class ButtonBuilder extends biz.freshcode.learn.gwt_bootstrap.client.buil
     }
 
     /**
-     * @see org.gwtbootstrap3.client.ui.Button#Button(java.lang.String, org.gwtbootstrap3.client.ui.constants.IconType, com.google.gwt.event.dom.client.ClickHandler)
+     * @see org.gwtbootstrap3.client.ui.Button#Button(java.lang.String)
      */
-    public ButtonBuilder(java.lang.String v0, org.gwtbootstrap3.client.ui.constants.IconType v1, com.google.gwt.event.dom.client.ClickHandler v2) {
-        this(new Button(v0, v1, v2));
+    public ButtonBuilder(java.lang.String v0) {
+        this(new Button(v0));
     }
 
     /**
@@ -38,10 +38,10 @@ public class ButtonBuilder extends biz.freshcode.learn.gwt_bootstrap.client.buil
     }
 
     /**
-     * @see org.gwtbootstrap3.client.ui.Button#Button(java.lang.String)
+     * @see org.gwtbootstrap3.client.ui.Button#Button(java.lang.String, org.gwtbootstrap3.client.ui.constants.IconType, com.google.gwt.event.dom.client.ClickHandler)
      */
-    public ButtonBuilder(java.lang.String v0) {
-        this(new Button(v0));
+    public ButtonBuilder(java.lang.String v0, org.gwtbootstrap3.client.ui.constants.IconType v1, com.google.gwt.event.dom.client.ClickHandler v2) {
+        this(new Button(v0, v1, v2));
     }
 
     /**
@@ -89,6 +89,22 @@ public class ButtonBuilder extends biz.freshcode.learn.gwt_bootstrap.client.buil
      */
     public ButtonBuilder active(boolean v0) {
         button.setActive(v0);
+        return this;
+    }
+
+    /**
+     * @see org.gwtbootstrap3.client.ui.Button#setBadgePosition(org.gwtbootstrap3.client.ui.constants.BadgePosition)
+     */
+    public ButtonBuilder badgePosition(org.gwtbootstrap3.client.ui.constants.BadgePosition v0) {
+        button.setBadgePosition(v0);
+        return this;
+    }
+
+    /**
+     * @see org.gwtbootstrap3.client.ui.Button#setBadgeText(java.lang.String)
+     */
+    public ButtonBuilder badgeText(java.lang.String v0) {
+        button.setBadgeText(v0);
         return this;
     }
 
@@ -221,18 +237,10 @@ public class ButtonBuilder extends biz.freshcode.learn.gwt_bootstrap.client.buil
     }
 
     /**
-     * @see org.gwtbootstrap3.client.ui.Button#setIconLight(boolean)
+     * @see org.gwtbootstrap3.client.ui.Button#setIconInverse(boolean)
      */
-    public ButtonBuilder iconLight(boolean v0) {
-        button.setIconLight(v0);
-        return this;
-    }
-
-    /**
-     * @see org.gwtbootstrap3.client.ui.Button#setIconMuted(boolean)
-     */
-    public ButtonBuilder iconMuted(boolean v0) {
-        button.setIconMuted(v0);
+    public ButtonBuilder iconInverse(boolean v0) {
+        button.setIconInverse(v0);
         return this;
     }
 

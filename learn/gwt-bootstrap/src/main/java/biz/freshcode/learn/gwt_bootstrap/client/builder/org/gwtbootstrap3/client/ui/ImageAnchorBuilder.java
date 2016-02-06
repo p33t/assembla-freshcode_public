@@ -77,6 +77,22 @@ public class ImageAnchorBuilder extends biz.freshcode.learn.gwt_bootstrap.client
     }
 
     /**
+     * @see org.gwtbootstrap3.client.ui.ImageAnchor#setBadgePosition(org.gwtbootstrap3.client.ui.constants.BadgePosition)
+     */
+    public ImageAnchorBuilder badgePosition(org.gwtbootstrap3.client.ui.constants.BadgePosition v0) {
+        imageAnchor.setBadgePosition(v0);
+        return this;
+    }
+
+    /**
+     * @see org.gwtbootstrap3.client.ui.ImageAnchor#setBadgeText(java.lang.String)
+     */
+    public ImageAnchorBuilder badgeText(java.lang.String v0) {
+        imageAnchor.setBadgeText(v0);
+        return this;
+    }
+
+    /**
      * @see org.gwtbootstrap3.client.ui.ImageAnchor#setColor(java.lang.String)
      */
     public ImageAnchorBuilder color(java.lang.String v0) {
@@ -205,18 +221,10 @@ public class ImageAnchorBuilder extends biz.freshcode.learn.gwt_bootstrap.client
     }
 
     /**
-     * @see org.gwtbootstrap3.client.ui.ImageAnchor#setIconLight(boolean)
+     * @see org.gwtbootstrap3.client.ui.ImageAnchor#setIconInverse(boolean)
      */
-    public ImageAnchorBuilder iconLight(boolean v0) {
-        imageAnchor.setIconLight(v0);
-        return this;
-    }
-
-    /**
-     * @see org.gwtbootstrap3.client.ui.ImageAnchor#setIconMuted(boolean)
-     */
-    public ImageAnchorBuilder iconMuted(boolean v0) {
-        imageAnchor.setIconMuted(v0);
+    public ImageAnchorBuilder iconInverse(boolean v0) {
+        imageAnchor.setIconInverse(v0);
         return this;
     }
 
@@ -225,6 +233,14 @@ public class ImageAnchorBuilder extends biz.freshcode.learn.gwt_bootstrap.client
      */
     public ImageAnchorBuilder iconPosition(org.gwtbootstrap3.client.ui.constants.IconPosition v0) {
         imageAnchor.setIconPosition(v0);
+        return this;
+    }
+
+    /**
+     * @see org.gwtbootstrap3.client.ui.ImageAnchor#setIconPulse(boolean)
+     */
+    public ImageAnchorBuilder iconPulse(boolean v0) {
+        imageAnchor.setIconPulse(v0);
         return this;
     }
 

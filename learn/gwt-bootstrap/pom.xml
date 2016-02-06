@@ -11,6 +11,20 @@
     <version>1.0-SNAPSHOT</version>
     <name>learn-gwt-bootstrap</name>
 
+    <!--  Enable snapshot release use -->
+    <repositories>
+        <repository>
+            <id>sonatype-nexus-snapshots</id>
+            <url>http://oss.sonatype.org/content/repositories/snapshots</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </repository>
+    </repositories>
+
     <properties>
         <!-- Convenience property to set the GWT version -->
         <gwtVersion>2.7.0</gwtVersion>
@@ -20,7 +34,7 @@
         <maven.compiler.target>1.7</maven.compiler.target>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <gwtbootstrap3.version>1.0.1-SNAPSHOT</gwtbootstrap3.version>
+        <gwtbootstrap3.version>1.0-SNAPSHOT</gwtbootstrap3.version>
     </properties>
 
     <dependencyManagement>
@@ -37,9 +51,9 @@
 
     <dependencies>
         <dependency>
-        	<groupId>org.gwtbootstrap3</groupId>
-        	<artifactId>gwtbootstrap3</artifactId>
-        	<version>${gwtbootstrap3.version}</version>
+            <groupId>org.gwtbootstrap3</groupId>
+            <artifactId>gwtbootstrap3</artifactId>
+            <version>${gwtbootstrap3.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -113,6 +127,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
+                <version>2.6</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>

@@ -17,10 +17,10 @@ public class AnchorBuilder extends biz.freshcode.learn.gwt_bootstrap.client.buil
     }
 
     /**
-     * @see org.gwtbootstrap3.client.ui.Anchor#Anchor(java.lang.String, java.lang.String)
+     * @see org.gwtbootstrap3.client.ui.Anchor#Anchor()
      */
-    public AnchorBuilder(java.lang.String v0, java.lang.String v1) {
-        this(new Anchor(v0, v1));
+    public AnchorBuilder() {
+        this(new Anchor());
     }
 
     /**
@@ -31,10 +31,10 @@ public class AnchorBuilder extends biz.freshcode.learn.gwt_bootstrap.client.buil
     }
 
     /**
-     * @see org.gwtbootstrap3.client.ui.Anchor#Anchor()
+     * @see org.gwtbootstrap3.client.ui.Anchor#Anchor(java.lang.String, java.lang.String)
      */
-    public AnchorBuilder() {
-        this(new Anchor());
+    public AnchorBuilder(java.lang.String v0, java.lang.String v1) {
+        this(new Anchor(v0, v1));
     }
 
     /**
@@ -74,6 +74,22 @@ public class AnchorBuilder extends biz.freshcode.learn.gwt_bootstrap.client.buil
      */
     public AnchorBuilder accessKey(char v0) {
         anchor.setAccessKey(v0);
+        return this;
+    }
+
+    /**
+     * @see org.gwtbootstrap3.client.ui.Anchor#setBadgePosition(org.gwtbootstrap3.client.ui.constants.BadgePosition)
+     */
+    public AnchorBuilder badgePosition(org.gwtbootstrap3.client.ui.constants.BadgePosition v0) {
+        anchor.setBadgePosition(v0);
+        return this;
+    }
+
+    /**
+     * @see org.gwtbootstrap3.client.ui.Anchor#setBadgeText(java.lang.String)
+     */
+    public AnchorBuilder badgeText(java.lang.String v0) {
+        anchor.setBadgeText(v0);
         return this;
     }
 
@@ -206,18 +222,10 @@ public class AnchorBuilder extends biz.freshcode.learn.gwt_bootstrap.client.buil
     }
 
     /**
-     * @see org.gwtbootstrap3.client.ui.Anchor#setIconLight(boolean)
+     * @see org.gwtbootstrap3.client.ui.Anchor#setIconInverse(boolean)
      */
-    public AnchorBuilder iconLight(boolean v0) {
-        anchor.setIconLight(v0);
-        return this;
-    }
-
-    /**
-     * @see org.gwtbootstrap3.client.ui.Anchor#setIconMuted(boolean)
-     */
-    public AnchorBuilder iconMuted(boolean v0) {
-        anchor.setIconMuted(v0);
+    public AnchorBuilder iconInverse(boolean v0) {
+        anchor.setIconInverse(v0);
         return this;
     }
 
@@ -226,6 +234,14 @@ public class AnchorBuilder extends biz.freshcode.learn.gwt_bootstrap.client.buil
      */
     public AnchorBuilder iconPosition(org.gwtbootstrap3.client.ui.constants.IconPosition v0) {
         anchor.setIconPosition(v0);
+        return this;
+    }
+
+    /**
+     * @see org.gwtbootstrap3.client.ui.Anchor#setIconPulse(boolean)
+     */
+    public AnchorBuilder iconPulse(boolean v0) {
+        anchor.setIconPulse(v0);
         return this;
     }
 
