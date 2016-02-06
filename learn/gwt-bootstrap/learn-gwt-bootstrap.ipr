@@ -55,6 +55,7 @@
   <component name="CopyrightManager" default="" />
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
   </component>
   <component name="EntryPointsManager">
     <entry_points version="2.0" />
@@ -322,15 +323,15 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/gwtbootstrap3/gwtbootstrap3-extras/0.9.1/gwtbootstrap3-extras-0.9.1-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.gwtbootstrap3:gwtbootstrap3:1.0.1-SNAPSHOT">
+    <library name="Maven: org.gwtbootstrap3:gwtbootstrap3:1.0-SNAPSHOT">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/gwtbootstrap3/gwtbootstrap3/1.0.1-SNAPSHOT/gwtbootstrap3-1.0.1-SNAPSHOT.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/gwtbootstrap3/gwtbootstrap3/1.0-SNAPSHOT/gwtbootstrap3-1.0-20160128.001750-184.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/org/gwtbootstrap3/gwtbootstrap3/1.0.1-SNAPSHOT/gwtbootstrap3-1.0.1-SNAPSHOT-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/gwtbootstrap3/gwtbootstrap3/1.0-SNAPSHOT/gwtbootstrap3-1.0-20160128.001750-184-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/gwtbootstrap3/gwtbootstrap3/1.0.1-SNAPSHOT/gwtbootstrap3-1.0.1-SNAPSHOT-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/gwtbootstrap3/gwtbootstrap3/1.0-SNAPSHOT/gwtbootstrap3-1.0-20160128.001750-184-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: org.hamcrest:hamcrest-core:1.3">

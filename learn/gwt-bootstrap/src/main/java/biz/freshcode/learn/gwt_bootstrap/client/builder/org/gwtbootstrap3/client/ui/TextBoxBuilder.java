@@ -17,10 +17,10 @@ public class TextBoxBuilder extends biz.freshcode.learn.gwt_bootstrap.client.bui
     }
 
     /**
-     * @see org.gwtbootstrap3.client.ui.TextBox#TextBox(com.google.gwt.dom.client.Element, com.google.gwt.text.shared.Renderer, com.google.gwt.text.shared.Parser)
+     * @see org.gwtbootstrap3.client.ui.TextBox#TextBox()
      */
-    public TextBoxBuilder(com.google.gwt.dom.client.Element v0, com.google.gwt.text.shared.Renderer<java.lang.String> v1, com.google.gwt.text.shared.Parser<java.lang.String> v2) {
-        this(new TextBox(v0, v1, v2));
+    public TextBoxBuilder() {
+        this(new TextBox());
     }
 
     /**
@@ -31,10 +31,10 @@ public class TextBoxBuilder extends biz.freshcode.learn.gwt_bootstrap.client.bui
     }
 
     /**
-     * @see org.gwtbootstrap3.client.ui.TextBox#TextBox()
+     * @see org.gwtbootstrap3.client.ui.TextBox#TextBox(com.google.gwt.dom.client.Element, com.google.gwt.text.shared.Renderer, com.google.gwt.text.shared.Parser)
      */
-    public TextBoxBuilder() {
-        this(new TextBox());
+    public TextBoxBuilder(com.google.gwt.dom.client.Element v0, com.google.gwt.text.shared.Renderer<java.lang.String> v1, com.google.gwt.text.shared.Parser<java.lang.String> v2) {
+        this(new TextBox(v0, v1, v2));
     }
 
     /**

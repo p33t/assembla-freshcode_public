@@ -17,13 +17,6 @@ public class ColumnBuilder extends biz.freshcode.learn.gwt_bootstrap.client.buil
     }
 
     /**
-     * @see org.gwtbootstrap3.client.ui.Column#Column(org.gwtbootstrap3.client.ui.constants.ColumnSize, com.google.gwt.user.client.ui.Widget, com.google.gwt.user.client.ui.Widget...)
-     */
-    public ColumnBuilder(org.gwtbootstrap3.client.ui.constants.ColumnSize v0, com.google.gwt.user.client.ui.Widget v1, com.google.gwt.user.client.ui.Widget... v2) {
-        this(new Column(v0, v1, v2));
-    }
-
-    /**
      * @see org.gwtbootstrap3.client.ui.Column#Column(java.lang.String)
      */
     public ColumnBuilder(java.lang.String v0) {
@@ -35,6 +28,13 @@ public class ColumnBuilder extends biz.freshcode.learn.gwt_bootstrap.client.buil
      */
     public ColumnBuilder(org.gwtbootstrap3.client.ui.constants.ColumnSize v0, org.gwtbootstrap3.client.ui.constants.ColumnSize... v1) {
         this(new Column(v0, v1));
+    }
+
+    /**
+     * @see org.gwtbootstrap3.client.ui.Column#Column(org.gwtbootstrap3.client.ui.constants.ColumnSize, com.google.gwt.user.client.ui.Widget, com.google.gwt.user.client.ui.Widget...)
+     */
+    public ColumnBuilder(org.gwtbootstrap3.client.ui.constants.ColumnSize v0, com.google.gwt.user.client.ui.Widget v1, com.google.gwt.user.client.ui.Widget... v2) {
+        this(new Column(v0, v1, v2));
     }
 
     /**

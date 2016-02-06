@@ -17,17 +17,17 @@ public class ListItemBuilder extends biz.freshcode.learn.gwt_bootstrap.client.bu
     }
 
     /**
-     * @see org.gwtbootstrap3.client.ui.ListItem#ListItem(java.lang.String)
-     */
-    public ListItemBuilder(java.lang.String v0) {
-        this(new ListItem(v0));
-    }
-
-    /**
      * @see org.gwtbootstrap3.client.ui.ListItem#ListItem()
      */
     public ListItemBuilder() {
         this(new ListItem());
+    }
+
+    /**
+     * @see org.gwtbootstrap3.client.ui.ListItem#ListItem(java.lang.String)
+     */
+    public ListItemBuilder(java.lang.String v0) {
+        this(new ListItem(v0));
     }
 
     /**

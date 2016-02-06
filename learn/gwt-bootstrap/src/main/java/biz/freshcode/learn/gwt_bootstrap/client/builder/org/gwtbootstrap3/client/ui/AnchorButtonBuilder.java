@@ -17,17 +17,17 @@ public class AnchorButtonBuilder extends biz.freshcode.learn.gwt_bootstrap.clien
     }
 
     /**
-     * @see org.gwtbootstrap3.client.ui.AnchorButton#AnchorButton(org.gwtbootstrap3.client.ui.constants.ButtonType)
-     */
-    public AnchorButtonBuilder(org.gwtbootstrap3.client.ui.constants.ButtonType v0) {
-        this(new AnchorButton(v0));
-    }
-
-    /**
      * @see org.gwtbootstrap3.client.ui.AnchorButton#AnchorButton()
      */
     public AnchorButtonBuilder() {
         this(new AnchorButton());
+    }
+
+    /**
+     * @see org.gwtbootstrap3.client.ui.AnchorButton#AnchorButton(org.gwtbootstrap3.client.ui.constants.ButtonType)
+     */
+    public AnchorButtonBuilder(org.gwtbootstrap3.client.ui.constants.ButtonType v0) {
+        this(new AnchorButton(v0));
     }
 
     /**
@@ -75,6 +75,22 @@ public class AnchorButtonBuilder extends biz.freshcode.learn.gwt_bootstrap.clien
      */
     public AnchorButtonBuilder active(boolean v0) {
         anchorButton.setActive(v0);
+        return this;
+    }
+
+    /**
+     * @see org.gwtbootstrap3.client.ui.AnchorButton#setBadgePosition(org.gwtbootstrap3.client.ui.constants.BadgePosition)
+     */
+    public AnchorButtonBuilder badgePosition(org.gwtbootstrap3.client.ui.constants.BadgePosition v0) {
+        anchorButton.setBadgePosition(v0);
+        return this;
+    }
+
+    /**
+     * @see org.gwtbootstrap3.client.ui.AnchorButton#setBadgeText(java.lang.String)
+     */
+    public AnchorButtonBuilder badgeText(java.lang.String v0) {
+        anchorButton.setBadgeText(v0);
         return this;
     }
 
@@ -215,18 +231,10 @@ public class AnchorButtonBuilder extends biz.freshcode.learn.gwt_bootstrap.clien
     }
 
     /**
-     * @see org.gwtbootstrap3.client.ui.AnchorButton#setIconLight(boolean)
+     * @see org.gwtbootstrap3.client.ui.AnchorButton#setIconInverse(boolean)
      */
-    public AnchorButtonBuilder iconLight(boolean v0) {
-        anchorButton.setIconLight(v0);
-        return this;
-    }
-
-    /**
-     * @see org.gwtbootstrap3.client.ui.AnchorButton#setIconMuted(boolean)
-     */
-    public AnchorButtonBuilder iconMuted(boolean v0) {
-        anchorButton.setIconMuted(v0);
+    public AnchorButtonBuilder iconInverse(boolean v0) {
+        anchorButton.setIconInverse(v0);
         return this;
     }
 
@@ -235,6 +243,14 @@ public class AnchorButtonBuilder extends biz.freshcode.learn.gwt_bootstrap.clien
      */
     public AnchorButtonBuilder iconPosition(org.gwtbootstrap3.client.ui.constants.IconPosition v0) {
         anchorButton.setIconPosition(v0);
+        return this;
+    }
+
+    /**
+     * @see org.gwtbootstrap3.client.ui.AnchorButton#setIconPulse(boolean)
+     */
+    public AnchorButtonBuilder iconPulse(boolean v0) {
+        anchorButton.setIconPulse(v0);
         return this;
     }
 

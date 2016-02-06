@@ -61,6 +61,22 @@ public class NavbarBrandBuilder extends biz.freshcode.learn.gwt_bootstrap.client
     }
 
     /**
+     * @see org.gwtbootstrap3.client.ui.NavbarBrand#setBadgePosition(org.gwtbootstrap3.client.ui.constants.BadgePosition)
+     */
+    public NavbarBrandBuilder badgePosition(org.gwtbootstrap3.client.ui.constants.BadgePosition v0) {
+        navbarBrand.setBadgePosition(v0);
+        return this;
+    }
+
+    /**
+     * @see org.gwtbootstrap3.client.ui.NavbarBrand#setBadgeText(java.lang.String)
+     */
+    public NavbarBrandBuilder badgeText(java.lang.String v0) {
+        navbarBrand.setBadgeText(v0);
+        return this;
+    }
+
+    /**
      * @see org.gwtbootstrap3.client.ui.NavbarBrand#setColor(java.lang.String)
      */
     public NavbarBrandBuilder color(java.lang.String v0) {
@@ -189,18 +205,10 @@ public class NavbarBrandBuilder extends biz.freshcode.learn.gwt_bootstrap.client
     }
 
     /**
-     * @see org.gwtbootstrap3.client.ui.NavbarBrand#setIconLight(boolean)
+     * @see org.gwtbootstrap3.client.ui.NavbarBrand#setIconInverse(boolean)
      */
-    public NavbarBrandBuilder iconLight(boolean v0) {
-        navbarBrand.setIconLight(v0);
-        return this;
-    }
-
-    /**
-     * @see org.gwtbootstrap3.client.ui.NavbarBrand#setIconMuted(boolean)
-     */
-    public NavbarBrandBuilder iconMuted(boolean v0) {
-        navbarBrand.setIconMuted(v0);
+    public NavbarBrandBuilder iconInverse(boolean v0) {
+        navbarBrand.setIconInverse(v0);
         return this;
     }
 
@@ -209,6 +217,14 @@ public class NavbarBrandBuilder extends biz.freshcode.learn.gwt_bootstrap.client
      */
     public NavbarBrandBuilder iconPosition(org.gwtbootstrap3.client.ui.constants.IconPosition v0) {
         navbarBrand.setIconPosition(v0);
+        return this;
+    }
+
+    /**
+     * @see org.gwtbootstrap3.client.ui.NavbarBrand#setIconPulse(boolean)
+     */
+    public NavbarBrandBuilder iconPulse(boolean v0) {
+        navbarBrand.setIconPulse(v0);
         return this;
     }
 

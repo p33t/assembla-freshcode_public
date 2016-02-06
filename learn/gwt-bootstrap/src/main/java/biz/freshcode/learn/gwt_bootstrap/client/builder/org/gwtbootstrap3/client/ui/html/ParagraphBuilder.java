@@ -17,17 +17,17 @@ public class ParagraphBuilder extends biz.freshcode.learn.gwt_bootstrap.client.b
     }
 
     /**
-     * @see org.gwtbootstrap3.client.ui.html.Paragraph#Paragraph(java.lang.String)
-     */
-    public ParagraphBuilder(java.lang.String v0) {
-        this(new Paragraph(v0));
-    }
-
-    /**
      * @see org.gwtbootstrap3.client.ui.html.Paragraph#Paragraph()
      */
     public ParagraphBuilder() {
         this(new Paragraph());
+    }
+
+    /**
+     * @see org.gwtbootstrap3.client.ui.html.Paragraph#Paragraph(java.lang.String)
+     */
+    public ParagraphBuilder(java.lang.String v0) {
+        this(new Paragraph(v0));
     }
 
     /**

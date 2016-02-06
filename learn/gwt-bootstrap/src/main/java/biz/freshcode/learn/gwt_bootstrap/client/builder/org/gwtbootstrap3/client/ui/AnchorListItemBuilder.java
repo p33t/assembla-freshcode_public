@@ -17,17 +17,17 @@ public class AnchorListItemBuilder extends biz.freshcode.learn.gwt_bootstrap.cli
     }
 
     /**
-     * @see org.gwtbootstrap3.client.ui.AnchorListItem#AnchorListItem(java.lang.String)
-     */
-    public AnchorListItemBuilder(java.lang.String v0) {
-        this(new AnchorListItem(v0));
-    }
-
-    /**
      * @see org.gwtbootstrap3.client.ui.AnchorListItem#AnchorListItem()
      */
     public AnchorListItemBuilder() {
         this(new AnchorListItem());
+    }
+
+    /**
+     * @see org.gwtbootstrap3.client.ui.AnchorListItem#AnchorListItem(java.lang.String)
+     */
+    public AnchorListItemBuilder(java.lang.String v0) {
+        this(new AnchorListItem(v0));
     }
 
     /**
@@ -75,6 +75,22 @@ public class AnchorListItemBuilder extends biz.freshcode.learn.gwt_bootstrap.cli
      */
     public AnchorListItemBuilder active(boolean v0) {
         anchorListItem.setActive(v0);
+        return this;
+    }
+
+    /**
+     * @see org.gwtbootstrap3.client.ui.AnchorListItem#setBadgePosition(org.gwtbootstrap3.client.ui.constants.BadgePosition)
+     */
+    public AnchorListItemBuilder badgePosition(org.gwtbootstrap3.client.ui.constants.BadgePosition v0) {
+        anchorListItem.setBadgePosition(v0);
+        return this;
+    }
+
+    /**
+     * @see org.gwtbootstrap3.client.ui.AnchorListItem#setBadgeText(java.lang.String)
+     */
+    public AnchorListItemBuilder badgeText(java.lang.String v0) {
+        anchorListItem.setBadgeText(v0);
         return this;
     }
 
@@ -167,18 +183,10 @@ public class AnchorListItemBuilder extends biz.freshcode.learn.gwt_bootstrap.cli
     }
 
     /**
-     * @see org.gwtbootstrap3.client.ui.AnchorListItem#setIconLight(boolean)
+     * @see org.gwtbootstrap3.client.ui.AnchorListItem#setIconInverse(boolean)
      */
-    public AnchorListItemBuilder iconLight(boolean v0) {
-        anchorListItem.setIconLight(v0);
-        return this;
-    }
-
-    /**
-     * @see org.gwtbootstrap3.client.ui.AnchorListItem#setIconMuted(boolean)
-     */
-    public AnchorListItemBuilder iconMuted(boolean v0) {
-        anchorListItem.setIconMuted(v0);
+    public AnchorListItemBuilder iconInverse(boolean v0) {
+        anchorListItem.setIconInverse(v0);
         return this;
     }
 
@@ -187,6 +195,14 @@ public class AnchorListItemBuilder extends biz.freshcode.learn.gwt_bootstrap.cli
      */
     public AnchorListItemBuilder iconPosition(org.gwtbootstrap3.client.ui.constants.IconPosition v0) {
         anchorListItem.setIconPosition(v0);
+        return this;
+    }
+
+    /**
+     * @see org.gwtbootstrap3.client.ui.AnchorListItem#setIconPulse(boolean)
+     */
+    public AnchorListItemBuilder iconPulse(boolean v0) {
+        anchorListItem.setIconPulse(v0);
         return this;
     }
 

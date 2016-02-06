@@ -17,13 +17,6 @@ public class HTMLBuilder extends biz.freshcode.learn.gwt_bootstrap.client.builde
     }
 
     /**
-     * @see com.google.gwt.user.client.ui.HTML#HTML(java.lang.String, boolean)
-     */
-    public HTMLBuilder(java.lang.String v0, boolean v1) {
-        this(new HTML(v0, v1));
-    }
-
-    /**
      * @see com.google.gwt.user.client.ui.HTML#HTML()
      */
     public HTMLBuilder() {
@@ -31,10 +24,31 @@ public class HTMLBuilder extends biz.freshcode.learn.gwt_bootstrap.client.builde
     }
 
     /**
+     * @see com.google.gwt.user.client.ui.HTML#HTML(java.lang.String)
+     */
+    public HTMLBuilder(java.lang.String v0) {
+        this(new HTML(v0));
+    }
+
+    /**
      * @see com.google.gwt.user.client.ui.HTML#HTML(com.google.gwt.safehtml.shared.SafeHtml)
      */
     public HTMLBuilder(com.google.gwt.safehtml.shared.SafeHtml v0) {
         this(new HTML(v0));
+    }
+
+    /**
+     * @see com.google.gwt.user.client.ui.HTML#HTML(java.lang.String, boolean)
+     */
+    public HTMLBuilder(java.lang.String v0, boolean v1) {
+        this(new HTML(v0, v1));
+    }
+
+    /**
+     * @see com.google.gwt.user.client.ui.HTML#HTML(java.lang.String, com.google.gwt.i18n.client.HasDirection.Direction)
+     */
+    public HTMLBuilder(java.lang.String v0, com.google.gwt.i18n.client.HasDirection.Direction v1) {
+        this(new HTML(v0, v1));
     }
 
     /**
@@ -48,20 +62,6 @@ public class HTMLBuilder extends biz.freshcode.learn.gwt_bootstrap.client.builde
      * @see com.google.gwt.user.client.ui.HTML#HTML(com.google.gwt.safehtml.shared.SafeHtml, com.google.gwt.i18n.shared.DirectionEstimator)
      */
     public HTMLBuilder(com.google.gwt.safehtml.shared.SafeHtml v0, com.google.gwt.i18n.shared.DirectionEstimator v1) {
-        this(new HTML(v0, v1));
-    }
-
-    /**
-     * @see com.google.gwt.user.client.ui.HTML#HTML(java.lang.String)
-     */
-    public HTMLBuilder(java.lang.String v0) {
-        this(new HTML(v0));
-    }
-
-    /**
-     * @see com.google.gwt.user.client.ui.HTML#HTML(java.lang.String, com.google.gwt.i18n.client.HasDirection.Direction)
-     */
-    public HTMLBuilder(java.lang.String v0, com.google.gwt.i18n.client.HasDirection.Direction v1) {
         this(new HTML(v0, v1));
     }
 

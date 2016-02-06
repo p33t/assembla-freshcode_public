@@ -17,17 +17,17 @@ public class HeadingBuilder extends biz.freshcode.learn.gwt_bootstrap.client.bui
     }
 
     /**
-     * @see org.gwtbootstrap3.client.ui.Heading#Heading(org.gwtbootstrap3.client.ui.constants.HeadingSize, java.lang.String)
-     */
-    public HeadingBuilder(org.gwtbootstrap3.client.ui.constants.HeadingSize v0, java.lang.String v1) {
-        this(new Heading(v0, v1));
-    }
-
-    /**
      * @see org.gwtbootstrap3.client.ui.Heading#Heading(org.gwtbootstrap3.client.ui.constants.HeadingSize)
      */
     public HeadingBuilder(org.gwtbootstrap3.client.ui.constants.HeadingSize v0) {
         this(new Heading(v0));
+    }
+
+    /**
+     * @see org.gwtbootstrap3.client.ui.Heading#Heading(org.gwtbootstrap3.client.ui.constants.HeadingSize, java.lang.String)
+     */
+    public HeadingBuilder(org.gwtbootstrap3.client.ui.constants.HeadingSize v0, java.lang.String v1) {
+        this(new Heading(v0, v1));
     }
 
     /**
