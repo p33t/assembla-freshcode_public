@@ -62,6 +62,7 @@ class ClobEntityTest extends FunSuite {
         val reader = rs.getCharacterStream(1)
         try {
           IOUtils.copy(reader, writer)
+          writer.flush() // ? Necessary for typical writers?
         } finally {
           reader.close()
         }
