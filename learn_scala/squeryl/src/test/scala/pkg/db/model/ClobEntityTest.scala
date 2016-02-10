@@ -59,6 +59,7 @@ class ClobEntityTest extends FunSuite {
         assert(stmt.execute(), "Expected a ResultSet")
         val rs = stmt.getResultSet
         assert(rs.next(), "Expected a row")
+        // NOTE: This could be null if the value is null
         val reader = rs.getCharacterStream(1)
         try {
           IOUtils.copy(reader, writer)
