@@ -17,7 +17,7 @@
       <profile default="true" name="Default" enabled="false">
         <processorPath useClasspath="true" />
       </profile>
-      <profile default="false" name="Maven default annotation processors profile" enabled="false">
+      <profile default="false" name="Annotation profile for scala-syntax" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -35,6 +35,7 @@
   </component>
   <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
   </component>
   <component name="EntryPointsManager">
     <entry_points version="2.0" />
@@ -63,6 +64,9 @@
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true" project-jdk-name="1.7" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
+  </component>
+  <component name="ScalaCompilerConfiguration">
+    <profile name="Maven 1" modules="scala-syntax" />
   </component>
   <component name="SvnBranchConfigurationManager">
     <option name="mySupportsUserInfoFilter" value="true" />
