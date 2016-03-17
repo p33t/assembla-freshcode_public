@@ -86,15 +86,15 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/modules/scala-xml_2.11/1.0.2/scala-xml_2.11-1.0.2-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.scala-lang:scala-actors:2.11.1">
+    <library name="Maven: org.scala-lang:scala-actors:2.11.7">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-actors/2.11.1/scala-actors-2.11.1.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-actors/2.11.7/scala-actors-2.11.7.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-actors/2.11.1/scala-actors-2.11.1-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-actors/2.11.7/scala-actors-2.11.7-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-actors/2.11.1/scala-actors-2.11.1-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-actors/2.11.7/scala-actors-2.11.7-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: org.scala-lang:scala-compiler-bundle:2.10.1">
@@ -115,33 +115,33 @@
       <JAVADOC />
       <SOURCES />
     </library>
-    <library name="Maven: org.scala-lang:scala-library:2.11.1" type="Scala">
+    <library name="Maven: org.scala-lang:scala-library:2.11.7" type="Scala">
       <properties>
         <compiler-classpath>
-          <root url="file://$MAVEN_REPOSITORY$/org/scala-lang/scala-compiler/2.11.1/scala-compiler-2.11.1.jar" />
-          <root url="file://$MAVEN_REPOSITORY$/org/scala-lang/scala-library/2.11.1/scala-library-2.11.1.jar" />
-          <root url="file://$MAVEN_REPOSITORY$/org/scala-lang/scala-reflect/2.11.1/scala-reflect-2.11.1.jar" />
+          <root url="file://$MAVEN_REPOSITORY$/org/scala-lang/scala-compiler/2.11.7/scala-compiler-2.11.7.jar" />
+          <root url="file://$MAVEN_REPOSITORY$/org/scala-lang/scala-library/2.11.7/scala-library-2.11.7.jar" />
+          <root url="file://$MAVEN_REPOSITORY$/org/scala-lang/scala-reflect/2.11.7/scala-reflect-2.11.7.jar" />
         </compiler-classpath>
       </properties>
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-library/2.11.1/scala-library-2.11.1.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-library/2.11.7/scala-library-2.11.7.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-library/2.11.1/scala-library-2.11.1-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-library/2.11.7/scala-library-2.11.7-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-library/2.11.1/scala-library-2.11.1-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-library/2.11.7/scala-library-2.11.7-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.scala-lang:scala-reflect:2.11.1">
+    <library name="Maven: org.scala-lang:scala-reflect:2.11.7">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-reflect/2.11.1/scala-reflect-2.11.1.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-reflect/2.11.7/scala-reflect-2.11.7.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-reflect/2.11.1/scala-reflect-2.11.1-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-reflect/2.11.7/scala-reflect-2.11.7-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-reflect/2.11.1/scala-reflect-2.11.1-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-reflect/2.11.7/scala-reflect-2.11.7-sources.jar!/" />
       </SOURCES>
     </library>
   </component>
