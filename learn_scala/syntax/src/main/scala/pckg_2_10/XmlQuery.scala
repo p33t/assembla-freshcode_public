@@ -5,8 +5,8 @@ object XmlQuery {
   val root =
     <root>
       <a>
-        <b>a1b1</b>
-        <b>a1b2</b>
+        <b x="unwant">a1b1</b>
+        <b x="want">a1b2</b>
       </a>
       <a>
         <b>a2b1</b>
@@ -23,5 +23,8 @@ object XmlQuery {
 
     val z = root \\ "c"
     assert(z.isEmpty)
+
+    val sub = root \ "a" \ "b" filter (_.attributes("x").exists(_.text == "want"))
+    assert(sub == <b x="want">a1b2</b>)
   }
 }
