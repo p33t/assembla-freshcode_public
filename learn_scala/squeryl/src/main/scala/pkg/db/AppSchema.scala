@@ -2,7 +2,7 @@ package pkg.db
 
 import org.squeryl._
 import pkg.db.DbTypes._
-import pkg.db.model.{ClobEntity, DirectedEntity}
+import pkg.db.model.{BlobEntity, ClobEntity, DirectedEntity}
 
 import scala.reflect.Manifest
 
@@ -35,6 +35,11 @@ object AppSchema extends Schema {
   val clobEntity = table[ClobEntity]
   on(clobEntity)(x => declare(
     x.data is dbType("clob")
+  ))
+
+  val blobEntity = table[BlobEntity]
+  on(blobEntity)(x => declare(
+    x.data is dbType("blob")
   ))
 
   /**
