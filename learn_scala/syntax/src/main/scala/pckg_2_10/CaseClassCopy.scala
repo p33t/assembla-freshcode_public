@@ -1,7 +1,8 @@
 package pckg_2_10
 
-import pckg_2_10.fixture.FancyCaseClass
 import java.lang.reflect.Modifier
+
+import pckg_2_10.fixture.FancyCaseClass
 
 /**
  * Copying a case class using Java reflection to avoid generics.
@@ -19,6 +20,10 @@ object CaseClassCopy {
       case e: IllegalArgumentException =>
         assert(e.getMessage.contains("qwerty"))
     }
+
+    val o2 = o.copy(str = "shiney")
+    assert(o == o2)
+    assert(!(o eq o2))
   }
 
   def copy(o: AnyRef, vals: (String, Any)*) = {
