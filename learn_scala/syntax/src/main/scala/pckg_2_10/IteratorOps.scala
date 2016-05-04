@@ -12,6 +12,9 @@ object IteratorOps {
 
     // NOTE: this way is more powerful because doesn't require explicit type args
     l.iterator.altOp()
+
+    // specialised subtype methods !!!!!!! taken from TraversableOnce.toMap()
+    l.iterator.decrement.altOp()
   }
 
   private def op(is: Iterator[Int]) = is.foreach(println)
@@ -26,5 +29,7 @@ object IteratorOps {
 
   class Special2[T](it: Iterator[T]) {
       def altOp() = it.foreach(println)
+
+      def decrement(implicit ev: T <:< Int) = it.map(_ - 1)
   }
 }
