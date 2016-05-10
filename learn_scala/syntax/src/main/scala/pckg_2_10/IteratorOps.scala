@@ -5,7 +5,7 @@ object IteratorOps {
   def main(args: Array[String]) {
     val spec = new Special
 
-    val l = List(1,2,3)
+    val l = List(1, 2, 3)
     op(l.iterator)
 
     l.iterator altOp_: spec
@@ -15,6 +15,10 @@ object IteratorOps {
 
     // specialised subtype methods !!!!!!! taken from TraversableOnce.toMap()
     l.iterator.decrement.altOp()
+
+    val alt = List(true -> "T", false -> "F")
+    // It's a drag that the type arg must be supplied explicitly
+    alt.iterator.processT2[Boolean](_.toString.reverse).altOp()
   }
 
   private def op(is: Iterator[Int]) = is.foreach(println)
@@ -28,8 +32,11 @@ object IteratorOps {
   }
 
   class Special2[T](it: Iterator[T]) {
-      def altOp() = it.foreach(println)
+    def altOp() = it.foreach(println)
 
-      def decrement(implicit ev: T <:< Int) = it.map(_ - 1)
+    def decrement(implicit ev: T <:< Int) = it.map(_ - 1)
+
+    def processT2[X](fn: X => String)(implicit ev: T <:< (X, _)) = it.map(x => fn(x._1))
   }
+
 }
