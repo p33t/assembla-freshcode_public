@@ -19,8 +19,20 @@ object EarlyInit {
     val foo = "foo"
   } with A
 
+  trait Core {
+    val foo = "fu"
+  }
+
+  // works because core in initialised before A
+  class D extends Core with A
+
+  // does not work; Core initialised last
+  class E extends A with Core
+
   def main(args: Array[String]) {
     println(new B().bar)
     println(new C().bar)
+    println(new D().bar)
+    println(new E().bar)
   }
 }
