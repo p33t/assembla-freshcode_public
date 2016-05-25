@@ -4,7 +4,7 @@ package pckg_2_10
 object EarlyInit {
 
   trait A {
-    // NOTE: This could be a lazy val but if it is used during initialization then 'laziness' is negated.
+    // NOTE: Cannot have abstract lazy val.
     def foo: String
 
     val bar = foo + "bar"
@@ -32,7 +32,7 @@ object EarlyInit {
 
   // somehow, 'lazy' changes the initialisation order (?!)
   class F extends A {
-    lazy val foo = "museli"
+    lazy val foo = "muesli"
   }
 
   def main(args: Array[String]) {
