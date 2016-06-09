@@ -17,27 +17,6 @@ public class FieldLabelBuilder extends biz.freshcode.learn.gwt2.common.client.bu
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.form.FieldLabel#FieldLabel(com.google.gwt.user.client.ui.IsWidget, java.lang.String, com.sencha.gxt.widget.core.client.form.FieldLabel.FieldLabelAppearance)
-     */
-    public FieldLabelBuilder(com.google.gwt.user.client.ui.IsWidget v0, java.lang.String v1, com.sencha.gxt.widget.core.client.form.FieldLabel.FieldLabelAppearance v2) {
-        this(new FieldLabel(v0, v1, v2));
-    }
-
-    /**
-     * @see com.sencha.gxt.widget.core.client.form.FieldLabel#FieldLabel(com.google.gwt.user.client.ui.IsWidget, java.lang.String)
-     */
-    public FieldLabelBuilder(com.google.gwt.user.client.ui.IsWidget v0, java.lang.String v1) {
-        this(new FieldLabel(v0, v1));
-    }
-
-    /**
-     * @see com.sencha.gxt.widget.core.client.form.FieldLabel#FieldLabel(com.google.gwt.user.client.ui.Widget, com.sencha.gxt.widget.core.client.form.FieldLabel.FieldLabelAppearance)
-     */
-    public FieldLabelBuilder(com.google.gwt.user.client.ui.Widget v0, com.sencha.gxt.widget.core.client.form.FieldLabel.FieldLabelAppearance v1) {
-        this(new FieldLabel(v0, v1));
-    }
-
-    /**
      * @see com.sencha.gxt.widget.core.client.form.FieldLabel#FieldLabel()
      */
     public FieldLabelBuilder() {
@@ -52,10 +31,45 @@ public class FieldLabelBuilder extends biz.freshcode.learn.gwt2.common.client.bu
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.form.FieldLabel#FieldLabel(com.google.gwt.user.client.ui.Widget, com.sencha.gxt.widget.core.client.form.FieldLabel.FieldLabelAppearance)
+     */
+    public FieldLabelBuilder(com.google.gwt.user.client.ui.Widget v0, com.sencha.gxt.widget.core.client.form.FieldLabel.FieldLabelAppearance v1) {
+        this(new FieldLabel(v0, v1));
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.form.FieldLabel#FieldLabel(com.google.gwt.user.client.ui.IsWidget, java.lang.String)
+     */
+    public FieldLabelBuilder(com.google.gwt.user.client.ui.IsWidget v0, java.lang.String v1) {
+        this(new FieldLabel(v0, v1));
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.form.FieldLabel#FieldLabel(com.google.gwt.user.client.ui.IsWidget, com.google.gwt.safehtml.shared.SafeHtml)
+     */
+    public FieldLabelBuilder(com.google.gwt.user.client.ui.IsWidget v0, com.google.gwt.safehtml.shared.SafeHtml v1) {
+        this(new FieldLabel(v0, v1));
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.form.FieldLabel#FieldLabel(com.google.gwt.user.client.ui.IsWidget, com.sencha.gxt.widget.core.client.form.FieldLabel.FieldLabelAppearance)
      */
     public FieldLabelBuilder(com.google.gwt.user.client.ui.IsWidget v0, com.sencha.gxt.widget.core.client.form.FieldLabel.FieldLabelAppearance v1) {
         this(new FieldLabel(v0, v1));
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.form.FieldLabel#FieldLabel(com.google.gwt.user.client.ui.IsWidget, java.lang.String, com.sencha.gxt.widget.core.client.form.FieldLabel.FieldLabelAppearance)
+     */
+    public FieldLabelBuilder(com.google.gwt.user.client.ui.IsWidget v0, java.lang.String v1, com.sencha.gxt.widget.core.client.form.FieldLabel.FieldLabelAppearance v2) {
+        this(new FieldLabel(v0, v1, v2));
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.form.FieldLabel#FieldLabel(com.google.gwt.user.client.ui.IsWidget, com.google.gwt.safehtml.shared.SafeHtml, com.sencha.gxt.widget.core.client.form.FieldLabel.FieldLabelAppearance)
+     */
+    public FieldLabelBuilder(com.google.gwt.user.client.ui.IsWidget v0, com.google.gwt.safehtml.shared.SafeHtml v1, com.sencha.gxt.widget.core.client.form.FieldLabel.FieldLabelAppearance v2) {
+        this(new FieldLabel(v0, v1, v2));
     }
 
     /**
@@ -79,6 +93,14 @@ public class FieldLabelBuilder extends biz.freshcode.learn.gwt2.common.client.bu
      */
     public FieldLabelBuilder add(com.google.gwt.user.client.ui.Widget v0, com.sencha.gxt.widget.core.client.container.MarginData v1) {
         fieldLabel.add(v0, v1);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.form.FieldLabel#addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer)
+     */
+    public FieldLabelBuilder addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer v0) {
+        fieldLabel.addGestureRecognizer(v0);
         return this;
     }
 
@@ -135,6 +157,22 @@ public class FieldLabelBuilder extends biz.freshcode.learn.gwt2.common.client.bu
      */
     public FieldLabelBuilder bounds(int v0, int v1, int v2, int v3) {
         fieldLabel.setBounds(v0, v1, v2, v3);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.form.FieldLabel#setContent(java.lang.String)
+     */
+    public FieldLabelBuilder content(java.lang.String v0) {
+        fieldLabel.setContent(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.form.FieldLabel#setContent(com.google.gwt.safehtml.shared.SafeHtml)
+     */
+    public FieldLabelBuilder content(com.google.gwt.safehtml.shared.SafeHtml v0) {
+        fieldLabel.setContent(v0);
         return this;
     }
 
@@ -406,6 +444,14 @@ public class FieldLabelBuilder extends biz.freshcode.learn.gwt2.common.client.bu
      * @see com.sencha.gxt.widget.core.client.form.FieldLabel#setToolTip(java.lang.String)
      */
     public FieldLabelBuilder toolTip(java.lang.String v0) {
+        fieldLabel.setToolTip(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.form.FieldLabel#setToolTip(com.google.gwt.safehtml.shared.SafeHtml)
+     */
+    public FieldLabelBuilder toolTip(com.google.gwt.safehtml.shared.SafeHtml v0) {
         fieldLabel.setToolTip(v0);
         return this;
     }

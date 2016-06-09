@@ -45,6 +45,14 @@ public class VerticalLayoutContainerBuilder extends biz.freshcode.learn.gwt2.com
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer#addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer)
+     */
+    public VerticalLayoutContainerBuilder addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer v0) {
+        verticalLayoutContainer.addGestureRecognizer(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer#addStyleDependentName(java.lang.String)
      */
     public VerticalLayoutContainerBuilder addStyleDependentName(java.lang.String v0) {
@@ -320,6 +328,14 @@ public class VerticalLayoutContainerBuilder extends biz.freshcode.learn.gwt2.com
      * @see com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer#setToolTip(java.lang.String)
      */
     public VerticalLayoutContainerBuilder toolTip(java.lang.String v0) {
+        verticalLayoutContainer.setToolTip(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer#setToolTip(com.google.gwt.safehtml.shared.SafeHtml)
+     */
+    public VerticalLayoutContainerBuilder toolTip(com.google.gwt.safehtml.shared.SafeHtml v0) {
         verticalLayoutContainer.setToolTip(v0);
         return this;
     }

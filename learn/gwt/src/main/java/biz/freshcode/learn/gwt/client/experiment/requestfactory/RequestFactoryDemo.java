@@ -17,6 +17,8 @@ import com.sencha.gxt.widget.core.client.event.SelectEvent;
 
 import java.util.List;
 
+import static com.google.gwt.safehtml.shared.SafeHtmlUtils.fromTrustedString;
+
 public class RequestFactoryDemo extends AbstractIsWidget {
     HtmlLayoutContainer feedback;
 
@@ -29,7 +31,7 @@ public class RequestFactoryDemo extends AbstractIsWidget {
                                 .text("x")
                                 .textButton)
                         .horizontalLayoutContainer)
-                .centerWidget(feedback = new HtmlLayoutContainer("<p>Started</p>"))
+                .centerWidget(feedback = new HtmlLayoutContainer(fromTrustedString("<p>Started</p>")))
                 .borderLayoutContainer;
         btnX.addSelectHandler(new SelectEvent.SelectHandler() {
             @Override

@@ -1,39 +1,42 @@
+
 .highlight {
     background-color: #ffe4c4;
     border: #8a2be2 solid medium;
 }
 
 .invalidBgnd {
-    /* Looks invalid but is really being resolved from 'webapp' */
-    background-image: url('images/invalid_line.gif');
+  /* Looks invalid but is really being resolved from 'webapp' */
+  background-image: url(images/invalid_line.gif);
 }
 
 /* More primitive way.  More general */
-@eval dirtyBgndUrl biz.freshcode.learn.gwt.client.experiment.resources.ResourcesDemo.dirtyGifCssUrl();
+@def DIRTY_BGND_URL eval('biz.freshcode.learn.gwt.client.experiment.resources.ResourcesDemo.dirtyGifCssUrl()');
+
 .dirtyBgnd {
-    background-image: dirtyBgndUrl;
+  background-image: DIRTY_BGND_URL;
 }
 
 /* Cleaner URL integration */
-@url dirtyBgndUrl2 dirtyGif2;
+@def DIRTY_BGND_URL2 resourceUrl("dirtyGif2");
+
 .dirtyBgnd2 {
-    background-image: dirtyBgndUrl2;
+  background-image: DIRTY_BGND_URL2;
 }
 
 /* Actually this look like the correct way */
-@sprite .dirtyBgnd3 {
-    gwt-image: "dirtyGif3";
-    /* NOTE: Don't optimise these.  GWT not smart enough to mix in gwt-image */
-    background-repeat: no-repeat;
-    /*background-position: center 0;*/
-    width: 100%;  /* Otherwise image sets width */
-    height: auto; /* Otherwise image sets height */
+.dirtyBgnd3 {
+  gwt-sprite: "dirtyGif3";
+  /* NOTE: Don't optimise these.  GWT not smart enough to mix in gwt-image */
+  background-repeat: no-repeat;
+  /*background-position: center 0;*/
+  width: 100%;  /* Otherwise image sets width */
+  height: auto; /* Otherwise image sets height */
 }
 
-@sprite .dirtyBgnd4 {
-    gwt-image: "dirtyGif4";
-    background-repeat: no-repeat;
-    background-position: right top;
-    width: 100%;  /* Otherwise image sets width */
-    height: auto; /* Otherwise image sets height */
+.dirtyBgnd4 {
+  gwt-sprite: "dirtyGif4";
+  background-repeat: no-repeat;
+  background-position: right top;
+  width: 100%;  /* Otherwise image sets width */
+  height: auto;  /* Otherwise image sets width */
 }

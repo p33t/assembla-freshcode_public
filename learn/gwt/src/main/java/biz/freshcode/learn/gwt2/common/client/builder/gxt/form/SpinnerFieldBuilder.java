@@ -9,11 +9,18 @@ import com.sencha.gxt.widget.core.client.form.SpinnerField;
  */
 @SuppressWarnings("UnusedDeclaration")
 @biz.freshcode.learn.gwt2.common.client.builder.BeanBuilder(SpinnerField.class)
-public class SpinnerFieldBuilder<N extends Number> extends biz.freshcode.learn.gwt2.common.client.builder.Construct.Parent<SpinnerFieldBuilder<N>> {
+public class SpinnerFieldBuilder<N extends Number & Comparable<N>> extends biz.freshcode.learn.gwt2.common.client.builder.Construct.Parent<SpinnerFieldBuilder<N>> {
     public final SpinnerField<N> spinnerField;
 
     public SpinnerFieldBuilder(SpinnerField<N> v) {
         spinnerField = v;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.form.SpinnerField#SpinnerField(com.sencha.gxt.cell.core.client.form.SpinnerFieldCell)
+     */
+    public SpinnerFieldBuilder(com.sencha.gxt.cell.core.client.form.SpinnerFieldCell<N> v0) {
+        this(new SpinnerField<N>(v0));
     }
 
     /**
@@ -24,10 +31,11 @@ public class SpinnerFieldBuilder<N extends Number> extends biz.freshcode.learn.g
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.form.SpinnerField#SpinnerField(com.sencha.gxt.cell.core.client.form.SpinnerFieldCell)
+     * @see com.sencha.gxt.widget.core.client.form.SpinnerField#addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer)
      */
-    public SpinnerFieldBuilder(com.sencha.gxt.cell.core.client.form.SpinnerFieldCell<N> v0) {
-        this(new SpinnerField<N>(v0));
+    public SpinnerFieldBuilder<N> addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer v0) {
+        spinnerField.addGestureRecognizer(v0);
+        return this;
     }
 
     /**
@@ -511,6 +519,14 @@ public class SpinnerFieldBuilder<N extends Number> extends biz.freshcode.learn.g
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.form.SpinnerField#setToolTip(com.google.gwt.safehtml.shared.SafeHtml)
+     */
+    public SpinnerFieldBuilder<N> toolTip(com.google.gwt.safehtml.shared.SafeHtml v0) {
+        spinnerField.setToolTip(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.form.SpinnerField#setToolTipConfig(com.sencha.gxt.widget.core.client.tips.ToolTipConfig)
      */
     public SpinnerFieldBuilder<N> toolTipConfig(com.sencha.gxt.widget.core.client.tips.ToolTipConfig v0) {
@@ -551,7 +567,7 @@ public class SpinnerFieldBuilder<N extends Number> extends biz.freshcode.learn.g
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.form.SpinnerField#setValue(Object, boolean, boolean)
+     * @see com.sencha.gxt.widget.core.client.form.SpinnerField#setValue(N, boolean, boolean)
      */
     public SpinnerFieldBuilder<N> value(N v0, boolean v1, boolean v2) {
         spinnerField.setValue(v0, v1, v2);

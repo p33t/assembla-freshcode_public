@@ -48,6 +48,14 @@ public class FormPanelBuilder extends biz.freshcode.learn.gwt2.common.client.bui
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.form.FormPanel#addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer)
+     */
+    public FormPanelBuilder addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer v0) {
+        formPanel.addGestureRecognizer(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.form.FormPanel#addStyleDependentName(java.lang.String)
      */
     public FormPanelBuilder addStyleDependentName(java.lang.String v0) {
@@ -355,6 +363,14 @@ public class FormPanelBuilder extends biz.freshcode.learn.gwt2.common.client.bui
      * @see com.sencha.gxt.widget.core.client.form.FormPanel#setToolTip(java.lang.String)
      */
     public FormPanelBuilder toolTip(java.lang.String v0) {
+        formPanel.setToolTip(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.form.FormPanel#setToolTip(com.google.gwt.safehtml.shared.SafeHtml)
+     */
+    public FormPanelBuilder toolTip(com.google.gwt.safehtml.shared.SafeHtml v0) {
         formPanel.setToolTip(v0);
         return this;
     }

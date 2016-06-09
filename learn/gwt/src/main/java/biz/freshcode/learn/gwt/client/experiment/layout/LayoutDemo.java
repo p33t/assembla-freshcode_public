@@ -45,7 +45,7 @@ public class LayoutDemo extends AbstractIsWidget<FlowLayoutContainer> {
                 .modal(true)
                 .resizable(true)
                 .pixelSize(640, 480)
-                .headingText("Resize this dialog")
+                .heading("Resize this dialog")
                 .hideOnButtonClick(true)
 
 /* No resizing / size control

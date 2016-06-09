@@ -1,7 +1,8 @@
+
 .whiteBgnd {
-    background-color: white;
+  background-color: white;
 }
 
-@sprite .bgndTile {
-    gwt-image: 'bgndTileJpg';
+.bgndTile {
+  gwt-sprite: "bgndTileJpg";
 }

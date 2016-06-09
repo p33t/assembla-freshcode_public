@@ -45,6 +45,14 @@ public class PopupBuilder extends biz.freshcode.learn.gwt2.common.client.builder
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.Popup#addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer)
+     */
+    public PopupBuilder addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer v0) {
+        popup.addGestureRecognizer(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.Popup#addStyleDependentName(java.lang.String)
      */
     public PopupBuilder addStyleDependentName(java.lang.String v0) {
@@ -344,6 +352,14 @@ public class PopupBuilder extends biz.freshcode.learn.gwt2.common.client.builder
      * @see com.sencha.gxt.widget.core.client.Popup#setToolTip(java.lang.String)
      */
     public PopupBuilder toolTip(java.lang.String v0) {
+        popup.setToolTip(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.Popup#setToolTip(com.google.gwt.safehtml.shared.SafeHtml)
+     */
+    public PopupBuilder toolTip(com.google.gwt.safehtml.shared.SafeHtml v0) {
         popup.setToolTip(v0);
         return this;
     }

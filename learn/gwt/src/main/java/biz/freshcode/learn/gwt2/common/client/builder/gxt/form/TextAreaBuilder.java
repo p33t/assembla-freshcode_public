@@ -31,6 +31,14 @@ public class TextAreaBuilder extends biz.freshcode.learn.gwt2.common.client.buil
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.form.TextArea#addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer)
+     */
+    public TextAreaBuilder addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer v0) {
+        textArea.addGestureRecognizer(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.form.TextArea#addStyleDependentName(java.lang.String)
      */
     public TextAreaBuilder addStyleDependentName(java.lang.String v0) {
@@ -442,6 +450,14 @@ public class TextAreaBuilder extends biz.freshcode.learn.gwt2.common.client.buil
      * @see com.sencha.gxt.widget.core.client.form.TextArea#setToolTip(java.lang.String)
      */
     public TextAreaBuilder toolTip(java.lang.String v0) {
+        textArea.setToolTip(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.form.TextArea#setToolTip(com.google.gwt.safehtml.shared.SafeHtml)
+     */
+    public TextAreaBuilder toolTip(com.google.gwt.safehtml.shared.SafeHtml v0) {
         textArea.setToolTip(v0);
         return this;
     }

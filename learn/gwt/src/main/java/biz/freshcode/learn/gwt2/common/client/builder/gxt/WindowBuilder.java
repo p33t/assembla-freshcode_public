@@ -63,6 +63,14 @@ public class WindowBuilder extends biz.freshcode.learn.gwt2.common.client.builde
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.Window#addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer)
+     */
+    public WindowBuilder addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer v0) {
+        window.addGestureRecognizer(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.Window#addStyleDependentName(java.lang.String)
      */
     public WindowBuilder addStyleDependentName(java.lang.String v0) {
@@ -295,26 +303,18 @@ public class WindowBuilder extends biz.freshcode.learn.gwt2.common.client.builde
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.Window#setHeadingHtml(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.Window#setHeading(java.lang.String)
      */
-    public WindowBuilder headingHtml(java.lang.String v0) {
-        window.setHeadingHtml(v0);
+    public WindowBuilder heading(java.lang.String v0) {
+        window.setHeading(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.Window#setHeadingHtml(com.google.gwt.safehtml.shared.SafeHtml)
+     * @see com.sencha.gxt.widget.core.client.Window#setHeading(com.google.gwt.safehtml.shared.SafeHtml)
      */
-    public WindowBuilder headingHtml(com.google.gwt.safehtml.shared.SafeHtml v0) {
-        window.setHeadingHtml(v0);
-        return this;
-    }
-
-    /**
-     * @see com.sencha.gxt.widget.core.client.Window#setHeadingText(java.lang.String)
-     */
-    public WindowBuilder headingText(java.lang.String v0) {
-        window.setHeadingText(v0);
+    public WindowBuilder heading(com.google.gwt.safehtml.shared.SafeHtml v0) {
+        window.setHeading(v0);
         return this;
     }
 
@@ -578,6 +578,14 @@ public class WindowBuilder extends biz.freshcode.learn.gwt2.common.client.builde
      * @see com.sencha.gxt.widget.core.client.Window#setToolTip(java.lang.String)
      */
     public WindowBuilder toolTip(java.lang.String v0) {
+        window.setToolTip(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.Window#setToolTip(com.google.gwt.safehtml.shared.SafeHtml)
+     */
+    public WindowBuilder toolTip(com.google.gwt.safehtml.shared.SafeHtml v0) {
         window.setToolTip(v0);
         return this;
     }

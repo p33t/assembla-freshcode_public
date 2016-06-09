@@ -17,6 +17,13 @@ public class HBoxLayoutContainerBuilder extends biz.freshcode.learn.gwt2.common.
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.container.HBoxLayoutContainer#HBoxLayoutContainer()
+     */
+    public HBoxLayoutContainerBuilder() {
+        this(new HBoxLayoutContainer());
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.container.HBoxLayoutContainer#HBoxLayoutContainer(com.sencha.gxt.widget.core.client.container.HBoxLayoutContainer.HBoxLayoutAlign)
      */
     public HBoxLayoutContainerBuilder(com.sencha.gxt.widget.core.client.container.HBoxLayoutContainer.HBoxLayoutAlign v0) {
@@ -28,13 +35,6 @@ public class HBoxLayoutContainerBuilder extends biz.freshcode.learn.gwt2.common.
      */
     public HBoxLayoutContainerBuilder(com.sencha.gxt.widget.core.client.container.HBoxLayoutContainer.HBoxLayoutContainerAppearance v0) {
         this(new HBoxLayoutContainer(v0));
-    }
-
-    /**
-     * @see com.sencha.gxt.widget.core.client.container.HBoxLayoutContainer#HBoxLayoutContainer()
-     */
-    public HBoxLayoutContainerBuilder() {
-        this(new HBoxLayoutContainer());
     }
 
     /**
@@ -58,6 +58,14 @@ public class HBoxLayoutContainerBuilder extends biz.freshcode.learn.gwt2.common.
      */
     public HBoxLayoutContainerBuilder add(com.google.gwt.user.client.ui.IsWidget v0, com.sencha.gxt.widget.core.client.container.BoxLayoutContainer.BoxLayoutData v1) {
         hBoxLayoutContainer.add(v0, v1);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.container.HBoxLayoutContainer#addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer)
+     */
+    public HBoxLayoutContainerBuilder addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer v0) {
+        hBoxLayoutContainer.addGestureRecognizer(v0);
         return this;
     }
 
@@ -361,6 +369,14 @@ public class HBoxLayoutContainerBuilder extends biz.freshcode.learn.gwt2.common.
      * @see com.sencha.gxt.widget.core.client.container.HBoxLayoutContainer#setToolTip(java.lang.String)
      */
     public HBoxLayoutContainerBuilder toolTip(java.lang.String v0) {
+        hBoxLayoutContainer.setToolTip(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.container.HBoxLayoutContainer#setToolTip(com.google.gwt.safehtml.shared.SafeHtml)
+     */
+    public HBoxLayoutContainerBuilder toolTip(com.google.gwt.safehtml.shared.SafeHtml v0) {
         hBoxLayoutContainer.setToolTip(v0);
         return this;
     }

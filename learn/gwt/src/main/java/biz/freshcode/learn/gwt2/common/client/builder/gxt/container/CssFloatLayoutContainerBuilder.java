@@ -55,6 +55,14 @@ public class CssFloatLayoutContainerBuilder extends biz.freshcode.learn.gwt2.com
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.container.CssFloatLayoutContainer#addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer)
+     */
+    public CssFloatLayoutContainerBuilder addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer v0) {
+        cssFloatLayoutContainer.addGestureRecognizer(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.container.CssFloatLayoutContainer#addStyleDependentName(java.lang.String)
      */
     public CssFloatLayoutContainerBuilder addStyleDependentName(java.lang.String v0) {
@@ -338,6 +346,14 @@ public class CssFloatLayoutContainerBuilder extends biz.freshcode.learn.gwt2.com
      * @see com.sencha.gxt.widget.core.client.container.CssFloatLayoutContainer#setToolTip(java.lang.String)
      */
     public CssFloatLayoutContainerBuilder toolTip(java.lang.String v0) {
+        cssFloatLayoutContainer.setToolTip(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.container.CssFloatLayoutContainer#setToolTip(com.google.gwt.safehtml.shared.SafeHtml)
+     */
+    public CssFloatLayoutContainerBuilder toolTip(com.google.gwt.safehtml.shared.SafeHtml v0) {
         cssFloatLayoutContainer.setToolTip(v0);
         return this;
     }

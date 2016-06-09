@@ -55,6 +55,14 @@ public class ToolBarBuilder extends biz.freshcode.learn.gwt2.common.client.build
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.toolbar.ToolBar#addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer)
+     */
+    public ToolBarBuilder addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer v0) {
+        toolBar.addGestureRecognizer(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.toolbar.ToolBar#addStyleDependentName(java.lang.String)
      */
     public ToolBarBuilder addStyleDependentName(java.lang.String v0) {
@@ -378,6 +386,14 @@ public class ToolBarBuilder extends biz.freshcode.learn.gwt2.common.client.build
      * @see com.sencha.gxt.widget.core.client.toolbar.ToolBar#setToolTip(java.lang.String)
      */
     public ToolBarBuilder toolTip(java.lang.String v0) {
+        toolBar.setToolTip(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.toolbar.ToolBar#setToolTip(com.google.gwt.safehtml.shared.SafeHtml)
+     */
+    public ToolBarBuilder toolTip(com.google.gwt.safehtml.shared.SafeHtml v0) {
         toolBar.setToolTip(v0);
         return this;
     }

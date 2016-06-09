@@ -45,6 +45,14 @@ public class FlowLayoutContainerBuilder extends biz.freshcode.learn.gwt2.common.
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.container.FlowLayoutContainer#addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer)
+     */
+    public FlowLayoutContainerBuilder addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer v0) {
+        flowLayoutContainer.addGestureRecognizer(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.container.FlowLayoutContainer#addStyleDependentName(java.lang.String)
      */
     public FlowLayoutContainerBuilder addStyleDependentName(java.lang.String v0) {
@@ -312,6 +320,14 @@ public class FlowLayoutContainerBuilder extends biz.freshcode.learn.gwt2.common.
      * @see com.sencha.gxt.widget.core.client.container.FlowLayoutContainer#setToolTip(java.lang.String)
      */
     public FlowLayoutContainerBuilder toolTip(java.lang.String v0) {
+        flowLayoutContainer.setToolTip(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.container.FlowLayoutContainer#setToolTip(com.google.gwt.safehtml.shared.SafeHtml)
+     */
+    public FlowLayoutContainerBuilder toolTip(com.google.gwt.safehtml.shared.SafeHtml v0) {
         flowLayoutContainer.setToolTip(v0);
         return this;
     }

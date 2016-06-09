@@ -1,3 +1,4 @@
+
 .hoverWidgets {
     border: 0;
     padding: 1px;
@@ -10,24 +11,23 @@
 .centerBgnd {
     background-position: center;
 }
-
-@url dirtyGif dirtyGif;
-@url greenSashGif greenSashGif;
+@def DIRTY_GIF resourceUrl("dirtyGif");
+@def GREEN_SASH_GIF resourceUrl("greenSashGif");
 
 .redGreenBgnd {
-    background-image: dirtyGif, greenSashGif;
-    background-repeat: no-repeat; /* Needed by cells and, for IE tool buttons */
-    /*Breaks the effect when applied to a <p>... background-attachment: fixed;*/
+  background-image: DIRTY_GIF, GREEN_SASH_GIF;
+  background-repeat: no-repeat; /* Needed by cells and, for IE tool buttons */
+      /*Breaks the effect when applied to a <p>... background-attachment: fixed;*/
 }
 
 .redOnlyBnd {
-    background-image: dirtyGif;
-    background-repeat: no-repeat; /* Needed by cells and, for IE tool buttons */
-    /*Breaks the effect when applied to a <p>... background-attachment: fixed;*/
+  background-image: DIRTY_GIF;
+  background-repeat: no-repeat; /* Needed by cells and, for IE tool buttons */
+      /*Breaks the effect when applied to a <p>... background-attachment: fixed;*/
 }
 
 .greenOnlyBgnd {
-    background-image: greenSashGif;
-    background-repeat: no-repeat; /* Needed by cells and, for IE tool buttons */
-    /*Breaks the effect when applied to a <p>... background-attachment: fixed;*/
+  background-image: GREEN_SASH_GIF;
+  background-repeat: no-repeat; /* Needed by cells and, for IE tool buttons */
+      /*Breaks the effect when applied to a <p>... background-attachment: fixed;*/
 }

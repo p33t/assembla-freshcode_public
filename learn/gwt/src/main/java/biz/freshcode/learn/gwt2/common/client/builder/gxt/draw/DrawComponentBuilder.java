@@ -17,6 +17,13 @@ public class DrawComponentBuilder extends biz.freshcode.learn.gwt2.common.client
     }
 
     /**
+     * @see com.sencha.gxt.chart.client.draw.DrawComponent#DrawComponent()
+     */
+    public DrawComponentBuilder() {
+        this(new DrawComponent());
+    }
+
+    /**
      * @see com.sencha.gxt.chart.client.draw.DrawComponent#DrawComponent(int, int)
      */
     public DrawComponentBuilder(int v0, int v1) {
@@ -24,10 +31,11 @@ public class DrawComponentBuilder extends biz.freshcode.learn.gwt2.common.client
     }
 
     /**
-     * @see com.sencha.gxt.chart.client.draw.DrawComponent#DrawComponent()
+     * @see com.sencha.gxt.chart.client.draw.DrawComponent#addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer)
      */
-    public DrawComponentBuilder() {
-        this(new DrawComponent());
+    public DrawComponentBuilder addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer v0) {
+        drawComponent.addGestureRecognizer(v0);
+        return this;
     }
 
     /**
@@ -306,6 +314,14 @@ public class DrawComponentBuilder extends biz.freshcode.learn.gwt2.common.client
      * @see com.sencha.gxt.chart.client.draw.DrawComponent#setToolTip(java.lang.String)
      */
     public DrawComponentBuilder toolTip(java.lang.String v0) {
+        drawComponent.setToolTip(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.chart.client.draw.DrawComponent#setToolTip(com.google.gwt.safehtml.shared.SafeHtml)
+     */
+    public DrawComponentBuilder toolTip(com.google.gwt.safehtml.shared.SafeHtml v0) {
         drawComponent.setToolTip(v0);
         return this;
     }

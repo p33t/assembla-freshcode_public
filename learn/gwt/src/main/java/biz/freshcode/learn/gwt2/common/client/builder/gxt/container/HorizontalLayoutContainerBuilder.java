@@ -45,6 +45,14 @@ public class HorizontalLayoutContainerBuilder extends biz.freshcode.learn.gwt2.c
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer#addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer)
+     */
+    public HorizontalLayoutContainerBuilder addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer v0) {
+        horizontalLayoutContainer.addGestureRecognizer(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer#addStyleDependentName(java.lang.String)
      */
     public HorizontalLayoutContainerBuilder addStyleDependentName(java.lang.String v0) {
@@ -320,6 +328,14 @@ public class HorizontalLayoutContainerBuilder extends biz.freshcode.learn.gwt2.c
      * @see com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer#setToolTip(java.lang.String)
      */
     public HorizontalLayoutContainerBuilder toolTip(java.lang.String v0) {
+        horizontalLayoutContainer.setToolTip(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer#setToolTip(com.google.gwt.safehtml.shared.SafeHtml)
+     */
+    public HorizontalLayoutContainerBuilder toolTip(com.google.gwt.safehtml.shared.SafeHtml v0) {
         horizontalLayoutContainer.setToolTip(v0);
         return this;
     }

@@ -10,7 +10,7 @@ public interface Bundle extends ClientBundle {
     boolean DOM_MUTATED = BUNDLE.style().ensureInjected();
     Style STYLE = BUNDLE.style();
 
-    @Source("style.css")
+    @Source("style.gss")
     Style style();
 
     interface Style extends CssResource {

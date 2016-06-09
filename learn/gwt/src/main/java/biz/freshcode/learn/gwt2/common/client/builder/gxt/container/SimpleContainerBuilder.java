@@ -48,6 +48,14 @@ public class SimpleContainerBuilder extends biz.freshcode.learn.gwt2.common.clie
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.container.SimpleContainer#addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer)
+     */
+    public SimpleContainerBuilder addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer v0) {
+        simpleContainer.addGestureRecognizer(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.container.SimpleContainer#addStyleDependentName(java.lang.String)
      */
     public SimpleContainerBuilder addStyleDependentName(java.lang.String v0) {
@@ -307,6 +315,14 @@ public class SimpleContainerBuilder extends biz.freshcode.learn.gwt2.common.clie
      * @see com.sencha.gxt.widget.core.client.container.SimpleContainer#setToolTip(java.lang.String)
      */
     public SimpleContainerBuilder toolTip(java.lang.String v0) {
+        simpleContainer.setToolTip(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.container.SimpleContainer#setToolTip(com.google.gwt.safehtml.shared.SafeHtml)
+     */
+    public SimpleContainerBuilder toolTip(com.google.gwt.safehtml.shared.SafeHtml v0) {
         simpleContainer.setToolTip(v0);
         return this;
     }

@@ -17,7 +17,7 @@ import static biz.freshcode.learn.gwt2.common.client.util.AppCollectionUtil.newL
 /**
  * Works around the spinner field event crappiness (apparent in GXT 3.0.1).
  */
-public class SpinnerSupport<N extends Number> {
+public class SpinnerSupport<N extends Number & Comparable<N>> {
     private final SpinnerField<N> spinner;
     private final Callback<N> callback;
     List<HandlerRegistration> regos = newList();

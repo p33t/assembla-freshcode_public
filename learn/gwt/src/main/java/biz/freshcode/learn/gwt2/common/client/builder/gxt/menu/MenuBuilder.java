@@ -47,6 +47,14 @@ public class MenuBuilder extends biz.freshcode.learn.gwt2.common.client.builder.
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.menu.Menu#addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer)
+     */
+    public MenuBuilder addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer v0) {
+        menu.addGestureRecognizer(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.menu.Menu#addStyleDependentName(java.lang.String)
      */
     public MenuBuilder addStyleDependentName(java.lang.String v0) {
@@ -370,6 +378,14 @@ public class MenuBuilder extends biz.freshcode.learn.gwt2.common.client.builder.
      * @see com.sencha.gxt.widget.core.client.menu.Menu#setToolTip(java.lang.String)
      */
     public MenuBuilder toolTip(java.lang.String v0) {
+        menu.setToolTip(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.menu.Menu#setToolTip(com.google.gwt.safehtml.shared.SafeHtml)
+     */
+    public MenuBuilder toolTip(com.google.gwt.safehtml.shared.SafeHtml v0) {
         menu.setToolTip(v0);
         return this;
     }

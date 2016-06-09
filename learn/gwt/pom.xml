@@ -23,9 +23,9 @@
     <properties>
         <!-- Convenience property to set the GWT version -->
         <gwtVersion>2.7.0</gwtVersion>
-        <gwtpVersion>1.5</gwtpVersion>
-        <!-- NOTE: Might need to change this to 3.1.0 or x.0 for GPL access. -->
-        <gxtVersion>3.1.2</gxtVersion>
+        <gwtpVersion>1.5.3</gwtpVersion>
+        <!-- NOTE: Might need to change this to 4.0.0 or x.0 for GPL access. -->
+        <gxtVersion>4.0.1</gxtVersion>
         <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <gwt.server>:ssl</gwt.server>
@@ -42,13 +42,13 @@
             <groupId>com.google.gwt</groupId>
             <artifactId>gwt-user</artifactId>
             <version>${gwtVersion}</version>
-            <scope>provided</scope>
+            <!--<scope>provided</scope>-->
         </dependency>
         <dependency>
             <groupId>com.google.gwt</groupId>
             <artifactId>gwt-dev</artifactId>
             <version>${gwtVersion}</version>
-            <scope>provided</scope>
+            <!--<scope>provided</scope>-->
         </dependency>
 
         <!-- Access to HTML5 features like FileReader.
@@ -173,7 +173,7 @@
         <dependency>
             <groupId>biz.freshcode.b-generation</groupId>
             <artifactId>b-generation</artifactId>
-            <version>0.4</version>
+            <version>0.5</version>
             <scope>test</scope>
         </dependency>
 

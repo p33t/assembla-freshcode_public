@@ -20,7 +20,7 @@ public class TreeDemo extends AbstractIsWidget {
         Tree<String, String> tree;
         BorderLayoutContainer blc = new BorderLayoutContainerBuilder()
                 .westWidget(new ContentPanelBuilder()
-                        .headingText("My Tree")
+                        .heading("My Tree")
                         .widget(tree = createTree())
                         .contentPanel, new BorderLayoutContainer.BorderLayoutData(1 / 3.0))
                 .borderLayoutContainer;

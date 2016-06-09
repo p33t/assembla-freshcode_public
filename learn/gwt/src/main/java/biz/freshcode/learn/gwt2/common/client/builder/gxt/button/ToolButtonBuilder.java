@@ -17,6 +17,13 @@ public class ToolButtonBuilder extends biz.freshcode.learn.gwt2.common.client.bu
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.button.ToolButton#ToolButton(com.sencha.gxt.widget.core.client.button.IconButton.IconConfig)
+     */
+    public ToolButtonBuilder(com.sencha.gxt.widget.core.client.button.IconButton.IconConfig v0) {
+        this(new ToolButton(v0));
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.button.ToolButton#ToolButton(java.lang.String)
      */
     public ToolButtonBuilder(java.lang.String v0) {
@@ -31,17 +38,18 @@ public class ToolButtonBuilder extends biz.freshcode.learn.gwt2.common.client.bu
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.button.ToolButton#ToolButton(com.sencha.gxt.widget.core.client.button.IconButton.IconConfig)
-     */
-    public ToolButtonBuilder(com.sencha.gxt.widget.core.client.button.IconButton.IconConfig v0) {
-        this(new ToolButton(v0));
-    }
-
-    /**
      * @see com.sencha.gxt.widget.core.client.button.ToolButton#ToolButton(com.sencha.gxt.widget.core.client.button.IconButton.IconButtonAppearance, com.sencha.gxt.widget.core.client.button.IconButton.IconConfig)
      */
     public ToolButtonBuilder(com.sencha.gxt.widget.core.client.button.IconButton.IconButtonAppearance v0, com.sencha.gxt.widget.core.client.button.IconButton.IconConfig v1) {
         this(new ToolButton(v0, v1));
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.button.ToolButton#addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer)
+     */
+    public ToolButtonBuilder addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer v0) {
+        toolButton.addGestureRecognizer(v0);
+        return this;
     }
 
     /**
@@ -296,6 +304,14 @@ public class ToolButtonBuilder extends biz.freshcode.learn.gwt2.common.client.bu
      * @see com.sencha.gxt.widget.core.client.button.ToolButton#setToolTip(java.lang.String)
      */
     public ToolButtonBuilder toolTip(java.lang.String v0) {
+        toolButton.setToolTip(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.button.ToolButton#setToolTip(com.google.gwt.safehtml.shared.SafeHtml)
+     */
+    public ToolButtonBuilder toolTip(com.google.gwt.safehtml.shared.SafeHtml v0) {
         toolButton.setToolTip(v0);
         return this;
     }

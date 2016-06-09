@@ -24,17 +24,17 @@ public class SimpleComboBoxBuilder<T> extends biz.freshcode.learn.gwt2.common.cl
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.form.SimpleComboBox#SimpleComboBox(com.sencha.gxt.data.shared.LabelProvider, com.sencha.gxt.cell.core.client.form.TriggerFieldCell.TriggerFieldAppearance)
-     */
-    public SimpleComboBoxBuilder(com.sencha.gxt.data.shared.LabelProvider<? super T> v0, com.sencha.gxt.cell.core.client.form.TriggerFieldCell.TriggerFieldAppearance v1) {
-        this(new SimpleComboBox<T>(v0, v1));
-    }
-
-    /**
      * @see com.sencha.gxt.widget.core.client.form.SimpleComboBox#SimpleComboBox(com.sencha.gxt.data.shared.LabelProvider)
      */
     public SimpleComboBoxBuilder(com.sencha.gxt.data.shared.LabelProvider<? super T> v0) {
         this(new SimpleComboBox<T>(v0));
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.form.SimpleComboBox#SimpleComboBox(com.sencha.gxt.data.shared.LabelProvider, com.sencha.gxt.cell.core.client.form.TriggerFieldCell.TriggerFieldAppearance)
+     */
+    public SimpleComboBoxBuilder(com.sencha.gxt.data.shared.LabelProvider<? super T> v0, com.sencha.gxt.cell.core.client.form.TriggerFieldCell.TriggerFieldAppearance v1) {
+        this(new SimpleComboBox<T>(v0, v1));
     }
 
     /**
@@ -50,6 +50,14 @@ public class SimpleComboBoxBuilder<T> extends biz.freshcode.learn.gwt2.common.cl
      */
     public SimpleComboBoxBuilder<T> add(java.util.List<T> v0) {
         simpleComboBox.add(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.form.SimpleComboBox#addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer)
+     */
+    public SimpleComboBoxBuilder<T> addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer v0) {
+        simpleComboBox.addGestureRecognizer(v0);
         return this;
     }
 
@@ -334,18 +342,18 @@ public class SimpleComboBoxBuilder<T> extends biz.freshcode.learn.gwt2.common.cl
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.form.SimpleComboBox#setLoadingHtml(com.google.gwt.safehtml.shared.SafeHtml)
+     * @see com.sencha.gxt.widget.core.client.form.SimpleComboBox#setLoadingIndicator(java.lang.String)
      */
-    public SimpleComboBoxBuilder<T> loadingHtml(com.google.gwt.safehtml.shared.SafeHtml v0) {
-        simpleComboBox.setLoadingHtml(v0);
+    public SimpleComboBoxBuilder<T> loadingIndicator(java.lang.String v0) {
+        simpleComboBox.setLoadingIndicator(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.form.SimpleComboBox#setLoadingText(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.form.SimpleComboBox#setLoadingIndicator(com.google.gwt.safehtml.shared.SafeHtml)
      */
-    public SimpleComboBoxBuilder<T> loadingText(java.lang.String v0) {
-        simpleComboBox.setLoadingText(v0);
+    public SimpleComboBoxBuilder<T> loadingIndicator(com.google.gwt.safehtml.shared.SafeHtml v0) {
+        simpleComboBox.setLoadingIndicator(v0);
         return this;
     }
 
@@ -577,6 +585,14 @@ public class SimpleComboBoxBuilder<T> extends biz.freshcode.learn.gwt2.common.cl
      * @see com.sencha.gxt.widget.core.client.form.SimpleComboBox#setToolTip(java.lang.String)
      */
     public SimpleComboBoxBuilder<T> toolTip(java.lang.String v0) {
+        simpleComboBox.setToolTip(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.form.SimpleComboBox#setToolTip(com.google.gwt.safehtml.shared.SafeHtml)
+     */
+    public SimpleComboBoxBuilder<T> toolTip(com.google.gwt.safehtml.shared.SafeHtml v0) {
         simpleComboBox.setToolTip(v0);
         return this;
     }

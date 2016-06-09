@@ -63,6 +63,14 @@ public class ContentPanelBuilder extends biz.freshcode.learn.gwt2.common.client.
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.ContentPanel#addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer)
+     */
+    public ContentPanelBuilder addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer v0) {
+        contentPanel.addGestureRecognizer(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.ContentPanel#addStyleDependentName(java.lang.String)
      */
     public ContentPanelBuilder addStyleDependentName(java.lang.String v0) {
@@ -231,26 +239,18 @@ public class ContentPanelBuilder extends biz.freshcode.learn.gwt2.common.client.
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.ContentPanel#setHeadingHtml(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.ContentPanel#setHeading(java.lang.String)
      */
-    public ContentPanelBuilder headingHtml(java.lang.String v0) {
-        contentPanel.setHeadingHtml(v0);
+    public ContentPanelBuilder heading(java.lang.String v0) {
+        contentPanel.setHeading(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.ContentPanel#setHeadingHtml(com.google.gwt.safehtml.shared.SafeHtml)
+     * @see com.sencha.gxt.widget.core.client.ContentPanel#setHeading(com.google.gwt.safehtml.shared.SafeHtml)
      */
-    public ContentPanelBuilder headingHtml(com.google.gwt.safehtml.shared.SafeHtml v0) {
-        contentPanel.setHeadingHtml(v0);
-        return this;
-    }
-
-    /**
-     * @see com.sencha.gxt.widget.core.client.ContentPanel#setHeadingText(java.lang.String)
-     */
-    public ContentPanelBuilder headingText(java.lang.String v0) {
-        contentPanel.setHeadingText(v0);
+    public ContentPanelBuilder heading(com.google.gwt.safehtml.shared.SafeHtml v0) {
+        contentPanel.setHeading(v0);
         return this;
     }
 
@@ -458,6 +458,14 @@ public class ContentPanelBuilder extends biz.freshcode.learn.gwt2.common.client.
      * @see com.sencha.gxt.widget.core.client.ContentPanel#setToolTip(java.lang.String)
      */
     public ContentPanelBuilder toolTip(java.lang.String v0) {
+        contentPanel.setToolTip(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.ContentPanel#setToolTip(com.google.gwt.safehtml.shared.SafeHtml)
+     */
+    public ContentPanelBuilder toolTip(com.google.gwt.safehtml.shared.SafeHtml v0) {
         contentPanel.setToolTip(v0);
         return this;
     }

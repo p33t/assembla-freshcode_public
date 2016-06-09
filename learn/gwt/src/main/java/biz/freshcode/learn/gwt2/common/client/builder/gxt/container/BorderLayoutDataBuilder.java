@@ -31,6 +31,14 @@ public class BorderLayoutDataBuilder extends biz.freshcode.learn.gwt2.common.cli
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData#setCollapseHeaderVisible(boolean)
+     */
+    public BorderLayoutDataBuilder collapseHeaderVisible(boolean v0) {
+        borderLayoutData.setCollapseHeaderVisible(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData#setCollapseHidden(boolean)
      */
     public BorderLayoutDataBuilder collapseHidden(boolean v0) {
