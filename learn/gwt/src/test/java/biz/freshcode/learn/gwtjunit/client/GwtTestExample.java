@@ -1,5 +1,7 @@
-package biz.freshcode.learn.gwt.client;
+package biz.freshcode.learn.gwtjunit.client;
 
+import biz.freshcode.learn.gwt.client.GreetingService;
+import biz.freshcode.learn.gwt.client.GreetingServiceAsync;
 import biz.freshcode.learn.gwt.client.test.TestUtil;
 import biz.freshcode.learn.gwt.shared.FieldVerifier;
 import com.google.gwt.core.client.GWT;
@@ -17,7 +19,7 @@ import com.google.gwt.user.client.rpc.ServiceDefTarget;
  * See http://mojo.codehaus.org/gwt-maven-plugin/user-guide/testing.html
  * for details.
  */
-public class GwtTestGreet extends GWTTestCase {
+public class GwtTestExample extends GWTTestCase {
 
     /**
      * Must refer to a valid module that sources this class.
