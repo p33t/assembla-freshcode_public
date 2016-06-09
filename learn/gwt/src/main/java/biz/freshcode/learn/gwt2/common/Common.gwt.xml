@@ -42,6 +42,10 @@
     <source path='client'/>
     <source path='shared'/>
 
+    <!-- Reduce the number of permutations -->
+    <collapse-property name="gxt.device" values="*" />
+    <!-- Only CSS3 appearance -->
+    <!--Doesn't compile...<set-property name="gxt.css3.enabled" value="true" />-->
     <set-configuration-property name="CssResource.enableGss" value="true" />
 
     <!-- Dev quick compile: for Chrome is 'safari' -->

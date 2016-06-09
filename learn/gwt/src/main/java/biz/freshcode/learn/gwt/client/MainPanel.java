@@ -39,7 +39,6 @@ import biz.freshcode.learn.gwt.client.experiment.mvp.gwtp.GmdModule;
 import biz.freshcode.learn.gwt.client.experiment.mvp.homebake.HbParent;
 import biz.freshcode.learn.gwt.client.experiment.popfield.PopFieldDemo;
 import biz.freshcode.learn.gwt.client.experiment.requestfactory.RequestFactoryDemo;
-import biz.freshcode.learn.gwt.client.experiment.resources.ResourcesDemo;
 import biz.freshcode.learn.gwt.client.experiment.toolbar.ToolBarDemo;
 import biz.freshcode.learn.gwt.client.experiment.tree.TreeDemo;
 import biz.freshcode.learn.gwt.client.experiment.triggerfield.TriggerFieldDemo;
@@ -232,12 +231,6 @@ public class MainPanel extends Composite implements AcceptsOneWidget {
                                             }
                                         }))
                                         .menuBar))
-                                .addItem(new MenuItem("Resources", new Command() {
-                                    public void execute() {
-                                        IsWidget w = GWT.create(ResourcesDemo.class);
-                                        replaceContent(w);
-                                    }
-                                }))
                                 .addItem(new MenuItem("GWT Grid Demo", new Command() {
                                     public void execute() {
                                         IsWidget w = GWT.create(GwtGridDemo.class);

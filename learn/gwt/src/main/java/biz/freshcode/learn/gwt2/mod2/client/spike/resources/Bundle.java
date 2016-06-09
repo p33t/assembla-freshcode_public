@@ -1,4 +1,4 @@
-package biz.freshcode.learn.gwt.client.experiment.resources;
+package biz.freshcode.learn.gwt2.mod2.client.spike.resources;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.resources.client.ClientBundle;
@@ -31,7 +31,7 @@ public interface Bundle extends ClientBundle {
     ImageResource dirtyGif4();
 
 
-    @Source("style.css")
+    @Source("style.gss")
     Style style();
 
     interface Style extends CssResource {

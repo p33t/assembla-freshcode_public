@@ -10,7 +10,7 @@
 }
 
 /* More primitive way.  More general */
-@def DIRTY_BGND_URL eval('biz.freshcode.learn.gwt.client.experiment.resources.ResourcesDemo.dirtyGifCssUrl()');
+@def DIRTY_BGND_URL eval('biz.freshcode.learn.gwt2.mod2.client.spike.resources.ResourcesSpike.dirtyGifCssUrl()');
 
 .dirtyBgnd {
   background-image: DIRTY_BGND_URL;
