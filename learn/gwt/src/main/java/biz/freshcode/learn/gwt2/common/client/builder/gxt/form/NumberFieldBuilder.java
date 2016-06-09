@@ -9,11 +9,18 @@ import com.sencha.gxt.widget.core.client.form.NumberField;
  */
 @SuppressWarnings("UnusedDeclaration")
 @biz.freshcode.learn.gwt2.common.client.builder.BeanBuilder(NumberField.class)
-public class NumberFieldBuilder<N extends Number> extends biz.freshcode.learn.gwt2.common.client.builder.Construct.Parent<NumberFieldBuilder<N>> {
+public class NumberFieldBuilder<N extends Number & Comparable<N>> extends biz.freshcode.learn.gwt2.common.client.builder.Construct.Parent<NumberFieldBuilder<N>> {
     public final NumberField<N> numberField;
 
     public NumberFieldBuilder(NumberField<N> v) {
         numberField = v;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.form.NumberField#NumberField(com.sencha.gxt.widget.core.client.form.NumberPropertyEditor)
+     */
+    public NumberFieldBuilder(com.sencha.gxt.widget.core.client.form.NumberPropertyEditor<N> v0) {
+        this(new NumberField<N>(v0));
     }
 
     /**
@@ -24,10 +31,11 @@ public class NumberFieldBuilder<N extends Number> extends biz.freshcode.learn.gw
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.form.NumberField#NumberField(com.sencha.gxt.widget.core.client.form.NumberPropertyEditor)
+     * @see com.sencha.gxt.widget.core.client.form.NumberField#addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer)
      */
-    public NumberFieldBuilder(com.sencha.gxt.widget.core.client.form.NumberPropertyEditor<N> v0) {
-        this(new NumberField<N>(v0));
+    public NumberFieldBuilder<N> addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer v0) {
+        numberField.addGestureRecognizer(v0);
+        return this;
     }
 
     /**
@@ -498,6 +506,14 @@ public class NumberFieldBuilder<N extends Number> extends biz.freshcode.learn.gw
      * @see com.sencha.gxt.widget.core.client.form.NumberField#setToolTip(java.lang.String)
      */
     public NumberFieldBuilder<N> toolTip(java.lang.String v0) {
+        numberField.setToolTip(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.form.NumberField#setToolTip(com.google.gwt.safehtml.shared.SafeHtml)
+     */
+    public NumberFieldBuilder<N> toolTip(com.google.gwt.safehtml.shared.SafeHtml v0) {
         numberField.setToolTip(v0);
         return this;
     }

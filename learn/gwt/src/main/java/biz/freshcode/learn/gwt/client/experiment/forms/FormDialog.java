@@ -22,7 +22,7 @@ public class FormDialog extends AbstractIsWidget<Dialog> {
 //        TextButton btnClose;
         FormBeanEditor editor;
         final Dialog dlg = new DialogBuilder()
-                .headingText("Forms Demo")
+                .heading("Forms Demo")
                 .width(500)
 //                .height(300)
                 .add(editor = new FormBeanEditor())

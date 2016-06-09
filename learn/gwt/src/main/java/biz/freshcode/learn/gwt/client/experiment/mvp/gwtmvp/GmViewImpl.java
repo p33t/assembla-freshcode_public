@@ -11,7 +11,7 @@ import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 
-import static com.google.gwt.safehtml.shared.SafeHtmlUtils.htmlEscape;
+import static com.google.gwt.safehtml.shared.SafeHtmlUtils.*;
 
 @Singleton
 public class GmViewImpl extends AbstractIsWidget implements GmView {
@@ -34,7 +34,7 @@ public class GmViewImpl extends AbstractIsWidget implements GmView {
                         .add(new CheckBox("Display State (remains when Back button used)"))
                         .add(link = new Hyperlink("Smaller", ""))
                         .horizontalLayoutContainer)
-                .centerWidget(hlc = new HtmlLayoutContainer("<p>Nothing</p>"))
+                .centerWidget(hlc = new HtmlLayoutContainer(fromTrustedString("<p>Nothing</p>")))
                 .borderLayoutContainer;
     }
 
@@ -47,7 +47,7 @@ public class GmViewImpl extends AbstractIsWidget implements GmView {
 
     @Override
     public void setHtml(String s) {
-        hlc.setHTML(htmlEscape(s));
+        hlc.setHTML(fromString(s));
     }
 
     @Override

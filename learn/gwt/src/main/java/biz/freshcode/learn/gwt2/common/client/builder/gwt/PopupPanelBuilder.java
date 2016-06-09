@@ -17,10 +17,10 @@ public class PopupPanelBuilder extends biz.freshcode.learn.gwt2.common.client.bu
     }
 
     /**
-     * @see com.google.gwt.user.client.ui.PopupPanel#PopupPanel(boolean, boolean)
+     * @see com.google.gwt.user.client.ui.PopupPanel#PopupPanel()
      */
-    public PopupPanelBuilder(boolean v0, boolean v1) {
-        this(new PopupPanel(v0, v1));
+    public PopupPanelBuilder() {
+        this(new PopupPanel());
     }
 
     /**
@@ -31,10 +31,10 @@ public class PopupPanelBuilder extends biz.freshcode.learn.gwt2.common.client.bu
     }
 
     /**
-     * @see com.google.gwt.user.client.ui.PopupPanel#PopupPanel()
+     * @see com.google.gwt.user.client.ui.PopupPanel#PopupPanel(boolean, boolean)
      */
-    public PopupPanelBuilder() {
-        this(new PopupPanel());
+    public PopupPanelBuilder(boolean v0, boolean v1) {
+        this(new PopupPanel(v0, v1));
     }
 
     /**
@@ -92,6 +92,14 @@ public class PopupPanelBuilder extends biz.freshcode.learn.gwt2.common.client.bu
      */
     public PopupPanelBuilder animationEnabled(boolean v0) {
         popupPanel.setAnimationEnabled(v0);
+        return this;
+    }
+
+    /**
+     * @see com.google.gwt.user.client.ui.PopupPanel#setAnimationType(com.google.gwt.user.client.ui.PopupPanel.AnimationType)
+     */
+    public PopupPanelBuilder animationType(com.google.gwt.user.client.ui.PopupPanel.AnimationType v0) {
+        popupPanel.setAnimationType(v0);
         return this;
     }
 

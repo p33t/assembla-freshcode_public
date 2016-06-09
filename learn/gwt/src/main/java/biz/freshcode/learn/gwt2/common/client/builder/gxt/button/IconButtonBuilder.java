@@ -17,10 +17,10 @@ public class IconButtonBuilder extends biz.freshcode.learn.gwt2.common.client.bu
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.button.IconButton#IconButton(java.lang.String, com.sencha.gxt.widget.core.client.event.SelectEvent.SelectHandler)
+     * @see com.sencha.gxt.widget.core.client.button.IconButton#IconButton(com.sencha.gxt.widget.core.client.button.IconButton.IconConfig)
      */
-    public IconButtonBuilder(java.lang.String v0, com.sencha.gxt.widget.core.client.event.SelectEvent.SelectHandler v1) {
-        this(new IconButton(v0, v1));
+    public IconButtonBuilder(com.sencha.gxt.widget.core.client.button.IconButton.IconConfig v0) {
+        this(new IconButton(v0));
     }
 
     /**
@@ -31,10 +31,10 @@ public class IconButtonBuilder extends biz.freshcode.learn.gwt2.common.client.bu
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.button.IconButton#IconButton(com.sencha.gxt.widget.core.client.button.IconButton.IconConfig)
+     * @see com.sencha.gxt.widget.core.client.button.IconButton#IconButton(java.lang.String, com.sencha.gxt.widget.core.client.event.SelectEvent.SelectHandler)
      */
-    public IconButtonBuilder(com.sencha.gxt.widget.core.client.button.IconButton.IconConfig v0) {
-        this(new IconButton(v0));
+    public IconButtonBuilder(java.lang.String v0, com.sencha.gxt.widget.core.client.event.SelectEvent.SelectHandler v1) {
+        this(new IconButton(v0, v1));
     }
 
     /**
@@ -42,6 +42,14 @@ public class IconButtonBuilder extends biz.freshcode.learn.gwt2.common.client.bu
      */
     public IconButtonBuilder(com.sencha.gxt.widget.core.client.button.IconButton.IconButtonAppearance v0, com.sencha.gxt.widget.core.client.button.IconButton.IconConfig v1) {
         this(new IconButton(v0, v1));
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.button.IconButton#addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer)
+     */
+    public IconButtonBuilder addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer v0) {
+        iconButton.addGestureRecognizer(v0);
+        return this;
     }
 
     /**
@@ -296,6 +304,14 @@ public class IconButtonBuilder extends biz.freshcode.learn.gwt2.common.client.bu
      * @see com.sencha.gxt.widget.core.client.button.IconButton#setToolTip(java.lang.String)
      */
     public IconButtonBuilder toolTip(java.lang.String v0) {
+        iconButton.setToolTip(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.button.IconButton#setToolTip(com.google.gwt.safehtml.shared.SafeHtml)
+     */
+    public IconButtonBuilder toolTip(com.google.gwt.safehtml.shared.SafeHtml v0) {
         iconButton.setToolTip(v0);
         return this;
     }

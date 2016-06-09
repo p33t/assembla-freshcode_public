@@ -498,7 +498,7 @@ public class MainPanel extends Composite implements AcceptsOneWidget {
 
     private void dialog(String heading, IsWidget w) {
         new DialogBuilder()
-                .headingText(heading)
+                .heading(heading)
                 .height(400)
                 .width(600)
                 .resizable(true)

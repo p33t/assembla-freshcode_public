@@ -35,7 +35,7 @@ public class WindowMoveBug extends AbstractIsWidget {
                 @Override
                 public void onSelect(SelectEvent event) {
                     Window w = new Window();
-                    w.setHeadingHtml("A Window");
+                    w.setHeading("A Window");
                     w.add(new HTMLPanel("<p>Move this window down and to the right.<br/>" +
                             "You should see an abnormal resize with the shadow remaining the original size.<br/>" +
                             "Resizing it fixes it up again.</p>"));

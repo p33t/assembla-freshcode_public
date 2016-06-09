@@ -59,6 +59,7 @@ import static biz.freshcode.learn.gwt.client.experiment.grid.RowEntity.Flag.GREE
 import static biz.freshcode.learn.gwt.client.experiment.grid.RowEntity.Flag.RED;
 import static biz.freshcode.learn.gwt.client.experiment.grid.reuse.MouseOverCell.isSameContext;
 import static biz.freshcode.learn.gwt2.common.client.util.AppCollectionUtil.*;
+import static com.google.gwt.safehtml.shared.SafeHtmlUtils.fromTrustedString;
 
 /**
  * Hover widgets, background images for cells, cell-to-cell drag-drop.
@@ -70,7 +71,7 @@ public class GxtGridDemo extends AbstractIsWidget {
     private HtmlLayoutContainer hlc;
     private Popup popup = new PopupBuilder()
             .borders(true)
-            .add(hlc = new HtmlLayoutContainer("<p>x</p>"))
+            .add(hlc = new HtmlLayoutContainer(fromTrustedString("<p>x</p>")))
             .popup;
     private Grid<RowEntity> grid;
 
@@ -161,7 +162,7 @@ public class GxtGridDemo extends AbstractIsWidget {
         int left = cell0.getAbsoluteLeft();
         int top = cell0.getAbsoluteTop();
 
-        hlc.setHTML(SafeHtmlUtils.fromTrustedString("<p style='background: yellow;'>Row: " + row + "<br/> Cell:" + col + "<p>"));
+        hlc.setHTML(fromTrustedString("<p style='background: yellow;'>Row: " + row + "<br/> Cell:" + col + "<p>"));
         if (popup.isVisible()) {
             if (left == popup.getAbsoluteLeft() && top == popup.getAbsoluteTop()) {
                 // visible but in correct place

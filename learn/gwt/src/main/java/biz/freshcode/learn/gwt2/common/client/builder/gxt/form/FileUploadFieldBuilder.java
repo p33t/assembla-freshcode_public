@@ -17,6 +17,13 @@ public class FileUploadFieldBuilder extends biz.freshcode.learn.gwt2.common.clie
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.form.FileUploadField#FileUploadField()
+     */
+    public FileUploadFieldBuilder() {
+        this(new FileUploadField());
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.form.FileUploadField#FileUploadField(com.sencha.gxt.widget.core.client.form.FileUploadField.FileUploadFieldAppearance)
      */
     public FileUploadFieldBuilder(com.sencha.gxt.widget.core.client.form.FileUploadField.FileUploadFieldAppearance v0) {
@@ -24,10 +31,11 @@ public class FileUploadFieldBuilder extends biz.freshcode.learn.gwt2.common.clie
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.form.FileUploadField#FileUploadField()
+     * @see com.sencha.gxt.widget.core.client.form.FileUploadField#addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer)
      */
-    public FileUploadFieldBuilder() {
-        this(new FileUploadField());
+    public FileUploadFieldBuilder addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer v0) {
+        fileUploadField.addGestureRecognizer(v0);
+        return this;
     }
 
     /**
@@ -314,6 +322,14 @@ public class FileUploadFieldBuilder extends biz.freshcode.learn.gwt2.common.clie
      * @see com.sencha.gxt.widget.core.client.form.FileUploadField#setToolTip(java.lang.String)
      */
     public FileUploadFieldBuilder toolTip(java.lang.String v0) {
+        fileUploadField.setToolTip(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.form.FileUploadField#setToolTip(com.google.gwt.safehtml.shared.SafeHtml)
+     */
+    public FileUploadFieldBuilder toolTip(com.google.gwt.safehtml.shared.SafeHtml v0) {
         fileUploadField.setToolTip(v0);
         return this;
     }

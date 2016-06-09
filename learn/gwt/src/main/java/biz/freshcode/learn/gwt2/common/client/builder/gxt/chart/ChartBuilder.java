@@ -39,6 +39,14 @@ public class ChartBuilder<M> extends biz.freshcode.learn.gwt2.common.client.buil
     }
 
     /**
+     * @see com.sencha.gxt.chart.client.chart.Chart#addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer)
+     */
+    public ChartBuilder<M> addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer v0) {
+        chart.addGestureRecognizer(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.chart.client.chart.Chart#addGradient(com.sencha.gxt.chart.client.draw.Gradient)
      */
     public ChartBuilder<M> addGradient(com.sencha.gxt.chart.client.draw.Gradient v0) {
@@ -394,6 +402,14 @@ public class ChartBuilder<M> extends biz.freshcode.learn.gwt2.common.client.buil
      * @see com.sencha.gxt.chart.client.chart.Chart#setToolTip(java.lang.String)
      */
     public ChartBuilder<M> toolTip(java.lang.String v0) {
+        chart.setToolTip(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.chart.client.chart.Chart#setToolTip(com.google.gwt.safehtml.shared.SafeHtml)
+     */
+    public ChartBuilder<M> toolTip(com.google.gwt.safehtml.shared.SafeHtml v0) {
         chart.setToolTip(v0);
         return this;
     }

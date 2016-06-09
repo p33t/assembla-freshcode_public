@@ -38,6 +38,14 @@ public class TextFieldBuilder extends biz.freshcode.learn.gwt2.common.client.bui
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.form.TextField#addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer)
+     */
+    public TextFieldBuilder addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer v0) {
+        textField.addGestureRecognizer(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.form.TextField#addStyleDependentName(java.lang.String)
      */
     public TextFieldBuilder addStyleDependentName(java.lang.String v0) {
@@ -433,6 +441,14 @@ public class TextFieldBuilder extends biz.freshcode.learn.gwt2.common.client.bui
      * @see com.sencha.gxt.widget.core.client.form.TextField#setToolTip(java.lang.String)
      */
     public TextFieldBuilder toolTip(java.lang.String v0) {
+        textField.setToolTip(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.form.TextField#setToolTip(com.google.gwt.safehtml.shared.SafeHtml)
+     */
+    public TextFieldBuilder toolTip(com.google.gwt.safehtml.shared.SafeHtml v0) {
         textField.setToolTip(v0);
         return this;
     }

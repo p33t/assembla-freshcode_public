@@ -17,10 +17,10 @@ public class VerticalLayoutDataBuilder extends biz.freshcode.learn.gwt2.common.c
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData#VerticalLayoutData(double, double, com.sencha.gxt.core.client.util.Margins)
+     * @see com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData#VerticalLayoutData()
      */
-    public VerticalLayoutDataBuilder(double v0, double v1, com.sencha.gxt.core.client.util.Margins v2) {
-        this(new VerticalLayoutData(v0, v1, v2));
+    public VerticalLayoutDataBuilder() {
+        this(new VerticalLayoutData());
     }
 
     /**
@@ -31,10 +31,10 @@ public class VerticalLayoutDataBuilder extends biz.freshcode.learn.gwt2.common.c
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData#VerticalLayoutData()
+     * @see com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData#VerticalLayoutData(double, double, com.sencha.gxt.core.client.util.Margins)
      */
-    public VerticalLayoutDataBuilder() {
-        this(new VerticalLayoutData());
+    public VerticalLayoutDataBuilder(double v0, double v1, com.sencha.gxt.core.client.util.Margins v2) {
+        this(new VerticalLayoutData(v0, v1, v2));
     }
 
     /**

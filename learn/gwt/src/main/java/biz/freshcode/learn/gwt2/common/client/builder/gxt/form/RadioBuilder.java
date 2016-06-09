@@ -31,6 +31,14 @@ public class RadioBuilder extends biz.freshcode.learn.gwt2.common.client.builder
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.form.Radio#addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer)
+     */
+    public RadioBuilder addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer v0) {
+        radio.addGestureRecognizer(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.form.Radio#addStyleDependentName(java.lang.String)
      */
     public RadioBuilder addStyleDependentName(java.lang.String v0) {
@@ -106,6 +114,14 @@ public class RadioBuilder extends biz.freshcode.learn.gwt2.common.client.builder
      * @see com.sencha.gxt.widget.core.client.form.Radio#setBoxLabel(java.lang.String)
      */
     public RadioBuilder boxLabel(java.lang.String v0) {
+        radio.setBoxLabel(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.form.Radio#setBoxLabel(com.google.gwt.safehtml.shared.SafeHtml)
+     */
+    public RadioBuilder boxLabel(com.google.gwt.safehtml.shared.SafeHtml v0) {
         radio.setBoxLabel(v0);
         return this;
     }
@@ -346,6 +362,14 @@ public class RadioBuilder extends biz.freshcode.learn.gwt2.common.client.builder
      * @see com.sencha.gxt.widget.core.client.form.Radio#setToolTip(java.lang.String)
      */
     public RadioBuilder toolTip(java.lang.String v0) {
+        radio.setToolTip(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.form.Radio#setToolTip(com.google.gwt.safehtml.shared.SafeHtml)
+     */
+    public RadioBuilder toolTip(com.google.gwt.safehtml.shared.SafeHtml v0) {
         radio.setToolTip(v0);
         return this;
     }

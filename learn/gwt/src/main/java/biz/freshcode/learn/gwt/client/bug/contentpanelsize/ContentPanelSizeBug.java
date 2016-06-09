@@ -12,6 +12,7 @@ import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer;
 
+import static com.google.gwt.safehtml.shared.SafeHtmlUtils.fromTrustedString;
 import static com.sencha.gxt.widget.core.client.container.HBoxLayoutContainer.HBoxLayoutAlign.STRETCH;
 
 public class ContentPanelSizeBug extends AbstractIsWidget {
@@ -25,8 +26,8 @@ public class ContentPanelSizeBug extends AbstractIsWidget {
                 // NOTE: Removing the contentpanel and using HtmlLayoutContainer directly fixes issue.
                 // Maybe ContentPanel is an outer construct only.
                 .add(new ContentPanelBuilder()
-                        .headingText("Resize bug test")
-                        .widget(new HtmlLayoutContainerBuilder(new HtmlLayoutContainer("<p>" + ten + "</p>"))
+                        .heading("Resize bug test")
+                        .widget(new HtmlLayoutContainerBuilder(new HtmlLayoutContainer(fromTrustedString("<p>" + ten + "</p>")))
                                 // NOTE: Margin herein is ignored.  Maybe HBoxLayout overrides it ?!
                                 .addStyleName(Bundle.INSTANCE.style().debug())
                                 .htmlLayoutContainer)

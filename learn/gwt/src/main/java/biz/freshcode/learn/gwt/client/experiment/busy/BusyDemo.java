@@ -34,7 +34,7 @@ public class BusyDemo extends AbstractIsWidget {
                 }))
                 .add(space())
                 .add(pnlTarget = new ContentPanelBuilder()
-                        .headingText("The Target")
+                        .heading("The Target")
                         .widget(new ToolButton(ToolButton.REFRESH))
                         .contentPanel)
                 .verticalLayoutContainer;

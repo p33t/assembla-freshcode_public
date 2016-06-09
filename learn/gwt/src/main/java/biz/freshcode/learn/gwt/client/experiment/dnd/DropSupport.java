@@ -1,12 +1,15 @@
 package biz.freshcode.learn.gwt.client.experiment.dnd;
 
 import biz.freshcode.learn.gwt.client.experiment.dnd.dragdata.DragData;
+import com.google.gwt.safehtml.shared.SafeHtml;
+import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.dnd.core.client.*;
 
 import static biz.freshcode.learn.gwt.client.experiment.dnd.Bundle.STYLE;
 import static biz.freshcode.learn.gwt.client.experiment.dnd.DropAssessment.NOT_HANDLED;
 import static biz.freshcode.learn.gwt.client.experiment.dnd.DropAssessment.NOT_HANDLED_MSG;
+import static com.google.gwt.safehtml.shared.SafeHtmlUtils.fromTrustedString;
 
 /**
  * Subclass of DropTarget that specifically handles 'DropData'.  Client code must subclass and implement dropQuery().
@@ -42,7 +45,7 @@ public abstract class DropSupport extends DropTarget {
     private void updateAssessment(DragData data, StatusProxy statusProxy) {
         currentAssessment = dropQuery(data);
         if (currentAssessment.isDroppable()) {
-            statusProxy.update(currentAssessment.getDescriptionString());
+            statusProxy.update(fromTrustedString(currentAssessment.getDescriptionString()));
             statusProxy.setStatus(true);
         } else {
             // cannot drop
@@ -50,7 +53,7 @@ public abstract class DropSupport extends DropTarget {
 //                    event.getStatusProxy().setStatus(false);
             // just put 'not allowed' icon up and ignore the 'drop' event
             statusProxy.setStatus(true, Bundle.INSTANCE.dropNotAllowed());
-            String reason = currentAssessment.getDescriptionString();
+            SafeHtml reason = SafeHtmlUtils.fromString(currentAssessment.getDescriptionString());
             // Use original message if data not handled
             if (NOT_HANDLED_MSG.equals(reason)) reason = data.getOriginalMessage();
             statusProxy.update(reason);

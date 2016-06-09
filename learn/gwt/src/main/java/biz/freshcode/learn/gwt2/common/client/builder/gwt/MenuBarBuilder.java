@@ -17,29 +17,6 @@ public class MenuBarBuilder extends biz.freshcode.learn.gwt2.common.client.build
     }
 
     /**
-     * @see com.google.gwt.user.client.ui.MenuBar#MenuBar(com.google.gwt.user.client.ui.MenuBar.Resources)
-     */
-    public MenuBarBuilder(com.google.gwt.user.client.ui.MenuBar.Resources v0) {
-        this(new MenuBar(v0));
-    }
-
-    /**
-     * @see com.google.gwt.user.client.ui.MenuBar#MenuBar(com.google.gwt.user.client.ui.MenuBar.MenuBarImages)
-     */
-    @SuppressWarnings("deprecation")
-    @Deprecated
-    public MenuBarBuilder(com.google.gwt.user.client.ui.MenuBar.MenuBarImages v0) {
-        this(new MenuBar(v0));
-    }
-
-    /**
-     * @see com.google.gwt.user.client.ui.MenuBar#MenuBar(boolean, com.google.gwt.user.client.ui.MenuBar.Resources)
-     */
-    public MenuBarBuilder(boolean v0, com.google.gwt.user.client.ui.MenuBar.Resources v1) {
-        this(new MenuBar(v0, v1));
-    }
-
-    /**
      * @see com.google.gwt.user.client.ui.MenuBar#MenuBar()
      */
     public MenuBarBuilder() {
@@ -54,11 +31,34 @@ public class MenuBarBuilder extends biz.freshcode.learn.gwt2.common.client.build
     }
 
     /**
+     * @see com.google.gwt.user.client.ui.MenuBar#MenuBar(com.google.gwt.user.client.ui.MenuBar.MenuBarImages)
+     */
+    @SuppressWarnings("deprecation")
+    @Deprecated
+    public MenuBarBuilder(com.google.gwt.user.client.ui.MenuBar.MenuBarImages v0) {
+        this(new MenuBar(v0));
+    }
+
+    /**
+     * @see com.google.gwt.user.client.ui.MenuBar#MenuBar(com.google.gwt.user.client.ui.MenuBar.Resources)
+     */
+    public MenuBarBuilder(com.google.gwt.user.client.ui.MenuBar.Resources v0) {
+        this(new MenuBar(v0));
+    }
+
+    /**
      * @see com.google.gwt.user.client.ui.MenuBar#MenuBar(boolean, com.google.gwt.user.client.ui.MenuBar.MenuBarImages)
      */
     @SuppressWarnings("deprecation")
     @Deprecated
     public MenuBarBuilder(boolean v0, com.google.gwt.user.client.ui.MenuBar.MenuBarImages v1) {
+        this(new MenuBar(v0, v1));
+    }
+
+    /**
+     * @see com.google.gwt.user.client.ui.MenuBar#MenuBar(boolean, com.google.gwt.user.client.ui.MenuBar.Resources)
+     */
+    public MenuBarBuilder(boolean v0, com.google.gwt.user.client.ui.MenuBar.Resources v1) {
         this(new MenuBar(v0, v1));
     }
 

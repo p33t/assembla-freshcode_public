@@ -17,7 +17,7 @@ public class Forms3Demo extends AbstractIsWidget {
     private final PersonFormFields fields = new PersonFormFields();
     private final Driver driver = GWT.create(Driver.class);
     private Dialog dlg = new DialogBuilder()
-            .headingText("Forms 3 Demo")
+            .heading("Forms 3 Demo")
             .width(500)
             .add(new VerticalLayoutContainerBuilder()
                     .add(new FieldLabelBuilder()

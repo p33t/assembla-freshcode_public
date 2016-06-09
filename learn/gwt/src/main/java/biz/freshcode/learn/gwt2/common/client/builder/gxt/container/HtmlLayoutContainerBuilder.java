@@ -24,13 +24,6 @@ public class HtmlLayoutContainerBuilder extends biz.freshcode.learn.gwt2.common.
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer#HtmlLayoutContainer(java.lang.String)
-     */
-    public HtmlLayoutContainerBuilder(java.lang.String v0) {
-        this(new HtmlLayoutContainer(v0));
-    }
-
-    /**
      * @see com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer#add(com.google.gwt.user.client.ui.Widget)
      */
     public HtmlLayoutContainerBuilder add(com.google.gwt.user.client.ui.Widget v0) {
@@ -51,6 +44,14 @@ public class HtmlLayoutContainerBuilder extends biz.freshcode.learn.gwt2.common.
      */
     public HtmlLayoutContainerBuilder add(com.google.gwt.user.client.ui.IsWidget v0, com.sencha.gxt.widget.core.client.container.AbstractHtmlLayoutContainer.HtmlData v1) {
         htmlLayoutContainer.add(v0, v1);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer#addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer)
+     */
+    public HtmlLayoutContainerBuilder addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer v0) {
+        htmlLayoutContainer.addGestureRecognizer(v0);
         return this;
     }
 
@@ -139,14 +140,6 @@ public class HtmlLayoutContainerBuilder extends biz.freshcode.learn.gwt2.common.
      */
     public HtmlLayoutContainerBuilder enabled(boolean v0) {
         htmlLayoutContainer.setEnabled(v0);
-        return this;
-    }
-
-    /**
-     * @see com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer#setHTML(java.lang.String)
-     */
-    public HtmlLayoutContainerBuilder hTML(java.lang.String v0) {
-        htmlLayoutContainer.setHTML(v0);
         return this;
     }
 
@@ -322,6 +315,14 @@ public class HtmlLayoutContainerBuilder extends biz.freshcode.learn.gwt2.common.
      * @see com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer#setToolTip(java.lang.String)
      */
     public HtmlLayoutContainerBuilder toolTip(java.lang.String v0) {
+        htmlLayoutContainer.setToolTip(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer#setToolTip(com.google.gwt.safehtml.shared.SafeHtml)
+     */
+    public HtmlLayoutContainerBuilder toolTip(com.google.gwt.safehtml.shared.SafeHtml v0) {
         htmlLayoutContainer.setToolTip(v0);
         return this;
     }

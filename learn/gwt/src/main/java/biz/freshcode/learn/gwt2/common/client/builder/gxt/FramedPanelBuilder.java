@@ -63,6 +63,14 @@ public class FramedPanelBuilder extends biz.freshcode.learn.gwt2.common.client.b
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.FramedPanel#addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer)
+     */
+    public FramedPanelBuilder addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer v0) {
+        framedPanel.addGestureRecognizer(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.FramedPanel#addStyleDependentName(java.lang.String)
      */
     public FramedPanelBuilder addStyleDependentName(java.lang.String v0) {
@@ -231,26 +239,18 @@ public class FramedPanelBuilder extends biz.freshcode.learn.gwt2.common.client.b
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.FramedPanel#setHeadingHtml(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.FramedPanel#setHeading(java.lang.String)
      */
-    public FramedPanelBuilder headingHtml(java.lang.String v0) {
-        framedPanel.setHeadingHtml(v0);
+    public FramedPanelBuilder heading(java.lang.String v0) {
+        framedPanel.setHeading(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.FramedPanel#setHeadingHtml(com.google.gwt.safehtml.shared.SafeHtml)
+     * @see com.sencha.gxt.widget.core.client.FramedPanel#setHeading(com.google.gwt.safehtml.shared.SafeHtml)
      */
-    public FramedPanelBuilder headingHtml(com.google.gwt.safehtml.shared.SafeHtml v0) {
-        framedPanel.setHeadingHtml(v0);
-        return this;
-    }
-
-    /**
-     * @see com.sencha.gxt.widget.core.client.FramedPanel#setHeadingText(java.lang.String)
-     */
-    public FramedPanelBuilder headingText(java.lang.String v0) {
-        framedPanel.setHeadingText(v0);
+    public FramedPanelBuilder heading(com.google.gwt.safehtml.shared.SafeHtml v0) {
+        framedPanel.setHeading(v0);
         return this;
     }
 
@@ -458,6 +458,14 @@ public class FramedPanelBuilder extends biz.freshcode.learn.gwt2.common.client.b
      * @see com.sencha.gxt.widget.core.client.FramedPanel#setToolTip(java.lang.String)
      */
     public FramedPanelBuilder toolTip(java.lang.String v0) {
+        framedPanel.setToolTip(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.FramedPanel#setToolTip(com.google.gwt.safehtml.shared.SafeHtml)
+     */
+    public FramedPanelBuilder toolTip(com.google.gwt.safehtml.shared.SafeHtml v0) {
         framedPanel.setToolTip(v0);
         return this;
     }

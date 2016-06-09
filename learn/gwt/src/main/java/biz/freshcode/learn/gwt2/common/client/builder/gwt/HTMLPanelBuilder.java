@@ -17,10 +17,10 @@ public class HTMLPanelBuilder extends biz.freshcode.learn.gwt2.common.client.bui
     }
 
     /**
-     * @see com.google.gwt.user.client.ui.HTMLPanel#HTMLPanel(java.lang.String, java.lang.String)
+     * @see com.google.gwt.user.client.ui.HTMLPanel#HTMLPanel(java.lang.String)
      */
-    public HTMLPanelBuilder(java.lang.String v0, java.lang.String v1) {
-        this(new HTMLPanel(v0, v1));
+    public HTMLPanelBuilder(java.lang.String v0) {
+        this(new HTMLPanel(v0));
     }
 
     /**
@@ -31,10 +31,10 @@ public class HTMLPanelBuilder extends biz.freshcode.learn.gwt2.common.client.bui
     }
 
     /**
-     * @see com.google.gwt.user.client.ui.HTMLPanel#HTMLPanel(java.lang.String)
+     * @see com.google.gwt.user.client.ui.HTMLPanel#HTMLPanel(java.lang.String, java.lang.String)
      */
-    public HTMLPanelBuilder(java.lang.String v0) {
-        this(new HTMLPanel(v0));
+    public HTMLPanelBuilder(java.lang.String v0, java.lang.String v1) {
+        this(new HTMLPanel(v0, v1));
     }
 
     /**

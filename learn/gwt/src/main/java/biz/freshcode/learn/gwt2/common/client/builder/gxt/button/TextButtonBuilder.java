@@ -17,10 +17,31 @@ public class TextButtonBuilder extends biz.freshcode.learn.gwt2.common.client.bu
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.button.TextButton#TextButton()
+     */
+    public TextButtonBuilder() {
+        this(new TextButton());
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.button.TextButton#TextButton(com.sencha.gxt.cell.core.client.TextButtonCell)
      */
     public TextButtonBuilder(com.sencha.gxt.cell.core.client.TextButtonCell v0) {
         this(new TextButton(v0));
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.button.TextButton#TextButton(java.lang.String)
+     */
+    public TextButtonBuilder(java.lang.String v0) {
+        this(new TextButton(v0));
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.button.TextButton#TextButton(com.sencha.gxt.cell.core.client.TextButtonCell, java.lang.String)
+     */
+    public TextButtonBuilder(com.sencha.gxt.cell.core.client.TextButtonCell v0, java.lang.String v1) {
+        this(new TextButton(v0, v1));
     }
 
     /**
@@ -38,24 +59,11 @@ public class TextButtonBuilder extends biz.freshcode.learn.gwt2.common.client.bu
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.button.TextButton#TextButton(com.sencha.gxt.cell.core.client.TextButtonCell, java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.button.TextButton#addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer)
      */
-    public TextButtonBuilder(com.sencha.gxt.cell.core.client.TextButtonCell v0, java.lang.String v1) {
-        this(new TextButton(v0, v1));
-    }
-
-    /**
-     * @see com.sencha.gxt.widget.core.client.button.TextButton#TextButton(java.lang.String)
-     */
-    public TextButtonBuilder(java.lang.String v0) {
-        this(new TextButton(v0));
-    }
-
-    /**
-     * @see com.sencha.gxt.widget.core.client.button.TextButton#TextButton()
-     */
-    public TextButtonBuilder() {
-        this(new TextButton());
+    public TextButtonBuilder addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer v0) {
+        textButton.addGestureRecognizer(v0);
+        return this;
     }
 
     /**
@@ -398,6 +406,14 @@ public class TextButtonBuilder extends biz.freshcode.learn.gwt2.common.client.bu
      * @see com.sencha.gxt.widget.core.client.button.TextButton#setToolTip(java.lang.String)
      */
     public TextButtonBuilder toolTip(java.lang.String v0) {
+        textButton.setToolTip(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.button.TextButton#setToolTip(com.google.gwt.safehtml.shared.SafeHtml)
+     */
+    public TextButtonBuilder toolTip(com.google.gwt.safehtml.shared.SafeHtml v0) {
         textButton.setToolTip(v0);
         return this;
     }

@@ -55,6 +55,14 @@ public class BorderLayoutContainerBuilder extends biz.freshcode.learn.gwt2.commo
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.container.BorderLayoutContainer#addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer)
+     */
+    public BorderLayoutContainerBuilder addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer v0) {
+        borderLayoutContainer.addGestureRecognizer(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.container.BorderLayoutContainer#addStyleDependentName(java.lang.String)
      */
     public BorderLayoutContainerBuilder addStyleDependentName(java.lang.String v0) {
@@ -378,6 +386,14 @@ public class BorderLayoutContainerBuilder extends biz.freshcode.learn.gwt2.commo
      * @see com.sencha.gxt.widget.core.client.container.BorderLayoutContainer#setToolTip(java.lang.String)
      */
     public BorderLayoutContainerBuilder toolTip(java.lang.String v0) {
+        borderLayoutContainer.setToolTip(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.container.BorderLayoutContainer#setToolTip(com.google.gwt.safehtml.shared.SafeHtml)
+     */
+    public BorderLayoutContainerBuilder toolTip(com.google.gwt.safehtml.shared.SafeHtml v0) {
         borderLayoutContainer.setToolTip(v0);
         return this;
     }

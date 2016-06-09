@@ -35,14 +35,14 @@ public class WindowDemo extends AbstractIsWidget implements IsRootContent {
 
     // Where is 'onEsc'?... seems to work without it here but not in other apps?
     private Dialog dialog = new DialogBuilder()
-            .headingHtml("<p>Heading</p>")
+            .heading("<p>Heading</p>")
             .widget(new HTMLPanel("<p>This guy has buttons support... otherwise same as 'Window'and<br/>some<br/>extra<br/>lines<br/>thanks</p>"))
             .predefinedButtons()
 //            .hideOnButtonClick(true)
             .autoHide(true)
             .dialog;
     private Window window = new WindowBuilder()
-            .headingHtml("<p>Heading</p>")
+            .heading("<p>Heading</p>")
             .widget(new HTMLPanel("<p>Window Contentsand<br/>some<br/>extra<br/>lines<br/>thanks</p>"))
             .autoHide(true)
 //            .constrain(false)  ... does nothing

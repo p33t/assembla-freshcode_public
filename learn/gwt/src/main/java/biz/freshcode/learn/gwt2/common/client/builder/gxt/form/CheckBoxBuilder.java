@@ -17,6 +17,13 @@ public class CheckBoxBuilder extends biz.freshcode.learn.gwt2.common.client.buil
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.form.CheckBox#CheckBox()
+     */
+    public CheckBoxBuilder() {
+        this(new CheckBox());
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.form.CheckBox#CheckBox(com.sencha.gxt.cell.core.client.form.CheckBoxCell)
      */
     public CheckBoxBuilder(com.sencha.gxt.cell.core.client.form.CheckBoxCell v0) {
@@ -24,10 +31,11 @@ public class CheckBoxBuilder extends biz.freshcode.learn.gwt2.common.client.buil
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.form.CheckBox#CheckBox()
+     * @see com.sencha.gxt.widget.core.client.form.CheckBox#addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer)
      */
-    public CheckBoxBuilder() {
-        this(new CheckBox());
+    public CheckBoxBuilder addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer v0) {
+        checkBox.addGestureRecognizer(v0);
+        return this;
     }
 
     /**
@@ -106,6 +114,14 @@ public class CheckBoxBuilder extends biz.freshcode.learn.gwt2.common.client.buil
      * @see com.sencha.gxt.widget.core.client.form.CheckBox#setBoxLabel(java.lang.String)
      */
     public CheckBoxBuilder boxLabel(java.lang.String v0) {
+        checkBox.setBoxLabel(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.form.CheckBox#setBoxLabel(com.google.gwt.safehtml.shared.SafeHtml)
+     */
+    public CheckBoxBuilder boxLabel(com.google.gwt.safehtml.shared.SafeHtml v0) {
         checkBox.setBoxLabel(v0);
         return this;
     }
@@ -346,6 +362,14 @@ public class CheckBoxBuilder extends biz.freshcode.learn.gwt2.common.client.buil
      * @see com.sencha.gxt.widget.core.client.form.CheckBox#setToolTip(java.lang.String)
      */
     public CheckBoxBuilder toolTip(java.lang.String v0) {
+        checkBox.setToolTip(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.form.CheckBox#setToolTip(com.google.gwt.safehtml.shared.SafeHtml)
+     */
+    public CheckBoxBuilder toolTip(com.google.gwt.safehtml.shared.SafeHtml v0) {
         checkBox.setToolTip(v0);
         return this;
     }

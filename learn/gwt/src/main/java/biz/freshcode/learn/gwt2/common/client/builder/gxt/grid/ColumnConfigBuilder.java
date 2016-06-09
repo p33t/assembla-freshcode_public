@@ -17,6 +17,20 @@ public class ColumnConfigBuilder<M, N> extends biz.freshcode.learn.gwt2.common.c
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.grid.ColumnConfig#ColumnConfig(com.sencha.gxt.core.client.ValueProvider)
+     */
+    public ColumnConfigBuilder(com.sencha.gxt.core.client.ValueProvider<? super M, N> v0) {
+        this(new ColumnConfig<M, N>(v0));
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.grid.ColumnConfig#ColumnConfig(com.sencha.gxt.core.client.ValueProvider, int)
+     */
+    public ColumnConfigBuilder(com.sencha.gxt.core.client.ValueProvider<? super M, N> v0, int v1) {
+        this(new ColumnConfig<M, N>(v0, v1));
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.grid.ColumnConfig#ColumnConfig(com.sencha.gxt.core.client.ValueProvider, int, java.lang.String)
      */
     public ColumnConfigBuilder(com.sencha.gxt.core.client.ValueProvider<? super M, N> v0, int v1, java.lang.String v2) {
@@ -28,20 +42,6 @@ public class ColumnConfigBuilder<M, N> extends biz.freshcode.learn.gwt2.common.c
      */
     public ColumnConfigBuilder(com.sencha.gxt.core.client.ValueProvider<? super M, N> v0, int v1, com.google.gwt.safehtml.shared.SafeHtml v2) {
         this(new ColumnConfig<M, N>(v0, v1, v2));
-    }
-
-    /**
-     * @see com.sencha.gxt.widget.core.client.grid.ColumnConfig#ColumnConfig(com.sencha.gxt.core.client.ValueProvider, int)
-     */
-    public ColumnConfigBuilder(com.sencha.gxt.core.client.ValueProvider<? super M, N> v0, int v1) {
-        this(new ColumnConfig<M, N>(v0, v1));
-    }
-
-    /**
-     * @see com.sencha.gxt.widget.core.client.grid.ColumnConfig#ColumnConfig(com.sencha.gxt.core.client.ValueProvider)
-     */
-    public ColumnConfigBuilder(com.sencha.gxt.core.client.ValueProvider<? super M, N> v0) {
-        this(new ColumnConfig<M, N>(v0));
     }
 
     /**
@@ -165,6 +165,14 @@ public class ColumnConfigBuilder<M, N> extends biz.freshcode.learn.gwt2.common.c
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.grid.ColumnConfig#setHorizontalHeaderAlignment(com.google.gwt.user.client.ui.HasHorizontalAlignment.HorizontalAlignmentConstant)
+     */
+    public ColumnConfigBuilder<M, N> horizontalHeaderAlignment(com.google.gwt.user.client.ui.HasHorizontalAlignment.HorizontalAlignmentConstant v0) {
+        columnConfig.setHorizontalHeaderAlignment(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.grid.ColumnConfig#setMenuDisabled(boolean)
      */
     public ColumnConfigBuilder<M, N> menuDisabled(boolean v0) {
@@ -193,6 +201,14 @@ public class ColumnConfigBuilder<M, N> extends biz.freshcode.learn.gwt2.common.c
      */
     public ColumnConfigBuilder<M, N> sortable(boolean v0) {
         columnConfig.setSortable(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.grid.ColumnConfig#setToolTip(java.lang.String)
+     */
+    public ColumnConfigBuilder<M, N> toolTip(java.lang.String v0) {
+        columnConfig.setToolTip(v0);
         return this;
     }
 

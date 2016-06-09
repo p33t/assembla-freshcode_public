@@ -12,6 +12,7 @@ import com.sencha.gxt.widget.core.client.container.FlowLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 
+import static com.google.gwt.safehtml.shared.SafeHtmlUtils.fromString;
 import static com.sencha.gxt.core.client.dom.ScrollSupport.ScrollMode.AUTOY;
 import static com.sencha.gxt.widget.core.client.container.VBoxLayoutContainer.VBoxLayoutAlign.STRETCH;
 
@@ -21,7 +22,7 @@ class DlWindow extends AbstractIsWidget<Window> {
     @Override
     protected Window createWidget() {
         return new WindowBuilder()
-                .headingText("Dynamic Layout Demo")
+                .heading("Dynamic Layout Demo")
                 .widget(new VBoxLayoutContainerBuilder()
                         .vBoxLayoutAlign(STRETCH)
                         .add(new TextAreaBuilder()
@@ -68,7 +69,7 @@ class DlWindow extends AbstractIsWidget<Window> {
     }
 
     private void addMsg() {
-        flc.add(new HtmlLayoutContainer("Message " + (flc.getWidgetCount() + 1)));
+        flc.add(new HtmlLayoutContainer(fromString("Message " + (flc.getWidgetCount() + 1))));
         forceLayout();
     }
 

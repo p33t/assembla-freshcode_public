@@ -55,6 +55,14 @@ public class VBoxLayoutContainerBuilder extends biz.freshcode.learn.gwt2.common.
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.container.VBoxLayoutContainer#addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer)
+     */
+    public VBoxLayoutContainerBuilder addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer v0) {
+        vBoxLayoutContainer.addGestureRecognizer(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.container.VBoxLayoutContainer#addStyleDependentName(java.lang.String)
      */
     public VBoxLayoutContainerBuilder addStyleDependentName(java.lang.String v0) {
@@ -338,6 +346,14 @@ public class VBoxLayoutContainerBuilder extends biz.freshcode.learn.gwt2.common.
      * @see com.sencha.gxt.widget.core.client.container.VBoxLayoutContainer#setToolTip(java.lang.String)
      */
     public VBoxLayoutContainerBuilder toolTip(java.lang.String v0) {
+        vBoxLayoutContainer.setToolTip(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.container.VBoxLayoutContainer#setToolTip(com.google.gwt.safehtml.shared.SafeHtml)
+     */
+    public VBoxLayoutContainerBuilder toolTip(com.google.gwt.safehtml.shared.SafeHtml v0) {
         vBoxLayoutContainer.setToolTip(v0);
         return this;
     }

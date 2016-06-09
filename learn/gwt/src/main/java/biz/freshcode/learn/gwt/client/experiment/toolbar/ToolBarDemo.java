@@ -52,7 +52,7 @@ public class ToolBarDemo extends AbstractIsWidget implements IsRootContent {
                         .add(new SeparatorToolItem())
                         .add(new ToolButtonBuilder(ToolButton.GEAR)
                                 .toolTipConfig(new ToolTipConfigBuilder()
-                                        .bodyHtml("<p>Welcome to the tool tip<br/>New Line!</p>")
+                                        .body("<p>Welcome to the tool tip<br/>New Line!</p>")
                                         .dismissDelay(0) // not sure what this does.
                                         .toolTipConfig)
                                 .toolButton)

@@ -18,6 +18,7 @@ import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.info.Info;
 
 import static biz.freshcode.learn.gwt.client.experiment.hoverwidget.reuse.HoverWidgetSupport.hoverWidgetSupport;
+import static com.google.gwt.safehtml.shared.SafeHtmlUtils.fromTrustedString;
 
 /**
  * NOTE: It is also possible to hover over a snippet of SafeHtml by wrapping it in a div with an id.
@@ -76,7 +77,7 @@ public class HoverWidgetDemo extends AbstractIsWidget {
 
     private HtmlLayoutContainer createSimple() {
         ToolButton hoverWidget = new ToolButton(ToolButton.SAVE, new DummySelectHandler("Saved"));
-        final HtmlLayoutContainer simple = new HtmlLayoutContainer("<p>Hover Over This</p>");
+        final HtmlLayoutContainer simple = new HtmlLayoutContainer(fromTrustedString("<p>Hover Over This</p>"));
 
         hoverSupp = new HoverWidgetSupport<ToolButton>(hoverWidget);
 

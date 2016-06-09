@@ -5,6 +5,7 @@ import com.google.gwt.dom.client.Element;
 import com.sencha.gxt.widget.core.client.Component;
 
 import static biz.freshcode.learn.gwt.client.experiment.busy.reuse.Bundle.STYLE;
+import static com.google.gwt.safehtml.shared.SafeHtmlUtils.fromTrustedString;
 
 /**
  * Utility for marking a component as busy.
@@ -17,7 +18,7 @@ public class BusyUtil {
         c.disable();
         ensureNotBusy(c);
         // NOTE: Don't add style to the component as we don't want 'spinner' to be disabled.
-        c.getElement().insertFirst("<div class='" + STYLE.busySpinner() + "'/>");
+        c.getElement().insertFirst(fromTrustedString("<div class='" + STYLE.busySpinner() + "'/>"));
     }
 
     /**

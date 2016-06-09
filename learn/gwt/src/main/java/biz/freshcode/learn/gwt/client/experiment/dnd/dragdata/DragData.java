@@ -1,5 +1,7 @@
 package biz.freshcode.learn.gwt.client.experiment.dnd.dragdata;
 
+import com.google.gwt.safehtml.shared.SafeHtml;
+import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 import com.sencha.gxt.dnd.core.client.DndDragLeaveEvent;
 import com.sencha.gxt.dnd.core.client.DndDragStartEvent;
 
@@ -13,7 +15,7 @@ import static java.util.Collections.unmodifiableSet;
  * the original status message which GXT does not do natively.
  */
 public class DragData {
-    private final String originalMessage;
+    private final SafeHtml originalMessage;
     private final Map<Key, Set> payload;
 
     public static DragData setup(DndDragStartEvent evt, Class clsKey, Set simplePayload) {
@@ -23,11 +25,11 @@ public class DragData {
     }
 
     public static DragData setup(DndDragStartEvent evt, Map<Key, Set> payload) {
-        String originalMessage = generateStatusMessage(payload);
+        SafeHtml originalMessage = generateStatusMessage(payload);
         return setup(evt, payload, originalMessage);
     }
 
-    private static DragData setup(DndDragStartEvent evt, Map<Key, Set> payload, String originalMessage) {
+    private static DragData setup(DndDragStartEvent evt, Map<Key, Set> payload, SafeHtml originalMessage) {
         DragData dd = new DragData(payload, originalMessage);
         evt.setData(dd);
         evt.getStatusProxy().update(originalMessage);
@@ -41,12 +43,12 @@ public class DragData {
         return new DefaultKey(clsKey);
     }
 
-    public DragData(Map<Key, Set> payload, String originalMessage) {
+    public DragData(Map<Key, Set> payload, SafeHtml originalMessage) {
         this.payload = normalize(payload);
         this.originalMessage = originalMessage;
     }
 
-    public String getOriginalMessage() {
+    public SafeHtml getOriginalMessage() {
         return originalMessage;
     }
 
@@ -132,7 +134,7 @@ public class DragData {
     /**
      * Generate a status message for this drag data.  This will be the 'original' status message.
      */
-    private static String generateStatusMessage(Map<Key, Set> payload) {
+    private static SafeHtml generateStatusMessage(Map<Key, Set> payload) {
         String msg = "";
         for (Key k : payload.keySet()) {
             Set s = payload.get(k);
@@ -141,8 +143,8 @@ public class DragData {
                 msg += k.describe(s);
             }
         }
-        if (msg.isEmpty()) return "<empty>";
-        return msg;
+        if (msg.isEmpty()) return SafeHtmlUtils.fromString("<empty>");
+        return SafeHtmlUtils.fromString(msg);
     }
 
     /**

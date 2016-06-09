@@ -63,6 +63,14 @@ public class DialogBuilder extends biz.freshcode.learn.gwt2.common.client.builde
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.Dialog#addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer)
+     */
+    public DialogBuilder addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer v0) {
+        dialog.addGestureRecognizer(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.Dialog#addStyleDependentName(java.lang.String)
      */
     public DialogBuilder addStyleDependentName(java.lang.String v0) {
@@ -303,26 +311,18 @@ public class DialogBuilder extends biz.freshcode.learn.gwt2.common.client.builde
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.Dialog#setHeadingHtml(java.lang.String)
+     * @see com.sencha.gxt.widget.core.client.Dialog#setHeading(java.lang.String)
      */
-    public DialogBuilder headingHtml(java.lang.String v0) {
-        dialog.setHeadingHtml(v0);
+    public DialogBuilder heading(java.lang.String v0) {
+        dialog.setHeading(v0);
         return this;
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.Dialog#setHeadingHtml(com.google.gwt.safehtml.shared.SafeHtml)
+     * @see com.sencha.gxt.widget.core.client.Dialog#setHeading(com.google.gwt.safehtml.shared.SafeHtml)
      */
-    public DialogBuilder headingHtml(com.google.gwt.safehtml.shared.SafeHtml v0) {
-        dialog.setHeadingHtml(v0);
-        return this;
-    }
-
-    /**
-     * @see com.sencha.gxt.widget.core.client.Dialog#setHeadingText(java.lang.String)
-     */
-    public DialogBuilder headingText(java.lang.String v0) {
-        dialog.setHeadingText(v0);
+    public DialogBuilder heading(com.google.gwt.safehtml.shared.SafeHtml v0) {
+        dialog.setHeading(v0);
         return this;
     }
 
@@ -602,6 +602,14 @@ public class DialogBuilder extends biz.freshcode.learn.gwt2.common.client.builde
      * @see com.sencha.gxt.widget.core.client.Dialog#setToolTip(java.lang.String)
      */
     public DialogBuilder toolTip(java.lang.String v0) {
+        dialog.setToolTip(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.Dialog#setToolTip(com.google.gwt.safehtml.shared.SafeHtml)
+     */
+    public DialogBuilder toolTip(com.google.gwt.safehtml.shared.SafeHtml v0) {
         dialog.setToolTip(v0);
         return this;
     }

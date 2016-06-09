@@ -11,6 +11,7 @@ import biz.freshcode.learn.gwt2.common.client.util.chart.SeriesMapChart;
 import biz.freshcode.learn.gwt2.common.client.util.data.HasIdTitle;
 import biz.freshcode.learn.gwt2.common.client.util.data.StartDurn;
 import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 import com.google.gwt.user.client.Command;
 import com.google.web.bindery.event.shared.EventBus;
@@ -262,12 +263,12 @@ public class LanesChart extends SeriesMapChart implements SeriesSelectionEvent.S
                 if (bar == null) {
                     if (chart.getToolTip() != null) chart.getToolTip().disable();
                 } else {
-                    String body = SafeHtmlUtils.htmlEscape(bar.getTitle());
+                    SafeHtml body = SafeHtmlUtils.fromString(bar.getTitle());
                     if (chart.getToolTip() == null ||
-                            !body.equals(chart.getToolTip().getToolTipConfig().getBodyHtml())) {
+                            !body.equals(chart.getToolTip().getToolTipConfig().getBody())) {
                         // need to update tooltip
                         chart.setToolTipConfig(new ToolTipConfigBuilder()
-                                .bodyHtml(body)
+                                .body(body)
                                 .autoHide(false)
                                 .trackMouse(true)
                                 .toolTipConfig);

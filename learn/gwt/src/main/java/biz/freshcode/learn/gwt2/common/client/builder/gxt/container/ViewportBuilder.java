@@ -17,17 +17,17 @@ public class ViewportBuilder extends biz.freshcode.learn.gwt2.common.client.buil
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.container.Viewport#Viewport(com.sencha.gxt.widget.core.client.container.Viewport.ViewportAppearance)
-     */
-    public ViewportBuilder(com.sencha.gxt.widget.core.client.container.Viewport.ViewportAppearance v0) {
-        this(new Viewport(v0));
-    }
-
-    /**
      * @see com.sencha.gxt.widget.core.client.container.Viewport#Viewport()
      */
     public ViewportBuilder() {
         this(new Viewport());
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.container.Viewport#Viewport(com.sencha.gxt.widget.core.client.container.Viewport.ViewportAppearance)
+     */
+    public ViewportBuilder(com.sencha.gxt.widget.core.client.container.Viewport.ViewportAppearance v0) {
+        this(new Viewport(v0));
     }
 
     /**
@@ -51,6 +51,14 @@ public class ViewportBuilder extends biz.freshcode.learn.gwt2.common.client.buil
      */
     public ViewportBuilder add(com.google.gwt.user.client.ui.Widget v0, com.sencha.gxt.widget.core.client.container.MarginData v1) {
         viewport.add(v0, v1);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.container.Viewport#addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer)
+     */
+    public ViewportBuilder addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer v0) {
+        viewport.addGestureRecognizer(v0);
         return this;
     }
 
@@ -327,10 +335,26 @@ public class ViewportBuilder extends biz.freshcode.learn.gwt2.common.client.buil
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.container.Viewport#setToolTip(com.google.gwt.safehtml.shared.SafeHtml)
+     */
+    public ViewportBuilder toolTip(com.google.gwt.safehtml.shared.SafeHtml v0) {
+        viewport.setToolTip(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.container.Viewport#setToolTipConfig(com.sencha.gxt.widget.core.client.tips.ToolTipConfig)
      */
     public ViewportBuilder toolTipConfig(com.sencha.gxt.widget.core.client.tips.ToolTipConfig v0) {
         viewport.setToolTipConfig(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.container.Viewport#setTouchKeyboardAdjustPan(boolean)
+     */
+    public ViewportBuilder touchKeyboardAdjustPan(boolean v0) {
+        viewport.setTouchKeyboardAdjustPan(v0);
         return this;
     }
 

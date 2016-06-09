@@ -17,6 +17,13 @@ public class GroupingViewBuilder<M> extends biz.freshcode.learn.gwt2.common.clie
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.grid.GroupingView#GroupingView()
+     */
+    public GroupingViewBuilder() {
+        this(new GroupingView<M>());
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.grid.GroupingView#GroupingView(com.sencha.gxt.widget.core.client.grid.GroupingView.GroupingViewAppearance)
      */
     public GroupingViewBuilder(com.sencha.gxt.widget.core.client.grid.GroupingView.GroupingViewAppearance v0) {
@@ -28,13 +35,6 @@ public class GroupingViewBuilder<M> extends biz.freshcode.learn.gwt2.common.clie
      */
     public GroupingViewBuilder(com.sencha.gxt.widget.core.client.grid.GridView.GridAppearance v0, com.sencha.gxt.widget.core.client.grid.GroupingView.GroupingViewAppearance v1) {
         this(new GroupingView<M>(v0, v1));
-    }
-
-    /**
-     * @see com.sencha.gxt.widget.core.client.grid.GroupingView#GroupingView()
-     */
-    public GroupingViewBuilder() {
-        this(new GroupingView<M>());
     }
 
     /**

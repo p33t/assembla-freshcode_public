@@ -17,17 +17,17 @@ public class TextSpriteBuilder extends biz.freshcode.learn.gwt2.common.client.bu
     }
 
     /**
-     * @see com.sencha.gxt.chart.client.draw.sprite.TextSprite#TextSprite(java.lang.String)
-     */
-    public TextSpriteBuilder(java.lang.String v0) {
-        this(new TextSprite(v0));
-    }
-
-    /**
      * @see com.sencha.gxt.chart.client.draw.sprite.TextSprite#TextSprite()
      */
     public TextSpriteBuilder() {
         this(new TextSprite());
+    }
+
+    /**
+     * @see com.sencha.gxt.chart.client.draw.sprite.TextSprite#TextSprite(java.lang.String)
+     */
+    public TextSpriteBuilder(java.lang.String v0) {
+        this(new TextSprite(v0));
     }
 
     /**

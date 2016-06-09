@@ -5,6 +5,8 @@ import com.google.gwt.user.client.ui.Grid;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer;
 
+import static com.google.gwt.safehtml.shared.SafeHtmlUtils.fromTrustedString;
+
 /**
  * Well that was quick.... there is no scrolling ?!
  */
@@ -19,7 +21,7 @@ public class GwtGridDemo extends AbstractIsWidget {
         int numColumns = grid.getColumnCount();
         for (int row = 0; row < numRows; row++) {
             for (int col = 0; col < numColumns; col++) {
-                grid.setWidget(row, col, new HtmlLayoutContainer("<p>" + row + "," + col + "</p>"));
+                grid.setWidget(row, col, new HtmlLayoutContainer(fromTrustedString("<p>" + row + "," + col + "</p>")));
             }
         }
         return grid;

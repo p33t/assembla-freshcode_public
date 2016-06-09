@@ -22,6 +22,14 @@ public class HrMinFieldBuilder extends biz.freshcode.learn.gwt2.common.client.bu
     }
 
     /**
+     * @see biz.freshcode.learn.gwt.client.experiment.forms.HrMinField#addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer)
+     */
+    public HrMinFieldBuilder addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer v0) {
+        hrMinField.addGestureRecognizer(v0);
+        return this;
+    }
+
+    /**
      * @see biz.freshcode.learn.gwt.client.experiment.forms.HrMinField#addStyleDependentName(java.lang.String)
      */
     public HrMinFieldBuilder addStyleDependentName(java.lang.String v0) {
@@ -489,6 +497,14 @@ public class HrMinFieldBuilder extends biz.freshcode.learn.gwt2.common.client.bu
      * @see biz.freshcode.learn.gwt.client.experiment.forms.HrMinField#setToolTip(java.lang.String)
      */
     public HrMinFieldBuilder toolTip(java.lang.String v0) {
+        hrMinField.setToolTip(v0);
+        return this;
+    }
+
+    /**
+     * @see biz.freshcode.learn.gwt.client.experiment.forms.HrMinField#setToolTip(com.google.gwt.safehtml.shared.SafeHtml)
+     */
+    public HrMinFieldBuilder toolTip(com.google.gwt.safehtml.shared.SafeHtml v0) {
         hrMinField.setToolTip(v0);
         return this;
     }
