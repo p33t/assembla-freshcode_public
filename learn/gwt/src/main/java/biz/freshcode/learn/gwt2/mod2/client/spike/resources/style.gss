@@ -14,6 +14,7 @@
 
 .dirtyBgnd {
   background-image: DIRTY_BGND_URL;
+  background-repeat: no-repeat;
 }
 
 /* Cleaner URL integration */
@@ -21,6 +22,7 @@
 
 .dirtyBgnd2 {
   background-image: DIRTY_BGND_URL2;
+  background-repeat: no-repeat;
 }
 
 /* Actually this look like the correct way */
