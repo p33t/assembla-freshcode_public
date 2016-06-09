@@ -16,7 +16,6 @@ import com.google.inject.servlet.ServletModule;
 import com.google.web.bindery.requestfactory.server.RequestFactoryServlet;
 import com.gwtplatform.dispatch.rpc.server.guice.DispatchServiceImpl;
 import com.gwtplatform.dispatch.rpc.server.guice.HandlerModule;
-import com.gwtplatform.dispatch.rpc.server.guice.HttpSessionSecurityCookieFilter;
 import com.gwtplatform.dispatch.rpc.shared.ActionImpl;
 import com.gwtplatform.dispatch.shared.SecurityCookie;
 
@@ -49,7 +48,7 @@ public class GuiceServletConfig extends GuiceServletContextListener {
             bindConstant().annotatedWith(SecurityCookie.class).to(AppModule.XSRF_COOKIE);
             // populates the SecurityCookie for XSRF protection
             // this required all servlets and filters to be moved to this method
-            filter("*.html").through(HttpSessionSecurityCookieFilter.class);
+            filter("*.html").through(DummyRandomSecurityCookieFilter.class);
             serve("/" + ActionImpl.DEFAULT_SERVICE_NAME + "*").with(DispatchServiceImpl.class);
 
             // NOTE: These have been moved here from web.xml so that GuiceFilter can control everything
