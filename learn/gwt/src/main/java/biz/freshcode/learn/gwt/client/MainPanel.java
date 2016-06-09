@@ -224,7 +224,7 @@ public class MainPanel extends Composite implements AcceptsOneWidget {
                                         .addItem(new MenuItem("GWTP (not working)", new Command() {
                                             public void execute() {
                                                 //noinspection deprecation
-                                                pmProvider.get().revealPlace(new PlaceRequest(GmdModule.GMD));
+                                                pmProvider.get().revealPlace(new PlaceRequest.Builder().nameToken(GmdModule.GMD).build());
                                                 replaceContent(new HTML("NOTE: This is not working.  Probably because we are not exclusively GWTP MVP<br/>" +
                                                         "                                        and have other boostrap requirements.<br/>" +
                                                         "                                        It seems we need the ApplicationController.<br/>" +
