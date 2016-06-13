@@ -1,21 +1,26 @@
-import zipfile,os.path, shutil
+import zipfile, os.path, shutil, pathlib
 
-temp_dir = os.path.join(os.curdir, "temp")
+temp_dir = pathlib.Path.cwd().joinpath("temp")
+
+
+def clear_dir(pth):
+    for child in pth.iterdir():
+        if child.is_file():
+            child.unlink()
+        elif child.is_dir():
+            clear_dir(child)
+            child.rmdir()
+
 
 # Clean out temp dir
-if os.path.exists(temp_dir):
-    for child in os.listdir(temp_dir):
-        child_file = os.path.join(temp_dir, child)
-        if os.path.isfile(child_file):
-            os.remove(child_file)
-        elif os.path.isdir(child_file):
-            shutil.rmtree(child_file)
+if temp_dir.exists():
+    clear_dir(temp_dir)
 else:
-    os.mkdir(temp_dir)
+    temp_dir.mkdir()
 
 # Zip up the syntax folder
-my_zip = os.path.join(temp_dir, "my_zip.zip")
-my_zip_op = zipfile.ZipFile(my_zip, "w", zipfile.ZIP_DEFLATED)
+my_zip = temp_dir.joinpath("my_zip.zip")
+my_zip_op = zipfile.ZipFile(str(my_zip), "w", zipfile.ZIP_DEFLATED)
 # Adding files from directory 'files'
 for root, dirs, files in os.walk(os.path.join(os.curdir, "syntax")):
     for f in files:
@@ -23,6 +28,6 @@ for root, dirs, files in os.walk(os.path.join(os.curdir, "syntax")):
 my_zip_op.close()
 
 # Unzip to temp dir
-my_zip_ip = zipfile.ZipFile(my_zip)
-my_zip_ip.extractall(temp_dir)
+my_zip_ip = zipfile.ZipFile(str(my_zip))
+my_zip_ip.extractall(str(temp_dir))
 my_zip_ip.close()
