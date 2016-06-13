@@ -20,14 +20,12 @@ else:
 
 # Zip up the syntax folder
 my_zip = temp_dir.joinpath("my_zip.zip")
-my_zip_op = zipfile.ZipFile(str(my_zip), "w", zipfile.ZIP_DEFLATED)
 # Adding files from directory 'files'
-for root, dirs, files in os.walk(os.path.join(os.curdir, "syntax")):
-    for f in files:
-        my_zip_op.write(os.path.join(root, f))
-my_zip_op.close()
+with zipfile.ZipFile(str(my_zip), "w", zipfile.ZIP_DEFLATED) as my_zip_op:
+    for root, dirs, files in os.walk(os.path.join(os.curdir, "syntax")):
+        for f in files:
+            my_zip_op.write(os.path.join(root, f))
 
 # Unzip to temp dir
-my_zip_ip = zipfile.ZipFile(str(my_zip))
-my_zip_ip.extractall(str(temp_dir))
-my_zip_ip.close()
+with zipfile.ZipFile(str(my_zip)) as my_zip_ip:
+    my_zip_ip.extractall(str(temp_dir))
