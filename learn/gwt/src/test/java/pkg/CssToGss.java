@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class CssToGss {
+    // The output from bash command: find src -name "*.css"
     private static String[] CSSES = {
             "src/main/java/biz/freshcode/learn/gwt2/mod2/client/spike/checkboxcellicon/style.css",
             "src/main/java/biz/freshcode/learn/gwt/client/uibinder/style.css",
@@ -28,12 +29,8 @@ public class CssToGss {
 
     public static void main(String[] args) throws IOException, UnableToCompleteException {
         for (String path: CSSES) {
-//            Path p = Paths.get(path);
-//            System.out.println(p + " exists " + Files.exists(p));
-//            Css2Gss.main(path);
             String alt = new Css2Gss(path).toGss();
             FileUtils.write(new File(path), alt);
-
         }
     }
 }
