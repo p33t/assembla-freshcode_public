@@ -45,7 +45,8 @@ public class TextButtonSetIconStopsSelectEvent extends Presenter<TextButtonSetIc
         @Inject
         public View() {
             FlowLayoutContainer flc = new FlowLayoutContainer();
-            flc.add(new HTML("<p>Click btn vs. Edit text and click btn."));
+            flc.add(new HTML("<p>Click btn vs. Edit text and click btn.<br/>" +
+                    "This illustrates a SelectEvent being prevented by a change of button icon</p>"));
             flc.add(txt = new TextField());
             flc.add(btn = new TextButton("Button", imgA));
             initWidget(flc);
