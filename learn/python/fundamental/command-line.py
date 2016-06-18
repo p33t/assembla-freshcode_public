@@ -4,7 +4,7 @@ import argparse
 # for a in sys.argv:
 #     print(a)
 
-# First attempt that doesn't work
+# First attempt that doesn't work.  Probably python 2.
 # def main1(args):
 #     usage = 'command-line.py -r <reqd_arg> [-o <opt_arg>]'
 #     reqd_arg = ''
@@ -38,6 +38,7 @@ def main():
     print('Result:',  vars(parsed))
     print('parsed.reqd:', parsed.reqd)
 
+# Will only run if this file is called as primary file
 if __name__ == "__main__":
     # main1(sys.argv[1:])
     main()
