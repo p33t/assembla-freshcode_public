@@ -16,7 +16,7 @@ MY_CODE=$?
 echo "Exit code ${MY_CODE}"
 
 
-python3 "$SCRIPT_FILE" -r reqd_val -f --opt alt-opt one two "buckle my shoe"
+python3 "$SCRIPT_FILE" -r reqd_val -f --opt alt-opt my_single one two "buckle my shoe"
 MY_CODE=$?
 echo "Exit code ${MY_CODE}"
 
