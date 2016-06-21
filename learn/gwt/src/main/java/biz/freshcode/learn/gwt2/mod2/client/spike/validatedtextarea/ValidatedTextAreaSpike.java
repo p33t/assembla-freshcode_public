@@ -34,6 +34,7 @@ public class ValidatedTextAreaSpike extends Presenter<ValidatedTextAreaSpike.Vie
         super(eventBus, view, proxy, Root.SLOT);
     }
 
+    // Emulating a rich value with 'Boolean'.
     static class FieldWrapper extends AdapterField<Boolean> {
         private final TextArea textArea;
 
@@ -77,6 +78,9 @@ public class ValidatedTextAreaSpike extends Presenter<ValidatedTextAreaSpike.Vie
     public static class View extends ViewImpl {
         private TextArea textArea = new TextAreaBuilder()
                 .emptyText("Anything but 'bad'")
+                // these two options are nice together
+                .validationDelay(1000).autoValidate(true)
+                // NOTE: We still have the problem of what's visible is not what is saved.
                 .textArea;
         private TextButton btn;
         private FieldWrapper wrapper;
@@ -89,7 +93,6 @@ public class ValidatedTextAreaSpike extends Presenter<ValidatedTextAreaSpike.Vie
                     .add(wrapper, new VerticalLayoutData(1, -30))
                     .verticalLayoutContainer);
 
-
             btn.addSelectHandler(new SelectEvent.SelectHandler() {
                 @Override
                 public void onSelect(SelectEvent event) {
@@ -101,6 +104,24 @@ public class ValidatedTextAreaSpike extends Presenter<ValidatedTextAreaSpike.Vie
                 }
             });
         }
+
+// Didn't work out... focus problems etc.
+//        class ChangedTimer extends Timer {
+//            ChangedTimer() {
+//                timerOrNull = this;
+//                schedule(1000);
+//            }
+//
+//            @Override
+//            public void run() {
+//                if (timerOrNull == this) {
+//                    // has not been replaced
+//                    // proceed
+//                    textArea.setValue(textArea.getText()); // a pseudo 'blur' event?
+//                    textArea.focus();
+//                }
+//            }
+//        }
 
         public TextButton getBtn() {
             return btn;
