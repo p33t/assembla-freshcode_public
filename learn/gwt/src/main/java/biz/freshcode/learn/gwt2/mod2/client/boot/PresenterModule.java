@@ -14,6 +14,7 @@ import biz.freshcode.learn.gwt2.mod2.client.spike.multiselectbutton.MultiSelectB
 import biz.freshcode.learn.gwt2.mod2.client.spike.radiobutton.RadioSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.resize.ResizeSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.resources.ResourcesSpike;
+import biz.freshcode.learn.gwt2.mod2.client.spike.validatedtextarea.ValidatedTextAreaSpike;
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 
 public class PresenterModule extends AbstractPresenterModule {
@@ -36,5 +37,6 @@ public class PresenterModule extends AbstractPresenterModule {
         bindPresenter(MultiSelectButtonSpike.class, MultiSelectButtonSpike.Proxy.class);
         bindPresenter(GridGraphicSpike.class, GridGraphicSpike.Proxy.class);
         bindPresenter(ResourcesSpike.class, ResourcesSpike.Proxy.class);
+        bindPresenter(ValidatedTextAreaSpike.class, ValidatedTextAreaSpike.Proxy.class);
     }
 }
