@@ -1,11 +1,9 @@
 package biz.freshcode.learn.gwt2.mod2.client.spike.tabpanel;
 
-import biz.freshcode.learn.gwt2.common.client.builder.gxt.TabItemConfigBuilder;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.TabPanelBuilder;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.container.VerticalLayoutContainerBuilder;
 import biz.freshcode.learn.gwt2.mod2.client.boot.Root;
-import com.google.gwt.event.logical.shared.SelectionEvent;
-import com.google.gwt.event.logical.shared.SelectionHandler;
+import biz.freshcode.learn.gwt2.mod2.client.spike.tabpanel.reuse.DynamicTabPanelSupport;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
@@ -14,72 +12,34 @@ import com.gwtplatform.mvp.client.ViewImpl;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.sencha.gxt.core.client.dom.ScrollSupport;
-import com.sencha.gxt.widget.core.client.TabItemConfig;
 import com.sencha.gxt.widget.core.client.TabPanel;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData;
-import com.sencha.gxt.widget.core.client.event.CloseEvent;
 import com.sencha.gxt.widget.core.client.form.TextArea;
 
 public class TabPanelSpike extends Presenter<TabPanelSpike.View, TabPanelSpike.Proxy> {
     public static final String TOKEN = "tabPanel";
-    private static final String ADD_TAB = "(Add)";
+    private Dynamic dynamic = new Dynamic();
 
     @Inject
     public TabPanelSpike(EventBus eventBus, View view, Proxy proxy) {
         super(eventBus, view, proxy, Root.SLOT);
-        view.getTabPanel().add(new TextArea(), new TabItemConfigBuilder()
-                .text("Tab 0")
-//                                    First tab closure causes a white rectangle
-//                                    .closable(true)
-                .tabItemConfig);
-        ensureAddTab();
-        view.getTabPanel().addSelectionHandler(new SelectionHandler<Widget>() {
-            @Override
-            public void onSelection(SelectionEvent<Widget> event) {
-                TabPanel tp = tp();
-                Widget w = event.getSelectedItem();
-                TabItemConfig config = tp.getConfig(w);
-                if (ADD_TAB.equals(config.getText())) {
-                    config.setClosable(true);
-                    config.setText("Tab " + (tp.getWidgetCount() - 1));
-                    tp.update(w, config);
-                    ensureAddTab();
-                }
-            }
-        });
-        view.getTabPanel().addCloseHandler(new CloseEvent.CloseHandler<Widget>() {
-            @Override
-            public void onClose(CloseEvent<Widget> event) {
-                TabPanel tp = tp();
-                int count = tp.getWidgetCount();
-                for (int i = 0; i < count; i++) {
-                    Widget w = tp.getWidget(i);
-                    TabItemConfig config = tp.getConfig(w);
-                    if (!ADD_TAB.equals(config.getText())) {
-                        // a conventional tab
-                        String desiredText = "Tab " + i;
-                        if (!config.getText().equals(desiredText)) {
-                            // need to update text
-                            config.setText(desiredText);
-                            tp.update(w, config);
-                        }
-                    }
-                }
-            }
-        });
+        dynamic.ensureAddTab();
     }
 
-    private TabPanel tp() {
-        return getView().getTabPanel();
-    }
+    private class Dynamic extends DynamicTabPanelSupport {
+        @Override
+        protected TabPanel getTabPanel() {
+            return getView().getTabPanel();
+        }
 
-    private void ensureAddTab() {
-        TabPanel tp = tp();
-        Widget w = tp.findItem(ADD_TAB, true);
-        if (w == null) {
-            tp.add(new TextArea(), new TabItemConfigBuilder()
-                    .text(ADD_TAB)
-                    .tabItemConfig);
+        @Override
+        protected Widget createTabWidget(int ix) {
+            return new TextArea();
+        }
+
+        @Override
+        protected String calcTabText(int ix, Widget w) {
+            return "Tab " + ix;
         }
     }
 
