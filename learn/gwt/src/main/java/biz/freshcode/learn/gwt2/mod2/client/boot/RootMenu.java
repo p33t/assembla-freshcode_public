@@ -18,6 +18,7 @@ import biz.freshcode.learn.gwt2.mod2.client.spike.multiselectbutton.MultiSelectB
 import biz.freshcode.learn.gwt2.mod2.client.spike.radiobutton.RadioSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.resize.ResizeSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.resources.ResourcesSpike;
+import biz.freshcode.learn.gwt2.mod2.client.spike.tabpanel.TabPanelSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.validatedtextarea.ValidatedTextAreaSpike;
 import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.event.logical.shared.SelectionHandler;
@@ -59,6 +60,7 @@ public class RootMenu extends IsWidgetImpl {
                                 .add(menuItem("Adapter Field Grid", AdapterFieldGridSpike.TOKEN))
                                 .add(menuItem("Resources", ResourcesSpike.TOKEN))
                                 .add(menuItem("Validated Text Area", ValidatedTextAreaSpike.TOKEN))
+                                .add(menuItem("Tab Panel", TabPanelSpike.TOKEN))
                                 .menu)
                         .textButton)
                 .toolBar);
