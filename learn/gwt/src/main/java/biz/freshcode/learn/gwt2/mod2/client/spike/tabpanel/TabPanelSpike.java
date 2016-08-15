@@ -18,6 +18,7 @@ import com.sencha.gxt.widget.core.client.form.TextArea;
 
 public class TabPanelSpike extends Presenter<TabPanelSpike.View, TabPanelSpike.Proxy> {
     public static final String TOKEN = "tabPanel";
+    @SuppressWarnings("FieldCanBeLocal")
     private Dynamic dynamic = new Dynamic();
 
     @Inject
