@@ -382,48 +382,48 @@
         <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-mvp-shared/1.5.3/gwtp-mvp-shared-1.5.3-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: com.sencha.gxt:gxt-chart:4.0.1">
+    <library name="Maven: com.sencha.gxt:gxt-chart:4.0.2">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt-chart/4.0.1/gxt-chart-4.0.1.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt-chart/4.0.2/gxt-chart-4.0.2.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt-chart/4.0.1/gxt-chart-4.0.1-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt-chart/4.0.2/gxt-chart-4.0.2-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt-chart/4.0.1/gxt-chart-4.0.1-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt-chart/4.0.2/gxt-chart-4.0.2-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: com.sencha.gxt:gxt-chart:sources:4.0.1">
+    <library name="Maven: com.sencha.gxt:gxt-chart:sources:4.0.2">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt-chart/4.0.1/gxt-chart-4.0.1-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt-chart/4.0.2/gxt-chart-4.0.2-sources.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt-chart/4.0.1/gxt-chart-4.0.1-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt-chart/4.0.2/gxt-chart-4.0.2-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt-chart/4.0.1/gxt-chart-4.0.1-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt-chart/4.0.2/gxt-chart-4.0.2-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: com.sencha.gxt:gxt:4.0.1">
+    <library name="Maven: com.sencha.gxt:gxt:4.0.2">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt/4.0.1/gxt-4.0.1.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt/4.0.2/gxt-4.0.2.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt/4.0.1/gxt-4.0.1-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt/4.0.2/gxt-4.0.2-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt/4.0.1/gxt-4.0.1-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt/4.0.2/gxt-4.0.2-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: com.sencha.gxt:gxt:sources:4.0.1">
+    <library name="Maven: com.sencha.gxt:gxt:sources:4.0.2">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt/4.0.1/gxt-4.0.1-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt/4.0.2/gxt-4.0.2-sources.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt/4.0.1/gxt-4.0.1-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt/4.0.2/gxt-4.0.2-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt/4.0.1/gxt-4.0.1-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt/4.0.2/gxt-4.0.2-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: commons-collections:commons-collections:3.2.1">

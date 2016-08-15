@@ -25,7 +25,7 @@
         <gwtVersion>2.7.0</gwtVersion>
         <gwtpVersion>1.5.3</gwtpVersion>
         <!-- NOTE: Might need to change this to 4.0.0 or x.0 for GPL access. -->
-        <gxtVersion>4.0.1</gxtVersion>
+        <gxtVersion>4.0.2</gxtVersion>
         <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <gwt.server>:ssl</gwt.server>
