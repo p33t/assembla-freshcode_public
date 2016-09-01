@@ -12,12 +12,12 @@ object EarlyInit {
 
   // This doesn't work because 'foo' is null when A initialises
   class B extends A {
-    val foo = "foo"
+    override val foo = "foo"
   }
 
   // works because A is initialised AFTER parent class
   class C extends {
-    val foo = "foo"
+    override val foo = "foo"
   } with A
 
   trait Core {
