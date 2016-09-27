@@ -4,6 +4,7 @@ import biz.freshcode.learn.gwt2.common.client.builder.gxt.button.TextButtonBuild
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.menu.MenuBuilder;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.toolbar.ToolBarBuilder;
 import biz.freshcode.learn.gwt2.common.client.util.IsWidgetImpl;
+import biz.freshcode.learn.gwt2.mod2.client.bug.GridEditInlineComboBoxBlurBug2;
 import biz.freshcode.learn.gwt2.mod2.client.bug.TextButtonSetIconStopsSelectEvent;
 import biz.freshcode.learn.gwt2.mod2.client.home.Home;
 import biz.freshcode.learn.gwt2.mod2.client.spike.adapterfieldgrid.AdapterFieldGridSpike;
@@ -42,6 +43,7 @@ public class RootMenu extends IsWidgetImpl {
                         .text("Bug")
                         .menu(new MenuBuilder()
                                 .add(menuItem("Set Icon Stops Select Event", TextButtonSetIconStopsSelectEvent.TOKEN))
+                                .add(menuItem("Combo box debris", GridEditInlineComboBoxBlurBug2.TOKEN))
                                 .menu)
                         .textButton)
                 .add(new TextButtonBuilder()

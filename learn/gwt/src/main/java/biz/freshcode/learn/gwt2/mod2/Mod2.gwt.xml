@@ -8,6 +8,9 @@
       <when-type-is class="biz.freshcode.learn.gwt2.mod2.client.spike.customdropdown.CddCell.Appearance" />
     </replace-with>
 
+    <!-- Reduce the number of permutations -->
+    <collapse-property name="gxt.device" values="*" />
+
     <!-- Specify the paths for translatable code                    -->
     <source path='client'/>
     <source path='shared'/>
