@@ -113,6 +113,12 @@
             <version>${gxtVersion}</version>
             <scope>provided</scope>
         </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.sencha.gxt</groupId>-->
+            <!--<artifactId>gxt-theme-triton</artifactId>-->
+            <!--<version>${gxtVersion}</version>-->
+            <!--<scope>provided</scope>-->
+        <!--</dependency>-->
         <!-- Sources are needed (for CI Build).  When using an IDE these may have been automatically downloaded. -->
         <dependency>
             <groupId>com.sencha.gxt</groupId>
