@@ -17,6 +17,7 @@
 
     <!-- Must come after GXT module -->
     <inherits name='com.sencha.gxt.theme.gray.Gray'/>
+    <!--<inherits name='com.sencha.gxt.theme.triton.Theme' />-->
 
     <!-- Other module inherits                                      -->
     <!-- Not necessary -->
