@@ -14,6 +14,7 @@ import biz.freshcode.learn.gwt2.mod2.client.spike.dragorder.DragOrderSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.gridgraphic.GridGraphicSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.gridinteract.GridInteractSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.gridscrollrestore.GridScrollRestoreSpike;
+import biz.freshcode.learn.gwt2.mod2.client.spike.iframecontents.IFrameContentsSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.lanes.LanesChartSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.multiselectbutton.MultiSelectButtonSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.radiobutton.RadioSpike;
@@ -63,6 +64,7 @@ public class RootMenu extends IsWidgetImpl {
                                 .add(menuItem("Resources", ResourcesSpike.TOKEN))
                                 .add(menuItem("Validated Text Area", ValidatedTextAreaSpike.TOKEN))
                                 .add(menuItem("Tab Panel", TabPanelSpike.TOKEN))
+                                .add(menuItem("IFrame Content", IFrameContentsSpike.TOKEN))
                                 .menu)
                         .textButton)
                 .toolBar);

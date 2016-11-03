@@ -10,6 +10,7 @@ import biz.freshcode.learn.gwt2.mod2.client.spike.dragorder.DragOrderSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.gridgraphic.GridGraphicSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.gridinteract.GridInteractSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.gridscrollrestore.GridScrollRestoreSpike;
+import biz.freshcode.learn.gwt2.mod2.client.spike.iframecontents.IFrameContentsSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.lanes.LanesChartSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.multiselectbutton.MultiSelectButtonSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.radiobutton.RadioSpike;
@@ -42,5 +43,6 @@ public class PresenterModule extends AbstractPresenterModule {
         bindPresenter(ResourcesSpike.class, ResourcesSpike.Proxy.class);
         bindPresenter(ValidatedTextAreaSpike.class, ValidatedTextAreaSpike.Proxy.class);
         bindPresenter(TabPanelSpike.class, TabPanelSpike.Proxy.class);
+        bindPresenter(IFrameContentsSpike.class, IFrameContentsSpike.Proxy.class);
     }
 }
