@@ -17,8 +17,6 @@ import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 
-import java.util.Objects;
-
 import static com.google.gwt.core.client.GWT.log;
 
 /**
@@ -45,11 +43,20 @@ public class IFrameContentsSpike extends Presenter<IFrameContentsSpike.View, IFr
             }
         });
 
+        view.getClear().addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent event) {
+                getView().getFrame().setUrl("");
+            }
+        });
+
         view.getFrame().addLoadHandler(new LoadHandler() {
             @Override
             public void onLoad(LoadEvent event) {
-                log("onLoad");
+                // NOTE: onLoad() does not appear to be called if user has navigated away (in Chromium at least).
+                // If visible then even loading empty uri will cause event.
                 getView().getBlc().unmask();
+                log("onLoad");
             }
         });
     }
@@ -58,7 +65,10 @@ public class IFrameContentsSpike extends Presenter<IFrameContentsSpike.View, IFr
         View v = getView();
         v.getBlc().mask("Working...");
         String url = v.getFrame().getUrl();
-        String alt  = Objects.equals(url, "/") ? "/style.css": "/";
+        log("url: " + url);
+        String alt;
+        if (url != null && url.endsWith("/style.css")) alt = "/";
+        else alt = "/style.css";
         v.getFrame().setUrl(alt);
     }
 
@@ -91,6 +101,7 @@ public class IFrameContentsSpike extends Presenter<IFrameContentsSpike.View, IFr
         private final TextButton load;
         private final Frame frame;
         private final BorderLayoutContainer blc;
+        private final TextButton clear;
 
         @Inject
         public View() {
@@ -98,6 +109,7 @@ public class IFrameContentsSpike extends Presenter<IFrameContentsSpike.View, IFr
                     .northWidget(new ToolBarBuilder()
                             .add(go = new TextButton("Go"))
                             .add(load = new TextButton("Load"))
+                            .add(clear = new TextButton("Clear"))
                             .toolBar)
                     .centerWidget(frame = new Frame("/style.css"))
                     .borderLayoutContainer);
@@ -105,6 +117,10 @@ public class IFrameContentsSpike extends Presenter<IFrameContentsSpike.View, IFr
 
         public BorderLayoutContainer getBlc() {
             return blc;
+        }
+
+        public TextButton getClear() {
+            return clear;
         }
 
         public Frame getFrame() {
