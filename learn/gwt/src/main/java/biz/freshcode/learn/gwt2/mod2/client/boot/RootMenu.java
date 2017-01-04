@@ -12,6 +12,7 @@ import biz.freshcode.learn.gwt2.mod2.client.spike.checkboxcellicon.CheckBoxCellI
 import biz.freshcode.learn.gwt2.mod2.client.spike.customdropdown.CustomDropDownSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.dragorder.DragOrderSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.gridgraphic.GridGraphicSpike;
+import biz.freshcode.learn.gwt2.mod2.client.spike.gridheaderhighlight.GridHeaderHighlightSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.gridinteract.GridInteractSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.gridscrollrestore.GridScrollRestoreSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.iframecontents.IFrameContentsSpike;
@@ -50,6 +51,7 @@ public class RootMenu extends IsWidgetImpl {
                 .add(new TextButtonBuilder()
                         .text("Spike")
                         .menu(new MenuBuilder()
+                                .add(menuItem("Grid Header Highlight", GridHeaderHighlightSpike.TOKEN))
                                 .add(menuItem("Grid Graphic", GridGraphicSpike.TOKEN))
                                 .add(menuItem("Multi-Select Button", MultiSelectButtonSpike.TOKEN))
                                 .add(menuItem("Custom Drop Down", CustomDropDownSpike.TOKEN))
