@@ -29,3 +29,7 @@ with zipfile.ZipFile(str(my_zip), "w", zipfile.ZIP_DEFLATED) as my_zip_op:
 # Unzip to temp dir
 with zipfile.ZipFile(str(my_zip)) as my_zip_ip:
     my_zip_ip.extractall(str(temp_dir))
+    for info in my_zip_ip.filelist:
+        print(os.path.dirname(info.filename))
+
+# print("Filelist: ", filelist)
