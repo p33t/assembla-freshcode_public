@@ -1,5 +1,4 @@
 // variables.js
-
 "strict mode"; // don't use this style in codebases in transition to strict.  Do function by function.
 
 const myConst = "x"

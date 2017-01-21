@@ -8,7 +8,7 @@ function calcName(ip) {
 const someConst = "someConst-value"
 
 const myObj = { // don't use new Object()
-  someConst // shorthand properties at top, no need for someConst: someConst
+  someConst, // shorthand properties at top, no need for someConst: someConst
   id: 99,
   [calcName(1)]: "m1-value", // declare calculated property names within block
   myFunc(ip) { // don't use myFunc: function(ip) {
@@ -22,6 +22,15 @@ console.log("myObj.m1 = " + myObj.m1)
 console.log("myObj.myFunc(2) = " + myObj.myFunc(2))
 console.log("myObj.someConst = " + myObj.someConst)
 
-TODO: 
-console.log(Object.prototype.hasOwnProperty.call(myObj, key));
+// invoke Object.prototype methods via 'call/apply' in case they are shadowed on the object
+console.log(Object.prototype.hasOwnProperty.call(myObj, "someProp"));
+// NOT myObj.hasOwnProperty(..)
+
+// TODO
+// spread operator for shallow copy + add properties
+// const source = {one: 1, two: 2}
+// const enhanced = {...source, three: 3}
+// console.log(enhanced.one + ".." + enhanced.three)
+
+// rest operator
 
