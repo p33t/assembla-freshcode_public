@@ -37,4 +37,8 @@ const obj12 = {one: 1, two: 2}
 // Prefer ... 'spread' operator over Object.assign() for shallow copying
 
 // rest operator
+// Does not compile...
+// const {hasOne, ...hasRest} = obj12
+// console.log("hasOne: " + hasOne)
+// console.log("hasRest: " + hasRest)
 
