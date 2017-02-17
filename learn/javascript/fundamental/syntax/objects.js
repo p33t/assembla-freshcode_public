@@ -26,11 +26,15 @@ console.log("myObj.someConst = " + myObj.someConst)
 console.log(Object.prototype.hasOwnProperty.call(myObj, "someProp"));
 // NOT myObj.hasOwnProperty(..)
 
-// TODO
 // spread operator for shallow copy + add properties
-// const source = {one: 1, two: 2}
-// const enhanced = {...source, three: 3}
-// console.log(enhanced.one + ".." + enhanced.three)
+const arr12 = [1, 2]
+const spreadArr = [...arr12, 3, 4]
+console.log("spreadArr: " + spreadArr)
+
+const obj12 = {one: 1, two: 2}
+// No can do... const spreadObj = {...obj12, three: 3, four: 4}
+// console.log("spreadObj: " + spreadObj)
+// Prefer ... 'spread' operator over Object.assign() for shallow copying
 
 // rest operator
 
