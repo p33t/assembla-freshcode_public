@@ -20,3 +20,32 @@ if (true) {
 }
 
 customFn()
+
+// never use 'arguments' as a parameter, it obscures the object given to each function scope
+// 'arguments' is array-like (not a real Array)
+function notArguments(v1, v2, args) {
+}
+
+// but better not to 'arguments' anyway.  Use '...args' to get a real array
+function spreadArg(...args) {
+    console.log("There are " + args.length + " args")
+    console.log(...args)
+}
+spreadArg(1, 2, 3, 4)
+
+// default value for an arg (don't alter an args value)
+function defArgs(arg0 = "implicit") {
+    console.log("arg0 = " + arg0)
+}
+defArgs("explicit")
+defArgs()
+
+// put defaults at end of arg list
+function badDefault(arg0 = "implicit", arg1) {
+    console.log(arg0, arg1)
+}
+
+// don't use Function constructor directly
+let naughty = Function('a', 'b', 'return a - b')
+console.log("Should be 5: " + (naughty(10, 5)))
+
