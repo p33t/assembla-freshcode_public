@@ -21,4 +21,37 @@
         </user-data-constraint>
     </security-constraint>
 
+    <!-- Comment out the remaining lines to disable authentication / authorisation
+    -->
+    <security-constraint>
+         <web-resource-collection>
+             <web-resource-name>Sensitive</web-resource-name>
+             <url-pattern>/*</url-pattern>
+         </web-resource-collection>
+         <auth-constraint>
+             <role-name>appuser</role-name>
+         </auth-constraint>
+         <!--<user-data-constraint>-->
+             <!--<transport-guarantee>CONFIDENTIAL</transport-guarantee>-->
+         <!--</user-data-constraint>-->
+     </security-constraint>
+
+     <!-- Resources excepted from authentication -->
+     <security-constraint>
+         <web-resource-collection>
+             <web-resource-name>excepted</web-resource-name>
+             <url-pattern>/index.jsp</url-pattern>
+         </web-resource-collection>
+         <!-- no auth-constraint -->
+     </security-constraint>
+
+     <login-config>
+         <auth-method>BASIC</auth-method>
+         <realm-name>My Realm</realm-name>
+     </login-config>
+
+     <security-role>
+         <role-name>appuser</role-name>
+     </security-role>
+
 </web-app>
