@@ -19,12 +19,23 @@ Bundle with war at .../META-INF/context.xml
 <!--<Context docBase="/home/pleong/work/learn/platform-probe/target/platform-probe.war">-->
 
 <Context>
-    <!--
+    <!-- H2 (in memory) database
         <Resource name="jdbc/appDb"
                   auth="Container"
                   type="javax.sql.DataSource"
                   driverClassName="org.h2.Driver"
                   url="jdbc:h2:mem:appDb"/>
+    -->
+
+    <!-- Elastic Beanstalk database
+    <Resource name="jdbc/appDb"
+              auth="Container"
+              type="javax.sql.DataSource"
+              driverClassName="org.postgresql.Driver"
+              factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+              url="jdbc:postgresql://${RDS_HOSTNAME}:${RDS_PORT}/${RDS_DB_NAME}"
+              username="${RDS_USERNAME}"
+              password="${RDS_PASSWORD}"/>
     -->
 
     <Resource name="jdbc/appDb"
