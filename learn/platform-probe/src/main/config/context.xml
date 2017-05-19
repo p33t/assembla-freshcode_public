@@ -19,22 +19,46 @@ Bundle with war at .../META-INF/context.xml
 <!--<Context docBase="/home/pleong/work/learn/platform-probe/target/platform-probe.war">-->
 
 <Context>
-    <Resource name="jdbc/appDb"
-              auth="Container"
-              type="javax.sql.DataSource"
-              driverClassName="org.h2.Driver"
-              url="jdbc:h2:mem:appDb"/>
+    <!--
+        <Resource name="jdbc/appDb"
+                  auth="Container"
+                  type="javax.sql.DataSource"
+                  driverClassName="org.h2.Driver"
+                  url="jdbc:h2:mem:appDb"/>
+    -->
 
-<!--
     <Resource name="jdbc/appDb"
               auth="Container"
               type="javax.sql.DataSource"
               driverClassName="org.postgresql.Driver"
-              url="jdbc:postgresql://localhost:5432/peregrine"
-              username="peregrine"
-              password="peregrine"
-            />
--->
+              url="jdbc:postgresql://localhost:5432/sws"
+              username="sws"
+              password="sws"
+    />
+
+    <!-- SQL to setup tables:
+drop table if exists users;
+create table users (
+  user_name         varchar(15) not null primary key,
+  user_pass         varchar(15) not null
+);
+
+drop table if exists user_roles;
+create table user_roles (
+  user_name         varchar(15) not null,
+  role_name         varchar(15) not null,
+  primary key (user_name, role_name)
+);
+
+insert into users values ('super', 'super');
+insert into user_roles values ('super', 'appuser');
+insert into user_roles values ('super', 'MANAGEMENT');
+    -->
+    <Realm className="org.apache.catalina.realm.DataSourceRealm"
+           dataSourceName="jdbc/appDb"
+           localDataSource="true"
+           userTable="users" userNameCol="user_name" userCredCol="user_pass"
+           userRoleTable="user_roles" roleNameCol="role_name"/>
 
     <Parameter name="app.home" value="/some/custom/folder"/>
 </Context>
