@@ -2,6 +2,7 @@ package biz.freshcode.learn.gwt2.mod2.client.boot;
 
 import biz.freshcode.learn.gwt2.mod2.client.bug.GridEditInlineComboBoxBlurBug2;
 import biz.freshcode.learn.gwt2.mod2.client.bug.TextButtonSetIconStopsSelectEvent;
+import biz.freshcode.learn.gwt2.mod2.client.bug.ToolTipVsErrorMessageBug;
 import biz.freshcode.learn.gwt2.mod2.client.home.Home;
 import biz.freshcode.learn.gwt2.mod2.client.spike.adapterfieldgrid.AdapterFieldGridSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.checkboxcellicon.CheckBoxCellIconSpike;
@@ -27,6 +28,7 @@ public class PresenterModule extends AbstractPresenterModule {
         bindPresenter(Root.class, Root.Proxy.class);
         bindPresenter(Home.class, Home.Proxy.class);
 
+        bindPresenter(ToolTipVsErrorMessageBug.class, ToolTipVsErrorMessageBug.Proxy.class);
         bindPresenter(TextButtonSetIconStopsSelectEvent.class, TextButtonSetIconStopsSelectEvent.Proxy.class);
         bindPresenter(GridEditInlineComboBoxBlurBug2.class, GridEditInlineComboBoxBlurBug2.Prox.class);
 
