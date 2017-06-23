@@ -63,7 +63,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="learn-gwt" target="1.7" />
+      <module name="learn-gwt" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="CopyrightManager" default="" />
@@ -133,7 +133,7 @@
       <module fileurl="file://$PROJECT_DIR$/learn-gwt.iml" filepath="$PROJECT_DIR$/learn-gwt.iml" />
     </modules>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
   <component name="SvnBranchConfigurationManager">
