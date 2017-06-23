@@ -2,8 +2,6 @@ package biz.freshcode.learn.gwt2.mod2.client.bug;
 
 import biz.freshcode.learn.gwt2.mod2.client.boot.Root;
 import biz.freshcode.learn.gwt2.mod2.client.spike.resources.Bundle;
-import com.google.gwt.event.logical.shared.ValueChangeEvent;
-import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.inject.Inject;
@@ -14,7 +12,6 @@ import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.FlowLayoutContainer;
-import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.form.TextField;
 import com.sencha.gxt.widget.core.client.info.Info;
 
@@ -51,19 +48,11 @@ public class TextButtonSetIconStopsSelectEvent extends Presenter<TextButtonSetIc
             flc.add(btn = new TextButton("Button", imgA));
             initWidget(flc);
 
-            btn.addSelectHandler(new SelectEvent.SelectHandler() {
-                @Override
-                public void onSelect(SelectEvent event) {
-                    Info.display(fromString("Select Event"), fromString("At " + new Date()));
-                }
-            });
+            btn.addSelectHandler(event -> Info.display(fromString("Select Event"), fromString("At " + new Date())));
 
-            txt.addValueChangeHandler(new ValueChangeHandler<String>() {
-                @Override
-                public void onValueChange(ValueChangeEvent<String> event) {
-                    if (btn.getIcon() == imgA) btn.setIcon(imgB);
-                    else btn.setIcon(imgA);
-                }
+            txt.addValueChangeHandler(event -> {
+                if (btn.getIcon() == imgA) btn.setIcon(imgB);
+                else btn.setIcon(imgA);
             });
         }
     }
