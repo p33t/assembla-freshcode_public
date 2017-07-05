@@ -33,7 +33,7 @@ import qualified Numeric as N
 -- The custom list type
 data List t =
   Nil
-  | t :. List t
+  | t :. List t -- AKA cons
   deriving (Eq, Ord)
 
 -- Right-associative
@@ -75,8 +75,9 @@ headOr ::
   a
   -> List a
   -> a
-headOr =
-  error "todo: Course.List#headOr"
+headOr def Nil = def
+headOr _ (h :. _) = h
+--  error "todo: Course.List#headOr"
 
 -- | The product of the elements of a list.
 --
@@ -91,8 +92,10 @@ headOr =
 product ::
   List Int
   -> Int
-product =
-  error "todo: Course.List#product"
+product = foldLeft (*) 1
+--product Nil = 1
+--product (h:.t) = h * product t
+--  error "todo: Course.List#product"
 
 -- | Sum the elements of the list.
 --
@@ -106,8 +109,9 @@ product =
 sum ::
   List Int
   -> Int
-sum =
-  error "todo: Course.List#sum"
+sum Nil = 0
+sum (h:.t) = h + sum t
+--  error "todo: Course.List#sum"
 
 -- | Return the length of the list.
 --
@@ -118,8 +122,9 @@ sum =
 length ::
   List a
   -> Int
-length =
-  error "todo: Course.List#length"
+length list = foldLeft (\soFar _ -> soFar + 1) 0 list
+-- alternative using composition '.' and 'const' function: length list = foldLeft (const . (1 +)) 0 list
+--  error "todo: Course.List#length"
 
 -- | Map the given function on each element of the list.
 --
@@ -133,8 +138,11 @@ map ::
   (a -> b)
   -> List a
   -> List b
-map =
-  error "todo: Course.List#map"
+--map _ Nil = Nil
+--map fn (h:.t) = (fn h) :. map fn t
+-- This would be much harder with foldLeft, Scala experience isn't that relevant for pure functional programming
+map f list = foldRight ((:.) . f) Nil list
+--  error "todo: Course.List#map"
 
 -- | Return elements satisfying the given predicate.
 --
@@ -150,8 +158,15 @@ filter ::
   (a -> Bool)
   -> List a
   -> List a
-filter =
-  error "todo: Course.List#filter"
+-- Without foldRight...
+filter _ Nil = Nil
+filter fn (h:.t) = if (fn h) then h :. filter fn t else filter fn t
+
+filter2 :: (a -> Bool) -> List a -> List a
+filter2 = undefined
+
+--filter fn (h:.t) = foldRight (\soFar elem = if (fn elem) then h :. filter fn t else filter fn t) Nil
+--  error "todo: Course.List#filter"
 
 -- | Append two lists to a new list.
 --
@@ -169,8 +184,8 @@ filter =
   List a
   -> List a
   -> List a
-(++) =
-  error "todo: Course.List#(++)"
+(++) x y = foldRight (:.) y x
+--  error "todo: Course.List#(++)"
 
 infixr 5 ++
 
@@ -187,8 +202,8 @@ infixr 5 ++
 flatten ::
   List (List a)
   -> List a
-flatten =
-  error "todo: Course.List#flatten"
+flatten list = foldRight (++) Nil list
+--  error "todo: Course.List#flatten"
 
 -- | Map a function then flatten to a list.
 --
@@ -204,8 +219,8 @@ flatMap ::
   (a -> List b)
   -> List a
   -> List b
-flatMap =
-  error "todo: Course.List#flatMap"
+flatMap fn = foldRight ((++) . fn) Nil
+--  error "todo: Course.List#flatMap"
 
 -- | Flatten a list of lists to a list (again).
 -- HOWEVER, this time use the /flatMap/ function that you just wrote.
@@ -214,8 +229,8 @@ flatMap =
 flattenAgain ::
   List (List a)
   -> List a
-flattenAgain =
-  error "todo: Course.List#flattenAgain"
+flattenAgain = flatMap id
+--  error "todo: Course.List#flattenAgain"
 
 -- | Convert a list of optional values to an optional list of values.
 --
@@ -242,8 +257,13 @@ flattenAgain =
 seqOptional ::
   List (Optional a)
   -> Optional (List a)
-seqOptional =
-  error "todo: Course.List#seqOptional"
+
+-- Without foldRight
+-- seqOptional Nil = Full Nil
+-- seqOptional (h:.t) = twiceOptional (:.) h (seqOptional t)
+seqOptional = undefined --foldRight twiceOptional (Full Nil)
+
+--  error "todo: Course.List#seqOptional"
 
 -- | Find the first element in the list matching the predicate.
 --
@@ -265,8 +285,8 @@ find ::
   (a -> Bool)
   -> List a
   -> Optional a
-find =
-  error "todo: Course.List#find"
+find = undefined
+--  error "todo: Course.List#find"
 
 -- | Determine if the length of the given list is greater than 4.
 --
@@ -284,8 +304,9 @@ find =
 lengthGT4 ::
   List a
   -> Bool
-lengthGT4 =
-  error "todo: Course.List#lengthGT4"
+lengthGT4 list = length (take 5 list) == 5
+-- NOTE: Alternative implementation with FriendlyLength and Zero/Sucessor
+--  error "todo: Course.List#lengthGT4"
 
 -- | Reverse a list.
 --
@@ -301,8 +322,12 @@ lengthGT4 =
 reverse ::
   List a
   -> List a
-reverse =
-  error "todo: Course.List#reverse"
+--reverse Nil = Nil
+--reverse list = foldLeft (\) Nil list
+reverse = foldLeft(\soFar elem -> elem :. soFar) Nil
+
+reverse2 :: List a -> List a
+reverse2 = foldRight(\elem soFar -> elem :. soFar) Nil
 
 -- | Produce an infinite `List` that seeds with the given value at its head,
 -- then runs the given function for subsequent elements
