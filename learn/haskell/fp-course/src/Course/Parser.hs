@@ -83,18 +83,19 @@ unexpectedCharParser c =
 valueParser ::
   a
   -> Parser a
-valueParser =
-  error "todo: Course.Parser#valueParser"
+valueParser a = P (\i -> Result i a)
+--  error "todo: Course.Parser#valueParser"
 
 -- | Return a parser that always fails with the given error.
 --
--- >>> isErrorResult (parse failed "abc")
+-- >>> isErrorResult (parse failed "abc") <<<<< BAD TEST
 -- True
 failed ::
   ParseError
   -> Parser a
-failed =
-  error "todo: Course.Parser#failed"
+failed err =
+  P (\_ -> ErrorResult err)
+--  error "todo: Course.Parser#failed"
 
 -- | Return a parser that succeeds with a character off the input or fails with an error if the input is empty.
 --
@@ -105,8 +106,11 @@ failed =
 -- True
 character ::
   Parser Char
-character =
-  error "todo: Course.Parser#character"
+character = P (\i -> case i of
+    Nil -> ErrorResult UnexpectedEof
+    (h:.t) -> Result t h
+  )
+--  error "todo: Course.Parser#character"
 
 -- | Return a parser that maps any succeeding result with the given function.
 --
@@ -119,8 +123,20 @@ mapParser ::
   (a -> b)
   -> Parser a
   -> Parser b
-mapParser =
-  error "todo: Course.Parser#mapParser"
+mapParser fn p = P ((<$>) fn . parse p)
+
+-- V3
+--mapParser fn p = P (\i -> ((<$>) fn . parse p) i)
+
+-- V2
+-- mapParser fn p = P (\i -> (<$>) fn (parse p i))
+
+-- V1
+--mapParser fn p = P (\i -> case parse p i of
+--  Result i' output -> Result i' (fn output)
+--  ErrorResult err -> ErrorResult err
+--  )
+--  error "todo: Course.Parser#mapParser"
 
 -- | This is @mapParser@ with the arguments flipped.
 -- It might be more helpful to use this function if you prefer this argument order.
