@@ -18,6 +18,7 @@
             <element id="library" level="project" name="Maven: com.google.gwt:gwt-servlet:2.8.0" />
             <element id="library" level="project" name="Maven: com.google.web.bindery:requestfactory-server:2.8.0" />
             <element id="library" level="project" name="Maven: javax.validation:validation-api:1.0.0.GA" />
+            <element id="library" level="project" name="Maven: com.gwtplatform:gwtp-clients-common:1.6" />
             <element id="library" level="project" name="Maven: com.gwtplatform:gwtp-dispatch-rpc-shared:1.6" />
             <element id="library" level="project" name="Maven: com.google.inject:guice:3.0" />
             <element id="library" level="project" name="Maven: javax.inject:javax.inject:1" />
@@ -25,6 +26,8 @@
             <element id="library" level="project" name="Maven: com.google.code.findbugs:jsr305:3.0.1" />
             <element id="library" level="project" name="Maven: com.gwtplatform:gwtp-dispatch-rpc-server:1.6" />
             <element id="library" level="project" name="Maven: com.gwtplatform:gwtp-dispatch-common-shared:1.6" />
+            <element id="library" level="project" name="Maven: com.gwtplatform:gwtp-dispatch-rest-shared:1.6" />
+            <element id="library" level="project" name="Maven: javax.ws.rs:jsr311-api:1.1.1" />
             <element id="library" level="project" name="Maven: com.gwtplatform:gwtp-dispatch-rpc-server-guice:1.6" />
             <element id="library" level="project" name="Maven: com.google.inject.extensions:guice-servlet:3.0" />
           </element>
@@ -198,6 +201,39 @@
         <root url="jar://$MAVEN_REPOSITORY$/colt/colt/1.2.0/colt-1.2.0-sources.jar!/" />
       </SOURCES>
     </library>
+    <library name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.8.4">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-annotations/2.8.4/jackson-annotations-2.8.4.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-annotations/2.8.4/jackson-annotations-2.8.4-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-annotations/2.8.4/jackson-annotations-2.8.4-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: com.fasterxml.jackson.core:jackson-annotations:sources:2.8.4">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-annotations/2.8.4/jackson-annotations-2.8.4-sources.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-annotations/2.8.4/jackson-annotations-2.8.4-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-annotations/2.8.4/jackson-annotations-2.8.4-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: com.github.nmorel.gwtjackson:gwt-jackson:0.14.1">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/github/nmorel/gwtjackson/gwt-jackson/0.14.1/gwt-jackson-0.14.1.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/com/github/nmorel/gwtjackson/gwt-jackson/0.14.1/gwt-jackson-0.14.1-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/github/nmorel/gwtjackson/gwt-jackson/0.14.1/gwt-jackson-0.14.1-sources.jar!/" />
+      </SOURCES>
+    </library>
     <library name="Maven: com.google.code.findbugs:jsr305:3.0.1">
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/com/google/code/findbugs/jsr305/3.0.1/jsr305-3.0.1.jar!/" />
@@ -275,6 +311,17 @@
         <root url="jar://$MAVEN_REPOSITORY$/com/google/inject/extensions/guice-assistedinject/3.0/guice-assistedinject-3.0-sources.jar!/" />
       </SOURCES>
     </library>
+    <library name="Maven: com.google.inject.extensions:guice-multibindings:3.0">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/inject/extensions/guice-multibindings/3.0/guice-multibindings-3.0.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/inject/extensions/guice-multibindings/3.0/guice-multibindings-3.0-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/google/inject/extensions/guice-multibindings/3.0/guice-multibindings-3.0-sources.jar!/" />
+      </SOURCES>
+    </library>
     <library name="Maven: com.google.inject.extensions:guice-servlet:3.0">
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/com/google/inject/extensions/guice-servlet/3.0/guice-servlet-3.0.jar!/" />
@@ -341,6 +388,17 @@
         <root url="jar://$MAVEN_REPOSITORY$/com/google/web/bindery/requestfactory-server/2.8.0/requestfactory-server-2.8.0-sources.jar!/" />
       </SOURCES>
     </library>
+    <library name="Maven: com.gwtplatform.extensions:dispatch-rest-delegates:1.6">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/extensions/dispatch-rest-delegates/1.6/dispatch-rest-delegates-1.6.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/extensions/dispatch-rest-delegates/1.6/dispatch-rest-delegates-1.6-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/extensions/dispatch-rest-delegates/1.6/dispatch-rest-delegates-1.6-sources.jar!/" />
+      </SOURCES>
+    </library>
     <library name="Maven: com.gwtplatform:gwtp-clients-common:1.6">
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-clients-common/1.6/gwtp-clients-common-1.6.jar!/" />
@@ -372,6 +430,28 @@
       </JAVADOC>
       <SOURCES>
         <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-dispatch-common-shared/1.6/gwtp-dispatch-common-shared-1.6-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: com.gwtplatform:gwtp-dispatch-rest-shared:1.6">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-dispatch-rest-shared/1.6/gwtp-dispatch-rest-shared-1.6.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-dispatch-rest-shared/1.6/gwtp-dispatch-rest-shared-1.6-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-dispatch-rest-shared/1.6/gwtp-dispatch-rest-shared-1.6-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: com.gwtplatform:gwtp-dispatch-rest:1.6">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-dispatch-rest/1.6/gwtp-dispatch-rest-1.6.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-dispatch-rest/1.6/gwtp-dispatch-rest-1.6-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/gwtplatform/gwtp-dispatch-rest/1.6/gwtp-dispatch-rest-1.6-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: com.gwtplatform:gwtp-dispatch-rpc-client:1.6">
@@ -495,6 +575,17 @@
         <root url="jar://$MAVEN_REPOSITORY$/com/sencha/gxt/gxt/4.0.2/gxt-4.0.2-sources.jar!/" />
       </SOURCES>
     </library>
+    <library name="Maven: com.squareup:javapoet:1.0.0">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/squareup/javapoet/1.0.0/javapoet-1.0.0.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/com/squareup/javapoet/1.0.0/javapoet-1.0.0-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/squareup/javapoet/1.0.0/javapoet-1.0.0-sources.jar!/" />
+      </SOURCES>
+    </library>
     <library name="Maven: commons-codec:commons-codec:1.10">
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/commons-codec/commons-codec/1.10/commons-codec-1.10.jar!/" />
@@ -603,6 +694,17 @@
       </JAVADOC>
       <SOURCES>
         <root url="jar://$MAVEN_REPOSITORY$/javax/validation/validation-api/1.0.0.GA/validation-api-1.0.0.GA-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: javax.ws.rs:jsr311-api:1.1.1">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/javax/ws/rs/jsr311-api/1.1.1/jsr311-api-1.1.1.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/javax/ws/rs/jsr311-api/1.1.1/jsr311-api-1.1.1-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/javax/ws/rs/jsr311-api/1.1.1/jsr311-api-1.1.1-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: junit:junit:4.7">

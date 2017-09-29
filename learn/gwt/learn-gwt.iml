@@ -107,7 +107,7 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.sencha.gxt:gxt-chart:sources:4.0.2" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.json:json:20140107" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.gwtplatform:gwtp-dispatch-rpc-client:1.6" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: com.gwtplatform:gwtp-clients-common:1.6" level="project" />
+    <orderEntry type="library" name="Maven: com.gwtplatform:gwtp-clients-common:1.6" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.gwtplatform:gwtp-dispatch-common-client:1.6" level="project" />
     <orderEntry type="library" name="Maven: com.gwtplatform:gwtp-dispatch-rpc-shared:1.6" level="project" />
     <orderEntry type="library" name="Maven: com.google.inject:guice:3.0" level="project" />
@@ -116,10 +116,19 @@
     <orderEntry type="library" name="Maven: com.google.code.findbugs:jsr305:3.0.1" level="project" />
     <orderEntry type="library" name="Maven: com.gwtplatform:gwtp-dispatch-rpc-server:1.6" level="project" />
     <orderEntry type="library" name="Maven: com.gwtplatform:gwtp-dispatch-common-shared:1.6" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: com.gwtplatform:gwtp-mvp-client:1.6" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: com.gwtplatform:gwtp-mvp-shared:1.6" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.gwtplatform:gwtp-dispatch-rest:1.6" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.inject.extensions:guice-multibindings:3.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.github.nmorel.gwtjackson:gwt-jackson:0.14.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.8.4" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.fasterxml.jackson.core:jackson-annotations:sources:2.8.4" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.squareup:javapoet:1.0.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.velocity:velocity:1.7" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: commons-lang:commons-lang:2.4" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.gwtplatform.extensions:dispatch-rest-delegates:1.6" level="project" />
+    <orderEntry type="library" name="Maven: com.gwtplatform:gwtp-dispatch-rest-shared:1.6" level="project" />
+    <orderEntry type="library" name="Maven: javax.ws.rs:jsr311-api:1.1.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.gwtplatform:gwtp-mvp-client:1.6" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.gwtplatform:gwtp-mvp-shared:1.6" level="project" />
     <orderEntry type="library" name="Maven: com.gwtplatform:gwtp-dispatch-rpc-server-guice:1.6" level="project" />
     <orderEntry type="library" name="Maven: com.google.inject.extensions:guice-servlet:3.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: biz.freshcode.b-generation:b-generation:0.5" level="project" />

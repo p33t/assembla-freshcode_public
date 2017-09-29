@@ -22,10 +22,10 @@
 
     <properties>
         <!-- Convenience property to set the GWT version -->
-        <gwtVersion>2.8.0</gwtVersion>
-        <gwtpVersion>1.6</gwtpVersion>
+        <gwt.version>2.8.0</gwt.version>
+        <gwtp.version>1.6</gwtp.version>
         <!-- NOTE: Might need to change this to 4.0.0 or x.0 for GPL access. -->
-        <gxtVersion>4.0.2</gxtVersion>
+        <gxt.version>4.0.2</gxt.version>
         <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <gwt.server>:ssl</gwt.server>
@@ -35,19 +35,19 @@
         <dependency>
             <groupId>com.google.gwt</groupId>
             <artifactId>gwt-servlet</artifactId>
-            <version>${gwtVersion}</version>
+            <version>${gwt.version}</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>com.google.gwt</groupId>
             <artifactId>gwt-user</artifactId>
-            <version>${gwtVersion}</version>
+            <version>${gwt.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.google.gwt</groupId>
             <artifactId>gwt-dev</artifactId>
-            <version>${gwtVersion}</version>
+            <version>${gwt.version}</version>
             <scope>provided</scope>
         </dependency>
 
@@ -71,14 +71,14 @@
         <dependency>
             <groupId>com.google.web.bindery</groupId>
             <artifactId>requestfactory-apt</artifactId>
-            <version>${gwtVersion}</version>
+            <version>${gwt.version}</version>
             <scope>provided</scope>
         </dependency>
         <!-- GWT 2.5 RC1 bug #7527, moved com/google/gwt/core/client/GWTBridge to com/google/gwt/core/shared/GWTBridge -->
         <dependency>
             <groupId>com.google.web.bindery</groupId>
             <artifactId>requestfactory-server</artifactId>
-            <version>${gwtVersion}</version>
+            <version>${gwt.version}</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
@@ -104,13 +104,13 @@
         <dependency>
             <groupId>com.sencha.gxt</groupId>
             <artifactId>gxt</artifactId>
-            <version>${gxtVersion}</version>
+            <version>${gxt.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.sencha.gxt</groupId>
             <artifactId>gxt-chart</artifactId>
-            <version>${gxtVersion}</version>
+            <version>${gxt.version}</version>
             <scope>provided</scope>
         </dependency>
         <!--<dependency>-->
@@ -123,14 +123,14 @@
         <dependency>
             <groupId>com.sencha.gxt</groupId>
             <artifactId>gxt</artifactId>
-            <version>${gxtVersion}</version>
+            <version>${gxt.version}</version>
             <scope>provided</scope>
             <classifier>sources</classifier>
         </dependency>
         <dependency>
             <groupId>com.sencha.gxt</groupId>
             <artifactId>gxt-chart</artifactId>
-            <version>${gxtVersion}</version>
+            <version>${gxt.version}</version>
             <scope>provided</scope>
             <classifier>sources</classifier>
         </dependency>
@@ -147,20 +147,40 @@
         <dependency>
             <groupId>com.gwtplatform</groupId>
             <artifactId>gwtp-dispatch-rpc-client</artifactId>
-            <version>${gwtpVersion}</version>
+            <version>${gwtp.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.gwtplatform</groupId>
             <artifactId>gwtp-dispatch-rpc-server</artifactId>
-            <version>${gwtpVersion}</version>
+            <version>${gwtp.version}</version>
+        </dependency>
+
+        <!-- REST impl of dispatch (to decouple client from server) -->
+        <dependency>
+            <groupId>com.gwtplatform</groupId>
+            <artifactId>gwtp-dispatch-rest</artifactId>
+            <version>${gwtp.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.gwtplatform.extensions</groupId>
+            <artifactId>dispatch-rest-delegates</artifactId>
+            <version>${gwtp.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.gwtplatform</groupId>
+            <artifactId>gwtp-dispatch-rest-shared</artifactId>
+            <version>${gwtp.version}</version>
+            <scope>compile</scope>
         </dependency>
 
         <!-- GWTP alternative to GWT Activity/Places, MVP -->
         <dependency>
             <groupId>com.gwtplatform</groupId>
             <artifactId>gwtp-mvp-client</artifactId>
-            <version>${gwtpVersion}</version>
+            <version>${gwtp.version}</version>
             <scope>provided</scope>
         </dependency>
 
@@ -168,7 +188,7 @@
         <dependency>
             <groupId>com.gwtplatform</groupId>
             <artifactId>gwtp-dispatch-rpc-server-guice</artifactId>
-            <version>${gwtpVersion}</version>
+            <version>${gwtp.version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.inject.extensions</groupId>
@@ -208,7 +228,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>gwt-maven-plugin</artifactId>
-                <version>${gwtVersion}</version>
+                <version>${gwt.version}</version>
                 <executions>
                     <execution>
                         <goals>
