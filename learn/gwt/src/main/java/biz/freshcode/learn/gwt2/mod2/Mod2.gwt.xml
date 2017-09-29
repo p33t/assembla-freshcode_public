@@ -2,20 +2,23 @@
 <module rename-to='Mod2'>
     <inherits name='biz.freshcode.learn.gwt2.common.Common'/>
 
+    <!-- Must come before Mvp... inherit-->
+    <inherits name="com.gwtplatform.dispatch.rest.delegates.ResourceDelegate"/>
     <inherits name='com.gwtplatform.mvp.MvpWithEntryPoint'/>
 
     <replace-with class="biz.freshcode.learn.gwt2.mod2.client.spike.customdropdown.CddCellDefaultAppearance">
-      <when-type-is class="biz.freshcode.learn.gwt2.mod2.client.spike.customdropdown.CddCell.Appearance" />
+        <when-type-is class="biz.freshcode.learn.gwt2.mod2.client.spike.customdropdown.CddCell.Appearance"/>
     </replace-with>
 
     <!-- Reduce the number of permutations -->
-    <collapse-property name="gxt.device" values="*" />
+    <collapse-property name="gxt.device" values="*"/>
 
     <!-- Specify the paths for translatable code                    -->
     <source path='client'/>
     <source path='shared'/>
 
-    <set-configuration-property name="gin.ginjector.modules"
-                                value="biz.freshcode.learn.gwt2.mod2.client.boot.ClientModule"/>
+    <!-- Change set-... to extend-... for REST dispatch -->
+    <extend-configuration-property name="gin.ginjector.modules"
+                                   value="biz.freshcode.learn.gwt2.mod2.client.boot.ClientModule"/>
 
 </module>
