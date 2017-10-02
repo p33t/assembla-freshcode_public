@@ -10,6 +10,7 @@ import javax.ws.rs.core.MediaType;
 @Produces(MediaType.APPLICATION_JSON)
 public interface ActionDispatch {
     @POST
-// Not possible?    <A extends Action<R>, R extends Result> R post(A action);
+// Not possible?
+// <A extends Action<R>, R extends Result> R post(A action);
     StringResult post(TestAction action);
 }
