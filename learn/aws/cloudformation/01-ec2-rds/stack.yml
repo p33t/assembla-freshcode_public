@@ -1,0 +1,11 @@
+Resources:
+  AppNode:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-0a00ce72 # Ubuntu 16.04 Oregon
+      KeyName: pwl-learn-key
+      SecurityGroupIds:
+        - sg-9c926ce0 # pwl-learn-sg
+      SubnetId: subnet-68592b20 # pwl-learn-subnet
+      
