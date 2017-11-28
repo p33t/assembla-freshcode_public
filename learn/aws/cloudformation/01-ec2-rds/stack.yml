@@ -1,11 +1,29 @@
 Resources:
-  AppNode:
+  PwlLearnNode01:
     Type: AWS::EC2::Instance
     Properties:
       InstanceType: t2.micro
       ImageId: ami-0a00ce72 # Ubuntu 16.04 Oregon
       KeyName: pwl-learn-key
       SecurityGroupIds:
-        - sg-9c926ce0 # pwl-learn-sg
+        #- sg-9c926ce0 # pwl-learn-sg
+        # Bad... - !GetAtt PwlLearnSg01.Id
+        - !Ref PwlLearnSg01 # Strange voodoo to get working with generated SG and no default VPC.  Cannot use in 'SecurityGroups'
+      #SecurityGroups:
+        #- !Ref PwlLearnSg01
+      # Not allowed with parameter GroupName ?! 
       SubnetId: subnet-68592b20 # pwl-learn-subnet
-      
+  PwlLearnSg01:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: for the app nodes that allow ssh, http and docker ports
+      SecurityGroupIngress:
+      - IpProtocol: tcp
+        FromPort: '80'
+        ToPort: '80'
+        CidrIp: 0.0.0.0/0
+      - IpProtocol: tcp
+        FromPort: '22'
+        ToPort: '22'
+        CidrIp: 0.0.0.0/0
+      VpcId: vpc-fca2b79a # pwl-learn-vpc
