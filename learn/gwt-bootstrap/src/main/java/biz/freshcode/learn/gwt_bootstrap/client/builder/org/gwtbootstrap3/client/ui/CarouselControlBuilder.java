@@ -59,30 +59,30 @@ public class CarouselControlBuilder extends biz.freshcode.learn.gwt_bootstrap.cl
         carouselControl.setColor(v0);
         return this;
     }
+//
+//    /**
+//     * @see org.gwtbootstrap3.client.ui.CarouselControl#setDataTarget(java.lang.String)
+//     */
+//    public CarouselControlBuilder dataTarget(java.lang.String v0) {
+//        carouselControl.setDataTarget(v0);
+//        return this;
+//    }
+//
+//    /**
+//     * @see org.gwtbootstrap3.client.ui.CarouselControl#setDataTargetWidget(com.google.gwt.user.client.ui.Widget)
+//     */
+//    public CarouselControlBuilder dataTargetWidget(com.google.gwt.user.client.ui.Widget v0) {
+//        carouselControl.setDataTargetWidget(v0);
+//        return this;
+//    }
 
-    /**
-     * @see org.gwtbootstrap3.client.ui.CarouselControl#setDataTarget(java.lang.String)
-     */
-    public CarouselControlBuilder dataTarget(java.lang.String v0) {
-        carouselControl.setDataTarget(v0);
-        return this;
-    }
-
-    /**
-     * @see org.gwtbootstrap3.client.ui.CarouselControl#setDataTargetWidget(com.google.gwt.user.client.ui.Widget)
-     */
-    public CarouselControlBuilder dataTargetWidget(com.google.gwt.user.client.ui.Widget v0) {
-        carouselControl.setDataTargetWidget(v0);
-        return this;
-    }
-
-    /**
-     * @see org.gwtbootstrap3.client.ui.CarouselControl#setDataTargetWidgets(java.util.List)
-     */
-    public CarouselControlBuilder dataTargetWidgets(java.util.List<com.google.gwt.user.client.ui.Widget> v0) {
-        carouselControl.setDataTargetWidgets(v0);
-        return this;
-    }
+//    /**
+//     * @see org.gwtbootstrap3.client.ui.CarouselControl#setDataTargetWidgets(java.util.List)
+//     */
+//    public CarouselControlBuilder dataTargetWidgets(java.util.List<com.google.gwt.user.client.ui.Widget> v0) {
+//        carouselControl.setDataTargetWidgets(v0);
+//        return this;
+//    }
 
     /**
      * @see org.gwtbootstrap3.client.ui.CarouselControl#setHeight(java.lang.String)

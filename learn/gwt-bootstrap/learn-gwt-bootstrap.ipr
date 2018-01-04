@@ -24,27 +24,11 @@
     </artifact>
   </component>
   <component name="CompilerConfiguration">
-    <resourceExtensions />
-    <wildcardResourcePatterns>
-      <entry name="!?*.java" />
-      <entry name="!?*.form" />
-      <entry name="!?*.class" />
-      <entry name="!?*.groovy" />
-      <entry name="!?*.scala" />
-      <entry name="!?*.flex" />
-      <entry name="!?*.kt" />
-      <entry name="!?*.clj" />
-      <entry name="!?*.aj" />
-    </wildcardResourcePatterns>
     <annotationProcessing>
-      <profile default="true" name="Default" enabled="false">
-        <processorPath useClasspath="true" />
-      </profile>
-      <profile default="false" name="Maven default annotation processors profile" enabled="true">
+      <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="true" />
         <module name="learn-gwt-bootstrap" />
       </profile>
     </annotationProcessing>
@@ -56,9 +40,6 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
-  </component>
-  <component name="EntryPointsManager">
-    <entry_points version="2.0" />
   </component>
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="gwt" url="file://$PROJECT_DIR$" />
@@ -78,8 +59,6 @@
         <option name="processComments" value="true" />
       </inspection_tool>
     </profile>
-    <option name="PROJECT_PROFILE" value="Project Default" />
-    <option name="USE_PROJECT_PROFILE" value="true" />
     <version value="1.0" />
   </component>
   <component name="MavenProjectsManager">
@@ -104,7 +83,7 @@
       <module fileurl="file://$PROJECT_DIR$/learn-gwt-bootstrap.iml" filepath="$PROJECT_DIR$/learn-gwt-bootstrap.iml" />
     </modules>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" default="false" assert-keyword="true" jdk-15="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
   <component name="SvnBranchConfigurationManager">
@@ -323,15 +302,15 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/gwtbootstrap3/gwtbootstrap3-extras/0.9.1/gwtbootstrap3-extras-0.9.1-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.gwtbootstrap3:gwtbootstrap3:1.0-SNAPSHOT">
+    <library name="Maven: org.gwtbootstrap3:gwtbootstrap3:0.9.4">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/gwtbootstrap3/gwtbootstrap3/1.0-SNAPSHOT/gwtbootstrap3-1.0-20160128.001750-184.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/gwtbootstrap3/gwtbootstrap3/0.9.4/gwtbootstrap3-0.9.4.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/org/gwtbootstrap3/gwtbootstrap3/1.0-SNAPSHOT/gwtbootstrap3-1.0-20160128.001750-184-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/gwtbootstrap3/gwtbootstrap3/0.9.4/gwtbootstrap3-0.9.4-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/gwtbootstrap3/gwtbootstrap3/1.0-SNAPSHOT/gwtbootstrap3-1.0-20160128.001750-184-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/gwtbootstrap3/gwtbootstrap3/0.9.4/gwtbootstrap3-0.9.4-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: org.hamcrest:hamcrest-core:1.3">

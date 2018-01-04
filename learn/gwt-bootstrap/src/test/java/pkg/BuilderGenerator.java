@@ -24,8 +24,8 @@ public class BuilderGenerator extends DefaultBeanBuilderGenerator {
     private static final Class[] CLASSES = {Button.class};  //<<<<<<<<<<<<<<<<<< Bean Class
 
     public static void main(String[] args) {
-        write();
-//        probe();
+//        write();
+        probe();
     }
 
     private static void probe() {

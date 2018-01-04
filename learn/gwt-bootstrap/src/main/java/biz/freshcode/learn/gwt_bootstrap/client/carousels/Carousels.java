@@ -81,12 +81,14 @@ public class Carousels extends Presenter<View, Carousels.Proxy> {
                                     .carouselSlide)
                             .carouselInner)
                     .add(new CarouselControlBuilder()
-                            .dataTargetWidget(csel)
+//                            This was only available with a patched, custom build
+//                            .dataTargetWidget(csel)
                             .prev(true)
                             .iconType(IconType.ANGLE_LEFT)
                             .carouselControl)
                     .add(new CarouselControlBuilder()
-                            .dataTargetWidget(csel)
+//                            This was only available with a patched, custom build
+//                            .dataTargetWidget(csel)
                                     // Nix the gradient fill
                             .addStyleName(BOOT_STYLE.noBgndImg())
                             .next(true)
