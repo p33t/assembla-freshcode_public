@@ -34,7 +34,7 @@
         <maven.compiler.target>1.7</maven.compiler.target>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <gwtbootstrap3.version>1.0-SNAPSHOT</gwtbootstrap3.version>
+        <gwtbootstrap3.version>0.9.4</gwtbootstrap3.version>
     </properties>
 
     <dependencyManagement>
