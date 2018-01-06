@@ -1,0 +1,37 @@
+EnvironmentConfigurationMetadata:
+  Description: First version of a simple, demo app elastic beanstalk environment.  Created with default roles, VPC etc.
+  DateCreated: '1515204447000'
+  DateModified: '1515204447000'
+Platform:
+  PlatformArn: arn:aws:elasticbeanstalk:us-west-2::platform/Tomcat 8 with Java 8 running on 64bit Amazon Linux/2.7.2
+OptionSettings:
+  aws:elasticbeanstalk:command:
+    BatchSize: '20'
+    BatchSizeType: Percentage
+    DeploymentPolicy: Rolling
+  aws:elasticbeanstalk:sns:topics:
+    Notification Endpoint: pleong@shiftworksolutions.com
+  aws:elb:policies:
+    ConnectionDrainingEnabled: true
+    ConnectionDrainingTimeout: '20'
+  aws:elb:loadbalancer:
+    CrossZone: true
+  aws:elasticbeanstalk:environment:
+    ServiceRole: aws-elasticbeanstalk-service-role
+    EnvironmentType: LoadBalanced
+  aws:elasticbeanstalk:application:
+    Application Healthcheck URL: /
+  aws:elasticbeanstalk:healthreporting:system:
+    SystemType: enhanced
+    HealthCheckSuccessThreshold: Ok
+  aws:autoscaling:launchconfiguration:
+    IamInstanceProfile: aws-elasticbeanstalk-ec2-role
+    InstanceType: t2.micro
+    EC2KeyName: ''
+  aws:autoscaling:updatepolicy:rollingupdate:
+    RollingUpdateType: Health
+    RollingUpdateEnabled: true
+EnvironmentTier:
+  Type: Standard
+  Name: WebServer
+AWSConfigurationTemplateVersion: 1.1.0.0
