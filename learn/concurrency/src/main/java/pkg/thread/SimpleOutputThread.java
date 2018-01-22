@@ -1,7 +1,5 @@
 package pkg.thread;
 
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.logging.Logger;
 
 public class SimpleOutputThread extends Thread {
@@ -23,7 +21,7 @@ public class SimpleOutputThread extends Thread {
 
         // NOTE: Daemon thread 'false' means process never ends.
         // Alternatively, timer.cancel() will conclude the timer's background thread.
-        Timer timer = new Timer("Controller", true);
+        /*There must be a better way...  Timer timer = new Timer("Controller", true);
         log("Starting timer");
         timer.schedule(new TimerTask() {
             @Override
@@ -31,7 +29,16 @@ public class SimpleOutputThread extends Thread {
                 log("Aborting threads");
                 for (SimpleOutputThread thread : threads) thread.abort();
             }
-        }, 10000);
+        }, 10000);*/
+
+        try {
+            sleep(10000);
+        } catch (InterruptedException e) {
+            // interrupted early
+        }
+        log("Aborting threads");
+        for (SimpleOutputThread thread : threads) thread.abort();
+
         log("Main finished");
     }
 
