@@ -21,7 +21,9 @@ public class SimpleOutputThread extends Thread {
             threads[i].start();
         }
 
-        Timer timer = new Timer("Controller");
+        // NOTE: Daemon thread 'false' means process never ends.
+        // Alternatively, timer.cancel() will conclude the timer's background thread.
+        Timer timer = new Timer("Controller", true);
         log("Starting timer");
         timer.schedule(new TimerTask() {
             @Override
@@ -52,6 +54,7 @@ public class SimpleOutputThread extends Thread {
                 output("interrupted");
             }
         }
+        output("done");
     }
 
     private void output(String msg) {
