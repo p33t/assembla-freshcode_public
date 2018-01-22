@@ -15,8 +15,12 @@ class TestThread extends Thread {
     }
 
     static void sleepAwhile() {
+        sleepFor(10000);
+    }
+
+    static void sleepFor(int millis) {
         try {
-            sleep(10000);
+            sleep(millis);
         } catch (InterruptedException e) {
             // interrupted early
         }
