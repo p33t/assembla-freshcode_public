@@ -2,6 +2,9 @@ package pkg.thread;
 
 import java.util.logging.Logger;
 
+/**
+ * A thread with an 'abort' method.  Use this instead of Thread.stop() (which causes deadlocks).
+ */
 public class AbortingThread extends Thread {
     private final int offset;
     private int count = 1;
@@ -48,6 +51,7 @@ public class AbortingThread extends Thread {
 
     private void abort() {
         abort = true;
+        interrupt(); // will cause conclusion ASAP.
     }
 
     @Override
