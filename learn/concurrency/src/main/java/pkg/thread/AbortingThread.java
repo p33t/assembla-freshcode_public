@@ -1,17 +1,13 @@
 package pkg.thread;
 
-import java.util.logging.Logger;
-
 /**
  * A thread with an 'abort' method.  Use this instead of Thread.stop() (which causes deadlocks).
  */
-public class AbortingThread extends Thread {
-    private final int offset;
-    private int count = 1;
+public class AbortingThread extends TestThread {
     private boolean abort;
 
     private AbortingThread(int offset) {
-        this.offset = offset;
+        super(offset);
     }
 
     public static void main(String[] args) {
@@ -34,19 +30,11 @@ public class AbortingThread extends Thread {
             }
         }, 10000);*/
 
-        try {
-            sleep(10000);
-        } catch (InterruptedException e) {
-            // interrupted early
-        }
+        sleepAwhile();
         log("Aborting threads");
         for (AbortingThread thread : threads) thread.abort();
 
         log("Main finished");
-    }
-
-    private static void log(String s) {
-        Logger.getGlobal().info(s);
     }
 
     private void abort() {
@@ -56,22 +44,7 @@ public class AbortingThread extends Thread {
 
     @Override
     public void run() {
-        while (!abort) {
-            output("" + count++);
-            try {
-                sleep(2000);
-            } catch (InterruptedException e) {
-                // do nothing.  This just shortens the sleep duration.
-                output("interrupted");
-            }
-        }
+        while (!abort) cycle();
         output("done");
-    }
-
-    private void output(String msg) {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < offset; i++) sb.append("    ");
-        sb.append(msg);
-        log(sb.toString());
     }
 }
