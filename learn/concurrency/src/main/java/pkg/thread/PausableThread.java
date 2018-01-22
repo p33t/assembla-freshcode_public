@@ -32,7 +32,7 @@ public class PausableThread extends TestThread {
     private void unPause() {
         synchronized (privateLock) {
             paused = false;
-            privateLock.notifyAll();
+            privateLock.notifyAll(); // runtime error when not in a synchronised block
         }
     }
 
