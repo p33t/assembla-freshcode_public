@@ -2,20 +2,20 @@ package pkg.thread;
 
 import java.util.logging.Logger;
 
-public class SimpleOutputThread extends Thread {
+public class AbortingThread extends Thread {
     private final int offset;
     private int count = 1;
     private boolean abort;
 
-    private SimpleOutputThread(int offset) {
+    private AbortingThread(int offset) {
         this.offset = offset;
     }
 
     public static void main(String[] args) {
-        final SimpleOutputThread[] threads = new SimpleOutputThread[10];
+        final AbortingThread[] threads = new AbortingThread[10];
         log("Launching threads");
         for (int i = 0; i < threads.length; i++) {
-            threads[i] = new SimpleOutputThread(i);
+            threads[i] = new AbortingThread(i);
             threads[i].start();
         }
 
@@ -37,7 +37,7 @@ public class SimpleOutputThread extends Thread {
             // interrupted early
         }
         log("Aborting threads");
-        for (SimpleOutputThread thread : threads) thread.abort();
+        for (AbortingThread thread : threads) thread.abort();
 
         log("Main finished");
     }
