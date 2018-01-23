@@ -6,16 +6,16 @@ class TestThread extends Thread {
     private final int offset;
     private int count = 1;
 
-    static void log(String s) {
-        Logger.getGlobal().info(s);
-    }
-
     TestThread(int offset) {
         this.offset = offset;
     }
 
+    static void log(String s) {
+        Logger.getGlobal().info(s);
+    }
+
     static void sleepAwhile() {
-        sleepFor(10000);
+        sleepFor(6000);
     }
 
     static void sleepFor(int millis) {
@@ -23,17 +23,24 @@ class TestThread extends Thread {
             sleep(millis);
         } catch (InterruptedException e) {
             // interrupted early
+            // NOT: Catching this exception seems to clear any interrupt flags
+            // rethrow without needing checked exception declarations in method signature
+            Thread.currentThread().interrupt();
         }
     }
 
     void cycle() {
-        output("" + count++);
+        outputCount();
         try {
             sleep(2000);
         } catch (InterruptedException e) {
             // do nothing.  This just shortens the sleep duration.
-            output("interrupted");
+            output("interrupted. Is = " + isInterrupted());
         }
+    }
+
+    void outputCount() {
+        output("" + count++);
     }
 
     void output(String msg) {
