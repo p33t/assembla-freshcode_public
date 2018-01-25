@@ -1,12 +1,41 @@
+# Concurrency in Java
 Notes on concurrency.
 
+## Official Tutorial
 Reference:
 [Oracle Concurrency Tutorial](https://docs.oracle.com/javase/tutorial/essential/concurrency/index.html)
 
+### Threads
 1. Deadlock, Starvation, Livelock (like hallway pass side-stepping problem)
 1. Thread.currentThread().interrupt() to interrupt self without needing 'throws' statement.
 1. Object.wait() relinguishes the locked monitor object (which must match the context / sync block) and will only return when lock is reacquired.
 1. Object.notifyAll() to tell all threads awaiting lock (in 'waiting' state) to go to 'blocked' state (IE: Something relevant has happened).  Generally only use Object.notify() when dealing with similar threads (in a pool) where only one is needed.
+
+### Sync'n
+1. Liveness: Ability of a concurrent app to execute in a timely manner
+1. Reentrant Sync'n: Code that has a lock can call code that will acquire the same lock again.
+1. Atomic read, write on refs and primitives *except `long`, `double`* (unless using `volatile`)
+1. `volatile` is a lighter weight synchronisation mechanism but not as useful and `synchronize`
+
+### Immutability
+1. No setters, fields `private final`
+1. Prevent method overide with `class final` or contruction via factory method
+1. Don't allow mutable objects in fields to change or be accessed externally
+
+### High Level Concurrency Objects
+As of Java 5 in `java.util.concurrency` and collections framework.
+1. [Lock](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/locks/Lock.html) family: Can timeout (on a given condition), interrupt-out or immediately abort lock aquisition
+1. [Executor](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/Executor.html): Replacement for direct thread creation using `Runnable`; facilitates thread pools.
+1. [ExecutorService](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ExecutorService.html): Run one or many `Callable` (which returns a result), and manage shutdowns (immediate or graceful).
+1. ScheduledExecutorService: For scheduled execution (fixed rate, delay)
+1. [Executors](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/Executors.html) class has factory methods to create different types of thread pools.  There are custom thread pool parent classes too.
+1. Fork/Join framework (new in Java 7) for utilising all cpu cores to complete work recursively.  'Work stealing' allows idle threads to do work queued up for other threads.
+   * [ForkJoinPool](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ForkJoinPool.html) is an ExecutorService
+   * Used by Arrays.parrallelSort() (Java 8)
+   * Used by `java.util.streams` (Java 8)
+1. Concurrent collections for thread orchestrating work queues, atomic map ops, approximate-match map ops
+1. Atomic variables that act like a `volatile` field with richer operations (EG: AtomicInteger.incrementAndGet())
+1. [ThreadLocalRandom](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ThreadLocalRandom.html) allows concurrent random number generation with less contention (Unlike Math.random())
 
 ## Inter-process Communication (IPC)
 See [ProcessBuilder](https://docs.oracle.com/javase/9/docs/api/index.html?java/lang/ProcessBuilder.html) facility in Java
@@ -61,15 +90,14 @@ More from [Stackify](https://stackify.com/memory-leaks-java/):
 
 
 ## High Performance
-Better to test continuously and detect performance regressions as soon as they enter the code.
-Time spent on continous performance fixing is far less than fixing just prior to release.
-
-Results in higher software quality and near-trivial fixing phase after performance testing.  
+1. Better to test continuously and detect performance regressions as soon as they enter the code.
+   * Time spent on continous performance fixing is far less than fixing just prior to release.
+   * Results in higher software quality and near-trivial fixing phase after performance testing.  
 Which leads to greater planning confidence by engineering teams.
 
-Dynamic architecture validation to check collected statistics during performance tests.
-Can examine number of database calls or the frequency of each type of call.  
-Some problems are easier to detect than others. 
+1. Dynamic architecture validation to check collected statistics during performance tests.
+   * EG: Can examine number of database calls or the frequency of each type of call.  
+   * Some problems are easier to detect than others.  Need savvy architect. 
 
 ## RESTful Web Services
 From [JEE Tutorial](https://docs.oracle.com/javaee/7/tutorial/jaxrs001.htm#GIJQY)
@@ -115,4 +143,4 @@ By [Dexter Legaspi](https://gist.github.com/dalegaspi/d02eee4ccead31057276)
 1. Tomcat easier to set up than Jetty.  Don't worry about others.
 1. Skip the non-blocking I/O hype (for now).  Java is inherently 'blocking'
 1. Likely don't need `synchronized` keyword (you're prob'ly doing it wrong)
-1. `SecureRandom` has a synchronized method so lots of contention
+1. `SecureRandom` has a synchronized method so lots of contention (See `ThreadLocalRandom`? - pwl)
