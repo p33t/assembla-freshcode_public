@@ -25,7 +25,7 @@ object DbTypes extends PrimitiveTypeMode {
   // Rev String mapping ======================================================================================
 
   implicit val revStringTEF = new NonPrimitiveJdbcMapper[String, RevString, TString](stringTEF, this) {
-    def convertFromJdbc(s: String) = new RevString(s.reverse)
+    def convertFromJdbc(s: String) = if (s == null) null else RevString(s.reverse)
 
     def convertToJdbc(r: RevString) = r.str.reverse
   }

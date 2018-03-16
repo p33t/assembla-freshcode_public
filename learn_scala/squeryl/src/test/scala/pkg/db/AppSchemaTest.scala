@@ -1,9 +1,9 @@
 package pkg.db
 
-import org.scalatest.junit.JUnitRunner
 import org.junit.runner.RunWith
-import org.scalatest.{Spec, FunSuite}
-import DbTypes._
+import org.scalatest.FunSuite
+import org.scalatest.junit.JUnitRunner
+import pkg.db.DbTypes._
 
 @RunWith(classOf[JUnitRunner])
 class AppSchemaTest extends FunSuite {
