@@ -12,8 +12,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <scala.version>2.11.7</scala.version>
-        <scala.libs.version>2.11</scala.libs.version>
+        <scala.version>2.12.3</scala.version>
+        <scala.libs.version>2.12</scala.libs.version>
     </properties>
 
     <repositories>
@@ -43,7 +43,7 @@
         <dependency>
             <groupId>org.squeryl</groupId>
             <artifactId>squeryl_${scala.libs.version}</artifactId>
-            <version>0.9.6-RC4</version>
+            <version>0.9.8</version>
         </dependency>
 
         <!--H2 Database-->
@@ -64,7 +64,7 @@
         <dependency>
             <groupId>org.scalatest</groupId>
             <artifactId>scalatest_${scala.libs.version}</artifactId>
-            <version>2.2.6</version>
+            <version>3.0.5</version>
             <scope>test</scope>
         </dependency>
 
@@ -84,11 +84,12 @@
     </dependencies>
 
     <build>
-        <finalName>scala-testing</finalName>
+        <finalName>${project.artifactId}</finalName>
         <plugins>
             <plugin>
-                <groupId>org.scala-tools</groupId>
-                <artifactId>maven-scala-plugin</artifactId>
+                <groupId>net.alchim31.maven</groupId>
+                <artifactId>scala-maven-plugin</artifactId>
+                <version>3.2.1</version>
                 <executions>
                     <execution>
                         <goals>
