@@ -17,8 +17,8 @@ class ComputeMaxTest extends FunSuite {
 
     def readMax = inTransaction {
       import pkg.db.DbTypes._
-      val qry: Measures[Option[Int]] = from(AppSchema.t1)(t => compute(max(t.id))).single
-      qry.measures
+      val result: Measures[Option[Int]] = from(AppSchema.t1)(t => compute(max(t.id))).single
+      result.measures
     }
 
     assert(readMax.isEmpty)
