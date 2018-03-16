@@ -3,7 +3,6 @@ package pkg.db.query
 import org.junit.runner.RunWith
 import org.scalatest.FunSuite
 import org.scalatest.junit.JUnitRunner
-import org.squeryl.dsl.Measures
 import pkg.db.DbTypes.inTransaction
 import pkg.db.{AppSchema, T1}
 
@@ -17,8 +16,10 @@ class ComputeMaxTest extends FunSuite {
 
     def readMax = inTransaction {
       import pkg.db.DbTypes._
-      val result: Measures[Option[Int]] = from(AppSchema.t1)(t => compute(max(t.id))).single
-      result.measures
+      from(AppSchema.t1)(t => compute(max(t.id)))
+        .single
+        .measures
+        .asInstanceOf[Option[Int]]
     }
 
     assert(readMax.isEmpty)
