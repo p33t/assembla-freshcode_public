@@ -4,7 +4,6 @@ import org.junit.runner.RunWith
 import org.scalatest.FunSuite
 import org.scalatest.junit.JUnitRunner
 import org.squeryl.dsl.Measures
-import org.squeryl.dsl.ast.TrueLogicalBoolean
 import pkg.db.DbTypes.inTransaction
 import pkg.db.{AppSchema, T1}
 
@@ -14,12 +13,11 @@ class ComputeMaxTest extends FunSuite {
     AppSchema.init()
     inTransaction {
       AppSchema.reset()
-      //      AppSchema.directedEntity.insert(de)
     }
 
     def readMax = inTransaction {
       import pkg.db.DbTypes._
-      val qry: Measures[Option[Int]] = from(AppSchema.t1)(t => where(TrueLogicalBoolean) compute max(t.id)).single
+      val qry: Measures[Option[Int]] = from(AppSchema.t1)(t => compute(max(t.id))).single
       qry.measures
     }
 
