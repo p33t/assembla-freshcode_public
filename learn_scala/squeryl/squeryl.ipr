@@ -6,8 +6,6 @@
     </option>
   </component>
   <component name="CompilerConfiguration">
-    <option name="DEFAULT_COMPILER" value="Javac" />
-    <resourceExtensions />
     <wildcardResourcePatterns>
       <entry name="?*.properties" />
       <entry name="?*.xml" />
@@ -21,14 +19,10 @@
       <entry name="?*.ftl" />
     </wildcardResourcePatterns>
     <annotationProcessing>
-      <profile default="true" name="Default" enabled="false">
-        <processorPath useClasspath="true" />
-      </profile>
-      <profile default="false" name="Maven default annotation processors profile" enabled="true">
+      <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="true" />
         <module name="main" />
       </profile>
     </annotationProcessing>
@@ -55,6 +49,18 @@
         </modules>
       </facet-type>
     </autodetection-disabled>
+  </component>
+  <component name="HydraSettings">
+    <option name="hydraStorePath" value="$PROJECT_DIR$/.hydra/idea" />
+    <option name="noOfCores" value="4" />
+    <option name="projectRoot" value="$PROJECT_DIR$" />
+    <option name="sourcePartitioner" value="auto" />
+  </component>
+  <component name="InspectionProjectProfileManager">
+    <profile version="1.0">
+      <option name="myName" value="Project Default" />
+    </profile>
+    <version value="1.0" />
   </component>
   <component name="JavadocGenerationManager">
     <option name="OUTPUT_DIRECTORY" />
@@ -118,7 +124,7 @@
   <component name="ProjectResources">
     <default-html-doctype>http://www.w3.org/1999/xhtml</default-html-doctype>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" assert-keyword="true" jdk-15="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
   <component name="ScalaCompilerConfiguration">
@@ -142,15 +148,15 @@
     <mapping directory="" vcs="svn" />
   </component>
   <component name="libraryTable">
-    <library name="Maven: cglib:cglib-nodep:2.2">
+    <library name="Maven: cglib:cglib-nodep:3.2.5">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/cglib/cglib-nodep/2.2/cglib-nodep-2.2.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/cglib/cglib-nodep/3.2.5/cglib-nodep-3.2.5.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/cglib/cglib-nodep/2.2/cglib-nodep-2.2-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/cglib/cglib-nodep/3.2.5/cglib-nodep-3.2.5-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/cglib/cglib-nodep/2.2/cglib-nodep-2.2-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/cglib/cglib-nodep/3.2.5/cglib-nodep-3.2.5-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: com.h2database:h2:1.4.191">
@@ -197,26 +203,26 @@
         <root url="jar://$MAVEN_REPOSITORY$/log4j/log4j/1.2.16/log4j-1.2.16-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.scala-lang.modules:scala-parser-combinators_2.11:1.0.3">
+    <library name="Maven: org.json4s:json4s-scalap_2.12:3.5.0">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/modules/scala-parser-combinators_2.11/1.0.3/scala-parser-combinators_2.11-1.0.3.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/json4s/json4s-scalap_2.12/3.5.0/json4s-scalap_2.12-3.5.0.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/modules/scala-parser-combinators_2.11/1.0.3/scala-parser-combinators_2.11-1.0.3-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/json4s/json4s-scalap_2.12/3.5.0/json4s-scalap_2.12-3.5.0-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/modules/scala-parser-combinators_2.11/1.0.3/scala-parser-combinators_2.11-1.0.3-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/json4s/json4s-scalap_2.12/3.5.0/json4s-scalap_2.12-3.5.0-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.scala-lang.modules:scala-xml_2.11:1.0.2">
+    <library name="Maven: org.scala-lang.modules:scala-xml_2.12:1.0.6">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/modules/scala-xml_2.11/1.0.2/scala-xml_2.11-1.0.2.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/modules/scala-xml_2.12/1.0.6/scala-xml_2.12-1.0.6.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/modules/scala-xml_2.11/1.0.2/scala-xml_2.11-1.0.2-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/modules/scala-xml_2.12/1.0.6/scala-xml_2.12-1.0.6-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/modules/scala-xml_2.11/1.0.2/scala-xml_2.11-1.0.2-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/modules/scala-xml_2.12/1.0.6/scala-xml_2.12-1.0.6-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: org.scala-lang:scala-compiler-bundle:2.8.1">
@@ -235,66 +241,55 @@
       <JAVADOC />
       <SOURCES />
     </library>
-    <library name="Maven: org.scala-lang:scala-compiler:2.11.6">
-      <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-compiler/2.11.6/scala-compiler-2.11.6.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-compiler/2.11.6/scala-compiler-2.11.6-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-compiler/2.11.6/scala-compiler-2.11.6-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: org.scala-lang:scala-library:2.11.7" type="Scala">
+    <library name="Maven: org.scala-lang:scala-library:2.12.3" type="Scala">
       <properties>
         <compiler-classpath>
-          <root url="file://$MAVEN_REPOSITORY$/org/scala-lang/scala-compiler/2.11.7/scala-compiler-2.11.7.jar" />
-          <root url="file://$MAVEN_REPOSITORY$/org/scala-lang/scala-library/2.11.7/scala-library-2.11.7.jar" />
-          <root url="file://$MAVEN_REPOSITORY$/org/scala-lang/scala-reflect/2.11.7/scala-reflect-2.11.7.jar" />
+          <root url="file://$MAVEN_REPOSITORY$/org/scala-lang/scala-compiler/2.12.3/scala-compiler-2.12.3.jar" />
+          <root url="file://$MAVEN_REPOSITORY$/org/scala-lang/scala-library/2.12.3/scala-library-2.12.3.jar" />
+          <root url="file://$MAVEN_REPOSITORY$/org/scala-lang/scala-reflect/2.12.3/scala-reflect-2.12.3.jar" />
         </compiler-classpath>
       </properties>
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-library/2.11.7/scala-library-2.11.7.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-library/2.12.3/scala-library-2.12.3.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-library/2.11.7/scala-library-2.11.7-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-library/2.12.3/scala-library-2.12.3-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-library/2.11.7/scala-library-2.11.7-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-library/2.12.3/scala-library-2.12.3-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.scala-lang:scala-reflect:2.11.7">
+    <library name="Maven: org.scala-lang:scala-reflect:2.12.4">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-reflect/2.11.7/scala-reflect-2.11.7.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-reflect/2.12.4/scala-reflect-2.12.4.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-reflect/2.11.7/scala-reflect-2.11.7-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-reflect/2.12.4/scala-reflect-2.12.4-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-reflect/2.11.7/scala-reflect-2.11.7-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-reflect/2.12.4/scala-reflect-2.12.4-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.scala-lang:scalap:2.11.6">
+    <library name="Maven: org.scalactic:scalactic_2.12:3.0.5">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scalap/2.11.6/scalap-2.11.6.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/scalactic/scalactic_2.12/3.0.5/scalactic_2.12-3.0.5.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scalap/2.11.6/scalap-2.11.6-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/scalactic/scalactic_2.12/3.0.5/scalactic_2.12-3.0.5-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scalap/2.11.6/scalap-2.11.6-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/scalactic/scalactic_2.12/3.0.5/scalactic_2.12-3.0.5-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.scalatest:scalatest_2.11:2.2.6">
+    <library name="Maven: org.scalatest:scalatest_2.12:3.0.5">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scalatest/scalatest_2.11/2.2.6/scalatest_2.11-2.2.6.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/scalatest/scalatest_2.12/3.0.5/scalatest_2.12-3.0.5.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scalatest/scalatest_2.11/2.2.6/scalatest_2.11-2.2.6-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/scalatest/scalatest_2.12/3.0.5/scalatest_2.12-3.0.5-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scalatest/scalatest_2.11/2.2.6/scalatest_2.11-2.2.6-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/scalatest/scalatest_2.12/3.0.5/scalatest_2.12-3.0.5-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: org.slf4j:slf4j-api:1.6.1">
@@ -319,15 +314,15 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-log4j12/1.6.1/slf4j-log4j12-1.6.1-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.squeryl:squeryl_2.11:0.9.6-RC4">
+    <library name="Maven: org.squeryl:squeryl_2.12:0.9.8">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/squeryl/squeryl_2.11/0.9.6-RC4/squeryl_2.11-0.9.6-RC4.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/squeryl/squeryl_2.12/0.9.8/squeryl_2.12-0.9.8.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/org/squeryl/squeryl_2.11/0.9.6-RC4/squeryl_2.11-0.9.6-RC4-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/squeryl/squeryl_2.12/0.9.8/squeryl_2.12-0.9.8-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/squeryl/squeryl_2.11/0.9.6-RC4/squeryl_2.11-0.9.6-RC4-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/squeryl/squeryl_2.12/0.9.8/squeryl_2.12-0.9.8-sources.jar!/" />
       </SOURCES>
     </library>
   </component>
