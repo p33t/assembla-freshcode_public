@@ -15,6 +15,7 @@ object Implicits {
     receiverConversion()
     pseudoSyntax()
     implicitArgList()
+    implicitArgListWithDefault()
     viewBounds()
     outOfBandComms()
   }
@@ -93,6 +94,16 @@ object Implicits {
     implicit val myOrderer: Unordered => Int = un => un.sortVal
     val max = myMax(List(new Unordered(3), new Unordered(2), new Unordered(5)))
     println("Should be 5... " + max.sortVal)
+  }
+
+  def implicitArgListWithDefault() {
+    def read(arg0: Int)(implicit arg1: String = "bruce"): String = {
+      arg1
+    }
+    assert(read(0) == "bruce")
+    assert(read(0)("lee") == "lee")
+    implicit val arg1 = "banner"
+    assert(read(0) == arg1)
   }
 
   def outOfBandComms() {
