@@ -6,8 +6,11 @@ package pkg
  *  @see pkg.PathDepTypes
  */
 object InnerClassish {
-  class Outer {
-    class Inner
+  class Outer(msg: String) {
+    def hello() = msg
+    class Inner {
+      def hi() = Outer.this.hello()
+    }
   }
 
   object Outer {
@@ -19,8 +22,9 @@ object InnerClassish {
   }
 
   def main(args: Array[String]) {
-    val outer = new Outer
+    val outer = new Outer("World")
     val inner = new outer.Inner
+    assert(inner.hi() == "World")
     val nestedEnum = Outer.InnerEnum.A
     val nested = new Outer.StaticNested()
     println("No problems: " + this)
