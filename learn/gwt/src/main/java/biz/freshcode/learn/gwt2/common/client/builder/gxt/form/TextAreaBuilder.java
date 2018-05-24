@@ -71,6 +71,14 @@ public class TextAreaBuilder extends biz.freshcode.learn.gwt2.common.client.buil
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.form.TextArea#setAdjustSize(boolean)
+     */
+    public TextAreaBuilder adjustSize(boolean v0) {
+        textArea.setAdjustSize(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.form.TextArea#setAllowBlank(boolean)
      */
     public TextAreaBuilder allowBlank(boolean v0) {

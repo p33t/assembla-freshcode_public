@@ -63,6 +63,22 @@ public class FileUploadFieldBuilder extends biz.freshcode.learn.gwt2.common.clie
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.form.FileUploadField#setAccept(java.lang.String)
+     */
+    public FileUploadFieldBuilder accept(java.lang.String v0) {
+        fileUploadField.setAccept(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.form.FileUploadField#setAdjustSize(boolean)
+     */
+    public FileUploadFieldBuilder adjustSize(boolean v0) {
+        fileUploadField.setAdjustSize(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.form.FileUploadField#setAllowBlank(boolean)
      */
     public FileUploadFieldBuilder allowBlank(boolean v0) {

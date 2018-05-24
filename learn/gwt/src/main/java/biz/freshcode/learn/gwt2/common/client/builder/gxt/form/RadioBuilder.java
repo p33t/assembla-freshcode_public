@@ -71,6 +71,14 @@ public class RadioBuilder extends biz.freshcode.learn.gwt2.common.client.builder
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.form.Radio#setAdjustSize(boolean)
+     */
+    public RadioBuilder adjustSize(boolean v0) {
+        radio.setAdjustSize(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.form.Radio#setAllowTextSelection(boolean)
      */
     public RadioBuilder allowTextSelection(boolean v0) {

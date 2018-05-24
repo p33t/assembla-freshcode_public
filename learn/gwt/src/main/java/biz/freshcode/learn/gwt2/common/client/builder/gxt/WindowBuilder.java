@@ -55,6 +55,14 @@ public class WindowBuilder extends biz.freshcode.learn.gwt2.common.client.builde
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.Window#add(com.google.gwt.user.client.ui.IsWidget, com.sencha.gxt.widget.core.client.container.MarginData)
+     */
+    public WindowBuilder add(com.google.gwt.user.client.ui.IsWidget v0, com.sencha.gxt.widget.core.client.container.MarginData v1) {
+        window.add(v0, v1);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.Window#addButton(com.google.gwt.user.client.ui.Widget)
      */
     public WindowBuilder addButton(com.google.gwt.user.client.ui.Widget v0) {
@@ -107,6 +115,14 @@ public class WindowBuilder extends biz.freshcode.learn.gwt2.common.client.builde
      */
     public WindowBuilder active(boolean v0) {
         window.setActive(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.Window#setAdjustSize(boolean)
+     */
+    public WindowBuilder adjustSize(boolean v0) {
+        window.setAdjustSize(v0);
         return this;
     }
 
@@ -227,6 +243,14 @@ public class WindowBuilder extends biz.freshcode.learn.gwt2.common.client.builde
      */
     public WindowBuilder constrain(boolean v0) {
         window.setConstrain(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.Window#setConstrainContainer(com.google.gwt.user.client.ui.Widget)
+     */
+    public WindowBuilder constrainContainer(com.google.gwt.user.client.ui.Widget v0) {
+        window.setConstrainContainer(v0);
         return this;
     }
 

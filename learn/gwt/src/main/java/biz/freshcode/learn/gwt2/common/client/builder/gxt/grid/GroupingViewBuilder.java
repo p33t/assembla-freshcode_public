@@ -150,6 +150,14 @@ public class GroupingViewBuilder<M> extends biz.freshcode.learn.gwt2.common.clie
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.grid.GroupingView#setSelectableTarget(com.sencha.gxt.widget.core.client.grid.GridView.SelectableTarget)
+     */
+    public GroupingViewBuilder<M> selectableTarget(com.sencha.gxt.widget.core.client.grid.GridView.SelectableTarget v0) {
+        groupingView.setSelectableTarget(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.grid.GroupingView#setShowDirtyCells(boolean)
      */
     public GroupingViewBuilder<M> showDirtyCells(boolean v0) {

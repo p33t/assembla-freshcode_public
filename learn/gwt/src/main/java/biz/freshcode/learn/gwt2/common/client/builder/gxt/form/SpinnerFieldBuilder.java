@@ -71,6 +71,14 @@ public class SpinnerFieldBuilder<N extends Number & Comparable<N>> extends biz.f
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.form.SpinnerField#setAdjustSize(boolean)
+     */
+    public SpinnerFieldBuilder<N> adjustSize(boolean v0) {
+        spinnerField.setAdjustSize(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.form.SpinnerField#setAllowBlank(boolean)
      */
     public SpinnerFieldBuilder<N> allowBlank(boolean v0) {

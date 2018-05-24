@@ -55,6 +55,14 @@ public class BorderLayoutContainerBuilder extends biz.freshcode.learn.gwt2.commo
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.container.BorderLayoutContainer#add(com.google.gwt.user.client.ui.IsWidget, com.sencha.gxt.widget.core.client.container.MarginData)
+     */
+    public BorderLayoutContainerBuilder add(com.google.gwt.user.client.ui.IsWidget v0, com.sencha.gxt.widget.core.client.container.MarginData v1) {
+        borderLayoutContainer.add(v0, v1);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.container.BorderLayoutContainer#addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer)
      */
     public BorderLayoutContainerBuilder addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer v0) {
@@ -83,6 +91,14 @@ public class BorderLayoutContainerBuilder extends biz.freshcode.learn.gwt2.commo
      */
     public BorderLayoutContainerBuilder addStyleOnOver(com.google.gwt.dom.client.Element v0, java.lang.String v1) {
         borderLayoutContainer.addStyleOnOver(v0, v1);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.container.BorderLayoutContainer#setAdjustSize(boolean)
+     */
+    public BorderLayoutContainerBuilder adjustSize(boolean v0) {
+        borderLayoutContainer.setAdjustSize(v0);
         return this;
     }
 

@@ -62,6 +62,14 @@ public class HrMinFieldBuilder extends biz.freshcode.learn.gwt2.common.client.bu
     }
 
     /**
+     * @see biz.freshcode.learn.gwt.client.experiment.forms.HrMinField#setAdjustSize(boolean)
+     */
+    public HrMinFieldBuilder adjustSize(boolean v0) {
+        hrMinField.setAdjustSize(v0);
+        return this;
+    }
+
+    /**
      * @see biz.freshcode.learn.gwt.client.experiment.forms.HrMinField#setAllowBlank(boolean)
      */
     public HrMinFieldBuilder allowBlank(boolean v0) {

@@ -95,6 +95,14 @@ public class ChartBuilder<M> extends biz.freshcode.learn.gwt2.common.client.buil
     }
 
     /**
+     * @see com.sencha.gxt.chart.client.chart.Chart#setAdjustSize(boolean)
+     */
+    public ChartBuilder<M> adjustSize(boolean v0) {
+        chart.setAdjustSize(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.chart.client.chart.Chart#setAllowTextSelection(boolean)
      */
     public ChartBuilder<M> allowTextSelection(boolean v0) {

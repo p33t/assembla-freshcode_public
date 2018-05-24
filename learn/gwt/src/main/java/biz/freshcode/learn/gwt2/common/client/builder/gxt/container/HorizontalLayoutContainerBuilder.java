@@ -85,6 +85,14 @@ public class HorizontalLayoutContainerBuilder extends biz.freshcode.learn.gwt2.c
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer#setAdjustSize(boolean)
+     */
+    public HorizontalLayoutContainerBuilder adjustSize(boolean v0) {
+        horizontalLayoutContainer.setAdjustSize(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer#setAllowTextSelection(boolean)
      */
     public HorizontalLayoutContainerBuilder allowTextSelection(boolean v0) {

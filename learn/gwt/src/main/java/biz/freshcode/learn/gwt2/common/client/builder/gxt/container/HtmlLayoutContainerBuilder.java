@@ -80,6 +80,14 @@ public class HtmlLayoutContainerBuilder extends biz.freshcode.learn.gwt2.common.
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer#setAdjustSize(boolean)
+     */
+    public HtmlLayoutContainerBuilder adjustSize(boolean v0) {
+        htmlLayoutContainer.setAdjustSize(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer#setAllowTextSelection(boolean)
      */
     public HtmlLayoutContainerBuilder allowTextSelection(boolean v0) {

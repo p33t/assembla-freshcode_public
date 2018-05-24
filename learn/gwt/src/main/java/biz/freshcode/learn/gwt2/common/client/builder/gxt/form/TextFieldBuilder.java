@@ -78,6 +78,14 @@ public class TextFieldBuilder extends biz.freshcode.learn.gwt2.common.client.bui
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.form.TextField#setAdjustSize(boolean)
+     */
+    public TextFieldBuilder adjustSize(boolean v0) {
+        textField.setAdjustSize(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.form.TextField#setAllowBlank(boolean)
      */
     public TextFieldBuilder allowBlank(boolean v0) {

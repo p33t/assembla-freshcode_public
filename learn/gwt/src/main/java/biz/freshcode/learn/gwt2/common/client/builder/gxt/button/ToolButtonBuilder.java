@@ -77,6 +77,14 @@ public class ToolButtonBuilder extends biz.freshcode.learn.gwt2.common.client.bu
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.button.ToolButton#setAdjustSize(boolean)
+     */
+    public ToolButtonBuilder adjustSize(boolean v0) {
+        toolButton.setAdjustSize(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.button.ToolButton#setAllowTextSelection(boolean)
      */
     public ToolButtonBuilder allowTextSelection(boolean v0) {

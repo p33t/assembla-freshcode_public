@@ -94,6 +94,14 @@ public class SimpleComboBoxBuilder<T> extends biz.freshcode.learn.gwt2.common.cl
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.form.SimpleComboBox#setAdjustSize(boolean)
+     */
+    public SimpleComboBoxBuilder<T> adjustSize(boolean v0) {
+        simpleComboBox.setAdjustSize(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.form.SimpleComboBox#setAllQuery(java.lang.String)
      */
     public SimpleComboBoxBuilder<T> allQuery(java.lang.String v0) {
@@ -450,6 +458,14 @@ public class SimpleComboBoxBuilder<T> extends biz.freshcode.learn.gwt2.common.cl
      */
     public SimpleComboBoxBuilder<T> queryDelay(int v0) {
         simpleComboBox.setQueryDelay(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.form.SimpleComboBox#setQueryMatcher(com.sencha.gxt.cell.core.client.form.ComboBoxCell.QueryMatcher)
+     */
+    public SimpleComboBoxBuilder<T> queryMatcher(com.sencha.gxt.cell.core.client.form.ComboBoxCell.QueryMatcher<T> v0) {
+        simpleComboBox.setQueryMatcher(v0);
         return this;
     }
 

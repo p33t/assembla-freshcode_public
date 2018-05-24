@@ -47,10 +47,34 @@ public class ToolBarBuilder extends biz.freshcode.learn.gwt2.common.client.build
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.toolbar.ToolBar#add(com.google.gwt.user.client.ui.Widget, com.sencha.gxt.widget.core.client.menu.MenuItem)
+     */
+    public ToolBarBuilder add(com.google.gwt.user.client.ui.Widget v0, com.sencha.gxt.widget.core.client.menu.MenuItem v1) {
+        toolBar.add(v0, v1);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.toolbar.ToolBar#add(com.google.gwt.user.client.ui.IsWidget, com.sencha.gxt.widget.core.client.container.BoxLayoutContainer.BoxLayoutData)
      */
     public ToolBarBuilder add(com.google.gwt.user.client.ui.IsWidget v0, com.sencha.gxt.widget.core.client.container.BoxLayoutContainer.BoxLayoutData v1) {
         toolBar.add(v0, v1);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.toolbar.ToolBar#add(com.google.gwt.user.client.ui.IsWidget, com.sencha.gxt.widget.core.client.menu.MenuItem)
+     */
+    public ToolBarBuilder add(com.google.gwt.user.client.ui.IsWidget v0, com.sencha.gxt.widget.core.client.menu.MenuItem v1) {
+        toolBar.add(v0, v1);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.toolbar.ToolBar#add(com.google.gwt.user.client.ui.IsWidget, com.sencha.gxt.widget.core.client.container.BoxLayoutContainer.BoxLayoutData, com.sencha.gxt.widget.core.client.menu.MenuItem)
+     */
+    public ToolBarBuilder add(com.google.gwt.user.client.ui.IsWidget v0, com.sencha.gxt.widget.core.client.container.BoxLayoutContainer.BoxLayoutData v1, com.sencha.gxt.widget.core.client.menu.MenuItem v2) {
+        toolBar.add(v0, v1, v2);
         return this;
     }
 
@@ -91,6 +115,14 @@ public class ToolBarBuilder extends biz.freshcode.learn.gwt2.common.client.build
      */
     public ToolBarBuilder adjustForFlexRemainder(boolean v0) {
         toolBar.setAdjustForFlexRemainder(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.toolbar.ToolBar#setAdjustSize(boolean)
+     */
+    public ToolBarBuilder adjustSize(boolean v0) {
+        toolBar.setAdjustSize(v0);
         return this;
     }
 
@@ -235,6 +267,14 @@ public class ToolBarBuilder extends biz.freshcode.learn.gwt2.common.client.build
      */
     public ToolBarBuilder minButtonWidth(int v0) {
         toolBar.setMinButtonWidth(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.toolbar.ToolBar#setMoreMenuEnableScrolling(boolean)
+     */
+    public ToolBarBuilder moreMenuEnableScrolling(boolean v0) {
+        toolBar.setMoreMenuEnableScrolling(v0);
         return this;
     }
 

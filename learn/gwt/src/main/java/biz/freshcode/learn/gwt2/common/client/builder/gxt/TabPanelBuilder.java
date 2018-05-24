@@ -127,6 +127,14 @@ public class TabPanelBuilder extends biz.freshcode.learn.gwt2.common.client.buil
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.TabPanel#setAdjustSize(boolean)
+     */
+    public TabPanelBuilder adjustSize(boolean v0) {
+        tabPanel.setAdjustSize(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.TabPanel#setAllowTextSelection(boolean)
      */
     public TabPanelBuilder allowTextSelection(boolean v0) {

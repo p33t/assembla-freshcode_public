@@ -87,6 +87,14 @@ public class MenuBuilder extends biz.freshcode.learn.gwt2.common.client.builder.
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.menu.Menu#setAdjustSize(boolean)
+     */
+    public MenuBuilder adjustSize(boolean v0) {
+        menu.setAdjustSize(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.menu.Menu#setAllowTextSelection(boolean)
      */
     public MenuBuilder allowTextSelection(boolean v0) {
@@ -239,9 +247,17 @@ public class MenuBuilder extends biz.freshcode.learn.gwt2.common.client.builder.
     }
 
     /**
-     * @see com.sencha.gxt.widget.core.client.menu.Menu#setMinWidth(int)
+     * @see com.sencha.gxt.widget.core.client.menu.Menu#setMaxWidth(java.lang.Integer)
      */
-    public MenuBuilder minWidth(int v0) {
+    public MenuBuilder maxWidth(java.lang.Integer v0) {
+        menu.setMaxWidth(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.menu.Menu#setMinWidth(java.lang.Integer)
+     */
+    public MenuBuilder minWidth(java.lang.Integer v0) {
         menu.setMinWidth(v0);
         return this;
     }

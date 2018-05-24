@@ -45,6 +45,14 @@ public class PopupBuilder extends biz.freshcode.learn.gwt2.common.client.builder
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.Popup#add(com.google.gwt.user.client.ui.IsWidget, com.sencha.gxt.widget.core.client.container.MarginData)
+     */
+    public PopupBuilder add(com.google.gwt.user.client.ui.IsWidget v0, com.sencha.gxt.widget.core.client.container.MarginData v1) {
+        popup.add(v0, v1);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.Popup#addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer)
      */
     public PopupBuilder addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer v0) {
@@ -73,6 +81,14 @@ public class PopupBuilder extends biz.freshcode.learn.gwt2.common.client.builder
      */
     public PopupBuilder addStyleOnOver(com.google.gwt.dom.client.Element v0, java.lang.String v1) {
         popup.addStyleOnOver(v0, v1);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.Popup#setAdjustSize(boolean)
+     */
+    public PopupBuilder adjustSize(boolean v0) {
+        popup.setAdjustSize(v0);
         return this;
     }
 

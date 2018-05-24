@@ -71,6 +71,14 @@ public class NumberFieldBuilder<N extends Number & Comparable<N>> extends biz.fr
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.form.NumberField#setAdjustSize(boolean)
+     */
+    public NumberFieldBuilder<N> adjustSize(boolean v0) {
+        numberField.setAdjustSize(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.form.NumberField#setAllowBlank(boolean)
      */
     public NumberFieldBuilder<N> allowBlank(boolean v0) {

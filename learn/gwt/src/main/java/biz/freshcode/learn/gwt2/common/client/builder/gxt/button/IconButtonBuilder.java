@@ -77,6 +77,14 @@ public class IconButtonBuilder extends biz.freshcode.learn.gwt2.common.client.bu
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.button.IconButton#setAdjustSize(boolean)
+     */
+    public IconButtonBuilder adjustSize(boolean v0) {
+        iconButton.setAdjustSize(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.button.IconButton#setAllowTextSelection(boolean)
      */
     public IconButtonBuilder allowTextSelection(boolean v0) {
