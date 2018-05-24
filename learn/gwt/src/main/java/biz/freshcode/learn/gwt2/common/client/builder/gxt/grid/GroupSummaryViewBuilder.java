@@ -150,6 +150,14 @@ public class GroupSummaryViewBuilder<M> extends biz.freshcode.learn.gwt2.common.
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.grid.GroupSummaryView#setSelectableTarget(com.sencha.gxt.widget.core.client.grid.GridView.SelectableTarget)
+     */
+    public GroupSummaryViewBuilder<M> selectableTarget(com.sencha.gxt.widget.core.client.grid.GridView.SelectableTarget v0) {
+        groupSummaryView.setSelectableTarget(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.grid.GroupSummaryView#setShowDirtyCells(boolean)
      */
     public GroupSummaryViewBuilder<M> showDirtyCells(boolean v0) {

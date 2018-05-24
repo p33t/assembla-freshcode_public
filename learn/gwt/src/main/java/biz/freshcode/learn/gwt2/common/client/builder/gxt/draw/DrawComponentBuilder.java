@@ -79,6 +79,14 @@ public class DrawComponentBuilder extends biz.freshcode.learn.gwt2.common.client
     }
 
     /**
+     * @see com.sencha.gxt.chart.client.draw.DrawComponent#setAdjustSize(boolean)
+     */
+    public DrawComponentBuilder adjustSize(boolean v0) {
+        drawComponent.setAdjustSize(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.chart.client.draw.DrawComponent#setAllowTextSelection(boolean)
      */
     public DrawComponentBuilder allowTextSelection(boolean v0) {

@@ -55,6 +55,14 @@ public class FramedPanelBuilder extends biz.freshcode.learn.gwt2.common.client.b
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.FramedPanel#add(com.google.gwt.user.client.ui.IsWidget, com.sencha.gxt.widget.core.client.container.MarginData)
+     */
+    public FramedPanelBuilder add(com.google.gwt.user.client.ui.IsWidget v0, com.sencha.gxt.widget.core.client.container.MarginData v1) {
+        framedPanel.add(v0, v1);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.FramedPanel#addButton(com.google.gwt.user.client.ui.Widget)
      */
     public FramedPanelBuilder addButton(com.google.gwt.user.client.ui.Widget v0) {
@@ -99,6 +107,14 @@ public class FramedPanelBuilder extends biz.freshcode.learn.gwt2.common.client.b
      */
     public FramedPanelBuilder addTool(com.google.gwt.user.client.ui.Widget v0) {
         framedPanel.addTool(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.FramedPanel#setAdjustSize(boolean)
+     */
+    public FramedPanelBuilder adjustSize(boolean v0) {
+        framedPanel.setAdjustSize(v0);
         return this;
     }
 

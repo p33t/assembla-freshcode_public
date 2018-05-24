@@ -54,10 +54,34 @@ public class HBoxLayoutContainerBuilder extends biz.freshcode.learn.gwt2.common.
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.container.HBoxLayoutContainer#add(com.google.gwt.user.client.ui.Widget, com.sencha.gxt.widget.core.client.menu.MenuItem)
+     */
+    public HBoxLayoutContainerBuilder add(com.google.gwt.user.client.ui.Widget v0, com.sencha.gxt.widget.core.client.menu.MenuItem v1) {
+        hBoxLayoutContainer.add(v0, v1);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.container.HBoxLayoutContainer#add(com.google.gwt.user.client.ui.IsWidget, com.sencha.gxt.widget.core.client.container.BoxLayoutContainer.BoxLayoutData)
      */
     public HBoxLayoutContainerBuilder add(com.google.gwt.user.client.ui.IsWidget v0, com.sencha.gxt.widget.core.client.container.BoxLayoutContainer.BoxLayoutData v1) {
         hBoxLayoutContainer.add(v0, v1);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.container.HBoxLayoutContainer#add(com.google.gwt.user.client.ui.IsWidget, com.sencha.gxt.widget.core.client.menu.MenuItem)
+     */
+    public HBoxLayoutContainerBuilder add(com.google.gwt.user.client.ui.IsWidget v0, com.sencha.gxt.widget.core.client.menu.MenuItem v1) {
+        hBoxLayoutContainer.add(v0, v1);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.container.HBoxLayoutContainer#add(com.google.gwt.user.client.ui.IsWidget, com.sencha.gxt.widget.core.client.container.BoxLayoutContainer.BoxLayoutData, com.sencha.gxt.widget.core.client.menu.MenuItem)
+     */
+    public HBoxLayoutContainerBuilder add(com.google.gwt.user.client.ui.IsWidget v0, com.sencha.gxt.widget.core.client.container.BoxLayoutContainer.BoxLayoutData v1, com.sencha.gxt.widget.core.client.menu.MenuItem v2) {
+        hBoxLayoutContainer.add(v0, v1, v2);
         return this;
     }
 
@@ -98,6 +122,14 @@ public class HBoxLayoutContainerBuilder extends biz.freshcode.learn.gwt2.common.
      */
     public HBoxLayoutContainerBuilder adjustForFlexRemainder(boolean v0) {
         hBoxLayoutContainer.setAdjustForFlexRemainder(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.container.HBoxLayoutContainer#setAdjustSize(boolean)
+     */
+    public HBoxLayoutContainerBuilder adjustSize(boolean v0) {
+        hBoxLayoutContainer.setAdjustSize(v0);
         return this;
     }
 
@@ -226,6 +258,14 @@ public class HBoxLayoutContainerBuilder extends biz.freshcode.learn.gwt2.common.
      */
     public HBoxLayoutContainerBuilder layoutData(java.lang.Object v0) {
         hBoxLayoutContainer.setLayoutData(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.container.HBoxLayoutContainer#setMoreMenuEnableScrolling(boolean)
+     */
+    public HBoxLayoutContainerBuilder moreMenuEnableScrolling(boolean v0) {
+        hBoxLayoutContainer.setMoreMenuEnableScrolling(v0);
         return this;
     }
 

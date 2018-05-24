@@ -253,6 +253,14 @@ public class SummaryColumnConfigBuilder<M, N> extends biz.freshcode.learn.gwt2.c
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.grid.SummaryColumnConfig#setVerticalHeaderAlignment(com.google.gwt.user.client.ui.HasVerticalAlignment.VerticalAlignmentConstant)
+     */
+    public SummaryColumnConfigBuilder<M, N> verticalHeaderAlignment(com.google.gwt.user.client.ui.HasVerticalAlignment.VerticalAlignmentConstant v0) {
+        summaryColumnConfig.setVerticalHeaderAlignment(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.grid.SummaryColumnConfig#setWidget(com.google.gwt.user.client.ui.Widget, com.google.gwt.safehtml.shared.SafeHtml)
      */
     public SummaryColumnConfigBuilder<M, N> widget(com.google.gwt.user.client.ui.Widget v0, com.google.gwt.safehtml.shared.SafeHtml v1) {

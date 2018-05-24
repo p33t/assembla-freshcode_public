@@ -95,6 +95,14 @@ public class CssFloatLayoutContainerBuilder extends biz.freshcode.learn.gwt2.com
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.container.CssFloatLayoutContainer#setAdjustSize(boolean)
+     */
+    public CssFloatLayoutContainerBuilder adjustSize(boolean v0) {
+        cssFloatLayoutContainer.setAdjustSize(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.container.CssFloatLayoutContainer#setAllowTextSelection(boolean)
      */
     public CssFloatLayoutContainerBuilder allowTextSelection(boolean v0) {

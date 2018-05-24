@@ -55,6 +55,14 @@ public class ContentPanelBuilder extends biz.freshcode.learn.gwt2.common.client.
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.ContentPanel#add(com.google.gwt.user.client.ui.IsWidget, com.sencha.gxt.widget.core.client.container.MarginData)
+     */
+    public ContentPanelBuilder add(com.google.gwt.user.client.ui.IsWidget v0, com.sencha.gxt.widget.core.client.container.MarginData v1) {
+        contentPanel.add(v0, v1);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.ContentPanel#addButton(com.google.gwt.user.client.ui.Widget)
      */
     public ContentPanelBuilder addButton(com.google.gwt.user.client.ui.Widget v0) {
@@ -99,6 +107,14 @@ public class ContentPanelBuilder extends biz.freshcode.learn.gwt2.common.client.
      */
     public ContentPanelBuilder addTool(com.google.gwt.user.client.ui.Widget v0) {
         contentPanel.addTool(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.ContentPanel#setAdjustSize(boolean)
+     */
+    public ContentPanelBuilder adjustSize(boolean v0) {
+        contentPanel.setAdjustSize(v0);
         return this;
     }
 

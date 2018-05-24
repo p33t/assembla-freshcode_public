@@ -48,6 +48,14 @@ public class SimpleContainerBuilder extends biz.freshcode.learn.gwt2.common.clie
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.container.SimpleContainer#add(com.google.gwt.user.client.ui.IsWidget, com.sencha.gxt.widget.core.client.container.MarginData)
+     */
+    public SimpleContainerBuilder add(com.google.gwt.user.client.ui.IsWidget v0, com.sencha.gxt.widget.core.client.container.MarginData v1) {
+        simpleContainer.add(v0, v1);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.container.SimpleContainer#addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer)
      */
     public SimpleContainerBuilder addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer v0) {
@@ -76,6 +84,14 @@ public class SimpleContainerBuilder extends biz.freshcode.learn.gwt2.common.clie
      */
     public SimpleContainerBuilder addStyleOnOver(com.google.gwt.dom.client.Element v0, java.lang.String v1) {
         simpleContainer.addStyleOnOver(v0, v1);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.container.SimpleContainer#setAdjustSize(boolean)
+     */
+    public SimpleContainerBuilder adjustSize(boolean v0) {
+        simpleContainer.setAdjustSize(v0);
         return this;
     }
 

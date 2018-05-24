@@ -85,6 +85,14 @@ public class VerticalLayoutContainerBuilder extends biz.freshcode.learn.gwt2.com
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer#setAdjustSize(boolean)
+     */
+    public VerticalLayoutContainerBuilder adjustSize(boolean v0) {
+        verticalLayoutContainer.setAdjustSize(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer#setAllowTextSelection(boolean)
      */
     public VerticalLayoutContainerBuilder allowTextSelection(boolean v0) {

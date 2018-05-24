@@ -55,6 +55,14 @@ public class DialogBuilder extends biz.freshcode.learn.gwt2.common.client.builde
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.Dialog#add(com.google.gwt.user.client.ui.IsWidget, com.sencha.gxt.widget.core.client.container.MarginData)
+     */
+    public DialogBuilder add(com.google.gwt.user.client.ui.IsWidget v0, com.sencha.gxt.widget.core.client.container.MarginData v1) {
+        dialog.add(v0, v1);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.Dialog#addButton(com.google.gwt.user.client.ui.Widget)
      */
     public DialogBuilder addButton(com.google.gwt.user.client.ui.Widget v0) {
@@ -107,6 +115,14 @@ public class DialogBuilder extends biz.freshcode.learn.gwt2.common.client.builde
      */
     public DialogBuilder active(boolean v0) {
         dialog.setActive(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.Dialog#setAdjustSize(boolean)
+     */
+    public DialogBuilder adjustSize(boolean v0) {
+        dialog.setAdjustSize(v0);
         return this;
     }
 
@@ -227,6 +243,14 @@ public class DialogBuilder extends biz.freshcode.learn.gwt2.common.client.builde
      */
     public DialogBuilder constrain(boolean v0) {
         dialog.setConstrain(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.Dialog#setConstrainContainer(com.google.gwt.user.client.ui.Widget)
+     */
+    public DialogBuilder constrainContainer(com.google.gwt.user.client.ui.Widget v0) {
+        dialog.setConstrainContainer(v0);
         return this;
     }
 

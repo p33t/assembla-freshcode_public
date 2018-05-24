@@ -91,6 +91,14 @@ public class TextButtonBuilder extends biz.freshcode.learn.gwt2.common.client.bu
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.button.TextButton#setAdjustSize(boolean)
+     */
+    public TextButtonBuilder adjustSize(boolean v0) {
+        textButton.setAdjustSize(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.button.TextButton#setAllowTextSelection(boolean)
      */
     public TextButtonBuilder allowTextSelection(boolean v0) {

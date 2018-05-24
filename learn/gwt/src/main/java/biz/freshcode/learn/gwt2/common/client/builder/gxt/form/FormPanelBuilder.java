@@ -48,6 +48,14 @@ public class FormPanelBuilder extends biz.freshcode.learn.gwt2.common.client.bui
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.form.FormPanel#add(com.google.gwt.user.client.ui.IsWidget, com.sencha.gxt.widget.core.client.container.MarginData)
+     */
+    public FormPanelBuilder add(com.google.gwt.user.client.ui.IsWidget v0, com.sencha.gxt.widget.core.client.container.MarginData v1) {
+        formPanel.add(v0, v1);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.form.FormPanel#addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer)
      */
     public FormPanelBuilder addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer v0) {
@@ -92,6 +100,14 @@ public class FormPanelBuilder extends biz.freshcode.learn.gwt2.common.client.bui
      */
     public FormPanelBuilder action(com.google.gwt.safehtml.shared.SafeUri v0) {
         formPanel.setAction(v0);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.form.FormPanel#setAdjustSize(boolean)
+     */
+    public FormPanelBuilder adjustSize(boolean v0) {
+        formPanel.setAdjustSize(v0);
         return this;
     }
 

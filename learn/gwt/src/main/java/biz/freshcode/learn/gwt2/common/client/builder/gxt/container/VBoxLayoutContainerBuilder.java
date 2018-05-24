@@ -95,6 +95,14 @@ public class VBoxLayoutContainerBuilder extends biz.freshcode.learn.gwt2.common.
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.container.VBoxLayoutContainer#setAdjustSize(boolean)
+     */
+    public VBoxLayoutContainerBuilder adjustSize(boolean v0) {
+        vBoxLayoutContainer.setAdjustSize(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.container.VBoxLayoutContainer#setAllowTextSelection(boolean)
      */
     public VBoxLayoutContainerBuilder allowTextSelection(boolean v0) {

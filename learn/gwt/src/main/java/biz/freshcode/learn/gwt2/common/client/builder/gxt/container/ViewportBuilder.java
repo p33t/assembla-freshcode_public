@@ -55,6 +55,14 @@ public class ViewportBuilder extends biz.freshcode.learn.gwt2.common.client.buil
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.container.Viewport#add(com.google.gwt.user.client.ui.IsWidget, com.sencha.gxt.widget.core.client.container.MarginData)
+     */
+    public ViewportBuilder add(com.google.gwt.user.client.ui.IsWidget v0, com.sencha.gxt.widget.core.client.container.MarginData v1) {
+        viewport.add(v0, v1);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.container.Viewport#addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer)
      */
     public ViewportBuilder addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer v0) {
@@ -83,6 +91,14 @@ public class ViewportBuilder extends biz.freshcode.learn.gwt2.common.client.buil
      */
     public ViewportBuilder addStyleOnOver(com.google.gwt.dom.client.Element v0, java.lang.String v1) {
         viewport.addStyleOnOver(v0, v1);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.container.Viewport#setAdjustSize(boolean)
+     */
+    public ViewportBuilder adjustSize(boolean v0) {
+        viewport.setAdjustSize(v0);
         return this;
     }
 

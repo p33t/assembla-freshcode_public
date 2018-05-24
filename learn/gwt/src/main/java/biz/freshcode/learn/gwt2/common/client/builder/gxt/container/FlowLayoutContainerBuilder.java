@@ -77,6 +77,14 @@ public class FlowLayoutContainerBuilder extends biz.freshcode.learn.gwt2.common.
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.container.FlowLayoutContainer#setAdjustSize(boolean)
+     */
+    public FlowLayoutContainerBuilder adjustSize(boolean v0) {
+        flowLayoutContainer.setAdjustSize(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.container.FlowLayoutContainer#setAllowTextSelection(boolean)
      */
     public FlowLayoutContainerBuilder allowTextSelection(boolean v0) {

@@ -71,6 +71,14 @@ public class CheckBoxBuilder extends biz.freshcode.learn.gwt2.common.client.buil
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.form.CheckBox#setAdjustSize(boolean)
+     */
+    public CheckBoxBuilder adjustSize(boolean v0) {
+        checkBox.setAdjustSize(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.form.CheckBox#setAllowTextSelection(boolean)
      */
     public CheckBoxBuilder allowTextSelection(boolean v0) {

@@ -229,6 +229,14 @@ public class ColumnConfigBuilder<M, N> extends biz.freshcode.learn.gwt2.common.c
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.grid.ColumnConfig#setVerticalHeaderAlignment(com.google.gwt.user.client.ui.HasVerticalAlignment.VerticalAlignmentConstant)
+     */
+    public ColumnConfigBuilder<M, N> verticalHeaderAlignment(com.google.gwt.user.client.ui.HasVerticalAlignment.VerticalAlignmentConstant v0) {
+        columnConfig.setVerticalHeaderAlignment(v0);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.grid.ColumnConfig#setWidget(com.google.gwt.user.client.ui.Widget, com.google.gwt.safehtml.shared.SafeHtml)
      */
     public ColumnConfigBuilder<M, N> widget(com.google.gwt.user.client.ui.Widget v0, com.google.gwt.safehtml.shared.SafeHtml v1) {

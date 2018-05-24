@@ -97,6 +97,14 @@ public class FieldLabelBuilder extends biz.freshcode.learn.gwt2.common.client.bu
     }
 
     /**
+     * @see com.sencha.gxt.widget.core.client.form.FieldLabel#add(com.google.gwt.user.client.ui.IsWidget, com.sencha.gxt.widget.core.client.container.MarginData)
+     */
+    public FieldLabelBuilder add(com.google.gwt.user.client.ui.IsWidget v0, com.sencha.gxt.widget.core.client.container.MarginData v1) {
+        fieldLabel.add(v0, v1);
+        return this;
+    }
+
+    /**
      * @see com.sencha.gxt.widget.core.client.form.FieldLabel#addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer)
      */
     public FieldLabelBuilder addGestureRecognizer(com.sencha.gxt.core.client.gestures.GestureRecognizer v0) {
@@ -125,6 +133,14 @@ public class FieldLabelBuilder extends biz.freshcode.learn.gwt2.common.client.bu
      */
     public FieldLabelBuilder addStyleOnOver(com.google.gwt.dom.client.Element v0, java.lang.String v1) {
         fieldLabel.addStyleOnOver(v0, v1);
+        return this;
+    }
+
+    /**
+     * @see com.sencha.gxt.widget.core.client.form.FieldLabel#setAdjustSize(boolean)
+     */
+    public FieldLabelBuilder adjustSize(boolean v0) {
+        fieldLabel.setAdjustSize(v0);
         return this;
     }
 
