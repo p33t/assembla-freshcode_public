@@ -27,7 +27,7 @@ public class PresenterModule extends AbstractPresenterModule {
         bindPresenter(Root.class, Root.Proxy.class);
         bindPresenter(Home.class, Home.Proxy.class);
 
-        bindPresenter(NestedBorderLayoutResizeBug.class, NestedBorderLayoutResizeBug.Proxy.class);
+        bindPresenter(ButtonBarFramedPanelBug.class, ButtonBarFramedPanelBug.Proxy.class);
         bindPresenter(CheckBoxErrorMessageBug.class, CheckBoxErrorMessageBug.Proxy.class);
         bindPresenter(ToolTipVsErrorMessageBug.class, ToolTipVsErrorMessageBug.Proxy.class);
         bindPresenter(TextButtonSetIconStopsSelectEvent.class, TextButtonSetIconStopsSelectEvent.Proxy.class);

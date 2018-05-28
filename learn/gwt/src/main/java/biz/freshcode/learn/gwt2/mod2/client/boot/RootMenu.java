@@ -44,7 +44,7 @@ public class RootMenu extends IsWidgetImpl {
                 .add(new TextButtonBuilder()
                         .text("Bug")
                         .menu(new MenuBuilder()
-                                .add(menuItem("Nested border layout resize regression", NestedBorderLayoutResizeBug.TOKEN))
+                                .add(menuItem("Button bar in framed panel obscured", ButtonBarFramedPanelBug.TOKEN))
                                 .add(menuItem("Check Box error message not visible", CheckBoxErrorMessageBug.TOKEN))
                                 .add(menuItem("ToolTip interferes with error message", ToolTipVsErrorMessageBug.TOKEN))
                                 .add(menuItem("Set Icon Stops Select Event", TextButtonSetIconStopsSelectEvent.TOKEN))
