@@ -23,7 +23,7 @@ response.setDateHeader ("Expires", -1);
 <p>Select desired module...</p>
 
 <p>Mod1 does not work.  Transfer necessary elements to Mod2 if they are needed.</p>
-<p><a href="Mod2.html">Mod2</a></p>
+<p><a href="Mod2.html">Mod2</a> (Login with user 'bruce', password 'bruce')</p>
 <input type="button" value="Dates" onclick="showDates();return false;"/>
 </body>
 </html>
