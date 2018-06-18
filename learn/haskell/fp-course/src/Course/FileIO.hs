@@ -74,7 +74,9 @@ the contents of c
 main ::
   IO ()
 main =
-  error "todo: Course.FileIO#main"
+  do a <- getArgs
+     headOr (putStrLn "Need at least 1 arg") (run <$> a)
+--  error "todo: Course.FileIO#main"
 
 type FilePath =
   Chars
@@ -83,31 +85,56 @@ type FilePath =
 run ::
   FilePath
   -> IO ()
-run =
-  error "todo: Course.FileIO#run"
+run fp =
+  do c <- readFile fp
+     x <- getFiles (lines c)
+     printFiles x
+--  error "todo: Course.FileIO#run"
 
 getFiles ::
   List FilePath
   -> IO (List (FilePath, Chars))
-getFiles =
-  error "todo: Course.FileIO#getFiles"
+getFiles = sequence . ((<$>) getFile)
+-- 1st answer... getFiles fps = sequence ((<$>) getFile fps)
+--  error "todo: Course.FileIO#getFiles"
 
 getFile ::
   FilePath
   -> IO (FilePath, Chars)
-getFile =
-  error "todo: Course.FileIO#getFile"
+getFile = lift2 (<$>) (,) readFile
+-- my answer... getFile fp = (<$>) (\cs -> (fp, cs)) (readFile fp)
+--  error "todo: Course.FileIO#getFile"
 
 printFiles ::
   List (FilePath, Chars)
   -> IO ()
 printFiles =
-  error "todo: Course.FileIO#printFiles"
+  traverse_ (uncurry printFile)
+--  void . sequence . (<$>) (uncurry printFile)
+--printFiles t2s =
+--  let r = (\(fp, cs) -> printFile fp cs)
+--  in void (sequence )
+
+-- my attempt.... traverse_ (printFile ((<$>) (\(fp, cs) -> printFile fp cs) t2s) )
+--  error "todo: Course.FileIO#printFiles"
 
 printFile ::
   FilePath
   -> Chars
   -> IO ()
-printFile =
-  error "todo: Course.FileIO#printFile"
+printFile fp cs =
+  let list = ("======" ++ fp) :. cs :. Nil
+--  in void (sequence (putStrLn <$> list))
+  in traverse_ putStrLn list
 
+--printFile fp cs = void (sequence ((<$>) putStrLn (("========" ++ fp) :. cs :. Nil)))
+  --error "todo: Course.FileIO#printFile"
+
+traverse_ ::
+  Applicative f =>
+  (a -> f b)
+  -> List a
+  -> f ()
+
+traverse_ f x =
+  void (sequence (f <$> x))
