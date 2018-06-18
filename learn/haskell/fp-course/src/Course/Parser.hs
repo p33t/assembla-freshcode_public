@@ -41,7 +41,7 @@ instance Show ParseError where
 
 data ParseResult a =
   ErrorResult ParseError
-  | Result Input a
+  | Result Input a -- remaining input and the parse result
   deriving Eq
 
 instance Show a => Show (ParseResult a) where
@@ -172,8 +172,13 @@ bindParser ::
   (a -> Parser b)
   -> Parser a
   -> Parser b
-bindParser =
-  error "todo: Course.Parser#bindParser"
+-- ???? can this get more compact?
+bindParser fn p = P (\i ->
+  case parse p i of
+      ErrorResult e -> ErrorResult e
+      Result rem' a ->  parse (fn a) rem'
+  )
+--  error "todo: Course.Parser#bindParser"
 
 -- | This is @bindParser@ with the arguments flipped.
 -- It might be more helpful to use this function if you prefer this argument order.
@@ -202,8 +207,16 @@ flbindParser =
   Parser a
   -> Parser b
   -> Parser b
-(>>>) =
-  error "todo: Course.Parser#(>>>)"
+(>>>) pa pb =
+  flbindParser pa (const pb)
+{- 1st answer
+  P (\i ->
+    case parse pa i of
+      Result rem' _ -> parse pb rem' -- can use (const pb a) instead of pb
+      ErrorResult e -> ErrorResult e
+    )
+-}
+--  error "todo: Course.Parser#(>>>)"
 
 -- | Return a parser that tries the first parser for a successful value.
 --
@@ -214,20 +227,24 @@ flbindParser =
 -- >>> parse (character ||| valueParser 'v') ""
 -- Result >< 'v'
 --
--- >>> parse (failed ||| valueParser 'v') ""
+-- >>> parse (failed UnexpectedEof ||| valueParser 'v') ""
 -- Result >< 'v'
 --
 -- >>> parse (character ||| valueParser 'v') "abc"
 -- Result >bc< 'a'
 --
--- >>> parse (failed ||| valueParser 'v') "abc"
+-- >>> parse (failed UnexpectedEof ||| valueParser 'v') "abc"
 -- Result >abc< 'v'
 (|||) ::
   Parser a
   -> Parser a
   -> Parser a
-(|||) =
-  error "todo: Course.Parser#(|||)"
+(|||) p1 p2 = P (\i ->
+    case parse p1 i of
+      ErrorResult _ -> parse p2 i
+      x@(Result _ _) -> x
+  )
+--  error "todo: Course.Parser#(|||)"
 
 infixl 3 |||
 
@@ -256,7 +273,8 @@ list ::
   Parser a
   -> Parser (List a)
 list =
-  error "todo: Course.Parser#list"
+
+--  error "todo: Course.Parser#list"
 
 -- | Return a parser that produces at least one value from the given parser then
 -- continues producing a list of values from the given parser (to ultimately produce a non-empty list).
