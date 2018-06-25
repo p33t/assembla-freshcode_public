@@ -15,11 +15,12 @@ object DeclarationSiteVariance {
         println()
 
         val compNumber = object: Comparable<Number> {
-            override fun compareTo(n: Number) = 0
+            override fun compareTo(other: Number) = 0
         }
         // Comparable hsa 'in' at declaration site => contravariance
         // Something that consumes Number can consume Double
         val compDouble: Comparable<Double> = compNumber
+        println(compDouble.compareTo(4.0))
     }
 
 
