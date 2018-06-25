@@ -1,9 +1,9 @@
-package pkg
+package pkg.generic
 
 /**
- * Illustration of in/out declaration/use site variance.
+ * Illustration of in/out use-site variance.  AKA Type projection (restriction).
  */
-object Generics {
+object TypeProjection {
     @JvmStatic
     fun main(args: Array<String>) {
         // NOTE: Array is invariant (unlike in Java)
