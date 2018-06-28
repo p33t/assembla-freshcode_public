@@ -89,6 +89,16 @@
         </user-data-constraint>
     </security-constraint>
 
+    <!-- Resources excepted from authentication -->
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>excepted</web-resource-name>
+            <url-pattern>/index.jsp</url-pattern>
+            <url-pattern>/appInfo.jsp</url-pattern>
+        </web-resource-collection>
+        <!-- no auth-constraint -->
+    </security-constraint>
+
     <login-config>
         <auth-method>BASIC</auth-method>
         <realm-name>Login with bruce x2</realm-name>
