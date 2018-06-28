@@ -32,6 +32,7 @@ public class PresenterModule extends AbstractPresenterModule {
         bindPresenter(ToolTipVsErrorMessageBug.class, ToolTipVsErrorMessageBug.Proxy.class);
         bindPresenter(TextButtonSetIconStopsSelectEvent.class, TextButtonSetIconStopsSelectEvent.Proxy.class);
         bindPresenter(GridEditInlineComboBoxBlurBug2.class, GridEditInlineComboBoxBlurBug2.Prox.class);
+        bindPresenter(TextFieldEmptyTextBecomesNullBug.class, TextFieldEmptyTextBecomesNullBug.Proxy.class);
 
         bindPresenter(ResizeSpike.class, ResizeSpike.Proxy.class);
         bindPresenter(AdapterFieldGridSpike.class, AdapterFieldGridSpike.Proxy.class);
