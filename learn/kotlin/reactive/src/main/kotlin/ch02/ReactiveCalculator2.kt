@@ -6,30 +6,22 @@ import java.util.regex.Matcher
 import java.util.regex.Pattern
 
 class ReactiveCalculator2(a: Int, b: Int) {
-    internal val subjectCalc: Subject<Pair<Int,Int>> = PublishSubject.create()
+    internal val subjectCalc: Subject<Pair<Int, Int>> = PublishSubject.create()
     internal var nums: Pair<Int, Int> = Pair(0, 0)
 
     init {
-        nums = Pair(a, b)
         subjectCalc.subscribe {
-            with(it) {
-                calcAdd()
-                calcMult()
-                Unit
-            }
+            // NOTE: My personal attempt to refactor (not from book)
+            calc(it, {it.first + it.second}, "Add")
+            calc(it, {it.first * it.second}, "Multiply")
         }
+        nums = Pair(a, b)
         subjectCalc.onNext(nums)
     }
 
-    fun calcAdd(): Int {
-        val result = nums.first + nums.second
-        println("Add = $result")
-        return result
-    }
-
-    fun calcMult(): Int {
-        val result = nums.first * nums.second
-        println("Multiply = $result")
+    private fun calc(pair: Pair<Int, Int>, op: (Pair<Int, Int>) -> Int, name: String): Int {
+        val result = op(pair)
+        println("$name = $result")
         return result
     }
 
