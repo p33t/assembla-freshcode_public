@@ -12,15 +12,14 @@ class ReactiveCalculator2(a: Int, b: Int) {
     init {
         subjectCalc.subscribe {
             // NOTE: My personal attempt to refactor (not from book)
-            calc(it, {it.first + it.second}, "Add")
-            calc(it, {it.first * it.second}, "Multiply")
+            output(it.first + it.second, "Add")
+            output(it.first * it.second, "Multiply")
         }
         nums = Pair(a, b)
         subjectCalc.onNext(nums)
     }
 
-    private fun calc(pair: Pair<Int, Int>, op: (Pair<Int, Int>) -> Int, name: String): Int {
-        val result = op(pair)
+    private fun output(result: Int, name: String): Int {
         println("$name = $result")
         return result
     }
