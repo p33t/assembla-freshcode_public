@@ -29,7 +29,8 @@ class ReactiveCalculator2(a: Int, b: Int) {
         subjectCalc.onNext(nums)
     }
 
-    fun handleInput(inputLine: String?) {
+    @Suppress("RedundantSuspendModifier")
+    suspend fun handleInput(inputLine: String?) {
         if (!inputLine.equals("exit")) {
             val pattern: Pattern = Pattern.compile("([a|b])(?:\\s)?=(?:\\s)?(\\d*)")
             var a: Int? = null

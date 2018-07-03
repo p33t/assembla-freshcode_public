@@ -1,5 +1,8 @@
 package ch02
 
+import kotlinx.coroutines.experimental.CommonPool
+import kotlinx.coroutines.experimental.async
+
 object ReactiveCalculator2Cli {
     @JvmStatic
     fun main(args: Array<String>) {
@@ -8,7 +11,10 @@ object ReactiveCalculator2Cli {
         println("Enter a = <number> or b = <number> in separate lines\nexit to exit the program")
         var line = readLine()
         while (line != null && !line.toLowerCase().contains("exit")) {
-            calculator.handleInput(line)
+            @Suppress("DeferredResultUnused")
+            async {
+                calculator.handleInput(line)
+            }
             line = readLine()
         }
     }
