@@ -15,7 +15,6 @@ import com.sencha.gxt.widget.core.client.form.TextField;
 
 public class TextFieldEmptyTextBecomesNullBug extends Presenter<TextFieldEmptyTextBecomesNullBug.View, TextFieldEmptyTextBecomesNullBug.Proxy> {
     public static final String TOKEN = "textFieldEmptyTextBecomesNullBug";
-    private static final String DEF = "def";
 
     @Inject
     public TextFieldEmptyTextBecomesNullBug(EventBus eventBus, View view, Proxy proxy) {
@@ -29,6 +28,7 @@ public class TextFieldEmptyTextBecomesNullBug extends Presenter<TextFieldEmptyTe
 
 
     public static class View extends ViewImpl {
+        private static final String DEF = "def";
         private final TextField txt;
         private final TextButton btn;
 
@@ -42,13 +42,13 @@ public class TextFieldEmptyTextBecomesNullBug extends Presenter<TextFieldEmptyTe
             flc.add(txt = new TextField());
             txt.setEmptyText(DEF);
             flc.add(btn = new TextButton("Re-assign same value"));
-            initWidget(flc);
 
             btn.addSelectHandler(event -> {
                 String s = txt.getValue();
                 txt.setValue(null);
                 Scheduler.get().scheduleDeferred(() -> txt.setValue(s));
             });
+            initWidget(flc);
         }
     }
 }
