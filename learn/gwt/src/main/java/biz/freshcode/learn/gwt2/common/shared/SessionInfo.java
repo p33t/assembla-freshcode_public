@@ -1,4 +1,4 @@
-package biz.freshcode.learn.gwt.client.inject;
+package biz.freshcode.learn.gwt2.common.shared;
 
 import com.gwtplatform.dispatch.rpc.shared.Result;
 

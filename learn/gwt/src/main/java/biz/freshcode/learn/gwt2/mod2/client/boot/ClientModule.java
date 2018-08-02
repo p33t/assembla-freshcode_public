@@ -1,10 +1,12 @@
 package biz.freshcode.learn.gwt2.mod2.client.boot;
 
 import biz.freshcode.learn.gwt2.mod2.client.home.Home;
+import biz.freshcode.learn.gwt2.mod2.shared.SharedUtil;
 import com.google.gwt.inject.client.AbstractGinModule;
 import com.gwtplatform.dispatch.rest.client.RestApplicationPath;
 import com.gwtplatform.dispatch.rest.client.gin.RestDispatchAsyncModule;
 import com.gwtplatform.dispatch.rpc.client.gin.RpcDispatchAsyncModule;
+import com.gwtplatform.dispatch.shared.SecurityCookie;
 import com.gwtplatform.mvp.client.annotations.DefaultPlace;
 import com.gwtplatform.mvp.client.annotations.ErrorPlace;
 import com.gwtplatform.mvp.client.annotations.UnauthorizedPlace;
@@ -13,6 +15,7 @@ import com.gwtplatform.mvp.client.gin.DefaultModule;
 public class ClientModule extends AbstractGinModule {
     @Override
     protected void configure() {
+        bindConstant().annotatedWith(SecurityCookie.class).to(SharedUtil.XSRF_COOKIE);
         install(new DefaultModule.Builder().build());
         install(new RpcDispatchAsyncModule());
 

@@ -1,14 +1,13 @@
 package biz.freshcode.learn.gwt.client.experiment.cookie;
 
-import biz.freshcode.learn.gwt.client.GreetingServiceAsync;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.container.BorderLayoutContainerBuilder;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.toolbar.ToolBarBuilder;
 import biz.freshcode.learn.gwt2.common.client.util.IsWidgetImpl;
+import biz.freshcode.learn.gwt2.mod2.client.rpc.greet.GreetingServiceAsync;
 import com.google.gwt.user.client.Cookies;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.datepicker.client.CalendarUtil;
 import com.sencha.gxt.widget.core.client.button.TextButton;
-import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.form.TextArea;
 
 import java.util.Date;
@@ -20,18 +19,8 @@ public class CookieDemo extends IsWidgetImpl {
     public CookieDemo() {
         initWidget(new BorderLayoutContainerBuilder()
                 .northWidget(new ToolBarBuilder()
-                        .add(new TextButton("Set Cookie", new SelectEvent.SelectHandler() {
-                            @Override
-                            public void onSelect(SelectEvent event) {
-                                setCookie();
-                            }
-                        }))
-                        .add(new TextButton("RPC", new SelectEvent.SelectHandler() {
-                            @Override
-                            public void onSelect(SelectEvent event) {
-                                rpc();
-                            }
-                        }))
+                        .add(new TextButton("Set Cookie", event -> setCookie()))
+                        .add(new TextButton("RPC", event -> rpc()))
                         .toolBar)
                 .centerWidget(feedback = new TextArea())
                 .borderLayoutContainer);

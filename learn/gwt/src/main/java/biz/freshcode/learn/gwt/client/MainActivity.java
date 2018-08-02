@@ -1,6 +1,6 @@
 package biz.freshcode.learn.gwt.client;
 
-import biz.freshcode.learn.gwt.client.inject.SessionInfo;
+import biz.freshcode.learn.gwt2.common.shared.SessionInfo;
 import com.google.gwt.activity.shared.AbstractActivity;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;

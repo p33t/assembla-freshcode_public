@@ -1,6 +1,8 @@
 package biz.freshcode.learn.gwt.client;
 
 import biz.freshcode.learn.gwt.shared.FieldVerifier;
+import biz.freshcode.learn.gwt2.mod2.client.rpc.greet.GreetingService;
+import biz.freshcode.learn.gwt2.mod2.client.rpc.greet.GreetingServiceAsync;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.*;
@@ -10,6 +12,7 @@ import com.google.gwt.user.client.ui.*;
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
  */
+@SuppressWarnings({"GWTStyleCheck", "GwtToHtmlReferences", "unused"})
 public class m1 implements EntryPoint {
   /**
    * The message displayed to the user when the server cannot be reached or
@@ -68,12 +71,10 @@ public class m1 implements EntryPoint {
     dialogBox.setWidget(dialogVPanel);
 
     // Add a handler to close the DialogBox
-    closeButton.addClickHandler(new ClickHandler() {
-      public void onClick(ClickEvent event) {
-        dialogBox.hide();
-        sendButton.setEnabled(true);
-        sendButton.setFocus(true);
-      }
+    closeButton.addClickHandler(event -> {
+      dialogBox.hide();
+      sendButton.setEnabled(true);
+      sendButton.setFocus(true);
     });
 
     // Create a handler for the sendButton and nameField

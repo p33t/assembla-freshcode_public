@@ -5,6 +5,7 @@ import biz.freshcode.learn.gwt.client.AppPlaceHistoryMapper;
 import biz.freshcode.learn.gwt.client.experiment.mvp.gwtmvp.GmView;
 import biz.freshcode.learn.gwt.client.experiment.mvp.gwtmvp.GmViewImpl;
 import biz.freshcode.learn.gwt.client.experiment.mvp.gwtmvp.GwtMvp;
+import biz.freshcode.learn.gwt2.common.shared.SessionInfo;
 import com.google.gwt.activity.shared.ActivityManager;
 import com.google.gwt.activity.shared.ActivityMapper;
 import com.google.gwt.inject.client.AbstractGinModule;

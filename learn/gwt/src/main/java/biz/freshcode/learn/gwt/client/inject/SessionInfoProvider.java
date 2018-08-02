@@ -1,7 +1,8 @@
 package biz.freshcode.learn.gwt.client.inject;
 
-import biz.freshcode.learn.gwt.client.GreetingService;
-import biz.freshcode.learn.gwt.client.GreetingServiceAsync;
+import biz.freshcode.learn.gwt2.common.shared.SessionInfo;
+import biz.freshcode.learn.gwt2.mod2.client.rpc.greet.GreetingService;
+import biz.freshcode.learn.gwt2.mod2.client.rpc.greet.GreetingServiceAsync;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 

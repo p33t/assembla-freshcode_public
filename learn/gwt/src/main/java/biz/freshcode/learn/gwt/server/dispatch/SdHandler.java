@@ -1,7 +1,7 @@
 package biz.freshcode.learn.gwt.server.dispatch;
 
-import biz.freshcode.learn.gwt.shared.dispatch.SdAction;
-import biz.freshcode.learn.gwt.shared.dispatch.StrResult;
+import biz.freshcode.learn.gwt2.mod2.shared.StringResult;
+import biz.freshcode.learn.gwt2.mod2.shared.spike.rpc.dispatch.SdAction;
 import com.gwtplatform.dispatch.rpc.server.ExecutionContext;
 import com.gwtplatform.dispatch.rpc.server.actionhandler.ActionHandler;
 import com.gwtplatform.dispatch.shared.ActionException;
@@ -9,10 +9,10 @@ import com.gwtplatform.dispatch.shared.ActionException;
 /**
  * Secure command.
  */
-public class SdHandler implements ActionHandler<SdAction, StrResult> {
+public class SdHandler implements ActionHandler<SdAction, StringResult> {
     @Override
-    public StrResult execute(SdAction action, ExecutionContext context) throws ActionException {
-        return new StrResult("[" + action.getStr() + "]");
+    public StringResult execute(SdAction action, ExecutionContext context) {
+        return new StringResult("[" + action.getStr() + "]");
     }
 
     @Override
@@ -21,7 +21,7 @@ public class SdHandler implements ActionHandler<SdAction, StrResult> {
     }
 
     @Override
-    public void undo(SdAction action, StrResult result, ExecutionContext context) throws ActionException {
+    public void undo(SdAction action, StringResult result, ExecutionContext context) throws ActionException {
         throw new ActionException("Cannot undo");
     }
 }

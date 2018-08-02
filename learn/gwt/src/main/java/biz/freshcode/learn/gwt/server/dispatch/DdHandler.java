@@ -1,15 +1,15 @@
 package biz.freshcode.learn.gwt.server.dispatch;
 
-import biz.freshcode.learn.gwt.shared.dispatch.DdAction;
-import biz.freshcode.learn.gwt.shared.dispatch.StrResult;
+import biz.freshcode.learn.gwt2.mod2.shared.StringResult;
+import biz.freshcode.learn.gwt2.mod2.shared.spike.rpc.dispatch.DdAction;
 import com.gwtplatform.dispatch.rpc.server.ExecutionContext;
 import com.gwtplatform.dispatch.rpc.server.actionhandler.ActionHandler;
 import com.gwtplatform.dispatch.shared.ActionException;
 
-public class DdHandler implements ActionHandler<DdAction, StrResult> {
+public class DdHandler implements ActionHandler<DdAction, StringResult> {
     @Override
-    public StrResult execute(DdAction action, ExecutionContext context) throws ActionException {
-        return new StrResult(action.getStr().toUpperCase());
+    public StringResult execute(DdAction action, ExecutionContext context) {
+        return new StringResult(action.getStr().toUpperCase());
     }
 
     @Override
@@ -18,7 +18,7 @@ public class DdHandler implements ActionHandler<DdAction, StrResult> {
     }
 
     @Override
-    public void undo(DdAction action, StrResult result, ExecutionContext context) throws ActionException {
+    public void undo(DdAction action, StringResult result, ExecutionContext context) throws ActionException {
         throw new ActionException("Cannot undo");
     }
 }
