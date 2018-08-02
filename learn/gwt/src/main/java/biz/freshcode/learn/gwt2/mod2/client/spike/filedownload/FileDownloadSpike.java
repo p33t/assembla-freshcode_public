@@ -22,8 +22,16 @@ public class FileDownloadSpike extends Presenter<View, FileDownloadSpike.Proxy> 
     @Inject
     public FileDownloadSpike(EventBus eventBus, View view, Proxy proxy) {
         super(eventBus, view, proxy, Root.SLOT);
+        view.download.addSelectHandler(evt -> {
 
-        view.download.addSelectHandler(evt -> download());
+            byte[] bytes;
+            // this results in a 14 byte text file
+            bytes = new byte[]{10,9,8,7,6,5,4,3,2,1,0,99};
+
+            // this results in a 30 byte text file
+            // bytes = "Hello World".getBytes(StandardCharsets.UTF_8);
+            download(bytes);
+        });
     }
 
     @ProxyStandard
@@ -43,21 +51,20 @@ public class FileDownloadSpike extends Presenter<View, FileDownloadSpike.Proxy> 
         }
     }
 
-    public static native void download() /*-{
-        var blob = new Blob(["Hello World"], {type: 'text/plain'});
+    public static native void download(byte[] bytes) /*-{
+        var blob = new Blob(bytes, {type: 'application/octet-stream'});
+        var url = window.URL.createObjectURL(blob);
 
         var a = document.createElement("a");
         a.style = "display: none";
         document.body.appendChild(a);
-        //Create a DOMString representing the blob
-        //and point the link element towards it
-        var url = window.URL.createObjectURL(blob);
         a.href = url;
-        a.download = 'hello-world.txt';
-        //programatically click the link to trigger the download
+        a.download = 'hello-world-x.bin';
+
         a.click();
+
         //release the reference to the file by revoking the Object URL
         window.URL.revokeObjectURL(url);
-
+        document.body.removeChild(a);
     }-*/;
 }
