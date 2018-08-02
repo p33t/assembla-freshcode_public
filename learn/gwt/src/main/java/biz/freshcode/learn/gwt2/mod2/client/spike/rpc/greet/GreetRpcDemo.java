@@ -1,4 +1,4 @@
-package biz.freshcode.learn.gwt2.mod2.client.rpc.greet;
+package biz.freshcode.learn.gwt2.mod2.client.spike.rpc.greet;
 
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.container.VerticalLayoutContainerBuilder;
 import biz.freshcode.learn.gwt2.common.client.util.AbstractIsWidget;

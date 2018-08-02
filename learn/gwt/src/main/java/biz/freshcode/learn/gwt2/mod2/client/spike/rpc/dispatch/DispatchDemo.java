@@ -1,4 +1,4 @@
-package biz.freshcode.learn.gwt2.mod2.client.rpc.dispatch;
+package biz.freshcode.learn.gwt2.mod2.client.spike.rpc.dispatch;
 
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.button.TextButtonBuilder;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.container.VerticalLayoutContainerBuilder;

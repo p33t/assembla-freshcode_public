@@ -2,7 +2,7 @@ package biz.freshcode.learn.gwt.server;
 
 import biz.freshcode.learn.gwt.shared.FieldVerifier;
 import biz.freshcode.learn.gwt2.common.shared.SessionInfo;
-import biz.freshcode.learn.gwt2.mod2.client.rpc.greet.GreetingService;
+import biz.freshcode.learn.gwt2.mod2.client.spike.rpc.greet.GreetingService;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 import javax.servlet.http.Cookie;
