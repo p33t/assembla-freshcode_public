@@ -6,7 +6,6 @@ import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.Presenter;
-import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.ViewImpl;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
@@ -16,7 +15,7 @@ import com.sencha.gxt.widget.core.client.container.HtmlLayoutContainer;
 /**
  * Trying to simulate a file download in javascript.
  */
-public class FileDownloadSpike extends Presenter<View, FileDownloadSpike.Proxy> {
+public class FileDownloadSpike extends Presenter<FileDownloadSpike.View, FileDownloadSpike.Proxy> {
     public static final String TOKEN = "fileDownload";
 
     @Inject
@@ -51,6 +50,7 @@ public class FileDownloadSpike extends Presenter<View, FileDownloadSpike.Proxy> 
         }
     }
 
+    @SuppressWarnings({"JSUnusedLocalSymbols", "JSValidateTypes"})
     public static native void download(byte[] bytes) /*-{
         var blob = new Blob(bytes, {type: 'application/octet-stream'});
         var url = window.URL.createObjectURL(blob);

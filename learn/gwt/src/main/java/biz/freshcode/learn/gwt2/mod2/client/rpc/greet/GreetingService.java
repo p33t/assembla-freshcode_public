@@ -1,6 +1,6 @@
-package biz.freshcode.learn.gwt.client;
+package biz.freshcode.learn.gwt2.mod2.client.rpc.greet;
 
-import biz.freshcode.learn.gwt.client.inject.SessionInfo;
+import biz.freshcode.learn.gwt2.common.shared.SessionInfo;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 

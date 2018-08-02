@@ -1,9 +1,9 @@
 package biz.freshcode.learn.gwtjunit.client;
 
-import biz.freshcode.learn.gwt.client.GreetingService;
-import biz.freshcode.learn.gwt.client.GreetingServiceAsync;
 import biz.freshcode.learn.gwt.client.test.TestUtil;
 import biz.freshcode.learn.gwt.shared.FieldVerifier;
+import biz.freshcode.learn.gwt2.mod2.client.rpc.greet.GreetingService;
+import biz.freshcode.learn.gwt2.mod2.client.rpc.greet.GreetingServiceAsync;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.junit.client.GWTTestCase;
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -32,6 +32,7 @@ public class GwtTestExample extends GWTTestCase {
      * Tests the FieldVerifier.
      */
     public void testFieldVerifier() {
+        //noinspection ConstantConditions
         assertFalse(FieldVerifier.isValidName(null));
         assertFalse(FieldVerifier.isValidName(""));
         assertFalse(FieldVerifier.isValidName("a"));

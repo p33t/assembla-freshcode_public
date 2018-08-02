@@ -1,5 +1,7 @@
 package biz.freshcode.learn.gwt2.mod2.shared.pkg.rest;
 
+import biz.freshcode.learn.gwt2.mod2.shared.StringResult;
+
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;

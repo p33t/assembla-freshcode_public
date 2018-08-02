@@ -4,8 +4,8 @@ import biz.freshcode.learn.gwt2.common.client.builder.gxt.container.BorderLayout
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.container.FlowLayoutContainerBuilder;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.form.TextAreaBuilder;
 import biz.freshcode.learn.gwt2.mod2.client.boot.Root;
+import biz.freshcode.learn.gwt2.mod2.shared.StringResult;
 import biz.freshcode.learn.gwt2.mod2.shared.pkg.rest.ActionDispatch;
-import biz.freshcode.learn.gwt2.mod2.shared.pkg.rest.StringResult;
 import biz.freshcode.learn.gwt2.mod2.shared.pkg.rest.TestAction;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.inject.Inject;

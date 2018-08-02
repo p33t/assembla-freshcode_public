@@ -6,6 +6,7 @@ import biz.freshcode.learn.gwt2.common.client.builder.gxt.toolbar.ToolBarBuilder
 import biz.freshcode.learn.gwt2.common.client.util.IsWidgetImpl;
 import biz.freshcode.learn.gwt2.mod2.client.bug.*;
 import biz.freshcode.learn.gwt2.mod2.client.home.Home;
+import biz.freshcode.learn.gwt2.mod2.client.rpc.RpcSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.adapterfieldgrid.AdapterFieldGridSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.checkboxcellicon.CheckBoxCellIconSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.customdropdown.CustomDropDownSpike;
@@ -56,6 +57,7 @@ public class RootMenu extends IsWidgetImpl {
                 .add(new TextButtonBuilder()
                         .text("Spike")
                         .menu(new MenuBuilder()
+                                .add(menuItem("RPC", RpcSpike.TOKEN))
                                 .add(menuItem("File Download", FileDownloadSpike.TOKEN))
                                 .add(menuItem("Rest Command", RestCommandSpike.TOKEN))
                                 .add(menuItem("Grid Header Highlight", GridHeaderHighlightSpike.TOKEN))

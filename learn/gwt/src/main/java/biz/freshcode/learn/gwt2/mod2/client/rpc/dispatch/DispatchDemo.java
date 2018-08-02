@@ -1,10 +1,10 @@
-package biz.freshcode.learn.gwt.client.rpc.dispatch;
+package biz.freshcode.learn.gwt2.mod2.client.rpc.dispatch;
 
-import biz.freshcode.learn.gwt.shared.dispatch.DdAction;
-import biz.freshcode.learn.gwt.shared.dispatch.StrResult;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.button.TextButtonBuilder;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.container.VerticalLayoutContainerBuilder;
 import biz.freshcode.learn.gwt2.common.client.util.AbstractIsWidget;
+import biz.freshcode.learn.gwt2.mod2.shared.StringResult;
+import biz.freshcode.learn.gwt2.mod2.shared.spike.rpc.dispatch.DdAction;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HTML;
@@ -13,16 +13,15 @@ import com.google.inject.Inject;
 import com.gwtplatform.dispatch.rpc.shared.DispatchAsync;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
-import com.sencha.gxt.widget.core.client.event.SelectEvent;
 
 public class DispatchDemo extends AbstractIsWidget {
     @Inject
     protected DispatchAsync dispatch;
     private HTML fb;
-    private TextButton btnGo;
 
     @Override
     protected Widget createWidget() {
+        TextButton btnGo;
         VerticalLayoutContainer c = new VerticalLayoutContainerBuilder()
                 .add(btnGo = new TextButtonBuilder()
                         .text("Go")
@@ -30,12 +29,7 @@ public class DispatchDemo extends AbstractIsWidget {
                 .add(fb = new HTML("<p>Press Go</p>"))
                 .verticalLayoutContainer;
 
-        btnGo.addSelectHandler(new SelectEvent.SelectHandler() {
-            @Override
-            public void onSelect(SelectEvent event) {
-                run();
-            }
-        });
+        btnGo.addSelectHandler(event -> run());
         return c;
     }
 
@@ -44,15 +38,15 @@ public class DispatchDemo extends AbstractIsWidget {
      * @see #displayResult(String)
      */
     protected void run() {
-        dispatch.execute(new DdAction("Bruce"), new AsyncCallback<StrResult>() {
+        dispatch.execute(new DdAction("Bruce"), new AsyncCallback<StringResult>() {
             @Override
             public void onFailure(Throwable caught) {
                 GWT.log("No can do: " + caught);
             }
 
             @Override
-            public void onSuccess(StrResult result) {
-                displayResult("<p>Sent 'Bruce'<br/>Result '" + result.getStr() + "'</p>");
+            public void onSuccess(StringResult result) {
+                displayResult("<p>Sent 'Bruce'<br/>Result '" + result.getResult() + "'</p>");
             }
         });
     }
