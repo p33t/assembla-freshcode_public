@@ -6,7 +6,6 @@ import biz.freshcode.learn.gwt2.common.client.builder.gxt.toolbar.ToolBarBuilder
 import biz.freshcode.learn.gwt2.common.client.util.IsWidgetImpl;
 import biz.freshcode.learn.gwt2.mod2.client.bug.*;
 import biz.freshcode.learn.gwt2.mod2.client.home.Home;
-import biz.freshcode.learn.gwt2.mod2.client.rpc.RpcSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.adapterfieldgrid.AdapterFieldGridSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.checkboxcellicon.CheckBoxCellIconSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.customdropdown.CustomDropDownSpike;
@@ -23,6 +22,7 @@ import biz.freshcode.learn.gwt2.mod2.client.spike.radiobutton.RadioSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.resize.ResizeSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.resources.ResourcesSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.restcommand.RestCommandSpike;
+import biz.freshcode.learn.gwt2.mod2.client.spike.rpc.RpcSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.tabpanel.TabPanelSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.validatedtextarea.ValidatedTextAreaSpike;
 import com.google.gwt.event.logical.shared.SelectionEvent;

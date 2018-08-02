@@ -1,11 +1,11 @@
-package biz.freshcode.learn.gwt2.mod2.client.rpc;
+package biz.freshcode.learn.gwt2.mod2.client.spike.rpc;
 
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.ContentPanelBuilder;
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.container.FlowLayoutContainerBuilder;
 import biz.freshcode.learn.gwt2.mod2.client.boot.Root;
-import biz.freshcode.learn.gwt2.mod2.client.rpc.dispatch.DispatchDemo;
-import biz.freshcode.learn.gwt2.mod2.client.rpc.dispatch.SecureDispatchDemo;
-import biz.freshcode.learn.gwt2.mod2.client.rpc.greet.GreetRpcDemo;
+import biz.freshcode.learn.gwt2.mod2.client.spike.rpc.dispatch.DispatchDemo;
+import biz.freshcode.learn.gwt2.mod2.client.spike.rpc.dispatch.SecureDispatchDemo;
+import biz.freshcode.learn.gwt2.mod2.client.spike.rpc.greet.GreetRpcDemo;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.mvp.client.Presenter;

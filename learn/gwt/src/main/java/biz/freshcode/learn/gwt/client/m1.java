@@ -1,8 +1,8 @@
 package biz.freshcode.learn.gwt.client;
 
 import biz.freshcode.learn.gwt.shared.FieldVerifier;
-import biz.freshcode.learn.gwt2.mod2.client.rpc.greet.GreetingService;
-import biz.freshcode.learn.gwt2.mod2.client.rpc.greet.GreetingServiceAsync;
+import biz.freshcode.learn.gwt2.mod2.client.spike.rpc.greet.GreetingService;
+import biz.freshcode.learn.gwt2.mod2.client.spike.rpc.greet.GreetingServiceAsync;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.*;
