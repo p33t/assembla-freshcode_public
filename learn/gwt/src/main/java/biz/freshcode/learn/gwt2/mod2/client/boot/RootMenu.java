@@ -9,6 +9,7 @@ import biz.freshcode.learn.gwt2.mod2.client.home.Home;
 import biz.freshcode.learn.gwt2.mod2.client.spike.adapterfieldgrid.AdapterFieldGridSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.checkboxcellicon.CheckBoxCellIconSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.customdropdown.CustomDropDownSpike;
+import biz.freshcode.learn.gwt2.mod2.client.spike.downloadable.DownloadableResultSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.dragorder.DragOrderSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.filedownload.FileDownloadSpike;
 import biz.freshcode.learn.gwt2.mod2.client.spike.gridgraphic.GridGraphicSpike;
@@ -58,6 +59,7 @@ public class RootMenu extends IsWidgetImpl {
                         .text("Spike")
                         .menu(new MenuBuilder()
                                 .add(menuItem("RPC", RpcSpike.TOKEN))
+                                .add(menuItem("Downloadable Result", DownloadableResultSpike.TOKEN))
                                 .add(menuItem("File Download", FileDownloadSpike.TOKEN))
                                 .add(menuItem("Rest Command", RestCommandSpike.TOKEN))
                                 .add(menuItem("Grid Header Highlight", GridHeaderHighlightSpike.TOKEN))
