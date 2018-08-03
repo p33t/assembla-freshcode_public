@@ -1,8 +1,8 @@
 package biz.freshcode.learn.gwt2.mod2.client.spike.downloadable;
 
 import biz.freshcode.learn.gwt2.common.client.builder.gxt.container.FlowLayoutContainerBuilder;
+import biz.freshcode.learn.gwt2.common.client.util.ClientUtil;
 import biz.freshcode.learn.gwt2.mod2.client.boot.Root;
-import biz.freshcode.learn.gwt2.mod2.client.util.ClientUtil;
 import biz.freshcode.learn.gwt2.mod2.shared.StringResult;
 import biz.freshcode.learn.gwt2.mod2.shared.downloadable.DownloadAction;
 import biz.freshcode.learn.gwt2.mod2.shared.downloadable.DownloadResult;
