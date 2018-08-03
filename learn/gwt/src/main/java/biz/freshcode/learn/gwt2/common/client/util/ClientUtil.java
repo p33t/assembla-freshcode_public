@@ -1,5 +1,6 @@
 package biz.freshcode.learn.gwt2.common.client.util;
 
+import com.google.gwt.user.client.Window;
 import com.sencha.gxt.data.shared.ListStore;
 import com.sencha.gxt.data.shared.ModelKeyProvider;
 import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
@@ -17,6 +18,7 @@ public class ClientUtil {
         LOG.info(msg);
     }
 
+    @SuppressWarnings("unchecked")
     public static <T> Grid<T> createGrid(ModelKeyProvider<? super T> keyer, ColumnConfig<T, ?>... cols) {
         return createGrid(keyer, Arrays.asList(cols));
     }
@@ -26,5 +28,14 @@ public class ClientUtil {
         g.setBorders(true);
         g.getView().setForceFit(true);
         return g;
+    }
+
+    /**
+     * Alternative to System.lineSeparator() in the browser.
+     */
+    public static String clientLineSeparator() {
+        String platform = Window.Navigator.getPlatform();
+        if (platform.toLowerCase().contains("windows")) return "\r\n";
+        return "\n";
     }
 }
