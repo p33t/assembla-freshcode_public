@@ -9,8 +9,8 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <scala.version>2.11.8</scala.version>
-        <scala.libversion>2.11</scala.libversion>
+        <scala.version>2.12.6</scala.version>
+        <scala.libversion>2.12</scala.libversion>
     </properties>
 
     <dependencies>
@@ -27,17 +27,17 @@
         </dependency>
 
         <!-- Old actors library (from 2.9)... replaced by Akka -->
-        <dependency>
-            <groupId>org.scala-lang</groupId>
-            <artifactId>scala-actors</artifactId>
-            <version>${scala.version}</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.scala-lang</groupId>-->
+            <!--<artifactId>scala-actors</artifactId>-->
+            <!--<version>${scala.version}</version>-->
+        <!--</dependency>-->
 
         <!-- To replicate old native xml handling -->
         <dependency>
             <groupId>org.scala-lang.modules</groupId>
             <artifactId>scala-xml_${scala.libversion}</artifactId>
-            <version>1.0.2</version>
+            <version>1.1.1</version>
         </dependency>
     </dependencies>
 
