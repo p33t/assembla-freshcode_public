@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <!--
-  Copyright 2014 Peter W Leong
+  Copyright 2018 Peter W Leong
 -->
 <!--suppress CheckEmptyScriptTag -->
 <html>
 <head>
     <title>Synchronome</title>
+    <meta charset="utf-8"/>
     <script type="application/javascript">
-        var copyright = "Copyright 2014 Peter W Leong\nMore information at\n   http://synchronome.freshcode.biz";
+        var copyright = "Copyright 2018 Peter W Leong\n\n   http://synchronome.freshcode.biz";
 
         if (window.attachEvent) {
             window.attachEvent('onresize', resizeSvg);
@@ -38,30 +39,25 @@
             var durStr = dur.toString() + "s";
             theTiming.setAttribute("dur", durStr);
 
-            // TODO: Try dual coloured indicator to get 16ths
-            // Also a threshold for too much activity... reduce number of things going on.
-
             var sectionRatio = 1 / 2 / displayRatio;
             var section = circumference * sectionRatio;
-            var line;
-            // gap can be a ratio of the section
-            if (gap < 1) line = section * (1-gap);
-            else line = section - gap;
+            var gap = section * gapPortion;
+            var line = section - gap;
 
             var lineStr = line.toString();
             theCircle.setAttribute("stroke-dasharray", lineStr + "," + (section - line).toString());
-            var rotor1Length = line;
-            var rotorDash1 = (rotor1Length).toString() + "," + circumference.toString();
+            var rotorDash = (line).toString() + "," + circumference.toString();
+
             // a 16th beat (in x4)
-            var rotor2Length = section / 2;
-            var rotorDash2 = (rotor2Length).toString() + "," + circumference.toString();
-            var rotor2Rotate = (rotor1Length - rotor2Length) * 360 / circumference;
-            theRotor.setAttribute("stroke-dasharray", rotorDash1);
-            theRotor2.setAttribute("stroke-dasharray", rotorDash2);
+            var rotor2Offset = section / 2;
+
+            var rotor2Rotate = 180 + (rotor2Offset * 360 / circumference);
+            theRotor.setAttribute("stroke-dasharray", rotorDash);
+            theRotor2.setAttribute("stroke-dasharray", rotorDash);
             theRotor2.setAttribute("transform", "rotate(" + rotor2Rotate.toString() +",120,120)");
 
-            var rotate = gap / 2 * 360 / circumference + 90;
-            theCircle.setAttribute("transform", "rotate(" + rotor2Rotate.toString() + ",120,120)");
+            var rotate = 90 + (gap / 2 * 360 / circumference);
+            theCircle.setAttribute("transform", "rotate(" + rotate.toString() + ",120,120)");
         }
 
         function setRate(i) {
@@ -80,8 +76,8 @@
         }
 
         function toggleDisplayRatio() {
-            if (displayRatio == 5) displayRatio = 3;
-            else if (displayRatio == 4) displayRatio = 5;
+            if (displayRatio === 5) displayRatio = 3;
+            else if (displayRatio === 4) displayRatio = 5;
             else displayRatio = 4;
             sync();
         }
@@ -145,7 +141,7 @@
     var rate = 80;
     var displayRatio = 4;
     var circumference = Math.PI * 2 * 105; // radius of circle
-    var gap = .2;
+    var gapPortion = .2;
     resizeSvg();
     sync();
 </script>
