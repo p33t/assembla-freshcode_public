@@ -47,14 +47,7 @@
             var lineStr = line.toString();
             theCircle.setAttribute("stroke-dasharray", lineStr + "," + (section - line).toString());
             var rotorDash = (line).toString() + "," + circumference.toString();
-
-            // a 16th beat (in x4)
-            var rotor2Offset = section / 2;
-
-            var rotor2Rotate = 180 + (rotor2Offset * 360 / circumference);
             theRotor.setAttribute("stroke-dasharray", rotorDash);
-            theRotor2.setAttribute("stroke-dasharray", rotorDash);
-            theRotor2.setAttribute("transform", "rotate(" + rotor2Rotate.toString() +",120,120)");
 
             var rotate = 90 + (gap / 2 * 360 / circumference);
             theCircle.setAttribute("transform", "rotate(" + rotate.toString() + ",120,120)");
@@ -106,10 +99,8 @@
 <body>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250">
     <g>
-        <circle cx="120" cy="120" r="105" fill="none" stroke="red" stroke-dasharray="43,700" stroke-width="20"
-                stroke-linecap="butt" id="rotor"/>
         <circle cx="120" cy="120" r="105" fill="none" stroke="gold" stroke-dasharray="43,700" stroke-width="20"
-                stroke-linecap="butt" id="rotor2"/>
+                stroke-linecap="butt" id="rotor"/>
         <animateTransform id="timing"
                           attributeType="xml"
                           attributeName="transform"
@@ -137,7 +128,6 @@
     var theRatioText = document.getElementById("ratioText");
     var theCircle = document.getElementById("circle");
     var theRotor = document.getElementById("rotor");
-    var theRotor2 = document.getElementById("rotor2");
     var rate = 80;
     var displayRatio = 4;
     var circumference = Math.PI * 2 * 105; // radius of circle
