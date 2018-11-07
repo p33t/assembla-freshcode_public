@@ -5,11 +5,9 @@
 <!--suppress CheckEmptyScriptTag -->
 <html>
 <head>
-    <title>Synchronome</title>
+    <title>beatfix.live</title>
     <meta charset="utf-8"/>
     <script type="application/javascript">
-        var copyright = "Copyright 2018 Peter W Leong\n\n   http://synchronome.freshcode.biz";
-
         if (window.attachEvent) {
             window.attachEvent('onresize', resizeSvg);
         }
@@ -74,6 +72,11 @@
             else displayRatio = 4;
             sync();
         }
+
+        function showInfo() {
+            var year = new Date().getFullYear();
+            alert("Copyright " + year.toString() + " Peter W Leong\n\n   http://beatfix.live");
+        }
     </script>
     <style type="text/css">
         body {
@@ -97,7 +100,7 @@
     </style>
 </head>
 <body>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 245 245">
     <g>
         <circle cx="120" cy="120" r="105" fill="none" stroke="gold" stroke-dasharray="43,700" stroke-width="20"
                 stroke-linecap="butt" id="rotor"/>
@@ -118,7 +121,7 @@
     <text x="90" y="175" style="font-size: 250%" onclick="tempoChange(-5)">&nbsp;-</text>
     <text x="150" y="65" style="font-size: 250%" onclick="tempoChange(1)">+&nbsp;</text>
     <text x="150" y="175" style="font-size: 250%" onclick="tempoChange(-1)">-&nbsp;</text>
-    <text x="15" y="20" style="font-size: 200%" onclick="alert(copyright)">&copy;</text>
+    <text x="20" y="223" style="font-size: 200%" onclick="showInfo()">&copy;</text>
     <text x="220" y="220" style="font-size: 250%" onclick="toggleDisplayRatio()" id="ratioText">x?</text>
 </svg>
 <script type="application/javascript">
