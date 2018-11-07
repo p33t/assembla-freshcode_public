@@ -9,10 +9,13 @@ export default withSiteData(() => (
         <h1>Welcome to</h1>
         <img src={logoImg} alt="logo" style={{display: 'block', margin: '0 auto'}}/>
         <h3>
-            a metronome designed for monitoring and correcting tempo during musical performance
+            a metronome designed for monitoring and correcting tempo during live musical performance
         </h3>
-
-        <img src={screenshotImg} alt="screenshot" style={{display: 'block', margin: '0, auto'}}/>
-        <span>Click on the image to launch</span>
+        <p>
+            <a href='http://app.beatfix.live'>
+                <img src={screenshotImg} alt="screenshot" style={{display: 'block', margin: '0 auto'}}/>
+                <span>Click to launch</span>
+            </a>
+        </p>
     </div>
 ))
