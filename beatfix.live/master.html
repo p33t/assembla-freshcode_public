@@ -31,10 +31,14 @@
             setRate(rate + delta);
         }
 
-        function sync() {
-            if (rate < 10) rate = 10;
-            if (rate > 180) rate = 180;
+        function syncTempoText() {
             theTempoText.innerHTML = rate.toString();
+        }
+
+        function sync() {
+            rate = Math.max(minRate, rate);
+            rate = Math.min(220, rate);
+            syncTempoText();
             theRatioText.innerHTML = "x" + displayRatio.toString();
             var dur = 60 * displayRatio / rate;
             var durStr = dur.toString() + "s";
@@ -59,16 +63,6 @@
             sync();
         }
 
-        function readTempo() {
-            var desired = prompt("Desired tempo", rate.toString());
-            if (desired != null) {
-                var i = parseInt(desired);
-                if (!isNaN(i)) {
-                    setRate(i);
-                }
-            }
-        }
-
         function toggleDisplayRatio() {
             if (displayRatio === 5) displayRatio = 3;
             else if (displayRatio === 4) displayRatio = 5;
@@ -79,6 +73,33 @@
         function showInfo() {
             var year = new Date().getFullYear();
             alert("Copyright " + year.toString() + " Peter W Leong\n\n   http://beatfix.live");
+        }
+
+        function endSamples() {
+            timerHandle = null;
+            sampleTimestamps = [];
+            syncTempoText();
+        }
+
+        function calcRate(intervalMillis) {
+            return Math.round(60000 / intervalMillis);
+        }
+
+        function sample(timestampMillis) {
+            if (timerHandle !== null) clearTimeout(timerHandle);
+            timerHandle = setTimeout(endSamples, 60000 / (minRate - 1));
+
+            sampleTimestamps.push(timestampMillis);
+            if (sampleTimestamps.length < 3) theTempoText.innerHTML = sampleTimestamps.length.toString() + "..";
+            else {
+                while (sampleTimestamps.length > 4) sampleTimestamps.shift(); // at most 3 intervals
+
+                var maxIx = sampleTimestamps.length - 1;
+                var totalDuration = sampleTimestamps[maxIx] - sampleTimestamps[0];
+                var avgInterval = totalDuration / maxIx;
+                setRate(calcRate(avgInterval));
+                sync();
+            }
         }
     </script>
     <style type="text/css">
@@ -120,7 +141,7 @@
     <circle cx="120" cy="120" r="105" fill="none" stroke="#333" stroke-dasharray="43,12" stroke-width="21"
             stroke-linecap="butt" id="circle"/>
 
-    <text x="120" y="125" style="font-size:450%" onclick="readTempo()" id="tempoText">199</text>
+    <text x="120" y="125" style="font-size:450%" onclick="sample(Date.now())" id="tempoText">199</text>
     <text x="90" y="65" style="font-size: 200%" onclick="tempoChange(5)">&nbsp;+</text>
     <text x="90" y="175" style="font-size: 250%" onclick="tempoChange(-5)">&nbsp;-</text>
     <text x="150" y="65" style="font-size: 200%" onclick="tempoChange(1)">+&nbsp;</text>
@@ -141,6 +162,9 @@
     var displayRatio = 4;
     var circumference = Math.PI * 2 * 105; // radius of circle
     var gapPortion = .2;
+    var minRate = 20;
+    var sampleTimestamps = [];
+    var timerHandle = null;
     resizeSvg();
     sync();
 </script>
