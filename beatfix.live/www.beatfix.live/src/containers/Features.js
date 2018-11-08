@@ -8,8 +8,8 @@ export default withRouteData(() => (
         <h2>Features</h2>
         <ul>
             <li>Visual display of tempo (suitable for a dark environment)</li>
-            <li>Pick up the beat at any point in a bar (no need to wait for a new bar)</li>
-            <li>Provides a visual reference  assess accuracy of an ambient tempo</li>
+            <li>Pick up the beat at any point in a bar/cycle (no need to wait for a new bar)</li>
+            <li>Provides a visual reference to assess accuracy of an ambient tempo</li>
         </ul>
 
         <h3>With <Product/>, a drummer can:</h3>
