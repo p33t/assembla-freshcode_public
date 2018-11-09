@@ -44,17 +44,17 @@
             var durStr = dur.toString() + "s";
             theTiming.setAttribute("dur", durStr);
 
-            var sectionRatio = 1 / 2 / displayRatio;
+            var sectionRatio = 1 / 3 / displayRatio;
             var section = circumference * sectionRatio;
             var gap = section * gapPortion;
             var line = section - gap;
 
             var lineStr = line.toString();
             theCircle.setAttribute("stroke-dasharray", lineStr + "," + (section - line).toString());
-            var rotorDash = (line).toString() + "," + circumference.toString();
-            theRotor.setAttribute("stroke-dasharray", rotorDash);
+            var rotorDash = (circumference / displayRatio).toString() + "," + circumference.toString();
+            rotor1.setAttribute("stroke-dasharray", rotorDash);
 
-            var rotate = 90 + (gap / 2 * 360 / circumference);
+            var rotate = -90 + (gap / 2 * 360 / circumference);
             theCircle.setAttribute("transform", "rotate(" + rotate.toString() + ",120,120)");
         }
 
@@ -128,7 +128,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 245 245">
     <g>
         <circle cx="120" cy="120" r="105" fill="none" stroke="gold" stroke-dasharray="43,700" stroke-width="20"
-                stroke-linecap="butt" id="rotor"/>
+                stroke-linecap="butt" id="rotor1"/>
+        <circle cx="120" cy="120" r="105" fill="none" stroke="orange" stroke-dasharray="43,700" stroke-width="20"
+                stroke-linecap="butt" id="rotor2"/>
         <animateTransform id="timing"
                           attributeType="xml"
                           attributeName="transform"
@@ -157,7 +159,8 @@
     var theTempoText = document.getElementById("tempoText");
     var theRatioText = document.getElementById("ratioText");
     var theCircle = document.getElementById("circle");
-    var theRotor = document.getElementById("rotor");
+    var rotor1 = document.getElementById("rotor1");
+    var rotor2 = document.getElementById("rotor2");
     var rate = 80;
     var displayRatio = 4;
     var circumference = Math.PI * 2 * 105; // radius of circle
