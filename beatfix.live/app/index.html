@@ -35,26 +35,31 @@
             theTempoText.innerHTML = rate.toString();
         }
 
+        function findStatorSpec(bpm, specs) {
+            for (var i = 0; i < specs.length; i++) {
+                var candidate = specs[i];
+                if (bpm >= candidate.bpmThreshold) return candidate;
+            }
+            return specs[specs.length - 1];
+        }
+
         function sync() {
             rate = Math.max(minRate, rate);
             rate = Math.min(220, rate);
             syncTempoText();
-            theRatioText.innerHTML = "x" + displayRatio.toString();
-            var dur = 60 * displayRatio / rate;
+            var statorConfig = statorConfigs[statorConfigIndex];
+            theRatioText.innerHTML =  statorConfig.code;
+            var dur = 60 * statorConfig.beatsPerRev / rate;
             var durStr = dur.toString() + "s";
             theTiming.setAttribute("dur", durStr);
 
-            var sectionRatio = 1 / 3 / displayRatio;
-            var section = circumference * sectionRatio;
-            var gap = section * gapPortion;
-            var line = section - gap;
+            var spec = findStatorSpec(rate, statorConfig.specs);
 
-            var lineStr = line.toString();
-            theCircle.setAttribute("stroke-dasharray", lineStr + "," + (section - line).toString());
-            var rotorDash = (circumference / displayRatio).toString() + "," + circumference.toString();
+            theCircle.setAttribute("stroke-dasharray", spec.statorLength.toString() + "," + spec.gapLength.toString());
+            var rotorDash = (circumference / statorConfig.beatsPerRev).toString() + "," + circumference.toString();
             rotor1.setAttribute("stroke-dasharray", rotorDash);
 
-            var rotate = -90 + (gap / 2 * 360 / circumference);
+            var rotate = -90 + (spec.gapLength / 2 * 360 / circumference);
             theCircle.setAttribute("transform", "rotate(" + rotate.toString() + ",120,120)");
         }
 
@@ -64,9 +69,7 @@
         }
 
         function toggleDisplayRatio() {
-            if (displayRatio === 5) displayRatio = 3;
-            else if (displayRatio === 4) displayRatio = 5;
-            else displayRatio = 4;
+            statorConfigIndex = (statorConfigIndex + 1) % statorConfigs.length;
             sync();
         }
 
@@ -101,6 +104,37 @@
                 sync();
             }
         }
+
+        // Precision management ////////////////////////////////////////////////////////////////////////////////////////
+
+        function calcThresholdBpm(numStators, beatsPerRev) {
+            var x = Math.round(1 / (numStators / beatsPerRev * maxPrecisionMins));
+            console.log(x);
+            console.log(beatsPerRev);
+            console.log("---");
+            return x;
+        }
+
+        function calcStatorConfig(beatsPerRev) {
+            var specs = [];
+            for (var numStators = 2; numStators <= maxNumStators; numStators++) {
+                var sectionLength = circumference / numStators;
+                console.log('section length: ' + sectionLength.toString());
+                var spec = {
+                    bpmThreshold: calcThresholdBpm(numStators, beatsPerRev),
+                    numStators: numStators,
+                    statorLength: sectionLength * statorPortion,
+                    gapLength: sectionLength * gapPortion
+                };
+                specs.push(spec);
+            }
+
+            return {
+                code: "x" + beatsPerRev.toString(),
+                beatsPerRev: beatsPerRev,
+                specs: specs
+            };
+        }
     </script>
     <style type="text/css">
         body {
@@ -129,8 +163,8 @@
     <g>
         <circle cx="120" cy="120" r="105" fill="none" stroke="gold" stroke-dasharray="43,700" stroke-width="20"
                 stroke-linecap="butt" id="rotor1"/>
-        <circle cx="120" cy="120" r="105" fill="none" stroke="orange" stroke-dasharray="43,700" stroke-width="20"
-                stroke-linecap="butt" id="rotor2"/>
+        <!--<circle cx="120" cy="120" r="105" fill="none" stroke="orange" stroke-dasharray="43,700" stroke-width="20"-->
+                <!--stroke-linecap="butt" id="rotor2" visibility="hidden"/>-->
         <animateTransform id="timing"
                           attributeType="xml"
                           attributeName="transform"
@@ -160,14 +194,22 @@
     var theRatioText = document.getElementById("ratioText");
     var theCircle = document.getElementById("circle");
     var rotor1 = document.getElementById("rotor1");
-    var rotor2 = document.getElementById("rotor2");
+    // var rotor2 = document.getElementById("rotor2");
     var rate = 80;
-    var displayRatio = 4;
     var circumference = Math.PI * 2 * 105; // radius of circle
     var gapPortion = .2;
+    var statorPortion = 1 - gapPortion;
     var minRate = 20;
     var sampleTimestamps = [];
     var timerHandle = null;
+
+    // Indicates when to remove stators to avoid visual noise from unusable precision
+    var maxPrecisionMins = 200 / 60000;
+    var maxNumStators = 12;
+
+    var statorConfigs = [4, 5, 3].map(calcStatorConfig);
+    var statorConfigIndex = 0; // index of desired stator config
+
     resizeSvg();
     sync();
 </script>
