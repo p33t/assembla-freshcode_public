@@ -47,17 +47,24 @@
             rate = Math.max(minRate, rate);
             rate = Math.min(220, rate);
             syncTempoText();
+
             var statorConfig = statorConfigs[statorConfigIndex];
             theRatioText.innerHTML =  statorConfig.code;
+
             var dur = 60 * statorConfig.beatsPerRev / rate;
             var durStr = dur.toString() + "s";
             theTiming.setAttribute("dur", durStr);
 
             var spec = findStatorSpec(rate, statorConfig.specs);
-
             theCircle.setAttribute("stroke-dasharray", spec.statorLength.toString() + "," + spec.gapLength.toString());
-            var rotorDash = (circumference / statorConfig.beatsPerRev).toString() + "," + circumference.toString();
+
+            var beatLength = circumference / statorConfig.beatsPerRev;
+
+            var rotorDash = (beatLength).toString() + "," + circumference.toString();
             rotor1.setAttribute("stroke-dasharray", rotorDash);
+
+            rotor2.setAttribute("stroke-dasharray", rotorDash);
+            rotor2.setAttribute("transform", "rotate(" + (-360/statorConfig.beatsPerRev).toString() + ",120,120)");
 
             var rotate = -90 + (spec.gapLength / 2 * 360 / circumference);
             theCircle.setAttribute("transform", "rotate(" + rotate.toString() + ",120,120)");
@@ -156,10 +163,10 @@
 <body>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 245 245">
     <g>
-        <circle cx="120" cy="120" r="105" fill="none" stroke="gold" stroke-dasharray="43,700" stroke-width="20"
+        <circle cx="120" cy="120" r="105" fill="none" stroke="orange" stroke-dasharray="43,700" stroke-width="20"
                 stroke-linecap="butt" id="rotor1"/>
-        <!--<circle cx="120" cy="120" r="105" fill="none" stroke="orange" stroke-dasharray="43,700" stroke-width="20"-->
-                <!--stroke-linecap="butt" id="rotor2" visibility="hidden"/>-->
+        <circle cx="120" cy="120" r="105" fill="none" stroke="green" stroke-dasharray="43,700" stroke-width="20"
+                stroke-linecap="butt" id="rotor2"/>
         <animateTransform id="timing"
                           attributeType="xml"
                           attributeName="transform"
@@ -169,7 +176,7 @@
                           dur="3s"
                           repeatCount="indefinite"/>
     </g>
-    <circle cx="120" cy="120" r="105" fill="none" stroke="#333" stroke-dasharray="43,12" stroke-width="21"
+    <circle cx="120" cy="120" r="105" fill="none" stroke="#222" stroke-dasharray="43,12" stroke-width="21"
             stroke-linecap="butt" id="circle"/>
 
     <text x="120" y="125" style="font-size:450%" onclick="sample(Date.now())" id="tempoText">199</text>
@@ -189,7 +196,7 @@
     var theRatioText = document.getElementById("ratioText");
     var theCircle = document.getElementById("circle");
     var rotor1 = document.getElementById("rotor1");
-    // var rotor2 = document.getElementById("rotor2");
+    var rotor2 = document.getElementById("rotor2");
     var rate = 80;
     var circumference = Math.PI * 2 * 105; // radius of circle
     var gapPortion = .2;
