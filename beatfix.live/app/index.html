@@ -108,18 +108,13 @@
         // Precision management ////////////////////////////////////////////////////////////////////////////////////////
 
         function calcThresholdBpm(numStators, beatsPerRev) {
-            var x = Math.round(1 / (numStators / beatsPerRev * maxPrecisionMins));
-            console.log(x);
-            console.log(beatsPerRev);
-            console.log("---");
-            return x;
+            return Math.round(1 / (numStators / beatsPerRev * maxPrecisionMins));
         }
 
         function calcStatorConfig(beatsPerRev) {
             var specs = [];
             for (var numStators = 2; numStators <= maxNumStators; numStators++) {
                 var sectionLength = circumference / numStators;
-                console.log('section length: ' + sectionLength.toString());
                 var spec = {
                     bpmThreshold: calcThresholdBpm(numStators, beatsPerRev),
                     numStators: numStators,
