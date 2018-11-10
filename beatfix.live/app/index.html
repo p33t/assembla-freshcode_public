@@ -62,8 +62,10 @@
             var beatLengthStr = beatLength.toString();
 
             // primary rotor does not repeat
-            var rotor1Dash = beatLengthStr + "," + circumference.toString();
+            var rotor1Dash = spec.beatLength.toString() + "," + circumference.toString();
             rotor1.setAttribute("stroke-dasharray", rotor1Dash);
+            var rotor1Offset = (360 / statorConfig.beatsPerRev) - (360 / spec.numStators);
+            rotor1.setAttribute("transform", "rotate(" + rotor1Offset.toString() + ",120,120)");
 
             // auxiliary rotor repeats
             var rotor2Dash = beatLengthStr + "," + beatLengthStr;
@@ -137,18 +139,19 @@
         }
 
         function calcStatorConfig(beatsPerRev) {
-            var possible = [2, 3, beatsPerRev, beatsPerRev * 2, beatsPerRev * 3]
+            var possible = [2, beatsPerRev, beatsPerRev * 2, beatsPerRev * 3]
                 .filter(notTooManyStators)
                 .filter(onlyUnique);
             var specs = [];
             for (var ix = 0; ix < possible.length; ix++) {
                 var numStators = possible[ix];
-                var sectionLength = circumference / numStators;
+                var beatLength = circumference / numStators;
                 var spec = {
                     bpmThreshold: calcThresholdBpm(numStators, beatsPerRev),
                     numStators: numStators,
-                    statorLength: sectionLength * statorPortion,
-                    gapLength: sectionLength * gapPortion
+                    beatLength: beatLength,
+                    statorLength: beatLength * statorPortion,
+                    gapLength: beatLength * gapPortion
                 };
                 specs.push(spec);
             }
@@ -185,9 +188,9 @@
 <body>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 245 245">
     <g>
-        <circle cx="120" cy="120" r="105" fill="none" stroke="green" stroke-dasharray="43,700" stroke-width="20"
+        <circle cx="120" cy="120" r="105" fill="none" stroke="#030" stroke-dasharray="43,700" stroke-width="20"
                 stroke-linecap="butt" id="rotor2"/>
-        <circle cx="120" cy="120" r="105" fill="none" stroke="orange" stroke-dasharray="43,700" stroke-width="20"
+        <circle cx="120" cy="120" r="105" fill="none" stroke="yellow" stroke-dasharray="43,700" stroke-width="20"
                 stroke-linecap="butt" id="rotor1"/>
         <animateTransform id="timing"
                           attributeType="xml"
@@ -228,7 +231,7 @@
     var timerHandle = null;
 
     // Indicates when to remove stators to avoid visual noise from unusable precision
-    var maxPrecisionMins = 300 / 60000;
+    var maxPrecisionMins = 450 / 60000;
     var maxNumStators = 14;
 
     var statorConfigs = [3, 4, 5, 6, 7].map(calcStatorConfig);
