@@ -1,0 +1,14 @@
+beatfix.live RELEASE NOTES
+==========================
+Release notes for specialized metronome.
+See http://www.beatfix.live for more information.
+------------------------------------------------------------------------------------------------------------------------
+1.1 VCS commit # 2194
+- Added additional rotors to observe beats
+- Added x6 x7 ratios
+- Number of stators may vary now to reduce visual noise
+
+------------------------------------------------------------------------------------------------------------------------
+1.0 VCS commit #2184
+- Initial release
+
