@@ -36,11 +36,12 @@
         }
 
         function findStatorSpec(bpm, specs) {
-            for (var i = 0; i < specs.length; i++) {
+            // for (var i = 0; i < specs.length; i++) {
+            for (var i = specs.length - 1; i > 0; i--) {
                 var candidate = specs[i];
-                if (bpm >= candidate.bpmThreshold) return candidate;
+                if (bpm <= candidate.bpmMax) return candidate;
             }
-            return specs[specs.length - 1];
+            return specs[0];
         }
 
         function sync() {
@@ -58,11 +59,11 @@
             var spec = findStatorSpec(rate, statorConfig.specs);
             theCircle.setAttribute("stroke-dasharray", spec.statorLength.toString() + "," + spec.gapLength.toString());
 
-            var beatLength = circumference / statorConfig.beatsPerRev;
-            var beatLengthStr = beatLength.toString();
+            var beatLengthStr = spec.beatLength.toString();
 
             // primary rotor does not repeat
-            var rotor1Dash = spec.beatLength.toString() + "," + circumference.toString();
+            var rotor1Length = (spec.numStators === 1) ? spec.beatLength : spec.segmentLength;
+            var rotor1Dash = rotor1Length.toString() + "," + circumference.toString();
             rotor1.setAttribute("stroke-dasharray", rotor1Dash);
             var rotor1Offset = (360 / statorConfig.beatsPerRev) - (360 / spec.numStators);
             rotor1.setAttribute("transform", "rotate(" + rotor1Offset.toString() + ",120,120)");
@@ -125,9 +126,12 @@
         }
 
         // Precision management ////////////////////////////////////////////////////////////////////////////////////////
-
-        function calcThresholdBpm(numStators, beatsPerRev) {
-            return Math.round(1 / (numStators / beatsPerRev * maxPrecisionMins));
+        /**
+         * Max bpm that will support the min precision.
+         */
+        function calcMaxBpm(numStators, beatsPerRev) {
+            // would be nice to confirm the maths.  This was determined empirically
+            return 9 * 360 / numStators / beatsPerRev;
         }
 
         function onlyUnique(value, index, self) {
@@ -139,19 +143,21 @@
         }
 
         function calcStatorConfig(beatsPerRev) {
-            var possible = [2, beatsPerRev, beatsPerRev * 2, beatsPerRev * 3]
+            // TODO: 1/2 and 1/3 if they are round
+            var possible = [1, beatsPerRev, beatsPerRev * 2, beatsPerRev * 3]
                 .filter(notTooManyStators)
                 .filter(onlyUnique);
             var specs = [];
             for (var ix = 0; ix < possible.length; ix++) {
                 var numStators = possible[ix];
-                var beatLength = circumference / numStators;
+                var segmentLength = circumference / numStators;
                 var spec = {
-                    bpmThreshold: calcThresholdBpm(numStators, beatsPerRev),
+                    bpmMax: calcMaxBpm(numStators, beatsPerRev),
                     numStators: numStators,
-                    beatLength: beatLength,
-                    statorLength: beatLength * statorPortion,
-                    gapLength: beatLength * gapPortion
+                    segmentLength: segmentLength,
+                    beatLength: circumference / beatsPerRev,
+                    statorLength: segmentLength * statorPortion,
+                    gapLength: segmentLength * gapPortion
                 };
                 specs.push(spec);
             }
@@ -230,12 +236,10 @@
     var sampleTimestamps = [];
     var timerHandle = null;
 
-    // Indicates when to remove stators to avoid visual noise from unusable precision
-    var maxPrecisionMins = 450 / 60000;
-    var maxNumStators = 14;
+    var maxNumStators = 21;
 
     var statorConfigs = [3, 4, 5, 6, 7].map(calcStatorConfig);
-    var statorConfigIndex = 1; // index of desired stator config
+    var statorConfigIndex = 0; // index of desired stator config
 
     resizeSvg();
     sync();
