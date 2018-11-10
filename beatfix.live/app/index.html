@@ -49,7 +49,7 @@
             syncTempoText();
 
             var statorConfig = statorConfigs[statorConfigIndex];
-            theRatioText.innerHTML =  statorConfig.code;
+            theRatioText.innerHTML = statorConfig.code;
 
             var dur = 60 * statorConfig.beatsPerRev / rate;
             var durStr = dur.toString() + "s";
@@ -59,12 +59,25 @@
             theCircle.setAttribute("stroke-dasharray", spec.statorLength.toString() + "," + spec.gapLength.toString());
 
             var beatLength = circumference / statorConfig.beatsPerRev;
+            var beatLengthStr = beatLength.toString();
 
-            var rotorDash = (beatLength).toString() + "," + circumference.toString();
-            rotor1.setAttribute("stroke-dasharray", rotorDash);
+            // primary rotor does not repeat
+            var rotor1Dash = beatLengthStr + "," + circumference.toString();
+            // var rotor1Dash = "20," + circumference.toString();
+            rotor1.setAttribute("stroke-dasharray", rotor1Dash);
 
-            rotor2.setAttribute("stroke-dasharray", rotorDash);
-            rotor2.setAttribute("transform", "rotate(" + (-360/statorConfig.beatsPerRev).toString() + ",120,120)");
+            // auxiliary rotor repeats
+            var rotor2Dash = beatLengthStr + "," + beatLengthStr;
+            // var rotor2Dash = beatLengthStr + ", 20";
+            rotor2.setAttribute("stroke-dasharray", rotor2Dash);
+
+            // primary rotor always trails 'black'
+            var isOdd = !!(statorConfig.beatsPerRev & 1);
+            if (isOdd) {
+                var rotor2Offset = 360 / statorConfig.beatsPerRev;
+                rotor2.setAttribute("transform", "rotate(" + rotor2Offset.toString() + ",120,120)");
+            }
+            else rotor2.removeAttribute("transform");
 
             var rotate = -90 + (spec.gapLength / 2 * 360 / circumference);
             theCircle.setAttribute("transform", "rotate(" + rotate.toString() + ",120,120)");
@@ -163,10 +176,10 @@
 <body>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 245 245">
     <g>
-        <circle cx="120" cy="120" r="105" fill="none" stroke="orange" stroke-dasharray="43,700" stroke-width="20"
-                stroke-linecap="butt" id="rotor1"/>
         <circle cx="120" cy="120" r="105" fill="none" stroke="green" stroke-dasharray="43,700" stroke-width="20"
                 stroke-linecap="butt" id="rotor2"/>
+        <circle cx="120" cy="120" r="105" fill="none" stroke="orange" stroke-dasharray="43,700" stroke-width="20"
+                stroke-linecap="butt" id="rotor1"/>
         <animateTransform id="timing"
                           attributeType="xml"
                           attributeName="transform"
