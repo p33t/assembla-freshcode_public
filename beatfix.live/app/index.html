@@ -63,15 +63,12 @@
 
             // primary rotor does not repeat
             var rotor1Dash = beatLengthStr + "," + circumference.toString();
-            // var rotor1Dash = "20," + circumference.toString();
             rotor1.setAttribute("stroke-dasharray", rotor1Dash);
 
             // auxiliary rotor repeats
             var rotor2Dash = beatLengthStr + "," + beatLengthStr;
-            // var rotor2Dash = beatLengthStr + ", 20";
             rotor2.setAttribute("stroke-dasharray", rotor2Dash);
 
-            // primary rotor always trails 'black'
             var isOdd = !!(statorConfig.beatsPerRev & 1);
             if (isOdd) {
                 var rotor2Offset = 360 / statorConfig.beatsPerRev;
@@ -131,9 +128,21 @@
             return Math.round(1 / (numStators / beatsPerRev * maxPrecisionMins));
         }
 
+        function onlyUnique(value, index, self) {
+            return self.indexOf(value) === index;
+        }
+
+        function notTooManyStators(value) {
+            return value <= maxNumStators;
+        }
+
         function calcStatorConfig(beatsPerRev) {
+            var possible = [2, 3, beatsPerRev, beatsPerRev * 2, beatsPerRev * 3]
+                .filter(notTooManyStators)
+                .filter(onlyUnique);
             var specs = [];
-            for (var numStators = 2; numStators <= maxNumStators; numStators++) {
+            for (var ix = 0; ix < possible.length; ix++) {
+                var numStators = possible[ix];
                 var sectionLength = circumference / numStators;
                 var spec = {
                     bpmThreshold: calcThresholdBpm(numStators, beatsPerRev),
@@ -219,11 +228,11 @@
     var timerHandle = null;
 
     // Indicates when to remove stators to avoid visual noise from unusable precision
-    var maxPrecisionMins = 200 / 60000;
-    var maxNumStators = 12;
+    var maxPrecisionMins = 300 / 60000;
+    var maxNumStators = 14;
 
-    var statorConfigs = [4, 5, 3].map(calcStatorConfig);
-    var statorConfigIndex = 0; // index of desired stator config
+    var statorConfigs = [3, 4, 5, 6, 7].map(calcStatorConfig);
+    var statorConfigIndex = 1; // index of desired stator config
 
     resizeSvg();
     sync();
