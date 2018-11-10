@@ -160,8 +160,8 @@
                     numStators: numStators,
                     segmentLength: segmentLength,
                     beatLength: circumference / beatsPerRev,
-                    statorLength: segmentLength * statorPortion,
-                    gapLength: segmentLength * gapPortion
+                    gapLength: gap,
+                    statorLength: segmentLength - gap
                 };
                 specs.push(spec);
             }
@@ -234,13 +234,12 @@
     var rotor2 = document.getElementById("rotor2");
     var rate = 80;
     var circumference = Math.PI * 2 * 105; // radius of circle
-    var gapPortion = .2;
-    var statorPortion = 1 - gapPortion;
     var minRate = 20;
     var sampleTimestamps = [];
     var timerHandle = null;
 
     var maxNumStators = 21;
+    var gap = circumference / maxNumStators / 2;
 
     var statorConfigs = [3, 4, 5, 6, 7].map(calcStatorConfig);
     var statorConfigIndex = 1; // index of desired stator config
