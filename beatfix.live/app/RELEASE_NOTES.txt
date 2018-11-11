@@ -7,6 +7,7 @@ See http://www.beatfix.live for more information.
 - Added additional rotors to observe beats
 - Added x6 x7 ratios
 - Number of stators may vary now to reduce visual noise
+- Attempt PWA enable
 
 ------------------------------------------------------------------------------------------------------------------------
 1.0 VCS commit #2184
