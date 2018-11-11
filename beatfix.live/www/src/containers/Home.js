@@ -9,7 +9,7 @@ export default withSiteData(() => (
         <h1>Welcome to</h1>
         <img src={logoImg} alt="logo" style={{display: 'block', margin: '0 auto'}}/>
         <h3>
-            a metronome designed for monitoring and correcting tempo during live musical performance
+            a visual metronome designed for monitoring and correcting tempo during live musical performance
         </h3>
         <p>
             <a href='http://app.beatfix.live'>
