@@ -19,7 +19,7 @@ if (true) {
     customFn = () => console.log("Yay, it's set")
 }
 
-customFn()
+customFn() // Prints 'Yay, it's set'
 
 // never use 'arguments' as a parameter, it obscures the object given to each function scope
 // 'arguments' is array-like (not a real Array)
@@ -32,15 +32,15 @@ function spreadArg(...args) {
     console.log(...args)
 }
 
-spreadArg(1, 2, 3, 4)
+spreadArg(1, 2, 3, 4) // Prints 'There are 4 args'
 
 // default value for an arg (don't alter an args value)
 function defArgs(arg0 = "implicit") {
     console.log("arg0 = " + arg0)
 }
 
-defArgs("explicit")
-defArgs()
+defArgs("explicit") // Prints 'arg0 = explicit'
+defArgs() // Prints 'arg0 = implicit'
 
 // put defaults at end of arg list
 function badDefault(arg0 = "implicit", arg1) {
