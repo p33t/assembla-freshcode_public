@@ -40,7 +40,6 @@
         </entry>
       </map>
     </option>
-    <option name="mySupportsUserInfoFilter" value="true" />
   </component>
   <component name="SvnConfiguration">
     <configuration>$USER_HOME$/.subversion</configuration>
