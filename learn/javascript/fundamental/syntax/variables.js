@@ -26,7 +26,7 @@ function scopeFunction() {
     let localVar = "lv"
     globalVar = globalVar + "_alt"
     // noinspection JSUndeclaredVariable
-    gl0balVar = "typo created global"
+    gl0balVar = "typo created global" // hmmm... shouldn't this fail due to "use strict";  ?
     console.log("Should be 'gb_alt': " + globalVar)
     console.log("gl0balVar: " + gl0balVar)
 }

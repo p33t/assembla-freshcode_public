@@ -8,6 +8,7 @@ https://www.w3schools.com/js/js_function_definition.asp
 
 Notes =======================================================================================
 Language ------------------------------------------------------------------------------------
+- "use strict"; at top of script requires variables to be declared (as of ES5, ignored in older browsers)
 - Function 'declaration' vs 'expression'.  Expression function has a semicolon whereas declaration 'should' not.
 - Expression function results in an 'anonymous' function (no name)
 - Function constructor can also be used to create function from strings (but typically not necessary)
