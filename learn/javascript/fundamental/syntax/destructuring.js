@@ -9,16 +9,16 @@ function FullName(givenName, familyName) {
 
 const bruceLee = new FullName("Bruce", "Lee")
 const {givenName, familyName} = bruceLee // variables must have the same name
-console.log(`destructure: ${givenName} ${familyName}`)
+console.log(`destructure: ${givenName} ${familyName}`) // prints 'destructure: Bruce Lee'
 
 function formatFullName({givenName, familyName}) { // args must have the same name
     return `${familyName}, ${givenName}`
 }
-console.log("formatted: " + formatFullName(bruceLee))
+console.log("formatted: " + formatFullName(bruceLee)) // prints 'formatted: Lee, Bruce'
 
 // destructure an array (or part there of)
 const [first, second] = ["1st", "2nd", "3rd"]
-console.log("first: " + first + ", second: " + second)
+console.log("first: " + first + ", second: " + second) // prints 'first: 1st, second: 2nd'
 
 // destructure for multiple return values (use objects, not an array which relies on ordering)
 function dimension() {
@@ -28,4 +28,4 @@ function dimension() {
 }
 
 const {right} = dimension() // we only want the right
-console.log("right: " + right)
+console.log("right: " + right)  // prints 'right: >'
