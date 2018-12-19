@@ -4,6 +4,8 @@ Generated from [React-Static](https://github.com/nozzle/react-static) (basic tem
 
 `package.json` has a list of scripts that can be run with `yarn xxx`.
 
+TODO: Version the buckets so can cutover at DNS
+
 Release procedure:
 1. `rm -rf dist`
 1. `yarn build`
