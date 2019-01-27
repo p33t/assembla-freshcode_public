@@ -9,6 +9,9 @@ TODO: Version the buckets so can cutover at DNS
 Release procedure:
 1. `rm -rf dist`
 1. `yarn build`
+1. TODO: Update the Github project
+
+Old...
 1. Delete entire contents of `www.beatfix.live` bucket
 1. `aws s3 cp dist s3://www.beatfix.live --recursive`
 1. Mark all newly uploaded files/folders as public (AWS UI)
