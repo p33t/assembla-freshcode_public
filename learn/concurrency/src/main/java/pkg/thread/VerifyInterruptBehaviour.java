@@ -6,6 +6,11 @@ import java.util.concurrent.Future;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
+/**
+ * Exploration of what happens to locks during an 'interrupt'.
+ * InterruptedException cannot be processed until required locks are obtained (if in sync block)
+ * Remember that each monitor has a blocked group and a waiting group.  Emerging from the waiting group will land a thread in the blocked group.
+ */
 public class VerifyInterruptBehaviour {
     public static void main(String[] args) {
 //        ExecutorService es = Executors.newSingleThreadExecutor();
