@@ -1,14 +1,19 @@
 package pkg.thread;
 
-import java.util.concurrent.*;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 public class VerifyInterruptBehaviour {
     public static void main(String[] args) {
-        ExecutorService es = Executors.newSingleThreadExecutor();
+//        ExecutorService es = Executors.newSingleThreadExecutor();
         SynchronizedTask task1 = new SynchronizedTask();
-        final Future<String> future1 = es.submit(task1);
+        Thread thread = new Thread(task1);
+        final Future<String> future1 = task1.future;
+//        final Future<String> future1 = es.submit(task1);
+        thread.start();
         Supplier<String> futureStatus = () -> {
             if (future1.isDone()) {
                 if (future1.isCancelled()) return "Cancelled";
@@ -32,7 +37,10 @@ public class VerifyInterruptBehaviour {
         synchronized (task1.monitor) {
             System.out.println("Main acquired lock on " + task1.monitor);
 
-            System.out.println("About to sleep.  Future: " + futureStatus.get());
+            System.out.println("Main about to interrupt task.  Future: " + futureStatus.get());
+            thread.interrupt();
+
+            System.out.println("Main about to sleep.  Future: " + futureStatus.get());
             try {
                 Thread.sleep(2000);
                 System.out.println("Finished sleeping.  Future: " + futureStatus.get());
@@ -40,19 +48,23 @@ public class VerifyInterruptBehaviour {
                 System.out.println("Sleep interrupted");
             }
 
-//            System.out.println("Main about to interrupt task.  Future: " + futureStatus.get());
-
             System.out.println("Main about to exit sync block.  Future: " + futureStatus.get());
         }
-        es.shutdown();
+//        es.shutdown();
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            System.out.println("Main was interrupted while trying to join");
+        }
         System.out.println("Ultimate done: " + futureStatus.get());
     }
 
-    static class SynchronizedTask implements Callable<String> {
+    static class SynchronizedTask implements Runnable {
         final String monitor = "SynchronizedTask-" + this.hashCode();
+        final CompletableFuture<String> future = new CompletableFuture<>();
 
         @Override
-        public String call() {
+        public void run() {
             String[] result = {"starting"};
 
             Consumer<String> indicate = (msg) -> {
@@ -68,13 +80,15 @@ public class VerifyInterruptBehaviour {
 //                    monitor.wait(); //<<<<<<< Will hang thread if nothing notifies
                     indicate.accept("SynchronisedTask continuing in block synchronized on " + monitor);
                 } catch (InterruptedException e) {
+                    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! It appears interrupt exception cannot be processed until lock re-acquired
                     boolean holds = Thread.holdsLock(monitor);
-                    System.out.format("Interrupted.  Lock re-acquired: %s", holds);
+                    System.out.format("Interrupted.  Lock re-acquired: %s%n", holds);
                 }
                 indicate.accept("SynchronisedTask about to relinguish lock.  Lock hold status: " + Thread.holdsLock(monitor));
             }
             indicate.accept("SynchronisedTask about to conclude");
-            return result[0];
+//            return result[0];
+            future.complete(result[0]);
         }
     }
 }
