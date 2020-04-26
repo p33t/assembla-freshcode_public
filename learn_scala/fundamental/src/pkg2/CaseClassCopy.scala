@@ -1,8 +1,8 @@
-package pckg_2_10
+package pkg2
 
 import java.lang.reflect.Modifier
 
-import pckg_2_10.fixture.FancyCaseClass
+import fixture.FancyCaseClass
 
 /**
  * Copying a case class using Java reflection to avoid generics.
@@ -36,13 +36,14 @@ object CaseClassCopy {
    */
   class Copier(cls: Class[_]) {
     private val ctor = cls.getConstructors.apply(0)
+    // Methods with same name as private, final, non-static fields
     private val getters = cls.getDeclaredFields
       .filter {
       f =>
         val m = f.getModifiers
         Modifier.isPrivate(m) && Modifier.isFinal(m) && !Modifier.isStatic(m)
     }
-      .take(ctor.getParameterTypes.size)
+      .take(ctor.getParameterTypes.length)
       .map(f => cls.getMethod(f.getName))
 
     /**
@@ -56,10 +57,9 @@ object CaseClassCopy {
           (ix, value.asInstanceOf[Object])
       }.toMap
 
-      val args = (0 until getters.size).map {
+      val args = getters.indices.map {
         i =>
-          byIx.get(i)
-            .getOrElse(getters(i).invoke(o))
+          byIx.getOrElse(i, getters(i).invoke(o))
       }
       ctor.newInstance(args: _*).asInstanceOf[T]
     }

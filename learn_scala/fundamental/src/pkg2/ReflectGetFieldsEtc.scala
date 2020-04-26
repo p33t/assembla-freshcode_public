@@ -1,5 +1,4 @@
-package pckg_2_10
-
+package pkg2
 
 /**
  * Trying to get the fields in declared order (which reflects dependency).
@@ -31,14 +30,14 @@ object ReflectGetFieldsEtc {
 
     protected def classStack: List[Class[_]] = Nil
 
+    @scala.annotation.tailrec // <<<< compiler will error if method is not actually tail recursive
     private def build(soFar: List[String], remaining: List[List[String]]): List[String] = {
       remaining match {
         case Nil => soFar
         case first :: Nil => first ::: soFar
-        case first :: second :: tail => {
+        case first :: second :: _ =>
           val local = first.filterNot(second.contains)
           build(local ::: soFar, remaining.tail)
-        }
       }
     }
   }

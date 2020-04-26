@@ -1,5 +1,4 @@
-package pckg_2_10.fixture
-
+package fixture
 
 case class FancyCaseClass(str: String, i: Integer, l: Long, str2: String) {
 //  This would not be useful... just overload 'apply' on the companion object.

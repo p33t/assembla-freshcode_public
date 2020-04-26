@@ -1,6 +1,8 @@
-package pckg_2_10
+package pkg2
 
-
+/**
+ * Explore how to supply implicit ordering arguments to [[scala.collection.Seq.sorted]].
+ */
 object OrderingDemo {
   val bruce = Person("bruce")
   val aaron = Person("aaron")

@@ -1,4 +1,4 @@
-package pckg_2_10.extend_java;
+package pkg2.extend_java;
 
 public interface Action<R extends Result> {
 }

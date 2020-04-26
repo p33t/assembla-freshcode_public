@@ -1,9 +1,13 @@
-package pckg_2_10
+package pkg2
 
-import scala.collection.JavaConverters
-import JavaConverters._
-import pckg_2_10.fixture.AnIterable
+import fixture.AnIterable
 
+import scala.jdk.CollectionConverters._
+
+/**
+ * [[scala.collection.JavaConverters]] are successors to [[scala.concurrent.JavaConversions]].  The later uses implicits.
+ * [[scala.jdk.CollectionConverters]] are successors to [[scala.collection.JavaConverters]].
+ */
 object JavaConvertersDemo {
   def main(args: Array[String]) {
     listOp()
