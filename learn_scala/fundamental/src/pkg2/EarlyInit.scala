@@ -1,6 +1,8 @@
-package pckg_2_10
+package pkg2
 
-
+/**
+ * Want a trait val to be initialised using an attribute of a subclass.
+ */
 object EarlyInit {
 
   trait A {

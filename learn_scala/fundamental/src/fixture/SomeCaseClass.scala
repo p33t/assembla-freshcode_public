@@ -1,5 +1,4 @@
-package pckg_2_10.fixture
-
+package fixture
 
 case class SomeCaseClass(str: String) {
 }

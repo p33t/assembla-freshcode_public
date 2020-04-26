@@ -1,6 +1,8 @@
-package pckg_2_10
+package pkg2
 
-
+/**
+ * Explore extending multiple traits, each with the same method.  Which one is used?
+ */
 object MultipleInheritance {
 
   trait R1 extends Runnable {

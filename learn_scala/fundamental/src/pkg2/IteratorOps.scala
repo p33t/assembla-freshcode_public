@@ -1,6 +1,8 @@
-package pckg_2_10
+package pkg2
 
-
+/**
+ * Exploring implicit conversions (and right assoc method).  Is like adding methods to a foreign class.
+ */
 object IteratorOps {
   def main(args: Array[String]) {
     val spec = new Special
@@ -8,11 +10,13 @@ object IteratorOps {
     val l = List(1, 2, 3)
     op(l.iterator)
 
+    // Right associative
     l.iterator altOp_: spec
 
-    // NOTE: this way is more powerful because doesn't require explicit type args
+    // implicitly converted from iterator to Special2
     l.iterator.altOp()
 
+    // back-to-back implicit conversion
     // specialised subtype methods !!!!!!! taken from TraversableOnce.toMap()
     l.iterator.decrement.altOp()
 
@@ -27,7 +31,7 @@ object IteratorOps {
 
 
   class Special {
-    // Right associative.  Need to separate alphanumeric from non-alphanumeric with an '_'.
+    /** Right associative.  Need to separate alphanumeric from non-alphanumeric with an '_'. */
     def altOp_:(is: Iterator[Int]) = is.foreach(println)
   }
 

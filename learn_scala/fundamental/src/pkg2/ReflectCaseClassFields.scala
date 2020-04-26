@@ -1,8 +1,10 @@
-package pckg_2_10
+package pkg2
 
-import pckg_2_10.fixture.SomeCaseClass
-import scala.reflect.runtime.{universe => ru}
+import fixture.SomeCaseClass
 
+/**
+ * Obtain a case class' field value via reflection.
+ */
 object ReflectCaseClassFields {
 
 

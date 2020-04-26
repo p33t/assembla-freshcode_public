@@ -1,8 +1,9 @@
-package pckg_2_10
+package pkg2
 
-import pckg_2_10.fixture.{FancyCaseClass, SomeCaseClass}
-import scala.reflect.runtime.{universe => ru}
+import fixture.{FancyCaseClass, SomeCaseClass}
+
 import scala.reflect.ClassTag
+import scala.reflect.runtime.{universe => ru}
 
 /**
  * !!!!! The scala 'TypeTag' approach is so restrictive one might as well call the copy method directly.

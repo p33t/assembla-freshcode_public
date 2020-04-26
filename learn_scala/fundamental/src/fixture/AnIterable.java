@@ -1,11 +1,14 @@
-package pckg_2_10.fixture;
+package fixture;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * Java {@link Iterable} class.
+ */
 public class AnIterable implements Iterable<String> {
-    private List<String> list = new ArrayList<String>();
+    private final List<String> list = new ArrayList<>();
 
     {
         list.add("one");
