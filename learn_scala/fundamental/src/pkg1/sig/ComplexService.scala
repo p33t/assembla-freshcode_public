@@ -1,4 +1,4 @@
-package convention
+package pkg1.sig
 
 /**
   * Complex service that has multiple methods.
