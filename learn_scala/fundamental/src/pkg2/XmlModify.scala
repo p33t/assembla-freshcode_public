@@ -1,8 +1,10 @@
-package pckg_2_10
+package pkg2
 
 import scala.xml.Elem
 
-
+/**
+ * Basic XML manipulation
+ */
 object XmlModify {
   val before = <root attr1="before" attr2="keep">
     <child>hello</child>
@@ -15,10 +17,11 @@ object XmlModify {
   </root>
 
   def main(args: Array[String]) {
+    // Change an attribute
     val after = before.copy(attributes = before.attributes.append(<alt attr1="after"/>.attributes))
     assert(after == expAfter)
 
-
+    // Add an attribute to a child element
     val world = before.copy(
       child = before.child.map {
         case target: Elem if target.label == "child" && target.attributes.get("whom").isEmpty =>

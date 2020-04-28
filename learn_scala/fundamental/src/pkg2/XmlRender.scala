@@ -1,6 +1,8 @@
-package pckg_2_10
+package pkg2
 
 /**
+ * Use scala to render xhtml.
+ *
  * Not sure how to influence auto code formatting... and this is pretty ugly.
  */
 object XmlRender {
@@ -21,7 +23,7 @@ object XmlRender {
 
   def rowRender(rows: List[List[String]]) = {
     rows.map(r => <tr>
-      {r.map(d => <td>d</td>)}
+      {r.map(d => <td>{d}</td>)}
     </tr>)
   }
 

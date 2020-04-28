@@ -1,6 +1,10 @@
-package pckg_2_10
+package pkg2
 
+import scala.xml.Node
 
+/**
+ * Explore querying xml
+ */
 object XmlQuery {
   val root =
     <root>
@@ -24,7 +28,11 @@ object XmlQuery {
     val z = root \\ "c"
     assert(z.isEmpty)
 
-    val sub = root \ "a" \ "b" filter (_.attributes("x").exists(_.text == "want"))
-    assert(sub == <b x="want">a1b2</b>)
+    val xWants = (node: Node) => {
+      val attrib = Option(node.attributes("x"))
+      attrib.exists(_.text == "want")
+    }
+    val sub = root \ "a" \ "b" filter xWants
+    assert(sub.text == "a1b2")
   }
 }

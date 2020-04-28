@@ -1,11 +1,11 @@
-package pckg_2_10
+package pkg2
 
-import pckg_2_10.fixture.SomeClass
+import fixture.SomeClass
 
 // import scala.reflect.runtime.universe._
 
 /**
- * Implicit access to the type args
+ * Implicit access to the type args using different mechanisms.
  */
 object TypeArgDemo {
   def main(args: Array[String]) {

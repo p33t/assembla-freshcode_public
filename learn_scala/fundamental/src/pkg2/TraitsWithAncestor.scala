@@ -1,6 +1,8 @@
-package pckg_2_10
+package pkg2
 
-
+/**
+ * Explore how to combined and initilise encapsulated components that depend on a common parent trait.
+ */
 object TraitsWithAncestor {
   abstract class AbstractDb {
     def create(): Unit = println("AbstractDb.create()")

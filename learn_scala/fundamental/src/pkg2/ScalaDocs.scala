@@ -1,17 +1,17 @@
-package pckg_2_10
+package pkg2
 
 /**
  * This is about scala docs.
- * Macros don't work :(
+ * Macros appear to work now...
  * $REUSABLE
  *
- * I can reference Scala library [[scala.Option]] or local code [[pkg.Abstract]].
+ * I can reference Scala library [[scala.Option]] or local code [[fixture.SomeCaseClass]].
  *
  * {{{
  *   Example code.
  * }}}
  *
- * @see [[pkg.ActorDemo]]
+ * @see [[fixture.SomeClass]]
  *
  * @define REUSABLE
  *         This is some reusable documentation.  Good for overloaded methods and the like.

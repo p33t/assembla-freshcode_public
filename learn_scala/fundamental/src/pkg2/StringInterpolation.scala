@@ -1,4 +1,4 @@
-package pckg_2_10
+package pkg2
 
 object StringInterpolation {
   def main(args: Array[String]) {
