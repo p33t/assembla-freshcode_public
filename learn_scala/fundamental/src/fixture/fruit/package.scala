@@ -1,8 +1,6 @@
-package pkg
+package fixture
 
-
-object Fixture {
-
+package object fruit {
   class Fruit
 
   class Apple extends Fruit

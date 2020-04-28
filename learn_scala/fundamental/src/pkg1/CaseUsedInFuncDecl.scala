@@ -1,6 +1,9 @@
-package pkg
+package pkg1
 
-object CaseUsage {
+/**
+ * Explore 'case' in function declaration.  Seems like syntactic sugar.
+ */
+object CaseUsedInFuncDecl {
   def main(args: Array[String]) {
     val l = List((1, "one"), (2, "two"))
 

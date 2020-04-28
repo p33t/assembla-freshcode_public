@@ -1,6 +1,8 @@
-package pkg
+package pkg1
 
-
+/**
+ * Overriding various members of a parent class.  Property get/set support!
+ */
 object AbstractMembers {
 
   abstract class Cell {
@@ -14,15 +16,15 @@ object AbstractMembers {
 
   class StringCell extends Cell {
     type T = String
-    // cannot override a 'var'
+    // cannot override a 'var' per se.  Can use getter/setter (see below)
 //    override def value = "Bruce"
 //    override var value: String = "Bruce Willis"
 
     // method cannot override a val
 //    override def valueString = value.toString
 
-    // implementing a method as a val is supported
-    override val valueToString = "Not Supported"
+    // implementing a method as a val
+    override val valueToString = "Custom Override"
 
     // Can implement a getter and setter to behave like a field
     override def val2 = "Bruce"
@@ -34,5 +36,7 @@ object AbstractMembers {
     // Thankfully doesn't work
 //    stringCell.value = 99
     stringCell.value = "Bruce"
+    assert(stringCell.value == "Bruce")
+    assert(stringCell.valueToString == "Custom Override")
   }
 }

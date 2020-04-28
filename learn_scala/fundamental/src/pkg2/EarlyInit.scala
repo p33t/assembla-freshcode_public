@@ -2,6 +2,7 @@ package pkg2
 
 /**
  * Want a trait val to be initialised using an attribute of a subclass.
+ * NOTE: early initializers will be replaced with Trait params in Scala 3
  */
 object EarlyInit {
 
@@ -18,6 +19,7 @@ object EarlyInit {
   }
 
   // works because A is initialised AFTER parent class
+  // NOTE: Early initializers will be deprecated in Scala 3 in favour of trait parameters
   class C extends {
     override val foo = "foo"
   } with A

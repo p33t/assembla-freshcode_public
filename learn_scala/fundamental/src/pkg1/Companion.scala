@@ -1,6 +1,9 @@
-package pkg
+package pkg1
 
-
+/**
+ * Explore hiding a class constructor and property.
+ * @see [[CompanionCheck]]
+ */
 class Companion private(private val s:String)
 
 object Companion {

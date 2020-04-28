@@ -1,12 +1,14 @@
-package pkg
+package pkg1
 
-
+/**
+ * Explore private constructor vs field
+ */
 object FieldPrivacy {
   def main(args: Array[String]) {
 
 //    Not allowed...
-//    val cip = new ClassIsPrivate("bruce")
-    val cip = new ClassIsPrivate(4)
+//    val cip = new ConstructorIsPrivate("bruce")
+    val cip = new ConstructorIsPrivate(4)
     println("Should be 4: " + cip.s)
 
     val aip = new FieldIsPrivate("bruce")
@@ -22,7 +24,7 @@ object FieldPrivacy {
     println(b)
   }
 
-  class ClassIsPrivate private(val s:String) {
+  class ConstructorIsPrivate private(val s:String) {
     def this(i:Int) = this(i.toString)
   }
 

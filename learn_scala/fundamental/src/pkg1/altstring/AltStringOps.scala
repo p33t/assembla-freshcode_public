@@ -1,5 +1,4 @@
-package pkg.obj
-
+package pkg1.altstring
 
 /**
  * Operations on AltString

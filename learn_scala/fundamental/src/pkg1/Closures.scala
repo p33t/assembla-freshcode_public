@@ -1,5 +1,4 @@
-package pkg
-
+package pkg1
 
 object Closures {
   def main(args: Array[String]) {

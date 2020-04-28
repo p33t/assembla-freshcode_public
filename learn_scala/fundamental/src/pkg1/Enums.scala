@@ -1,5 +1,8 @@
-package pkg
+package pkg1
 
+/**
+ * Explore use of 'Enumeration'.  Doesn't seem to allow custom methods.  Scala 3 has improved alternative apparently.
+ */
 object Enums {
 
   object Direction extends Enumeration {

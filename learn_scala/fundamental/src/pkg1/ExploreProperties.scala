@@ -1,9 +1,11 @@
-package pkg
+package pkg1
 
-import java.util.Properties
 import java.io.StringReader
+import java.util.Properties
 
-
+/**
+ * Explore Java Properties manipulation.
+ */
 object ExploreProperties {
   def main(args: Array[String]) {
     confirmOverwrites()

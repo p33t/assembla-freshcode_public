@@ -1,6 +1,8 @@
-package pkg
+package pkg1
 
-
+/**
+ * Demonstration of abtract method
+ */
 object Abstract {
   def main(args: Array[String]) {
     val c = new Child()

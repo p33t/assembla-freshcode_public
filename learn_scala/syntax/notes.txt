@@ -29,4 +29,6 @@ Lazy collections evaluate members as needed (e.g. Stream)
 String builder is methods on strict collection that causes creation of another strict collection.
 Lazy collections that inherit from string collections need to override string builder methods to retain laziness.
 
+Non-strict function means it may not evaluate all inputs.
+
 Type constructors need type arguments in order to yield a first-order type.  List[Int] is a first order type.
