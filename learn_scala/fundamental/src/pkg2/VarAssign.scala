@@ -1,7 +1,10 @@
-package pckg_2_10
+package pkg2
 
 import java.io.File
 
+/**
+ * Assignment does not yield a value (unlike Java, sadly)
+ */
 object VarAssign {
   def main(args: Array[String]) {
     var v = new File(".")

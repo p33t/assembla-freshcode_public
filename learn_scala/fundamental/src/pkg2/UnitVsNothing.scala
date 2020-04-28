@@ -1,5 +1,4 @@
-package pckg_2_10
-
+package pkg2
 
 object UnitVsNothing {
 
@@ -13,12 +12,13 @@ object UnitVsNothing {
     val noArg = defUnit()
     println("Calling without arg: " + noArg)
 
-    val arg = defUnit("")
+    val arg = defUnit("arg-str")
     println("Calling with arg: " + arg)
 
     val wrapNoArg = new Wrap()
-//    val wrapArg = new Wrap("")
+    val wrapArg = new Wrap("arg-str")
       // Hmmm... can't seem to reproduce problem.  I was getting 'Nothing' type elsewhere.
-    println(wrapNoArg.t)
+    println("wrapNoArg.t: " + wrapNoArg.t)
+    println("wrapArg.t: " + wrapArg.t)
   }
 }

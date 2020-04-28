@@ -12,3 +12,21 @@ ADT: Algebraic Data Types
 'strict' mean eval all args, 'non-strict' is lazy eval
 
 .. at 6.4 of FP in Scala.
+
+
+
+Non-textbook notes --------------------------------
+https://www.geeksforgeeks.org/scala-null-null-nil-nothing-none-and-unit/
+null is the only instance of Null, which is a subtype of reference types only (not value types)
+Nothing has no instances (used for methods that always throw) and subtype of both Null and value types
+Unit is like Java void and is for methods that don't return anything.
+Nil is an empty list (List[Nothing])
+None is an instance Option.
+
+NodeSeq.filter() / https://www.scala-lang.org/blog/2017/11/28/view-based-collections.html
+Strict collections have members evaluated at creation (e.g. List)
+Lazy collections evaluate members as needed (e.g. Stream)
+String builder is methods on strict collection that causes creation of another strict collection.
+Lazy collections that inherit from string collections need to override string builder methods to retain laziness.
+
+Type constructors need type arguments in order to yield a first-order type.  List[Int] is a first order type.
