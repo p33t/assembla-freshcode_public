@@ -1,6 +1,8 @@
-package pkg
+package pkg1
 
-
+/**
+ * How to construct parent class and overload constructors.
+ */
 object Constructors {
   def main(args: Array[String]) {
     val child = new Child("Child Str")

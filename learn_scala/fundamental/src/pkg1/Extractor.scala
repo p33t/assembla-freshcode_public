@@ -1,6 +1,8 @@
-package pkg
+package pkg1
 
-
+/**
+ * Automatic use of 'unapply' method to interpret/deconstruct a value (E.g. stringified terms) during pattern match.
+ */
 object Extractor {
   def main(args: Array[String]) {
     def matchThis(s: String) {

@@ -1,6 +1,8 @@
-package pkg
+package pkg1
 
-
+/**
+ * @see [[Companion]]
+ */
 object CompanionCheck {
   def main(args: Array[String]) {
 //    Looks like a factory method...

@@ -1,6 +1,8 @@
-package pkg
+package pkg1
 
-
+/**
+ * Explore mutable and immutable maps and sets.
+ */
 object Collections {
   def main(args: Array[String]) {
     sets()
@@ -16,26 +18,32 @@ object Collections {
     println(immut + (3 -> "three"))
     println(immut)
     immut += (3 -> "three")
+    assert(immut.size == 3)
     println(immut)
 //    Hmmm... this doesn't work.  Is this a failure of the type system?  Should this work like List and Stack?
 //    var immut2 = immut + ("bruce" -> "lee")
 //    println(immut2)
 
     val mut = scala.collection.mutable.Map(1 -> "i", 2 -> "ii")
-    mut + (3 -> "iii")
+//    Deprecated syntax
+//    mut + (3 -> "iii")
+    mut.addOne(3 -> "iii")
+    assert(mut.size == 3)
     println(mut)
     // won't work because type parameters of map have been decided
-//    mut + ("bruce" -> "willis")
+//    mut.addOne("4" -> "iii")
   }
 
   def sets() {
     var immut = Set("bruce", "lee", "springsteen")
     immut += "willis"
+    assert(immut.size == 4)
     println(immut)
 
     // mutable variants have same (?) methods... but don't need 'var'
     val mut = scala.collection.mutable.Set("raphael", "donatello", "leonardo")
-    mut += "michelangelo"
+    mut.addOne("michelangelo")
+    assert(mut.size == 4)
     println(mut)
   }
 

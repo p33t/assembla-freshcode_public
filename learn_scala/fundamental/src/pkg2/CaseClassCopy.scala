@@ -10,7 +10,7 @@ import fixture.FancyCaseClass
 object CaseClassCopy {
   def main(args: Array[String]) {
     val o = FancyCaseClass("shiney", 9)
-    println(o + " ===> " + copy(o, "str2" -> "shoes", "i" -> 99))
+    println(o.toString + " ===> " + copy(o, "str2" -> "shoes", "i" -> 99))
 
     try {
       copy(o, "qwerty" -> "bad")

@@ -1,8 +1,9 @@
-package pkg
+package pkg1
 
-import pkg.DelayedInitEg.MyClass
-
-
+/**
+ * Delaying initialization prevents class setup until a specific method is called.  It has been deprecated.
+ */
+@deprecated("It is too suprising.")
 object DelayedInitEg {
 
   def main(args: Array[String]) {
@@ -14,7 +15,7 @@ object DelayedInitEg {
 
     def delayedInit(x: => Unit) {
       println("About to init...")
-      x
+      x // 'MyClass has been initialised.' displays here
       println("Finished init.")
     }
   }

@@ -1,14 +1,17 @@
-package pkg
+package pkg1
 
 import java.text.ParseException
-import util.Random
 
+import scala.util.Random
 
+/**
+ * Explore construction and pattern match of Left/Right
+ */
 object Eithers {
 
   def operation(): Either[ParseException, Int] = {
-    if (Random.nextBoolean) new Left(new ParseException("Failed at " + System.currentTimeMillis, 2))
-    else new Right(Random.nextInt())
+    if (Random.nextBoolean) Left(new ParseException("Failed at " + System.currentTimeMillis, 2))
+    else Right(Random.nextInt())
   }
 
   def main(args: Array[String]) {

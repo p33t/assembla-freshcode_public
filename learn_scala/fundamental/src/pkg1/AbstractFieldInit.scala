@@ -1,5 +1,8 @@
-package pkg
+package pkg1
 
+/**
+ * Explore initializing a val in a Trait.  See also [[pkg2.TraitsWithAncestor]] for initializer methods.
+ */
 trait NeedVal{
   val x: Int
   require(x > 0)
@@ -21,16 +24,19 @@ object AbstractFieldInit {
 //    }
 
     // no problem.  An anonymous class that extends the trait
+    // NOTE: early initializers will be replaced with Trait params in Scala 3
     n = new {
       val x = 2 * eleven
     } with NeedVal
 
     // a class that extends an anonymous class first
+    // NOTE: early initializers will be replaced with Trait params in Scala 3
     class MyClass extends {
       val x = 2 * eleven
     } with NeedVal
     n = new MyClass
 
     ///////////////// Alternatively a 'lazy' val might be a simpler fix but requires modification to trait (?)
+    // Or use 'def' instead?
   }
 }

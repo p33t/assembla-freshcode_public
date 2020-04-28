@@ -13,11 +13,11 @@ object CaseClassCopyTypeTag {
   def main(args: Array[String]) {
     println()
     val scc = SomeCaseClass("xyz")
-    println(scc + " ===> " + copy(scc, "str" -> "abc"))
+    println(scc.toString + " ===> " + copy(scc, "str" -> "abc"))
 
     println()
     val fcc = FancyCaseClass("bruce", 1)
-    println(fcc + " ===> " + copy(fcc, "str2" -> "Springsteen", "i" -> 99))
+    println(fcc.toString + " ===> " + copy(fcc, "str2" -> "Springsteen", "i" -> 99))
 
     try {
       copy(fcc, "mary" -> "had a little lamb")

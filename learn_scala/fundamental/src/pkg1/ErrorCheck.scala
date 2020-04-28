@@ -1,6 +1,7 @@
-package pkg
+package pkg1
 
 /**
+ * Checking conditions at runtime (IllegalArgumentException vs AssertionError)
  * Remember that Assertions can be enabled / disabled using JVM flags.
  * See also http://subversion.assembla.com/svn/freshcode_public/learn_scala/testing
  */

@@ -1,12 +1,16 @@
-package pkg
+package pkg1
 
-
+/**
+ * Implicit use of apply() and update()
+ */
 object CompilerBehaviour {
 
-  class MyVar[T]{
+  class MyVar[T] {
     var t: T = _
+
     def apply() = t
-    def update(t:T):Unit = this.t = t
+
+    def update(t: T): Unit = this.t = t
   }
 
   def main(args: Array[String]) {
