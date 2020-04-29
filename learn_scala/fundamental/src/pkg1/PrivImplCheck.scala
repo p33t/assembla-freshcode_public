@@ -1,6 +1,6 @@
-package pkg
+package pkg1
 
-
+/** See [[PrivImpl]] */
 object PrivImplCheck {
   def main(args: Array[String]) {
     val pi = PrivImpl(99)

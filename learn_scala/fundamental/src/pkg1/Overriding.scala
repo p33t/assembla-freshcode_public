@@ -1,12 +1,12 @@
-package pkg
+package pkg1
 
-import pkg.Overriding.MyClass
-
-
+/**
+ * Confirm overrides behave like Java
+ */
 object Overriding {
   def main(args: Array[String]) {
     val t: MyTrait = new MyClass
-    println(t.f(t.s))
+    println(t.f(t.s)) // prints hello world (i.e. dynamically bound / polymorphic)
   }
 
   trait MyTrait {

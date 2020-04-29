@@ -1,8 +1,10 @@
-package pkg
+package pkg1
 
-import util.Random
+import scala.util.Random
 
-
+/**
+ * Private to the object instance (other instances cannot access, unlike Java private)
+ */
 object InstancePrivate {
 
   class C1 {

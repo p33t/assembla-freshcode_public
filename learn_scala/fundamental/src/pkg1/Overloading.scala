@@ -1,6 +1,8 @@
-package pkg
+package pkg1
 
-
+/**
+ * Explore overloaded method invocation
+ */
 object Overloading {
   def main(args: Array[String]) {
     method("Some String")
@@ -9,12 +11,11 @@ object Overloading {
 //    method(null)
     method(())
     val sh: Short = 128
-    method(sh) // looks like implicits kick in before ambiguous overload
+    method(sh) // looks like implicits kick in before ambiguous overload.  This uses the 'Int' overload.
     val b: Byte = 22
-    // doesn't work...will not apply 2 implicits
-    method(b)
+    method(b) // uses 'Int' overload
 
-    method(true)
+    method(true) // uses 'Any' overload
     method(List("one", "two", "buckle", "my", "shoe"))
   }
 

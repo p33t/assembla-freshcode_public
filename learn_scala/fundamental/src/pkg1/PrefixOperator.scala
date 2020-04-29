@@ -1,6 +1,8 @@
-package pkg
+package pkg1
 
-
+/**
+ * Implement a prefix operator, which can only one of a limited set of chars.
+ */
 object PrefixOperator {
 
   class Rich(val v: String) {
@@ -9,7 +11,8 @@ object PrefixOperator {
     }
 
     def unary_up = {
-      new Rich(v toUpperCase)
+//      new Rich(v toUpperCase) ... postfix operators must be enabled with a feature flag
+      new Rich(v.toUpperCase())
     }
   }
 
