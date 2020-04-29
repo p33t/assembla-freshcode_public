@@ -1,8 +1,9 @@
-package pkg
+package pkg1
 
 /**
- * Similar to nested classes.
- * @see pkg.InnerClassish
+ * Similar to Java inner classes (aka non-static, nested class).
+ *
+ * @see [[pkg1.NestedClasses]]
  */
 object PathDepTypes {
   class Outer {

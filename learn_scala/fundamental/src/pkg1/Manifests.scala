@@ -1,7 +1,10 @@
-package pkg
+package pkg1
 
-import reflect.ClassManifest
+import scala.reflect.ClassManifest
 
+/**
+ * Exploring manifest.  This illustration is superseeded by [[pkg2.TypeArgDemo]].
+ */
 @deprecated(message="Superceeded by TypeArgDemo")
 object Manifests {
   def main(args: Array[String]) {

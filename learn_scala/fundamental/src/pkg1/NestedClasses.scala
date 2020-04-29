@@ -1,13 +1,15 @@
-package pkg
-
+package pkg1
 
 /**
- *  A simulation of an java static inner class.
- *  @see pkg.PathDepTypes
+ *  A simulation of an java static and non-static nested class.
+ *  
+ *  @see [[pkg1.PathDepTypes]]
  */
-object InnerClassish {
+object NestedClasses {
   class Outer(msg: String) {
     def hello() = msg
+
+    /** Needs a contextual instance of outer class */
     class Inner {
       def hi() = Outer.this.hello()
     }

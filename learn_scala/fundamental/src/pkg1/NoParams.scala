@@ -1,8 +1,8 @@
-package pkg
-
+package pkg1
 
 object NoParams {
 
+  //noinspection UnitMethodIsParameterless
   def noParams {
     println("No Params")
   }
@@ -19,7 +19,7 @@ object NoParams {
     //Doesn't compile..
 //    noParams()
     noParams
-    emptyParams
+    emptyParams // Still works but not good
     emptyParams()
     twoEmptyParams
     twoEmptyParams()

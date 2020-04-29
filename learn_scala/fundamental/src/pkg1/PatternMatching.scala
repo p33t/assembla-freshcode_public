@@ -1,6 +1,8 @@
-package pkg
+package pkg1
 
-
+/**
+ * Different pattern matching syntax: literals, assigning variable, guard condit, type matching, default
+ */
 object PatternMatching {
 
   // sealed classes can only be extended by classes in the same file.  It enables compiler support for case class pattern matches
@@ -15,7 +17,7 @@ object PatternMatching {
 
   def describe(ts: TupSeq) {
     def desc(input: TupSeq): String = input match {
-    // `xx` prevents variable assignment and instead looks for a constant or variable
+      // `xx` prevents variable assignment and instead looks for a constant or variable
       case `fiver` => "This is the 'fiver'"
       case Elem(h, Terminator()) => "Last elem is " + h
       // assigning a variable name to a more complex part
@@ -25,7 +27,7 @@ object PatternMatching {
       // type matching
       case _: Terminator => "-x"
       // multi match
-//      case "a" | "b" => "Multiple!"
+      //      case "a" | "b" => "Multiple!"
       // default case
       case _ => "Very boring"
     }
@@ -58,9 +60,10 @@ object PatternMatching {
       var current = t
 
       // A partial function has an 'isDefinedAt' to test if there is an answer for certain inputs
-      def nextPartial: PartialFunction[TupSeq, (TupSeq, TupSeq)] = {
+      // This returns the Tuple consisting of _1: the entire seq and _2: the tail (if any)
+      private def nextPartial: PartialFunction[TupSeq, (TupSeq, TupSeq)] = {
         case t: Terminator => (t, null)
-        case e @ Elem(_, tup) => (e, tup)
+        case e@Elem(_, tup) => (e, tup)
       }
 
       def next() = {

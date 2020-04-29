@@ -1,6 +1,6 @@
-package pkg
+package pkg1
 
-import collection.mutable.ListBuffer
+import scala.collection.mutable.ListBuffer
 
 
 object Regexpr2 {
@@ -11,6 +11,7 @@ object Regexpr2 {
     val expr = """<header>(.*?)<body-elem-1>(.*?)<body-elem-2>(.*?)(<header>|\z)""".r
     val accum = new ListBuffer[(String,String,String)]
 
+    @scala.annotation.tailrec
     def findMatches(str: String) {
       val first = expr.findFirstMatchIn(str)
       first match {

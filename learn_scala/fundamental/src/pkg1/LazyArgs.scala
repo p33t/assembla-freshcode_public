@@ -1,6 +1,8 @@
-package pkg
+package pkg1
 
-
+/**
+ * Lazy arg exploration; it propagates lazily through method calls!
+ */
 object LazyArgs {
   def main(args: Array[String]) {
     var count = 0

@@ -1,8 +1,13 @@
-package pkg
+package pkg1
 
 import java.awt.Dimension
 
+// Importing a feature flag means compiler arg is not necessary
+// Looks like this is the stepping-stone to deprecation and removal (a-la Scala 3)
+import scala.language.implicitConversions
 
+
+//noinspection SameParameterValue
 object Implicits {
   private implicit def intToString(i: Int) = "" + i
 
@@ -44,7 +49,7 @@ object Implicits {
   }
 
   def receiverConversion() {
-    // can grapht a method onto a different receiver
+    // can graft a method onto a different receiver
     val lb = new LessBoring()
     lb.veryUniqueName()
     val b = new Boring()

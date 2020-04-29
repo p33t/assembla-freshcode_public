@@ -1,4 +1,4 @@
-package pkg
+package pkg1
 
 object Regexpr3 {
   // Tab separated input
@@ -12,7 +12,7 @@ E	5	d	d	d	-	-	N	N
 
   def main(args: Array[String]) {
     // white space separated
-    val re = """(\S*)\s+(\d+)((?:\s+(?:d|D|a|n|N|s|S|-)){7})""".r
+    val re = """(\S*)\s+(\d+)((?:\s+[dDanNsS\-]){7})""".r
     for (line <- io.Source.fromString(input).getLines()) {
       println(line)
       val first = re.findFirstMatchIn(line)

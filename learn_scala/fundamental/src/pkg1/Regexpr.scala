@@ -1,5 +1,4 @@
-package pkg
-
+package pkg1
 
 object Regexpr {
   def simple() {

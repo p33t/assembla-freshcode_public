@@ -1,7 +1,9 @@
-package pkg
+package pkg1
 
-
-object OneParam {
+/**
+ * Multiple parameter lists (each with 0 or 1 args)
+ */
+object ParameterLists {
 
   def one(s: String) {
     println("Arg1: " + s)
@@ -19,17 +21,17 @@ object OneParam {
     one("simple")
 
     val f1 = one _
-    f1("Funct Literal")
+    f1("Funct Literal") // or is that a function value?
 
     val f2 = one(_)
     f2("With Braces")
 
     val f3 = oneNone(_)
-    f3("No second arg list") // not invoked!!!!!!!
-    f3("With empty second arg list")()
+    f3("No second arg list") // This IS invoked
+//    f3("With empty second arg list")() // does not compile
 
     val f4 = oneNone _
-    f4("Is this any different?")
+    f4("Is this any different?") // This is NOT invoked
     f4("_ without braces")()
 
     val f5 = oneNone(_: String)()
