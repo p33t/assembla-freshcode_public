@@ -1,6 +1,8 @@
-package pkg
+package pkg1
 
-
+/**
+ * Decimal formatting and strange -0.0 comparison behaviour.
+ */
 object StringFormatting {
   def main(args: Array[String]) {
     // Hmmm.... scientific vs decimal is vague: See java.util.Formatter doco
@@ -18,7 +20,7 @@ object StringFormatting {
     println(hex.format(Double.MinPositiveValue))
     println(hex.format(Double.MinPositiveValue * 2))
 
-    // WTF! -ve zero?
+    // WTF! -ve zero?  Is 'equal' and 'less-than' zero
     println(hex.format(-0.0) + "... does 0.0 == -0.0 :" + (0.0 == -0.0) + "... does (0.0).compareTo(-0.0) : " + (0.0).compareTo(-0.0))
   }
 }

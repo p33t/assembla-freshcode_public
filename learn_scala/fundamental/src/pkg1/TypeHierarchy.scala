@@ -1,6 +1,8 @@
-package pkg
+package pkg1
 
-
+/**
+ * Prove the type hierarchies of Null, AnyRef, Unit, AnyVal, Any, Nothing
+ */
 object TypeHierarchy {
   def main(args: Array[String]) {
     // null has only one instance and is a subclass of all AnyRef

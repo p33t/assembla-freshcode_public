@@ -1,6 +1,8 @@
-package pkg
+package pkg1
 
-
+/**
+ * Define a method that returns a 'with' type
+ */
 object ReturnTypeHasWith {
 
   class SomeBaseClass
@@ -13,6 +15,6 @@ object ReturnTypeHasWith {
       new SomeSubClass
     }
 
-    println(withMethod)
+    println(withMethod()) // prints the 'toString()' from SomeSubClass
   }
 }

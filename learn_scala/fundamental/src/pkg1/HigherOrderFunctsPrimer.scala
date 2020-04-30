@@ -1,6 +1,9 @@
-package pkg
+package pkg1
 
-object TryhardHigherOrderFuncts {
+/**
+ * Passing around functions and function literals.
+ */
+object HigherOrderFunctsPrimer {
   def noArgsToUnit() = println("noArgsToUnit called")
   def noArgsToString() = {"noArgsToString called"}
   def intToString(i: Int) = {"intToString called with arg:" + i}

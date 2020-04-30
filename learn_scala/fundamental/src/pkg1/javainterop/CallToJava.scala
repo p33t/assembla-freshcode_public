@@ -1,5 +1,4 @@
-package pkg.javainterop
-
+package pkg1.javainterop
 
 object CallToJava {
   def main(args: Array[String]) {

@@ -1,13 +1,15 @@
-package pkg
+package pkg1
 
-
+/**
+ * Illustrate trait usage (multiple and on anonymous classes)
+ */
 object Traits {
 
   class Fruit(val name: String) {
     override def toString = name
   }
 
-  // NOTE: Traits cannot have class params (like Fruit)
+  // NOTE: Traits cannot have class params (like Fruit).  Scala 3 might be implementing this (to prevent early-init workarounds?)
   trait EasyPeel {
     override def toString = {
       super.toString + " is easy to peel"

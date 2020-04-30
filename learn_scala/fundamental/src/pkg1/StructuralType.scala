@@ -1,6 +1,8 @@
-package pkg
+package pkg1
 
-// AKA Duck Typing
+/**
+ * AKA Duck Typing.  Can do combination of common ancestor AND defined methods.
+ */
 object StructuralType {
 
   class A
@@ -19,12 +21,12 @@ object StructuralType {
 
   // a structural type requiring an object that has a 'method' method
   def callMethod(m: {def method(): Unit}) {
-    m.method
+    m.method()
   }
 
   // a structural type that has a common ancestor
   def callAMethod(m: A {def method(): Unit}) {
-    m.method
+    m.method()
   }
 
   def main(args: Array[String]) {

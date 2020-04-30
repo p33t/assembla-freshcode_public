@@ -1,7 +1,9 @@
-package pkg
+package pkg1
 
-
-class Style {
+/**
+ * Examine methods without parens.
+ */
+class ParensStyle {
   private val x = "ex"
 
   def emptyParensMethod() {

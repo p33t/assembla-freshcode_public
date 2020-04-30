@@ -1,8 +1,9 @@
-package pkg
+package pkg1
 
-import pkg.SelfType.Complex
-
-
+/**
+ * Using a 'self' type where another trait is also expected to be present on 'this'.
+ * Maybe this is useful in preventing weird inheritance hierarchies (?)
+ */
 object SelfType {
   def main(args: Array[String]) {
     val complex = new Complex
