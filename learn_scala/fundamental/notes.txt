@@ -32,3 +32,9 @@ Lazy collections that inherit from string collections need to override string bu
 Non-strict function means it may not evaluate all inputs.
 
 Type constructors need type arguments in order to yield a first-order type.  List[Int] is a first order type.
+
+Summary of 2.13 changes: https://dzone.com/articles/scala-213-has-scala-done-it-again
+Streams are deprecated (use LazyList)
+Works with compact1.  Java8 Profiles:  compact1 ~14Mb (Java7 is 45Mb)
+
+TODO: Future / Promise, SeqMap, Using

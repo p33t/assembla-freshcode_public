@@ -1,5 +1,4 @@
-package pkg
-
+package pkg1
 
 object VarArgs {
   def varArgs(s: String* ) {
@@ -13,6 +12,6 @@ object VarArgs {
   def main(args: Array[String]) {
     varArgs("one", "two", "three")
     val arr = myArr("four", "five", "six")
-    varArgs(arr: _*)
+    varArgs(arr: _*) // <<<<<<<<<<<<<<<<<<<<<< passing collection to vararg param
   }
 }

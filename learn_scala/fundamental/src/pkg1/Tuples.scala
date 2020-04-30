@@ -1,8 +1,10 @@
-package pkg
+package pkg1
 
-
+/**
+ * Tuple syntax, deconstruction.
+ */
 object Tuples {
-  def syntax {
+  def syntax() {
     val t2 = 99 -> "ninety nine"
     println(t2)
     // NOTE: 1 based naming
@@ -12,7 +14,7 @@ object Tuples {
     println(t22)
   }
 
-  def assignment {
+  def assignment() {
     val (a,b) = ("a", "b")
     var c: String = null
     var d: String = null
@@ -23,7 +25,7 @@ object Tuples {
   }
 
   def main(args: Array[String]) {
-    syntax
-    assignment
+    syntax()
+    assignment()
   }
 }

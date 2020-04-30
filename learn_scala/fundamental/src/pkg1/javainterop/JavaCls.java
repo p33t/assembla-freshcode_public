@@ -1,4 +1,4 @@
-package pkg.javainterop;
+package pkg1.javainterop;
 
 public class JavaCls {
     public static String twice(String s) {

@@ -1,4 +1,4 @@
-package pkg
+package pkg1
 
 /**
  * Trying to initialise a singleton in controlled manner.
