@@ -2,14 +2,13 @@ import React from 'react'
 import {Router, Link} from 'react-static'
 import {hot} from 'react-hot-loader'
 import {Helmet} from 'react-helmet'
-//
 import Routes from 'react-static-routes'
 
 import './app.css'
 
-const App = () => (
+const App = (props) => (
     <Router>
-        <table style={{width: '1280px', marginLeft: 'auto', marginRight: 'auto'}}><tr><td>
+        <table style={{width: `${Math.min(props.innerWidth, 1280)}px`, marginLeft: 'auto', marginRight: 'auto'}}><tbody><tr><td>
             <Helmet>
                 <title>beatfix</title>
                 <link rel="icon"
@@ -25,7 +24,7 @@ const App = () => (
             <div className="content">
                 <Routes/>
             </div>
-        </td></tr></table>
+        </td></tr></tbody></table>
     </Router>
 );
 
