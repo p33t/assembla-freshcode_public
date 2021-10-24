@@ -12,7 +12,7 @@ export default withSiteData(() => (
             a visual metronome designed for monitoring and correcting tempo during live musical performance
         </h3>
         <p>
-            <a href='http://app.beatfix.live'>
+            <a href='https://beatfix-app.freshcode.biz'>
                 <img src={screenshotImg} alt="screenshot" style={{display: 'block', margin: '0 auto'}}/>
                 <span>Click to launch</span>
             </a>

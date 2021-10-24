@@ -9,9 +9,9 @@ import './app.css'
 
 const App = () => (
     <Router>
-        <div>
+        <table style={{width: '1280px', marginLeft: 'auto', marginRight: 'auto'}}><tr><td>
             <Helmet>
-                <title>beatfix.live</title>
+                <title>beatfix</title>
                 <link rel="icon"
                       type="image/png"
                       href="./favicon.png"/>
@@ -25,7 +25,7 @@ const App = () => (
             <div className="content">
                 <Routes/>
             </div>
-        </div>
+        </td></tr></table>
     </Router>
 );
 
