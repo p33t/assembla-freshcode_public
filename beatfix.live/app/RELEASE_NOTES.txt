@@ -3,8 +3,14 @@ beatfix RELEASE NOTES
 Release notes for specialized metronome.
 See http://beatfix.freshcode.biz for more information.
 ------------------------------------------------------------------------------------------------------------------------
+1.1.2 VCS commit # 2229
+- Update logo/images
+- Fix layout for small screens
+
+------------------------------------------------------------------------------------------------------------------------
 1.1.1 VCS commit # 2227
 - Move from www/app.beatfix.live to beatfix/beatfix-app.freshcode.biz (vacate the domain beatfix.live)
+
 ------------------------------------------------------------------------------------------------------------------------
 1.1 VCS commit # 2194
 - Added additional rotors to observe beats
