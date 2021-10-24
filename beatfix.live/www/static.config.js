@@ -1,6 +1,6 @@
 export default {
     getSiteData: () => ({
-        title: 'beatfix.live'
+        title: 'beatfix'
     }),
     getRoutes: () => {
         return [

@@ -1,6 +1,6 @@
 {
-  "name": "www.beatfix.live",
-  "version": "1.0.1",
+  "name": "beatfix.freshcode.biz",
+  "version": "1.0.2",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -16,7 +16,7 @@
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-helmet": "^5.2.0",
-    "react-hot-loader": "^4.0.0-beta.21",
+    "react-hot-loader": "^4.0.0",
     "react-router": "^4.2.0",
     "react-static": "^5.9.12"
   },
