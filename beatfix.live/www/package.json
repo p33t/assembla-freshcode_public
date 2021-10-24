@@ -18,7 +18,8 @@
     "react-helmet": "^5.2.0",
     "react-hot-loader": "^4.0.0",
     "react-router": "^4.2.0",
-    "react-static": "^5.9.12"
+    "react-static": "^5.9.12",
+    "react-static-routes": "^1.0.0"
   },
   "devDependencies": {
     "eslint-config-react-tools": "1.x.x",
