@@ -1,0 +1,41 @@
+Notes from setting up Unloved Bastard keyboard controller (from bathroom epiphanies / bpiphanies / 1up keyboards). It uses an ATmel mega32u2 (ATmega32U2) chip.
+
+- Use Windows (Linux too hard because python lib drama)
+- Install Flip dependency with 'Typical' configuration. 'Custom' doesn't work.
+- Keyboard needs to be in 'boot mode', which disconnects keyboard (sound will play)
+  - pressing both shift keys is the default from bpiphany
+  - magnet didn't work. Maybe it wasn't strong enough, maybe electronics switch is too old
+  - my WinKeyAsFnKey EasyAVR configuration (attached) sets Fn+Esc as boot mode keystroke
+- Install drivers for 'Unknown device' in device manager using 'Have Disk'
+  - I had actually install ahead of time using Legacy driver setup option in Device Manager
+
+
+More notes....
+
+Installing 'Flip' didn't work with 'Custom' installation. 'Typical' worked fine.
+  This after trying to install JDK 1.5 update 22 but flip couldn't find.
+
+Trying to reprogram but “AtLibUsbDfu.dll not found”
+  Article explains: https://blog.samuelbernou.fr/en/posts/2016-08-27-modding-transformer-un-clavier-en-programmable/
+  Refers to video: https://www.youtube.com/watch?v=KQ9BjKjGnIc
+    >>> didn't help
+  In Device Manager. Select "Action/Add legacy hardware" and "Select from list", "Next" x2, "Have Disk"
+    Pick the file from Flip/usb folder. Then "ATmega32U2" (because that is printed on the chip)
+    >>> Now Flip app can connect (does not show previous error message)
+
+
+Instead of error:
+Opening port........................... FAIL    ISP done.
+
+Now I get:
+Opening port........................... FAIL    Could not open USB device.
+ISP done.
+AtLibUsbDfu: 3EB 2FF0 no device present.
+
+So this is progress. I think boot mode is not engaged
+
+Magnet didn't seem to be working. Maybe it's not strong enough or switch is old (?!).
+Article from Samual Bernou said pressing both shift keys is the default from bpiphany. THIS WORKED!
+Then I was able to succeed in flashing the keyboard firmware with EasyAVR (output below).
+From my key layout, the 'boot mode' is in layer 2 'Esc'. Layer 2 activated with "FN" key.
+It looks like a couple key caps were switched so will swap those back. (rt windows & rt Alt)
